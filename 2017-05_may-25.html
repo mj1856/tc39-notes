@@ -1,24 +1,25 @@
 <!doctype html>
 <meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.6.0/github-markdown.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+
 <title>May 25, 2017 Meeting Notes</title>
-<h1>May 25, 2017 Meeting Notes</h1>
-<p>Allen Wirfs-Brock (AWB), Waldemar Horwat (WH), Brian Terlson (BT), Michael Ficarra (MF), Adam Klein (AK), Chip Morningstar (CM), Dave Herman (DH),  Kent C. Dodds (KCD), Kevin Gibbons (KG), Tim Disney (TD), Daniel Ehrenberg (DE), Shu-yu Guo (SYG), Jeff Morrison (JM), James Snell (JSL), Keith Miller (KM), Myles Borins (MBS), Rick Waldron (RW), Mariko Kosaka (MKA), Stephen Murphy (SMY), Robert Palmer (RPR), Andrew Paprocki(API), Philippa Gardner (PGR), Sam Goto (SGO), Mark Miller (MM), Nathan Hammond (NHD), Masud Rahman (MRN), Henry Zhu (HZU), Sebastian Markbage (SM), Joe Mordetsky (JMY), Franziska Hinkelmann (FH), Caridy Patino (CP), Myles Borins (MBS), Ron Buckton (RBN), Ashley Williams (AWS), Domenic Denicola (DD), Patrick Soquet (PST), Peter Hoddie (PHE), Leo Balter (LBR), Ben Newman (BN), Jafar Husain (JH), Yehuda Katz (YK), Sarah D'Onofrio (SDO), Kirill Cherkoshin (KCN), Andres Suarez (ASZ), Diego Ferreiro Val (DFV), Tzvetan Mikov (TMV), Brendan Eich (BE), Istvan Sebestyen (IS)</p>
-<h2>7. Approval of the minutes from last meeting</h2>
-<p>(unanimous consensus)</p>
-<h2>8. Report from the Ecma Secretariat</h2>
-<p>IS: The minutes have two parts. One part is the &quot;list of metadata&quot; about the meeting. The second part is the technical notes.</p>
+<body class="markdown-body">
+<a href="#may-25-2017-meeting-notes"><h1 id="may-25-2017-meeting-notes">May 25, 2017 Meeting Notes</h1></a><p>Allen Wirfs-Brock (AWB), Waldemar Horwat (WH), Brian Terlson (BT), Michael Ficarra (MF), Adam Klein (AK), Chip Morningstar (CM), Dave Herman (DH),  Kent C. Dodds (KCD), Kevin Gibbons (KG), Tim Disney (TD), Daniel Ehrenberg (DE), Shu-yu Guo (SYG), Jeff Morrison (JM), James Snell (JSL), Keith Miller (KM), Myles Borins (MBS), Rick Waldron (RW), Mariko Kosaka (MKA), Stephen Murphy (SMY), Robert Palmer (RPR), Andrew Paprocki(API), Philippa Gardner (PGR), Sam Goto (SGO), Mark Miller (MM), Nathan Hammond (NHD), Masud Rahman (MRN), Henry Zhu (HZU), Sebastian Markbage (SM), Joe Mordetsky (JMY), Franziska Hinkelmann (FH), Caridy Patino (CP), Myles Borins (MBS), Ron Buckton (RBN), Ashley Williams (AWS), Domenic Denicola (DD), Patrick Soquet (PST), Peter Hoddie (PHE), Leo Balter (LBR), Ben Newman (BN), Jafar Husain (JH), Yehuda Katz (YK), Sarah D'Onofrio (SDO), Kirill Cherkoshin (KCN), Andres Suarez (ASZ), Diego Ferreiro Val (DFV), Tzvetan Mikov (TMV), Brendan Eich (BE), Istvan Sebestyen (IS)</p>
+<a href="#7-approval-of-the-minutes-from-last-meeting"><h2 id="7-approval-of-the-minutes-from-last-meeting">7. Approval of the minutes from last meeting</h2></a><p>(unanimous consensus)</p>
+<a href="#8-report-from-the-ecma-secretariat"><h2 id="8-report-from-the-ecma-secretariat">8. Report from the Ecma Secretariat</h2></a><p>IS: The minutes have two parts. One part is the &quot;list of metadata&quot; about the meeting. The second part is the technical notes.</p>
 <p>IS: First time somebody asked for the complete minutes of those meetings. Intended to inform the people who are not involved in TC39 what is happening in TC39.</p>
 <p>IS: There were questions around the process of the opt out for the latest ECMASCript standards.</p>
 <p>IS: This is interesting as I always thought that for programming languages (and not e.g. about their compilers) it is hard to get patents therefore a &quot;royalty-free opt out&quot; that would be something that is new for this committee.</p>
 <p>IS: As expected, we have received no comments during the opt-out period that we have started on February 14 and ended on April 14, and therefore we have approved the specification from the TC39 point of view. You may remember that at the March meeting the TC39 approval of ECMA-262 and ECMA-402 new editions were conditional based on the positive outcome of the &quot;opt-out&quot; for both standards.</p>
 <p>IS: The standards have published internally on the Ecma internal website,  and as ususal the New standard version will be available for public download immediately after Ecma GA approval, latest on June 28th. Congratulations on the excellent work you have done.</p>
-<h3>Administrative Items</h3>
-<p>IS:  Just to remind. Anybody can add them via the reflector, at any time. We agreed to this a few meetings ago, in order not to steal time from the meetings</p>
-<h3>Public Relations</h3>
-<p>IS: Allens remark about 20 years of ECMAScript approval in Ecma is well-taken.  This is always a good opportunity for PR.  You may wish to organize some conference/press conference given the opportunities presented by the size of the community. (Presented as an idea.)</p>
+<a href="#administrative-items"><h3 id="administrative-items">Administrative Items</h3></a><p>IS:  Just to remind. Anybody can add them via the reflector, at any time. We agreed to this a few meetings ago, in order not to steal time from the meetings</p>
+<a href="#public-relations"><h3 id="public-relations">Public Relations</h3></a><p>IS: Allens remark about 20 years of ECMAScript approval in Ecma is well-taken.  This is always a good opportunity for PR.  You may wish to organize some conference/press conference given the opportunities presented by the size of the community. (Presented as an idea.)</p>
 <p>IS: Would like to bring attention to the work that this committee is doing, and the community built around the language and specification.</p>
-<h3>TC39 Leadership Status.</h3>
-<p>IS: Don't have a chairman for TC39 and are looking for a replacement. AWB has been acting chair.</p>
+<a href="#tc39-leadership-status"><h3 id="tc39-leadership-status">TC39 Leadership Status.</h3></a><p>IS: Don't have a chairman for TC39 and are looking for a replacement. AWB has been acting chair.</p>
 <p>IS: Chairman is often involved in other technical committees.</p>
 <p>IS: Roles are distributed across membership.</p>
 <p>IS: Ordinary members have first priority to take leadership roles, if they wanted to. So far they haven't expressed interest in taking a  leadership role in TC39.</p>
@@ -30,8 +31,7 @@
 <p>IS: Could invite him informally to the July meeting for continuing relationship development.</p>
 <p>IS: Re-emphasizes that this proposal is at the discretion of the committee.</p>
 <p>IS: Size of TC39 is growing, therefore we need to do more planning in advance of the meetings.</p>
-<h3>Organization of the TC</h3>
-<p>IS: When we get &gt; 50 people we will need to deal with hosting and organizing meetings in an different way</p>
+<a href="#organization-of-the-tc"><h3 id="organization-of-the-tc">Organization of the TC</h3></a><p>IS: When we get &gt; 50 people we will need to deal with hosting and organizing meetings in an different way</p>
 <p>IS: No consensus around different models of working with subgroups or a combined plenary session.</p>
 <p>DE: Leo expressed interest in being chairman?</p>
 <p>LBR: Searching for somebody who would not be taking sides as a person who would act as a chair. Believe that it is good to have a conversation with Rex and let TC39 consider that as an option. I volunteered myself for something I don't have a lot of experience with. Rex has a lot of experience which we could use to be able to learn from. I would love be part of a vice chair group (although not official by ECMA)</p>
@@ -74,14 +74,12 @@
 <p>LBR: I'm willing to try.</p>
 <p>AWB: I may not show, it would be valuable to have it, but he'll play it by ear.</p>
 <p>LBR: Will need to define and document the role.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-1"><h4 id="conclusionresolution-1">Conclusion/Resolution</h4></a><ul>
 <li>Leo will be acting chair for next meeting.</li>
 <li>We will invite Rex to the next meeting.</li>
 <li>Ecma will cover the respective expenses for Rex</li>
 </ul>
-<h2>18i. Code of Conduct follow-up.</h2>
-<p><a href="https://github.com/tc39/code-of-conduct-proposal/issues/25">https://github.com/tc39/code-of-conduct-proposal/issues/25</a></p>
+<a href="#18i-code-of-conduct-follow-up"><h2 id="18i-code-of-conduct-follow-up">18i. Code of Conduct follow-up.</h2></a><p><a href="https://github.com/tc39/code-of-conduct-proposal/issues/25">https://github.com/tc39/code-of-conduct-proposal/issues/25</a></p>
 <p>(Istvan)</p>
 <p>IS: Executive committee's reaction to the proposal was immediately positive and received broad support.</p>
 <p>IS: Should this be all of Ecma or just TC39? Decision was to test it on TC39 and then possibly consider expansion to all of Ecma based upon the experience that we have here.</p>
@@ -101,13 +99,11 @@
 <p>AWS: Need to have consensus to progress the conversation further</p>
 <p>MBS: Would it make sense to have an open group internally with internal stakeholders as a representative of this groups.</p>
 <p>BT: We should do it weekly until we have a document ready. Coordinate it via the reflector.</p>
-<h4>Conclusion</h4>
-<ul>
+<a href="#conclusionresolution-2"><h4 id="conclusionresolution-2">Conclusion/Resolution</h4></a><ul>
 <li>Start an issue on the reflector for building a working group internally.</li>
 <li>That group will work with Ecma to ensure that we're all on the same page.</li>
 </ul>
-<h2>11. ECMA404 (JSON) ISO fast-track. Review/approve disposition of comments responses and 404 2nd edition draft.</h2>
-<p>Documents TC39-2017-016, TC39-2017-017 (pdfs of documents available in Reflector repository).</p>
+<a href="#11-ecma404-json-iso-fast-track-reviewapprove-disposition-of-comments-responses-and-404-2nd-edition-draft"><h2 id="11-ecma404-json-iso-fast-track-reviewapprove-disposition-of-comments-responses-and-404-2nd-edition-draft">11. ECMA404 (JSON) ISO fast-track. Review/approve disposition of comments responses and 404 2nd edition draft.</h2></a><p>Documents TC39-2017-016, TC39-2017-017 (pdfs of documents available in Reflector repository).</p>
 <p>AWB: Questions on the fast track of Ecma404 (JSON specification).</p>
 <p>AWB: Seeking consent that we don't want to review everything that comes out of Ecma 404.</p>
 <p>AWB: Japan editor has asked for some changes (mostly editorial) that the committee has to revise before final approval.</p>
@@ -115,8 +111,7 @@
 <p>AWB: Changes are for clarifications and make things more explicit.</p>
 <p>AWB: Has no objections to approving it sight unseen if we have consensus.</p>
 <p>YK: No particular concern if there aren't user-facing changes. Happy to delegate to people who care.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-3"><h4 id="conclusionresolution-3">Conclusion/Resolution</h4></a><ul>
 <li>Editor to make changes/updates as necessary</li>
 </ul>
 <p>17.ii Web compatibility issues / Needs-consensus PRs</p>
@@ -125,8 +120,7 @@
 <li><a href="https://github.com/tc39/ecma262/pulls?q=is%3Aopen+is%3Apr+label%3A%22needs+consensus%22">https://github.com/tc39/ecma262/pulls?q=is%3Aopen+is%3Apr+label%3A%22needs+consensus%22</a></li>
 <li><a href="https://github.com/tc39/ecma262/issues?q=is%3Aopen+is%3Aissue+label%3A%22needs+consensus%22">https://github.com/tc39/ecma262/issues?q=is%3Aopen+is%3Aissue+label%3A%22needs+consensus%22</a></li>
 </ul>
-<h3>884</h3>
-<ul>
+<a href="#884"><h3 id="884">884</h3></a><ul>
 <li><a href="https://github.com/tc39/ecma262/pull/884">https://github.com/tc39/ecma262/pull/884</a></li>
 <li><a href="https://github.com/tc39/ecma262/issues/832">https://github.com/tc39/ecma262/issues/832</a></li>
 </ul>
@@ -144,14 +138,12 @@
 <p>BT: If we don't get consensus for it, or against it, it will sit forever.</p>
 <p>WH: I have not have time to consider the implications of this.</p>
 <p>MM: Implementors should take a look and raise concerns when needed.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-4"><h4 id="conclusionresolution-4">Conclusion/Resolution</h4></a><ul>
 <li>Waldemar to further consider</li>
 <li>Implementors will review</li>
 </ul>
 <p>WH: (a few minutes later) Having looked at the implications of this in more detail, I'm fine with rejecting the issue with no action.</p>
-<h3>864</h3>
-<ul>
+<a href="#864"><h3 id="864">864</h3></a><ul>
 <li><a href="https://github.com/tc39/ecma262/pull/864">https://github.com/tc39/ecma262/pull/864</a></li>
 <li><a href="https://github.com/tc39/ecma262/issues/863">https://github.com/tc39/ecma262/issues/863</a></li>
 </ul>
@@ -159,12 +151,10 @@
 <p>DE: Andre specified several previously missing &quot;\c&quot; cases</p>
 <p>YK: Whats the problem with the characters? Why Annex B?</p>
 <p>DE: All the surrounding parts are Annex B</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-5"><h4 id="conclusionresolution-5">Conclusion/Resolution</h4></a><ul>
 <li>Accept PR</li>
 </ul>
-<h3>858</h3>
-<ul>
+<a href="#858"><h3 id="858">858</h3></a><ul>
 <li><a href="https://github.com/tc39/ecma262/pull/858">https://github.com/tc39/ecma262/pull/858</a></li>
 </ul>
 <p>AWB: No way a define property could be use to exactly define a module export in the namespace object.</p>
@@ -188,12 +178,10 @@
 <p>YK: If you define object.define property with writable true, and you can't write on it...??</p>
 <p>MM: Non-writeable provides guarantee. Writable provides no guarantee.</p>
 <p>LBR: We need to provide tests before merging. Okay to mark as consensus.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-6"><h4 id="conclusionresolution-6">Conclusion/Resolution</h4></a><ul>
 <li>Accept PR</li>
 </ul>
-<h3>857</h3>
-<ul>
+<a href="#857"><h3 id="857">857</h3></a><ul>
 <li><a href="https://github.com/tc39/ecma262/pull/857">https://github.com/tc39/ecma262/pull/857</a></li>
 </ul>
 <p>BT/WH/DE:</p>
@@ -209,22 +197,18 @@
 <p>YK: What do admins do if you put a number outside of the range? (after the patch)</p>
 <p>RW: RangeError</p>
 <p>BT: Can also change it to <em>not</em> throw for negative to</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-7"><h4 id="conclusionresolution-7">Conclusion/Resolution</h4></a><ul>
 <li>Accept PR</li>
 </ul>
-<h3>850</h3>
-<ul>
+<a href="#850"><h3 id="850">850</h3></a><ul>
 <li><a href="https://github.com/tc39/ecma262/pull/850">https://github.com/tc39/ecma262/pull/850</a></li>
 </ul>
 <p>KMR: The error is also thrown by typed arrays.</p>
 <p>MM: We should be consistent across all of the occasions to not throw, or this is fine.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-8"><h4 id="conclusionresolution-8">Conclusion/Resolution</h4></a><ul>
 <li>Accept PR</li>
 </ul>
-<h2>15.i.a RegExp Legacy Features for Stage 3</h2>
-<p>(Mark S. Miller, by Claude Pache)</p>
+<a href="#15ia-regexp-legacy-features-for-stage-3"><h2 id="15ia-regexp-legacy-features-for-stage-3">15.i.a RegExp Legacy Features for Stage 3</h2></a><p>(Mark S. Miller, by Claude Pache)</p>
 <ul>
 <li><a href="https://github.com/tc39/proposal-regexp-legacy-features">https://github.com/tc39/proposal-regexp-legacy-features</a></li>
 </ul>
@@ -237,12 +221,10 @@
 <p>MM: No, they're only on the RegExp constructor.</p>
 <p>MM: Explains how prohibition across realms works</p>
 <p>WH: Another issue: for polyfilling, want to run regexp without polluting static properties. Possible future flag added to regexp to suppress legacy feature. In jest, I suggested &quot;s&quot; flag.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-9"><h4 id="conclusionresolution-9">Conclusion/Resolution</h4></a><ul>
 <li>Stage 3</li>
 </ul>
-<h2>15.ii.f import.meta for stage 2</h2>
-<p>(Domenic Denicola)</p>
+<a href="#15iif-importmeta-for-stage-2"><h2 id="15iif-importmeta-for-stage-2">15.ii.f import.meta for stage 2</h2></a><p>(Domenic Denicola)</p>
 <ul>
 <li><a href="https://domenic.github.io/proposal-import-meta/">https://domenic.github.io/proposal-import-meta/</a> , following up from Tuesday's discussion which suggested this direction.</li>
 </ul>
@@ -269,16 +251,14 @@
 <p>MM: this object is the &quot;system object&quot;. When discussions arise about what goes on the system object, this will be the place to put them.</p>
 <p>DD: No, because this object is for hosts only.</p>
 <p>MM: I just don't want Domenic to be blind sided</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-10"><h4 id="conclusionresolution-10">Conclusion/Resolution</h4></a><ul>
 <li>Stage 2</li>
 <li>Reviewers</li>
 <li>Adam Klein</li>
 <li>Dave Herman</li>
 <li>Yehuda Katz</li>
 </ul>
-<h2>15.iii.b Updates on class-field proposals (both public and private).</h2>
-<p>(Jeff Morrison)</p>
+<a href="#15iiib-updates-on-class-field-proposals-both-public-and-private"><h2 id="15iiib-updates-on-class-field-proposals-both-public-and-private">15.iii.b Updates on class-field proposals (both public and private).</h2></a><p>(Jeff Morrison)</p>
 <ul>
 <li><a href="https://littledan.github.io/proposal-class-fields/">https://littledan.github.io/proposal-class-fields/</a></li>
 <li>slides: <a href="https://drive.google.com/file/d/0B-TAClBGyqSxWHpyYmg2UnRHc28/view">https://drive.google.com/file/d/0B-TAClBGyqSxWHpyYmg2UnRHc28/view</a></li>
@@ -310,8 +290,8 @@
 <p>JM: modifiers in languages that allow varying order are problematic, can be addressed with grammar</p>
 <p>WH: In C++ you can write <code>static const</code> but not <code>const static</code>.</p>
 <p>JM: concern that <code>own</code> keyword, interaction with decorator:</p>
-<pre><code class="language-js">class C {
-   @deprecated own foo = 42;   
+<pre><code class="language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">C</span> </span>{
+   @deprecated own foo = <span class="hljs-number">42</span>;   
 }
 </code></pre>
 <ul>
@@ -408,8 +388,7 @@ foo() {...}```
 <p>JM: We have consensus en no <code>own</code>. The second things is, do we need the ability to make <code>this</code> keyword optional?</p>
 <p>JM: What do we need for this proposal to be in stage 3?</p>
 <p>(process discussion, lol)</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-11"><h4 id="conclusionresolution-11">Conclusion/Resolution</h4></a><ul>
 <li>No <code>own</code></li>
 <li>Moving forward on DE's <a href="https://littledan.github.io/proposal-class-fields/">https://littledan.github.io/proposal-class-fields/</a></li>
 <li>Reviewers:
@@ -422,8 +401,7 @@ foo() {...}```
 <li>Yehuda Katz</li>
 </ul></li>
 </ul>
-<h2>15.iv.a. Revisiting async generator yield behavior</h2>
-<p>(Domenic Denicola)</p>
+<a href="#15iva-revisiting-async-generator-yield-behavior"><h2 id="15iva-revisiting-async-generator-yield-behavior">15.iv.a. Revisiting async generator yield behavior</h2></a><p>(Domenic Denicola)</p>
 <ul>
 <li>issue: <a href="https://github.com/tc39/proposal-async-iteration/issues/93">https://github.com/tc39/proposal-async-iteration/issues/93</a></li>
 <li>slides: <a href="https://docs.google.com/presentation/d/1U6PivKbFO0YgoFlrYB82MtXf1ofCp1xSVOODOvranBM/edit#slide=id.g223fba4116_0_235">https://docs.google.com/presentation/d/1U6PivKbFO0YgoFlrYB82MtXf1ofCp1xSVOODOvranBM/edit#slide=id.g223fba4116_0_235</a></li>
@@ -454,12 +432,10 @@ WD: Would it be any different in yield and yield await?</p>
 <p>MM: My favorite option is option3, despite previously liking one of the other options</p>
 <p>WH: I also favor option 3.</p>
 <p>(room in general): I favor option 3</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-12"><h4 id="conclusionresolution-12">Conclusion/Resolution</h4></a><ul>
 <li>Go with option 3: yield has the semantics of yield await in an async generator</li>
 </ul>
-<h2>15.iv.b Updates on Cancellation Proposals</h2>
-<p>(Brian Terlson, Ron Buckton)</p>
+<a href="#15ivb-updates-on-cancellation-proposals"><h2 id="15ivb-updates-on-cancellation-proposals">15.iv.b Updates on Cancellation Proposals</h2></a><p>(Brian Terlson, Ron Buckton)</p>
 <ul>
 <li><a href="https://github.com/tc39/proposal-cancellation">https://github.com/tc39/proposal-cancellation</a></li>
 <li><a href="https://tc39.github.io/proposal-cancellation/CancellationPrimitives-tc39.pptx">https://tc39.github.io/proposal-cancellation/CancellationPrimitives-tc39.pptx</a> (triggers download)</li>
@@ -504,17 +480,14 @@ WD: Would it be any different in yield and yield await?</p>
 <p>No time left, so not pushing Stage 1</p>
 <p>YK: not sure if we should accept wholesale?</p>
 <p>RBN: borrows heavily from the established .net APIs</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-13"><h4 id="conclusionresolution-13">Conclusion/Resolution</h4></a><ul>
 <li>Look into cancel only when everything is canceled</li>
 </ul>
-<h2>15.i.h. BigInt for Stage 3</h2>
-<p>(Daniel Ehrenberg)</p>
+<a href="#15ih-bigint-for-stage-3"><h2 id="15ih-bigint-for-stage-3">15.i.h. BigInt for Stage 3</h2></a><p>(Daniel Ehrenberg)</p>
 <p>DE: Made the changes, ready?</p>
 <p>WH: I reviewed it this morning, at which point I found that it did not have the changes reflecting our decisions.</p>
 <p>DE: I made the changes during today's lunch.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-14"><h4 id="conclusionresolution-14">Conclusion/Resolution</h4></a><ul>
 <li>Still needs another round of review</li>
 <li>Reviewers:
 <ul>
@@ -522,8 +495,7 @@ WD: Would it be any different in yield and yield await?</p>
 <li>Leo Balter</li>
 </ul></li>
 </ul>
-<h2>17.iii.a Observable proposal to Stage 2</h2>
-<p>(Jafar Husain)</p>
+<a href="#17iiia-observable-proposal-to-stage-2"><h2 id="17iiia-observable-proposal-to-stage-2">17.iii.a Observable proposal to Stage 2</h2></a><p>(Jafar Husain)</p>
 <ul>
 <li><a href="https://github.com/tc39/proposal-observable">https://github.com/tc39/proposal-observable</a></li>
 <li>request slides</li>
@@ -562,7 +534,8 @@ WD: Would it be any different in yield and yield await?</p>
 <li>Want to see more of how this works with actual host interactions to analyze</li>
 <li>Let's see if we can get hosts excited about the feature</li>
 </ul>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-15"><h4 id="conclusionresolution-15">Conclusion/Resolution</h4></a><ul>
 <li>No Stage 2</li>
 </ul>
+
+</body>

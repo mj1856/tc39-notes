@@ -1,10 +1,15 @@
 <!doctype html>
 <meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.6.0/github-markdown.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+
 <title>March 22, 2017 Meeting Notes</title>
-<h1>March 22, 2017 Meeting Notes</h1>
-<p>Allen Wirfs-Brock (AWB), Waldemar Horwat (WH), Brian Terlson (BT), Michael Ficarra (MF), Adam Klein (AK), Dave Herman (DH),  Kent C. Dodds (KCD), Tim Disney (TD), Daniel Ehrenberg (DE), Shu-yu Guo (SYG), Michael Saboff (MS), Sebastian Markbage (SM), Bradley Farias (BF), Maggie Pint (MPT), Jamund Ferguson (JXF), Myles Borins (MBS), Logan Smyth (LS), Sarah D'Onofrio (SD), Alan Schmitt (AS), Dean Tribble (DT), Peter Jensen (PJ), Mark S. Miller (MM), Leo Balter (LBR), Zibi Braniecki (ZB), Rafael Xavier (RX), Yehuda Katz (YK), Caridy Patino (CP), Diego Ferreiro Val (DFV), Brendan Eich (BE), Lyza Gardner (LG), Istvan Sebestyen (IS)</p>
-<h2>Report from the Ecma Secretariat</h2>
-<p>(Istvan Sebestyen)</p>
+<body class="markdown-body">
+<a href="#march-22-2017-meeting-notes"><h1 id="march-22-2017-meeting-notes">March 22, 2017 Meeting Notes</h1></a><p>Allen Wirfs-Brock (AWB), Waldemar Horwat (WH), Brian Terlson (BT), Michael Ficarra (MF), Adam Klein (AK), Dave Herman (DH),  Kent C. Dodds (KCD), Tim Disney (TD), Daniel Ehrenberg (DE), Shu-yu Guo (SYG), Michael Saboff (MS), Sebastian Markbage (SM), Bradley Farias (BF), Maggie Pint (MPT), Jamund Ferguson (JXF), Myles Borins (MBS), Logan Smyth (LS), Sarah D'Onofrio (SD), Alan Schmitt (AS), Dean Tribble (DT), Peter Jensen (PJ), Mark S. Miller (MM), Leo Balter (LBR), Zibi Braniecki (ZB), Rafael Xavier (RX), Yehuda Katz (YK), Caridy Patino (CP), Diego Ferreiro Val (DFV), Brendan Eich (BE), Lyza Gardner (LG), Istvan Sebestyen (IS)</p>
+<a href="#report-from-the-ecma-secretariat"><h2 id="report-from-the-ecma-secretariat">Report from the Ecma Secretariat</h2></a><p>(Istvan Sebestyen)</p>
 <p>IS: ECMA-404 received a negative ISO vote. Have to do another go-around and address the comment. Should do it within a month. Ball in our court.</p>
 <p>WH: What was the negative vote?</p>
 <p>AWB: It was a long list of objections from Japan, both editorial and larger items. Need to coordinate with Chip.</p>
@@ -14,8 +19,7 @@
 <p>AWB: I'm only available until May as temporary chair. Need to work out a permanent chair by then.</p>
 <p>IS: Chairman needs to be neutral when wearing chairman hat, but can represent his company's interests when not wearing that hat. This situation comes up often in other standards committees.</p>
 <p>AWB: Our next agenda item is a non-technical item about Code of Conduct and it might be good for Istvan to be here.</p>
-<h2>Review of Code of Conduct</h2>
-<p>(Leo Balter)</p>
+<a href="#review-of-code-of-conduct"><h2 id="review-of-code-of-conduct">Review of Code of Conduct</h2></a><p>(Leo Balter)</p>
 <p>LBR: Last meeting got a lot of feedback; I'm trying to address all the feedback on the current CoC proposal.</p>
 <p>LBR: The open issue is whether...</p>
 <p>...lots of discussion..</p>
@@ -84,14 +88,11 @@
 <p>BT: So it seems like we do have consensus on this document as-is?</p>
 <p>JXF: No removing that paragraph [4]?</p>
 <p>BT: As-is, yes. OK, I move for lunch recess. Reconvene 2PM.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-38"><h4 id="conclusionresolution-38">Conclusion/Resolution</h4></a><ul>
 <li>TC39 will present the current Code of Conduct proposal to Ecma's executive committee.</li>
 </ul>
-<h2>General</h2>
-<p>AWB: When I said that someone should step up to being the chair, that was really addressed to the member companies.  Many member companies have people that are ideally suited to running and mediating the meetings. Please check whether your company might be willing to send such a person to these meetings.</p>
-<h2>10.iii.a Orthogonal Classes</h2>
-<ul>
+<a href="#general"><h2 id="general">General</h2></a><p>AWB: When I said that someone should step up to being the chair, that was really addressed to the member companies.  Many member companies have people that are ideally suited to running and mediating the meetings. Please check whether your company might be willing to send such a person to these meetings.</p>
+<a href="#10iiia-orthogonal-classes"><h2 id="10iiia-orthogonal-classes">10.iii.a Orthogonal Classes</h2></a><ul>
 <li><a href="https://github.com/erights/Orthogonal-Classes">https://github.com/erights/Orthogonal-Classes</a></li>
 </ul>
 <p>MM: There's a strong push that when assignment happens it should look like assignment. We had an Aha thought that cuts through this and other proposals: There's a whole bunch of different proposals to enhance classes. Original classes we did the minimum we could agree to, postponed other things. Proposals coming through are lots of those proposed issues. We're wrestling with them individually. Each one has its own proposed syntax, semantics. We try to pay attention to how they cross-cut. But most of these proposals have something to do with adding class members or new thing to classes.</p>
@@ -306,26 +307,21 @@
 <p>MM: I accept that we did not achieve consensus on stage 1.</p>
 <p>YK: I do have a strong desire to see if we can make this fit with what you had in mind.</p>
 <p>MM: We agreed that some discussions need to happen whether or not we achieved consensus on this.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-39"><h4 id="conclusionresolution-39">Conclusion/Resolution</h4></a><ul>
 <li>Did not achieve consensus for stage 1.</li>
 <li>Mark is going to reach out to the champions of the affected proposals for follow-up.</li>
 </ul>
-<h2>8.iv. Approve TR-104 draft and forward it to Ecma GA</h2>
-<p>AK: Can you give a two-sentence summary of this?</p>
+<a href="#8iv-approve-tr-104-draft-and-forward-it-to-ecma-ga"><h2 id="8iv-approve-tr-104-draft-and-forward-it-to-ecma-ga">8.iv. Approve TR-104 draft and forward it to Ecma GA</h2></a><p>AK: Can you give a two-sentence summary of this?</p>
 <p>AWB: TR-104 directs people to say &quot;yes, test262 consists of all of these things on GitHub. Go look at GitHub.&quot;</p>
 <p>LBR: Basically a description of test262 with formalities and ready to bring to Ecma.</p>
 <p>AWB: Blesses test262 as official Ecma work product. Non-normative.</p>
 <p>LBR: There are a few facts. As of September 2016, test262 consisted of over 23k test files...</p>
 <p>AK: I skimmed it. I will give it affirmative: yes. I find it hard to imagine someone objecting.</p>
 <p>AWB: I do, too, but I want to be fair. This is one of those things that Ecma as an organization: they think it's good for them.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-40"><h4 id="conclusionresolution-40">Conclusion/Resolution</h4></a><ul>
 <li>Consensus reached to approve and forward to Ecma GA</li>
 </ul>
-<h2>12. i. Needs-Consensus PRs</h2>
-<h3><a href="https://github.com/tc39/ecma262/pull/856">#856 Avoid Duplicate TA#fill value coercions</a></h3>
-<p>BT: Issues with <code>.fill()</code> on typed arrays. Specifically the issue involves how to do coercion on the values passed into the <code>.fill()</code> argument. The fix involves calling <code>toNumber()</code> up front.</p>
+<a href="#12-i-needs-consensus-prs"><h2 id="12-i-needs-consensus-prs">12. i. Needs-Consensus PRs</h2></a><a href="##856-avoid-duplicate-ta#fill-value-coercions"><h3 id="#856-avoid-duplicate-ta#fill-value-coercions"><a href="https://github.com/tc39/ecma262/pull/856">#856 Avoid Duplicate TA#fill value coercions</a></h3></a><p>BT: Issues with <code>.fill()</code> on typed arrays. Specifically the issue involves how to do coercion on the values passed into the <code>.fill()</code> argument. The fix involves calling <code>toNumber()</code> up front.</p>
 <p>AWB: Any other Array prototype methods not reimplemented have similar problems?</p>
 <p>BT: I looked briefly, did not see, but didn't dig deeply.</p>
 <p>DE: I looked. I did not find any other functions that would benefit from similar treatment.</p>
@@ -337,12 +333,10 @@
 <p>BT: It's only slightly different (than arrays) but it is different.</p>
 <p>AWB: No, but I do think you should duplicate the whole algorithm.</p>
 <p>BT: It is duplicated.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-41"><h4 id="conclusionresolution-41">Conclusion/Resolution</h4></a><ul>
 <li>consensus to accept this PR</li>
 </ul>
-<h3><a href="https://github.com/tc39/ecma262/pull/854">#854 Remove Implementation-defined behavior for Number methods</a></h3>
-<p><code>Number.toFixed()</code>/<code>toPrecision</code>/<code>toExponential</code></p>
+<a href="##854-remove-implementation-defined-behavior-for-number-methods"><h3 id="#854-remove-implementation-defined-behavior-for-number-methods"><a href="https://github.com/tc39/ecma262/pull/854">#854 Remove Implementation-defined behavior for Number methods</a></h3></a><p><code>Number.toFixed()</code>/<code>toPrecision</code>/<code>toExponential</code></p>
 <p>AWB: When I looked at it, it looked like it was a superfluous paragraph with those three methods.  When I looked at the spec these all just looked superfluous.</p>
 <p>BT: But this...I agree with that notion, this PR amounts to deleting those extra paragraphs that you mentioned.</p>
 <p>AWB: It felt more like old boilerplate code, like maybe it was just some common practice to add this language.</p>
@@ -359,12 +353,10 @@
 <p>DE: Maybe -20 to 100 [precision]</p>
 <p>YK: I had an issue tht was similar to this last week. I had a language binding and I had to decide about what a float in langauge A would be in language B.</p>
 <p>AWB: I think we should take this input as input to a future proposal or PR.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-42"><h4 id="conclusionresolution-42">Conclusion/Resolution</h4></a><ul>
 <li>consensus to accept this PR</li>
 </ul>
-<h3><a href="https://github.com/tc39/ecma262/pull/785">#785 Array.prototoype.sort checks for compareFn being valid</a></h3>
-<p>Presently spec implies but does not say that the compareFn must be <code>undefined</code> or callable. PR enforces that expectation.</p>
+<a href="##785-arrayprototoypesort-checks-for-comparefn-being-valid"><h3 id="#785-arrayprototoypesort-checks-for-comparefn-being-valid"><a href="https://github.com/tc39/ecma262/pull/785">#785 Array.prototoype.sort checks for compareFn being valid</a></h3></a><p>Presently spec implies but does not say that the compareFn must be <code>undefined</code> or callable. PR enforces that expectation.</p>
 <p>BT: <code>sort</code> takes a compareFn. Spec does not currently say that compareFn must be callable or undefined. Implementations disagree on handling non-callable/non-undefined. Update to throw a TypeError.</p>
 <p>AWB: Still need the language about proper behavior of a sort compareFn.</p>
 <p>BT: ...We should really be throwing TypeError early for things that are not callable. Table [in PR] shows various testcases and existing behavior.</p>
@@ -379,12 +371,10 @@
 <p>MS: The first row there [in table]: shouldn't that also throw an error...OK, so it's callable but you're not going to call it because only one element.</p>
 <p>BT: That change was fairly recent too, not calling the compareFn if only one element.</p>
 <p>BT: Any objections to taking this pull request?</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-43"><h4 id="conclusionresolution-43">Conclusion/Resolution</h4></a><ul>
 <li>consensus to accept this PR</li>
 </ul>
-<h3><a href="https://github.com/tc39/ecma262/pull/833">#833 Remove duplicate keys from proxies</a></h3>
-<p>BT:  All of the possibilities of how....</p>
+<a href="##833-remove-duplicate-keys-from-proxies"><h3 id="#833-remove-duplicate-keys-from-proxies"><a href="https://github.com/tc39/ecma262/pull/833">#833 Remove duplicate keys from proxies</a></h3></a><p>BT:  All of the possibilities of how....</p>
 <p>MM: Why did we change what we did originally to end up in this current place? Do you know whether...</p>
 <p>AWB: I'm pretty sure from the issue thread that (tom?) is aware of it. I'm largely responsible for not doing this check before (something) because I was opposed to (computationally large checks).</p>
 <p>BT: Yeah, and to be honest it isn't that bad and it's super confusing and anyone implementing it is asking why, why why. In the spec it's not too bad, but in engines it's a lot more (obviously unecessary)</p>
@@ -403,24 +393,20 @@
 <p>BT: But there's only one way to compare a string right?</p>
 <p>AWB: ... symbols?</p>
 <p>AK: As the editor, keep an eye on that. I fear that someone will use &quot;duplicate&quot; somewhere and not know what it means.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-44"><h4 id="conclusionresolution-44">Conclusion/Resolution</h4></a><ul>
 <li>consensus to accept this PR</li>
 </ul>
-<h3><a href="https://github.com/tc39/ecma262/pull/852">#852 Move side-effecty toIndex in TA constructor to before detached check</a></h3>
-<p>BT: Current spec won't throw when <code>toIndex</code> causes buffer to be detached.</p>
+<a href="##852-move-side-effecty-toindex-in-ta-constructor-to-before-detached-check"><h3 id="#852-move-side-effecty-toindex-in-ta-constructor-to-before-detached-check"><a href="https://github.com/tc39/ecma262/pull/852">#852 Move side-effecty toIndex in TA constructor to before detached check</a></h3></a><p>BT: Current spec won't throw when <code>toIndex</code> causes buffer to be detached.</p>
 <ol>
 <li>Add another isDetached array buffer check.</li>
 <li>I think moving the toIndex further up is the correct way here.</li>
 </ol>
 <p>AWB: Does moving it up change the order in which arguments are examined?</p>
 <p>BT: It does not change the observable order of side effects. It should be fine to do and not cause compat problems.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-45"><h4 id="conclusionresolution-45">Conclusion/Resolution</h4></a><ul>
 <li>consensus to accept this PR</li>
 </ul>
-<h3><a href="https://github.com/tc39/ecma262/pull/853">#853 String.prototype.replace edge case alignment</a></h3>
-<p>BT: Currently spec says substitution strings ($1, $2) with indexes beyond the matches groups (i.e. $5, $6, $7) is implementation-defined.</p>
+<a href="##853-stringprototypereplace-edge-case-alignment"><h3 id="#853-stringprototypereplace-edge-case-alignment"><a href="https://github.com/tc39/ecma262/pull/853">#853 String.prototype.replace edge case alignment</a></h3></a><p>BT: Currently spec says substitution strings ($1, $2) with indexes beyond the matches groups (i.e. $5, $6, $7) is implementation-defined.</p>
 <p>BT: All implementations agree that the replacement is not done for such substitution strings. PR aligns with implementations.</p>
 <p>AWB: In my work on this in ES5 and ES6, for things like this I tried to propagate what had been specified in...?</p>
 <p>WH: When we wrote this in Edition 3, the plan was to only allow these things when there was actually a capture of that number. Unfortunately on some implementations, if there were only 3 captures and you did <code>$4</code>, you'd get a literal <code>$4</code> in the result instead of a replacement. We wanted to deprecate that.</p>
@@ -432,7 +418,8 @@
 <p>BT: I will add notes with history that Waldemar provided.</p>
 <p>MPT: Did you want to do the needs consensus on ??</p>
 <p>BT: I'm open to continuing.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-46"><h4 id="conclusionresolution-46">Conclusion/Resolution</h4></a><ul>
 <li>consensus to accept this PR</li>
 </ul>
+
+</body>

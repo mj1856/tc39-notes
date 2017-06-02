@@ -1,16 +1,20 @@
 <!doctype html>
 <meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.6.0/github-markdown.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+
 <title>March 31st 2016 Meeting Notes</title>
+<body class="markdown-body">
 <p>March 31st 2016 Meeting Notes</p>
-<h2>Attendees</h2>
-<p>Dave Herman (DH), Michael Ficarra (MF), Jordan Harband (JHD), Adam Klein (AK), Mark Miller (MM), Brian Terlson (BT), Domenic Denicola (DD), Brad Nelson (BNN), JF Bastien (JFB), Joe Lencioni, Sebastian Markbage, Jeff Morrison (JM), Kevin Smith (KS), Lars Hansen (LHN), Saam Barati, Keith Miller, Michael Saboff, Eric Ferraiuolo (EF),Eric Faust (FST), Chip Morningstar (CM), Dean Tribble (DT), Shu-yu Guo (SG), Tim Disney (TD), Waldemar Horwat (WH), Bert Belder, Peter Jensen, Daniel Ehrenberg (DE), Caridy Patiño, Diego Ferreiro Val, Jean Fraucois Paradis, Shelby Hubick, Leo Balter (LB), Misko Hevery, Allen Wirfs-Brock (AWB), Kevin Gibbons (KG), Steven Lumis (SL), Zibi Braniecki (ZB)</p>
-<h2>Final Draft Standards Approval</h2>
-<p>ECMA-262: Approved with 2 abstains</p>
+<a href="#attendees"><h2 id="attendees">Attendees</h2></a><p>Dave Herman (DH), Michael Ficarra (MF), Jordan Harband (JHD), Adam Klein (AK), Mark Miller (MM), Brian Terlson (BT), Domenic Denicola (DD), Brad Nelson (BNN), JF Bastien (JFB), Joe Lencioni, Sebastian Markbage, Jeff Morrison (JM), Kevin Smith (KS), Lars Hansen (LHN), Saam Barati, Keith Miller, Michael Saboff, Eric Ferraiuolo (EF),Eric Faust (FST), Chip Morningstar (CM), Dean Tribble (DT), Shu-yu Guo (SG), Tim Disney (TD), Waldemar Horwat (WH), Bert Belder, Peter Jensen, Daniel Ehrenberg (DE), Caridy Patiño, Diego Ferreiro Val, Jean Fraucois Paradis, Shelby Hubick, Leo Balter (LB), Misko Hevery, Allen Wirfs-Brock (AWB), Kevin Gibbons (KG), Steven Lumis (SL), Zibi Braniecki (ZB)</p>
+<a href="#final-draft-standards-approval"><h2 id="final-draft-standards-approval">Final Draft Standards Approval</h2></a><p>ECMA-262: Approved with 2 abstains</p>
 <p>ECMA-402: Approved with 1 abstain</p>
 <p>ECMAScript Specification Suite (pointer spec for ISO): Approved</p>
 <p>Note that everyone has until May 1st to review the document for patent issues.</p>
-<h2>Tail Calls</h2>
-<p>AWB: objected that the current standard language is sufficient</p>
+<a href="#tail-calls"><h2 id="tail-calls">Tail Calls</h2></a><p>AWB: objected that the current standard language is sufficient</p>
 <p>SG: <em>objected to AWB's objection and clarified the issue</em></p>
 <p>BT: The sec says the implementation must release any transient resource associated with the current context</p>
 <p>AWB: if the current function is a cross realm call. so it's return has extra state to handle the return. ... people don't follow so he goes to draw a picture...</p>
@@ -139,10 +143,8 @@
 <p>[various discussion]</p>
 <p>DH: We have an implementer who has implemented [proper tail calls] as an optimization, and would like to continue shipping that optimization. We should make sure that any Error.stack proposal does not interfere with their ability to do so.</p>
 <p>DH: BT wants to put forward a new proposal, and I want to make sure that he's going to be heard. From what I've understood today, it seems totally reasonable.</p>
-<h4>Conclusion/resolution</h4>
-<p>Brian Terlson (with EF as co-champion) to champion a stage 0 proposal to amend existing tail call spec language to require extra syntax to implement a tail call</p>
-<h2>Reference type and implementation reality (double-evaluation of computed property expression)</h2>
-<p>MF: IE6-8 and some versions of Opera has the correct (specified) semantics.</p>
+<a href="#conclusionresolution-190"><h4 id="conclusionresolution-190">Conclusion/resolution</h4></a><p>Brian Terlson (with EF as co-champion) to champion a stage 0 proposal to amend existing tail call spec language to require extra syntax to implement a tail call</p>
+<a href="#reference-type-and-implementation-reality-double-evaluation-of-computed-property-expression"><h2 id="reference-type-and-implementation-reality-double-evaluation-of-computed-property-expression">Reference type and implementation reality (double-evaluation of computed property expression)</h2></a><p>MF: IE6-8 and some versions of Opera has the correct (specified) semantics.</p>
 <p>BT: Less worried about the web compatibility aspects. Fixing issue is costly for us.</p>
 <p>AWB: We had a spec. We had divergent implementations. We looked it. We asked if the spec should change. We said no. We said that the spec was correct. An implementor becoming divergent doesn't invalidate that.</p>
 <p>FST: Firefox implemented the specified semantics as of two days ago.</p>
@@ -151,24 +153,20 @@
 <p>BT: Spec should implement reality.</p>
 <p>AWB: Not if ...</p>
 <p>BT: This doesn't matter all that much.</p>
-<h4>Conclusion/resolution</h4>
-<p>Let the current spec stand.</p>
-<h2>Intl</h2>
-<p>ZB: presenting gi</p>
+<a href="#conclusionresolution-191"><h4 id="conclusionresolution-191">Conclusion/resolution</h4></a><p>Let the current spec stand.</p>
+<a href="#intl"><h2 id="intl">Intl</h2></a><p>ZB: presenting gi</p>
 <p>Wants to advance to stage 3</p>
 <p>Fundamentally, it's that all future formatters will have *.formatToParts</p>
 <p>AWB: objectected to the long name</p>
 <p>ZB: the longer name is mostly used by libraries. Most people will just use format and so it's a good compromise</p>
 <p>DH: Naming is bikeshedding.</p>
 <p>WH, AWB: But we're setting precedent here.</p>
-<h4>Conclusion/resolution</h4>
-<p>formatToParts advances to stage 3</p>
+<a href="#conclusionresolution-192"><h4 id="conclusionresolution-192">Conclusion/resolution</h4></a><p>formatToParts advances to stage 3</p>
 <p>Additional Intl List/Unit/RelativeTime/Duration entries advance to stage 1</p>
 <p>BT: Reserve the right to come back later and object more strongly. Not sure if ICU has the APIs that we can use to support this.</p>
 <p>The ECMA 402 group encourages Microsoft to use ICU</p>
 <p>AWB: TC39 is not supposed to be telling parties how to implement the standards, only what to implement.</p>
-<h2>Public class fields</h2>
-<p>JM: talking (no presentation)</p>
+<a href="#public-class-fields"><h2 id="public-class-fields">Public class fields</h2></a><p>JM: talking (no presentation)</p>
 <p>JM: An update on two major concerns. From Mark, public class fields in the constructor, Mark and Jeff talked with Kevin, and everyone is OK with it being in the class body.</p>
 <p>MM: Even though there's no scoping mechanism, there is a scoping intuition. The use of the property name is in the body of the class, and therefore the property is intuitively scoped to the class body, and should be declared in the class body rather than the constructor.</p>
 <p>AWB: are there initlaizaation expressions on the public class fields?  what is the scoping and evaluation time</p>
@@ -204,13 +202,13 @@
 <p>DH: the intuition of top to bottom does not survive contact with reality.</p>
 <p>BT: TypeScript also does not impose top to bottom ordering.  And noone has been confused about it.  Including with decorators.</p>
 <p>DH: puts up another code sample to show that class elements are not really ordered.</p>
-<pre><code class="language-js">class C {
+<pre><code class="language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">C</span> </span>{
 
-  state a = console.log(&quot;A&quot;);
+  state a = <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"A"</span>);
 
-  b = console.log(&quot;b&quot;);
+  b = <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"b"</span>);
 
-  static c = console.log(&quot;C&quot;);
+  <span class="hljs-keyword">static</span> c = <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"C"</span>);
 }
 </code></pre>
 <p>MM: my proposal is that we don't allow initializers and then this issue evaporates.</p>
@@ -225,15 +223,13 @@
 <p>DH: some options: abandoned phased execution, [... I missed the rest]</p>
 <p>MM: scoping of this, super, and arguments, and ...</p>
 <p>MM: for all these, file issues on teh proposal</p>
-<h4>Conclusion/resolution</h4>
-<ul>
+<a href="#conclusionresolution-193"><h4 id="conclusionresolution-193">Conclusion/resolution</h4></a><ul>
 <li>JM will bring a proposal in May</li>
 <li>DE will try to organize a call in advance</li>
 <li>please file issues on the proposal repo for all specific concerns</li>
 <li>some concerns seem to be: 1) execution order, 2) this/super/arguments scoping in both instance and statics, 3) initializers allowed in class body?</li>
 </ul>
-<h2>Weak References</h2>
-<p>Dean Tribble presenting slides (<a href="https://github.com/tc39/proposal-weakrefs/blob/master/specs/Weak%20References%20for%20EcmaScript.pdf">https://github.com/tc39/proposal-weakrefs/blob/master/specs/Weak%20References%20for%20EcmaScript.pdf</a>)</p>
+<a href="#weak-references"><h2 id="weak-references">Weak References</h2></a><p>Dean Tribble presenting slides (<a href="https://github.com/tc39/proposal-weakrefs/blob/master/specs/Weak%20References%20for%20EcmaScript.pdf">https://github.com/tc39/proposal-weakrefs/blob/master/specs/Weak%20References%20for%20EcmaScript.pdf</a>)</p>
 <p>AK: What motivates the cross-realm restriction?</p>
 <p>MM: Weak references open up a side channel: if I'm pointing at an immutable object, I can observe it going away. By separating the ability to create weak realms, that allows policing within a realm. But you can't police other realms.</p>
 <p>AWB: So why wouldn't you use membranes to handle that?</p>
@@ -267,22 +263,22 @@
 <p>DT: No, the weakRef must not be cleared unless the target object is condemned.</p>
 <p>WH: So how do you define reachability?</p>
 <p>WH: Ah, then this will not fly:</p>
-<pre><code class="language-js">async function f() {
+<pre><code class="language-js"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params"></span>) </span>{
 
-  let x = ...;
+  <span class="hljs-keyword">let</span> x = ...;
 
-  let w = MakeWeakRef(...x...);
+  <span class="hljs-keyword">let</span> w = MakeWeakRef(...x...);
 
-  await a;
+  <span class="hljs-keyword">await</span> a;
 
-  await b;
+  <span class="hljs-keyword">await</span> b;
 
   foo(w);
 }
 
-function foo(w) {
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params">w</span>) </span>{
 
-  assert(w.get());  // this assert can fail in an optimizing compiler
+  assert(w.get());  <span class="hljs-comment">// this assert can fail in an optimizing compiler</span>
 }
 </code></pre>
 <p>MM: Yes, that's correct.</p>
@@ -339,13 +335,11 @@ function foo(w) {
 <p>SG: I would volunteer to help one of the champions prototype this in our engine</p>
 <p>AWB: This needs debate, and it needs implementation experience.</p>
 <p>EF: The core of the problem is that the worries about the proposal are exactly those things that the proposal explicitly does not address.</p>
-<h4>Conclusion/resolution</h4>
-<p>Stage 1</p>
+<a href="#conclusionresolution-194"><h4 id="conclusionresolution-194">Conclusion/resolution</h4></a><p>Stage 1</p>
 <p>Open issue: deal with cross-realm stuff in more detail</p>
 <p>Open issue: .get() -&gt; strong as a side channel</p>
 <p>Open issue:  address this turn-based behavior in a non-turn-based execution environment.</p>
-<h2>Template Literals Are Broken</h2>
-<p>(TD)</p>
+<a href="#template-literals-are-broken"><h2 id="template-literals-are-broken">Template Literals Are Broken</h2></a><p>(TD)</p>
 <p>(see slides)</p>
 <p>TD: one of main points is to &quot;embed languages&quot;</p>
 <p>TD: escape sequences introduce a problem</p>
@@ -373,25 +367,22 @@ function foo(w) {
 <p>DH: clearly stage 1 appropriate, will need lots of stage 2 spec analysis rigor</p>
 <p>WH: similar to regexes, which have a cover grammar</p>
 <p>… discussion about compat issue …</p>
-<h4>Conclusion/resolution</h4>
-<ul>
+<a href="#conclusionresolution-195"><h4 id="conclusionresolution-195">Conclusion/resolution</h4></a><ul>
 <li>Stage 1</li>
 </ul>
-<h2>Map.prototype.toJSON/Set.prototype.toJSON</h2>
-<p>(JHD)</p>
+<a href="#mapprototypetojsonsetprototypetojson"><h2 id="mapprototypetojsonsetprototypetojson">Map.prototype.toJSON/Set.prototype.toJSON</h2></a><p>(JHD)</p>
 <p>Continued discussion from yesterday.</p>
-<h4>Conclusion/resolution</h4>
-<ul>
+<a href="#conclusionresolution-196"><h4 id="conclusionresolution-196">Conclusion/resolution</h4></a><ul>
 <li>Rejected.</li>
 </ul>
 <p><code>toJSON</code> is a legacy artifact, and a better approach is to use a custom <code>replacer</code> that, for example, checks <code>[Symbol.toStringTag]</code> and dispatches to appropriate serializations.</p>
 <p>The committee did not want to bless the <code>toJSON</code> approach by adding what would be an incomplete representation - one that would not obviate the need for developers to define their own serialization format and revivification logic.</p>
-<h2>Aggregated FOSS parser pass-fail and equivalence tests</h2>
-<p>(KG)</p>
-<h4>Conclusion/resolution</h4>
-<ul>
+<a href="#aggregated-foss-parser-pass-fail-and-equivalence-tests"><h2 id="aggregated-foss-parser-pass-fail-and-equivalence-tests">Aggregated FOSS parser pass-fail and equivalence tests</h2></a><p>(KG)</p>
+<a href="#conclusionresolution-197"><h4 id="conclusionresolution-197">Conclusion/resolution</h4></a><ul>
 <li>needs lots of review, nobody volunteered</li>
 <li>decision left to test262 maintainers</li>
 <li>test262 are not conformance tests</li>
 <li>having additional repositories that are part of the test262 project but not part of test262 is OK</li>
 </ul>
+
+</body>

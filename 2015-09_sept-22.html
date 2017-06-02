@@ -1,12 +1,17 @@
 <!doctype html>
 <meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.6.0/github-markdown.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+
 <title>Sept 22 2015 Meeting Notes</title>
-<h1>Sept 22 2015 Meeting Notes</h1>
-<p>Allen Wirfs-Brock (AWB), Sebastian Markbage (SM), Jafar Husain (JH), Eric Farriauolo (EF), Caridy Patino (CP), Mark Miller (MM), Adam Klein (AK), Michael Ficarra (MF), Peter Jensen (PJ), Domenic Denicola (DD), Jordan Harband (JHD), Chip Morningstar (CM), Brian Terlson (BT), John Neumann  (JN), Dave Herman (DH), Brendan Eich (BE), Rick Waldron (RW), Yehuda Katz (YK), Jeff Morrison (JM), Lee Byron (LB), Daniel Ehrenberg (DE), Ben Smith (BS), Lars Hansen (LHN), Nagy Hostafa (NH), Michael Saboff (MS), John Buchanan (JB), Gorkem Yakin (GY), Stefan Penner (SP)</p>
+<body class="markdown-body">
+<a href="#sept-22-2015-meeting-notes"><h1 id="sept-22-2015-meeting-notes">Sept 22 2015 Meeting Notes</h1></a><p>Allen Wirfs-Brock (AWB), Sebastian Markbage (SM), Jafar Husain (JH), Eric Farriauolo (EF), Caridy Patino (CP), Mark Miller (MM), Adam Klein (AK), Michael Ficarra (MF), Peter Jensen (PJ), Domenic Denicola (DD), Jordan Harband (JHD), Chip Morningstar (CM), Brian Terlson (BT), John Neumann  (JN), Dave Herman (DH), Brendan Eich (BE), Rick Waldron (RW), Yehuda Katz (YK), Jeff Morrison (JM), Lee Byron (LB), Daniel Ehrenberg (DE), Ben Smith (BS), Lars Hansen (LHN), Nagy Hostafa (NH), Michael Saboff (MS), John Buchanan (JB), Gorkem Yakin (GY), Stefan Penner (SP)</p>
 <p>On the phone: Mark Miller (MM), Dan Gohmann (DG), John McCutchan (JMC)</p>
 <p>(Need attendance list)</p>
-<h2>1. Opening Items</h2>
-<p>JN: (Introduction)</p>
+<a href="#1-opening-items"><h2 id="1-opening-items">1. Opening Items</h2></a><p>JN: (Introduction)</p>
 <p>JN: Agenda is <a href="https://github.com/tc39/agendas/blob/master/2015/09.md">https://github.com/tc39/agendas/blob/master/2015/09.md</a></p>
 <p>YK: Post ES6, do we want to break up days into plenary and presentation.</p>
 <p>AWB: An agenda item?</p>
@@ -17,18 +22,14 @@
 <li>afternoon discussion</li>
 </ul>
 <p>LS: (facilities)</p>
-<h2>Adoption of Agenda</h2>
-<p>AWB: Future agendas should avoid being specific about the version</p>
+<a href="#adoption-of-agenda"><h2 id="adoption-of-agenda">Adoption of Agenda</h2></a><p>AWB: Future agendas should avoid being specific about the version</p>
 <p>BE: Helpful for me to know which features are on track</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-285"><h4 id="conclusionresolution-285">Conclusion/Resolution</h4></a><ul>
 <li>Change agenda &quot;Proposal for future editions of ECMA-262&quot;</li>
 <li>Agenda approved</li>
 </ul>
-<h2>4. Secretariat Report</h2>
-<p>JN: 1 o'clock on Thursday</p>
-<h2>5.1 Shared memory and atomics</h2>
-<p>(Lars T Hansen, Mozilla)</p>
+<a href="#4-secretariat-report"><h2 id="4-secretariat-report">4. Secretariat Report</h2></a><p>JN: 1 o'clock on Thursday</p>
+<a href="#51-shared-memory-and-atomics"><h2 id="51-shared-memory-and-atomics">5.1 Shared memory and atomics</h2></a><p>(Lars T Hansen, Mozilla)</p>
 <p><a href="https://github.com/lars-t-hansen/ecmascript_sharedmem">https://github.com/lars-t-hansen/ecmascript_sharedmem</a></p>
 <p><a href="http://lars-t-hansen.github.io/ecmascript_sharedmem/shmem.html">http://lars-t-hansen.github.io/ecmascript_sharedmem/shmem.html</a></p>
 <p>Need slides</p>
@@ -67,13 +68,13 @@
 </ul>
 <p>API: Shared Memory</p>
 <p>A new data type:</p>
-<pre><code class="language-js">var sab = new SharedArrayBuffer(size);
+<pre><code class="language-js"><span class="hljs-keyword">var</span> sab = <span class="hljs-keyword">new</span> SharedArrayBuffer(size);
 </code></pre>
 <p>(need slides)</p>
 <p>Views on Shared Memory</p>
-<pre><code class="language-js">var sab = new SharedArrayBuffer(size);
-var ia = new Int32Array(sab);
-var fa = new Float64Array(sab, 8, 10);
+<pre><code class="language-js"><span class="hljs-keyword">var</span> sab = <span class="hljs-keyword">new</span> SharedArrayBuffer(size);
+<span class="hljs-keyword">var</span> ia = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Int32Array</span>(sab);
+<span class="hljs-keyword">var</span> fa = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Float64Array</span>(sab, <span class="hljs-number">8</span>, <span class="hljs-number">10</span>);
 </code></pre>
 <p>(need slides)</p>
 <p>API: Atomic Operations</p>
@@ -90,7 +91,7 @@ Atomics.futexWake(i32c, loc, expect, timeout);
 </ul>
 <p>Example: mutex lock()</p>
 <pre><code class="language-js">Lock.
-//  get code from slide
+<span class="hljs-comment">//  get code from slide</span>
 </code></pre>
 <p>Discussion re: scheduling and execution.</p>
 <p>DH: tasks can be scheduled, but not executed</p>
@@ -377,8 +378,7 @@ Atomics.futexWake(i32c, loc, expect, timeout);
 <p>MM: no problem moving to stage 1</p>
 <p>YK/SM: What restrictions do we want, who do they work? Difference between global and local.</p>
 <p>CM: All concerns are stated.</p>
-<h4>Conclusion/Resolution</h4>
-<p>The committee agrees that those wishing to advance shared array buffers must explicitly address the following before further advance is considered:</p>
+<a href="#conclusionresolution-286"><h4 id="conclusionresolution-286">Conclusion/Resolution</h4></a><p>The committee agrees that those wishing to advance shared array buffers must explicitly address the following before further advance is considered:</p>
 <ol>
 <li>To what degree might shared array buffers exacerbate the side channel problem that web browsers suffer from?</li>
 </ol>
@@ -399,8 +399,7 @@ Atomics.futexWake(i32c, loc, expect, timeout);
 <li>For code that does not itself touch a shared array buffer, but for example, merely calls something that does, it is not reasonable to disrupt the programmer's understanding of the JavaScript program in terms of naive sequential consistency.</li>
 <li>Of course, one can do that at the price of fine-grain synchronization and/or avoiding all interesting compiler reordering like common subexpression elimination. But such approaches are likely to kill the performance that motivates this proposal in the first place.</li>
 </ul>
-<h2>5.2 SIMD.js Stage 3 proposal</h2>
-<p>(Daniel Ehrenberg, John McCutchan, Peter Jensen, Dan Gohman)</p>
+<a href="#52-simdjs-stage-3-proposal"><h2 id="52-simdjs-stage-3-proposal">5.2 SIMD.js Stage 3 proposal</h2></a><p>(Daniel Ehrenberg, John McCutchan, Peter Jensen, Dan Gohman)</p>
 <p>DE: (update)</p>
 <p>(Copy from slide)</p>
 <p>AWB: do you mean they are not canonicalized in a SIMD.js operation or when you extract? lumping load/store w/ extracting</p>
@@ -500,9 +499,9 @@ Atomics.futexWake(i32c, loc, expect, timeout);
 <p>AWB: I don't have the solution...</p>
 <p>MM: Find deep equality with SameValue attractive</p>
 <p>AWB: possibly, but I'm concerned about maps and sets. using a map for memoization, key is a SIMD vector. you want to memoize float32x4 differently with +0 vs -0</p>
-<pre><code class="language-js">let m = new Map();
-m.set(Float32(0, 0, 0, 0), 1);
-m.get(Float32(-0, -0, -0, -0)); // 1?
+<pre><code class="language-js"><span class="hljs-keyword">let</span> m = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>();
+m.set(Float32(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>), <span class="hljs-number">1</span>);
+m.get(Float32(<span class="hljs-number">-0</span>, <span class="hljs-number">-0</span>, <span class="hljs-number">-0</span>, <span class="hljs-number">-0</span>)); <span class="hljs-comment">// 1?</span>
 </code></pre>
 <p>DE: Don't think anyone will do that.</p>
 <p>MM: memoization is a strong argument</p>
@@ -527,19 +526,19 @@ m.get(Float32(-0, -0, -0, -0)); // 1?
 <p>JMC: Yes</p>
 <p>MM: Understand -0/+0, by why NaN semantics?</p>
 <p>AWB: my only concern with the present design is WRT maps and sets. we decided to use SameValueZero</p>
-<pre><code class="language-js">let m = new Map();
-m.set(Float32(0, 0, 0, 0), 1);
-m.get(Float32(-0, -0, -0, -0)); // 1?
+<pre><code class="language-js"><span class="hljs-keyword">let</span> m = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>();
+m.set(Float32(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>), <span class="hljs-number">1</span>);
+m.get(Float32(<span class="hljs-number">-0</span>, <span class="hljs-number">-0</span>, <span class="hljs-number">-0</span>, <span class="hljs-number">-0</span>)); <span class="hljs-comment">// 1?</span>
 </code></pre>
 <p>AWB: we could define SameValueZero for vectors to not distinguish + and - zero.</p>
 <p>DH: we want SameValueZero and === to be recursively defined</p>
 <p>DH: nobody expects 0 and -0 to be different in a set, nor do they expect NaN to be different</p>
 <p>RW: And has, get will behave accordingly:</p>
-<pre><code class="language-js">let m = new Map();
-m.set(NaN, 1);
-m.has(NaN); // true
-m.get(NaN); // 1
-// even though NaNs are not `===` equal. 
+<pre><code class="language-js"><span class="hljs-keyword">let</span> m = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>();
+m.set(<span class="hljs-literal">NaN</span>, <span class="hljs-number">1</span>);
+m.has(<span class="hljs-literal">NaN</span>); <span class="hljs-comment">// true</span>
+m.get(<span class="hljs-literal">NaN</span>); <span class="hljs-comment">// 1</span>
+<span class="hljs-comment">// even though NaNs are not `===` equal. </span>
 </code></pre>
 <p>DE: we assume that SIMD users are more clever and will not be confused by this?</p>
 <p>MM: we all agree that SameValue recursively does SameValue. My preference is that all of them recur with SameValue. Next... (missed the specifics here, sorry)</p>
@@ -584,8 +583,7 @@ m.get(NaN); // 1
 <p>AWB: enough thorough review of this large and complex addition to the language?</p>
 <p>BE: SIMD seems stable. it's funky but its gone through the paces for stage 3. We wanted it for 262 because it blazes the trail for value types</p>
 <p>AWB: more comfortable in another spec</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-287"><h4 id="conclusionresolution-287">Conclusion/Resolution</h4></a><ul>
 <li>Stage 3 Approval</li>
 <li><code>{load|store}[123]</code></li>
 <li>Consensus on existing</li>
@@ -594,8 +592,7 @@ m.get(NaN); // 1
 <li>An Objection from MM</li>
 <li>Work to do on Maps and Sets</li>
 </ul>
-<h2>10 Tooling Update</h2>
-<p>(Brian Terlson)</p>
+<a href="#10-tooling-update"><h2 id="10-tooling-update">10 Tooling Update</h2></a><p>(Brian Terlson)</p>
 <p>BT: All proposals are now using ecmarkup</p>
 <ul>
 <li>402 Complete</li>
@@ -604,14 +601,12 @@ m.get(NaN); // 1
 <p>CM: Need improved workflow documentation.</p>
 <p>AWB: Concerns about general public review; diffs not ideal</p>
 <p>YK/DD: will review visual, structural diffing tools to add to workflow</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-288"><h4 id="conclusionresolution-288">Conclusion/Resolution</h4></a><ul>
 <li>Write up workflow documentation.</li>
 <li>Review and recommend visual, structural diffing tools to add to workflow</li>
 <li>Move 262 to Ecmarkup</li>
 </ul>
-<h2>5.4 Updates on class-properties proposal</h2>
-<p>(Jeff Morrison)</p>
+<a href="#54-updates-on-class-properties-proposal"><h2 id="54-updates-on-class-properties-proposal">5.4 Updates on class-properties proposal</h2></a><p>(Jeff Morrison)</p>
 <p><a href="https://github.com/jeffmo/es-class-properties">https://github.com/jeffmo/es-class-properties</a></p>
 <p>JM: (updating)</p>
 <p>YK: Decorator interop, with this proposal, needs reflection</p>
@@ -625,13 +620,13 @@ m.get(NaN); // 1
 <p>JM: Each property and expression is evaluated in top down order as a result of <code>super()</code> in <code>constructor() {}</code></p>
 <p>YK: Mark suggests that these go in the constructor</p>
 <p>BE: Problematic:</p>
-<pre><code class="language-js">class C {
-  ha = eval(args)    
+<pre><code class="language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">C</span> </span>{
+  ha = <span class="hljs-built_in">eval</span>(args)    
 }
 
-var args = &quot;arguments&quot;;
-var huh = new C();
-console.log(huh.ha); // ?
+<span class="hljs-keyword">var</span> args = <span class="hljs-string">"arguments"</span>;
+<span class="hljs-keyword">var</span> huh = <span class="hljs-keyword">new</span> C();
+<span class="hljs-built_in">console</span>.log(huh.ha); <span class="hljs-comment">// ?</span>
 </code></pre>
 <p><a href="http://gul.ly/4du5">http://gul.ly/4du5</a></p>
 <p>JM: as written, the <code>this</code> binding is the object that's been instantiated.</p>
@@ -650,28 +645,28 @@ console.log(huh.ha); // ?
 <p>RW/AWB: Where does super go?</p>
 <p>MM: This is an open question. Depends on what you need to do with instance properties and when</p>
 <p>Discussion comparing:</p>
-<pre><code class="language-js">class Point {
-  constructor(x, y) {
-    public this.x = x;
-    public this.y = y;
+<pre><code class="language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point</span> </span>{
+  <span class="hljs-keyword">constructor</span>(x, y) {
+    public <span class="hljs-keyword">this</span>.x = x;
+    public <span class="hljs-keyword">this</span>.y = y;
   }
 }
 </code></pre>
 <p>vs.</p>
-<pre><code class="language-js">class Point {
-  public this.x = x;
-  public this.y = y;
+<pre><code class="language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point</span> </span>{
+  public <span class="hljs-keyword">this</span>.x = x;
+  public <span class="hljs-keyword">this</span>.y = y;
     
-  constructor(x, y) {
-    // ...
+  <span class="hljs-keyword">constructor</span>(x, y) {
+    <span class="hljs-comment">// ...</span>
   }
 }
 </code></pre>
 <p><code>x</code> and <code>y</code> not in scope.</p>
 <p>JM:</p>
-<pre><code class="language-js">class Stuff {
-  autoBound = () =&gt; {
-    console.log(this);
+<pre><code class="language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Stuff</span> </span>{
+  autoBound = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>);
   };
   
   id = getId();
@@ -679,9 +674,9 @@ console.log(huh.ha); // ?
 </code></pre>
 <p>DD: This SHOULD be written in the constructor.</p>
 <p>RW: Completely agree, and also concerned with:</p>
-<pre><code class="language-js">class Stuff {
-  a = () =&gt; {
-    console.log(this);
+<pre><code class="language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Stuff</span> </span>{
+  a = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>);
   };
   b() {
       
@@ -690,11 +685,11 @@ console.log(huh.ha); // ?
 </code></pre>
 <p>AWB: And what is <code>arguments</code> in that arrow?
 JM: Same as arguments immediately before the class declaration:</p>
-<pre><code class="language-js">function foo() {
-    arguments; // same
-    class Bar {
-        a = () =&gt; {
-            arguments; // same
+<pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">arguments</span>; <span class="hljs-comment">// same</span>
+    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Bar</span> </span>{
+        a = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+            <span class="hljs-built_in">arguments</span>; <span class="hljs-comment">// same</span>
         };
     }
 }
@@ -703,11 +698,12 @@ JM: Same as arguments immediately before the class declaration:</p>
 <p>Discussion comparing the merits of Mark's proposal vs. Jeff's proposal.</p>
 <p>MM: These declarations should result in non-configurable properties.</p>
 <p>YK: Disagree.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-289"><h4 id="conclusionresolution-289">Conclusion/Resolution</h4></a><ul>
 <li>Move to stage 1</li>
 <li>Jeff will follow up with Mark to further discuss his counter-proposal, and Allen to further discuss his thoughts on private properties</li>
 <li>Jeff will update proposal to store property declarations in slots (rather than container on prototype)</li>
 <li>Jeff will include reflection API for introspecting/reflecting declared properties</li>
 </ul>
 <p>(keep these)</p>
+
+</body>

@@ -1,17 +1,20 @@
 <!doctype html>
 <meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.6.0/github-markdown.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+
 <title>December 1 2016 Meeting Notes</title>
-<h1>December 1 2016 Meeting Notes</h1>
-<p>Allen Wirfs-Brock (AWB), Waldemar Horwat (WH), Jordan Harband (JHD), Thomas Wood (TW), Brian Terlson (BT), Michael Ficarra (MF), Adam Klein (AK), Jeff Morrison (JM), Chip Morningstar (CM), Dave Herman (DH), Yehuda Katz (YK), Leo Balter (LB), Sebastian Markbåge (SM), Kent C. Dodds (KCD), Kevin Gibbons (KG), Tim Disney (TD), Peter Jensen (PJ), Juan Dopazo (JDO), Domenic Denicola (DD), Daniel Ehrenberg (DE), Shu-yu Guo (SYG), JF Bastien (JFB), Keith Miller (KM), Michael Saboff (MS), Chris Hyle (CH), Alex Russell (AR), Brendan Eich (BE), Caridy Patino (CP), Diego Ferreiro Val (DFV), James Kyle (JK), Eric Ferraiuolo (EF), Mathias Bynens (MB), Istvan Sebestyen (IS), Mark Miller (MM), Cristian Mattarei (CMI), Brad Nelson (BNN), Jafar Husain (JH)</p>
-<h2>4 Approval minutes from last meeting</h2>
-<p>AWB: Approval of previous meeting minutes?</p>
+<body class="markdown-body">
+<a href="#december-1-2016-meeting-notes"><h1 id="december-1-2016-meeting-notes">December 1 2016 Meeting Notes</h1></a><p>Allen Wirfs-Brock (AWB), Waldemar Horwat (WH), Jordan Harband (JHD), Thomas Wood (TW), Brian Terlson (BT), Michael Ficarra (MF), Adam Klein (AK), Jeff Morrison (JM), Chip Morningstar (CM), Dave Herman (DH), Yehuda Katz (YK), Leo Balter (LB), Sebastian Markbåge (SM), Kent C. Dodds (KCD), Kevin Gibbons (KG), Tim Disney (TD), Peter Jensen (PJ), Juan Dopazo (JDO), Domenic Denicola (DD), Daniel Ehrenberg (DE), Shu-yu Guo (SYG), JF Bastien (JFB), Keith Miller (KM), Michael Saboff (MS), Chris Hyle (CH), Alex Russell (AR), Brendan Eich (BE), Caridy Patino (CP), Diego Ferreiro Val (DFV), James Kyle (JK), Eric Ferraiuolo (EF), Mathias Bynens (MB), Istvan Sebestyen (IS), Mark Miller (MM), Cristian Mattarei (CMI), Brad Nelson (BNN), Jafar Husain (JH)</p>
+<a href="#4-approval-minutes-from-last-meeting"><h2 id="4-approval-minutes-from-last-meeting">4 Approval minutes from last meeting</h2></a><p>AWB: Approval of previous meeting minutes?</p>
 <p>IS has distributed the minutes via TC39 Email Reflector and has also uploaded it on GitHub.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-101"><h4 id="conclusionresolution-101">Conclusion/Resolution</h4></a><ul>
 <li>Approved</li>
 </ul>
-<h2>6.i Determine 2017 TC39 meeting dates, locations, and hosts.</h2>
-<p>IS: WE said that in 2017 there will be no European meeting. But if nothing else works Ecma and Switzerland are always a fall-back possibility for organization of TC39 meetings. Of course we need a few months lead-up time.
+<a href="#6i-determine-2017-tc39-meeting-dates-locations-and-hosts"><h2 id="6i-determine-2017-tc39-meeting-dates-locations-and-hosts">6.i Determine 2017 TC39 meeting dates, locations, and hosts.</h2></a><p>IS: WE said that in 2017 there will be no European meeting. But if nothing else works Ecma and Switzerland are always a fall-back possibility for organization of TC39 meetings. Of course we need a few months lead-up time.
 I will also bring up the issue of the TC39 at the GA next week. Maybe I can find some additional hosting help in the Bay Area. Last point (not said in the meeting): we may try to access some of our university members, Universities usually easily have sufficient large rooms, especially if we come during a time when there is no teaching.</p>
 <p>AWB: January meeting at Salesforce.</p>
 <p>DG: Yes</p>
@@ -26,8 +29,7 @@ I will also bring up the issue of the TC39 at the GA next week. Maybe I can find
 <p>DD: Maybe</p>
 <p>KCD: PayPal can host in March, tentatively. My manager supports it.</p>
 <p>AWB: PayPal has hosted in the past.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-102"><h4 id="conclusionresolution-102">Conclusion/Resolution</h4></a><ul>
 <li>January: Salesforce San Francisco, Jan 24-26</li>
 <li>March:  Paypal  San Jose, March 21-23</li>
 <li>May: Google New York, May 23-25</li>
@@ -35,8 +37,7 @@ I will also bring up the issue of the TC39 at the GA next week. Maybe I can find
 <li>September: Bocoup Boston, Sept 26-28</li>
 <li>November: AirBnB Bay Area, Nov 28-30 (tentative)</li>
 </ul>
-<h2>12.ii.c Promise.prototype.finally</h2>
-<p>(Jordan Harband)</p>
+<a href="#12iic-promiseprototypefinally"><h2 id="12iic-promiseprototypefinally">12.ii.c Promise.prototype.finally</h2></a><p>(Jordan Harband)</p>
 <p>JHD: Looking at the spec, .catch() calls out to .then(), and .finally() should do the same thing. This removes the concern that I raised about how we should do this wrapping check--we'll just follow what .then() does.</p>
 <p>Details in PR: <a href="https://github.com/tc39/proposal-promise-finally/pull/14#issue-192162240">https://github.com/tc39/proposal-promise-finally/pull/14#issue-192162240</a></p>
 <p>Downside of finally calling into .then:</p>
@@ -65,13 +66,11 @@ I will also bring up the issue of the TC39 at the GA next week. Maybe I can find
 <p>DD: Just not call into the kernel methods, just call the internal algorithm. It would be more like map, rather than based on kernel methods.</p>
 <p>YK: Maybe we should make a protocol for await, to override behavior, rather than the thenable assimilation protocol. I'll come up with a more concrete proposal in the future.</p>
 <p>AWB: You can pursue a brand checking mechanism as well, and this may lend itself to advanced JIT optimizations</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-103"><h4 id="conclusionresolution-103">Conclusion/Resolution</h4></a><ul>
 <li>Remain at Stage 2</li>
 <li>Solicit reviews from both spec text versions by January</li>
 </ul>
-<h2>12.ii.e Variation on UnambiguousJavaScriptGrammar</h2>
-<p>(Dave Herman)</p>
+<a href="#12iie-variation-on-unambiguousjavascriptgrammar"><h2 id="12iie-variation-on-unambiguousjavascriptgrammar">12.ii.e Variation on UnambiguousJavaScriptGrammar</h2></a><p>(Dave Herman)</p>
 <p>DH: Goal is to get to Stage 1 and discuss further with Node, whose represenatives weren't able to make it today.</p>
 <p>AK: Thanks for articulating your goal clearly at the beginning!</p>
 <p>DH: Script or module?</p>
@@ -119,13 +118,11 @@ it would be the conditionality. I wouldn't want &quot;use module&quot; to have t
 <p>AWB: One of the criteria for Stage 1 is that we think it's worth spending time</p>
 <p>AK: Actually it says we &quot;expect&quot; to spend time on it. I would expect to spend time on it!</p>
 <p>BT: This is a feature request from an important user of JavaScript and we shouldn't just dismiss it.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-104"><h4 id="conclusionresolution-104">Conclusion/Resolution</h4></a><ul>
 <li>Stage 1</li>
 <li>The committee has deep doubts about this proposal</li>
 </ul>
-<h2>14.ii import() open issues and stage 3 discussion</h2>
-<p>DD: For Node, JHD reached out to Bradley Farias of Node and confirmed that we can start the import of the module asynchronously, as he had suspected. Therefore, the hook can be clarified to always be asynchronous, not synchronous or asynchronous as previously.</p>
+<a href="#14ii-import-open-issues-and-stage-3-discussion"><h2 id="14ii-import-open-issues-and-stage-3-discussion">14.ii import() open issues and stage 3 discussion</h2></a><p>DD: For Node, JHD reached out to Bradley Farias of Node and confirmed that we can start the import of the module asynchronously, as he had suspected. Therefore, the hook can be clarified to always be asynchronous, not synchronous or asynchronous as previously.</p>
 <p>DD: For MM's membrane penetration concern, the plan is that we will be working towards hooking of agent hooks (&quot;the loader spec&quot;), though we aren't blocking on it. Current embedding environments do support hooking.</p>
 <p>DD: (walking through <a href="https://github.com/tc39/proposal-dynamic-import/issues/26">https://github.com/tc39/proposal-dynamic-import/issues/26</a>)</p>
 <p>MM: We're expecting that we'll work towards a standardized loader spec for generalized hooking, and be happy with how embedding environments (e.g., Web and Node) do provide an API.</p>
@@ -150,12 +147,10 @@ it would be the conditionality. I wouldn't want &quot;use module&quot; to have t
 <p>DE: Stage 3 is good because it indicates some stability that helps implementations know they're not wasting their effort.</p>
 <p>MM: Will this ship before the next meeting, prohibiting future changes?</p>
 <p>AK: We'll initially develop it behind a flag, and it will go through normal Chrome shipping processes, which take some time.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-105"><h4 id="conclusionresolution-105">Conclusion/Resolution</h4></a><ul>
 <li>Stage 3</li>
 </ul>
-<h2>13.ii.b Private State</h2>
-<p>(Daniel Ehrenberg)</p>
+<a href="#13iib-private-state"><h2 id="13iib-private-state">13.ii.b Private State</h2></a><p>(Daniel Ehrenberg)</p>
 <ul>
 <li><a href="https://github.com/tc39/proposal-private-fields">proposal</a></li>
 <li><a href="https://docs.google.com/presentation/d/1QBK8GsTYmQHJQJm_P0HuELNN4uGkm9gB7Df9g4tRK-o/edit#slide=id.g1994dec4f4_0_35">slides</a></li>
@@ -188,8 +183,7 @@ it would be the conditionality. I wouldn't want &quot;use module&quot; to have t
 </ul>
 <p>The intention is to match public fields, need to be interleaved, specifically the ordering of steps e.g. adding fields.</p>
 <p>AWB: Concerns about separate proposal for public fields. Merge the proposals.</p>
-<h2>DE: The plan is to merge the specs for Stage 3</h2>
-<p>DE: If feedback reveals that the # syntax for private state is fatally unworkable, we wouldn't want to kill public state because of it</p>
+<a href="#de-the-plan-is-to-merge-the-specs-for-stage-3"><h2 id="de-the-plan-is-to-merge-the-specs-for-stage-3">DE: The plan is to merge the specs for Stage 3</h2></a><p>DE: If feedback reveals that the # syntax for private state is fatally unworkable, we wouldn't want to kill public state because of it</p>
 <p>MM: if integration reveals issues for one and not the other? THen we can address?</p>
 <p>AWB: Or drop entirely?</p>
 <p>YK/AWB/DE: (discussion of the merging concerns, but only w/ regard to Stage 3?)</p>
@@ -285,7 +279,7 @@ class Foo {
 }
 </code></pre>
 <p>Annoying to write:</p>
-<pre><code class="language-js">class A {
+<pre><code class="language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span> </span>{
   private x;
   private y;
   private z;  
@@ -304,15 +298,15 @@ class Foo {
 <p>JM: There is a question on public fields, <code>=</code> is assign/set, <code>:</code> is define—still not sure which will be correct?</p>
 <p>KG: only relevant for public fields, evaluation order</p>
 <p>YK: TypeScript and Babel transpile as:</p>
-<pre><code class="language-js">class A {
-  x = 1;  
+<pre><code class="language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span> </span>{
+  x = <span class="hljs-number">1</span>;  
 }
 </code></pre>
 <p>to</p>
-<pre><code class="language-js">var A = function A() {
-  _classCallCheck(this, A);
+<pre><code class="language-js"><span class="hljs-keyword">var</span> A = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">A</span>(<span class="hljs-params"></span>) </span>{
+  _classCallCheck(<span class="hljs-keyword">this</span>, A);
 
-  this.x = 1;
+  <span class="hljs-keyword">this</span>.x = <span class="hljs-number">1</span>;
 };
 </code></pre>
 <p>JK: It does this by default, however when you enable &quot;spec&quot; mode it will switch to using a defineProp to set configurable to false</p>
@@ -341,13 +335,11 @@ class Foo {
 <p>AWB: No whitespace between <code>#</code> and <code>foo</code> in <code>#foo</code>, but also <code>foo</code> not IdentifierPart</p>
 <p>WH: Want whitespace allowable on either side of #</p>
 <p>DE: Should private state be accessible within eval?</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-106"><h4 id="conclusionresolution-106">Conclusion/Resolution</h4></a><ul>
 <li>Stage 2</li>
 <li>hard private, lexical scoping</li>
 </ul>
-<h2>13.vi Process proposal: require an implementation to land a normative PR to the spec</h2>
-<p>(Daniel Ehrenberg)</p>
+<a href="#13vi-process-proposal-require-an-implementation-to-land-a-normative-pr-to-the-spec"><h2 id="13vi-process-proposal-require-an-implementation-to-land-a-normative-pr-to-the-spec">13.vi Process proposal: require an implementation to land a normative PR to the spec</h2></a><p>(Daniel Ehrenberg)</p>
 <ul>
 <li><a href="https://gist.github.com/littledan/f85d2d1f4cff44927a75afd5d30bbe2e">proposal</a></li>
 </ul>
@@ -362,12 +354,10 @@ class Foo {
 <p>AWB: Caution against adding too much burden to the process.</p>
 <p>BT: Don't want to inject a lot of process into simple things. Don't think adopting this proposal would change anything in practice.</p>
 <p>YK: But it would cause more process lawyering.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-107"><h4 id="conclusionresolution-107">Conclusion/Resolution</h4></a><ul>
 <li>Raised the issue, pay attention.</li>
 </ul>
-<h2>13.vii Open-ended: How can we promote diversity and inclusion in TC39</h2>
-<p>(Daniel Ehrenberg and others)</p>
+<a href="#13vii-open-ended-how-can-we-promote-diversity-and-inclusion-in-tc39"><h2 id="13vii-open-ended-how-can-we-promote-diversity-and-inclusion-in-tc39">13.vii Open-ended: How can we promote diversity and inclusion in TC39</h2></a><p>(Daniel Ehrenberg and others)</p>
 <p>DE: How can we improve this?</p>
 <p>AWB: member companies need to send more diverse language implementors</p>
 <p>(general discussion wrt adopting a Code of Conduct that applies to diversity based on demographics background)</p>
@@ -396,8 +386,7 @@ class Foo {
 <p>SYG: Can we really expect people to follow this?</p>
 <p>MS: We are getting better at enforcing timeboxes, but we should consider being even more strict in enforcement--if members don't grant an extension, it should be done.</p>
 <p>LB: Some companies may have trouble/refuse participating because they see the lack of diversity and a code of conduct on a company. I have had discouragement from colleagues personally as English is my second language--this made me feel like running away. Fortunately, my employer, Bocoup, on hearing this, put me on the test262 project and eventually sent me to the committee. I have many people from my country (Brazil) who contact me and want to get in touch about reading the spec, etc. I am just a normal person--I needed to find that, regardless of where I come from, I was able to attend. It would be very useful to have an official document from ECMA saying that ECMA and TC39 commit to social responsibility, where people can feel respected in any sort of background. Everyone should feel encouraged. I am here, I am the proof of it. I feel responsible to bring that forward to the new people.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-108"><h4 id="conclusionresolution-108">Conclusion/Resolution</h4></a><ul>
 <li>Consensus that diversity is important and something we'd like to address and improve</li>
 <li>Take initial steps to adopt a Code of Conduct and determine how to enforce</li>
 <li>Rick Waldron will contact Istvan</li>
@@ -405,3 +394,5 @@ class Foo {
 <li>Representatives should work with their member organizations to promote more diverse representatives, via scholarship/sponsorship or diversification of member team</li>
 <li>Extend our charter to include social commitment to committee representative diversity.</li>
 </ul>
+
+</body>

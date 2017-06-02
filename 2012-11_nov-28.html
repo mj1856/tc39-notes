@@ -1,10 +1,15 @@
 <!doctype html>
 <meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.6.0/github-markdown.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+
 <title>November 28 2012 Meeting Notes</title>
-<h1>November 28 2012 Meeting Notes</h1>
-<p>John Neumann (JN), Norbert Lindenberg (NL), Allen Wirfs-Brock (AWB), Waldemar Horwat (WH), Brian Terlson (BT), Luke Hoban (LH), Rick Waldron (RW), Eric Ferraiuolo (EF), Doug Crockford (DC), Yehuda Katz (YK), Erik Arvidsson (EA), Mark Miller (MM), Dave Herman (DH), Sam Tobin-Hochstadt (STH), Istvan Sebastian (IS), Andreas Rossberg (ARB), Brendan Eich (BE), Alex Russel (AR)</p>
-<h1>Syntactic Support for Private Names</h1>
-<p>BE/LH: Concern that the syntax required too much declaration</p>
+<body class="markdown-body">
+<a href="#november-28-2012-meeting-notes"><h1 id="november-28-2012-meeting-notes">November 28 2012 Meeting Notes</h1></a><p>John Neumann (JN), Norbert Lindenberg (NL), Allen Wirfs-Brock (AWB), Waldemar Horwat (WH), Brian Terlson (BT), Luke Hoban (LH), Rick Waldron (RW), Eric Ferraiuolo (EF), Doug Crockford (DC), Yehuda Katz (YK), Erik Arvidsson (EA), Mark Miller (MM), Dave Herman (DH), Sam Tobin-Hochstadt (STH), Istvan Sebastian (IS), Andreas Rossberg (ARB), Brendan Eich (BE), Alex Russel (AR)</p>
+<a href="#syntactic-support-for-private-names"><h1 id="syntactic-support-for-private-names">Syntactic Support for Private Names</h1></a><p>BE/LH: Concern that the syntax required too much declaration</p>
 <p>LH: Can delve deeper when presenting TypeScript findings. We don't have any experience with the impact of this syntax.</p>
 <p>AWB: This is where we left it at the last meeting and I haven't had an opportunity to respond to feedback.</p>
 <p>Mixed discussion regarding syntactic pains and impact of @-names</p>
@@ -17,10 +22,10 @@
 <p>YK: If you use an @-name it implies binding, and you need to explicitly export</p>
 <p>AWB: References an implicit declaration if doesn't already have one?</p>
 <p>YK: Yes. (draws example on whiteboard)</p>
-<pre><code class="language-js">module &quot;view&quot; {
-  export class View {
-    constructor(id) {
-      this.@id = id;
+<pre><code class="language-js"><span class="hljs-built_in">module</span> <span class="hljs-string">"view"</span> {
+  <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">View</span> </span>{
+    <span class="hljs-keyword">constructor</span>(id) {
+      <span class="hljs-keyword">this</span>.@id = id;
     }
   }
 }
@@ -56,21 +61,21 @@
 <p>LH: The immediate problem w/ YK's example on board is that it's unclear that @id...
 Developers don't want to think about binding names as objects</p>
 <p>AWB: (modifies whiteboard)</p>
-<pre><code class="language-js">module &quot;view&quot; {
-  private @id; // allows declaring a private name called &quot;id&quot;
-  export class View {
-    constructor(id) {
-      this.@id = id;
+<pre><code class="language-js"><span class="hljs-built_in">module</span> <span class="hljs-string">"view"</span> {
+  private @id; <span class="hljs-comment">// allows declaring a private name called "id"</span>
+  <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">View</span> </span>{
+    <span class="hljs-keyword">constructor</span>(id) {
+      <span class="hljs-keyword">this</span>.@id = id;
     }
   }
 }
 </code></pre>
 <p>Move private @id...</p>
-<pre><code class="language-js">module &quot;view&quot; {
-  export class View {
+<pre><code class="language-js"><span class="hljs-built_in">module</span> <span class="hljs-string">"view"</span> {
+  <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">View</span> </span>{
     private @id;
-    constructor(id) {
-      this.@id = id;
+    <span class="hljs-keyword">constructor</span>(id) {
+      <span class="hljs-keyword">this</span>.@id = id;
     }
   }
 }
@@ -108,7 +113,7 @@ Developers don't want to think about binding names as objects</p>
 <p>BE: (whiteboard)</p>
 <p>// Mark's proposal from a year ago
 // <a href="http://wiki.ecmascript.org/doku.php?id=harmony:classes">http://wiki.ecmascript.org/doku.php?id=harmony:classes</a></p>
-<pre><code class="language-js">constructor(id) {
+<pre><code class="language-js"><span class="hljs-keyword">constructor</span>(id) {
   private id = id;
 }
 </code></pre>
@@ -116,8 +121,8 @@ Developers don't want to think about binding names as objects</p>
 <p>LH: (whiteboard)
 // TypeScript...</p>
 <pre><code class="language-js">private id;
-constructor(id) {
-  this.id = id;
+<span class="hljs-keyword">constructor</span>(id) {
+  <span class="hljs-keyword">this</span>.id = id;
 }
 </code></pre>
 <p>AWB: What happens when there is foo.id is in the constructor?</p>
@@ -203,13 +208,13 @@ We address Andreas's issue with modules separately.</li>
 <p>MM: Always knew @ was dynamic. Opaque, unforgeable and generative.</p>
 <p>ARB: (to DH), Once this is defined in a dynamic context it becomes dynamic.</p>
 <p>WH: (illustration of perceived hoisting and dynamic rebinding issues)</p>
-<pre><code class="language-js">class C {
+<pre><code class="language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">C</span> </span>{
   private @name;
   f() {
-    for(...) {
-      x.@name = 5;
+    <span class="hljs-keyword">for</span>(...) {
+      x.@name = <span class="hljs-number">5</span>;
     }
-    var @name....
+    <span class="hljs-keyword">var</span> @name....
   }
 }
 </code></pre>
@@ -237,26 +242,24 @@ We address Andreas's issue with modules separately.</li>
 <p>MM: true</p>
 <p>DH: Could do semantics of strict mode and allow the collision</p>
 <p>MM: I don't think this introduces a strict mode runtime tax.</p>
-<h4>Conclusion/Resolution</h4>
-<p>STH will provide a summary.</p>
+<a href="#conclusionresolution-627"><h4 id="conclusionresolution-627">Conclusion/Resolution</h4></a><p>STH will provide a summary.</p>
 <ul>
 <li>Symbols, unique and private are runtime concepts</li>
 <li>Only additional syntactic support for them in ES6 is the square brackets in literal forms.</li>
 <li>Strict object literals throw on collision.
 (Today, duplicate checks happen at compile time, this will no longer be the case when [prop]: val is used in an objlit)</li>
 </ul>
-<pre><code class="language-js">const s1 new PrivateSymbol();
-const s2 = s1;
+<pre><code class="language-js"><span class="hljs-keyword">const</span> s1 <span class="hljs-keyword">new</span> PrivateSymbol();
+<span class="hljs-keyword">const</span> s2 = s1;
 
-var x = {
-  [s1]: 33,
-  [s2]: 44
+<span class="hljs-keyword">var</span> x = {
+  [s1]: <span class="hljs-number">33</span>,
+  [s2]: <span class="hljs-number">44</span>
 };
 </code></pre>
 <p>In this context, within the square brackets: AssignmentExpression</p>
 <p>(Re: Symbol constructor binding: <a href="http://wiki.ecmascript.org/doku.php?id=harmony:modules_standard">http://wiki.ecmascript.org/doku.php?id=harmony:modules_standard</a>)</p>
-<h1>Experience With TypeScript</h1>
-<p>Presented by Luke Hoban (slides at <a href="http://sdrv.ms/W21q9e">http://sdrv.ms/W21q9e</a>)</p>
+<a href="#experience-with-typescript"><h1 id="experience-with-typescript">Experience With TypeScript</h1></a><p>Presented by Luke Hoban (slides at <a href="http://sdrv.ms/W21q9e">http://sdrv.ms/W21q9e</a>)</p>
 <p>Findings...
 <strong>Classes: Statics</strong></p>
 <ul>
@@ -317,19 +320,19 @@ var x = {
 <li>Critical for interop with existing CommonJS/AMD code</li>
 <li>Supportive of &quot;export =&quot; syntax proposal</li>
 </ul>
-<pre><code class="language-js">// something.js
-export = function() {
-  return &quot;something&quot;;
+<pre><code class="language-js"><span class="hljs-comment">// something.js</span>
+<span class="hljs-keyword">export</span> = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-string">"something"</span>;
 };
 
-// other.js
-import something = module(&quot;something&quot;);
-var s = something();
+<span class="hljs-comment">// other.js</span>
+<span class="hljs-keyword">import</span> something = <span class="hljs-built_in">module</span>(<span class="hljs-string">"something"</span>);
+<span class="hljs-keyword">var</span> s = something();
 </code></pre>
 <p>DH: (whiteboard)</p>
-<pre><code class="language-js">export = function() {};
+<pre><code class="language-js"><span class="hljs-keyword">export</span> = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{};
 ---------------------------------
-import &quot;foo&quot; as foo;
+<span class="hljs-keyword">import</span> <span class="hljs-string">"foo"</span> <span class="hljs-keyword">as</span> foo;
 foo();
 </code></pre>
 <p><strong>Async</strong></p>
@@ -344,42 +347,41 @@ foo();
 </ul>
 <p>(shows example for task.js and identifies &quot;spawn&quot; which returns a promise object)</p>
 <p>Mixed discussion about the history of async discussion through generators, promises, Q.async</p>
-<h1>Modules Update</h1>
-<p>Presented by Dave Herman</p>
+<a href="#modules-update"><h1 id="modules-update">Modules Update</h1></a><p>Presented by Dave Herman</p>
 <p>(whiteboard)</p>
-<pre><code class="language-js">// Modules looked like...
-module X {
-  export module Y {
+<pre><code class="language-js"><span class="hljs-comment">// Modules looked like...</span>
+<span class="hljs-built_in">module</span> X {
+  <span class="hljs-keyword">export</span> <span class="hljs-built_in">module</span> Y {
   }
 }
 
-// Moved to...
-// &quot;foo&quot; doesn't bind anything into this scope,
-// just adds to the module registry
-module &quot;foo&quot; {
-  module &quot;bar&quot; {
-    // no more exporting...
+<span class="hljs-comment">// Moved to...</span>
+<span class="hljs-comment">// "foo" doesn't bind anything into this scope,</span>
+<span class="hljs-comment">// just adds to the module registry</span>
+<span class="hljs-built_in">module</span> <span class="hljs-string">"foo"</span> {
+  <span class="hljs-built_in">module</span> <span class="hljs-string">"bar"</span> {
+    <span class="hljs-comment">// no more exporting...</span>
   }
 }
 
-module &quot;foo/bar&quot; {}
+<span class="hljs-built_in">module</span> <span class="hljs-string">"foo/bar"</span> {}
 
-&quot;bar&quot; is not exposed as a property of &quot;foo&quot;
+<span class="hljs-string">"bar"</span> is not exposed <span class="hljs-keyword">as</span> a property <span class="hljs-keyword">of</span> <span class="hljs-string">"foo"</span>
 
-import &quot;foo/bar&quot; as m;
+<span class="hljs-keyword">import</span> <span class="hljs-string">"foo/bar"</span> <span class="hljs-keyword">as</span> m;
 
 </code></pre>
 <p>AWB: (clarification of his understanding of the original way that nested modules work)</p>
 <p>STH: Yes, that was the way, but there was a realization that much of the earlier approach was flawed and these updates lead to revisions.</p>
 <p>One important use case for modules is to configure module references, so that libraries can import jQuery (for example), and get the appropriate version of jQuery specified by the page. Further, it's desirable to be able to use different code for the same library name in different context. Originally, the modules proposal managed this via lexical scope, as follows:</p>
-<pre><code class="language-js">module M1 {
-  module jquery = &quot;jquery.js&quot;;
-  module something = &quot;something_that_uses_jquery.js&quot;
+<pre><code class="language-js"><span class="hljs-built_in">module</span> M1 {
+  <span class="hljs-built_in">module</span> jquery = <span class="hljs-string">"jquery.js"</span>;
+  <span class="hljs-built_in">module</span> something = <span class="hljs-string">"something_that_uses_jquery.js"</span>
 }
 
-module M2 {
-  module jquery = &quot;zepto.js&quot;;
-  module something_else = &quot;something_else_that_uses_jquery.js&quot;
+<span class="hljs-built_in">module</span> M2 {
+  <span class="hljs-built_in">module</span> jquery = <span class="hljs-string">"zepto.js"</span>;
+  <span class="hljs-built_in">module</span> something_else = <span class="hljs-string">"something_else_that_uses_jquery.js"</span>
 }
 </code></pre>
 <p>However, this has two major problems:
@@ -389,8 +391,8 @@ Once we decided to share instances of the same module, the &quot;parent scope&qu
 <p>Thus, Dave and I revisited the design, abandoning the use of lexical scope for managing module names, and introducing module names that could be configured on a per-Loader basis.</p>
 <p>DH: The registry with the string names is now where the sharing mechanism occurs.</p>
 <p>Loader...</p>
-<pre><code class="language-js">System.baseURL = &quot;...&quot;;
-System.resolve = function(...) {
+<pre><code class="language-js">System.baseURL = <span class="hljs-string">"..."</span>;
+System.resolve = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">...</span>) </span>{
   ...
 };
 </code></pre>
@@ -412,29 +414,29 @@ System.resolve = function(...) {
 ...Sane default behavior
 ...Default resolution:
 - baseURL + &quot;Crypto/sha1&quot; + &quot;.js&quot; when no config has been done, this is the base default behavior.</p>
-<pre><code class="language-js">// foo.js
-export = 42;
+<pre><code class="language-js"><span class="hljs-comment">// foo.js</span>
+<span class="hljs-keyword">export</span> = <span class="hljs-number">42</span>;
 
-// bar.js
-export function bar() {
+<span class="hljs-comment">// bar.js</span>
+<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bar</span>(<span class="hljs-params"></span>) </span>{
 }
 
-// foobar.js
-module &quot;foo&quot; {
-  export = 42;
+<span class="hljs-comment">// foobar.js</span>
+<span class="hljs-built_in">module</span> <span class="hljs-string">"foo"</span> {
+  <span class="hljs-keyword">export</span> = <span class="hljs-number">42</span>;
 }
-module &quot;bar&quot; {
-  export function bar() {
+<span class="hljs-built_in">module</span> <span class="hljs-string">"bar"</span> {
+  <span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bar</span>(<span class="hljs-params"></span>) </span>{
   }
 }
 </code></pre>
-<pre><code class="language-html">&lt;script&gt;
-System.baseURL = &quot;assets/&quot;;
-&lt;/script&gt;
-&lt;script async&gt;
-import &quot;foo&quot; as foo;
-import &quot;bar&quot; as bar;
-&lt;/script&gt;
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="actionscript">
+System.baseURL = <span class="hljs-string">"assets/"</span>;
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">async</span>&gt;</span><span class="javascript">
+<span class="hljs-keyword">import</span> <span class="hljs-string">"foo"</span> <span class="hljs-keyword">as</span> foo;
+<span class="hljs-keyword">import</span> <span class="hljs-string">"bar"</span> <span class="hljs-keyword">as</span> bar;
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
 <p>WH: What happens if...
 import &quot;foobar&quot; as fb;
@@ -443,7 +445,7 @@ import &quot;foobar&quot; as fb;
 <p>[WH's question was related to a claim in the discussion that there is no need to have module .js files be distinguishable at the textual level from top-level script .js files]</p>
 <p>Mixed discussion w/r loading protocols... and resource loading (files from server, etc) seems to be out of scope?</p>
 <p>DH: How is there anything special about JavaScript as the one asset to know about in browsers?</p>
-<pre><code class="language-html">&lt;link rel=&quot;prefetch&quot;...&gt;
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"prefetch"</span><span class="hljs-attr">...</span>&gt;</span>
 </code></pre>
 <p>BE: Before imports, prefetch dependencies... but an out of line module import is not a hint, it's a requirement.</p>
 <p>DH: Help the browser know in advance about its...</p>
@@ -454,3 +456,5 @@ import &quot;foobar&quot; as fb;
 <p>Bundle A, Bundle B
 Each share common dependencies. Leads to unbounded number of combinations of pre-build bundles.</p>
 <p>A loader should have a way which it can be told, upfront, about the dependency graph. Allowing the system to know all dependencies in advance, so that it doesn't have to compute transitive dependencies for all, every time—to make smart choices about IO.</p>
+
+</body>

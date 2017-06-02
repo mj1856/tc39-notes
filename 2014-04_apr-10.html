@@ -1,14 +1,19 @@
 <!doctype html>
 <meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.6.0/github-markdown.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+
 <title>April 10 2014 Meeting Notes</title>
-<h1>April 10 2014 Meeting Notes</h1>
-<p>Doug Crockford (DC), Brian Terleson (BT), Luke Hoban (LH), Dmitry Lomov (DL), Waldemar Horwat (WH), Allen Wirfs-Brock (AWB), John Neumann (JN), Rick Hudson (RH), Rick Waldron (RW), Eric Ferraiuolo (EF), Jafar Husain (JH), Jeff Morrison (JM), Seo-Young Hwang (SYH), Mark Honenberg (MH), Caridy Patino (CP), Yehuda Katz (YK), Niko Matsakis (NM), Ben Newman (BN), Sebastian Markbage (SM), Mathias Bynens (MB), Rafael Weinstein (RWS), Mark Miller (MM),</p>
+<body class="markdown-body">
+<a href="#april-10-2014-meeting-notes"><h1 id="april-10-2014-meeting-notes">April 10 2014 Meeting Notes</h1></a><p>Doug Crockford (DC), Brian Terleson (BT), Luke Hoban (LH), Dmitry Lomov (DL), Waldemar Horwat (WH), Allen Wirfs-Brock (AWB), John Neumann (JN), Rick Hudson (RH), Rick Waldron (RW), Eric Ferraiuolo (EF), Jafar Husain (JH), Jeff Morrison (JM), Seo-Young Hwang (SYH), Mark Honenberg (MH), Caridy Patino (CP), Yehuda Katz (YK), Niko Matsakis (NM), Ben Newman (BN), Sebastian Markbage (SM), Mathias Bynens (MB), Rafael Weinstein (RWS), Mark Miller (MM),</p>
 <p>YK: Revisit new TC39 process. Phase 2?</p>
 <p>LH: Phase 2 is experimental</p>
 <p>YK: Yesterday, was told Phase 2 is too late for feedback</p>
 <p>LH: My sense was that the issue is communication</p>
-<h2>4.10 Modules Feedback</h2>
-<p>(Brian Terlson)</p>
+<a href="#410-modules-feedback"><h2 id="410-modules-feedback">4.10 Modules Feedback</h2></a><p>(Brian Terlson)</p>
 <p><a href="https://gist.github.com/bterlson/e68d34b691254a640841">https://gist.github.com/bterlson/e68d34b691254a640841</a></p>
 <p>(need slides)</p>
 <p>BT: This is feedback, not necessarily requests for change.</p>
@@ -27,7 +32,7 @@
 <p>YK: Cutting at this stage is not bad, I can champion researching the possibility</p>
 <p>CP: This may break the ability to statically verify the module?</p>
 <p>LH: If you did:</p>
-<pre><code class="language-js">module foo from &quot;bar&quot;;
+<pre><code class="language-js"><span class="hljs-built_in">module</span> foo <span class="hljs-keyword">from</span> <span class="hljs-string">"bar"</span>;
 
 foo.whatever
 </code></pre>
@@ -38,8 +43,8 @@ foo.whatever
 <p>AWB/LH: &quot;module&quot; was for the <code>Math</code> case?</p>
 <p>JM/RW: <code>Math</code> case could very well be defined as a default export.</p>
 <p>YK: Can use the following to bring in a module solely for side effects:</p>
-<pre><code class="language-js">import &quot;foo&quot;;
-System.get(&quot;foo&quot;);
+<pre><code class="language-js"><span class="hljs-keyword">import</span> <span class="hljs-string">"foo"</span>;
+System.get(<span class="hljs-string">"foo"</span>);
 </code></pre>
 <p>WH: How is work divided between the import and the System.get?</p>
 <p>YK: <code>import &quot;foo&quot;</code> is just the mechanism to ensure the import of a module without specific bindings. For side-effecting modules.</p>
@@ -58,23 +63,23 @@ System.get(&quot;foo&quot;);
 <li>As many as 3 different ways you would consume jQuery depending on what jQuery exports</li>
 <li>See: <a href="https://gist.github.com/bterlson/e68d34b691254a640841#possible-confusion">https://gist.github.com/bterlson/e68d34b691254a640841#possible-confusion</a></li>
 </ul>
-<pre><code class="language-js">import $ from &quot;jQuery&quot;;
-var get = $.get;
+<pre><code class="language-js"><span class="hljs-keyword">import</span> $ <span class="hljs-keyword">from</span> <span class="hljs-string">"jQuery"</span>;
+<span class="hljs-keyword">var</span> get = $.get;
 
-// vs.
+<span class="hljs-comment">// vs.</span>
 
-import { get } from &quot;jQuery&quot;;
+<span class="hljs-keyword">import</span> { get } <span class="hljs-keyword">from</span> <span class="hljs-string">"jQuery"</span>;
 </code></pre>
 <p>RW: The first two serve different purposes</p>
-<pre><code class="language-js">var Foo = require(&quot;foo&quot;);
+<pre><code class="language-js"><span class="hljs-keyword">var</span> Foo = <span class="hljs-built_in">require</span>(<span class="hljs-string">"foo"</span>);
 
-// and
+<span class="hljs-comment">// and</span>
 
-var Foo = require(&quot;foo&quot;).Foo;
+<span class="hljs-keyword">var</span> Foo = <span class="hljs-built_in">require</span>(<span class="hljs-string">"foo"</span>).Foo;
 
-// The latter is the same as:
-var f = require(&quot;foo&quot;);
-var Foo = f.Foo;
+<span class="hljs-comment">// The latter is the same as:</span>
+<span class="hljs-keyword">var</span> f = <span class="hljs-built_in">require</span>(<span class="hljs-string">"foo"</span>);
+<span class="hljs-keyword">var</span> Foo = f.Foo;
 </code></pre>
 <p>Discussion about general understanding of node module design</p>
 <p>YK: The important point is that if the first is used where the second is needed, user will get an error immediately and will change to the correct form.</p>
@@ -89,13 +94,10 @@ var Foo = f.Foo;
 <p>AWB: Can do this at the Loader level</p>
 <p>BT: Confirms.</p>
 <p>CP: We've been able to prove that this works quite well.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-474"><h4 id="conclusionresolution-474">Conclusion/Resolution</h4></a><ul>
 <li>Revisit <code>module foo from &quot;...&quot;</code> (YK)</li>
 </ul>
-<h2>Reviewer sign up</h2>
-<h2>Revisiting: Initializer in for-in</h2>
-<p>AWB: New information:</p>
+<a href="#reviewer-sign-up"><h2 id="reviewer-sign-up">Reviewer sign up</h2></a><a href="#revisiting-initializer-in-for-in"><h2 id="revisiting-initializer-in-for-in">Revisiting: Initializer in for-in</h2></a><p>AWB: New information:</p>
 <p>OH: To clarify JSC encountered breakage in the syntax. Only case we’ve seen is (presumably) author changing their mind about type of loop, so we <em>no-op</em> the expression.  No execution at all.
 ...Unclear about what we’re saying about the let case. I would be opposed to leaking the redundant initialiser into for (let blah of/in …)
 ... Would be great to eventually nuke it.</p>
@@ -132,79 +134,77 @@ var Foo = f.Foo;
 ...Spec should reflect reality.</p>
 <p>WH: In favor of taking it out and seeing if we can get away with it. We can put it back in Annex B. The work to take it out is not wasted.</p>
 <p>BT: If all three browsers continue supporting, we agree to put it in the spec, at least in Annex B</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-475"><h4 id="conclusionresolution-475">Conclusion/Resolution</h4></a><ul>
 <li>Mozilla willing to ship a patch in nightly for experimentation</li>
 </ul>
-<h2>Revisiting: Generator Issues</h2>
-<p>(Jafar Husain)</p>
+<a href="#revisiting-generator-issues"><h2 id="revisiting-generator-issues">Revisiting: Generator Issues</h2></a><p>(Jafar Husain)</p>
 <p>Slides: <a href="https://github.com/rwaldron/tc39-notes/blob/master/es6/2014-04/Allowing-Generators-to-Compose-over-IO.pdf">Allowing-Generators-to-Compose-over-IO.pdf</a></p>
 <p>JH: Generators can't abstract over sync or async IO.</p>
 <p><strong>Two Ways to Iterate</strong></p>
-<pre><code class="language-js">var nums = function*() {
-  yield 1;
-  yield 2;
+<pre><code class="language-js"><span class="hljs-keyword">var</span> nums = <span class="hljs-function"><span class="hljs-keyword">function</span>*(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">yield</span> <span class="hljs-number">1</span>;
+  <span class="hljs-keyword">yield</span> <span class="hljs-number">2</span>;
 }
 </code></pre>
 <p><strong>Iterable</strong></p>
-<pre><code class="language-js">function Iterable(generatorFunction) {
-  this[@@iterator] = generatorFunction;
+<pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Iterable</span>(<span class="hljs-params">generatorFunction</span>) </span>{
+  <span class="hljs-keyword">this</span>[@@iterator] = generatorFunction;
 }
 </code></pre>
 <p><strong>Creating Iterables</strong></p>
-<pre><code class="language-js">let nums = new Iterable(function*() {
-  yield 1;
-  yield 2;
-  yield 3;
+<pre><code class="language-js"><span class="hljs-keyword">let</span> nums = <span class="hljs-keyword">new</span> Iterable(<span class="hljs-function"><span class="hljs-keyword">function</span>*(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">yield</span> <span class="hljs-number">1</span>;
+  <span class="hljs-keyword">yield</span> <span class="hljs-number">2</span>;
+  <span class="hljs-keyword">yield</span> <span class="hljs-number">3</span>;
 });
 </code></pre>
 <p><strong>Iterating Iterables</strong></p>
-<pre><code class="language-js">for(let x of nums()) {
-  console.log(x);
+<pre><code class="language-js"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> x <span class="hljs-keyword">of</span> nums()) {
+  <span class="hljs-built_in">console</span>.log(x);
 }
 
-//...becomes...
+<span class="hljs-comment">//...becomes...</span>
 
-let iterator = nums()[@@iterator],
+<span class="hljs-keyword">let</span> iterator = nums()[@@iterator],
   pair;
 
-while(!(pair = iterator.next()).done) {
-  console.log(pair.value);
+<span class="hljs-keyword">while</span>(!(pair = iterator.next()).done) {
+  <span class="hljs-built_in">console</span>.log(pair.value);
 }
 </code></pre>
 <p><strong>IO Streams as Iterables</strong></p>
-<pre><code class="language-js">function getLines(fileName) {
-  return new Iterable(function*() {
-    let reader = new SyncReader(fileName);
-    try {
-      while(!reader.eof) {
-        yield reader.readLine();
+<pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getLines</span>(<span class="hljs-params">fileName</span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Iterable(<span class="hljs-function"><span class="hljs-keyword">function</span>*(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">let</span> reader = <span class="hljs-keyword">new</span> SyncReader(fileName);
+    <span class="hljs-keyword">try</span> {
+      <span class="hljs-keyword">while</span>(!reader.eof) {
+        <span class="hljs-keyword">yield</span> reader.readLine();
       }
     }
-    finally {
+    <span class="hljs-keyword">finally</span> {
       reader.close();
     }
   })
 }
 </code></pre>
 <p><strong>Iterable Composition</strong></p>
-<pre><code class="language-js">Iterable.prototype.map = function(projection) {
-   let self = this;
-  return new Iterable(function*() {
-    for(let x of self) {
-      yield projection(x);
+<pre><code class="language-js">Iterable.prototype.map = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">projection</span>) </span>{
+   <span class="hljs-keyword">let</span> self = <span class="hljs-keyword">this</span>;
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Iterable(<span class="hljs-function"><span class="hljs-keyword">function</span>*(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> x <span class="hljs-keyword">of</span> self) {
+      <span class="hljs-keyword">yield</span> projection(x);
     }
   });
 };
 
-Iterable.prototype.takeWhile = function(predicate) {
-  let self = this;
-  return new Iterable(function*() {
-    for(let x of self) {
-      if (!predicate(x)) {
-        break;
+Iterable.prototype.takeWhile = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">predicate</span>) </span>{
+  <span class="hljs-keyword">let</span> self = <span class="hljs-keyword">this</span>;
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Iterable(<span class="hljs-function"><span class="hljs-keyword">function</span>*(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> x <span class="hljs-keyword">of</span> self) {
+      <span class="hljs-keyword">if</span> (!predicate(x)) {
+        <span class="hljs-keyword">break</span>;
       }
-      yield x;
+      <span class="hljs-keyword">yield</span> x;
     }
   });
 };
@@ -264,8 +264,7 @@ Iterable.prototype.takeWhile = function(predicate) {
 <p>AWB: We <em>must</em> come to a tentative conclusion</p>
 <p>JH: Confirm, let's try.</p>
 <p>MM: Agree with Allen</p>
-<h4>Plausible Solution:</h4>
-<p>MM:</p>
+<a href="#plausible-solution"><h4 id="plausible-solution">Plausible Solution:</h4></a><p>MM:</p>
 <ul>
 <li>continue to have iterators have an @@iterator, classified as iterables</li>
 <li>continue to have generators return an  iterator+</li>
@@ -289,14 +288,12 @@ Iterable.prototype.takeWhile = function(predicate) {
 <p>YK: Proposal: Jafar, Allen, Ben, Dave and Brendan need to work this out offline.</p>
 <p>MM: Any dissent from the proposal stated being presented to the champions and allow a decision to be made without further discussion.</p>
 <p>WH: Objects to this problem <em>not</em> being solved. Object to the status quo of doing nothing. Some solution (such as MM's above) must be found.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-476"><h4 id="conclusionresolution-476">Conclusion/Resolution</h4></a><ul>
 <li>Unanimous agreement to allow the champions, Allen Wirfs-Brock, Brendan Eich, Dave Herman, Andy Wingo, Jafar Husain, Ben Newman to solve this problem.</li>
 <li>Allen Wirfs-Brock to originate the email for discussion.</li>
 <li>Reference material: <a href="https://mail.mozilla.org/pipermail/es-discuss/2013-May/030683.html">https://mail.mozilla.org/pipermail/es-discuss/2013-May/030683.html</a></li>
 </ul>
-<h2>Decorators for ES7</h2>
-<p>(Yehuda Katz)</p>
+<a href="#decorators-for-es7"><h2 id="decorators-for-es7">Decorators for ES7</h2></a><p>(Yehuda Katz)</p>
 <p><a href="https://github.com/rwaldron/tc39-notes/raw/master/es6/2014-04/Decorators.pdf">Slides</a></p>
 <p>YK: Presenting aspects of common use cases not yet covered by ES6 <code>class</code>.</p>
 <p>Knockout.js example (compute the value of a property)</p>
@@ -308,11 +305,11 @@ Iterable.prototype.takeWhile = function(predicate) {
 <p>Angular example</p>
 <p>LH: (explanation) when I declare a class, I also want to register it with some other system</p>
 <p>ES6 Experiments: Angular</p>
-<pre><code class="language-js">@NgDirective('[ng-bind]')
-class NgBind {
+<pre><code class="language-js">@NgDirective(<span class="hljs-string">'[ng-bind]'</span>)
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NgBind</span> </span>{
   @Inject([Element])
-  constructor(element) {
-    this.element = element;
+  <span class="hljs-keyword">constructor</span>(element) {
+    <span class="hljs-keyword">this</span>.element = element;
   }
 }
 </code></pre>
@@ -320,24 +317,24 @@ class NgBind {
 <p>JH: Point out that this is inert meta data</p>
 <p>Userland Classes: Ember</p>
 <pre><code class="language-js">App.Person = Ember.Object.create({
-  firstName: null,
-  lastName: null,
-  fullName: Em.computed(function() {
-    return this.get('firstName') + ' ' + this.get('lastName');
-  }, 'firstName', 'lastName')
+  <span class="hljs-attr">firstName</span>: <span class="hljs-literal">null</span>,
+  <span class="hljs-attr">lastName</span>: <span class="hljs-literal">null</span>,
+  <span class="hljs-attr">fullName</span>: Em.computed(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'firstName'</span>) + <span class="hljs-string">' '</span> + <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'lastName'</span>);
+  }, <span class="hljs-string">'firstName'</span>, <span class="hljs-string">'lastName'</span>)
 });
 </code></pre>
 <p>ES6 Experiments: Ember</p>
-<pre><code class="language-js">class Person extends Ember.Object {
-  - dependsOn('firstName', 'lastName')
+<pre><code class="language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Ember</span>.<span class="hljs-title">Object</span> </span>{
+  - dependsOn(<span class="hljs-string">'firstName'</span>, <span class="hljs-string">'lastName'</span>)
   get fullName() {
-    return this.get('firstName') + ' ' + this.get('lastName');
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'firstName'</span>) + <span class="hljs-string">' '</span> + <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'lastName'</span>);
   }
 
-  - on('init')
-  - observes('fullName')
+  - on(<span class="hljs-string">'init'</span>)
+  - observes(<span class="hljs-string">'fullName'</span>)
   fullNameChanged() {
-    // ...deal with the change
+    <span class="hljs-comment">// ...deal with the change</span>
   }
 }
 </code></pre>
@@ -350,31 +347,31 @@ class NgBind {
 ...need slide.</li>
 </ul>
 <p>Property Decorators</p>
-<pre><code class="language-js">function readonly(prototype, name, descriptor) {
-  descriptor.writable = false;
-  return descriptor;
+<pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">readonly</span>(<span class="hljs-params">prototype, name, descriptor</span>) </span>{
+  descriptor.writable = <span class="hljs-literal">false</span>;
+  <span class="hljs-keyword">return</span> descriptor;
 }
 
-class PostComment extends HTMLElement {
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PostComment</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">HTMLElement</span> </span>{
   - readonly
-  - on('click')
+  - on(<span class="hljs-string">'click'</span>)
   clicked() {
 
   }
 
-  - observes('value')
+  - observes(<span class="hljs-string">'value'</span>)
   valueChanged() {
 
   }
 }
 </code></pre>
 <p>Close desugaring...</p>
-<pre><code class="language-js">// after PostComment declared
+<pre><code class="language-js"><span class="hljs-comment">// after PostComment declared</span>
 
-Object.defineProperty(PostComment.prototype, {
-  clicked: {
-    value: function() { ... },
-    writable: false
+<span class="hljs-built_in">Object</span>.defineProperty(PostComment.prototype, {
+  <span class="hljs-attr">clicked</span>: {
+    <span class="hljs-attr">value</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{ ... },
+    <span class="hljs-attr">writable</span>: <span class="hljs-literal">false</span>
   }
 });
 
@@ -382,16 +379,16 @@ Object.defineProperty(PostComment.prototype, {
 <p>MM: What order?</p>
 <p>YK: Bottom up</p>
 <p>Memoize</p>
-<pre><code class="language-js">function memoize(...dependencies) {
-  return function(prototype, name, descriptor) {
- // ... see slide for specifics
+<pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">memoize</span>(<span class="hljs-params">...dependencies</span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">prototype, name, descriptor</span>) </span>{
+ <span class="hljs-comment">// ... see slide for specifics</span>
   };
 }
 
-class {
-  - memoize('firstName', 'lastName')
+<span class="hljs-class"><span class="hljs-keyword">class</span> </span>{
+  - memoize(<span class="hljs-string">'firstName'</span>, <span class="hljs-string">'lastName'</span>)
   get fullName() {
-    return `${this.firstName} ${this.lastName}`;
+    <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-keyword">this</span>.firstName}</span> <span class="hljs-subst">${<span class="hljs-keyword">this</span>.lastName}</span>`</span>;
   }
 }
 </code></pre>
@@ -400,8 +397,8 @@ class {
 <p>YK: Yes, only providing the descriptor</p>
 <p>MM: Only the descriptor returned by the final annotation is used to install on the property.</p>
 <p>AWB: Example:</p>
-<pre><code class="language-js">class {
-  - dynamic(function() { ... })
+<pre><code class="language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> </span>{
+  - dynamic(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{ ... })
   boringMethod() {}
 }
 </code></pre>
@@ -426,20 +423,20 @@ class {
 MM: Overriding MemberOfLiteral definition?</p>
 <p>(Note: ClassMethodDefinition and MemberOfLiteral don't exist)</p>
 <p>More Custom Syntax</p>
-<pre><code class="language-js">class Article {
-  + hasMany('comment')
-  + belongsTo('user')
-  + attr('title')
-  + attr('author')
-  + attr('body')
+<pre><code class="language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Article</span> </span>{
+  + hasMany(<span class="hljs-string">'comment'</span>)
+  + belongsTo(<span class="hljs-string">'user'</span>)
+  + attr(<span class="hljs-string">'title'</span>)
+  + attr(<span class="hljs-string">'author'</span>)
+  + attr(<span class="hljs-string">'body'</span>)
 
-  constructor() {
+  <span class="hljs-keyword">constructor</span>() {
 
   }
 
-  - dependsOn('title', 'author')
+  - dependsOn(<span class="hljs-string">'title'</span>, <span class="hljs-string">'author'</span>)
   get byline() {
-    return `${this.title} by ${this.author}`;
+    <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-keyword">this</span>.title}</span> by <span class="hljs-subst">${<span class="hljs-keyword">this</span>.author}</span>`</span>;
   }
 }
 </code></pre>
@@ -450,19 +447,19 @@ MM: Overriding MemberOfLiteral definition?</p>
 <p>WH: How do you create prototype properties out of thin air?</p>
 <p>YK: Use the + form.</p>
 <p>WH: Then you could do this, right?</p>
-<pre><code class="language-js">class Article {
-  + hasMany('comment')
-  + belongsTo('user')
-  + attr('title')
-  + attr('author')
-  + attr('body')
+<pre><code class="language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Article</span> </span>{
+  + hasMany(<span class="hljs-string">'comment'</span>)
+  + belongsTo(<span class="hljs-string">'user'</span>)
+  + attr(<span class="hljs-string">'title'</span>)
+  + attr(<span class="hljs-string">'author'</span>)
+  + attr(<span class="hljs-string">'body'</span>)
 
-  - dependsOn('title', 'author')
+  - dependsOn(<span class="hljs-string">'title'</span>, <span class="hljs-string">'author'</span>)
   + generateMeAMethod
 
-  - dependsOn('title', 'author')
+  - dependsOn(<span class="hljs-string">'title'</span>, <span class="hljs-string">'author'</span>)
   get byline() {
-    return `${this.title} by ${this.author}`;
+    <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-keyword">this</span>.title}</span> by <span class="hljs-subst">${<span class="hljs-keyword">this</span>.author}</span>`</span>;
   }
 }
 </code></pre>
@@ -484,21 +481,17 @@ MM: Overriding MemberOfLiteral definition?</p>
 <p>MM: All basic descriptor manipulation could easily be pre-populated.</p>
 <p>YK/RW: configurable (sets configurable: true), nonconfigurable (sets configurable: false)</p>
 <p>LH: Encourage the Angular designers to bring forward their proposal as well.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-477"><h4 id="conclusionresolution-477">Conclusion/Resolution</h4></a><ul>
 <li>Start a strawman</li>
 <li>work together with others that have class syntax extension proposals</li>
 <li>consider other proposals</li>
 </ul>
-<h2>Ecma 402 Updates</h2>
-<p>AWB: updates need to be made to Ecma 402, but I dont have the time/bandwidth</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#ecma-402-updates"><h2 id="ecma-402-updates">Ecma 402 Updates</h2></a><p>AWB: updates need to be made to Ecma 402, but I dont have the time/bandwidth</p>
+<a href="#conclusionresolution-478"><h4 id="conclusionresolution-478">Conclusion/Resolution</h4></a><ul>
 <li>RW volunteers to attempt</li>
 <li>AWB will provide basic summary information</li>
 </ul>
-<h2>Preview of asnyc/await</h2>
-<p>(Luke Hoban)</p>
+<a href="#preview-of-asnycawait"><h2 id="preview-of-asnycawait">Preview of asnyc/await</h2></a><p>(Luke Hoban)</p>
 <p><a href="https://github.com/lukehoban/ecmascript-asyncawait/">https://github.com/lukehoban/ecmascript-asyncawait/</a></p>
 <p>A few updates since last time:</p>
 <ol>
@@ -526,15 +519,14 @@ MM: Overriding MemberOfLiteral definition?</p>
 <p>LH: Agreed - we'll remove that from the proposal.</p>
 <p>LH: Current proposal requires &quot;static async&quot; to be ordered that way for async methods.</p>
 <p>Several:  Sounds okay.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-479"><h4 id="conclusionresolution-479">Conclusion/Resolution</h4></a><ul>
 <li>&quot;await&quot; needs to be reserved in module context</li>
 <li>Keep async arrows, and keep the conservative grammar with [no line terminator] annotations</li>
 <li>Tentatively believe await at top level in modules should be okay.</li>
 </ul>
-<h2>Closing</h2>
-<p>JN: Want to thank Mozilla for hosting us and appreciation to Ecma for dinner last night.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#closing"><h2 id="closing">Closing</h2></a><p>JN: Want to thank Mozilla for hosting us and appreciation to Ecma for dinner last night.</p>
+<a href="#conclusionresolution-480"><h4 id="conclusionresolution-480">Conclusion/Resolution</h4></a><ul>
 <li>Unanimous agreement :)</li>
 </ul>
+
+</body>

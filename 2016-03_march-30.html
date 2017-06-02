@@ -1,20 +1,23 @@
 <!doctype html>
 <meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.6.0/github-markdown.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+
 <title>March 30th 2016 Meeting Notes</title>
+<body class="markdown-body">
 <p>March 30th 2016 Meeting Notes</p>
-<h2>Attendees</h2>
-<p>Dave Herman (DH), Michael Ficarra (MF), Jordan Harband (JHD), Adam Klein (AK), Mark Miller (MM), Brian Terlson (BT), Domenic Denicola (DD), Brad Nelson (BNN), JF Bastien (JFB), Joe Lencioni, Sebastian Markbage, Jeff Morrison, Kevin Smith (KS), Jafar Husain (JH), Lars Hansen (LHN), Saam Barati, Keith Miller, Michael Saboff, Eric Ferraiuolo (EF),Eric Faust (FST), Chip Morningstar (CM), Dean Tribble (DT), Shu-yu Guo (SG), Tim Disney, Waldemar Horwat (WH), Bert Belder, Peter Jensen, Daniel Ehrenberg (DE), Caridy Patiño, Diego Ferreiro Val, Jean Fraucois Paradis, Shelby Hubick, Leo Balter (LB), Misko Hevery, Allen Wirfs-Brock (AWB), Kevin Gibbons (KG)</p>
-<h2>Length argument normalization for TypedArrays, ArrayBuffer and DataView constructors</h2>
-<p>slide presentation by Leo Balter</p>
+<a href="#attendees"><h2 id="attendees">Attendees</h2></a><p>Dave Herman (DH), Michael Ficarra (MF), Jordan Harband (JHD), Adam Klein (AK), Mark Miller (MM), Brian Terlson (BT), Domenic Denicola (DD), Brad Nelson (BNN), JF Bastien (JFB), Joe Lencioni, Sebastian Markbage, Jeff Morrison, Kevin Smith (KS), Jafar Husain (JH), Lars Hansen (LHN), Saam Barati, Keith Miller, Michael Saboff, Eric Ferraiuolo (EF),Eric Faust (FST), Chip Morningstar (CM), Dean Tribble (DT), Shu-yu Guo (SG), Tim Disney, Waldemar Horwat (WH), Bert Belder, Peter Jensen, Daniel Ehrenberg (DE), Caridy Patiño, Diego Ferreiro Val, Jean Fraucois Paradis, Shelby Hubick, Leo Balter (LB), Misko Hevery, Allen Wirfs-Brock (AWB), Kevin Gibbons (KG)</p>
+<a href="#length-argument-normalization-for-typedarrays-arraybuffer-and-dataview-constructors"><h2 id="length-argument-normalization-for-typedarrays-arraybuffer-and-dataview-constructors">Length argument normalization for TypedArrays, ArrayBuffer and DataView constructors</h2></a><p>slide presentation by Leo Balter</p>
 <p>AWB: Explained the background for the weirdness here. Sources of odd and inconsistent type array index and length handling spec behavior in ES6: Kronos spec, what browsers actually do, input from implementors, legacy compatibility.</p>
 <p>DD: Current implementation status seems like the best guide here</p>
 <p>DE: But there might be things we could tighten down, and things we can't (like requiring integer indices)</p>
 <p>LB: Do you want to see more work at this meeting?</p>
 <p>AWB: Doing it on a github issue might be sufficient, the important thing is to think deeply about the issues</p>
-<h4>Conclusion/resolution</h4>
-<p>LB: to work out details on a github issue.</p>
-<h2>Duplicate sloppy mode function in block web compatibility fix</h2>
-<p>Shu-yu Guo and Daniel Ehrenberg presenting slides: <a href="https://docs.google.com/presentation/d/1E_LM_X4_EMEhcmfiA_AHJ4zw0aKDM8DBxqFOmNsiMHig/edit#slide=id.p">https://docs.google.com/presentation/d/1E_LM_X4_EMEhcmfiA_AHJ4zw0aKDM8DBxqFOmNsiMHig/edit#slide=id.p</a></p>
+<a href="#conclusionresolution-198"><h4 id="conclusionresolution-198">Conclusion/resolution</h4></a><p>LB: to work out details on a github issue.</p>
+<a href="#duplicate-sloppy-mode-function-in-block-web-compatibility-fix"><h2 id="duplicate-sloppy-mode-function-in-block-web-compatibility-fix">Duplicate sloppy mode function in block web compatibility fix</h2></a><p>Shu-yu Guo and Daniel Ehrenberg presenting slides: <a href="https://docs.google.com/presentation/d/1E_LM_X4_EMEhcmfiA_AHJ4zw0aKDM8DBxqFOmNsiMHig/edit#slide=id.p">https://docs.google.com/presentation/d/1E_LM_X4_EMEhcmfiA_AHJ4zw0aKDM8DBxqFOmNsiMHig/edit#slide=id.p</a></p>
 <p>AWB: The semantics in the block have to match ES6, so whatever we do to solve [&quot;Problem #2&quot;] must follow ES6.</p>
 <p>MM: Which browsers have shipped the Annex B behavior?</p>
 <p>SG: Chrome and Edge, though Edge has other weirdness.</p>
@@ -42,21 +45,17 @@
 <p>SG: It sounds like there is consensus on repairing the multiple declarations case, but maybe not on making any changes to the spec with regard to Problem #2</p>
 <p>WH: Would like to understand exactly which function will be chosen when reparing the multiple declarations issue. Want to make sure that the proposal doesn't make changes beyond what's needed to support intersection semantics.</p>
 <p>[whiteboarding ensues]</p>
-<h4>Conclusion/resolution</h4>
-<ul>
+<a href="#conclusionresolution-199"><h4 id="conclusionresolution-199">Conclusion/resolution</h4></a><ul>
 <li>Fix #1 (multiple declarations)</li>
 <li>Leave #2 as-is (f = 42)</li>
 <li>DE: to push forward his pull request</li>
 </ul>
-<h2>Make RegExps more consistent in their treatment of flags</h2>
-<p>Michael Saboff and Daniel Ehrenberg presenting slides: <a href="https://docs.google.com/presentation/d/1BZiysQL4YMXgexwTmcZTFOD0nxGSAGz7PbzAotoDiGw/edit#slide=id.g127bcf3e41_1_0">https://docs.google.com/presentation/d/1BZiysQL4YMXgexwTmcZTFOD0nxGSAGz7PbzAotoDiGw/edit#slide=id.g127bcf3e41_1_0</a></p>
+<a href="#make-regexps-more-consistent-in-their-treatment-of-flags"><h2 id="make-regexps-more-consistent-in-their-treatment-of-flags">Make RegExps more consistent in their treatment of flags</h2></a><p>Michael Saboff and Daniel Ehrenberg presenting slides: <a href="https://docs.google.com/presentation/d/1BZiysQL4YMXgexwTmcZTFOD0nxGSAGz7PbzAotoDiGw/edit#slide=id.g127bcf3e41_1_0">https://docs.google.com/presentation/d/1BZiysQL4YMXgexwTmcZTFOD0nxGSAGz7PbzAotoDiGw/edit#slide=id.g127bcf3e41_1_0</a></p>
 <p>AWB: I think this is uncontroversial</p>
 <p>WH: Do it!</p>
-<h4>Conclusion/resolution</h4>
-<p>Exec will read from [[OriginalFlags]] for all flags, including global and sticky</p>
+<a href="#conclusionresolution-200"><h4 id="conclusionresolution-200">Conclusion/resolution</h4></a><p>Exec will read from [[OriginalFlags]] for all flags, including global and sticky</p>
 <p>DE: will push forward his pull request</p>
-<h2>RegExp feature testing and web compat</h2>
-<p>Daniel Ehrenberg and Michael Saboff presenting slides: <a href="https://docs.google.com/presentation/d/1BZiysQL4YMXgexwTmcZTFOD0nxGSAGz7PbzAotoDiGw/edit?pref=2&amp;pli=1#slide=id.g127bcf3e41_1_10">https://docs.google.com/presentation/d/1BZiysQL4YMXgexwTmcZTFOD0nxGSAGz7PbzAotoDiGw/edit?pref=2&amp;pli=1#slide=id.g127bcf3e41_1_10</a></p>
+<a href="#regexp-feature-testing-and-web-compat"><h2 id="regexp-feature-testing-and-web-compat">RegExp feature testing and web compat</h2></a><p>Daniel Ehrenberg and Michael Saboff presenting slides: <a href="https://docs.google.com/presentation/d/1BZiysQL4YMXgexwTmcZTFOD0nxGSAGz7PbzAotoDiGw/edit?pref=2&amp;pli=1#slide=id.g127bcf3e41_1_10">https://docs.google.com/presentation/d/1BZiysQL4YMXgexwTmcZTFOD0nxGSAGz7PbzAotoDiGw/edit?pref=2&amp;pli=1#slide=id.g127bcf3e41_1_10</a></p>
 <p>AWB: Our policy prototypes-as-regular objects so far was that we'd revert if we ran into compatibility issues.</p>
 <p>MM: Unless there's unfreezeable hidden state on it, as there is on Date objects</p>
 <p>MM: A workaround would be to revert RegExp.prototype to a RegExp, and make RegExp.prototype.compile throw if the receiver is frozen</p>
@@ -70,10 +69,8 @@
 <p>AWB: If you want to detect sticky, you should create a RegExp with /y</p>
 <p>AK: The spec for toString doesn't check [[RegExpMatcher]] directly, it delegates to the 'source' getter</p>
 <p>JHD: So we should just make 'source' behave the same way as everything else, and fixing toString will fall out of that</p>
-<h4>Conclusion/resolution</h4>
-<p>DE: will push forward the pull request</p>
-<h2>Private fields</h2>
-<p>Kevin Smith presenting slides (TODO(KS): Please add slides here)</p>
+<a href="#conclusionresolution-201"><h4 id="conclusionresolution-201">Conclusion/resolution</h4></a><p>DE: will push forward the pull request</p>
+<a href="#private-fields"><h2 id="private-fields">Private fields</h2></a><p>Kevin Smith presenting slides (TODO(KS): Please add slides here)</p>
 <p>KS: Note that &quot;static shape&quot; is not a design goal; we'll get to that.</p>
 <p>KS: compare(other) demonstrates how these are not instance-private fields, but class-private fields</p>
 <p>WH: what if an instance of class A didn't have a value for the class-private field?</p>
@@ -265,21 +262,16 @@
 <p>DH: this is a great place to be for stage 1.</p>
 <p>AWB: I don't want to send a message that this proposal is what private state will look like</p>
 <p>DH: that's what stage 1 means.</p>
-<h4>Conclusion/resolution</h4>
-<h2>Revisiting Function.prototype.toString</h2>
-<p>MF: presenting the changes from yesterday</p>
-<h4>Conclusion/resolution</h4>
-<p>Approved to proceed to stage 3</p>
-<h2>Map/Set to JSON</h2>
-<p>JHD</p>
+<a href="#conclusionresolution-202"><h4 id="conclusionresolution-202">Conclusion/resolution</h4></a><a href="#revisiting-functionprototypetostring"><h2 id="revisiting-functionprototypetostring">Revisiting Function.prototype.toString</h2></a><p>MF: presenting the changes from yesterday</p>
+<a href="#conclusionresolution-203"><h4 id="conclusionresolution-203">Conclusion/resolution</h4></a><p>Approved to proceed to stage 3</p>
+<a href="#mapset-to-json"><h2 id="mapset-to-json">Map/Set to JSON</h2></a><p>JHD</p>
 <p>The proposal is to add the Map/Set a function so the toJson is useful</p>
 <p>get the iterator on the receiver, create an array from it, and return it.</p>
 <p>Serializes a nmap as an array of entries.  It's equivalent to spreading the map to an array.</p>
 <p>The proposal is linked form the agenda.</p>
 <p>AWB: How confident are we that this is right thing, since users can add it themselves</p>
 <p>MM: They could also create a replacer</p>
-<h2>Draft Proposed Frozen Realm API</h2>
-<p>Chip Morningstar presenting slides <a href="https://github.com/FUDCo/proposal-frozen-realms/blob/master/FrozenRealmsPresentation-2016-03-30.pdf">https://github.com/FUDCo/proposal-frozen-realms/blob/master/FrozenRealmsPresentation-2016-03-30.pdf</a></p>
+<a href="#draft-proposed-frozen-realm-api"><h2 id="draft-proposed-frozen-realm-api">Draft Proposed Frozen Realm API</h2></a><p>Chip Morningstar presenting slides <a href="https://github.com/FUDCo/proposal-frozen-realms/blob/master/FrozenRealmsPresentation-2016-03-30.pdf">https://github.com/FUDCo/proposal-frozen-realms/blob/master/FrozenRealmsPresentation-2016-03-30.pdf</a></p>
 <p>DH: [discussing the api] the 'endowments' argument of realm.spawn() doesn't seem essential to the proposal</p>
 <p>CM: Yes, it's a convenience. The idea is that you might want to pass some useful things to the new realm.</p>
 <p>WH: Spawn lets you install shared objects in multiple subrealms; eval can't do that because there is nothing to latch onto.</p>
@@ -440,6 +432,7 @@
 <p>WH: We should discuss Realms before bringing them to Stage 1, but it's OK for this proposal to be at stage 1</p>
 <p>DH: We could back off Realms to Stage 0</p>
 <p>WH: I want a presentation</p>
-<h4>Conclusion/resolution</h4>
-<p>Frozen realms is stage 1, Realms is Stage 0</p>
+<a href="#conclusionresolution-204"><h4 id="conclusionresolution-204">Conclusion/resolution</h4></a><p>Frozen realms is stage 1, Realms is Stage 0</p>
 <p>DH: promises to present on Realms soon</p>
+
+</body>

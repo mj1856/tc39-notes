@@ -1,21 +1,22 @@
 <!doctype html>
 <meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.6.0/github-markdown.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+
 <title>April 8 2014 Meeting Notes</title>
-<h1>April 8 2014 Meeting Notes</h1>
-<p>Doug Crockford (DC), Brian Terleson (BT), Luke Hoban (LH), Dmitry Lomov (DL), Waldemar Horwat (WH), Allen Wirfs-Brock (AWB), John Neumann (JN), Rick Hudson (RH), Rick Waldron (RW), Eric Ferraiuolo (EF), Jafar Husain (JH), Jeff Morrison (JM), Sung-Jae Lee (SJL), Seo-Young Hwang, Mark Honenberg (MH), Caridy Patino (CP), Yehuda Katz (YK), Niko Matsakis (NM), Ben Newman (BN), Filip Pizlo (FP), Satish Chondra (SC), Domenic Denicola (DD), Mark Miller (MM)</p>
+<body class="markdown-body">
+<a href="#april-8-2014-meeting-notes"><h1 id="april-8-2014-meeting-notes">April 8 2014 Meeting Notes</h1></a><p>Doug Crockford (DC), Brian Terleson (BT), Luke Hoban (LH), Dmitry Lomov (DL), Waldemar Horwat (WH), Allen Wirfs-Brock (AWB), John Neumann (JN), Rick Hudson (RH), Rick Waldron (RW), Eric Ferraiuolo (EF), Jafar Husain (JH), Jeff Morrison (JM), Sung-Jae Lee (SJL), Seo-Young Hwang, Mark Honenberg (MH), Caridy Patino (CP), Yehuda Katz (YK), Niko Matsakis (NM), Ben Newman (BN), Filip Pizlo (FP), Satish Chondra (SC), Domenic Denicola (DD), Mark Miller (MM)</p>
 <p>(one late arrival, need name)</p>
-<h2>Welcome</h2>
-<p>JN: (open remarks)</p>
+<a href="#welcome"><h2 id="welcome">Welcome</h2></a><p>JN: (open remarks)</p>
 <p>AWB: logistics</p>
-<h2>Introductions</h2>
-<p>See attendee list</p>
-<h2>Agenda</h2>
-<p><a href="https://github.com/tc39/agendas/blob/master/2014/04.md">https://github.com/tc39/agendas/blob/master/2014/04.md</a></p>
+<a href="#introductions"><h2 id="introductions">Introductions</h2></a><p>See attendee list</p>
+<a href="#agenda"><h2 id="agenda">Agenda</h2></a><p><a href="https://github.com/tc39/agendas/blob/master/2014/04.md">https://github.com/tc39/agendas/blob/master/2014/04.md</a></p>
 <p>JN: Agenda approved with changes.</p>
-<h2>Minutes</h2>
-<p>JN: Approval of minutes from Jan 2014, Ecma document 007</p>
-<h2>4.1 Review Latest Spec Draft</h2>
-<p>(Allen Wirfs-Brock)</p>
+<a href="#minutes"><h2 id="minutes">Minutes</h2></a><p>JN: Approval of minutes from Jan 2014, Ecma document 007</p>
+<a href="#41-review-latest-spec-draft"><h2 id="41-review-latest-spec-draft">4.1 Review Latest Spec Draft</h2></a><p>(Allen Wirfs-Brock)</p>
 <p>Slides: <a href="https://github.com/rwaldron/tc39-notes/blob/master/es6/2014-04/April-meeting-status-ES6-spec.pdf">April-meeting-status-ES6-spec.pdf</a></p>
 <p>AWB: Updates to formatting, etc.
 Summary of changes: <a href="http://wiki.ecmascript.org/doku.php?id=harmony:specification_drafts#august_23_2013_draft_rev_17">http://wiki.ecmascript.org/doku.php?id=harmony:specification_drafts#august_23_2013_draft_rev_17</a></p>
@@ -45,13 +46,12 @@ AWB: Yes, that's invisible. Went back and forth about whether to express such op
 <li>Differing recolltions on January discussion</li>
 <li>Most compelling reason: creates unnecessary difference between generator and manual implementaion of equivalent iterators.</li>
 </ul>
-<h4>4.2 Conclusion/Resolution</h4>
-<ul>
+<a href="#42-conclusionresolution-461"><h4 id="42-conclusionresolution-461">4.2 Conclusion/Resolution</h4></a><ul>
 <li>removal of the thrown exception when a value is passed to next() for a newborn generator</li>
 <li>further discussion to be had by Ben Newman and Dave Herman re: what to do with that value.</li>
 </ul>
 <p>AWB: (continuing)</p>
-<pre><code class="language-js">Array.from({0: 0, 4:4, length: 5});
+<pre><code class="language-js"><span class="hljs-built_in">Array</span>.from({<span class="hljs-number">0</span>: <span class="hljs-number">0</span>, <span class="hljs-number">4</span>:<span class="hljs-number">4</span>, <span class="hljs-attr">length</span>: <span class="hljs-number">5</span>});
 </code></pre>
 <p>... didn't produce a sparse array. Changed in Rev23.</p>
 <p>Current spec says: in no way can <code>Array.from</code> produce a sparse array.</p>
@@ -106,11 +106,10 @@ AWB: Yes, that's invisible. Went back and forth about whether to express such op
 <p>LH: This will be helpful</p>
 <p>EF: (to Brian) you're presenting implementation report?</p>
 <p>BT: No, just feedback from TypeScript</p>
-<h3>Open Issues</h3>
-<p>AWB: for of/in, initialization expression scoping?</p>
+<a href="#open-issues"><h3 id="open-issues">Open Issues</h3></a><p>AWB: for of/in, initialization expression scoping?</p>
 <pre><code>{
-  let x = [0, 1];
-  for (let x of x) console.log(x);
+  let x = [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>]<span class="hljs-comment">;</span>
+  for (<span class="hljs-name"><span class="hljs-builtin-name">let</span></span> x of x) console.log(<span class="hljs-name">x</span>)<span class="hljs-comment">;</span>
 }
 </code></pre>
 <p>WH: Wouldn't it be the same as saying <code>let x = x</code>?</p>
@@ -136,16 +135,14 @@ AWB: Yes, that's invisible. Went back and forth about whether to express such op
 <p>AWB: We need a consistent approach
 ... Already have this extra scope</p>
 <p>AWB: Need to go back, we may initialize that outer binding and maybe we shouldn't</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-462"><h4 id="conclusionresolution-462">Conclusion/Resolution</h4></a><ul>
 <li>Be consistent</li>
 <li>Look at the initialization scope and be sure to intentionally <em>never</em> initialize the for bindings in that scope</li>
 <li>Solution to open issue: extra scope with uninitialized x. Throws TDZ error</li>
 </ul>
-<h3>var hoisting and catch parameters</h3>
-<p>AWB:</p>
-<pre><code class="language-js">catch (x) {
-  var x = 42;
+<a href="#var-hoisting-and-catch-parameters"><h3 id="var-hoisting-and-catch-parameters">var hoisting and catch parameters</h3></a><p>AWB:</p>
+<pre><code class="language-js"><span class="hljs-keyword">catch</span> (x) {
+  <span class="hljs-keyword">var</span> x = <span class="hljs-number">42</span>;
 }
 </code></pre>
 <p>Discussion about the existance of this code in real world.</p>
@@ -164,8 +161,8 @@ AWB: Yes, that's invisible. Went back and forth about whether to express such op
 <p>MM: Ok, no issue then.</p>
 <p>Agreement that browser implementation will lead and others will follow for compatibility.</p>
 <p>YK: Also need to make sure that this is not an error:</p>
-<pre><code class="language-js">catch(x) {
-  function x() {
+<pre><code class="language-js"><span class="hljs-keyword">catch</span>(x) {
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">x</span>(<span class="hljs-params"></span>) </span>{
   }
 }
 </code></pre>
@@ -173,8 +170,7 @@ AWB: Yes, that's invisible. Went back and forth about whether to express such op
 <p>WH: Any reason for us to believe this exists in the wild?</p>
 <p>BT: Looked for this pattern, with no findings, but absence in top 1k doesn't mean non-existence.</p>
 <p>WH: Disallow this and see if there is any pushback.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-463"><h4 id="conclusionresolution-463">Conclusion/Resolution</h4></a><ul>
 <li>Keep the catch as a <code>let</code> binding, but make it not an error in Annex B, just for <code>catch</code> (no other)</li>
 <li>If redeclaration with <code>let</code> or <code>const</code> is still a redeclaration error (this is no change)</li>
 <li>Continue to disallow function declaration in catch</li>
@@ -182,14 +178,13 @@ AWB: Yes, that's invisible. Went back and forth about whether to express such op
 <p>MM: This could only exist in non-strict code.</p>
 <p>YK: The same behaviour as:</p>
 <pre><code class="language-js">{
-let x;
-let x;
-function x() {}
+<span class="hljs-keyword">let</span> x;
+<span class="hljs-keyword">let</span> x;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">x</span>(<span class="hljs-params"></span>) </span>{}
 }
 </code></pre>
 <p>Confirm.</p>
-<h2>Presentation by Samsung Representatives</h2>
-<p>Slides: <a href="https://github.com/rwaldron/tc39-notes/blob/master/es6/2014-04/ecma-tc39-talk-v1.0.pdf">ecma-tc39-talk-v1.0.pdf</a></p>
+<a href="#presentation-by-samsung-representatives"><h2 id="presentation-by-samsung-representatives">Presentation by Samsung Representatives</h2></a><p>Slides: <a href="https://github.com/rwaldron/tc39-notes/blob/master/es6/2014-04/ecma-tc39-talk-v1.0.pdf">ecma-tc39-talk-v1.0.pdf</a></p>
 <p>Presentation focus on intent of committee participation</p>
 <ul>
 <li>JS on wearable devices</li>
@@ -224,8 +219,7 @@ function x() {}
 <p>LH: It's important to consider what are you willing to trade?</p>
 <p>Mixed discussion about ES versions that might be considered subsets themselves.</p>
 <p>AWB: There is clearly concern here, but it would be valuable to have you included and there are people here that are interested in small device platforms.</p>
-<h2>[[SetPrototypeOf]] circularity invariant</h2>
-<p>(Allen Wirfs-Brock)</p>
+<a href="#setprototypeof-circularity-invariant"><h2 id="setprototypeof-circularity-invariant">[[SetPrototypeOf]] circularity invariant</h2></a><p>(Allen Wirfs-Brock)</p>
 <ul>
 <li>If Proxy involved, impossible to enforce on prototype chain</li>
 <li>Eliminate the invariant?</li>
@@ -247,8 +241,7 @@ function x() {}
 <p>NM: The more user code we can get out of the prototype look up, the better.</p>
 <p>AWB: Ask Tom about intervening when user sets prototype</p>
 <p>YK/MM: Agree.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-464"><h4 id="conclusionresolution-464">Conclusion/Resolution</h4></a><ul>
 <li>Prevent proxy cycles. If the target is a proxy, the proxy target prototype records what it thinks the proxy prototype is, and returns the targets protototype and setPrototype is never called</li>
 <li>Whenever you change a prototype, you run a circulartity check immediately.</li>
 </ul>
@@ -264,9 +257,8 @@ function x() {}
 <p>YK: Proxy is the only way to implement exotic behaviour in user code.</p>
 <p>MM: Too late to draw the line about what prototypes can be assigned a Proxy.</p>
 <p>(This addressed agenda item 4.9)</p>
-<h2>Promise then issue</h2>
-<pre><code class="language-js">p.then(42, &quot;43&quot;)
-  .then(false, new Map);
+<a href="#promise-then-issue"><h2 id="promise-then-issue">Promise then issue</h2></a><pre><code class="language-js">p.then(<span class="hljs-number">42</span>, <span class="hljs-string">"43"</span>)
+  .then(<span class="hljs-literal">false</span>, <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>);
 </code></pre>
 <ul>
 <li>Error or default argument values if actual argument is not callable?</li>
@@ -359,7 +351,7 @@ Here's an example:</p>
 <p>Discussion about IDL optional function vs. mandatory function</p>
 <p>MM: Recalling that originally, no part of Promise.then executed synchronously.
 Case in concern:</p>
-<pre><code class="language-js">Promise.resolve(instanceOfSubclass);
+<pre><code class="language-js"><span class="hljs-built_in">Promise</span>.resolve(instanceOfSubclass);
 </code></pre>
 <p>DD: returns a <code>Promise</code></p>
 <p>MM: How does <code>Promise.resolve()</code> handle <code>instanceOfSubclass</code></p>
@@ -395,16 +387,14 @@ preserved this safety property.</p>
 ... p.then(42)? Doesn't matter. It's a minor corner case (we should go with what programmers expect)</p>
 <p>The decision for how to handle this non-callable case could inform all cases that expect functions</p>
 <p>MM/WH: Don't really like the silently tolerant behaviour in general. Want the general precedent to be to throw errors when calling something that can't be called, but willing to make an exception in this case due to the established library usage.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-465"><h4 id="conclusionresolution-465">Conclusion/Resolution</h4></a><ul>
 <li>w/r to .then, respect libraries: no error.</li>
 <li>do not adopt this as a principle for non-callables passed where callables are expected, the general principal: if something is neither a callable or undefined, indicate an error.</li>
 </ul>
 <p>DD: Optional callable vs. required callable. There is spec text that matches neither of the consequents.</p>
 <p>?: Example is [].map(nonCallable). If you pre-check, this errors. If you &quot;just call it&quot;, this does not error (since it never gets called.)</p>
 <p>MM: Per the principle defined, you'd simply check if the argument is defined, if it is, call it.</p>
-<h2>@@iterator for arguments object</h2>
-<p>AWB:</p>
+<a href="#iterator-for-arguments-object"><h2 id="iterator-for-arguments-object">@@iterator for arguments object</h2></a><p>AWB:</p>
 <ul>
 <li>Own Property?</li>
 <li>Or should introduce a prototype object to contain it?</li>
@@ -429,20 +419,18 @@ preserved this safety property.</p>
 <p>RW: Same.</p>
 <p>JH: Ideally the @@iterator is on a prototype to avoid the allocation costs.</p>
 <p>YK: Implementations can optimize.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-466"><h4 id="conclusionresolution-466">Conclusion/Resolution</h4></a><ul>
 <li>@@iterator on arguments object</li>
 <li>specified as an own property (no creation of exposed Arguments.prototype)</li>
 <li>Updated: <a href="https://bugs.ecmascript.org/show_bug.cgi?id=1114">https://bugs.ecmascript.org/show_bug.cgi?id=1114</a></li>
 </ul>
-<h2>Default parameters</h2>
-<p>(Brian)</p>
+<a href="#default-parameters"><h2 id="default-parameters">Default parameters</h2></a><p>(Brian)</p>
 <p>BT:</p>
-<pre><code class="language-js">function f(a = 1) {
-  console.log(a, arguments[0]); // 1, undefined ?
+<pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params">a = <span class="hljs-number">1</span></span>) </span>{
+  <span class="hljs-built_in">console</span>.log(a, <span class="hljs-built_in">arguments</span>[<span class="hljs-number">0</span>]); <span class="hljs-comment">// 1, undefined ?</span>
 }
 
-f(undefined);
+f(<span class="hljs-literal">undefined</span>);
 </code></pre>
 <p>BN: That's consistent with the difference between arguments and parameters.</p>
 <p>BT: If a default or rest param, you get non-mapped arguments.</p>
@@ -450,13 +438,11 @@ f(undefined);
 <p>BT: Always based on what is <em>passed</em></p>
 <p>RW: There is a rule that was created, which is relevant to this discussion: <a href="https://github.com/rwaldron/tc39-notes/blob/6d88efa7c4eba2d7a8b6fd5801f2415c2f29c94c/es6/2013-07/july-25.md#consensusresolution">https://github.com/rwaldron/tc39-notes/blob/6d88efa7c4eba2d7a8b6fd5801f2415c2f29c94c/es6/2013-07/july-25.md#consensusresolution</a></p>
 <p>MM: Avoidance of micromodes if possible. (Mark, can you fill this in? It was re: craziness)</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-467"><h4 id="conclusionresolution-467">Conclusion/Resolution</h4></a><ul>
 <li>An argument list that only has identifiers in sloppy mode has mapped arguments object. ALL other arguments objects (ie. any that contain default, destructuring, or rest, or those in strict mode)  don't map.</li>
 </ul>
-<h2>Initializer in for-in</h2>
-<p>AWB:</p>
-<pre><code class="language-js">for (var x = &quot;nothing&quot; in foo) { ... }
+<a href="#initializer-in-for-in"><h2 id="initializer-in-for-in">Initializer in for-in</h2></a><p>AWB:</p>
+<pre><code class="language-js"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> x = <span class="hljs-string">"nothing"</span> <span class="hljs-keyword">in</span> foo) { ... }
 </code></pre>
 <p>Previously convinced that this was safe to remove. Apple implementors reported breakage caused by removing this.</p>
 <p>MH: (confirms) Have encountered sites that have this code.</p>
@@ -466,13 +452,11 @@ f(undefined);
 <p>MM: Except for the side effects of the expression</p>
 <p>AWB: So basically it was a matter of seeing if we can</p>
 <p>YK: As a rule, we should err on the side of caution when faced with these minor changes that create incompatibilities once we find real-world problems.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-468"><h4 id="conclusionresolution-468">Conclusion/Resolution</h4></a><ul>
 <li>Punt on a decision until May</li>
 </ul>
-<h2>Function &quot;as&quot; Block</h2>
-<p>BT:</p>
-<pre><code class="language-js">if (true) function f() {
+<a href="#function-as-block"><h2 id="function-as-block">Function &quot;as&quot; Block</h2></a><p>BT:</p>
+<pre><code class="language-js"><span class="hljs-keyword">if</span> (<span class="hljs-literal">true</span>) <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params"></span>) </span>{
 
 }
 </code></pre>
@@ -487,12 +471,10 @@ f(undefined);
 <p>MM: Not seeing in the wild? Back off</p>
 <p>YK: If we can get implementors to agree to make this an error, then we'll specify it as such</p>
 <p>AWB: note: file bug to have this tested in Firefox</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-469"><h4 id="conclusionresolution-469">Conclusion/Resolution</h4></a><ul>
 <li>Allen will file bug to have this tested in Firefox</li>
 </ul>
-<h2>Name property of bound functions and toMethod functions</h2>
-<p>AWB:</p>
+<a href="#name-property-of-bound-functions-and-tomethod-functions"><h2 id="name-property-of-bound-functions-and-tomethod-functions">Name property of bound functions and toMethod functions</h2></a><p>AWB:</p>
 <ul>
 <li>Currently neither have an own name property</li>
 <li>Should either or both get one?</li>
@@ -509,8 +491,7 @@ f(undefined);
 <p>Reviewing toMethod</p>
 <p>MM: What about function properties named &quot;get foo&quot;?
 MM: I guess this is ok. These names are not high-integrity -- mostly intended for debugging info.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-470"><h4 id="conclusionresolution-470">Conclusion/Resolution</h4></a><ul>
 <li>toMethod: no prefix qualifier</li>
 <li>Bound functions: &quot;bound foo&quot;</li>
 <li>Adopt uniformly:
@@ -524,32 +505,28 @@ MM: I guess this is ok. These names are not high-integrity -- mostly intended fo
 <p>AWB: Concerned about backwards injection attacks.</p>
 <p>MM: Too late to
 (AWB: I don't recall what this was about)</p>
-<h2>new %TypedArray%(iterable)</h2>
-<ul>
+<a href="#new-%typedarray%iterable"><h2 id="new-%typedarray%iterable">new %TypedArray%(iterable)</h2></a><ul>
 <li>Currently constructor doesn't recognize iterables, but requires an array like.  This is the behavior inherited from the Khronos spec.</li>
 <li>Need to use:</li>
 <li>%TypedArray%.from(iterable)</li>
 <li>Should constructor work like %TypedArray%.from?</li>
 </ul>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-471"><h4 id="conclusionresolution-471">Conclusion/Resolution</h4></a><ul>
 <li>Make all %TypedArray% constructors accept iterable</li>
 </ul>
-<h2>new %TypedArray%(&quot;2&quot;)</h2>
-<p>DL: %TypedArray% actually coerces this to a number first to create a typed array with length 2. The previous consensus would have to occur <em>after</em> the coercion step to preserve the expected behaviour.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#new-%typedarray%2"><h2 id="new-%typedarray%2">new %TypedArray%(&quot;2&quot;)</h2></a><p>DL: %TypedArray% actually coerces this to a number first to create a typed array with length 2. The previous consensus would have to occur <em>after</em> the coercion step to preserve the expected behaviour.</p>
+<a href="#conclusionresolution-472"><h4 id="conclusionresolution-472">Conclusion/Resolution</h4></a><ul>
 <li>Do string coercion to number before handling iterable to avoid mishandling a string argument.</li>
 </ul>
-<h2>Map Constructor and Duplicate Keys</h2>
-<pre><code class="language-js">let map = new Map([[&quot;x&quot;, 1], [&quot;x&quot;, 2]]);
+<a href="#map-constructor-and-duplicate-keys"><h2 id="map-constructor-and-duplicate-keys">Map Constructor and Duplicate Keys</h2></a><pre><code class="language-js"><span class="hljs-keyword">let</span> map = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>([[<span class="hljs-string">"x"</span>, <span class="hljs-number">1</span>], [<span class="hljs-string">"x"</span>, <span class="hljs-number">2</span>]]);
 </code></pre>
 <p>RW: Revisiting:</p>
 <ul>
 <li><a href="https://github.com/rwaldron/tc39-notes/blob/master/es6/2013-07/july-23.md#consensusresolution-1">https://github.com/rwaldron/tc39-notes/blob/master/es6/2013-07/july-23.md#consensusresolution-1</a></li>
 <li><a href="https://github.com/rwaldron/tc39-notes/blob/master/es6/2013-07/july-24.md#consensusresolution-2">https://github.com/rwaldron/tc39-notes/blob/master/es6/2013-07/july-24.md#consensusresolution-2</a></li>
 </ul>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-473"><h4 id="conclusionresolution-473">Conclusion/Resolution</h4></a><ul>
 <li>No error, last property wins, eg. map.get(&quot;x&quot;) === 2</li>
 </ul>
+
+</body>

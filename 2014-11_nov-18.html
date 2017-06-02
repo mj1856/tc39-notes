@@ -1,8 +1,14 @@
 <!doctype html>
 <meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.6.0/github-markdown.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+
 <title>November 18 2014 Meeting Notes</title>
-<h1>November 18 2014 Meeting Notes</h1>
-<p>Brian Terlson (BT), Taylor Woll (TW), Jordan Harband (JHD), Allen Wirfs-Brock (AWB), John Neumann (JN), Rick Waldron (RW), Eric Ferraiuolo (EF), Jeff Morrison (JM), Sebastian Markbage (SM), Erik Arvidsson (EA), Peter Jensen (PJ), Eric Toth (ET), Yehuda Katz (YK), Dave Herman (DH), Brendan Eich (BE), Ben Newman (BN), Forrest Norvell (FN), Waldemar Horwat (WH), Alan Schmitt (AS), Michael Ficarra (MF), Jafar Husain (JH), Lee Byron (LB), Dmitry Lomov (DL), Arnaud Le Hors (ALH), Chip Morningstar (CM), Caridy Patino (CP), Domenic Denicola (DD), Mark Miller (MM)</p>
+<body class="markdown-body">
+<a href="#november-18-2014-meeting-notes"><h1 id="november-18-2014-meeting-notes">November 18 2014 Meeting Notes</h1></a><p>Brian Terlson (BT), Taylor Woll (TW), Jordan Harband (JHD), Allen Wirfs-Brock (AWB), John Neumann (JN), Rick Waldron (RW), Eric Ferraiuolo (EF), Jeff Morrison (JM), Sebastian Markbage (SM), Erik Arvidsson (EA), Peter Jensen (PJ), Eric Toth (ET), Yehuda Katz (YK), Dave Herman (DH), Brendan Eich (BE), Ben Newman (BN), Forrest Norvell (FN), Waldemar Horwat (WH), Alan Schmitt (AS), Michael Ficarra (MF), Jafar Husain (JH), Lee Byron (LB), Dmitry Lomov (DL), Arnaud Le Hors (ALH), Chip Morningstar (CM), Caridy Patino (CP), Domenic Denicola (DD), Mark Miller (MM)</p>
 <p>JN: Introduction</p>
 <ul>
 <li>Approval of 42nd Meeting Notes?
@@ -14,8 +20,7 @@
 <li>Approved</li>
 </ul></li>
 </ul>
-<h1>4.1 ES6 Draft Status Update</h1>
-<p>(Allen Wirfs-Brock)</p>
+<a href="#41-es6-draft-status-update"><h1 id="41-es6-draft-status-update">4.1 ES6 Draft Status Update</h1></a><p>(Allen Wirfs-Brock)</p>
 <p><a href="./es6-status-update.pdf">es6-status-update.pdf</a></p>
 <p>AWB: One revision since last meeting, rev 28.</p>
 <ul>
@@ -61,10 +66,9 @@
 </ul>
 <p>AWB: (whiteboard)
 Now allowed:</p>
-<pre><code class="language-js">[a[1], ...[f, ...rest]] = array;
+<pre><code class="language-js">[a[<span class="hljs-number">1</span>], ...[f, ...rest]] = array;
 </code></pre>
-<h2>4.2 End Game Planning</h2>
-<p>(Allen Wirfs-Brock)</p>
+<a href="#42-end-game-planning"><h2 id="42-end-game-planning">4.2 End Game Planning</h2></a><p>(Allen Wirfs-Brock)</p>
 <ul>
 <li>Needed:</li>
 <li>One paragraph summary of ES6 goals for introduction</li>
@@ -100,42 +104,39 @@ Now allowed:</p>
 <p>BE: es-discuss, but not everyone reads this all the time.</p>
 <p>AWB: Can we use the reflector to start conversations?</p>
 <p>DH: We need to be prepared to have conference calls</p>
-<h2>4.3 Assignment to a const: static error?</h2>
-<p>(Allen Wirfs-Brock)</p>
+<a href="#43-assignment-to-a-const-static-error"><h2 id="43-assignment-to-a-const-static-error">4.3 Assignment to a const: static error?</h2></a><p>(Allen Wirfs-Brock)</p>
 <p><a href="https://esdiscuss.org/topic/throwing-errors-on-mutating-immutable-bindings">https://esdiscuss.org/topic/throwing-errors-on-mutating-immutable-bindings</a>
 <a href="https://bugs.ecmascript.org/show_bug.cgi?id=3253">https://bugs.ecmascript.org/show_bug.cgi?id=3253</a></p>
-<pre><code class="language-javascript">const x = 42;
-x = 32; // early error?
+<pre><code class="language-javascript"><span class="hljs-keyword">const</span> x = <span class="hljs-number">42</span>;
+x = <span class="hljs-number">32</span>; <span class="hljs-comment">// early error?</span>
 </code></pre>
 <ul>
 <li>es-discuss consensus: eliminate early error, because analysis during parsing is hard and no clear consensus that's work the parser should be taking on</li>
 <li>current spec. draft (legacy) ES5 semantics only throws on assignment to an immutable binding in strict mode:</li>
 </ul>
-<pre><code class="language-js">&quot;don't use strict&quot;;  // ?
+<pre><code class="language-js"><span class="hljs-string">"don't use strict"</span>;  <span class="hljs-comment">// ?</span>
 
-Object.defineProperty(this, &quot;globalReadOnly&quot;, { value: &quot;readonly&quot; });
+<span class="hljs-built_in">Object</span>.defineProperty(<span class="hljs-keyword">this</span>, <span class="hljs-string">"globalReadOnly"</span>, { <span class="hljs-attr">value</span>: <span class="hljs-string">"readonly"</span> });
 
-var func = function f() {
-  // silently skips assignment
-  f = undefined;
-  // silently skips assignment
-  undefined = 42;
-  Infinity = 0;  
+<span class="hljs-keyword">var</span> func = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-comment">// silently skips assignment</span>
+  f = <span class="hljs-literal">undefined</span>;
+  <span class="hljs-comment">// silently skips assignment</span>
+  <span class="hljs-literal">undefined</span> = <span class="hljs-number">42</span>;
+  <span class="hljs-literal">Infinity</span> = <span class="hljs-number">0</span>;  
 };
-func(); // no exception thrown
+func(); <span class="hljs-comment">// no exception thrown</span>
 </code></pre>
 <ul>
 <li>Should assingment to const also be silent in non-strict mode? Exception will require some new spec mechanisms.</li>
 </ul>
 <p>WH: Leery about introducing new kinds of state that then make their way into various reflection APIs. This extra bit of state to distinguish const bindings from merely immutable ones will not be reflected to user code in any way, right?</p>
 <p>AWB: Right.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-363"><h4 id="conclusionresolution-363">Conclusion/Resolution</h4></a><ul>
 <li>Runtime assignment to const bindings (ie. bindings introduced by the const keyword) throw in all modes (strict and non-strict).</li>
 <li>Legacy const bindings (function name binding in function expressions) in sloppy mode continue to be no ops</li>
 </ul>
-<h2>4.4 Array.prototype.contains breaks MooTools</h2>
-<p>(Allen Wirfs-Brock)</p>
+<a href="#44-arrayprototypecontains-breaks-mootools"><h2 id="44-arrayprototypecontains-breaks-mootools">4.4 Array.prototype.contains breaks MooTools</h2></a><p>(Allen Wirfs-Brock)</p>
 <p><a href="https://esdiscuss.org/topic/having-a-non-enumerable-array-prototype-contains-may-not-be-web-compatible">https://esdiscuss.org/topic/having-a-non-enumerable-array-prototype-contains-may-not-be-web-compatible</a>
 <a href="https://esdiscuss.org/topic/array-prototype-contains-solutions">https://esdiscuss.org/topic/array-prototype-contains-solutions</a></p>
 <p>AWB: The issue is not &quot;contains&quot;, but specifically in how they create their mixins</p>
@@ -150,12 +151,10 @@ func(); // no exception thrown
 <p>BT: IE team has pushed forward on <code>Array.prototype.values</code> in the technical preview (small applause).</p>
 <p>EA: We can roll it out again as well.</p>
 <p>Discussion of alternative paths for <code>String|Array.prototype.contains</code>. Come back to it.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-364"><h4 id="conclusionresolution-364">Conclusion/Resolution</h4></a><ul>
 <li>Revisit with Domenic present</li>
 </ul>
-<h2>4.5 Global let shadowing of global object properties</h2>
-<p>(Allen Wirfs-Brock)</p>
+<a href="#45-global-let-shadowing-of-global-object-properties"><h2 id="45-global-let-shadowing-of-global-object-properties">4.5 Global let shadowing of global object properties</h2></a><p>(Allen Wirfs-Brock)</p>
 <p>AWB: issues:</p>
 <ul>
 <li>When are/arent' global lets allowed to shadow an aleady existing property of the global object</li>
@@ -216,45 +215,43 @@ Runtime error when instantiating a script if a lexical declaration shadows a non
 <p>BE: Not backwards compatible</p>
 <p>WH: Can't create new non-configurable properties</p>
 <p>AWB: Anytime there are local scripts with top level var and let bindings, you have possible conflicts with other bindings. It just <em>is</em>. A good a reason to use modules.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-365"><h4 id="conclusionresolution-365">Conclusion/Resolution</h4></a><ul>
 <li>Error when instantiating a script if a lexical declaration shadows an own, non-configurable property of global object.</li>
 </ul>
-<h2>4.6 Zepto broken by new this.construct usage in some Array.prototype methods</h2>
-<p>(Allen Wirfs-Brock, Brian Terlson)</p>
+<a href="#46-zepto-broken-by-new-thisconstruct-usage-in-some-arrayprototype-methods"><h2 id="46-zepto-broken-by-new-thisconstruct-usage-in-some-arrayprototype-methods">4.6 Zepto broken by new this.construct usage in some Array.prototype methods</h2></a><p>(Allen Wirfs-Brock, Brian Terlson)</p>
 <p>BT: The checks that Zepto does internally to know what to construct is broken by changes in Array methods.</p>
-<pre><code class="language-js">var obj = {};
-var obj.__proto__
+<pre><code class="language-js"><span class="hljs-keyword">var</span> obj = {};
+<span class="hljs-keyword">var</span> obj.__proto__
 
 </code></pre>
 <p>The problem is that ES6 Array methods do not explicitly create new Arrays anymore, but instead call <code>this.constructor</code>. Zepto uses a plain object with <code>__proto__</code> assigned...</p>
 <p>fill in later</p>
 <p>AWB: Spec text that breaks Zepto:</p>
-<pre><code>4. If O is an exotic Array object, then
-   a. Let C be Get(O, &quot;constructor&quot;).
+<pre><code><span class="hljs-number">4.</span> <span class="hljs-keyword">If</span> O <span class="hljs-keyword">is</span> an exotic Array <span class="hljs-built_in">object</span>, <span class="hljs-keyword">then</span>
+   a. <span class="hljs-keyword">Let</span> C be <span class="hljs-keyword">Get</span>(O, <span class="hljs-string">"constructor"</span>).
    b. ReturnIfAbrupt(C).   
-   c. If IsConstructor(C) is true, then     
-i.  Let thisRealm be the running execution context’s Realm.     
-ii.  If SameValue(thisRealm, GetFunctionRealm(C)) is true, then     
-iii. Let A be the result of calling the [[Construct]] internal method of C with argument (0). 
-5. If A is undefined, then   
-a. Let A be ArrayCreate(0).
+   c. <span class="hljs-keyword">If</span> IsConstructor(C) <span class="hljs-keyword">is</span> <span class="hljs-literal">true</span>, <span class="hljs-keyword">then</span>     
+i.  <span class="hljs-keyword">Let</span> thisRealm be the running execution context’s Realm.     
+ii.  <span class="hljs-keyword">If</span> SameValue(thisRealm, GetFunctionRealm(C)) <span class="hljs-keyword">is</span> <span class="hljs-literal">true</span>, <span class="hljs-keyword">then</span>     
+iii. <span class="hljs-keyword">Let</span> A be the result <span class="hljs-keyword">of</span> calling the [[Construct]] internal method <span class="hljs-keyword">of</span> C <span class="hljs-keyword">with</span> argument (<span class="hljs-number">0</span>). 
+<span class="hljs-number">5.</span> <span class="hljs-keyword">If</span> A <span class="hljs-keyword">is</span> undefined, <span class="hljs-keyword">then</span>   
+a. <span class="hljs-keyword">Let</span> A be ArrayCreate(<span class="hljs-number">0</span>).
 </code></pre>
 <p>AWB: Forced me to revisit &quot;species&quot;.</p>
 <p>Discussion clarifying the cause.</p>
 <p>AWB: We can fix this by doing one more level of indirection...</p>
 <p>Zepto Proposed Fix</p>
-<pre><code>4. Let C be Get(O, &quot;constructor&quot;)
-5. ReturnIfAbrupt(C)
-6. If IsConstructor(C) is true, then
-a. Let thisRealm be the running execution context's Realm. 
-b. If SameValue(thisRealm, GetFunctionRealm(C)) is true, then 
-i.   Let species be Get(C, @@species);
+<pre><code><span class="hljs-number">4.</span> <span class="hljs-keyword">Let</span> C be <span class="hljs-keyword">Get</span>(O, <span class="hljs-string">"constructor"</span>)
+<span class="hljs-number">5.</span> ReturnIfAbrupt(C)
+<span class="hljs-number">6.</span> <span class="hljs-keyword">If</span> IsConstructor(C) <span class="hljs-keyword">is</span> <span class="hljs-literal">true</span>, <span class="hljs-keyword">then</span>
+a. <span class="hljs-keyword">Let</span> thisRealm be the running execution context<span class="hljs-comment">'s Realm. </span>
+b. <span class="hljs-keyword">If</span> SameValue(thisRealm, GetFunctionRealm(C)) <span class="hljs-keyword">is</span> <span class="hljs-literal">true</span>, <span class="hljs-keyword">then</span> 
+i.   <span class="hljs-keyword">Let</span> species be <span class="hljs-keyword">Get</span>(C, @@species);
 ii.  ReturnIfAbrupt(species)
-iii. If IsConstructor(species) is true, then 
-1. Let A be the resu;t of calling the [[Construct]] internal method of species with argument O. 
-7. If A is undefined, then   
-a. Let A be ArrayCreate(0).
+iii. <span class="hljs-keyword">If</span> IsConstructor(species) <span class="hljs-keyword">is</span> <span class="hljs-literal">true</span>, <span class="hljs-keyword">then</span> 
+<span class="hljs-number">1.</span> <span class="hljs-keyword">Let</span> A be the resu;t <span class="hljs-keyword">of</span> calling the [[Construct]] internal method <span class="hljs-keyword">of</span> species <span class="hljs-keyword">with</span> argument O. 
+<span class="hljs-number">7.</span> <span class="hljs-keyword">If</span> A <span class="hljs-keyword">is</span> undefined, <span class="hljs-keyword">then</span>   
+a. <span class="hljs-keyword">Let</span> A be ArrayCreate(<span class="hljs-number">0</span>).
 </code></pre>
 <p>WH: If @@species is intended to create copies of the current object, then why wouldn't Object.constructor have a @@species? Wanting to create copies of Objects is perfectly natural, but then we'd be back to the same Zepto problem. What you'd want is a @@speciesButDoNotDefineMeOnObjectConstructorUnderPentaltyOfBreakingZepto.</p>
 <p>What color is the bikeshed?</p>
@@ -273,13 +270,11 @@ a. Let A be ArrayCreate(0).
 <li>Promise and Array are only built-ins that have methods that make instances of themselves.</li>
 <li>eg. <code>new this.constructor()</code></li>
 </ul>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-366"><h4 id="conclusionresolution-366">Conclusion/Resolution</h4></a><ul>
 <li>Allen's proposed fix accepted.</li>
 <li>It's called &quot;species&quot;</li>
 </ul>
-<h2>5.1 &amp; 4.4 Array.prototype.contains and String.prototype.contains</h2>
-<p>(Domenic Denicola, Mark Miller)</p>
+<a href="#51--44-arrayprototypecontains-and-stringprototypecontains"><h2 id="51--44-arrayprototypecontains-and-stringprototypecontains">5.1 &amp; 4.4 Array.prototype.contains and String.prototype.contains</h2></a><p>(Domenic Denicola, Mark Miller)</p>
 <p>DD/RW/BT: Just change them both to <code>includes</code>. It solves it directly.</p>
 <p>DH: Consistency constraint? Any other ducktyping that expects &quot;contains&quot;?</p>
 <p>Probably</p>
@@ -290,8 +285,7 @@ a. Let A be ArrayCreate(0).
 <p>BE: (agrees)</p>
 <p>MM: (explanation of analogous operations on Array to String.prototype.contains)</p>
 <p>There is precedent for papering over the difference between substring and array elements</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-367"><h4 id="conclusionresolution-367">Conclusion/Resolution</h4></a><ul>
 <li><code>String.prototype.contains</code> =&gt; <code>String.prototype.includes</code></li>
 <li><code>Array.prototype.contains</code> =&gt; <code>Array.prototype.includes</code></li>
 </ul>
@@ -309,27 +303,26 @@ a. Let A be ArrayCreate(0).
 <p>DD: No, that's effectively &quot;use es7&quot;;</p>
 <p>AWB: Modules loaded for side effects?</p>
 <p>MM: shouldn't encourage the pattern</p>
-<h2>4.8 Template literal call site object caching.</h2>
-<p>(Erik Arvidsson, Mark Miller, Allen Wirfs-Brock)</p>
+<a href="#48-template-literal-call-site-object-caching"><h2 id="48-template-literal-call-site-object-caching">4.8 Template literal call site object caching.</h2></a><p>(Erik Arvidsson, Mark Miller, Allen Wirfs-Brock)</p>
 <ul>
 <li><a href="https://bugs.ecmascript.org/show_bug.cgi?id=3305">https://bugs.ecmascript.org/show_bug.cgi?id=3305</a></li>
 <li><a href="https://mail.mozilla.org/pipermail/es-discuss/2014-July/038343.html">https://mail.mozilla.org/pipermail/es-discuss/2014-July/038343.html</a></li>
 </ul>
 <p>AWB:</p>
-<pre><code class="language-js">let world = &quot;world&quot;;
-let t = &quot;tag`hello, ${world}`&quot;;
-eval(t);
-eval(t);
+<pre><code class="language-js"><span class="hljs-keyword">let</span> world = <span class="hljs-string">"world"</span>;
+<span class="hljs-keyword">let</span> t = <span class="hljs-string">"tag`hello, ${world}`"</span>;
+<span class="hljs-built_in">eval</span>(t);
+<span class="hljs-built_in">eval</span>(t);
 
-new Function(t)();
-new Function(t)();
+<span class="hljs-keyword">new</span> <span class="hljs-built_in">Function</span>(t)();
+<span class="hljs-keyword">new</span> <span class="hljs-built_in">Function</span>(t)();
 
-tag`hello, ${world}`
+tag<span class="hljs-string">`hello, <span class="hljs-subst">${world}</span>`</span>
 </code></pre>
 <p>How many unique callsites? 5, 3, 2 or 1?</p>
 <p>AWB: Note that the following</p>
-<pre><code class="language-js">tag`hello, ${world}`
-tag`hello, ${world}`
+<pre><code class="language-js">tag<span class="hljs-string">`hello, <span class="hljs-subst">${world}</span>`</span>
+tag<span class="hljs-string">`hello, <span class="hljs-subst">${world}</span>`</span>
 </code></pre>
 <p>has two unique callsites.</p>
 <p>BE: Identity can be observed</p>
@@ -361,34 +354,30 @@ tag`hello, ${world}`
 <p>(&quot;template identity&quot; is better to describe the thing that has been referred to as &quot;call site&quot;)</p>
 <p>MM: For a given set of template contents, there exists no more than 1 template identity. That invariant is not violated by having 0. Within the implementation, one could have a weak-value map, mapping from the template contents to a weakly held template object. Weak value maps expose non-deterministic GC <a href="http://wiki.ecmascript.org/doku.php?id=strawman:weak_references#a_weakvaluemap">http://wiki.ecmascript.org/doku.php?id=strawman:weak_references#a_weakvaluemap</a> , but this internal use of a weak value map does not expose any effects of GC to JS code.</p>
 <p>BE:</p>
-<pre><code class="language-js">`hi, ${name}`
-`hi, ${n}`
-`hi, ${_}`
+<pre><code class="language-js"><span class="hljs-string">`hi, <span class="hljs-subst">${name}</span>`</span>
+<span class="hljs-string">`hi, <span class="hljs-subst">${n}</span>`</span>
+<span class="hljs-string">`hi, <span class="hljs-subst">${_}</span>`</span>
 </code></pre>
 <p>All of those would evaluate to the same template.</p>
 <p>WH:</p>
-<pre><code class="language-js">`hi, ${a}, ${b}`
-`hi, ${x}, ${x}`
+<pre><code class="language-js"><span class="hljs-string">`hi, <span class="hljs-subst">${a}</span>, <span class="hljs-subst">${b}</span>`</span>
+<span class="hljs-string">`hi, <span class="hljs-subst">${x}</span>, <span class="hljs-subst">${x}</span>`</span>
 </code></pre>
 <p>Would those two be the same template or two different templates?</p>
 <p>BE: Same.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-368"><h4 id="conclusionresolution-368">Conclusion/Resolution</h4></a><ul>
 <li>The result would be 1</li>
 </ul>
-<h2>What is the <code>this</code> binding at the top of a module?</h2>
-<p>DH: Makes sense going forward to access the global via the Reflect library. <code>this</code> should be undefined at the top level of a module.</p>
+<a href="#what-is-the-this-binding-at-the-top-of-a-module"><h2 id="what-is-the-this-binding-at-the-top-of-a-module">What is the <code>this</code> binding at the top of a module?</h2></a><p>DH: Makes sense going forward to access the global via the Reflect library. <code>this</code> should be undefined at the top level of a module.</p>
 <p>DD: I previously thought we had consensus on <code>Reflect.global</code>, but it's not in the spec</p>
 <p>MM: The idea of something like <code>Reflect.global</code> is a good idea, but nervous about putting it ES6. Libraries like Caja need to be able to virtualize. Things we've made available through committee defined modules have been authority free, but global is authority bearing. Need more experience living with the ES6 module system before deciding how to make authority bearing things available for import.</p>
 <p>DD: Won't indirect eval give you a script context global?</p>
 <p>MM: Don't need to add something to ES6 for this issue.</p>
 <p>DH: Agree</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-369"><h4 id="conclusionresolution-369">Conclusion/Resolution</h4></a><ul>
 <li><code>this</code> is undefined</li>
 </ul>
-<h2>4.9 Array.isArray(new Proxy([], {}))</h2>
-<p>(TomVC, Brendan Eich, Rick Waldron, Allen Wirfs-Brock)</p>
+<a href="#49-arrayisarraynew-proxy-"><h2 id="49-arrayisarraynew-proxy-">4.9 Array.isArray(new Proxy([], {}))</h2></a><p>(TomVC, Brendan Eich, Rick Waldron, Allen Wirfs-Brock)</p>
 <p>AWB: (Explains the expectation of <code>Array.isArray(...)</code>)</p>
 <p>BE: Tom believes that <code>Array.isArray(new Proxy([], {})) === true</code></p>
 <p>RW: (agrees)</p>
@@ -405,13 +394,13 @@ tag`hello, ${world}`
 <p>DH: Yes.</p>
 <p>MM: Array is part of the primordials, don't have to specify how they come into existence, just how they behave once in existence.</p>
 <p>BE:</p>
-<pre><code>  Array.isArray  | Result
+<pre><code>  <span class="hljs-keyword">Array</span>.isArray  | Result
 ----------------------------
-    []       | true
-new Proxy([], {})| true
-Array Subclass   | true
-new Nodelist()   | false
-new Uint32Array()| false
+    []       | <span class="hljs-literal">true</span>
+<span class="hljs-keyword">new</span> <span class="hljs-type">Proxy</span>([], {})| <span class="hljs-literal">true</span>
+<span class="hljs-keyword">Array</span> Subclass   | <span class="hljs-literal">true</span>
+<span class="hljs-keyword">new</span> <span class="hljs-type">Nodelist</span>()   | <span class="hljs-literal">false</span>
+<span class="hljs-keyword">new</span> <span class="hljs-type">Uint32Array</span>()| <span class="hljs-literal">false</span>
 </code></pre>
 <p>WH: (adds row to BE's table, based on the proposed isArray pseudocode on the slide that turns exotic objects that share Array's constructor into being themselves arrays)
 Any exotic object that inherits from Array | ?!@#</p>
@@ -434,16 +423,16 @@ Any exotic object that inherits from Array | ?!@#</p>
 <p>DH: A new term that means &quot;is inductively like an exotic array object&quot;.</p>
 <p>DH: The meaning of isArray, there is reflectively a bit that's set that differentiates the behaviour to use for all special cases. Any data structure in which Array.isArray is true, JSON.stringify should follow the array path.</p>
 <p>eg.</p>
-<pre><code class="language-js">var a = [];
-var p = new Proxy(a, {});
+<pre><code class="language-js"><span class="hljs-keyword">var</span> a = [];
+<span class="hljs-keyword">var</span> p = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Proxy</span>(a, {});
 
-Array.isArray(p) === true;
+<span class="hljs-built_in">Array</span>.isArray(p) === <span class="hljs-literal">true</span>;
 
-var o = {
-  a: p    
+<span class="hljs-keyword">var</span> o = {
+  <span class="hljs-attr">a</span>: p    
 };
 
-JSON.stringify(o); === '&quot;{&quot;a&quot;:[]}&quot;';
+<span class="hljs-built_in">JSON</span>.stringify(o); === <span class="hljs-string">'"{"a":[]}"'</span>;
 </code></pre>
 <p>DH: Any Proxy whose target is an Array, is treated like an Array.</p>
 <p>WH: What about objects that inherit from Array?</p>
@@ -451,8 +440,7 @@ JSON.stringify(o); === '&quot;{&quot;a&quot;:[]}&quot;';
 AWB: post meeting note -- &quot;created using Array's construction mechanism&quot; is equivlant to says &quot;is an exotic array object&quot; because that mechanism is the only way to create exotic array objects..</p>
 <p>DH: For proxies, remember whether the target object was an array when the proxy was created, and return the same answer. Revoked array proxies would still be arrays.</p>
 <p>DH: No other objects would be arrays.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-370"><h4 id="conclusionresolution-370">Conclusion/Resolution</h4></a><ul>
 <li><code>Array.isArray</code> checks to see if its argument is a Proxy of an Array and returns true when it is</li>
 <li>b/c of revocable proxy: at creation time, discover it's an Array</li>
 <li>Any data structure in which Array.isArray is true, JSON.stringify should take the Array path.</li>
@@ -464,12 +452,11 @@ AWB: post meeting note -- &quot;created using Array's construction mechanism&quo
 should replace the occurrence of &quot;is exotic array object with the isArray interal check.</li>
 </ul>
 <p>AWB: In post meeting discussions MM and AWB concluded that Array.isArray should throw when applied to a revoked proxy. This is more consistent with overall revoked proxy behavior and eliminates the need for additiounal mechanism for remembering the array-ness of revoked proxies.</p>
-<h2>4.10 RegExp subclassing fixes</h2>
-<p>(Allen Wirfs-Brock)</p>
+<a href="#410-regexp-subclassing-fixes"><h2 id="410-regexp-subclassing-fixes">4.10 RegExp subclassing fixes</h2></a><p>(Allen Wirfs-Brock)</p>
 <p>AWB: When ES6 refactored functions that either take a string or a RegExp there was an issue where the state on the RegExp instance was not set correctly.</p>
 <p>AWB: These functions created a clone of the RegExp. But how do we do that when there are subclasses involved.</p>
-<pre><code class="language-javascript">new RegExp(regExp);
-new RegExp(regExp, flags);  // Throws!
+<pre><code class="language-javascript"><span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(regExp);
+<span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(regExp, flags);  <span class="hljs-comment">// Throws!</span>
 </code></pre>
 <p>AWB: Seems like we should allow passing in flags in this case.</p>
 <p>MM: Isn't there a property that gives you the source?</p>
@@ -479,8 +466,8 @@ new RegExp(regExp, flags);  // Throws!
 <p>MM: Is the cloning too big of a hammer?</p>
 <p>AWB: We are making a clone because we do not want to mutate the internal state.</p>
 <p>AWB: What are the obvious reasons to subclass RegExp? Maybe one wants to add new flags? But RegExp has no way of getting the flags as whole.</p>
-<pre><code class="language-javascript">let re = /abc/mi;
-re.??? === 'mi'
+<pre><code class="language-javascript"><span class="hljs-keyword">let</span> re = <span class="hljs-regexp">/abc/mi</span>;
+re.??? === <span class="hljs-string">'mi'</span>
 </code></pre>
 <p>AWB: Suggests adding a <code>flags</code> getter, and extending the RegExp constructor so that it can take a RegExp <em>and</em> a flags string, instead of throwing as it does now.</p>
 <p>DH: Why do we need this?</p>
@@ -501,8 +488,7 @@ re.??? === 'mi'
 <p>AWB: We might still need it for the <code>new this.constructor</code>.</p>
 <p>DD: We use <code>@@species</code> for Promises.</p>
 <p>MM: If Arrays use @@species, TypedArrays use @@species, Promises use @@species, then RegExp should use it too.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-371"><h4 id="conclusionresolution-371">Conclusion/Resolution</h4></a><ul>
 <li>Add RegExp.prototype.flags getter</li>
 <li>Per discussion with JHD/AWB/BE: RegExp#flags should return a string of flags, but sorted alphabetically, to match #toString - eg /a/gim.flags === /a/igm.flags === 'gim'</li>
 <li>Erratum from JHD:
@@ -519,15 +505,14 @@ re.??? === 'mi'
 <li>Get rid of @@isRegExp</li>
 <li>Add @@species for consistency.</li>
 </ul>
-<h2>4.13 Add async as FutureReservedWord</h2>
-<p>(Rick Waldron)</p>
+<a href="#413-add-async-as-futurereservedword"><h2 id="413-add-async-as-futurereservedword">4.13 Add async as FutureReservedWord</h2></a><p>(Rick Waldron)</p>
 <p>RW: We've reserved <code>await</code>, but not <code>async</code>. Should <code>async</code> be added as well?</p>
 <p>DD: async is contextual. It is only valid as <code>async [nonewlinehere] function</code>.</p>
 <p>EA: But async arrow function might need it.</p>
-<pre><code class="language-js">async (...) =&gt; {}
+<pre><code class="language-js"><span class="hljs-keyword">async</span> (...) =&gt; {}
        ^ look ahead to here!
 
-async(...)
+<span class="hljs-keyword">async</span>(...)
 </code></pre>
 <p>EA: The existing cover grammar covers this almost completely already.</p>
 <p>DH: The cover grammar is creeping me out</p>
@@ -537,12 +522,10 @@ async(...)
 <p>FN: Not insurmountable, if async (the module) is re-written for ES6 modules, nothing saying that it can't be renamed.</p>
 <p>DH: Too much of an adoption tax</p>
 <p>Conflict with existing Identifier use is not worth creating a <em>reserved</em> <em>word</em>.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-372"><h4 id="conclusionresolution-372">Conclusion/Resolution</h4></a><ul>
 <li>Will not reserve <code>async</code> as FutureReserveWord</li>
 </ul>
-<h2>4.11 Performance issue: <code>Object.defineProperties</code>, <code>Object.create</code>, <code>Object.assign</code>.</h2>
-<p>(Brian Terlson, John David Dalton)</p>
+<a href="#411-performance-issue-objectdefineproperties-objectcreate-objectassign"><h2 id="411-performance-issue-objectdefineproperties-objectcreate-objectassign">4.11 Performance issue: <code>Object.defineProperties</code>, <code>Object.create</code>, <code>Object.assign</code>.</h2></a><p>(Brian Terlson, John David Dalton)</p>
 <p>BT: The performance issue arises when no error occurs, despite being specified that the first error thrown is to be held onto until the end of the operation.</p>
 <p>MM/AWB: Hard to accept that this is specification related.</p>
 <p>MM: Implementation effort should be spent, not spec change and user pain.</p>
@@ -578,5 +561,6 @@ async(...)
 <p>RW: But my original proposal said nothing of doing this. Developer expectation would be: this behaves like jQuery, YUI, Dojo, etc.</p>
 <p>MM: Do not object to <code>Object.assign</code> being specified without the try/catch because the operation is just a put and when the target is a non-Proxy it may still have setters invoked on put.</p>
 <p>BE: if we made a mistake in not specifying order for Object.defineProperties or Object.assign, that's on us -- not a reason to inflict held-first-exception workaround for our mistake on devs of engines and polyfills</p>
-<h4>Conclusion/Resolution</h4>
-<p>Continue tomorrow.</p>
+<a href="#conclusionresolution-373"><h4 id="conclusionresolution-373">Conclusion/Resolution</h4></a><p>Continue tomorrow.</p>
+
+</body>

@@ -1,19 +1,24 @@
 <!doctype html>
 <meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.6.0/github-markdown.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+
 <title>January 31 2013 Meeting Notes</title>
-<h1>January 31 2013 Meeting Notes</h1>
-<p>John Neumann (JN), Allen Wirfs-Brock (AWB), Rick Waldron (RW), Waldemar Horwat (WH), Eric Ferraiuolo (EF), Erik Arvidsson (EA), Luke Hoban (LH), Matt Sweeney (MS), Doug Crockford (DC), Yehuda Katz (YK), Andreas Rossberg (ARB), Sam Tobin-Hochstadt (STH), Brendan Eich (BE),</p>
-<h2>4.14 Module Update</h2>
-<p>(Presented by Sam Tobin-Hochstadt)
+<body class="markdown-body">
+<a href="#january-31-2013-meeting-notes"><h1 id="january-31-2013-meeting-notes">January 31 2013 Meeting Notes</h1></a><p>John Neumann (JN), Allen Wirfs-Brock (AWB), Rick Waldron (RW), Waldemar Horwat (WH), Eric Ferraiuolo (EF), Erik Arvidsson (EA), Luke Hoban (LH), Matt Sweeney (MS), Doug Crockford (DC), Yehuda Katz (YK), Andreas Rossberg (ARB), Sam Tobin-Hochstadt (STH), Brendan Eich (BE),</p>
+<a href="#414-module-update"><h2 id="414-module-update">4.14 Module Update</h2></a><p>(Presented by Sam Tobin-Hochstadt)
 TODO: Request Slides</p>
 <p>STH: (Slide 1)</p>
 <p><strong>Recap from November</strong></p>
 <ul>
 <li>Modules no longer named by Identifiers.</li>
 </ul>
-<pre><code class="language-js">module &quot;m&quot; {
-  import &quot;x/y&quot; as y;
-  export y;
+<pre><code class="language-js"><span class="hljs-built_in">module</span> <span class="hljs-string">"m"</span> {
+  <span class="hljs-keyword">import</span> <span class="hljs-string">"x/y"</span> <span class="hljs-keyword">as</span> y;
+  <span class="hljs-keyword">export</span> y;
 }
 </code></pre>
 <p>DC: Are they strings?</p>
@@ -25,14 +30,14 @@ TODO: Request Slides</p>
 <p>MM: Nesting example?</p>
 <p>STH: (Slide 2)</p>
 <p><strong>Nested Modules</strong></p>
-<pre><code class="language-js">module &quot;outer&quot; {
-  let y = 1; // not exported
-  module &quot;inner&quot; {
-    let z = y + 1;
-    export z;
+<pre><code class="language-js"><span class="hljs-built_in">module</span> <span class="hljs-string">"outer"</span> {
+  <span class="hljs-keyword">let</span> y = <span class="hljs-number">1</span>; <span class="hljs-comment">// not exported</span>
+  <span class="hljs-built_in">module</span> <span class="hljs-string">"inner"</span> {
+    <span class="hljs-keyword">let</span> z = y + <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">export</span> z;
   }
 }
-import {z} from &quot;outer/inner&quot;;
+<span class="hljs-keyword">import</span> {z} <span class="hljs-keyword">from</span> <span class="hljs-string">"outer/inner"</span>;
 </code></pre>
 <p>MM: Why isn't &quot;inner&quot; exported?</p>
 <p>YK: All modules are visible/available.</p>
@@ -94,7 +99,7 @@ When somebody thinks to have a better system than lexical scoping, they usually 
 <p>LH: I don't understand why we want nested modules like this. There is no existing system that supports the need.</p>
 <p>YK: Agree.</p>
 <p>STH: (whiteboard)</p>
-<pre><code class="language-js">import {$} from &quot;jquery&quot;
+<pre><code class="language-js"><span class="hljs-keyword">import</span> {$} <span class="hljs-keyword">from</span> <span class="hljs-string">"jquery"</span>
 </code></pre>
 <p>What does &quot;jquery.js&quot; look like?</p>
 <p>YK: Top level $ with no &quot;module {}&quot;</p>
@@ -126,7 +131,7 @@ Then you take that and put it in a file named &quot;jquery&quot; and try to impo
 <p>YK: another example, Ember relies on Handlebars...</p>
 <p>STH: (whiteboard)</p>
 <p>Solution?</p>
-<pre><code class="language-js">module &quot;/jquery&quot; {
+<pre><code class="language-js"><span class="hljs-built_in">module</span> <span class="hljs-string">"/jquery"</span> {
 }
 .
 .
@@ -156,12 +161,12 @@ Then you take that and put it in a file named &quot;jquery&quot; and try to impo
 <p>YK: Is because you don't see the burden?</p>
 <p>...The current proposal won't work when you want to use a CDN url and also have jQuery at the top level.</p>
 <p>The primary issue:</p>
-<pre><code class="language-js">import { jQuery } from &quot;jquery&quot;;
+<pre><code class="language-js"><span class="hljs-keyword">import</span> { jQuery } <span class="hljs-keyword">from</span> <span class="hljs-string">"jquery"</span>;
 </code></pre>
 <p>Needs to have some mechanism by which we can configure WHERE &quot;jquery&quot; is, via URL.</p>
 <p>STH: A possible solution?</p>
 <pre><code class="language-js">Loader.configure([
-  [ &quot;jquery&quot;, &quot;file.js&quot; ]
+  [ <span class="hljs-string">"jquery"</span>, <span class="hljs-string">"file.js"</span> ]
 ]);
 </code></pre>
 <p>EF: The original proposal, where the file is inferred by the name doesn't get us close to meeting the need.</p>
@@ -249,19 +254,16 @@ Then you take that and put it in a file named &quot;jquery&quot; and try to impo
 <p>LH: Of course, there is a status quo: Creating global names that define built ins</p>
 <p>...Discussion re: Map, Set and WeakMap already in browsers.</p>
 <p>JN: Steering to break. The point of record...</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-598"><h4 id="conclusionresolution-598">Conclusion/Resolution</h4></a><ul>
 <li>Cannot continue this discussion without Dave Herman</li>
 <li>Continue work, the understanding the next meeting is decision time.</li>
 <li>Work with committee members and community to develop concrete scenarios that must be met and addressed.</li>
 </ul>
-<h2>New Scope of the Royalty-Free Task Group (TC39TG1)</h2>
-<p>...Discussion...</p>
+<a href="#new-scope-of-the-royalty-free-task-group-tc39tg1"><h2 id="new-scope-of-the-royalty-free-task-group-tc39tg1">New Scope of the Royalty-Free Task Group (TC39TG1)</h2></a><p>...Discussion...</p>
 <p>WH: Motion</p>
 <p>MM: Seconded</p>
 <p>DC: Seconded</p>
-<h4>Conclusion/Resolution</h4>
-<p>We approve the new scope for RFTG Unanimously.</p>
+<a href="#conclusionresolution-599"><h4 id="conclusionresolution-599">Conclusion/Resolution</h4></a><p>We approve the new scope for RFTG Unanimously.</p>
 <p><strong>There was no specific agenda item here</strong></p>
 <p>ATTENTION: Mark, Waldemar, Allen... Please review these notes. I tried to keep up, but I'm not confident in the record.</p>
 <p>MM: Want to maintain the option to defer Notification Proxies and Private Symbols—Defer to March?</p>
@@ -273,12 +275,12 @@ Then you take that and put it in a file named &quot;jquery&quot; and try to impo
 <p>AWB: Agree.</p>
 <p>MM: I'd like to postpone a larger discussion until March.</p>
 <p>AWB: (whiteboard)</p>
-<pre><code class="language-js">var p = Proxy(target, handler);
+<pre><code class="language-js"><span class="hljs-keyword">var</span> p = <span class="hljs-built_in">Proxy</span>(target, handler);
 </code></pre>
 <p>Any operation you do on &quot;p&quot; is forwarded onto &quot;target&quot;...</p>
-<pre><code class="language-js">var target = {
+<pre><code class="language-js"><span class="hljs-keyword">var</span> target = {
   foo() {
-    if (someLookup(this)) {
+    <span class="hljs-keyword">if</span> (someLookup(<span class="hljs-keyword">this</span>)) {
     }
   }
 };
@@ -286,21 +288,21 @@ Then you take that and put it in a file named &quot;jquery&quot; and try to impo
 target.foo();
 p.foo();
 
-// &quot;this&quot; in foo() is bound to the object
-// SHOULD always be &quot;target&quot;
-// EF: Could be multiple bindings for the same &quot;target&quot;,
-// so &quot;this&quot; should be &quot;target&quot;
+<span class="hljs-comment">// "this" in foo() is bound to the object</span>
+<span class="hljs-comment">// SHOULD always be "target"</span>
+<span class="hljs-comment">// EF: Could be multiple bindings for the same "target",</span>
+<span class="hljs-comment">// so "this" should be "target"</span>
 </code></pre>
 <p>AWB: Outlines issues with the MOP...</p>
-<pre><code class="language-js">target.[[Get]](&quot;foo&quot;);
+<pre><code class="language-js">target.[[Get]](<span class="hljs-string">"foo"</span>);
 P?
 self.[[Get]]()
 </code></pre>
 <p>See image.</p>
 <p>target has a method named foo, uses the &quot;this&quot; value,</p>
 <p>(WH's summary) The point that Allen was demonstrating on the whiteboard was that, given:</p>
-<pre><code class="language-js">var target = {foo() {if (someLookup(this)) {...}}};
-var p = Proxy(target, {});
+<pre><code class="language-js"><span class="hljs-keyword">var</span> target = {foo() {<span class="hljs-keyword">if</span> (someLookup(<span class="hljs-keyword">this</span>)) {...}}};
+<span class="hljs-keyword">var</span> p = <span class="hljs-built_in">Proxy</span>(target, {});
 </code></pre>
 <p>then:
 target.foo and p.foo are the same function object.
@@ -353,7 +355,7 @@ A property access and then an invocation... we can separate</p>
 <p>AWB: Anything that involves implicit &quot;this&quot;</p>
 <p>AWB: If want to control what's passed through, you'd use a p.foo.call, otherwise you'd use a wrapped function.</p>
 <p>MM: The default probably should be the proxy and not the target</p>
-<pre><code class="language-js">var q = Object.create( p );
+<pre><code class="language-js"><span class="hljs-keyword">var</span> q = <span class="hljs-built_in">Object</span>.create( p );
 q.foo();
 </code></pre>
 <p>MM: When you're inheriting from the Proxy, q is a normal object, does it have the property foo? it does not, recursive get on p and will get the proxy, q is the receiver.</p>
@@ -365,13 +367,11 @@ q.foo();
 <p>...The default, the getter should be invoked for &quot;q.foo&quot; case</p>
 <p>AWB: ...Recalls discussion with Tom, re: [[Put]] creating properties on wrong objects.</p>
 <p>STH: Resteer the discussion...</p>
-<h4>Conclusion/Resolution</h4>
-<p>Continue discussion offline.</p>
+<a href="#conclusionresolution-600"><h4 id="conclusionresolution-600">Conclusion/Resolution</h4></a><p>Continue discussion offline.</p>
 <p>MM: What we did with hasInstance, we should audit all of the traps and determine if we can replace with @@methods.</p>
 <p>AWB: Applied similar approach in the spec.</p>
-<h2>Class extends: Throw on non-constructor?</h2>
-<p>In July, we discussed what would happen when:</p>
-<pre><code class="language-js">class Foo extends Object.prototype {
+<a href="#class-extends-throw-on-non-constructor"><h2 id="class-extends-throw-on-non-constructor">Class extends: Throw on non-constructor?</h2></a><p>In July, we discussed what would happen when:</p>
+<pre><code class="language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Object</span>.<span class="hljs-title">prototype</span> </span>{
 
 }
 </code></pre>
@@ -382,10 +382,8 @@ q.foo();
 <p>LH: No, you'll still get class-side.</p>
 <p>...Discussion comes back around to throwing on non-constructor. It will also allow for future extension points by relaxing the RHS of extends.</p>
 <p>LH/EA/RW/WH: In agreement.</p>
-<h4>Conclusion/Resolution</h4>
-<p>Class extends throws on non-constructor (extends null is still valid)</p>
-<h2>Map/Set comparator</h2>
-<p>(Presented by Allen Wirfs-Brock)</p>
+<a href="#conclusionresolution-601"><h4 id="conclusionresolution-601">Conclusion/Resolution</h4></a><p>Class extends throws on non-constructor (extends null is still valid)</p>
+<a href="#mapset-comparator"><h2 id="mapset-comparator">Map/Set comparator</h2></a><p>(Presented by Allen Wirfs-Brock)</p>
 <p>Issue: Allow Map or Set to have a custom comparator for set, get, has, delete</p>
 <ul>
 <li><p>Current constructor signature</p>
@@ -449,24 +447,22 @@ Consensus w/ comparators: &quot;===&quot; (currently default) and &quot;is&quot;
 <p>ARB: You might have circumstances where you do your comparison outside of the map.</p>
 <p>MM: General comparator argument, are we happy with this considering a hypothetical future that allows arbitrary equivalence class?</p>
 <p>WH: As long as it's an equivalence class, if you allow anything else, you run into trouble.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-602"><h4 id="conclusionresolution-602">Conclusion/Resolution</h4></a><ul>
 <li><p><code>Map( iterator = undefined, comparator = undefined )</code></p></li>
 <li><p><code>Set( iterator = undefined, comparator = undefined )</code></p></li>
 <li><p>If the second argument is &quot;is&quot;, use &quot;Object.is&quot;</p></li>
 <li><p>Otherwise, use &quot;===&quot;</p></li>
 </ul>
-<pre><code class="language-js">Map.defaultComparator( a, b )
-Set.defaultComparator( a, b )
+<pre><code class="language-js"><span class="hljs-built_in">Map</span>.defaultComparator( a, b )
+<span class="hljs-built_in">Set</span>.defaultComparator( a, b )
 </code></pre>
-<h2>Comprehensions/Generator Syntax</h2>
-<p>(Presented by Sam Tobin-Hochstadt)</p>
+<a href="#comprehensionsgenerator-syntax"><h2 id="comprehensionsgenerator-syntax">Comprehensions/Generator Syntax</h2></a><p>(Presented by Sam Tobin-Hochstadt)</p>
 <p>Dave Herman's proposal: <a href="https://gist.github.com/b250d1fad15dbb5f77a5">https://gist.github.com/b250d1fad15dbb5f77a5</a></p>
 <p>Existing:</p>
-<pre><code class="language-js">  let array = [x for x of itr if x &gt; 0];
+<pre><code class="language-js">  <span class="hljs-keyword">let</span> array = [x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">of</span> itr <span class="hljs-keyword">if</span> x &gt; <span class="hljs-number">0</span>];
 </code></pre>
 <p>switch to</p>
-<pre><code class="language-js">  let array = [for (x of itr) if (x&gt;0) x]
+<pre><code class="language-js">  <span class="hljs-keyword">let</span> array = [<span class="hljs-keyword">for</span> (x <span class="hljs-keyword">of</span> itr) <span class="hljs-keyword">if</span> (x&gt;<span class="hljs-number">0</span>) x]
 </code></pre>
 <p>BE: ...Recalling that the draft proposal is right-to-left, this proposal is left-to-right.</p>
 <p>...Mixed discussion with reminders of current specification.</p>
@@ -477,6 +473,7 @@ Set.defaultComparator( a, b )
 [x] returns a one-element array, but
 (x) returns x, not a one-element iterator.</p>
 <p>STH: This is only a syntactic change. We're not altering previously agreed semantics in any way.</p>
-<h4>Conclusion/Resolution</h4>
-<p>All agree on RTL -&gt; LTR change.</p>
+<a href="#conclusionresolution-603"><h4 id="conclusionresolution-603">Conclusion/Resolution</h4></a><p>All agree on RTL -&gt; LTR change.</p>
 <p>[WH: Noted a moment after meeting adjourned that this is not merely a syntactic change. We had let clauses to create intermediate temporaries in the old syntax but not in the new syntax — you can't do <code>[for (x of y) let (z = ...) for (z of q) ...].]</code></p>
+
+</body>

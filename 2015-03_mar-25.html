@@ -1,10 +1,15 @@
 <!doctype html>
 <meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.6.0/github-markdown.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+
 <title>March 25 2015 Meeting Notes</title>
-<h1>March 25 2015 Meeting Notes</h1>
-<p>Brian Terlson (BT), Allen Wirfs-Brock (AWB), John Neumann (JN), Jeff Morrison (JM), Sebastian Markbage (SM), Yehuda Katz (YK), Dave Herman (DH), Alan Schmitt (AS), Lee Byron (LB), Domenic Denicola (DD), Kevin Smith (KS), Andreas Rossberg (ARB), Brendan Eich (BE), Erik Arvidsson (EA), Adam Klein (AK), Jordan Harband (JHD), Mark Miller (MM), Istvan Sebestyen (IS), Jafar Husain (JH), Rick Waldron (RW)</p>
-<h2>6(iv) A Declarative Alternative to toMethod (Allen Wirfs-Brock)</h2>
-<p>AWB presents <a href="https://github.com/allenwb/ESideas/blob/master/dcltomethod.md">https://github.com/allenwb/ESideas/blob/master/dcltomethod.md</a>.</p>
+<body class="markdown-body">
+<a href="#march-25-2015-meeting-notes"><h1 id="march-25-2015-meeting-notes">March 25 2015 Meeting Notes</h1></a><p>Brian Terlson (BT), Allen Wirfs-Brock (AWB), John Neumann (JN), Jeff Morrison (JM), Sebastian Markbage (SM), Yehuda Katz (YK), Dave Herman (DH), Alan Schmitt (AS), Lee Byron (LB), Domenic Denicola (DD), Kevin Smith (KS), Andreas Rossberg (ARB), Brendan Eich (BE), Erik Arvidsson (EA), Adam Klein (AK), Jordan Harband (JHD), Mark Miller (MM), Istvan Sebestyen (IS), Jafar Husain (JH), Rick Waldron (RW)</p>
+<a href="#6iv-a-declarative-alternative-to-tomethod-allen-wirfs-brock"><h2 id="6iv-a-declarative-alternative-to-tomethod-allen-wirfs-brock">6(iv) A Declarative Alternative to toMethod (Allen Wirfs-Brock)</h2></a><p>AWB presents <a href="https://github.com/allenwb/ESideas/blob/master/dcltomethod.md">https://github.com/allenwb/ESideas/blob/master/dcltomethod.md</a>.</p>
 <p>Object.assign with 2nd arg object literal has a <code>super</code> hazard.</p>
 <p><code>toMethod</code> was previous workaround, but easy to forget and hard to use with object literals.</p>
 <p>YK notes <code>toMethod</code> still valuable addition to meta-programming API.</p>
@@ -18,10 +23,10 @@ Therefore proposes <code>mixin</code> contextual-keyword operator to extend obje
 <p>All object literal syntax on right of <code>mixin</code> is allowed, <em>except</em> for <code>__proto__</code>.</p>
 <p><code>mixin</code> does [[DefineOwnProperty]] based on object literal contents (unlike <code>Object.assign</code> which uses [[Set]]).</p>
 <p>Name abstraction of object literal for later param to <code>Object.assign</code> (still permitted, a bug if <code>super</code> used) doesn't work:</p>
-<pre><code class="language-js">    let mixins = {...}; Object.assign(target, mixins); // how to do this with mixin operator?
+<pre><code class="language-js">    <span class="hljs-keyword">let</span> mixins = {...}; <span class="hljs-built_in">Object</span>.assign(target, mixins); <span class="hljs-comment">// how to do this with mixin operator?</span>
 </code></pre>
 <p>Use an arrow:</p>
-<pre><code class="language-js">    let mixins = obj =&gt; obj mixin {...}; mixins(target);
+<pre><code class="language-js">    <span class="hljs-keyword">let</span> mixins = <span class="hljs-function"><span class="hljs-params">obj</span> =&gt;</span> obj mixin {...}; mixins(target);
 </code></pre>
 <p>Some inconveniences with classes (see URL). Solution is <code>mixin class {...}</code> extended special form.
 Throws if left-hand side is not a constructor (spec <code>IsConstructor</code> test returns false).
@@ -71,11 +76,11 @@ YK: see <a href="https://gist.github.com/wycats/f79fe019d4bf29177b6c">https://gi
 MM: I like it, what's the problem?
 YK: wouldn't it be better to support high-level mixin syntax:</p>
 <pre><code class="language-js">mixin TextSupport {...}
-class MyComponent extends EmberComponent with TextSupport {...}
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyComponent</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">EmberComponent</span> <span class="hljs-title">with</span> <span class="hljs-title">TextSupport</span> </span>{...}
 </code></pre>
 <p>MM: don't need more syntax
 YK: indeed, could just have</p>
-<pre><code class="language-js">class MyComponent extends mixin(EmberComponent, TextSupport) {...}
+<pre><code class="language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyComponent</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">mixin</span>(<span class="hljs-title">EmberComponent</span>, <span class="hljs-title">TextSupport</span>) </span>{...}
 </code></pre>
 <p>YK: I'm personally ok with this.</p>
 <p>EA/DH: want happy-path &quot;blessed syntax&quot;.
@@ -100,7 +105,7 @@ plausible to have low- and high-level that cover the space without AWB's <code>m
 MM: kind of want function-bearing-unbound-super to be not callable.
 AWB/YK/BE: function* vs. function precedent, but don't want more sigils/function-suffix-punctuators</p>
 <p>MM: sketch of special form that allows unbound <code>super</code>:</p>
-<pre><code class="language-js">function (super) foo (x, y) { ...super ...x ...y }
+<pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">super</span>) <span class="hljs-title">foo</span> (<span class="hljs-params">x, y</span>) </span>{ ...super ...x ...y }
 </code></pre>
 <p>Factory of methods with unbound <code>super</code> uses.
 Trying for low-level principled alternative to <code>toMethod</code>.</p>
@@ -125,8 +130,7 @@ YK: Babel should not implement stage 0, wait for stage 1 or later. Actually use 
 EA: Babel can do whatever they want
 DH: We should care, because ecosystem effects, premature de-facto standards</p>
 <p>Agreement that Babel (and other compilers) need to flag early-stage stuff, not expose prematurely, message well.</p>
-<h2>6(v) Additional Meta-Properties in ES7 (Allen Wirfs-Brock)</h2>
-<p>(<a href="https://github.com/allenwb/ESideas/blob/master/ES7MetaProps.md">https://github.com/allenwb/ESideas/blob/master/ES7MetaProps.md</a> )</p>
+<a href="#6v-additional-meta-properties-in-es7-allen-wirfs-brock"><h2 id="6v-additional-meta-properties-in-es7-allen-wirfs-brock">6(v) Additional Meta-Properties in ES7 (Allen Wirfs-Brock)</h2></a><p>(<a href="https://github.com/allenwb/ESideas/blob/master/ES7MetaProps.md">https://github.com/allenwb/ESideas/blob/master/ES7MetaProps.md</a> )</p>
 <p>AWB: [presents slides (link?)]</p>
 <p>AWB: function.callee: refers to the currently-executing function</p>
 <p>MM: What's the use case for <code>function.callee</code>?</p>
@@ -222,13 +226,12 @@ DH: We should care, because ecosystem effects, premature de-facto standards</p>
 <p>DH: It's important to get clear on what to say about <code>function.arguments</code>, and what to say about deprecation</p>
 <p>BE: I think it's fair to say we don't want to spend all afternoon on this</p>
 <p>...break...</p>
-<h2>Initial Value Passed to first call of a Generator next function</h2>
-<pre><code class="language-js">function * gen(a)  {
+<a href="#initial-value-passed-to-first-call-of-a-generator-next-function"><h2 id="initial-value-passed-to-first-call-of-a-generator-next-function">Initial Value Passed to first call of a Generator next function</h2></a><pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> * <span class="hljs-title">gen</span>(<span class="hljs-params">a</span>)  </span>{
 
 }
 
-var g = gen(1); // this?
-g.next(1); // this?
+<span class="hljs-keyword">var</span> g = gen(<span class="hljs-number">1</span>); <span class="hljs-comment">// this?</span>
+g.next(<span class="hljs-number">1</span>); <span class="hljs-comment">// this?</span>
 
 </code></pre>
 <p>AWB: <code>function.next</code>: the current yield result</p>
@@ -261,13 +264,11 @@ g.next(1); // this?
 <p>[discussion of how to handle organization of stage 0 proposals; how to make it clearer which stage 0 things we'll do and which we won't]</p>
 <p>MM: So can we list these as rejected proposals and bring them back later if we change our mind?</p>
 <p>AWB: I think that would be a mistake. That seems too strong for these.</p>
-<h4>Conclusion/ Resolution</h4>
-<ul>
+<a href="#conclusion-resolution-325"><h4 id="conclusion-resolution-325">Conclusion/ Resolution</h4></a><ul>
 <li><code>function.next</code> to be split out into its own proposal</li>
 <li>AWB to keep the rest alive for now at stage 0</li>
 </ul>
-<h2>Report on 402</h2>
-<p>(Rick Waldron)</p>
+<a href="#report-on-402"><h2 id="report-on-402">Report on 402</h2></a><p>(Rick Waldron)</p>
 <p>RW: Complete, barring any editorial bugs.</p>
 <ul>
 <li>Has been reviewed by Norbert Lindenberg and Andrée Bargul.</li>
@@ -279,21 +280,19 @@ g.next(1); // this?
 <p>TC39 vote 6 in favor. 1 abstains (JH, Netflix)</p>
 <p>IS: Shall 402 be submitted for ISO fast-track? Or leave it ECMA-only like the first edition?</p>
 <p>JN: Send it to ISO and see what they say</p>
-<h4>Conclusion/ Resolution</h4>
-<ul>
+<a href="#conclusion-resolution-326"><h4 id="conclusion-resolution-326">Conclusion/ Resolution</h4></a><ul>
 <li>Submit to Ecma GA</li>
 <li>Submit to ISO</li>
 </ul>
-<h2>6(vi) Function Bind and Private Fields Redux (Kevin Smith)</h2>
-<p><a href="https://github.com/zenparsing/es-function-bind">https://github.com/zenparsing/es-function-bind</a>
+<a href="#6vi-function-bind-and-private-fields-redux-kevin-smith"><h2 id="6vi-function-bind-and-private-fields-redux-kevin-smith">6(vi) Function Bind and Private Fields Redux (Kevin Smith)</h2></a><p><a href="https://github.com/zenparsing/es-function-bind">https://github.com/zenparsing/es-function-bind</a>
 <a href="https://github.com/zenparsing/es-private-fields">https://github.com/zenparsing/es-private-fields</a></p>
 <p>KS: [presents slides (link?)]</p>
 <p>KS: Abstract references recap.</p>
 <p>KS: Problems with combining the various use cases. Instead, provide two different syntaxes, one for function binding and one for private state.</p>
 <p>KS: Part One: Function Bind via <code>::</code></p>
-<pre><code class="language-js">function f() { return this.x }
-let bound = ({ x: 100 })::f;
-bound(); // -&gt; 100
+<pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params"></span>) </span>{ <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.x }
+<span class="hljs-keyword">let</span> bound = ({ <span class="hljs-attr">x</span>: <span class="hljs-number">100</span> })::f;
+bound(); <span class="hljs-comment">// -&gt; 100</span>
 </code></pre>
 <p>DH: This could be really nice in that you don't have to use <code>bind</code> anymore</p>
 <p>KS: <code>::</code> doesn't take care of all of <code>bind</code>: only binds <code>this</code>, not any arguments</p>
@@ -302,7 +301,7 @@ bound(); // -&gt; 100
 <p>MM: This is only an argument against the infix operator.</p>
 <p>DD: Also, the example uses <code>function</code> instead of being a method in class.</p>
 <p>KS: Unary Function Bind</p>
-<pre><code class="language-js">::console.log  // -&gt; console.log.bind(console)
+<pre><code class="language-js">::<span class="hljs-built_in">console</span>.log  <span class="hljs-comment">// -&gt; console.log.bind(console)</span>
 </code></pre>
 <p>AWB: This seems perfectly reasonable</p>
 <p>MM: We could do the prefix notation without the infix notation</p>
@@ -312,7 +311,7 @@ YK: Why didn't we fix this with classes?
 MM: That's water under the bridge.</p>
 <p>KS: Back to the infix operator. If the function is immediately called, then I'd like to be able to desugar to call:</p>
 <pre><code class="language-js">obj::f();
-// -&gt; f.call(obj);
+<span class="hljs-comment">// -&gt; f.call(obj);</span>
 </code></pre>
 <p>DD: What about with <code>new</code>?</p>
 <p>KS: Don't do this desugaring with <code>new</code></p>
@@ -339,12 +338,10 @@ MM: That's water under the bridge.</p>
 <p>BE: Agree with DH, need more data to see how users like it</p>
 <p>EA: What AWB said earlier about the use of <code>this</code> rings true, ES6 just changed the uses of <code>this</code> (with classes and arrows)</p>
 <p>[lots of discussion of other tokens: <code>-&gt;</code>, <code>.:</code>, <code>.?</code>]</p>
-<h4>Conclusion on bind</h4>
-<ul>
+<a href="#conclusion-on-bind-327"><h4 id="conclusion-on-bind-327">Conclusion on bind</h4></a><ul>
 <li>Get more feedback from users of Babel</li>
 </ul>
-<h2>Part 2 of KS presentation: Private Fields</h2>
-<p>KS: Preface: this conflicts somewhat with decorators, in that it makes use of <code>@</code> for its syntax. Will focus on the semantics in this presentation.</p>
+<a href="#part-2-of-ks-presentation-private-fields"><h2 id="part-2-of-ks-presentation-private-fields">Part 2 of KS presentation: Private Fields</h2></a><p>KS: Preface: this conflicts somewhat with decorators, in that it makes use of <code>@</code> for its syntax. Will focus on the semantics in this presentation.</p>
 <p>KS: [slides]</p>
 <p>JM: Is there something essential to private fields that makes it important that private fields are created at construct time and guaranteed to all be present on instances?</p>
 <p>MM: It's important because you'd like to maintain invariants in your implementation, invariants you don't get anyway for public fields [due to them being public]</p>
@@ -377,15 +374,16 @@ MM: That's water under the bridge.</p>
 <p>MM: But then how do you decorate fields whose initialization is data-dependent?</p>
 <p>YK: That's not a case that comes up very often.</p>
 <p>DD strawman:</p>
-<pre><code class="language-js">class Point {
-  constructor(x, y) {
+<pre><code class="language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point</span> </span>{
+  <span class="hljs-keyword">constructor</span>(x, y) {
     private @x = x;
     public y = y;
   }
   
   get x() {
-    return this.@x;
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.@x;
   }
 }
 </code></pre>
-<h4>Presentation continued on <a href="mar-26.md">next day</a></h4>
+<a href="#presentation-continued-on-next-daymar-26md"><h4 id="presentation-continued-on-next-daymar-26md">Presentation continued on <a href="mar-26.md">next day</a></h4></a>
+</body>

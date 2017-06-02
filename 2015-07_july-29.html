@@ -1,10 +1,15 @@
 <!doctype html>
 <meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.6.0/github-markdown.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+
 <title>July 29 2015 Meeting Notes</title>
-<h1>July 29 2015 Meeting Notes</h1>
-<p>Allen Wirfs-Brock (AWB), Sebastian Markbage (SM), Jafar Husain (JH), Eric Farriauolo (EF), Caridy Patino (CP), Waldemar Horwat (WH), Istvan Sebastian (IS), Mark Miller (MM), Adam Klein (AK), Michael Ficarra (MF), Peter Jensen (PJ), Domenic Denicola (DD), Jordan Harband (JHD), Jonathan Turner (JT), Paul Leathers (PL), Chip Morningstar (CM), Vladimir Matveev (VM), Ron Buckton (MS), Brian Terlson (BT), Alan Schmitt (AS), Ben Newman (BN), Mohamed Hegazy (MH), Abhijith Chatra (AC), Tom Care (TC), John Neumann  (JN), Dave Herman (DH), Brendan Eich (BE), Daniel Ehrenberg (DE), Dan Gohman (DG), Andreas Rossberg (ARB), Rick Waldron (RW), Mike Pennisi (MP), Akrosh Gandhi (AG), Jonathan Sampson (JS)</p>
-<h2>6.11 The scope of &quot;use strict&quot; with respect to destructuring in parameter lists</h2>
-<p>(Andreas Rossberg, on phone)</p>
+<body class="markdown-body">
+<a href="#july-29-2015-meeting-notes"><h1 id="july-29-2015-meeting-notes">July 29 2015 Meeting Notes</h1></a><p>Allen Wirfs-Brock (AWB), Sebastian Markbage (SM), Jafar Husain (JH), Eric Farriauolo (EF), Caridy Patino (CP), Waldemar Horwat (WH), Istvan Sebastian (IS), Mark Miller (MM), Adam Klein (AK), Michael Ficarra (MF), Peter Jensen (PJ), Domenic Denicola (DD), Jordan Harband (JHD), Jonathan Turner (JT), Paul Leathers (PL), Chip Morningstar (CM), Vladimir Matveev (VM), Ron Buckton (MS), Brian Terlson (BT), Alan Schmitt (AS), Ben Newman (BN), Mohamed Hegazy (MH), Abhijith Chatra (AC), Tom Care (TC), John Neumann  (JN), Dave Herman (DH), Brendan Eich (BE), Daniel Ehrenberg (DE), Dan Gohman (DG), Andreas Rossberg (ARB), Rick Waldron (RW), Mike Pennisi (MP), Akrosh Gandhi (AG), Jonathan Sampson (JS)</p>
+<a href="#611-the-scope-of-use-strict-with-respect-to-destructuring-in-parameter-lists"><h2 id="611-the-scope-of-use-strict-with-respect-to-destructuring-in-parameter-lists">6.11 The scope of &quot;use strict&quot; with respect to destructuring in parameter lists</h2></a><p>(Andreas Rossberg, on phone)</p>
 <p><a href="https://docs.google.com/presentation/d/1nv4UPDgjL7SdXewTPBt_IpcRxkIFzhz1ENrfyvKcY8Q/">Slides</a></p>
 <p>ARB: Strictness Scoping</p>
 <p>Issues:</p>
@@ -16,19 +21,19 @@
 <p>DH: clarify backtracking (2 possibilities?)</p>
 <p>ARB: rewinding token stream</p>
 <p>ARB: easy in ES5 because only additional check is duplicate parameter names</p>
-<pre><code class="language-js">&quot;use sloppy&quot;;
-function f(x, x) { &quot;use strict&quot;; }
+<pre><code class="language-js"><span class="hljs-string">"use sloppy"</span>;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params">x, x</span>) </span>{ <span class="hljs-string">"use strict"</span>; }
 </code></pre>
 <p>Difficult in ES6, b/c default parameters</p>
-<pre><code class="language-js">&quot;use sloppy&quot;;
-function f(g = (o) =&gt; {with (o) {}}) { &quot;use strict&quot;; }
+<pre><code class="language-js"><span class="hljs-string">"use sloppy"</span>;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params">g = (o</span>) =&gt; </span>{<span class="hljs-keyword">with</span> (o) {}}) { <span class="hljs-string">"use strict"</span>; }
 </code></pre>
 <p>ARB: also cannot determine scope due to interactions between Annex B and strict mode:</p>
-<pre><code class="language-js">&quot;use sloppy&quot;;
-function f(g = function(h) {
-  { function h() {} }  return h;
+<pre><code class="language-js"><span class="hljs-string">"use sloppy"</span>;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params">g = function(h</span>) </span>{
+  { <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">h</span>(<span class="hljs-params"></span>) </span>{} }  <span class="hljs-keyword">return</span> h;
 }) {
-  &quot;use strict&quot;;
+  <span class="hljs-string">"use strict"</span>;
 }
 </code></pre>
 <p>WH: The issue in this example is hoisting and variable binding, which is more than just error checking. Function h here is nested inside a local block, which means that the 'h' in the return statement refers to different bindings in strict vs. non-strict mode. But you don't know that strict mode is in effect until encountering the 'use strict' later!</p>
@@ -42,8 +47,8 @@ function f(g = function(h) {
 <li>Would need ot defer any sort of mode-specific decisions in the parser for code that occurs in parameters</li>
 <li>But with arrow functions, we do not even know (in time) that we are in a parameter list</li>
 </ul>
-<pre><code class="language-js">&quot;use sloppy&quot;;
-let f = (g = () =&gt; { /* Are we a parameter? Do we have to defer? */ with (o) {} }) =&gt; { &quot;use strict&quot;; }
+<pre><code class="language-js"><span class="hljs-string">"use sloppy"</span>;
+<span class="hljs-keyword">let</span> f = <span class="hljs-function">(<span class="hljs-params">g = (</span>) =&gt;</span> { <span class="hljs-comment">/* Are we a parameter? Do we have to defer? */</span> <span class="hljs-keyword">with</span> (o) {} }) =&gt; { <span class="hljs-string">"use strict"</span>; }
 </code></pre>
 <p>ARB:</p>
 <p>BE: The arrows are parsed with a cover grammar</p>
@@ -139,7 +144,7 @@ let f = (g = () =&gt; { /* Are we a parameter? Do we have to defer? */ with (o) 
 <li>Taking the strict function out of strict context may cause errors as a result of code execution that previously expected strict context, which is a refactoring hazard</li>
 </ul>
 <p>MP: Another (less difficult/serious) case where strict-function-rewinding is relevant is in the case of named function expressions. e.g.</p>
-<pre><code class="language-js">(function static() { &quot;use strict&quot;; });
+<pre><code class="language-js">(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">static</span>(<span class="hljs-params"></span>) </span>{ <span class="hljs-string">"use strict"</span>; });
 </code></pre>
 <p>Ref: <a href="https://bugs.ecmascript.org/show_bug.cgi?id=4243">https://bugs.ecmascript.org/show_bug.cgi?id=4243</a></p>
 <p>Discussing implemention strategies</p>
@@ -173,8 +178,7 @@ let f = (g = () =&gt; { /* Are we a parameter? Do we have to defer? */ with (o) 
 <p>Discussion about developer expectation.</p>
 <p>AWB: there is another alternative spec function that is more restrictive: ContainsExpression</p>
 <p>RW demures (&quot;You might say I am not willing to die on this hill.&quot;)</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-295"><h4 id="conclusionresolution-295">Conclusion/Resolution</h4></a><ul>
 <li>Make it an error to have a &quot;use strict&quot; directive in a function with a non-simple parameter list.</li>
 <li>Early error</li>
 <li>No matter what mode you were already in</li>
@@ -184,8 +188,7 @@ let f = (g = () =&gt; { /* Are we a parameter? Do we have to defer? */ with (o) 
 </ul></li>
 <li>IsSimpleParameterList <a href="http://www.ecma-international.org/ecma-262/6.0/#sec-function-definitions-static-semantics-issimpleparameterlist">http://www.ecma-international.org/ecma-262/6.0/#sec-function-definitions-static-semantics-issimpleparameterlist</a></li>
 </ul>
-<h2>6.9 Reconsidering the Number.prototype-as-an-ordinary-object change</h2>
-<p>(Daniel Ehrenberg)</p>
+<a href="#69-reconsidering-the-numberprototype-as-an-ordinary-object-change"><h2 id="69-reconsidering-the-numberprototype-as-an-ordinary-object-change">6.9 Reconsidering the Number.prototype-as-an-ordinary-object change</h2></a><p>(Daniel Ehrenberg)</p>
 <p>DE: This change breaks the web (specifically: mootools calls <code>Number.prototype.valueOf(Number.prototype)</code>)</p>
 <p><a href="https://esdiscuss.org/topic/number-prototype-not-being-an-instance-breaks-the-web-too">https://esdiscuss.org/topic/number-prototype-not-being-an-instance-breaks-the-web-too</a>
 <a href="https://github.com/mootools/mootools-core/issues/2711">https://github.com/mootools/mootools-core/issues/2711</a></p>
@@ -193,25 +196,21 @@ let f = (g = () =&gt; { /* Are we a parameter? Do we have to defer? */ with (o) 
 <p>BE: Number, String, Boolean should be</p>
 <p>MM: To be clear: Date.prototype will be an object, not Date; RegExp.protototype will be an object, not RegExp. Every built-in constructor introduced after ES5 will have a plain object prototype.</p>
 <p>MM: Prefer we do Number, Boolean, String together</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-296"><h4 id="conclusionresolution-296">Conclusion/Resolution</h4></a><ul>
 <li>Boolean.prototype, Number.prototype, String.prototype rolled back</li>
 <li>File a spec bug?</li>
 </ul>
-<h2>6.12 Spec defacto String.prototype.trimLeft/trimRight</h2>
-<p>(Sebastian Markbage)</p>
+<a href="#612-spec-defacto-stringprototypetrimlefttrimright"><h2 id="612-spec-defacto-stringprototypetrimlefttrimright">6.12 Spec defacto String.prototype.trimLeft/trimRight</h2></a><p>(Sebastian Markbage)</p>
 <p><a href="https://github.com/sebmarkbage/ecmascript-string-left-right-trim">https://github.com/sebmarkbage/ecmascript-string-left-right-trim</a></p>
 <p>SM: Already shipping in all major engines. Controversy: what to call it?</p>
 <p>JHD: in JavaScript, left-to-rightness of strings is a rendering artifact. The conceptual &quot;first&quot; character of any string, whether LTR or RTL, is index 0, and the &quot;last&quot; is index length minus 1. Thus, in JS, left/start/index zero are the same, and right/end/index length minus one are the same.</p>
 <p>DH: These are extremely common in programming languages</p>
 <p>Discussing semantics of &quot;left&quot;, &quot;right&quot; and &quot;start&quot;, &quot;end&quot;</p>
 <p>DH: There is precedence for JavaScript interpreting the word &quot;right&quot; to mean &quot;the end of a sequence&quot;, from ES5: <code>Array.prototype.reduceRight</code></p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-297"><h4 id="conclusionresolution-297">Conclusion/Resolution</h4></a><ul>
 <li>Approved for Stage 1?</li>
 </ul>
-<h2>REVISIT: 6.11 The scope of &quot;use strict&quot; with respect to destructuring in parameter lists</h2>
-<p>DH: The only thing that &quot;use strict&quot; can cause (in ES5) is an error (to the left)</p>
+<a href="#revisit-611-the-scope-of-use-strict-with-respect-to-destructuring-in-parameter-lists"><h2 id="revisit-611-the-scope-of-use-strict-with-respect-to-destructuring-in-parameter-lists">REVISIT: 6.11 The scope of &quot;use strict&quot; with respect to destructuring in parameter lists</h2></a><p>DH: The only thing that &quot;use strict&quot; can cause (in ES5) is an error (to the left)</p>
 <ul>
 <li>Our resolution was to say, &quot;the use strict prologue in functions is now defunct&quot;</li>
 <li>An alternative, w/ better outcome: revise &quot;use strict&quot; to no longer affect <em>anything</em> to the left.</li>
@@ -245,20 +244,20 @@ let f = (g = () =&gt; { /* Are we a parameter? Do we have to defer? */ with (o) 
 <li>If strict, <code>this</code> is undefined</li>
 <li>If sloppy, <code>this</code> is global object</li>
 </ul>
-<pre><code class="language-js">&quot;use sloppy&quot;;
-function f(foo = this) {
-  &quot;use strict&quot;;
-  return foo;
+<pre><code class="language-js"><span class="hljs-string">"use sloppy"</span>;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params">foo = this</span>) </span>{
+<span class="hljs-meta">  "use strict"</span>;
+  <span class="hljs-keyword">return</span> foo;
 }
 f(); 
-// what is the value of this expression? the global object? or `undefined`?
-// w/r to Sam's proposal (eliminating right-to-left strict-ness effect)
+<span class="hljs-comment">// what is the value of this expression? the global object? or `undefined`?</span>
+<span class="hljs-comment">// w/r to Sam's proposal (eliminating right-to-left strict-ness effect)</span>
 </code></pre>
 <p>YK:</p>
 <p>With Sam's proposa, this would return <code>[undefined, Global]</code>, despite expecting <code>[undefined, undefined]</code></p>
-<pre><code class="language-js">(function(foo = this) {
-  &quot;use strict&quot;;
-  return [this, foo];
+<pre><code class="language-js">(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">foo = this</span>) </span>{
+<span class="hljs-meta">  "use strict"</span>;
+  <span class="hljs-keyword">return</span> [<span class="hljs-keyword">this</span>, foo];
 })();
 </code></pre>
 <p>DH: In ES5, there was a fundamental confusion about &quot;use strict&quot; in functions. This was exacerbated by ES6. In the fullness of time, TC39 is saying, the directive prologue should be used:</p>
@@ -269,25 +268,23 @@ f();
 </ul>
 <p>MM: We should be explicit w/r to &quot;top level strict mode&quot;, in that we actually mean &quot;top level iife with strict mode&quot;—to avoid the concatenation problem.</p>
 <p>Advice: &quot;Just use modules&quot;.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-298"><h4 id="conclusionresolution-298">Conclusion/Resolution</h4></a><ul>
 <li>The previous consensus remains</li>
 </ul>
-<h2>REVISIT: 6.7 new &amp; GeneratorFunction</h2>
-<p>AWB: (answers to questions from yesterday)</p>
+<a href="#revisit-67-new--generatorfunction"><h2 id="revisit-67-new--generatorfunction">REVISIT: 6.7 new &amp; GeneratorFunction</h2></a><p>AWB: (answers to questions from yesterday)</p>
 <ul>
 <li>Generator functions are new-able</li>
 <li>Generator methods are new-able</li>
 <li>Implicit body</li>
 </ul>
-<pre><code class="language-js">function * g() { this.foo }
+<pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> * <span class="hljs-title">g</span>(<span class="hljs-params"></span>) </span>{ <span class="hljs-keyword">this</span>.foo }
 
 x = {
-  *f() { this.foo }    
+  *f() { <span class="hljs-keyword">this</span>.foo }    
 };
 
-new f(); // ok
-new x.f(); // ok
+<span class="hljs-keyword">new</span> f(); <span class="hljs-comment">// ok</span>
+<span class="hljs-keyword">new</span> x.f(); <span class="hljs-comment">// ok</span>
 </code></pre>
 <p>Relevant SpiderMonkey bug: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1166950">https://bugzilla.mozilla.org/show_bug.cgi?id=1166950</a></p>
 <p>DH: Bare generator function call behaviour is correct?</p>
@@ -310,12 +307,10 @@ new x.f(); // ok
 </ul>
 <p>Acceptable risk?</p>
 <p>BT: Implementors on both V8 and SpiderMonkey have shown interest in making generator not newable</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-299"><h4 id="conclusionresolution-299">Conclusion/Resolution</h4></a><ul>
 <li>Spec change: generator functions and methods do not have a [[construct]] trap, so <code>new</code> throws</li>
 </ul>
-<h2>Process Document discussion (to settle things once and for all)</h2>
-<p>(Domenic Denicola)</p>
+<a href="#process-document-discussion-to-settle-things-once-and-for-all"><h2 id="process-document-discussion-to-settle-things-once-and-for-all">Process Document discussion (to settle things once and for all)</h2></a><p>(Domenic Denicola)</p>
 <p>DD: (Showing <a href="https://tc39.github.io/process-document/">https://tc39.github.io/process-document/</a>)</p>
 <p>Reviewed:</p>
 <ul>
@@ -326,8 +321,7 @@ new x.f(); // ok
 <p>DD/RW: reviewers attached at Stage 1. Stage 2 entrance requires review</p>
 <p>RW: Propose: At Stage 0, reviewers get &quot;attached&quot;, but non-binding. (basically, it's a &quot;champion group&quot;)</p>
 <p>... Next thing...</p>
-<h2>What is an &quot;implementation&quot;?</h2>
-<p>Discussion re: Stage 4</p>
+<a href="#what-is-an-implementation"><h2 id="what-is-an-implementation">What is an &quot;implementation&quot;?</h2></a><p>Discussion re: Stage 4</p>
 <ul>
 <li>Important to get feedback from engaged implementors</li>
 </ul>
@@ -338,12 +332,10 @@ new x.f(); // ok
 <p>Discussion, re: experiences had with other new features.</p>
 <p>&quot;Significant in-the-field experience with shipping implementations, such as that provided by independent VMs&quot;</p>
 <p>Stage 3: &quot;Will require feedback from implementations and users&quot;</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-300"><h4 id="conclusionresolution-300">Conclusion/Resolution</h4></a><ul>
 <li>need links to Domenic's commits</li>
 </ul>
-<h2>6.8 SIMD.js: Start the process to move towards Stage 3</h2>
-<p>(Dan Gohman, John Mccutchan, Peter Jensen, Daniel Ehrenberg)</p>
+<a href="#68-simdjs-start-the-process-to-move-towards-stage-3"><h2 id="68-simdjs-start-the-process-to-move-towards-stage-3">6.8 SIMD.js: Start the process to move towards Stage 3</h2></a><p>(Dan Gohman, John Mccutchan, Peter Jensen, Daniel Ehrenberg)</p>
 <p><a href="simd.pdf">Slides</a></p>
 <p>DE: (introducing topic)</p>
 <ul>
@@ -578,8 +570,7 @@ unsignedAbsoluteDifference.</p>
 </ul>
 <p>DH: Either accept Waldemar's argument, or state case based on historical precedence. If no consistency, then don't care.</p>
 <p>WH: Note that I'm not alone with that argument. I don't want this to become personal.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-301"><h4 id="conclusionresolution-301">Conclusion/Resolution</h4></a><ul>
 <li><code>new</code> throws</li>
 <li>not separate spec</li>
 <li>spec mechansisms: Allen, Brian, Rick and Dan to work through</li>
@@ -591,3 +582,5 @@ unsignedAbsoluteDifference.</p>
 <li>Mark Miller</li>
 </ul></li>
 </ul>
+
+</body>

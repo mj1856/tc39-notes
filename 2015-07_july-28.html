@@ -1,27 +1,27 @@
 <!doctype html>
 <meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.6.0/github-markdown.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+
 <title>July 28 2015 Meeting Notes</title>
-<h1>July 28 2015 Meeting Notes</h1>
-<p>Allen Wirfs-Brock (AWB), Sebastian Markbage (SM), Jafar Husain (JH), Eric Farriauolo (EF), Caridy Patino (CP), Waldemar Horwat (WH), István Sebestyén (IS), Mark Miller (MM), Adam Klein (AK), Michael Ficarra (MF), Peter Jensen (PJ), Domenic Denicola (DD), Jordan Harband (JHD), Jonathan Turner (JT), Paul Leathers (PL), Chip Morningstar (CM), Vladimir Matveev (VM), Ron Buckton (MS), Brian Terlson (BT), Alan Schmitt (AS), Ben Newman (BN), Mohamed Hegazy (MH), Abhijith Chatra (AC), Tom Care (TC), John Neumann  (JN), Dave Herman (DH), Brendan Eich (BE), Rick Waldron (RW), Mike Pennisi (MP)</p>
-<h2>Introduction</h2>
-<p>BT: (logistics)</p>
+<body class="markdown-body">
+<a href="#july-28-2015-meeting-notes"><h1 id="july-28-2015-meeting-notes">July 28 2015 Meeting Notes</h1></a><p>Allen Wirfs-Brock (AWB), Sebastian Markbage (SM), Jafar Husain (JH), Eric Farriauolo (EF), Caridy Patino (CP), Waldemar Horwat (WH), István Sebestyén (IS), Mark Miller (MM), Adam Klein (AK), Michael Ficarra (MF), Peter Jensen (PJ), Domenic Denicola (DD), Jordan Harband (JHD), Jonathan Turner (JT), Paul Leathers (PL), Chip Morningstar (CM), Vladimir Matveev (VM), Ron Buckton (MS), Brian Terlson (BT), Alan Schmitt (AS), Ben Newman (BN), Mohamed Hegazy (MH), Abhijith Chatra (AC), Tom Care (TC), John Neumann  (JN), Dave Herman (DH), Brendan Eich (BE), Rick Waldron (RW), Mike Pennisi (MP)</p>
+<a href="#introduction"><h2 id="introduction">Introduction</h2></a><p>BT: (logistics)</p>
 <p>AWB: I will chair until John N. arrives.</p>
-<h2>Adoption of Agenda</h2>
-<p>AWB: <a href="https://github.com/tc39/agendas/blob/master/2015/07.md">https://github.com/tc39/agendas/blob/master/2015/07.md</a></p>
+<a href="#adoption-of-agenda"><h2 id="adoption-of-agenda">Adoption of Agenda</h2></a><p>AWB: <a href="https://github.com/tc39/agendas/blob/master/2015/07.md">https://github.com/tc39/agendas/blob/master/2015/07.md</a></p>
 <p>YK: Propose that future agendas be organized by stage advancement</p>
 <p>(Agreement)</p>
 <p>IS: Need to add Ecma Secretariat items (Allen adds) like report from the GA.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-302"><h4 id="conclusionresolution-302">Conclusion/Resolution</h4></a><ul>
 <li>Approved</li>
 </ul>
-<h2>Approval of Minutes from May 2015</h2>
-<p>AWB: Posted on Github and es-discuss</p>
+<a href="#approval-of-minutes-from-may-2015"><h2 id="approval-of-minutes-from-may-2015">Approval of Minutes from May 2015</h2></a><p>AWB: Posted on Github and es-discuss</p>
 <p>IS: Ecma is archiving (mirroring) the most significant documents from GitHub, like technical notes as well as summaries associated with the agendas.
 This practice should satisfy both the requirements of Ecma as an SDO as well as of Tc39.</p>
-<h2>Report from Ecma Secretariat</h2>
-<h2>4.i Status of ISO/IEC Fast Track of ECMA-262 Ed.6, ECMA-402 Ed.2 and ECMA-404</h2>
-<p>IS: Need an Ecma-262, Ecma-402 and Ecma-404 package &quot;Explanatory Report&quot;</p>
+<a href="#report-from-ecma-secretariat"><h2 id="report-from-ecma-secretariat">Report from Ecma Secretariat</h2></a><a href="#4i-status-of-isoiec-fast-track-of-ecma-262-ed6-ecma-402-ed2-and-ecma-404"><h2 id="4i-status-of-isoiec-fast-track-of-ecma-262-ed6-ecma-402-ed2-and-ecma-404">4.i Status of ISO/IEC Fast Track of ECMA-262 Ed.6, ECMA-402 Ed.2 and ECMA-404</h2></a><p>IS: Need an Ecma-262, Ecma-402 and Ecma-404 package &quot;Explanatory Report&quot;</p>
 <ul>
 <li>Next project is &quot;linking&quot; the three explanatory reports in one</li>
 <li>Then discussion on the fast track started</li>
@@ -122,24 +122,20 @@ This practice should satisfy both the requirements of Ecma as an SDO as well as 
 <p>WH: Are they ok with not making comments?</p>
 <p>IS: From some members, but not all, awaiting final word.</p>
 <p>WH: Not ok with making decision until we know where they stand.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-303"><h4 id="conclusionresolution-303">Conclusion/Resolution</h4></a><ul>
 <li>Yearly release, given to ISO without change, to accept as is.</li>
 <li>No sub releases</li>
 <li>Publish errata as follow up</li>
 <li>Take their reivew comments/changes and integrate them into next year's edition.</li>
 <li>Istvan will present this to ISO as a solution</li>
 </ul>
-<h2>Propose Life Membership for Allen Wirfs-Brock</h2>
-<p>(Rick Waldron)</p>
+<a href="#propose-life-membership-for-allen-wirfs-brock"><h2 id="propose-life-membership-for-allen-wirfs-brock">Propose Life Membership for Allen Wirfs-Brock</h2></a><p>(Rick Waldron)</p>
 <p>RW: As we have for Brendan, I'd like to propose inviting Allen Wirfs-Brock as a lifetime member of TC39</p>
 <p>IS: Such a category does not exists officially at Ecma, only some freedom for the Secretary General to allow partication as invited expert. He will bring this to Ecma Management for seeking agreement. This is a special case, and I am confident.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-304"><h4 id="conclusionresolution-304">Conclusion/Resolution</h4></a><ul>
 <li>Istvan to get approval</li>
 </ul>
-<h2>5 ECMA-262, Editorship</h2>
-<p>JN: Need to appoint a new editor, only one volunteer has come forward and that's Brian Terlson.</p>
+<a href="#5-ecma-262-editorship"><h2 id="5-ecma-262-editorship">5 ECMA-262, Editorship</h2></a><p>JN: Need to appoint a new editor, only one volunteer has come forward and that's Brian Terlson.</p>
 <ul>
 <li>Motion to appoint Brian</li>
 </ul>
@@ -148,20 +144,17 @@ This practice should satisfy both the requirements of Ecma as an SDO as well as 
 <p>WH: Do you see your approach as different from Allen?</p>
 <p>BT: Only in that I'm a different person, but generally the same. I'm not Allen, but I will do my best.</p>
 <p>AWB: Appropriate to also appoint a manager for the content that we're producing.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-305"><h4 id="conclusionresolution-305">Conclusion/Resolution</h4></a><ul>
 <li>Brian Terlson is new editor of Ecma-262</li>
 <li>Unanimous consent</li>
 </ul>
-<h2>Discussion of the Manager Role</h2>
-<p>AWB: Useful to have some web content which will need a manager</p>
+<a href="#discussion-of-the-manager-role"><h2 id="discussion-of-the-manager-role">Discussion of the Manager Role</h2></a><p>AWB: Useful to have some web content which will need a manager</p>
 <p>Discussion, re: content manager</p>
 <p>&quot;web master&quot;</p>
 <p>IS: Need procedures to archive the github material</p>
 <p>AWB: Unless someone wants to volunteer now, then let's resolve to appoint someone by the next meeting.</p>
 <p>JN: Allen please generate a &quot;job description&quot;</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-306"><h4 id="conclusionresolution-306">Conclusion/Resolution</h4></a><ul>
 <li>Allen will produce a &quot;job description&quot;
 <ul>
 <li>Coordinate with Brian</li>
@@ -169,8 +162,7 @@ This practice should satisfy both the requirements of Ecma as an SDO as well as 
 <li>Submit to member companies for review</li>
 <li>Member appointed to the position at next meeting</li>
 </ul>
-<h2>Exponentiation Operator</h2>
-<p>(The room is very excited about technical discussion finally starting.)</p>
+<a href="#exponentiation-operator"><h2 id="exponentiation-operator">Exponentiation Operator</h2></a><p>(The room is very excited about technical discussion finally starting.)</p>
 <p>RW: SpiderMonkey is ready; V8 is ready; spec material is ready <a href="https://rwaldron.github.io/exponentiation-operator/">https://rwaldron.github.io/exponentiation-operator/</a>; it meets the requirements for stage 3</p>
 <p>WH: This is incomplete; it is missing details on the lexical grammar.</p>
 <p>RW: Agreed; I can address that issue before the end of this session. Perhaps we can revisit in the coming days.</p>
@@ -184,12 +176,10 @@ This practice should satisfy both the requirements of Ecma as an SDO as well as 
 <p>BT: We have agreed that technical issues should not block advancement to Stage 3. Does anyone object to advancement?</p>
 <p>AWB/DH: We have technical questions, but they have no bearing on advancement to Stage 3.</p>
 <p>(break for lunch)</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-307"><h4 id="conclusionresolution-307">Conclusion/Resolution</h4></a><ul>
 <li>Approved for stage 3</li>
 </ul>
-<h2>6.2 RegExp.escape</h2>
-<p>(Domenic Denicola)</p>
+<a href="#62-regexpescape"><h2 id="62-regexpescape">6.2 RegExp.escape</h2></a><p>(Domenic Denicola)</p>
 <p><a href="https://github.com/benjamingr/RegExp.escape">https://github.com/benjamingr/RegExp.escape</a></p>
 <p><a href="http://slides.com/benjamingruenbaum/regexp-escape">Slides</a></p>
 <p>DD: (presents slides)</p>
@@ -216,7 +206,7 @@ This practice should satisfy both the requirements of Ecma as an SDO as well as 
 <p>YK: Issue is <code>RegExp.escape(...)</code> what?</p>
 <p>WH: Second use case (<a href="https://github.com/benjamingr/RegExp.escape/blob/master/EscapedChars.md">https://github.com/benjamingr/RegExp.escape/blob/master/EscapedChars.md</a>, <code>0-9a-fA-F</code>) is not useful. There is no good reason for someone to concatenate the erroneously short (three digits instead of four) <code>\u004</code> to user-defined input. The first use case there is also not common.</p>
 <p>MF: Should be a <code>RegExp.compose</code>, not use <code>+</code> to concatenate strings for <code>RegExp()</code></p>
-<pre><code>new RegExp(&quot;\\u004&quot;)
+<pre><code><span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(<span class="hljs-string">"\\u004"</span>)
 </code></pre>
 <p>AWB: illegal in the grammar, but allowed in the annex extentions (annex b grammar allows &lt; 4 characters following the <code>\\u</code>)</p>
 <p>WH: Why would you do this on purpose?</p>
@@ -311,14 +301,14 @@ This practice should satisfy both the requirements of Ecma as an SDO as well as 
 <p>WH: it does't buy anything and there are others that aren't covered.</p>
 <p>DD: Can you give example</p>
 <p>WH:</p>
-<pre><code>new RegExp(&quot;\\&quot; + RegExp.escape(&quot;x&quot;))
+<pre><code><span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(<span class="hljs-string">"\\"</span> + <span class="hljs-built_in">RegExp</span>.escape(<span class="hljs-string">"x"</span>))
 </code></pre>
 <p>MM: &quot;\&quot; is a regexp fragment.</p>
 <p>WH: Yes (in this case), but in practice so what? There's nothing in the concatenation example that would ensure you only concatenate complete fragments.</p>
 <p>MM: Right, this is still a security issue. Unresolvable by escaping due to the odd-even problem.</p>
 <p>DD: Ok, the point was to handle all cases</p>
 <p>YK: Non capturing parens solution</p>
-<pre><code>new RegExp(&quot;\\\\(?:x)&quot;)
+<pre><code><span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(<span class="hljs-string">"\\\\(?:x)"</span>)
 </code></pre>
 <p>WH: Stick to well-behaved</p>
 <p>Each case fails where another does not. Template strings address all issues, but fails for not being dynamic</p>
@@ -327,23 +317,19 @@ This practice should satisfy both the requirements of Ecma as an SDO as well as 
 <p>?: Need to work to resolve the caveats in RegExp.escape.</p>
 <p>WH: The caveats of protecting against all possible prefixes are inherent and irremovable. I want RegExp.escape to move forward despite those. It's safe for concatenating arbitrary escaped user input with well-behaved regexp fragments.</p>
 <p>MM: I'm not ok</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-308"><h4 id="conclusionresolution-308">Conclusion/Resolution</h4></a><ul>
 <li>dynamic solution that has caveats</li>
 <li>caveats cannot be eliminated</li>
 <li>not confident that all issues can be addressed</li>
 <li>want to see template string solution explored</li>
 </ul>
-<h2>6.i Advance Array.prototype.includes to stage 3</h2>
-<p>(Domenic Denicola)</p>
+<a href="#6i-advance-arrayprototypeincludes-to-stage-3"><h2 id="6i-advance-arrayprototypeincludes-to-stage-3">6.i Advance Array.prototype.includes to stage 3</h2></a><p>(Domenic Denicola)</p>
 <p><a href="https://github.com/tc39/Array.prototype.includes">https://github.com/tc39/Array.prototype.includes</a></p>
 <p>DD: Walking through <a href="https://github.com/tc39/Array.prototype.includes/issues/12">https://github.com/tc39/Array.prototype.includes/issues/12</a></p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-309"><h4 id="conclusionresolution-309">Conclusion/Resolution</h4></a><ul>
 <li>Approved Stage 3</li>
 </ul>
-<h2>Introduce promise rejection tracking proposal</h2>
-<p>(Domenic Denicola)</p>
+<a href="#introduce-promise-rejection-tracking-proposal"><h2 id="introduce-promise-rejection-tracking-proposal">Introduce promise rejection tracking proposal</h2></a><p>(Domenic Denicola)</p>
 <p><a href="https://github.com/domenic/unhandled-rejections-browser-spec#changes-to-ecmascript">https://github.com/domenic/unhandled-rejections-browser-spec#changes-to-ecmascript</a></p>
 <p>DD: (introduction)</p>
 <p>YK: (summarizing) Some want to be notified when a Promise is rejected without an error handler</p>
@@ -386,16 +372,14 @@ This practice should satisfy both the requirements of Ecma as an SDO as well as 
 <p>DD: Didn't see something like that</p>
 <p>YK: Move to stage 2, because already implemented.</p>
 <p>Discussion, re: stage process? Yes.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-310"><h4 id="conclusionresolution-310">Conclusion/Resolution</h4></a><ul>
 <li>Specify a default handler</li>
 <li>Filed: <a href="https://github.com/domenic/unhandled-rejections-browser-spec/issues/14">https://github.com/domenic/unhandled-rejections-browser-spec/issues/14</a></li>
 <li>Non-normative note: &quot;If operation is &quot;handle&quot;, it must not hold a reference to promise in a way that would interfere with garbage collection.&quot;</li>
 <li>Filed: <a href="https://github.com/domenic/unhandled-rejections-browser-spec/issues/15">https://github.com/domenic/unhandled-rejections-browser-spec/issues/15</a></li>
 <li>Approved for stage 2</li>
 </ul>
-<h2>9 Tooling Updates</h2>
-<p>(Brian Terlson)</p>
+<a href="#9-tooling-updates"><h2 id="9-tooling-updates">9 Tooling Updates</h2></a><p>(Brian Terlson)</p>
 <p><a href="tooling-updates.pdf">Slides</a></p>
 <p>BT:</p>
 <p>Grammarkdown (Grmd)</p>
@@ -436,8 +420,7 @@ This practice should satisfy both the requirements of Ecma as an SDO as well as 
 <li>Syntax for links</li>
 <li>Smart quotes</li>
 </ul>
-<h2>6.6 BindingRestElement should allow a BindingPattern ala AssignmentRestElement</h2>
-<p>(Brian Terlson)</p>
+<a href="#66-bindingrestelement-should-allow-a-bindingpattern-ala-assignmentrestelement"><h2 id="66-bindingrestelement-should-allow-a-bindingpattern-ala-assignmentrestelement">6.6 BindingRestElement should allow a BindingPattern ala AssignmentRestElement</h2></a><p>(Brian Terlson)</p>
 <p><a href="binding-rest-element.pdf">Slides</a></p>
 <p>BT: AssignmentRestElement allows destructuring, BindingRestElement throws. Destructure rest on assignment, but not on binding</p>
 <ul>
@@ -461,12 +444,10 @@ This practice should satisfy both the requirements of Ecma as an SDO as well as 
 </ul>
 <p>BT: No</p>
 <p>BT: Babel already treats the same</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-311"><h4 id="conclusionresolution-311">Conclusion/Resolution</h4></a><ul>
 <li>Align AssignmentPattern with BindingPattern to allow further destructuring of the rest element</li>
 </ul>
-<h2>6.7 new &amp; GeneratorFunction</h2>
-<p>(Brian Terlson)</p>
+<a href="#67-new--generatorfunction"><h2 id="67-new--generatorfunction">6.7 new &amp; GeneratorFunction</h2></a><p>(Brian Terlson)</p>
 <p><a href="new-generator-function.pdf">Slides</a></p>
 <p>BT:</p>
 <p>Current Semantics:</p>
@@ -490,37 +471,37 @@ This practice should satisfy both the requirements of Ecma as an SDO as well as 
 <p>BT: Breaks down the <code>this</code> and <code>new</code> behavior, b/c can't use <code>this</code> with <code>new</code></p>
 <p>AWB: The body isn't run as part of the constructor, it's run as &quot;next&quot;</p>
 <p>DH: A generator used with new is weird. (giving an example)</p>
-<pre><code class="language-js">function * Thing(x) {
-  this.x = x    
+<pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> * <span class="hljs-title">Thing</span>(<span class="hljs-params">x</span>) </span>{
+  <span class="hljs-keyword">this</span>.x = x    
 }
 
-Thing.prototype.sayHi = function() {};
+Thing.prototype.sayHi = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{};
 
-let thing = new Thing(&quot;tc&quot;, 39);
+<span class="hljs-keyword">let</span> thing = <span class="hljs-keyword">new</span> Thing(<span class="hljs-string">"tc"</span>, <span class="hljs-number">39</span>);
 
-thing.x // undefined
-thing.y // undefined
+thing.x <span class="hljs-comment">// undefined</span>
+thing.y <span class="hljs-comment">// undefined</span>
 thing.next();
 
-thing.x // &quot;tc&quot;
-thing.y // undefined
+thing.x <span class="hljs-comment">// "tc"</span>
+thing.y <span class="hljs-comment">// undefined</span>
 thing.next();
 
-thing.x // &quot;tc&quot;
-thing.y // 39
+thing.x <span class="hljs-comment">// "tc"</span>
+thing.y <span class="hljs-comment">// 39</span>
 </code></pre>
 <p>DH: Why would want to pause before fully constructing the object?</p>
 <ul>
 <li>Introduces a non-orthogonality that doesn't pay for itself</li>
 </ul>
 <p>AWB: Generator method</p>
-<pre><code class="language-js">let obj = {
+<pre><code class="language-js"><span class="hljs-keyword">let</span> obj = {
   *foo() {
-    yield this;    
+    <span class="hljs-keyword">yield</span> <span class="hljs-keyword">this</span>;    
   }
 };
 
-let iter = new obj.foo();
+<span class="hljs-keyword">let</span> iter = <span class="hljs-keyword">new</span> obj.foo();
 </code></pre>
 <p>RW: Non-generator method would throw a TypeError when <code>new ...</code></p>
 <p>MM/DH: (discussing special cases)</p>
@@ -529,34 +510,34 @@ let iter = new obj.foo();
 <p>MM: A generator method, that does not mention super, has a call behaviour that sets this from it's caller the way that a generator function does</p>
 <p>AWB: imagine &quot;MyCollection&quot;</p>
 <pre><code class="language-js">
-class MyCollection {
-  constructor() {
-    // ...
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyCollection</span> </span>{
+  <span class="hljs-keyword">constructor</span>() {
+    <span class="hljs-comment">// ...</span>
   }  
   * values() {
-    let k = 0;
-    let length = this.length;
-    while (k &lt; length) {
-      yield this[k++];    
+    <span class="hljs-keyword">let</span> k = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">let</span> length = <span class="hljs-keyword">this</span>.length;
+    <span class="hljs-keyword">while</span> (k &lt; length) {
+      <span class="hljs-keyword">yield</span> <span class="hljs-keyword">this</span>[k++];    
     }
   }    
 }
 
-let collection = new MyCollection();
+<span class="hljs-keyword">let</span> collection = <span class="hljs-keyword">new</span> MyCollection();
 
-let values = collection.values();
+<span class="hljs-keyword">let</span> values = collection.values();
 </code></pre>
 <pre><code class="language-js">
-class MyCollection {
-  constructor() {
-  //
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyCollection</span> </span>{
+  <span class="hljs-keyword">constructor</span>() {
+  <span class="hljs-comment">//</span>
   }    
 }
 
-let collection = new MyCollection();
+<span class="hljs-keyword">let</span> collection = <span class="hljs-keyword">new</span> MyCollection();
 
-collection.values = function * () {
-  console.log(this);
+collection.values = <span class="hljs-function"><span class="hljs-keyword">function</span> * (<span class="hljs-params"></span>) </span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>);
 };
 </code></pre>
 <p>DH: Have a construct trap, normal new object passed in. Generator function is a generator implementation of a function.</p>
@@ -565,26 +546,26 @@ collection.values = function * () {
 </ul>
 <p>BN: If trying to discourage using new, this may already be the case, since this.next(), this.throw(), this.return() will all throw if called from within the generator, because the generator is already executing</p>
 <p>AWB: Cannot re-enter</p>
-<pre><code class="language-js">function * Thing(x, y) {
-  this.x = x  // current ES6: throw here.
-  yield;   
-  this.y = y;
+<pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> * <span class="hljs-title">Thing</span>(<span class="hljs-params">x, y</span>) </span>{
+  <span class="hljs-keyword">this</span>.x = x  <span class="hljs-comment">// current ES6: throw here.</span>
+  <span class="hljs-keyword">yield</span>;   
+  <span class="hljs-keyword">this</span>.y = y;
 }
 
-Thing.prototype.sayHi = function() {};
+Thing.prototype.sayHi = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{};
 
-let thing = new Thing(&quot;tc&quot;, 39);
+<span class="hljs-keyword">let</span> thing = <span class="hljs-keyword">new</span> Thing(<span class="hljs-string">"tc"</span>, <span class="hljs-number">39</span>);
 
-thing.x // undefined
-thing.y // undefined
-thing.next(); // current ES6: ReferenceError on `this`
+thing.x <span class="hljs-comment">// undefined</span>
+thing.y <span class="hljs-comment">// undefined</span>
+thing.next(); <span class="hljs-comment">// current ES6: ReferenceError on `this`</span>
 
-thing.x // &quot;tc&quot;
-thing.y // undefined
+thing.x <span class="hljs-comment">// "tc"</span>
+thing.y <span class="hljs-comment">// undefined</span>
 thing.next();
 
-thing.x // &quot;tc&quot;
-thing.y // 39
+thing.x <span class="hljs-comment">// "tc"</span>
+thing.y <span class="hljs-comment">// 39</span>
 </code></pre>
 <p>(Note that SpiderMonkey doesn't throw at either of the places called out above)</p>
 <p>DH: The * is a way of saying that you're providing a way to the precise thing you would do by hand, but without the long form hand written</p>
@@ -593,9 +574,9 @@ thing.y // 39
 <p>MM: What is the instance created from whehn a generator method is called with new?</p>
 <p>AWB: instance of Generator</p>
 <p>MM:</p>
-<pre><code class="language-js">let coll = {*values() {}};
-let it = coll.values();
-it instanceof coll.values; // true
+<pre><code class="language-js"><span class="hljs-keyword">let</span> coll = {*values() {}};
+<span class="hljs-keyword">let</span> it = coll.values();
+it <span class="hljs-keyword">instanceof</span> coll.values; <span class="hljs-comment">// true</span>
 </code></pre>
 <p>MM: Unseen: allocatiing a new generator instance. Contains an implicit <code>new</code> and implcit constructor body.</p>
 <p>DH: * imputes an implicit <code>new</code> (in both the method and constructor)</p>
@@ -604,11 +585,11 @@ it instanceof coll.values; // true
 <p>DH: Simpler: &quot;* is never new-able&quot;</p>
 <p>Alternative 2: a function * has</p>
 <p>MM:</p>
-<pre><code class="language-js">let coll = { *values() { this; } }
-coll.values(); // ?
+<pre><code class="language-js"><span class="hljs-keyword">let</span> coll = { *values() { <span class="hljs-keyword">this</span>; } }
+coll.values(); <span class="hljs-comment">// ?</span>
 
-coll.items = function * () { this; };
-coll.items(); // ?
+coll.items = <span class="hljs-function"><span class="hljs-keyword">function</span> * (<span class="hljs-params"></span>) </span>{ <span class="hljs-keyword">this</span>; };
+coll.items(); <span class="hljs-comment">// ?</span>
 </code></pre>
 <p>DH:</p>
 <table>
@@ -622,15 +603,13 @@ coll.items(); // ?
 </tbody>
 </table>
 <p>AK (offline): Further spec reading suggests that GeneratorMethods need to have their [[Construct]] removed just like GeneratorFunctions (they both pass &quot;generator&quot; to FunctionInitialize, which is where the decision to set up [[Construct]] is made).</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-312"><h4 id="conclusionresolution-312">Conclusion/Resolution</h4></a><ul>
 <li>Maintain spec that cannot construct generator methods (or change spec to make them non-constructible, see above)</li>
 <li>Spec change: generator function do not have a [[construct]] trap, so <code>new</code> throws</li>
 <li>Call a generator, <code>this</code> should be set by the caller, as is normal (global or undefined)</li>
 <li>File Errata</li>
 </ul>
-<h2>6.12 String.prototype.split, its limit argument, and ToLength vs ToUint32</h2>
-<p>(Adam Klein)</p>
+<a href="#612-stringprototypesplit-its-limit-argument-and-tolength-vs-touint32"><h2 id="612-stringprototypesplit-its-limit-argument-and-tolength-vs-touint32">6.12 String.prototype.split, its limit argument, and ToLength vs ToUint32</h2></a><p>(Adam Klein)</p>
 <p><a href="https://gist.github.com/ajklein/335e0f948c500a0c25dc">https://gist.github.com/ajklein/335e0f948c500a0c25dc</a></p>
 <p>AK: Issues:</p>
 <ul>
@@ -652,8 +631,9 @@ coll.items(); // ?
 </ul>
 <p>Proposal: Revert this spec change. Existing implementations still match ES5, and the old behavior still makes sense (even with ES6's longer String length limit).</p>
 <p>WH: The spec needs a geocities-style &quot;Under Construction&quot; animated GIF here ;). This was the first phase of a series of changes attempting to move the spec to eliminate the 2^32 array length limit, with the changes spread over time.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-313"><h4 id="conclusionresolution-313">Conclusion/Resolution</h4></a><ul>
 <li>Revert this spec change. Existing implementations still match ES5, and the old behavior still makes sense (even with ES6's longer String length limit).</li>
 <li>Filed <a href="https://bugs.ecmascript.org/show_bug.cgi?id=4432">https://bugs.ecmascript.org/show_bug.cgi?id=4432</a></li>
 </ul>
+
+</body>

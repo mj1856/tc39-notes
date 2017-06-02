@@ -1,10 +1,15 @@
 <!doctype html>
 <meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.6.0/github-markdown.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+
 <title>March 14 2013 Meeting Notes</title>
-<h1>March 14 2013 Meeting Notes</h1>
-<p>John Neumann (JN), Norbert Lindenberg (NL), Allen Wirfs-Brock (AWB), Rick Waldron (RW), Waldemar Horwat (WH), Eric Ferraiuolo (EF), Erik Arvidsson (EA), Luke Hoban (LH), Matt Sweeney (MS), Doug Crockford (DC), Yehuda Katz (YK), Brendan Eich (BE), Sam Tobin-Hochstadt (STH), Alex Russell (AR), Dave Herman (DH), Adam Klein (AK), Bernd Mathiske (BM), John Pampuch (JP), Avik Chaudhuri (AC), Theresa O'Connor (TOC), Rick Hudson (RH), Andreas Rossberg (ARB), Rafeal Weinstein (RWN), Mark Miller (MM), Reid Burke (RB),</p>
-<h2>4.8 Object.observe Implementation Report</h2>
-<p>(Presented by Adam Klein, on behalf of Rafael Weinstein)</p>
+<body class="markdown-body">
+<a href="#march-14-2013-meeting-notes"><h1 id="march-14-2013-meeting-notes">March 14 2013 Meeting Notes</h1></a><p>John Neumann (JN), Norbert Lindenberg (NL), Allen Wirfs-Brock (AWB), Rick Waldron (RW), Waldemar Horwat (WH), Eric Ferraiuolo (EF), Erik Arvidsson (EA), Luke Hoban (LH), Matt Sweeney (MS), Doug Crockford (DC), Yehuda Katz (YK), Brendan Eich (BE), Sam Tobin-Hochstadt (STH), Alex Russell (AR), Dave Herman (DH), Adam Klein (AK), Bernd Mathiske (BM), John Pampuch (JP), Avik Chaudhuri (AC), Theresa O'Connor (TOC), Rick Hudson (RH), Andreas Rossberg (ARB), Rafeal Weinstein (RWN), Mark Miller (MM), Reid Burke (RB),</p>
+<a href="#48-objectobserve-implementation-report"><h2 id="48-objectobserve-implementation-report">4.8 Object.observe Implementation Report</h2></a><p>(Presented by Adam Klein, on behalf of Rafael Weinstein)</p>
 <p>See: <a href="http://wiki.ecmascript.org/doku.php?id=harmony:observe">http://wiki.ecmascript.org/doku.php?id=harmony:observe</a></p>
 <p>Slides (PDF, will prompt download): <a href="http://wiki.ecmascript.org/lib/exe/fetch.php?id=meetings%3Ameeting_mar_12_2013&amp;cache=cache&amp;media=meetings:object.observe_implementation_report.pdf">http://wiki.ecmascript.org/lib/exe/fetch.php?id=meetings%3Ameeting_mar_12_2013&amp;cache=cache&amp;media=meetings:object.observe_implementation_report.pdf</a></p>
 <p>(Slide 1)</p>
@@ -61,9 +66,9 @@ delivered at the end of the turn)</p>
 <hr>
 <p>WH: What is &quot;values at a path&quot;</p>
 <p>AK: If you have:</p>
-<pre><code class="language-js">var foo = { bar: { baz: &quot;...&quot; } };
+<pre><code class="language-js"><span class="hljs-keyword">var</span> foo = { <span class="hljs-attr">bar</span>: { <span class="hljs-attr">baz</span>: <span class="hljs-string">"..."</span> } };
 
-observe.observePath(foo, &quot;bar.baz&quot;);
+observe.observePath(foo, <span class="hljs-string">"bar.baz"</span>);
 </code></pre>
 <p>?: Observing paths leaks objects if we only have weak maps, not weak references</p>
 <p>WH: Please explain</p>
@@ -136,8 +141,7 @@ observe.observePath(foo, &quot;bar.baz&quot;);
 <p>AWB: What happens if the object is implemented via Proxy, and doesn't have the normal representation of properties.</p>
 <p>ARB: Treated the same as accessors</p>
 <p>AR: To clarify, we call this the &quot;slow path&quot;, but for apps that are going to use this, it's demonstrably preferable to existing art.</p>
-<h2>4.6 Symbols</h2>
-<p>(Presented by Andreas Rossberg)</p>
+<a href="#46-symbols"><h2 id="46-symbols">4.6 Symbols</h2></a><p>(Presented by Andreas Rossberg)</p>
 <p>ARB: Update on implementation of (unique) symbols in V8: mostly finished, and as efficient as strings as property names.
 But symbols don't fully behave like objects yet, as would be required by current spec.</p>
 <p>ARB: Propose two changes to the proposal:</p>
@@ -160,7 +164,7 @@ But symbols don't fully behave like objects yet, as would be required by current
 <p>ARB: Can we really afford precluding new typeof results for all eternity?</p>
 <p>DH: If we can get away with this, then it supports adding new types for future additions, eg. int 64</p>
 <p>BE: This is important:</p>
-<pre><code class="language-js">typeof x == typeof y &amp;&amp; x == y
+<pre><code class="language-js"><span class="hljs-keyword">typeof</span> x == <span class="hljs-keyword">typeof</span> y &amp;&amp; x == y
             &lt;=&gt;
           x === y
 </code></pre>
@@ -184,8 +188,7 @@ But symbols don't fully behave like objects yet, as would be required by current
 <p>DH: Proto-less dictionaries will become more widely used</p>
 <p>AWB: ...recalling existing specification of ToString conversion</p>
 <p>...Mixed discussion about ToString</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-587"><h4 id="conclusionresolution-587">Conclusion/Resolution</h4></a><ul>
 <li>New addition to typeof table
 <ul>
 <li><code>typeof symbol === &quot;symbol&quot;</code></li>
@@ -197,8 +200,7 @@ But symbols don't fully behave like objects yet, as would be required by current
 <li><code>Object.prototype.toString.call(symbol)</code> =&gt; &quot;[object Symbol]&quot;
 (ARB: or rather something else, given that we just decided symbols shouldn't be objects)</li>
 </ul>
-<h2>4.17 Legacy Compatibility for Block Level Function Declarations</h2>
-<p>(Presented by Allen Wirfs-Brock)</p>
+<a href="#417-legacy-compatibility-for-block-level-function-declarations"><h2 id="417-legacy-compatibility-for-block-level-function-declarations">4.17 Legacy Compatibility for Block Level Function Declarations</h2></a><p>(Presented by Allen Wirfs-Brock)</p>
 <p>See: <a href="http://wiki.ecmascript.org/lib/exe/fetch.php?id=meetings%3Ameeting_mar_12_2013&amp;cache=cache&amp;media=meetings:legacyblockfunctiondcl2.pdf">http://wiki.ecmascript.org/lib/exe/fetch.php?id=meetings%3Ameeting_mar_12_2013&amp;cache=cache&amp;media=meetings:legacyblockfunctiondcl2.pdf</a> (This is a PDF that will initiate a download!)</p>
 <p>(Copied from PDF)</p>
 <p>Prior to the Sixth Edition, the ECMAScript specification did not define the occurrence of a <em>FunctionDeclaration</em> as an element of a Block statement’s <em>StatementList</em>. However, support for that form of <em>FunctionDeclaration</em> was an allowable extension and most browser-hosted ECMAScript implementations permitted them. Unfortunately, the semantics of such declarations differ among those implementations. Because of these semantic differences, existing web ECMAScript code that uses Block level function declarations is only portable among browser implementation if the usage only depends upon the semantic intersection of all of the browser implementations for such declarations. The following are the use cases that fall within that intersection semantics:</p>
@@ -234,11 +236,11 @@ But symbols don't fully behave like objects yet, as would be required by current
 <p>DH: We can statically declare a conservation class of blocks</p>
 <p>AWB: Most blocks are conditional in some form.</p>
 <p>WH: (whiteboard)</p>
-<pre><code class="language-js">function g() {}
-function f() {
-  if (false) {
-    function g(){}
-  } else {
+<pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">g</span>(<span class="hljs-params"></span>) </span>{}
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">if</span> (<span class="hljs-literal">false</span>) {
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">g</span>(<span class="hljs-params"></span>)</span>{}
+  } <span class="hljs-keyword">else</span> {
     g();
   }
   g();
@@ -265,12 +267,12 @@ function f() {
 <p>WH: #1 is a circular definition. Some references to g will go to the outer g in the example. It is up to us to define which definition points to which.</p>
 <p>AC: It would be beneficial to look at examples and then apply the fix rules and allow that inform the direction.</p>
 <p>AWB: (whiteboard)</p>
-<pre><code class="language-js">// A dynamic ReferenceError.
-// There is no binding to g()
-function f() {
+<pre><code class="language-js"><span class="hljs-comment">// A dynamic ReferenceError.</span>
+<span class="hljs-comment">// There is no binding to g()</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params"></span>) </span>{
  {
-    if (false) {
-      function g() {}
+    <span class="hljs-keyword">if</span> (<span class="hljs-literal">false</span>) {
+      <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">g</span>(<span class="hljs-params"></span>) </span>{}
     }
     g();
   }
@@ -284,11 +286,11 @@ block...</li>
 </ul>
 <p>WH: ok, put back the outer g()</p>
 <p>AWB: (whiteboard)</p>
-<pre><code class="language-js">function g() {}
-function f() {
+<pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">g</span>(<span class="hljs-params"></span>) </span>{}
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params"></span>) </span>{
  {
-    if (false) {
-      function g() {}
+    <span class="hljs-keyword">if</span> (<span class="hljs-literal">false</span>) {
+      <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">g</span>(<span class="hljs-params"></span>) </span>{}
     }
     g();
   }
@@ -297,12 +299,12 @@ function f() {
 <p>...Didn't take into account this case, will need time to consider.</p>
 <p>AWB: Could be two inner blocks, with declaration of g()...</p>
 <p>WH: (whiteboard)</p>
-<pre><code class="language-js">function g() {}
-function f() {
+<pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">g</span>(<span class="hljs-params"></span>) </span>{}
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params"></span>) </span>{
   {
     g();
-    if (true) {
-      function g() {}
+    <span class="hljs-keyword">if</span> (<span class="hljs-literal">true</span>) {
+      <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">g</span>(<span class="hljs-params"></span>) </span>{}
     }
   }
 }
@@ -310,12 +312,12 @@ function f() {
 <p>WH: What happens when the first g() is called?</p>
 <p>AWB: the first g() is bound to the outer g(), then a new g() is defined.</p>
 <p>WH: (whiteboard)</p>
-<pre><code class="language-js">function g() {}
-function f() {
+<pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">g</span>(<span class="hljs-params"></span>) </span>{}
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params"></span>) </span>{
   {
     g();
-    if (true) {
-      function g() {}
+    <span class="hljs-keyword">if</span> (<span class="hljs-literal">true</span>) {
+      <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">g</span>(<span class="hljs-params"></span>) </span>{}
     }
     g();
   }
@@ -366,26 +368,23 @@ function f() {
 <p>AWB: This is a first draft.</p>
 <p>YK: Function in block is oddball already. If we have a semantics for non-strict FIB and different from strict mode, it will make it hard to upgrade to strict mode.</p>
 <p>Note: AC/BM please send Allen any materials that might be useful for specifying the semantics for FIB.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-588"><h4 id="conclusionresolution-588">Conclusion/Resolution</h4></a><ul>
 <li>All (esp. AWB) to continue working through known issues in the 1% cases</li>
 </ul>
-<h2>8.1 Comments from Istvan, stated by John Neumann</h2>
-<ul>
+<a href="#81-comments-from-istvan-stated-by-john-neumann"><h2 id="81-comments-from-istvan-stated-by-john-neumann">8.1 Comments from Istvan, stated by John Neumann</h2></a><ul>
 <li><p>The ECMAscript trademark is rather through. We have it in the most important countries, incl. US and EU.</p></li>
 <li><p>The EU formal recognition for ECMA-402 and TR/104 is progressing. We are now in the evaluation phase by a small group. They asked me to make a first draft for evalutation, which I did. Informally I have one &quot;yes&quot; so far, and no &quot;no&quot; yet. If the small group gives an ok, then the member countries have to vote. The process will take a few months more (but I do not know how long, because this is the first experience with the new EU policy).</p></li>
 <li><p>Regarding the IPR Adhoc. We are progressing. I think I can distribute an updated package to TC39 at the end of March. GA vote is planned for June 2013. Comments back to the IPR Adhoc, GA, or GA members. Just as last time.</p></li>
 </ul>
 <p>WH: ECMA's TC39 email reflector is incompatible with gmail. If a gmail user sends an email to the reflector, non-gmail users will receive it but no other gmail user will receive it in his inbox. It will always arrive in the spam folder due to some SPF issue.</p>
 <p>[Various people checking their spam folders now and discovering TC39 emails in there.]</p>
-<h2>4.10 Array Extras</h2>
-<p>(Presented by Rick Waldron)
+<a href="#410-array-extras"><h2 id="410-array-extras">4.10 Array Extras</h2></a><p>(Presented by Rick Waldron)
 (notes from EA)</p>
 <p>RW: Wrote spec (using spec prose) Array.prototype.find and Array.prototype.findIndex. Found in most PL and JS libraries</p>
-<pre><code class="language-js">Array.prototype.find( predicate [ , thisArg ] )
+<pre><code class="language-js"><span class="hljs-built_in">Array</span>.prototype.find( predicate [ , thisArg ] )
 </code></pre>
 <p><a href="https://gist.github.com/rwaldron/5079436">https://gist.github.com/rwaldron/5079436</a></p>
-<pre><code class="language-js">Array.prototype.findIndex( predicate [ , thisArg ] )
+<pre><code class="language-js"><span class="hljs-built_in">Array</span>.prototype.findIndex( predicate [ , thisArg ] )
 </code></pre>
 <p><a href="https://gist.github.com/rwaldron/5079427">https://gist.github.com/rwaldron/5079427</a></p>
 <p>MM: What about start indedx? Does it go before the thisArg or not?</p>
@@ -393,12 +392,10 @@ function f() {
 <p>RW: Not sure if this is for ES6 or Harmony</p>
 <p>AWB: Feature creep</p>
 <p>DH: Common, makes sense.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-589"><h4 id="conclusionresolution-589">Conclusion/Resolution</h4></a><ul>
 <li>Exception being made. Approved for ES6.</li>
 </ul>
-<h2>4.15 Template Strings</h2>
-<p>(Presented by Adam Barth [present], Mike Samuel [phone] guests from Google)</p>
+<a href="#415-template-strings"><h2 id="415-template-strings">4.15 Template Strings</h2></a><p>(Presented by Adam Barth [present], Mike Samuel [phone] guests from Google)</p>
 <p>BE: What can we do to template strings to make them secure by default and not an XSS hazard.</p>
 <ul>
 <li>tagless?</li>
@@ -456,29 +453,29 @@ innerHTML</p>
 <li>Allow overloading of the default handler for the tagless template strings</li>
 </ol>
 <p>MM: (whiteboard)</p>
-<pre><code class="language-js">class DelayedQ {
-  constructor(callSiteId, ...args) {
-    this.force = function(handler) {
-      return handler(callSiteId, ...args);
+<pre><code class="language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DelayedQ</span> </span>{
+  <span class="hljs-keyword">constructor</span>(callSiteId, ...args) {
+    <span class="hljs-keyword">this</span>.force = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">handler</span>) </span>{
+      <span class="hljs-keyword">return</span> handler(callSiteId, ...args);
     };
-    this.toString = function() {
-      return stringer(callSiteId, ...args);
+    <span class="hljs-keyword">this</span>.toString = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+      <span class="hljs-keyword">return</span> stringer(callSiteId, ...args);
     }
   }
 }
 </code></pre>
-<pre><code class="language-js">html`&lt;script&gt;
-  &quot;${...}&quot;
-&lt;/script&gt;`
+<pre><code class="language-js">html<span class="hljs-string">`&lt;script&gt;
+  "<span class="hljs-subst">${...}</span>"
+&lt;/script&gt;`</span>
 
 </code></pre>
 <p>WH:</p>
-<pre><code class="language-js">html`&lt;script&gt;
-  &quot;${foo()}&quot;
-&lt;/script&gt;`
+<pre><code class="language-js">html<span class="hljs-string">`&lt;script&gt;
+  "<span class="hljs-subst">${foo()}</span>"
+&lt;/script&gt;`</span>
 
-function foo() {
-  return `...`;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-string">`...`</span>;
 }
 </code></pre>
 <p>WH: Using a tagless template string to construct an english sentence and I stick it into html, what do I get out of that?</p>
@@ -536,10 +533,10 @@ WH: That's exactly what I was trying to say earlier. Deferred quasis are too bri
 <p>MM: (to Mike) Do you find #1 &amp; #4 acceptable?</p>
 <p>MS: Yes.</p>
 <p>AB: (whiteboard)</p>
-<pre><code class="language-js">var firstName = ...
+<pre><code class="language-js"><span class="hljs-keyword">var</span> firstName = ...
 var lastName = ...
-elem.innerHTML = `&lt;h1&gt;Hi ${firstName} ${lastName}&lt;/h1&gt;`;
-elem.innerHTML = &quot;&lt;h1&gt;Hi &quot; + firstName + &quot; &quot; + lastName + &quot;&lt;/h1&gt;&quot;;
+elem.innerHTML = <span class="hljs-string">`&lt;h1&gt;Hi <span class="hljs-subst">${firstName}</span> <span class="hljs-subst">${lastName}</span>&lt;/h1&gt;`</span>;
+elem.innerHTML = <span class="hljs-string">"&lt;h1&gt;Hi "</span> + firstName + <span class="hljs-string">" "</span> + lastName + <span class="hljs-string">"&lt;/h1&gt;"</span>;
 </code></pre>
 <p>LH &amp; AB: ...discussing the value of #1 &amp; #4</p>
 <p>STH: Reviving #2 &amp; #3</p>
@@ -600,7 +597,8 @@ Is this something that all languages should do? Or just JavaScript because it's 
 <p>DH: Yes, that's where I'm heading.</p>
 <p>AC: We may never get consensus</p>
 <p>DH: We won't give up, we've gained consensus under worse duress.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-590"><h4 id="conclusionresolution-590">Conclusion/Resolution</h4></a><ul>
 <li>Tabled.</li>
 </ul>
+
+</body>

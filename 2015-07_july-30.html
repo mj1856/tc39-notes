@@ -1,10 +1,15 @@
 <!doctype html>
 <meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.6.0/github-markdown.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+
 <title>July 30 2015 Meeting Notes</title>
-<h1>July 30 2015 Meeting Notes</h1>
-<p>Allen Wirfs-Brock (AWB), Sebastian Markbage (SM), Jafar Husain (JH), Eric Farriauolo (EF), Caridy Patino (CP), Waldemar Horwat (WH), Istvan Sebastian (IS), Mark Miller (MM), Adam Klein (AK), Michael Ficarra (MF), Peter Jensen (PJ), Domenic Denicola (DD), Jordan Harband (JHD), Jonathan Turner (JT), Paul Leathers (PL), Chip Morningstar (CM), Vladimir Matveev (VM), Ron Buckton (MS), Brian Terlson (BT), Alan Schmitt (AS), Ben Newman (BN), Mohamed Hegazy (MH), Abhijith Chatra (AC), Tom Care (TC), John Neumann  (JN), Dave Herman (DH), Brendan Eich (BE), Daniel Ehrenberg (DE), Dan Gohman (DG), Andreas Rossberg (ARB), Rick Waldron (RW), Mike Pennisi (MP), Akrosh Gandhi (AG), Jonathan Sampson (JS)</p>
-<h2>7 Test262 Updates</h2>
-<p>(Brian Terlson, Mike Pennisi)</p>
+<body class="markdown-body">
+<a href="#july-30-2015-meeting-notes"><h1 id="july-30-2015-meeting-notes">July 30 2015 Meeting Notes</h1></a><p>Allen Wirfs-Brock (AWB), Sebastian Markbage (SM), Jafar Husain (JH), Eric Farriauolo (EF), Caridy Patino (CP), Waldemar Horwat (WH), Istvan Sebastian (IS), Mark Miller (MM), Adam Klein (AK), Michael Ficarra (MF), Peter Jensen (PJ), Domenic Denicola (DD), Jordan Harband (JHD), Jonathan Turner (JT), Paul Leathers (PL), Chip Morningstar (CM), Vladimir Matveev (VM), Ron Buckton (MS), Brian Terlson (BT), Alan Schmitt (AS), Ben Newman (BN), Mohamed Hegazy (MH), Abhijith Chatra (AC), Tom Care (TC), John Neumann  (JN), Dave Herman (DH), Brendan Eich (BE), Daniel Ehrenberg (DE), Dan Gohman (DG), Andreas Rossberg (ARB), Rick Waldron (RW), Mike Pennisi (MP), Akrosh Gandhi (AG), Jonathan Sampson (JS)</p>
+<a href="#7-test262-updates"><h2 id="7-test262-updates">7 Test262 Updates</h2></a><p>(Brian Terlson, Mike Pennisi)</p>
 <p><a href="https://jugglinmike.github.io/presentations/2015/tc39-test262-update">Slides</a></p>
 <p>MP: Introduction</p>
 <p>See slides</p>
@@ -99,12 +104,10 @@
 </ul>
 <p>DE: For tests users, this can be automated?</p>
 <p>BT: Yes.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-290"><h4 id="conclusionresolution-290">Conclusion/Resolution</h4></a><ul>
 <li>Continue exploring test generation</li>
 </ul>
-<h2>Meeting Schedule</h2>
-<p>(John Neumann)</p>
+<a href="#meeting-schedule"><h2 id="meeting-schedule">Meeting Schedule</h2></a><p>(John Neumann)</p>
 <p>JN: will propose a 2016 schedule in september. Need to know if we'll be in Europe?</p>
 <ul>
 <li>Switzerland: Geneva, Lugano, Montreux, Lausanne (Geneva may not work: too many attendants and too expensive)</li>
@@ -129,12 +132,10 @@
 <p>AWB: Approximately end of January</p>
 <p>YK: January is submission, work backward to find deadline.</p>
 <p>Discussion re: time needed for Brian to integrate the stage 4 features.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-291"><h4 id="conclusionresolution-291">Conclusion/Resolution</h4></a><ul>
 <li>Get proposals wrapped up if you want to get these features into the spec</li>
 </ul>
-<h2>6.4 Advance Async Functions to Stage 2</h2>
-<p>(Brian Terlson)</p>
+<a href="#64-advance-async-functions-to-stage-2"><h2 id="64-advance-async-functions-to-stage-2">6.4 Advance Async Functions to Stage 2</h2></a><p>(Brian Terlson)</p>
 <p><a href="async-function-updates.pdf">Slides</a></p>
 <p>BT:</p>
 <p>Updates from Last Time</p>
@@ -192,19 +193,19 @@
 <ul>
 <li>Errors in Parameter Initialization</li>
 </ul>
-<pre><code class="language-js">function* foo(a = (function() { throw 1; }())) {
+<pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span>* <span class="hljs-title">foo</span>(<span class="hljs-params">a = (function(</span>) </span>{ <span class="hljs-keyword">throw</span> <span class="hljs-number">1</span>; }())) {
     
 }
-let iter = foo(); // throws 1
+<span class="hljs-keyword">let</span> iter = foo(); <span class="hljs-comment">// throws 1</span>
 </code></pre>
 <p>BT: the equivalent in async functions:</p>
-<pre><code class="language-js">async function bar(a = (function() { throw 1; }())) {
+<pre><code class="language-js"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bar</span>(<span class="hljs-params">a = (function(</span>) </span>{ <span class="hljs-keyword">throw</span> <span class="hljs-number">1</span>; }())) {
 
 }
-bar(); // as of the latest proposal, this throws 1
+bar(); <span class="hljs-comment">// as of the latest proposal, this throws 1</span>
 
-// Alternative semantics would have the error deferred:
-bar().catch(cb =&gt; ...); // Possible semantics
+<span class="hljs-comment">// Alternative semantics would have the error deferred:</span>
+bar().catch(<span class="hljs-function"><span class="hljs-params">cb</span> =&gt;</span> ...); <span class="hljs-comment">// Possible semantics</span>
 </code></pre>
 <p>DD: Wish this was caught for generators</p>
 <p>AWB: We knew about it, but nothing can be done</p>
@@ -323,22 +324,22 @@ bar().catch(cb =&gt; ...); // Possible semantics
 <li>The bug was directly the result of assuming the invariant will be resolved.</li>
 </ul>
 <p>Discussion re: invariant restoration on event turn completion</p>
-<pre><code class="language-js">// BT:
-foo().then( function() {
-   /* 1 */ 
+<pre><code class="language-js"><span class="hljs-comment">// BT:</span>
+foo().then( <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+   <span class="hljs-comment">/* 1 */</span> 
 });
-/* 2 */
-// Which is first
+<span class="hljs-comment">/* 2 */</span>
+<span class="hljs-comment">// Which is first</span>
 
-async funcion foo() {
-  /* 1 */
-  await x;
-  /* 2 */
+<span class="hljs-keyword">async</span> funcion foo() {
+  <span class="hljs-comment">/* 1 */</span>
+  <span class="hljs-keyword">await</span> x;
+  <span class="hljs-comment">/* 2 */</span>
     
-  // are these the same turn?
+  <span class="hljs-comment">// are these the same turn?</span>
 }
 foo();
-// HAZARD: setup state required by /* 2 */
+<span class="hljs-comment">// HAZARD: setup state required by /* 2 */</span>
 </code></pre>
 <p>Currently, <code>await</code> is always async.</p>
 <p>JH: Concern that the notion of asynchrony bound to...?</p>
@@ -354,39 +355,39 @@ foo();
 <p>YK: Doesn't fully describe the trade off</p>
 <p>MM: Implementation prohibited from making optimization</p>
 <p>JH: can we put together a program that illustrates the hazard?</p>
-<pre><code class="language-js">// BT:
-foo().then( function() {
-   /* 1 */ 
+<pre><code class="language-js"><span class="hljs-comment">// BT:</span>
+foo().then( <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+   <span class="hljs-comment">/* 1 */</span> 
 });
-/* 2 */
-// Which is first
+<span class="hljs-comment">/* 2 */</span>
+<span class="hljs-comment">// Which is first</span>
 
-async funcion foo() {
-  /* 1 */
-  await x;
-  /* 2 */
+<span class="hljs-keyword">async</span> funcion foo() {
+  <span class="hljs-comment">/* 1 */</span>
+  <span class="hljs-keyword">await</span> x;
+  <span class="hljs-comment">/* 2 */</span>
     
-  // are these the same turn?
+  <span class="hljs-comment">// are these the same turn?</span>
 }
 foo();
-// HAZARD: setup state required by /* 2 */
+<span class="hljs-comment">// HAZARD: setup state required by /* 2 */</span>
 </code></pre>
 <p>YK:</p>
-<pre><code class="language-js">let x;
-foo().then( function(val) { x = val; /* 1 */ } );
-// what is x?
+<pre><code class="language-js"><span class="hljs-keyword">let</span> x;
+foo().then( <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">val</span>) </span>{ x = val; <span class="hljs-comment">/* 1 */</span> } );
+<span class="hljs-comment">// what is x?</span>
 </code></pre>
 <p>JH: Is that an issue in asap? or were there other issues?</p>
-<pre><code class="language-js">// BT &amp; YK:
-async function foo() {
-  // relies on y being `1`
-  await x;
-  // relies on y being `2`
+<pre><code class="language-js"><span class="hljs-comment">// BT &amp; YK:</span>
+<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-comment">// relies on y being `1`</span>
+  <span class="hljs-keyword">await</span> x;
+  <span class="hljs-comment">// relies on y being `2`</span>
 }
 
-let y = 1;
+<span class="hljs-keyword">let</span> y = <span class="hljs-number">1</span>;
 foo();
-y = 2;
+y = <span class="hljs-number">2</span>;
 </code></pre>
 <p>MM/DD/YK: discussing the hazards above.</p>
 <p>AK: Different conditions, different behavior.</p>
@@ -399,18 +400,18 @@ y = 2;
 <p>YK: When type <code>await</code>, I expect unpredictability</p>
 <p>MM: unpredictable interleaving of job</p>
 <p>DD:</p>
-<pre><code class="language-js">function dStuff() {
-  if (window.state === 1) { doA(); }
-  else { doB(); }   
+<pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">dStuff</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">if</span> (<span class="hljs-built_in">window</span>.state === <span class="hljs-number">1</span>) { doA(); }
+  <span class="hljs-keyword">else</span> { doB(); }   
 }
 
-async function foo() {
-  doStuff(); await x; doStuff();
+<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>) </span>{
+  doStuff(); <span class="hljs-keyword">await</span> x; doStuff();
 }       
 
-window.state = 1;
+<span class="hljs-built_in">window</span>.state = <span class="hljs-number">1</span>;
 foo();
-window.state = 2;
+<span class="hljs-built_in">window</span>.state = <span class="hljs-number">2</span>;
 </code></pre>
 <p>MM: impossible to reason about a program without knowing something about what is going on.</p>
 <ul>
@@ -445,17 +446,17 @@ window.state = 2;
 <p>MM: only &quot;when&quot; the execution happens</p>
 <p>AWB: This could be misunderstood</p>
 <p>DH:</p>
-<pre><code class="language-js">import ... from ...;
+<pre><code class="language-js"><span class="hljs-keyword">import</span> ... from ...;
 
-let m;
+<span class="hljs-keyword">let</span> m;
 
-if (dev) {
-  m = await local.import(&quot;lib-dev&quot;);
-} else {
-  m = await local.import(&quot;lib-production&quot;);
+<span class="hljs-keyword">if</span> (dev) {
+  m = <span class="hljs-keyword">await</span> local.import(<span class="hljs-string">"lib-dev"</span>);
+} <span class="hljs-keyword">else</span> {
+  m = <span class="hljs-keyword">await</span> local.import(<span class="hljs-string">"lib-production"</span>);
 }
 
-export let x = 17;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">let</span> x = <span class="hljs-number">17</span>;
 </code></pre>
 <p>DH: Requires module be async.</p>
 <p>Unresolvable if node remains sync at the top level.</p>
@@ -470,14 +471,14 @@ export let x = 17;
 <li>Waldemar's grammar concern?</li>
 </ul>
 <p>WH: (presenting now)</p>
-<pre><code class="language-js">async(a=await/
+<pre><code class="language-js"><span class="hljs-keyword">async</span>(a=<span class="hljs-keyword">await</span>/
 </code></pre>
 <ul>
 <li>According to cover grammar, this is a division symbol</li>
 <li>Is await a keyword or identifier here?</li>
 </ul>
 <p>BT: parsed like a keyword, but there is a static semantics that says any occurence of await expression is an error.</p>
-<pre><code class="language-js">async(a=await/x, b=c/i) =&gt; b;
+<pre><code class="language-js"><span class="hljs-keyword">async</span>(a=<span class="hljs-keyword">await</span>/x, b=c/i) =&gt; b;
 </code></pre>
 <ul>
 <li>Parse cover grammar, don't know that you're in a arrow function. This lets await sneak through as an identifier</li>
@@ -491,8 +492,7 @@ export let x = 17;
 <p>BT: Correct, expected.</p>
 <p>BT/WH to have offline discussion re: grammar.</p>
 <p>BT: Those that know execution model should review this.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-292"><h4 id="conclusionresolution-292">Conclusion/Resolution</h4></a><ul>
 <li><code>async (a, b) =&gt; await a + await b;</code> contingent on grammar validation</li>
 <li><code>async</code> functions: no construct slot</li>
 <li>errors occuring in parameter initialization take the catch path</li>
@@ -504,8 +504,7 @@ export let x = 17;
 <li>Yehuda Katz</li>
 </ul></li>
 </ul>
-<h2>6.5 Proposed Changes to Observable API</h2>
-<p>(Jafar Husain)</p>
+<a href="#65-proposed-changes-to-observable-api"><h2 id="65-proposed-changes-to-observable-api">6.5 Proposed Changes to Observable API</h2></a><p>(Jafar Husain)</p>
 <p><a href="https://github.com/zenparsing/es-observable/tree/zenlike">https://github.com/zenparsing/es-observable/tree/zenlike</a></p>
 <p><a href="https://docs.google.com/file/d/1uEVcOgJIMsHjN1vypKKyfmDRg_bz5cKXpo0v4Nc0q8NfqKolBeSDHIj8z9GS8A4EiMpZ8QQ3l87Q_wF3/edit?usp=docslist_api">Slides</a></p>
 <p>JH:</p>
@@ -575,31 +574,29 @@ export let x = 17;
 <p>MM: Name it such a way that the name is clear to the user (no suggestion)</p>
 <p>Discussion, re: await observable.</p>
 <p>All scalar combinators produce promises or observables</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-293"><h4 id="conclusionresolution-293">Conclusion/Resolution</h4></a><ul>
 <li>Approved for Stage 1 (which means: nothing changed here)</li>
 <li>Offline discussion, re: sync subscription</li>
 </ul>
-<h2>6.13 Advance Rest/Spread Properties to Stage 2</h2>
-<p>(Sebastian Markbage)</p>
+<a href="#613-advance-restspread-properties-to-stage-2"><h2 id="613-advance-restspread-properties-to-stage-2">6.13 Advance Rest/Spread Properties to Stage 2</h2></a><p>(Sebastian Markbage)</p>
 <p><a href="https://github.com/sebmarkbage/ecmascript-rest-spread">https://github.com/sebmarkbage/ecmascript-rest-spread</a></p>
 <p>SM:</p>
 <p>Static Properties vs. Computed Properties</p>
 <p>SM (slide): question on evaluating computed property keys multiple times on the LHS of a destructuring assignment?</p>
 <p>SM (slide): question when a &quot;rest&quot; destructured object param throws (via getter, for example), should <code>rest</code> be undefined, or a partial object. or, should the getter be copied rather than evaluated</p>
-<pre><code class="language-js">try {
-  var throwingObj = {
-    x: 1, 
-    y: 2, 
-    get z() { throw myError; },
-    w: 4
+<pre><code class="language-js"><span class="hljs-keyword">try</span> {
+  <span class="hljs-keyword">var</span> throwingObj = {
+    <span class="hljs-attr">x</span>: <span class="hljs-number">1</span>, 
+    <span class="hljs-attr">y</span>: <span class="hljs-number">2</span>, 
+    get z() { <span class="hljs-keyword">throw</span> myError; },
+    <span class="hljs-attr">w</span>: <span class="hljs-number">4</span>
   };
 
-  var {x, ...rest} = throwingObj;
+  <span class="hljs-keyword">var</span> {x, ...rest} = throwingObj;
   
-} catch (err) {
-  x; // 1
-  rest; // undefined (could be { y:2, w: 4 })
+} <span class="hljs-keyword">catch</span> (err) {
+  x; <span class="hljs-comment">// 1</span>
+  rest; <span class="hljs-comment">// undefined (could be { y:2, w: 4 })</span>
 }
 </code></pre>
 <p>MM: possibilities?</p>
@@ -610,11 +607,12 @@ export let x = 17;
 </ul>
 <p>MF: also <code>{}</code> and <code>{ y: 2 }</code></p>
 <p>MM: further semantics need to be explored</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-294"><h4 id="conclusionresolution-294">Conclusion/Resolution</h4></a><ul>
 <li>Approved for Stage 2</li>
 <li>Reviewers
 <ul>
 <li>Andreas Rossberg</li>
 </ul></li>
 </ul>
+
+</body>

@@ -1,10 +1,15 @@
 <!doctype html>
 <meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.6.0/github-markdown.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+
 <title>January 26, 2017 Meeting Notes</title>
-<h1>January 26, 2017 Meeting Notes</h1>
-<p>Allen Wirfs-Brock (AWB), Waldemar Horwat (WH), Jordan Harband (JHD), Brian Terlson (BT), Michael Ficarra (MF), Adam Klein (AK), Chip Morningstar (CM), Dave Herman (DH),  Kent C. Dodds (KCD), Kevin Gibbons (KG), Tim Disney (TD), Daniel Ehrenberg (DE), Shu-yu Guo (SYG), Michael Saboff (MS), James Kyle (JK), Franziska Hinkelmann (FH), Anna Henningsen (AH), John Lenz (JL), Sebastian Markbage (SM), Bradley Farias (BF), Jeff Morrison (JM), Tyler Kellen (TK), Gabriel Isenberg (GI), James Snell (JSL), Maggie Pint (MPT), Chris Hyle (CH), Gabriel Isenberg (GI), Bert Belder (BB), Zibi Braniecki (ZB), Jamund Ferguson (JXF), Istvan Sebestyen (IS), Keith Miller (KM), Myles Borins (MBS)</p>
-<h2>Looking at the proposal list</h2>
-<p>(Dave Herman)</p>
+<body class="markdown-body">
+<a href="#january-26-2017-meeting-notes"><h1 id="january-26-2017-meeting-notes">January 26, 2017 Meeting Notes</h1></a><p>Allen Wirfs-Brock (AWB), Waldemar Horwat (WH), Jordan Harband (JHD), Brian Terlson (BT), Michael Ficarra (MF), Adam Klein (AK), Chip Morningstar (CM), Dave Herman (DH),  Kent C. Dodds (KCD), Kevin Gibbons (KG), Tim Disney (TD), Daniel Ehrenberg (DE), Shu-yu Guo (SYG), Michael Saboff (MS), James Kyle (JK), Franziska Hinkelmann (FH), Anna Henningsen (AH), John Lenz (JL), Sebastian Markbage (SM), Bradley Farias (BF), Jeff Morrison (JM), Tyler Kellen (TK), Gabriel Isenberg (GI), James Snell (JSL), Maggie Pint (MPT), Chris Hyle (CH), Gabriel Isenberg (GI), Bert Belder (BB), Zibi Braniecki (ZB), Jamund Ferguson (JXF), Istvan Sebestyen (IS), Keith Miller (KM), Myles Borins (MBS)</p>
+<a href="#looking-at-the-proposal-list"><h2 id="looking-at-the-proposal-list">Looking at the proposal list</h2></a><p>(Dave Herman)</p>
 <p>DH: Let's reexamine <a href="https://github.com/tc39/proposals">https://github.com/tc39/proposals</a> . Can we think about what proposals are still possible for the future?</p>
 <p>AWB: What things are likely to be there for 2018?</p>
 <p>DH: Well, with the train model, we try to not pay too much attention to the annual release, and let things land when they're ready.</p>
@@ -78,15 +83,13 @@
 <p>AWB: At a minimum what might be an interesting thing to do, when we assemble the agenda for the next meeting, send an email for everyone who is on this list and ask them</p>
 <p>JHD: A month before the meeting we could post an issue on the reflector and tag all the champions and ask for an update</p>
 <p>AWB: Or just decide. You don't have to but...you know, part of this is just pushing people to think about what they, if there is something they need to do, giving them time to scurry around in the last week. Okay! So Dave, are you ready?</p>
-<h4>Resolution / Conclusion</h4>
-<ul>
+<a href="#resolution--conclusion-61"><h4 id="resolution--conclusion-61">Resolution / Conclusion</h4></a><ul>
 <li>JHD to be official curator of tc39 github</li>
 <li>When assembling agenda, cutator to send email to all champions asking for stage status updates or make an issue on reflector doing the same</li>
 <li>create an issue on proposals to make a template repo</li>
 <li>touch base with all people who have proposal to get status to create a deferred list</li>
 </ul>
-<h2>13.ii.e Seeking Stage-1 for &quot;do expressions&quot;</h2>
-<p>(Dave Herman)</p>
+<a href="#13iie-seeking-stage-1-for-do-expressions"><h2 id="13iie-seeking-stage-1-for-do-expressions">13.ii.e Seeking Stage-1 for &quot;do expressions&quot;</h2></a><p>(Dave Herman)</p>
 <p><a href="https://gist.github.com/dherman/1c97dfb25179fa34a41b5fff040f9879">gist</a></p>
 <p>DH: There's a babel plugin for do expressions, I think it's pretty popular</p>
 <p>SM: We don't use it, but it's pretty popular with JSX</p>
@@ -156,8 +159,7 @@
 <p>WH: Explain what you mean by async do.</p>
 <p>KG: Equiv to IIFE modulo some concerns about nonexceptional control flow. AT least, that is the idea i have in my head</p>
 <p>DH: That is the idea I have too but i fi go there it will expand in to more conversation. That's an important constrain for what needs to be considered before this could be considered a finished feature. It's an important crosscutting concern. Thank you. Any objections to moving to stage one?</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-62"><h4 id="conclusionresolution-62">Conclusion/Resolution</h4></a><ul>
 <li>Stage 1, champion DH</li>
 <li>Items to look into more:
 <ul>
@@ -165,8 +167,7 @@
 <li>Does the completion value make sense here, or are its semantics too unintuitive (e.g., for function declarations, which have no completion value)</li>
 </ul></li>
 </ul>
-<h2>13.ii.d Seeking Stage 1 for Realms</h2>
-<p>(Dave Herman, co-championing with Mark Miller and Caridy Patino)</p>
+<a href="#13iid-seeking-stage-1-for-realms"><h2 id="13iid-seeking-stage-1-for-realms">13.ii.d Seeking Stage 1 for Realms</h2></a><p>(Dave Herman, co-championing with Mark Miller and Caridy Patino)</p>
 <p><a href="https://github.com/tc39/proposal-realms">proposal</a>
 <a href="https://gist.github.com/dherman/66627aac764a9795dc3875e270f55918">presentation</a></p>
 <p>DH: Realms was sitting at Stage 0; I've been looking at it with Dean, and Chip, and others. Previously worked on it through ES2015, just the core JavaScript builtins, nothing else fancy. If you create a new Realm and instantiate an Array, it's a different one. Alternatively considered, this is a reflective reification of the ECMAScript realm concept. (going over presentation linked above)</p>
@@ -235,18 +236,14 @@
 <p>BF: This ties into the global module registry; I am not sure it's needed.</p>
 <p>DH: I think the registry could be in userspace</p>
 <p>AWB: The Realm API was previously in the ES2015 spec, and it was pulled out due to exactly this issue, interactions between module loading and realm hooks.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-63"><h4 id="conclusionresolution-63">Conclusion/Resolution</h4></a><ul>
 <li>Stage 1</li>
 </ul>
-<h2>Meeting Minutes</h2>
-<p>AWB: By now everyone should have had a chance to review the minutes of the last meeting. Approve the minutes?</p>
+<a href="#meeting-minutes"><h2 id="meeting-minutes">Meeting Minutes</h2></a><p>AWB: By now everyone should have had a chance to review the minutes of the last meeting. Approve the minutes?</p>
 <p>WH: Yes, but we need to fix the deleted agenda lines.</p>
 <p>AWB: Yes, we'll fix those.</p>
-<h4>Conclusion/Resolution</h4>
-<p>Minutes are approved.</p>
-<h2>global</h2>
-<p>(Jordan Harband)</p>
+<a href="#conclusionresolution-64"><h4 id="conclusionresolution-64">Conclusion/Resolution</h4></a><p>Minutes are approved.</p>
+<a href="#global"><h2 id="global">global</h2></a><p>(Jordan Harband)</p>
 <p>JHD: We faced a number of web-compatibility issues for <code>global</code>, including flikr and several enterprise JIRA intallations.  So it seems like the name <code>global</code> is dead. What should we do? Abandon this? I'd like to find another name, with global in the name</p>
 <p>MF: How about gl0bal?</p>
 <p>MPT: globalThisPascal</p>
@@ -413,13 +410,11 @@ AK: That is three that exist</p>
 <p>JHD: Does that then mean we have consensus and we'll bikeshed on the choice of names and once we find a webcompat on we'll use it?</p>
 <p>MM: I don't want to say consensus on the approach yet. Dave having convinced me is less than a minute old. It took me weeks to think about Yehuda's argument. I want to live with this for awhile.</p>
 <p>JHD: In the meantime, are you comfortable with a reflector issue.</p>
-<h4>Conclusion / Resolution</h4>
-<ul>
+<a href="#conclusion--resolution-65"><h4 id="conclusion--resolution-65">Conclusion / Resolution</h4></a><ul>
 <li>We will look for a web compat simple global name</li>
 <li>We will make a reflector issue to bikeshed</li>
 </ul>
-<h2>Public and Private Class Fields (Daniel Ehrenberg, Jeff Morrison and Kevin Gibbons)</h2>
-<p><a href="https://docs.google.com/presentation/d/1yXsRdAJO7OdxF0NmZs2N8ySSrQwKp3D77vZXbQOWbMs/edit">slides</a></p>
+<a href="#public-and-private-class-fields-daniel-ehrenberg-jeff-morrison-and-kevin-gibbons"><h2 id="public-and-private-class-fields-daniel-ehrenberg-jeff-morrison-and-kevin-gibbons">Public and Private Class Fields (Daniel Ehrenberg, Jeff Morrison and Kevin Gibbons)</h2></a><p><a href="https://docs.google.com/presentation/d/1yXsRdAJO7OdxF0NmZs2N8ySSrQwKp3D77vZXbQOWbMs/edit">slides</a></p>
 <p>DE: Kevin is joining the champion group for private state. There are a number of things we are approaching consenus on. I don't want to say we're at consensus but the public and private keyword, Allen you've expressed interest in this. At the last meeting we discussed if we should have this in addition to the sigil we have to have. A few arguments for this were that we don't have it for methods and you really want it when you're learning but after you learn you don't want it. The second one is the stronger argument. For the token we talked about different possibilities, it could be = or :=. It seemed like equals was pretty agreeable.</p>
 <p>WH: By &quot;token&quot; here and on the slide I assume you don't mean the token that starts a private name.</p>
 <p>DE: Correct. That would remain <code>#</code>.</p>
@@ -650,8 +645,7 @@ AK: That is three that exist</p>
 <p>DH: Brian and I will look at getting spec text written with Yehuda. We'll do that as quickly as possible.</p>
 <p>DE: Thanks for bearing with us on this difficult topic</p>
 <p>DH: Thanks for driving it!</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-66"><h4 id="conclusionresolution-66">Conclusion/Resolution</h4></a><ul>
 <li>Sticking with plan in Munich meeting for order of evaluation (static variable initializers run after computed property names)</li>
 <li>BT to work on separate spec text proposal for the object literal ordering change (computed property names before values) to match Munich plan</li>
 <li>Eagerly awaiting a proposal from Allen and Mark about the syntax issue. This might lead us to make Define acceptable semantics</li>
@@ -659,8 +653,7 @@ AK: That is three that exist</p>
 <li>Proposals remain at Stage 2</li>
 </ul>
 <p>AWB: That is the end of the Agenda.</p>
-<h2>ECMA-404</h2>
-<p>CP: The Japanese raised a long list of objections. Allen wrote a diplimatic and brilliant reply. A bunch of editorially corrections need to be made to the document.</p>
+<a href="#ecma-404"><h2 id="ecma-404">ECMA-404</h2></a><p>CP: The Japanese raised a long list of objections. Allen wrote a diplimatic and brilliant reply. A bunch of editorially corrections need to be made to the document.</p>
 <p>WH: Is the list of objections longer than the standard?</p>
 <p>CP: Yes.</p>
 <p>AWB: Close</p>
@@ -678,7 +671,8 @@ AK: That is three that exist</p>
 <p>DH: We should have JS emoji</p>
 <p>?: And a WASM one</p>
 <p>SYG: TC39 hats!</p>
-<h2>Conclusions / Resolutions</h2>
-<ul>
+<a href="#conclusions--resolutions-67"><h2 id="conclusions--resolutions-67">Conclusions / Resolutions</h2></a><ul>
 <li>Normative references in spec text are apparently political across specification organizations (at least between IETF and ECMA)</li>
 </ul>
+
+</body>

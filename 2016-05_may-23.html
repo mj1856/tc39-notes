@@ -1,16 +1,20 @@
 <!doctype html>
 <meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.6.0/github-markdown.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+
 <title>May 23rd 2016 Meeting Notes</title>
+<body class="markdown-body">
 <p>May 23rd 2016 Meeting Notes</p>
-<h2>Attendees</h2>
-<p>Brian Terlson (BT), Dave Herman (DH), Michael Ficarra (MF), Jordan Harband (JHD), Waldemar Horwat (WH), Tim Disney (TD), Shu-yu Guo (SG), Mark Miller (MM), Kevin Smith (KS), Michael Saboff (MS), Eric Faust (FST), Chip Morningstar (CM), Daniel Ehrenberg (DE), Leo Balter (LB), Yehuda Katz (YK), Jafar Husain (JH), Andreas Rossberg (ARB), Ben Smith (BS), Thomas Wood (TW), Alan Schmitt (AS), Brad Nelson (BNN), István Sebestyén (IS), John Neumann (JN), Domenic Denicola (DD), Yang Guo (YG)</p>
+<a href="#attendees"><h2 id="attendees">Attendees</h2></a><p>Brian Terlson (BT), Dave Herman (DH), Michael Ficarra (MF), Jordan Harband (JHD), Waldemar Horwat (WH), Tim Disney (TD), Shu-yu Guo (SG), Mark Miller (MM), Kevin Smith (KS), Michael Saboff (MS), Eric Faust (FST), Chip Morningstar (CM), Daniel Ehrenberg (DE), Leo Balter (LB), Yehuda Katz (YK), Jafar Husain (JH), Andreas Rossberg (ARB), Ben Smith (BS), Thomas Wood (TW), Alan Schmitt (AS), Brad Nelson (BNN), István Sebestyén (IS), John Neumann (JN), Domenic Denicola (DD), Yang Guo (YG)</p>
 <p>on Google Hangouts we've had some local Google folks: Michael Hablich, Yang Guo, Toon Verwaest, Daniel Clifford, Nikolas Papapyrou, Ben Titzer.</p>
-<h2>Discussion of the agenda and timing</h2>
-<p>PTC/STC on Tuesday morning/afternoon for MS employees to call in
+<a href="#discussion-of-the-agenda-and-timing"><h2 id="discussion-of-the-agenda-and-timing">Discussion of the agenda and timing</h2></a><p>PTC/STC on Tuesday morning/afternoon for MS employees to call in
 9 hours differences between CET and US Pacific time. Only afternoon works...
 First YK/BT class evaluation order, then PRs, then features for advancement, then other features</p>
-<h2>Class Evaluation Order</h2>
-<p>(Yehuda Katz, Brian Terlson)</p>
+<a href="#class-evaluation-order"><h2 id="class-evaluation-order">Class Evaluation Order</h2></a><p>(Yehuda Katz, Brian Terlson)</p>
 <p>[<em>Presentation (with slides)</em>] <a href="https://github.com/tc39/tc39-notes/blob/master/es7/2016-05/classevalorder.pdf">https://github.com/tc39/tc39-notes/blob/master/es7/2016-05/classevalorder.pdf</a></p>
 <p>BT: We need consensus, as this comes up with decorators and other new language features.</p>
 <p>YK: Resolves question that committee asked</p>
@@ -33,10 +37,10 @@ First YK/BT class evaluation order, then PRs, then features for advancement, the
 <p>YK: If you have a @nonconfigurable decorator, then you need the getter/setters to be put together, otherwise &quot;adding&quot; the second one would fail</p>
 <p>YK: Forward references: the static initializer should be able to call all kinds of methods, even using computed property names, which are declared textually <em>after</em> the initializer</p>
 <p>WH: What if Symbol.iterator referred to a static initializer? Example:</p>
-<pre><code class="language-js">    class Args {
-        static LIST = [... new Args()];
-        static PI = 3.14;
-        ... iterator code refers to PI ... // In turn, LIST refers to the iterator code, creating an order of evaluation dilemma
+<pre><code class="language-js">    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Args</span> </span>{
+        <span class="hljs-keyword">static</span> LIST = [... new Args()];
+        <span class="hljs-keyword">static</span> PI = <span class="hljs-number">3.14</span>;
+        ... iterator code refers to PI ... <span class="hljs-comment">// In turn, LIST refers to the iterator code, creating an order of evaluation dilemma</span>
     }
 </code></pre>
 <p>YK: You're assuming this is imperative. We'll see in the proposal. We'll come back to further example later.</p>
@@ -91,14 +95,14 @@ which have this sort of semantics.</p>
 <p>DH: It's important for a class integrity decorator to be able to apply to the statics and make them affected as well.</p>
 <p>BT: Babel with the decorators plugin aligns entirely with this.</p>
 <p>JHD: If you have a static initializer which creates a class instance, don't you see the partially constructed class?</p>
-<pre><code class="language-js">class Foo {
+<pre><code class="language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span> </span>{
 
     @incrementByOne
 
-    static A = 3;
+    <span class="hljs-keyword">static</span> A = <span class="hljs-number">3</span>;
 
 
-    static B = Foo.A; // is B 3 or 4?
+    <span class="hljs-keyword">static</span> B = Foo.A; <span class="hljs-comment">// is B 3 or 4?</span>
 
 }
 </code></pre>
@@ -153,15 +157,13 @@ which have this sort of semantics.</p>
 <p>MM, YK, EF, DH: All agree, better than decorating them separately.</p>
 <p><em>Do we have consensus on everything?</em></p>
 <p>DE: I'm still uncomfortable with static initializers running before the class decorators have had their effect on the class, similar to WH's concern</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-182"><h4 id="conclusionresolution-182">Conclusion/Resolution</h4></a><ul>
 <li>Consensus on a general staged model</li>
 <li>Provisional consensus towards a proposal to evaluate all object computed property names before the values</li>
 <li>Interest in seeing more development towards how getters/setters will interact with rest/spread properties, including reconsidering whether they should be non-enumerable</li>
 <li>Consensus that decorating getters and setters separately should be a dynamic error; you are decorating the pair, not individually.</li>
 </ul>
-<h2>Updates from Istvan</h2>
-<p><em>Record all members present, including on VC, in the notes</em></p>
+<a href="#updates-from-istvan"><h2 id="updates-from-istvan">Updates from Istvan</h2></a><p><em>Record all members present, including on VC, in the notes</em></p>
 <p>Do we have consensus on adopting the minutes of the March meeting?</p>
 <p>Besides Github notes and ES discuss notes we need to prepare the official Ecma version of the minutes that annexes the &quot;Technical Notes&quot;. This is needed not so much for TC39 as for the other Ecma Membership on what is going on in Tc39, and this goes also into the long-term archive of Ecma.</p>
 <p><em>Consensus</em>. TC39 approved TC39/2016/019 Rev1 minutes of the March 2016 San Francisco meeting.</p>
@@ -173,8 +175,7 @@ which have this sort of semantics.</p>
 </ul>
 <p><strong>NOTE</strong>: The ECMAScript standards currently contribute to about 2/3 of all Ecma downloads of standards. Constantly we have about 5000-7000 downloads of ECMA-262 per month. That is the record holder standard. The HTML version has about 100000 visits in 2016 so far.</p>
 <p>Another point only mentioned here but not in the verbal report: He gets a great external interest for ECMAScript Security Projects and how to speed up ECMAScript performance (e.g. by parallel processing) for Media Codecs running in ECMAScript.</p>
-<h2><a href="https://github.com/tc39/ecma262/pull/319">Standardize a RangeError for call stack overflow</a></h2>
-<p>(Mike Pennisi) <a href="https://github.com/tc39/ecma262/pull/319">https://github.com/tc39/ecma262/pull/319</a></p>
+<a href="#standardize-a-rangeerror-for-call-stack-overflow"><h2 id="standardize-a-rangeerror-for-call-stack-overflow"><a href="https://github.com/tc39/ecma262/pull/319">Standardize a RangeError for call stack overflow</a></h2></a><p>(Mike Pennisi) <a href="https://github.com/tc39/ecma262/pull/319">https://github.com/tc39/ecma262/pull/319</a></p>
 <p>BT: Leading discussion on this proposal. This would help write tests to see if resources are exhausted for stacks.</p>
 <p>WH: This seems like a special case of out-of-memory. How could you even signal such an out-of-memory failure? You could make the same case about writing tests to make sure weak maps garbage collect.</p>
 <p>DE: It is not possible to detect memory exhaustion on Linux reliably.</p>
@@ -195,13 +196,11 @@ which have this sort of semantics.</p>
 <p>BT: It's a pragmatic solution</p>
 <p>MF: Proper tail calls are unobservable and should not have a test262 test</p>
 <p>BT: But it is very useful and works on all implementations</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-183"><h4 id="conclusionresolution-183">Conclusion/Resolution</h4></a><ul>
 <li>Consensus to not standardize RangeError (impossible to implement reliably)</li>
 <li>Continue discussion on a GitHub bug about possible reorganization of test262 to take into account that the PTC tests are implementation-specific/not technically correct</li>
 </ul>
-<h2><a href="https://github.com/tc39/ecma262/pull/525">\w and \W semantics in case-insensitive Unicode RegExps</a></h2>
-<p>(Michael Saboff)</p>
+<a href="#w-and-w-semantics-in-case-insensitive-unicode-regexps"><h2 id="w-and-w-semantics-in-case-insensitive-unicode-regexps"><a href="https://github.com/tc39/ecma262/pull/525">\w and \W semantics in case-insensitive Unicode RegExps</a></h2></a><p>(Michael Saboff)</p>
 <p>WH: This is the exact same problem that I solved in ES3 by adding the prohibition to case-canonicalization of non-ASCII Unicode characters into ASCII characters. Without that, the same \W weirdness would have appeared in ES3.</p>
 <p>MS: Recap of very strange semantics caused by Unicode case folding (MS please insert link to slides). \W includes K because the kevin symbol case-folds to something in \w, so K is case-insensitive in the set of things that aren't a letter.</p>
 <p>MS: Proposal: make \W be the inverse of \w, and change \b and \B to be consistent. An alternate proposal would be to stick to ASCII-only as Waldemar did for ES3.</p>
@@ -225,10 +224,8 @@ which have this sort of semantics.</p>
 <p>DH: What Unicode changes affect this?</p>
 <p>WH: Unicode defining new characters which case-convert into ASCII letters.</p>
 <p><em>discussion: Good to follow Unicode going forward, as it has changed over time, both in adding new characters and revisions to existing characters</em>.</p>
-<h4>Conclusion/Resolution</h4>
-<p>Consensus on MS's pull request, and working out \b and \B as he indicated.</p>
-<h2><a href="https://github.com/tc39/ecma262/pull/575">Function names</a></h2>
-<p>(Michael Saboff)</p>
+<a href="#conclusionresolution-184"><h4 id="conclusionresolution-184">Conclusion/Resolution</h4></a><p>Consensus on MS's pull request, and working out \b and \B as he indicated.</p>
+<a href="#function-names"><h2 id="function-names"><a href="https://github.com/tc39/ecma262/pull/575">Function names</a></h2></a><p>(Michael Saboff)</p>
 <p>MS: Proposal: When the inferred name is a reserved word, use &quot;&quot; rather than the current name. The problem is that the .name property won't eval.</p>
 <p>MM: What is the problem with the .name property being not an identifier?</p>
 <p>MS: The problem is that math.js puts type decorations in the name when they put the property of the function into the object.</p>
@@ -245,10 +242,8 @@ which have this sort of semantics.</p>
 <p>YK: Compatibility is important</p>
 <p>BT: good to have an evidence-based overturning of previous decisions</p>
 <p>MS: Hard to do telemetry for this</p>
-<h4>Conclusion/Resolution</h4>
-<p>No change in the spec for now; MS says Safari will likely ship their compat workaround for now, and see if it can get more information for the next meeting or the one after that to consider the decision</p>
-<h2><a href="https://github.com/tc39/ecma262/pull/410">TypedArray/ArrayBuffer/DataView constructor changes</a></h2>
-<p>(Leo Balter)</p>
+<a href="#conclusionresolution-185"><h4 id="conclusionresolution-185">Conclusion/Resolution</h4></a><p>No change in the spec for now; MS says Safari will likely ship their compat workaround for now, and see if it can get more information for the next meeting or the one after that to consider the decision</p>
+<a href="#typedarrayarraybufferdataview-constructor-changes"><h2 id="typedarrayarraybufferdataview-constructor-changes"><a href="https://github.com/tc39/ecma262/pull/410">TypedArray/ArrayBuffer/DataView constructor changes</a></h2></a><p>(Leo Balter)</p>
 <p>LB: [<em>Presented bug comment showing behavior across browsers</em>]</p>
 <p>MM: What does n/a mean?</p>
 <p>LB: not providing that argument</p>
@@ -292,17 +287,13 @@ which have this sort of semantics.</p>
 <p>MM: any objections?</p>
 <p>MS: Were you concerned about compat, DE?</p>
 <p>DE: No, I was concerned about compat for other proposals. I think this will probably work.</p>
-<h4>Conclusion/Resolution</h4>
-<p><em>Consensus!</em></p>
-<h2><a href="https://github.com/tc39/ecma262/pull/453">Revisiting &quot;Duplicate Function Declarations in Blocks&quot;</a> (DE, SG)</h2>
-<p>SG: Should our Annex B 3.3 legacy duplicate function in sloppy block behavior do an assignment for each function declaration, or just the last one?</p>
+<a href="#conclusionresolution-186"><h4 id="conclusionresolution-186">Conclusion/Resolution</h4></a><p><em>Consensus!</em></p>
+<a href="#revisiting-duplicate-function-declarations-in-blocks"><h2 id="revisiting-duplicate-function-declarations-in-blocks"><a href="https://github.com/tc39/ecma262/pull/453">Revisiting &quot;Duplicate Function Declarations in Blocks&quot;</a> (DE, SG)</h2></a><p>SG: Should our Annex B 3.3 legacy duplicate function in sloppy block behavior do an assignment for each function declaration, or just the last one?</p>
 <p>DE: I thought we were executing the assignment for each one. This is observable if you break out of the block in the middle. I'm fine with only doing the last one.</p>
 <p>SG: I'm fine with either also, but thought we had consensus on just the last one</p>
 <p>YK, MM: Seems like it'd be more intuitive that each function declaration does the assignment,</p>
-<h4>Conclusion/Resolution</h4>
-<p>Consensus on DE's PR to do an assignment for each function</p>
-<h2><a href="https://github.com/tc39/ecma262/pull/469">Throwing an error for returning primitives from base class constructors</a></h2>
-<p>(Claude Pache)</p>
+<a href="#conclusionresolution-187"><h4 id="conclusionresolution-187">Conclusion/Resolution</h4></a><p>Consensus on DE's PR to do an assignment for each function</p>
+<a href="#throwing-an-error-for-returning-primitives-from-base-class-constructors"><h2 id="throwing-an-error-for-returning-primitives-from-base-class-constructors"><a href="https://github.com/tc39/ecma262/pull/469">Throwing an error for returning primitives from base class constructors</a></h2></a><p>(Claude Pache)</p>
 <p>DE: I'm concerned it wouldn't be web-compatible to change this. We've apparently always supported returning non-object from a construct leading to returning this</p>
 <p>DH, others: Concern from various members of the committee about returning primitives leading to breaking long-held invariants</p>
 <p>Realizations:</p>
@@ -310,10 +301,8 @@ which have this sort of semantics.</p>
 <li>Broader concern: ES2015 and this proposal both ensure that objects are always returned from new; the question is just does a primitive return this, or throw a TypeError</li>
 <li>DE: Web compat may not be so big of an issue since this only applies to ES2015 class syntax, not ordinary function constructors</li>
 </ul>
-<h4>Conclusion/Resolution</h4>
-<p>Yes on the PR, though we will have to take web compatibility feedback into account as implementations attempt this</p>
-<h2><a href="https://github.com/tc39/ecma262/pull/353">Always update object properties if property descriptor is applicable (NaN issue)</a></h2>
-<p>(Daniel Ehrenberg)</p>
+<a href="#conclusionresolution-188"><h4 id="conclusionresolution-188">Conclusion/Resolution</h4></a><p>Yes on the PR, though we will have to take web compatibility feedback into account as implementations attempt this</p>
+<a href="#always-update-object-properties-if-property-descriptor-is-applicable-nan-issue"><h2 id="always-update-object-properties-if-property-descriptor-is-applicable-nan-issue"><a href="https://github.com/tc39/ecma262/pull/353">Always update object properties if property descriptor is applicable (NaN issue)</a></h2></a><p>(Daniel Ehrenberg)</p>
 <p>DE: This PR makes writes of a new NaN value to an existing writable property in an ordinary object take effect. That way, a non-canonicalizing implementation like V8 does not have to do a check on ordinary property sets to meet correctness. It continues to prevent information leaks on nonwritable properties by making those writes not change which NaN is there, though return success. Seems like a great change towards web reality while keeping both implementation constraints and desirable language properties in mind.</p>
 <p>MM: Sounds good to me</p>
 <p>DH: I'm uncomfortable with making this sort of change; the semantics for NaN observability and canonicalization seem weird</p>
@@ -321,5 +310,6 @@ which have this sort of semantics.</p>
 <p>BT: Didn't you promise to do that at your first meeting?</p>
 <p>DE: Sorry I haven't done this yet; it's something that I was planning on doing if/when SIMD.js reaches Stage 4.</p>
 <p>DH: I'm not sure if your refactoring makes sense either.</p>
-<h4>Conclusion/Resolution</h4>
-<p>Discuss more later. Agreement between DH and DE that this is lower priority than many other items on the agenda.</p>
+<a href="#conclusionresolution-189"><h4 id="conclusionresolution-189">Conclusion/Resolution</h4></a><p>Discuss more later. Agreement between DH and DE that this is lower priority than many other items on the agenda.</p>
+
+</body>

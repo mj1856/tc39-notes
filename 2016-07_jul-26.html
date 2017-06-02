@@ -1,12 +1,17 @@
 <!doctype html>
 <meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.6.0/github-markdown.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+
 <title>July 26 2016 Meeting Notes</title>
-<h1>July 26 2016 Meeting Notes</h1>
-<p>Brian Terlson (BT), Michael Ficarra (MF), Jordan Harband (JHD), Waldemar Horwat (WH), Tim Disney (TD), Michael Saboff (MS), Eric Faust (FST), Chip Morningstar (CM), Daniel Ehrenberg (DE), Leo Balter (LB), Yehuda Katz (YK), Jafar Husain (JH), István Sebestyén (IS), John Neumann (JN), Domenic Denicola (DD), Rick Waldron (RW), Stefan Penner (SP), Jonathan Sampson (JS), Caridy Patiño (CP), Sam Tobin-Hochstadt (STH), John Buchanan (JB), Kevin Gibbons (KG), Lars Hansen (LHN), Peter Jensen (PJ), Tom Care (TC), Dave Herman (DH), Bradley Farias (BF), Kris Gray (KSG), Adam Klein (AK), Dean Tribble (DT), Eric Faust (EFT), Jeff Morrison (JM), Sebastian Markbåge (SM), Saam Barati (SB), Kris Gray (KGY), John-David Dalton (JDD), Ben Newman (BN)</p>
+<body class="markdown-body">
+<a href="#july-26-2016-meeting-notes"><h1 id="july-26-2016-meeting-notes">July 26 2016 Meeting Notes</h1></a><p>Brian Terlson (BT), Michael Ficarra (MF), Jordan Harband (JHD), Waldemar Horwat (WH), Tim Disney (TD), Michael Saboff (MS), Eric Faust (FST), Chip Morningstar (CM), Daniel Ehrenberg (DE), Leo Balter (LB), Yehuda Katz (YK), Jafar Husain (JH), István Sebestyén (IS), John Neumann (JN), Domenic Denicola (DD), Rick Waldron (RW), Stefan Penner (SP), Jonathan Sampson (JS), Caridy Patiño (CP), Sam Tobin-Hochstadt (STH), John Buchanan (JB), Kevin Gibbons (KG), Lars Hansen (LHN), Peter Jensen (PJ), Tom Care (TC), Dave Herman (DH), Bradley Farias (BF), Kris Gray (KSG), Adam Klein (AK), Dean Tribble (DT), Eric Faust (EFT), Jeff Morrison (JM), Sebastian Markbåge (SM), Saam Barati (SB), Kris Gray (KGY), John-David Dalton (JDD), Ben Newman (BN)</p>
 <p>(I need the list when it's complete)</p>
 <p>Template link: <a href="https://github.com/tc39/Reflector/issues/19#issuecomment-234276510">https://github.com/tc39/Reflector/issues/19#issuecomment-234276510</a></p>
-<h2>Introduction</h2>
-<p>JN: (agenda)</p>
+<a href="#introduction"><h2 id="introduction">Introduction</h2></a><p>JN: (agenda)</p>
 <ul>
 <li><a href="https://github.com/tc39/agendas/blob/master/2016/07.md">https://github.com/tc39/agendas/blob/master/2016/07.md</a></li>
 </ul>
@@ -22,16 +27,13 @@
 <p>RW: Me</p>
 <p>AWB: (punt on addressing this now?)</p>
 <p>BT: Let's go with Rick taking notes for now, since he volunteered, but long-term we'll go item by item</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-156"><h4 id="conclusionresolution-156">Conclusion/Resolution</h4></a><ul>
 <li>Moving on, further discussion to be on github as before this meeting. Interested members are encouraged to participate there directly.</li>
 </ul>
-<h2>3 Agenda Adoption</h2>
-<ul>
+<a href="#3-agenda-adoption"><h2 id="3-agenda-adoption">3 Agenda Adoption</h2></a><ul>
 <li>Approved</li>
 </ul>
-<h2>4 May Minutes Approval</h2>
-<ul>
+<a href="#4-may-minutes-approval"><h2 id="4-may-minutes-approval">4 May Minutes Approval</h2></a><ul>
 <li>Approved</li>
 </ul>
 <p>JN: Agenda?</p>
@@ -40,14 +42,12 @@
 <p>WH: ECMA has a global policy (we all agreed to) that documents up for significant decisions shall be provided 2-3 weeks in advance. I'd interpret this as applying to proposals looking to advance in TC39.</p>
 <p>IS: It's 3 weeks. This is e.g. to formally move forward or approve a TC39 draft specification. But for things for information, to start a discussion on new items, not to strive for a formal decision anything until the meeting is allowed. But of course it is encouraged to submit and post on Github as soon as possible.</p>
 <p>JN: Approval of minutes?</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-157"><h4 id="conclusionresolution-157">Conclusion/Resolution</h4></a><ul>
 <li>Agenda Adopted</li>
 <li>May Minutes approved</li>
 <li>Add item to discuss the agenda item locking.</li>
 </ul>
-<h2>5. Report from the Ecma Secretariat</h2>
-<p>IS: Submitted the ECMAScript Suite Standard (approved by the GA as Ecma 414) to ISO/IEC JTC1 for fast-track. This should enable not to submit anymore ECMA-262 and ECMA-402, etc. to JTC1 separately anymore. This would allow to solve the speed difference problem and the RF patent policy problem. However, JTC1 editors wanted to have more text in the standard and not only the list of normative and informative references. IS said that he will work with Allen Wirfs-Brock on that. If possible we try to beed up ECMA-414 until the September 2016 meeting that isót can be approved as new Edition in the Decemmber 2016 GA. If the plan is delayed we finish it by June 2017.</p>
+<a href="#5-report-from-the-ecma-secretariat"><h2 id="5-report-from-the-ecma-secretariat">5. Report from the Ecma Secretariat</h2></a><p>IS: Submitted the ECMAScript Suite Standard (approved by the GA as Ecma 414) to ISO/IEC JTC1 for fast-track. This should enable not to submit anymore ECMA-262 and ECMA-402, etc. to JTC1 separately anymore. This would allow to solve the speed difference problem and the RF patent policy problem. However, JTC1 editors wanted to have more text in the standard and not only the list of normative and informative references. IS said that he will work with Allen Wirfs-Brock on that. If possible we try to beed up ECMA-414 until the September 2016 meeting that isót can be approved as new Edition in the Decemmber 2016 GA. If the plan is delayed we finish it by June 2017.</p>
 <ul>
 <li>Link IETF spec to Ecma 404 (that was already fast tracked to ISO actually before the May 2016 TC39 meeting). On that one JTC1 has not given any feedback yet. So we guess that is on track.</li>
 <li>On the issue we are in close contacts with the IETF. When we get the IETF spec number (when available) we will make a 2nd Edition of ECMA-404 and fast track that edition to JTC1. With that we want to link the Ecma Standrad with the IETF specification that they should be in full harmony.</li>
@@ -60,8 +60,7 @@
 <li>What IS forgot to tell, that actually with the publication of ECMAScript 2016 and ECMA-402 new Edition etc. it would be a good idea to make more PR, e.g. Press Release.</li>
 </ul></li>
 </ul>
-<h2>8. Test 262 Status Update</h2>
-<p>IS: Technical Report 104 needs to be updated. He added that all specs related to TC39 work are being downloaded very heavily (actually at  least 2/3 of all Ecma downloads are TC39 related).  The HTML version of ECMA-262 and ECMA-402 is in addition to it, and compared to full downloads that is even significantly higher.This is actually more than e.g. what is being downloaded from the ISO Shop (of course that is not free of charge...).  So automatically also TR-104 gets downloaded rather heavily. But e.g. in TR/104 the URL to the tests does not work. Also the text needs to be updated. It reflects a situation when only ES5 was covered, but  e.g. not ECMA-402.</p>
+<a href="#8-test-262-status-update"><h2 id="8-test-262-status-update">8. Test 262 Status Update</h2></a><p>IS: Technical Report 104 needs to be updated. He added that all specs related to TC39 work are being downloaded very heavily (actually at  least 2/3 of all Ecma downloads are TC39 related).  The HTML version of ECMA-262 and ECMA-402 is in addition to it, and compared to full downloads that is even significantly higher.This is actually more than e.g. what is being downloaded from the ISO Shop (of course that is not free of charge...).  So automatically also TR-104 gets downloaded rather heavily. But e.g. in TR/104 the URL to the tests does not work. Also the text needs to be updated. It reflects a situation when only ES5 was covered, but  e.g. not ECMA-402.</p>
 <p>AWB: Propose updating TR 104 to be descriptive only?</p>
 <p>BT: Is this just a readme? Possible get rid of it?</p>
 <p>AWB: Just reduce to an abstract description of the content and motivation of test262</p>
@@ -69,16 +68,14 @@
 <p>AWB: The draft isn't the published standard</p>
 <p>(Suggestions to link both, with clear identifiers)</p>
 <p>Note IS: I did not say that in the meeting, but In case of TC39 actually we give links to the latest ECMAScript drafts.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-158"><h4 id="conclusionresolution-158">Conclusion/Resolution</h4></a><ul>
 <li>Bring to reflector for further discussion</li>
 <li>TR104 update (or withdrawal)</li>
 <li>Linking standard and draft?</li>
 <li>It's there, but some want it to be more prominent</li>
 </ul>
 <p>Note IS: The TC39 website pages at Ecma have always room for improvement. If anything you want to include just contact Patrick from the Secretariat who maintains the webpages.</p>
-<h2>6. Ecma 262 Status Update</h2>
-<p>Brian Terlson</p>
+<a href="#6-ecma-262-status-update"><h2 id="6-ecma-262-status-update">6. Ecma 262 Status Update</h2></a><p>Brian Terlson</p>
 <p>BT: 6 months left for ES2017</p>
 <ul>
 <li>Object.values</li>
@@ -105,17 +102,14 @@
 <p>BT: Addressing the cross cutting issues, knowing the big picture</p>
 <p>AWB: Resolving issues discovered in an implementation</p>
 <p>BT: Champions responsible</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-159"><h4 id="conclusionresolution-159">Conclusion/Resolution</h4></a><ul>
 <li>Bring to reflector for further discussion</li>
 <li>Need changelog for each edition</li>
 <li>Discuss form/forum/format</li>
 </ul>
-<h2>7. Ecma 402 Status Update</h2>
-<p>Caridy Patiño</p>
+<a href="#7-ecma-402-status-update"><h2 id="7-ecma-402-status-update">7. Ecma 402 Status Update</h2></a><p>Caridy Patiño</p>
 <p>No updates</p>
-<h2>8. Test262 Update Revisit</h2>
-<p>Leo Balter</p>
+<a href="#8-test262-update-revisit"><h2 id="8-test262-update-revisit">8. Test262 Update Revisit</h2></a><p>Leo Balter</p>
 <p>LB: Bocoup has just wrapped project delivering coverage for ES2015</p>
 <ul>
 <li>Iterating on feedback from other members</li>
@@ -140,8 +134,7 @@
 <p>RW: Previously, not a lot of contribution, so this wasn't an issue. Now we're seeing more contribution, so it needs to be addressed (this is a concern that we have at Bocoup)</p>
 <p>BT: Possibly a requirement to create an issue on test262?</p>
 <p>SP: Block merge?</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-160"><h4 id="conclusionresolution-160">Conclusion/Resolution</h4></a><ul>
 <li>Labels to mark normative changes that need tests</li>
 <li>Work with change author to make tests</li>
 <li>Block on normative changes until they have tests</li>
@@ -149,8 +142,7 @@
 <li>Authors, champions, leads must be satisfied with changes on both repositories</li>
 <li>Include mention of available mentorship for test writing.</li>
 </ul>
-<h2>9.i.a Reintroduce for-in-initializer</h2>
-<p>Kevin Gibbons</p>
+<a href="#9ia-reintroduce-for-in-initializer"><h2 id="9ia-reintroduce-for-in-initializer">9.i.a Reintroduce for-in-initializer</h2></a><p>Kevin Gibbons</p>
 <p>Slides: <a href="https://docs.google.com/presentation/d/19LVVdCHfokJWQnNvkyu8M2vdpMAz8yIE1wB8yK7hLB4/edit#slide=id.gc6f980f91_0_0Slides">https://docs.google.com/presentation/d/19LVVdCHfokJWQnNvkyu8M2vdpMAz8yIE1wB8yK7hLB4/edit#slide=id.gc6f980f91_0_0Slides</a>:</p>
 <p>KG: V8, SM, JSC implemented and later reverted. Chakra did not implement</p>
 <ul>
@@ -166,23 +158,19 @@
 <p>RW: (brief discussion about strict mode additions: resolved, non-issue)</p>
 <p>YK: Does this mean sloppy mode changes are always in annex b?</p>
 <p>Generally, no.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-161"><h4 id="conclusionresolution-161">Conclusion/Resolution</h4></a><ul>
 <li>Add for-var-in initializers with the old semantics to Annex B, for non-strict mode only.</li>
 <li><a href="https://github.com/tc39/ecma262/pull/614">ecma262/pull/614</a></li>
 <li>Kevin will write tests for the change, based on the new policy</li>
 </ul>
-<h2>9.i.b Update on Async Iteration</h2>
-<p>Domenic Denicola</p>
+<a href="#9ib-update-on-async-iteration"><h2 id="9ib-update-on-async-iteration">9.i.b Update on Async Iteration</h2></a><p>Domenic Denicola</p>
 <p>(No slides)</p>
 <p>DD: Kevin Smith has left the committee; I am taking over as champion. I did not have time to address spec issues, so it is not ready to advance, but they are minor and I will work on it. Who should be Stage 3 reviewers?</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-162"><h4 id="conclusionresolution-162">Conclusion/Resolution</h4></a><ul>
 <li>Reviewers: Bradley Farias, Daniel Ehrenberg</li>
 </ul>
 <p>AWB: Going back to the previous topic, Kevin, could you please share a PDF on the notes page, since links rot?</p>
-<h2>9.i.e Trailing commas in functions</h2>
-<p>Jeff Morrison</p>
+<a href="#9ie-trailing-commas-in-functions"><h2 id="9ie-trailing-commas-in-functions">9.i.e Trailing commas in functions</h2></a><p>Jeff Morrison</p>
 <p>JM: It's implemented in two browsers (JSC, Edge)</p>
 <p>AK: Actually V8 also</p>
 <p>BT: Actually we ship it already. Are there test262 tests?</p>
@@ -190,12 +178,10 @@
 <p>WH: I don't object to advancing this to stage 4, but I'm sad to see this in the language.</p>
 <p>?: Ditto.</p>
 <p>(We can't find tests)</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-163"><h4 id="conclusionresolution-163">Conclusion/Resolution</h4></a><ul>
 <li>Stage 4 pending on writing and merging test262 tests</li>
 </ul>
-<h2>9.i.f Unify String and Array maximum lengths</h2>
-<p>Michael Saboff</p>
+<a href="#9if-unify-string-and-array-maximum-lengths"><h2 id="9if-unify-string-and-array-maximum-lengths">9.i.f Unify String and Array maximum lengths</h2></a><p>Michael Saboff</p>
 <p>MS: Unify the length of strings and arrays. Strings are 2^53-1, Arrays are 2^32-1 indexed elements. A few APIs cross over. Really, browsers are all 2^31 or less. I don't care which way we go, but I'd like Strings and Arrays to be unified.  Maybe we should delay this a little until we figure out how to make Arrays bigger; I originally proposed reducing everything to 2^32-1</p>
 <p>MF: What's the motivation?</p>
 <p>MS: Consistency, so they all use the same type of index.</p>
@@ -227,12 +213,10 @@
 <p>AWB: It's gotten worse with recent changes</p>
 <p>DE: We've hit the timebox limit; Add this to the end of the agenda?</p>
 <p>MS: This isn't a hill for me to die on; i think it's something we should address, but not my #1 priority</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-164"><h4 id="conclusionresolution-164">Conclusion/Resolution</h4></a><ul>
 <li>Not finished; will revisit</li>
 </ul>
-<h2>9.i.h Standardize Date.UTC when called with &lt; 2 arguments</h2>
-<p>Brian Terlson</p>
+<a href="#9ih-standardize-dateutc-when-called-with--2-arguments"><h2 id="9ih-standardize-dateutc-when-called-with--2-arguments">9.i.h Standardize Date.UTC when called with &lt; 2 arguments</h2></a><p>Brian Terlson</p>
 <p>BT: All implementations except Edge return NaN for Date.UTC for &lt; 2 arguments, but Edge treats those missing arguments as 0.</p>
 <p>AWB: What discussion have we had before?</p>
 <p>BT: I couldn't find it. As Chakra is the only holdout, and we have no compelling reason, we're willing to return NaN. So I believe we should update the spec text and return NaN, and Chakra will do that.</p>
@@ -267,12 +251,10 @@ DE: We are running into the timebox. Do we have consensus on the PR?</p>
 <p>BE: It is what it was. I support the status quo, copying Java, returning NaN</p>
 <p>MS: I support returning NaN for less than two arguments, just because of the confusion that Date has 0 arguments, 1 arguments, and then 2 or more is just like Date.UTC</p>
 <p>AWB: The Date constructor has an overload for one argument, so it can't treat that as the year and be analogous to Date.UTC for the one-argument case.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-165"><h4 id="conclusionresolution-165">Conclusion/Resolution</h4></a><ul>
 <li>No consensus on the full change. The zero-argument change is agreed to return NaN, but disagreement about what the one-argument case</li>
 </ul>
-<h2>9.i.d Revisiting NaN</h2>
-<p>Daniel Ehrenberg</p>
+<a href="#9id-revisiting-nan"><h2 id="9id-revisiting-nan">9.i.d Revisiting NaN</h2></a><p>Daniel Ehrenberg</p>
 <p><a href="https://github.com/tc39/ecma262/issues/635">https://github.com/tc39/ecma262/issues/635</a></p>
 <p>Slides: <a href="https://docs.google.com/presentation/d/1eqimbmVpMZET_5H9NacVkXGP2WNATg8bXWi3Ky2bsGo/edit">https://docs.google.com/presentation/d/1eqimbmVpMZET_5H9NacVkXGP2WNATg8bXWi3Ky2bsGo/edit</a></p>
 <p>DE: (presenting slides)</p>
@@ -295,8 +277,8 @@ DE: We are running into the timebox. Do we have consensus on the PR?</p>
 <li>V8's FAST_HOLEY_DOUBLE_ARRAY ElementsKind</li>
 <li>Sample code:</li>
 </ul>
-<pre><code class="language-js">let x = new Array(6)
-for (let i = 0; i &lt; x.length; i++) x[i] = 0.5
+<pre><code class="language-js"><span class="hljs-keyword">let</span> x = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(<span class="hljs-number">6</span>)
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; x.length; i++) x[i] = <span class="hljs-number">0.5</span>
 </code></pre>
 <ul>
 <li>Initially &quot;filled with holes&quot; (missing properties), then entries are added
@@ -327,13 +309,11 @@ Problem: many places possible to predict the bit pattern. Can convey information
 <p>AK: I think this needs to be discuss offline?</p>
 <p>DH: (taking issue with time box)</p>
 <p>DH: Some predictable behavior that has changed over the years and some implementations are doing different things, new use cases.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-166"><h4 id="conclusionresolution-166">Conclusion/Resolution</h4></a><ul>
 <li>Allen, Mark, Dave, Waldemar, Dan to have discussion and come back for another time box discussion.</li>
 </ul>
 <p>(More discussion re: time box)</p>
-<h2>9.ii.a Object.getOwnPropertyDescriptors: when a Proxy returns an undefined descriptor?</h2>
-<p>Jordan Harband</p>
+<a href="#9iia-objectgetownpropertydescriptors-when-a-proxy-returns-an-undefined-descriptor"><h2 id="9iia-objectgetownpropertydescriptors-when-a-proxy-returns-an-undefined-descriptor">9.ii.a Object.getOwnPropertyDescriptors: when a Proxy returns an undefined descriptor?</h2></a><p>Jordan Harband</p>
 <p>JHD: Any non-proxy, call built-in op claims foo in object, call Object.getOwnPropertyDescriptor(foo, &quot;prop&quot;), you get that property descriptor. Proxy can lie, which is problematic when passing the returned value from <code>Object.getOwnPropertyDescriptors(...)</code></p>
 <p>BT: Side-effecting proxies. If a proxy says &quot;no descriptor for this property&quot;, then there is none. Object.getOwnPropertyDescriptors(...) shouldn't be seen as the authority.</p>
 <ul>
@@ -343,14 +323,12 @@ Problem: many places possible to predict the bit pattern. Can convey information
 <p>DE: Cait Potter implemented both semantics and there are no noticeable differences.</p>
 <p>AWB: No guarantee once you get a descriptor that it remains valid to do something with it in the future - operations are unknown</p>
 <p>JHD: The change is: only properties with valid property descriptors are returned.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-167"><h4 id="conclusionresolution-167">Conclusion/Resolution</h4></a><ul>
 <li>Recommended change approved for merging the PR</li>
 </ul>
 <p>AWB: obligated to notify implementors?</p>
 <p>JHD: Implementors are aware and following progress</p>
-<h2>9.ii.b Object.enumerable{Keys,Values,Entries}</h2>
-<p>Leo Balter &amp; John-David Dalton</p>
+<a href="#9iib-objectenumerablekeysvaluesentries"><h2 id="9iib-objectenumerablekeysvaluesentries">9.ii.b Object.enumerable{Keys,Values,Entries}</h2></a><p>Leo Balter &amp; John-David Dalton</p>
 <p>LB: Discussing <a href="https://github.com/leobalter/object-enumerables">https://github.com/leobalter/object-enumerables</a></p>
 <p>JDD: No built-in API that allows getting own and inherited properties</p>
 <p>EFT/DD: for loop?</p>
@@ -381,12 +359,10 @@ Problem: many places possible to predict the bit pattern. Can convey information
 <p>&quot;Never invest in the trailing edge&quot;</p>
 <p>DD: Adding new features, in new browsers, to fix features in old browsers, is not what we should be doing.</p>
 <p>MM: I don't think this is going to get consensus</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-168"><h4 id="conclusionresolution-168">Conclusion/Resolution</h4></a><ul>
 <li>No advance</li>
 </ul>
-<h2>9.ii.c RegExp Unicode Property Escapes</h2>
-<p>Brian Terlson, Daniel Ehrenberg, Mathias Bynens</p>
+<a href="#9iic-regexp-unicode-property-escapes"><h2 id="9iic-regexp-unicode-property-escapes">9.ii.c RegExp Unicode Property Escapes</h2></a><p>Brian Terlson, Daniel Ehrenberg, Mathias Bynens</p>
 <p><a href="https://github.com/mathiasbynens/es-regex-unicode-property-escapes">https://github.com/mathiasbynens/es-regex-unicode-property-escapes</a></p>
 <p>Slides: <a href="https://docs.google.com/presentation/d/1o31S9RqDdkoWW2zfPMNIZdPDIp25Rr0-XW0gro_cskk/edit">https://docs.google.com/presentation/d/1o31S9RqDdkoWW2zfPMNIZdPDIp25Rr0-XW0gro_cskk/edit</a></p>
 <p>DE: Expose more unicode data to RegExps</p>
@@ -418,13 +394,11 @@ In text form: <a href="https://github.com/mathiasbynens/es-regexp-unicode-proper
 <p>RW: When Tessel 2 moves to Node 6, we'll be shipping Node.js compiled with the disable flags, which means normalize is useless, but the additional data isn't included.</p>
 <p>AWB: Can define it such that, if the data is not available, the character set is empty</p>
 <p>DE: Stage 1?</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-169"><h4 id="conclusionresolution-169">Conclusion/Resolution</h4></a><ul>
 <li>Stage 1: Approved.</li>
 <li>YK wants confirmation about <code>\u</code></li>
 </ul>
-<h2>9.ii.d Async Functions for Stage 4</h2>
-<p>Brian Terlson</p>
+<a href="#9iid-async-functions-for-stage-4"><h2 id="9iid-async-functions-for-stage-4">9.ii.d Async Functions for Stage 4</h2></a><p>Brian Terlson</p>
 <p>BT: no updates, no changes</p>
 <ul>
 <li>Shipping in Edge</li>
@@ -453,11 +427,11 @@ In text form: <a href="https://github.com/mathiasbynens/es-regexp-unicode-proper
 <p>MM: concerns: === should never throw, typeof should never throw. I don't recall where cancellation would make await throw, where it previously would not throw.</p>
 <p>Was</p>
 <p>DD:</p>
-<pre><code class="language-js">async function foo() {
-    try {
-        await f();
+<pre><code class="language-js"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">try</span> {
+        <span class="hljs-keyword">await</span> f();
         g();
-    } catch (e) {
+    } <span class="hljs-keyword">catch</span> (e) {
         h();
     }
 }
@@ -465,11 +439,11 @@ In text form: <a href="https://github.com/mathiasbynens/es-regexp-unicode-proper
 <p>might call neither g nor h. But then there are other situations where neither g nor h is called. Use <code>finally</code> if you want cleanup code.</p>
 <p>DD: Objecting to the third</p>
 <p>JHD: If <code>f</code> is changed to return <code>new Promise(() =&gt; {})</code>, then both <code>g</code> and <code>h</code> will never run now, without cancellation existing - therefore if you expect <code>g</code> or <code>h</code> to always run, you are simply wrong, and your expectation is invalid.</p>
-<pre><code class="language-js">async function foo() {
-    try {
-        await f();
+<pre><code class="language-js"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">try</span> {
+        <span class="hljs-keyword">await</span> f();
         g();
-    } catch (e) {
+    } <span class="hljs-keyword">catch</span> (e) {
         h();
     }
     i();
@@ -485,10 +459,8 @@ In text form: <a href="https://github.com/mathiasbynens/es-regexp-unicode-proper
 <p>JHD/EFT: No call site can be defensive against code it didn't write</p>
 <p>JHD: In the case of Promises, if you're returning a promise that you didn't create, in a <code>then</code>, you can't defend against it, because you can't know if the other promise will ever settle.</p>
 <p>(Questions about &quot;Third State&quot;)</p>
-<h4>Conclusion/Resolution</h4>
-<p>Will revisit after discussing cancels more; hopefully reshuffle non-timeboxed agenda items to enable that to happen in this meeting.</p>
-<h2>9.ii.e Math extensions</h2>
-<p>Rick Waldron</p>
+<a href="#conclusionresolution-170"><h4 id="conclusionresolution-170">Conclusion/Resolution</h4></a><p>Will revisit after discussing cancels more; hopefully reshuffle non-timeboxed agenda items to enable that to happen in this meeting.</p>
+<a href="#9iie-math-extensions"><h2 id="9iie-math-extensions">9.ii.e Math extensions</h2></a><p>Rick Waldron</p>
 <p>RW: There are some nasty npm modules for these sorts of math functions. This comes up in IoT, cool animations, etc.  We could add some more functions to the standard library. This stuff happens over and over and over again; typing things into consoles.</p>
 <p>YK: leftPad went well</p>
 <p>RW: This falls into the leftPad box. This is putting down pavement where a cowpath once was.</p>
@@ -546,7 +518,8 @@ In text form: <a href="https://github.com/mathiasbynens/es-regexp-unicode-proper
 <p>RW: This is really robotics-driven</p>
 <p>WH: Last time, we got bogged down in specifying precision of math functions. How should we avoid that here?</p>
 <p>CM: If there are subtleties in the implementation, that's a good reason for standards.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-171"><h4 id="conclusionresolution-171">Conclusion/Resolution</h4></a><ul>
 <li>Stage 1</li>
 </ul>
+
+</body>

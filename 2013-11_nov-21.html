@@ -1,16 +1,19 @@
 <!doctype html>
 <meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.6.0/github-markdown.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+
 <title>Nov 21 Meeting Notes</title>
-<h1>Nov 21 Meeting Notes</h1>
-<p>John Neumann (JN), Allen Wirfs-Brock (AWB), Yehuda Katz (YK), Eric Ferraiuolo (EF), Erik Arvidsson (EA), Rick Hudson (RH), Matt Sweeney (MS), Rick Waldron (RW), Dmitry Soshnikov (DS), Sebastian Markbage (SM), Ben Newman (BN), Jeff Morrison (JM), Reid Burke (RB), Waldemar Horwat (WH), Doug Crockford (DC), Tom Van Custem (TVC), Mark Miller (MM), Brian Terlson (BT), Andreas Rossberg (ARB), Alex Russell (AR), Mark Miller (MM)</p>
-<h2>Follow Up on IETF JSON WG Communication document</h2>
-<p>(review)</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<body class="markdown-body">
+<a href="#nov-21-meeting-notes"><h1 id="nov-21-meeting-notes">Nov 21 Meeting Notes</h1></a><p>John Neumann (JN), Allen Wirfs-Brock (AWB), Yehuda Katz (YK), Eric Ferraiuolo (EF), Erik Arvidsson (EA), Rick Hudson (RH), Matt Sweeney (MS), Rick Waldron (RW), Dmitry Soshnikov (DS), Sebastian Markbage (SM), Ben Newman (BN), Jeff Morrison (JM), Reid Burke (RB), Waldemar Horwat (WH), Doug Crockford (DC), Tom Van Custem (TVC), Mark Miller (MM), Brian Terlson (BT), Andreas Rossberg (ARB), Alex Russell (AR), Mark Miller (MM)</p>
+<a href="#follow-up-on-ietf-json-wg-communication-document"><h2 id="follow-up-on-ietf-json-wg-communication-document">Follow Up on IETF JSON WG Communication document</h2></a><p>(review)</p>
+<a href="#conclusionresolution-498"><h4 id="conclusionresolution-498">Conclusion/Resolution</h4></a><ul>
 <li>Unanimous consent</li>
 </ul>
-<h2>4.5 Modules</h2>
-<p>(Dave Herman, Sam Tobin-Hochstadt)</p>
+<a href="#45-modules"><h2 id="45-modules">4.5 Modules</h2></a><p>(Dave Herman, Sam Tobin-Hochstadt)</p>
 <p>(request slides)</p>
 <p>(fighting Google Hangouts for fun and profit)</p>
 <p>DH: Spec draft: Done.
@@ -89,13 +92,13 @@ Initial implementation for Firefox, POC for spec: <a href="https://github.com/jo
 <li>script type=&quot;module&quot;</li>
 </ul>
 <p>DH: benefits include: top-level decls are local. You can persist by opting in (window.foo = ...), but it's not a foot gun via var. No special semantics for the global scope; it's jsut a module. Still accessible via System.import.</p>
-<pre><code class="language-html">&lt;module&gt;
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">module</span>&gt;</span>
 var foo = 1;
-&lt;/module&gt;
+<span class="hljs-tag">&lt;/<span class="hljs-name">module</span>&gt;</span>
 
-&lt;script&gt;
-foo; // undefined.
-&lt;/script&gt;
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="actionscript">
+foo; <span class="hljs-comment">// undefined.</span>
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
 <p>DH: Recapping the concatenation story.</p>
 <p>(didn't we all do this before?)</p>
@@ -122,12 +125,12 @@ foo; // undefined.
 <li><a href="https://gist.github.com/dherman/7568080">https://gist.github.com/dherman/7568080</a></li>
 </ul>
 <pre><code class="language-js">
-var l = new Loader({
-  normalize: n,  // Promise&lt;stringable&gt;
-  locate l,      // Promise&lt;address&gt;, formerly &quot;resolve&quot;
-  fetch f,       // Promise&lt;source&gt;
-  translate t,   // Promise&lt;source&gt;
-  instantiate f, // Promise&lt;factory?&gt;, formerly &quot;link&quot;
+<span class="hljs-keyword">var</span> l = <span class="hljs-keyword">new</span> Loader({
+  <span class="hljs-attr">normalize</span>: n,  <span class="hljs-comment">// Promise&lt;stringable&gt;</span>
+  locate l,      <span class="hljs-comment">// Promise&lt;address&gt;, formerly "resolve"</span>
+  fetch f,       <span class="hljs-comment">// Promise&lt;source&gt;</span>
+  translate t,   <span class="hljs-comment">// Promise&lt;source&gt;</span>
+  instantiate f, <span class="hljs-comment">// Promise&lt;factory?&gt;, formerly "link"</span>
 });
 </code></pre>
 <p>address -&gt; where to find this
@@ -138,14 +141,14 @@ source -&gt; the source text</p>
 <p>WH: What exactly is promised in each step?
 (see gist)</p>
 <p>Core API</p>
-<pre><code class="language-js">// Loader API
-// Promise&lt;void&gt;
+<pre><code class="language-js"><span class="hljs-comment">// Loader API</span>
+<span class="hljs-comment">// Promise&lt;void&gt;</span>
 l.load(name[, opts]);
 
-// Promise&lt;void&gt;
+<span class="hljs-comment">// Promise&lt;void&gt;</span>
 l.define(name, src[, opts]);
 
-// Promise&lt;Module&gt;
+<span class="hljs-comment">// Promise&lt;Module&gt;</span>
 l.module(src[, opts]);
 </code></pre>
 <p>WH: If load is called twice, does it reuse the same module?</p>
@@ -159,13 +162,13 @@ l.module(src[, opts]);
 <p>EA: I'm worried about CSP.</p>
 <p>DH: l.import() as a convenience api. Kicks off a load and forces an execution of the module. Resolves to the module object. It's a nice way of doing it all in one shot.</p>
 <p>DH: the registry API</p>
-<pre><code>// Registry API, methods on a Loader instance
-l.get(name)    // Module?
-l.set(name, m) // void
-l.has(name)    // boolean
-l.keys()       // Iter&lt;string&gt;
-l.values()     // Iter&lt;Module&gt;
-l.entries()    // Iter&lt;[string, Module]&gt;
+<pre><code><span class="hljs-comment">// Registry API, methods on a Loader instance</span>
+<span class="hljs-selector-tag">l</span><span class="hljs-selector-class">.get</span>(name)    <span class="hljs-comment">// Module?</span>
+<span class="hljs-selector-tag">l</span><span class="hljs-selector-class">.set</span>(name, m) <span class="hljs-comment">// void</span>
+<span class="hljs-selector-tag">l</span><span class="hljs-selector-class">.has</span>(name)    <span class="hljs-comment">// boolean</span>
+<span class="hljs-selector-tag">l</span><span class="hljs-selector-class">.keys</span>()       <span class="hljs-comment">// Iter&lt;string&gt;</span>
+<span class="hljs-selector-tag">l</span><span class="hljs-selector-class">.values</span>()     <span class="hljs-comment">// Iter&lt;Module&gt;</span>
+<span class="hljs-selector-tag">l</span><span class="hljs-selector-class">.entries</span>()    <span class="hljs-comment">// Iter&lt;[string, Module]&gt;</span>
 </code></pre>
 <p>MM: delete?</p>
 <p>BE/RW: size property?</p>
@@ -225,14 +228,14 @@ If someone tries to load a module and then I load a module of the same name, I w
 ... Can create a different Loader for maintaining state in a specific module while loading another module of the same name.</p>
 <p>Realm API</p>
 <p>A realm object abstracts the notion of a distinct global environment.</p>
-<pre><code class="language-js">let loader = new Loader({
-realm: r, // a Realm object
+<pre><code class="language-js"><span class="hljs-keyword">let</span> loader = <span class="hljs-keyword">new</span> Loader({
+<span class="hljs-attr">realm</span>: r, <span class="hljs-comment">// a Realm object</span>
 });
 </code></pre>
 <p><a href="https://gist.github.com/dherman/7568885">https://gist.github.com/dherman/7568885</a></p>
-<pre><code class="language-js">let r = new Realm({ ... });
+<pre><code class="language-js"><span class="hljs-keyword">let</span> r = <span class="hljs-keyword">new</span> Realm({ ... });
 
-r.global.myGlobal = 17;
+r.global.myGlobal = <span class="hljs-number">17</span>;
 
 r.eval(...);
 </code></pre>
@@ -250,15 +253,15 @@ r.eval(...);
 <p>MM: When you create a new Realm, what do you provide in order to give it initial state?
 ... Let's just keep this in mind.</p>
 <p>Realm API</p>
-<pre><code class="language-js">let realm = new Realm({
-eval: ...,
-Function: ...
-}, function(builtins) {
+<pre><code class="language-js"><span class="hljs-keyword">let</span> realm = <span class="hljs-keyword">new</span> Realm({
+<span class="hljs-attr">eval</span>: ...,
+<span class="hljs-attr">Function</span>: ...
+}, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">builtins</span>) </span>{
 
-  // global object starts empty
-  // populate with standard builtins
+  <span class="hljs-comment">// global object starts empty</span>
+  <span class="hljs-comment">// populate with standard builtins</span>
 
-  mixin(this.global, builtins);
+  mixin(<span class="hljs-keyword">this</span>.global, builtins);
 });
 </code></pre>
 <p>DH: First object contains things to explicitly add to the Realm's global.</p>
@@ -284,54 +287,54 @@ Function: ...
 <p>AR: what about the second arg? can that be folded into the first?</p>
 <p>DH: yes, perhaps &quot;init: function(...) { }&quot;</p>
 <p>Indirect Eval</p>
-<pre><code class="language-js">let caja = new Realm({
-indirectEval: function(args) {
-    return anything
+<pre><code class="language-js"><span class="hljs-keyword">let</span> caja = <span class="hljs-keyword">new</span> Realm({
+<span class="hljs-attr">indirectEval</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">args</span>) </span>{
+    <span class="hljs-keyword">return</span> anything
 }
 });
 
-caja.eval(`
-  (0, eval)(&quot;1 + 2&quot;)
-`);
+caja.eval(<span class="hljs-string">`
+  (0, eval)("1 + 2")
+`</span>);
 </code></pre>
 <p>STH: I was really skeptical of this, but I was persuaded.</p>
 <p>WH: Why not use something simpler such as define realm.evalToken as the function to compare against what the eval identifier evaluates to in order to check for direct vs. indirect eval?</p>
 <p>(Offline conversation with MM/DH/YK/BT: indirectEval hook returning the result of eval wont' work without a way to refer to eval. Fix is to make indrectEval a translate hook similar to directEval.)</p>
 <p>Direct Eval</p>
 <pre><code class="language-js">
-let caja = new Realm({
-  eval: {
-    direct: {
-      translate: (s) =&gt; { ... }
+<span class="hljs-keyword">let</span> caja = <span class="hljs-keyword">new</span> Realm({
+  <span class="hljs-attr">eval</span>: {
+    <span class="hljs-attr">direct</span>: {
+      <span class="hljs-attr">translate</span>: <span class="hljs-function">(<span class="hljs-params">s</span>) =&gt;</span> { ... }
     }
   }
 });
 
-caja.eval(`{ let tmp = f();
-             eval(&quot;tmp&quot;) }`);
+caja.eval(<span class="hljs-string">`{ let tmp = f();
+             eval("tmp") }`</span>);
 </code></pre>
 <p>Direct Eval</p>
 <pre><code class="language-js">
-let caja = new Realm({
-  eval: {
-    direct: {
-      fallback: (f, ...rest) =&gt; { ... }
+<span class="hljs-keyword">let</span> caja = <span class="hljs-keyword">new</span> Realm({
+  <span class="hljs-attr">eval</span>: {
+    <span class="hljs-attr">direct</span>: {
+      <span class="hljs-attr">fallback</span>: <span class="hljs-function">(<span class="hljs-params">f, ...rest</span>) =&gt;</span> { ... }
     }
   }
 });
 
-caja.eval(`{ let tmp = f();
-             eval(&quot;tmp&quot;) }`);
+caja.eval(<span class="hljs-string">`{ let tmp = f();
+             eval("tmp") }`</span>);
 </code></pre>
 <p>WH: Why so many levels of destructuring in the first parameter to the Realm constructor? Do we need then all?</p>
 <p>Function</p>
-<pre><code class="language-js">let caja = new Realm({
-  Function: (args, body) =&gt; { ... }
+<pre><code class="language-js"><span class="hljs-keyword">let</span> caja = <span class="hljs-keyword">new</span> Realm({
+  <span class="hljs-attr">Function</span>: <span class="hljs-function">(<span class="hljs-params">args, body</span>) =&gt;</span> { ... }
 });
 
-caja.eval(`
-  Function(&quot;x&quot;, &quot;return x + 1&quot;)
-`);
+caja.eval(<span class="hljs-string">`
+  Function("x", "return x + 1")
+`</span>);
 </code></pre>
 <p>ARB: Why not spec it by defined concatenation plus eval?</p>
 <p>STH: Explains the issues the exist with toString.</p>
@@ -343,13 +346,13 @@ caja.eval(`
 <li>(need the third reason)</li>
 </ul>
 <p>Function*</p>
-<pre><code class="language-js">let caja = new Realm({
-  Function: (args, body, prefix) =&gt; { ... }
+<pre><code class="language-js"><span class="hljs-keyword">let</span> caja = <span class="hljs-keyword">new</span> Realm({
+  <span class="hljs-attr">Function</span>: <span class="hljs-function">(<span class="hljs-params">args, body, prefix</span>) =&gt;</span> { ... }
 });
 
-caja.eval(`
-  (function*().constructor(&quot;x&quot;, &quot;return  x + 1&quot;)
-`);
+caja.eval(<span class="hljs-string">`
+  (function*().constructor("x", "return  x + 1")
+`</span>);
 </code></pre>
 <p><code>prefix</code> is the string that is either &quot;function&quot; or &quot;function *&quot;</p>
 <p>DS: concern for changes in semantics of</p>
@@ -373,33 +376,33 @@ caja.eval(`
 <p>STH: Function.prototype.<strong>proto</strong>?</p>
 <p>BT: Object.prototype</p>
 <p>Realm API</p>
-<pre><code class="language-js">let r = new Realm({
-  eval: {
+<pre><code class="language-js"><span class="hljs-keyword">let</span> r = <span class="hljs-keyword">new</span> Realm({
+  <span class="hljs-attr">eval</span>: {
     indirect,
-    direct: {
+    <span class="hljs-attr">direct</span>: {
       translate, fallback
     }
   },
-  Function
+  <span class="hljs-built_in">Function</span>
 });
 </code></pre>
 <p>DH: A compiler for ES7 -&gt; ES6. The compiler has some static source its carrying around and comes to:</p>
 <pre><code class="language-js">|-
 |-
 |-
-eval(x)
+<span class="hljs-built_in">eval</span>(x)
 </code></pre>
 <p>And contains source:</p>
 <pre><code class="language-js">{t1, t2, t3}
 </code></pre>
 <p>Translate to an Identifier &quot;eval&quot;, no way around this</p>
 <pre><code class="language-js">...
-translate: function(s, src) {
-  return compile(s, src);
+translate: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">s, src</span>) </span>{
+  <span class="hljs-keyword">return</span> compile(s, src);
 }
 
-fallback: function(f, ...rest) {
-  return f(...rest);
+fallback: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">f, ...rest</span>) </span>{
+  <span class="hljs-keyword">return</span> f(...rest);
 }
 </code></pre>
 <p>WH: Fallback needs a this binding to handle cases with 'with' such as this one:
@@ -422,8 +425,7 @@ eval(b)
 <li><p>Polymorphism allows admitting stream objects for <code>.define</code> and <code>.module</code> in future</p></li>
 </ul>
 <p>YK: We've built a layer under the new constructs and CSP can work at that level: <code>loader.eval</code>, etc. A small core that we can build on top of.</p>
-<h4>Conclusion/Resolution</h4>
-<p>Realm constructor semantics changes:</p>
+<a href="#conclusionresolution-499"><h4 id="conclusionresolution-499">Conclusion/Resolution</h4></a><p>Realm constructor semantics changes:</p>
 <ul>
 <li>changing &quot;eval&quot; to:
 <ul>
@@ -471,8 +473,7 @@ eval(b)
 <p>YK/AR/RW: Yes.</p>
 <p>Discussion about time line of ES6 implementation</p>
 <p>(break)</p>
-<h2>4.6 The global scope contour</h2>
-<p>(Dave Herman)</p>
+<a href="#46-the-global-scope-contour"><h2 id="46-the-global-scope-contour">4.6 The global scope contour</h2></a><p>(Dave Herman)</p>
 <p>Relevant:</p>
 <ul>
 <li><a href="https://github.com/rwaldron/tc39-notes/blob/master/es6/2012-07/july-25.md#scoping-rules-for-global-lexical-declaration">https://github.com/rwaldron/tc39-notes/blob/master/es6/2012-07/july-25.md#scoping-rules-for-global-lexical-declaration</a></li>
@@ -499,9 +500,9 @@ let, const, class scoped to Script, as if it had an implicit scope</p>
 <p>ARB: class has TDZ
 ARB: HTML event attributes might need to see the declarations</p>
 <p>RW: Use developer tools as an example. The transition has hazards where user code thinks it has created a global binding, but actually hasn't.</p>
-<pre><code class="language-html">&lt;script&gt;
-let foo = 1;
-&lt;/script&gt;
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+<span class="hljs-keyword">let</span> foo = <span class="hljs-number">1</span>;
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
 <p><code>foo</code> appears undefined in the console.</p>
 <p>YK/JM: discussing concerns about fragmentation of the mental model of global binding in scripts</p>
@@ -516,9 +517,9 @@ let foo = 1;
 <p>EA/RW: let, const, class should be &quot;var like&quot; at the global level in Script.</p>
 <p>DH: There is a potential confusion. The local scope contour is less confusing than the extensible contour.</p>
 <p>BE: It's bad if people type:</p>
-<pre><code class="language-html">&lt;script&gt;
-class C {}
-&lt;/script&gt;
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="actionscript">
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">C</span> </span>{}
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
 <p>And C disappears after the <code>&lt;/script&gt;</code></p>
 <p>EA/WH/RW: Agree.</p>
@@ -530,7 +531,8 @@ class C {}
 </ul>
 <p>EA/RW: ^^^^^ Agreed.</p>
 <p>BE: Speculation about module uptake doesn't trump the expectation of cross script global bindings.</p>
-<h4>Conclusion/Resolution</h4>
-<p>Status Quo. Yehuda commits to work through existing issues for alternate paths.</p>
+<a href="#conclusionresolution-500"><h4 id="conclusionresolution-500">Conclusion/Resolution</h4></a><p>Status Quo. Yehuda commits to work through existing issues for alternate paths.</p>
 <p>Next meeting agenda:
 <a href="https://github.com/tc39/agendas/blob/master/2014/01.md">https://github.com/tc39/agendas/blob/master/2014/01.md</a></p>
+
+</body>

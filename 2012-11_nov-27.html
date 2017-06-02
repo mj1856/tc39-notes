@@ -1,8 +1,14 @@
 <!doctype html>
 <meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.6.0/github-markdown.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+
 <title>November 27 2012 Meeting Notes</title>
-<h1>November 27 2012 Meeting Notes</h1>
-<p>John Neumann (JN), Norbert Lindenberg (NL), Allen Wirfs-Brock (AWB), Waldemar Horwat (WH), Brian Terlson (BT), Luke Hoban (LH), Rick Waldron (RW), Eric Ferraiuolo (EF), Matt Sweeney (MS), Doug Crockford (DC), Nebojša Ćirić (NC), Yehuda Katz (YK), Erik Arvidsson (EA), Mark Miller (MM), D. Herman, Sam Tobin-Hochstadt
+<body class="markdown-body">
+<a href="#november-27-2012-meeting-notes"><h1 id="november-27-2012-meeting-notes">November 27 2012 Meeting Notes</h1></a><p>John Neumann (JN), Norbert Lindenberg (NL), Allen Wirfs-Brock (AWB), Waldemar Horwat (WH), Brian Terlson (BT), Luke Hoban (LH), Rick Waldron (RW), Eric Ferraiuolo (EF), Matt Sweeney (MS), Doug Crockford (DC), Nebojša Ćirić (NC), Yehuda Katz (YK), Erik Arvidsson (EA), Mark Miller (MM), D. Herman, Sam Tobin-Hochstadt
 JN: (Identify missing members or those that will be here tomorrow)</p>
 <p>...Welcome and introductions.JN welcomed members and introductions were made.  DC gave us facility and logistical information.  Dinner for Wednesday is set for 6 PM.</p>
 <p>JN# Previous Meeting Minutes</p>
@@ -10,19 +16,14 @@ JN: (Identify missing members or those that will be here tomorrow)</p>
 <p>RW: Confirm that l have had opportunity to review prior to submission.</p>
 <p>JN: Minutes from Sept 2012: Approved.</p>
 <p>Review and approval of agenda.  Labeled as rev42 will be sent to Patrick for publication.</p>
-<h1>ES6 feedback via TypeScript</h1>
-<p>LH: Move TypeScript feedback update to later, as part of module discussion.</p>
-<h1>Review Proposals for inclusion in ES6</h1>
-<p>JN/AWB: Discussion re: harmony:proposals page and status of listed items.</p>
-<h1>Spread Operation accepting Iterables</h1>
-<p>RW: SpiderMonkey has implemented spread to accept iterables despite the resolution from July. Would like to revisit the resolution.</p>
+<a href="#es6-feedback-via-typescript"><h1 id="es6-feedback-via-typescript">ES6 feedback via TypeScript</h1></a><p>LH: Move TypeScript feedback update to later, as part of module discussion.</p>
+<a href="#review-proposals-for-inclusion-in-es6"><h1 id="review-proposals-for-inclusion-in-es6">Review Proposals for inclusion in ES6</h1></a><p>JN/AWB: Discussion re: harmony:proposals page and status of listed items.</p>
+<a href="#spread-operation-accepting-iterables"><h1 id="spread-operation-accepting-iterables">Spread Operation accepting Iterables</h1></a><p>RW: SpiderMonkey has implemented spread to accept iterables despite the resolution from July. Would like to revisit the resolution.</p>
 <p>DH: The implementation was likely just a misunderstanding, will file a bug for these notes.</p>
 <p>EA: Let's add to the agenda for further discussion.</p>
-<h1>Agenda Discussion</h1>
-<p>Missing agenda items re-added.</p>
+<a href="#agenda-discussion"><h1 id="agenda-discussion">Agenda Discussion</h1></a><p>Missing agenda items re-added.</p>
 <p>Begin Technical discussion  as item 4 on agenda</p>
-<h1>Review of new draft spec</h1>
-<p>AWB: Summary of changes in recent spec. drafts, including:</p>
+<a href="#review-of-new-draft-spec"><h1 id="review-of-new-draft-spec">Review of new draft spec</h1></a><p>AWB: Summary of changes in recent spec. drafts, including:</p>
 <ul>
 <li>Global declaration instantiation added, &quot;global object + lexical scope&quot; model.</li>
 <li>Program is now Script</li>
@@ -38,8 +39,8 @@ JN: (Identify missing members or those that will be here tomorrow)</p>
 <p>Section outlines...</p>
 <pre><code>6. Source
 7. Lexical Grammar
-8. Type
-Abstract Engine
+8.<span class="hljs-built_in"> Type
+</span>Abstract Engine
 Language
   Lex
   Syntactic
@@ -53,8 +54,7 @@ Vocabulary
 15. Libraries
 </code></pre>
 <p>Explanation of rationale leading to the restriction and reorganization of internal methods for defining spec behaviors. Leading into the organization of...</p>
-<h2>Meta Object Protocol, aka. MOP</h2>
-<p>Discussing section on invariants and how to redefine in a reasonable way.  We need people who are interested in these invariants to make contributions to this section.</p>
+<a href="#meta-object-protocol-aka-mop"><h2 id="meta-object-protocol-aka-mop">Meta Object Protocol, aka. MOP</h2></a><p>Discussing section on invariants and how to redefine in a reasonable way.  We need people who are interested in these invariants to make contributions to this section.</p>
 <p>8.1 Language Types
 8.2 Specification Types</p>
 <p>8.3-8.5 Will be moved to after section 10, these define the concrete types</p>
@@ -117,12 +117,8 @@ Vocabulary
 <p>LH: Is this a maintainability issue? If a new leaf addition is defined that uses ReturnIfAbrupt, do you have to check all call sites?</p>
 <p>AWB: The work is already done.</p>
 <p>... Discussion.</p>
-<h1>Break.</h1>
-<h1>Meeting Notes - Publish to wiki</h1>
-<p>(side discussion, but valid to document)</p>
-<h4>Conclusion/Resolution RW to publish meeting notes to ecma wiki (in addition to publishing on es-discuss and submission to ECMA)</h4>
-<h1>Internationalization Update</h1>
-<p>NL: (Summary of changes based on feedback) Spec document submitted to general assembly for approval. HTML version of the spec has been prepared, will be posted to ECMA site after GA approval. Demonstration of test402 (INTL spec testing) running on Firefox (special build, not in Mozilla repository yet).</p>
+<a href="#break"><h1 id="break">Break.</h1></a><a href="#meeting-notes---publish-to-wiki"><h1 id="meeting-notes---publish-to-wiki">Meeting Notes - Publish to wiki</h1></a><p>(side discussion, but valid to document)</p>
+<a href="#conclusionresolution-rw-to-publish-meeting-notes-to-ecma-wiki-in-addition-to-publishing-on-es-discuss-and-submission-to-ecma-628"><h4 id="conclusionresolution-rw-to-publish-meeting-notes-to-ecma-wiki-in-addition-to-publishing-on-es-discuss-and-submission-to-ecma-628">Conclusion/Resolution RW to publish meeting notes to ecma wiki (in addition to publishing on es-discuss and submission to ECMA)</h4></a><a href="#internationalization-update"><h1 id="internationalization-update">Internationalization Update</h1></a><p>NL: (Summary of changes based on feedback) Spec document submitted to general assembly for approval. HTML version of the spec has been prepared, will be posted to ECMA site after GA approval. Demonstration of test402 (INTL spec testing) running on Firefox (special build, not in Mozilla repository yet).</p>
 <p>NC: v8 Implementation has regressed, due to clean up of defineProperty use.</p>
 <p>LH: Has an IE plugin impl., next phase is to implement directly</p>
 <p>LH: Should have discussion re: spec intention that all checks whether this is an instance Object, is this cross-realm? or this realm?</p>
@@ -134,8 +130,7 @@ Vocabulary
 <p>NC: Same for google</p>
 <p>JN: Anything for submission to the GA?</p>
 <p>NL: We'll provide a technical report of some form for submission. Will provide the number of tests, (approx) and that coverage (missing and not) is understood.</p>
-<h2>International 2.0</h2>
-<p>(get slides from NL)</p>
+<a href="#international-20"><h2 id="international-20">International 2.0</h2></a><p>(get slides from NL)</p>
 <p>(1)
 Complete Spec Sep/Nov 2013
 TC39 approval March 2014
@@ -225,10 +220,8 @@ Approval?</p>
 <p>JN: Will provide minutes of meetings to ECMA?</p>
 <p>NC: Yes.</p>
 <p>JN: Despite potential operational changes from ECMA, let's move forward with this project. Continue to report as adhoc group via this group.</p>
-<h4>Conclusion/Resolution</h4>
-<p>TC39 Approves to move forward with 2.0. NL will submit slides to ECMA for minutes record.</p>
-<h1>String Normalization</h1>
-<p><a href="http://wiki.ecmascript.org/doku.php?id=strawman:unicode_normalization#add_normalize_method">http://wiki.ecmascript.org/doku.php?id=strawman:unicode_normalization#add_normalize_method</a></p>
+<a href="#conclusionresolution-629"><h4 id="conclusionresolution-629">Conclusion/Resolution</h4></a><p>TC39 Approves to move forward with 2.0. NL will submit slides to ECMA for minutes record.</p>
+<a href="#string-normalization"><h1 id="string-normalization">String Normalization</h1></a><p><a href="http://wiki.ecmascript.org/doku.php?id=strawman:unicode_normalization#add_normalize_method">http://wiki.ecmascript.org/doku.php?id=strawman:unicode_normalization#add_normalize_method</a></p>
 <p>NL: AWB has removed a number of references to normalization from the current spec that did not reflect reality</p>
 <p><strong>String.prototype.normalize(form)</strong></p>
 <p>MM: Any sequence of utf-16 has a valid, specific normalization?</p>
@@ -237,16 +230,14 @@ Approval?</p>
 <p>NL/LH: (agree w/ always return a string)</p>
 <p>NL: Are we in agreement to spec this?</p>
 <p>MM: Requirements: (moved to resolution)</p>
-<h4>Conclusion/Resolution</h4>
-<p>Yes, requirements:</p>
+<a href="#conclusionresolution-630"><h4 id="conclusionresolution-630">Conclusion/Resolution</h4></a><p>Yes, requirements:</p>
 <ul>
 <li>total,</li>
 <li>deterministic</li>
 <li>idempotent normalization (normalizing the result of normalization again will return the first result)</li>
 </ul>
 <p>WH: Note that Unicode got this wrong a while back (their normalization algorithm wasn't idempotent, and it didn't even form proper equivalence relations). They fixed it since then and now explicitly state that it's idempotent.</p>
-<h1>String Case Conversion</h1>
-<p><a href="http://wiki.ecmascript.org/doku.php?id=strawman:case_conversion">http://wiki.ecmascript.org/doku.php?id=strawman:case_conversion</a></p>
+<a href="#string-case-conversion"><h1 id="string-case-conversion">String Case Conversion</h1></a><p><a href="http://wiki.ecmascript.org/doku.php?id=strawman:case_conversion">http://wiki.ecmascript.org/doku.php?id=strawman:case_conversion</a></p>
 <p>LH: Why isn't this in the Internationalization standard?</p>
 <p>AWB: Is there a reason this isn't in the Intl 1.0?</p>
 <p>NL: Case conversion wasn't considered in original scope for Intl 1.0; we then forgot to add it when respecifying String.prototype.localeCompare and friends.</p>
@@ -255,10 +246,8 @@ Approval?</p>
 <p>AWB: Don't think that we should start moving Intl into ES, or at least not until ES7</p>
 <p>NL/LH: Not being in ES6 doesn't prevent implementation or spec authoring.</p>
 <p>LH: Doesn't need to be in the wrong spec just to move forward.</p>
-<h4>Conclusion/Resolution</h4>
-<p>Goes in Internationalization but doesn't prevent specification or implementation.</p>
-<h1>Eliminate ToUInt32() warping on array access</h1>
-<p>AWB: Sparse parameter on Array iterator constructors (eg. Array.prototype.keys/values/items that determines whether or not &quot;holes&quot; are included in the iteration.?
+<a href="#conclusionresolution-631"><h4 id="conclusionresolution-631">Conclusion/Resolution</h4></a><p>Goes in Internationalization but doesn't prevent specification or implementation.</p>
+<a href="#eliminate-touint32-warping-on-array-access"><h1 id="eliminate-touint32-warping-on-array-access">Eliminate ToUInt32() warping on array access</h1></a><p>AWB: Sparse parameter on Array iterator constructors (eg. Array.prototype.keys/values/items that determines whether or not &quot;holes&quot; are included in the iteration.?
 Can we eliminate functions returning Reference values from the specification</p>
 <p>AWB: Arrays use ToUint32, which does modulo arithmetic.</p>
 <p>WH: Yes, but it doesn't actually warp indices. Ones larger than 2^32-2 are not array indices; they're not treated modulo 2^32.</p>
@@ -275,17 +264,15 @@ Can we eliminate functions returning Reference values from the specification</p>
 <p>MM: What is the handling of the 2^53 edge condition that this change will benefit?</p>
 <p>AWB: I have to review the spec and can follow up tomorrow.</p>
 <p>Look at 15.4 of ES5.1, when you go over the edge, results in expand properties being set on the array. Additionally, the 2^32 edge condition:</p>
-<pre><code class="language-js">var a = [];
-a[Math.pow(2, 32) - 1] = true;
+<pre><code class="language-js"><span class="hljs-keyword">var</span> a = [];
+a[<span class="hljs-built_in">Math</span>.pow(<span class="hljs-number">2</span>, <span class="hljs-number">32</span>) - <span class="hljs-number">1</span>] = <span class="hljs-literal">true</span>;
 </code></pre>
-<h4>Conclusion/Resolution</h4>
-<p>Tabled until AWB has further impact research.</p>
-<h1>The prototype/constructor object model supporting Generators/use of instanceof with generators and generator instances</h1>
-<p>AWB, presents UML diagram to illustrate...</p>
+<a href="#conclusionresolution-632"><h4 id="conclusionresolution-632">Conclusion/Resolution</h4></a><p>Tabled until AWB has further impact research.</p>
+<a href="#the-prototypeconstructor-object-model-supporting-generatorsuse-of-instanceof-with-generators-and-generator-instances"><h1 id="the-prototypeconstructor-object-model-supporting-generatorsuse-of-instanceof-with-generators-and-generator-instances">The prototype/constructor object model supporting Generators/use of instanceof with generators and generator instances</h1></a><p>AWB, presents UML diagram to illustrate...</p>
 <p>The Generator Constructor doesn't need a global name. Assume it's accessible at System.Global.</p>
 <p>Each generator function has a unique prototype object with own properties for next, send, throw, close, etc. These prototype types may share references to the built-in mplementations of those methods.</p>
-<pre><code class="language-js">g1 instanceof Function; // true
-g2 instanceof Function; // true
+<pre><code class="language-js">g1 <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Function</span>; <span class="hljs-comment">// true</span>
+g2 <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Function</span>; <span class="hljs-comment">// true</span>
 </code></pre>
 <p>But no way to test if either g1 or g2 is a generator function rather than an ordinary function.
 ...</p>
@@ -308,11 +295,11 @@ g2 instanceof Function; // true
 <p>MM: Going forward, we've created this class system... Having Generators be a subclass...</p>
 <p>lost track, sorry. Hope Mark can fill this point in later.</p>
 <p>YK/MM/LH: like...</p>
-<pre><code class="language-js">class Generator extends Function.prototype {}
-class g* extends Generator {}
+<pre><code class="language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Generator</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Function</span>.<span class="hljs-title">prototype</span> </span>{}
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">g</span>* <span class="hljs-keyword">extends</span> <span class="hljs-title">Generator</span> </span>{}
 </code></pre>
 <p>DH: The way to check &quot;is this a generator?&quot;</p>
-<pre><code class="language-js">Object.getPrototypeOf(f) === &quot;Generator&quot;;
+<pre><code class="language-js"><span class="hljs-built_in">Object</span>.getPrototypeOf(f) === <span class="hljs-string">"Generator"</span>;
 </code></pre>
 <p>MM: Of all the things we're talking about, creating Generators reflectively is the least concern. Something like...</p>
 <p>Function.makeGenerator(...); returns generator function</p>
@@ -342,12 +329,13 @@ class g* extends Generator {}
 <p>All: Yes.</p>
 <p>MS: Can I determine if an object is a generator function?</p>
 <p>DH:</p>
-<pre><code class="language-js">f instanceof GeneratorFunction;
+<pre><code class="language-js">f <span class="hljs-keyword">instanceof</span> GeneratorFunction;
 f.__proto__ === GeneratorFunction.prototype;
-f.__proto__ === (function *() {}).__proto__;
+f.__proto__ === (<span class="hljs-function"><span class="hljs-keyword">function</span> *(<span class="hljs-params"></span>) </span>{}).__proto__;
 </code></pre>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-633"><h4 id="conclusionresolution-633">Conclusion/Resolution</h4></a><ul>
 <li>Per diagram (<a href="https://dl.dropbox.com/u/3531958/tc39/generator-diagram-1.jpg">https://dl.dropbox.com/u/3531958/tc39/generator-diagram-1.jpg</a>), but without exposing &quot;Generator&quot;</li>
 <li>&quot;GeneratorFunction&quot; exposed via a module</li>
 </ul>
+
+</body>

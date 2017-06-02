@@ -1,10 +1,15 @@
 <!doctype html>
 <meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.6.0/github-markdown.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+
 <title>September 24 2014 Meeting Notes</title>
-<h1>September 24 2014 Meeting Notes</h1>
-<p>Brian Terlson (BT), Allen Wirfs-Brock (AWB), John Neumann (JN), Rick Waldron (RW), Eric Ferraiuolo (EF), Jeff Morrison (JM), Jonathan Turner (JT), Sebastian Markbage (SM), Istvan Sebestyen (phone) (IS), Erik Arvidsson (EA), Brendan Eich (BE), Domenic Denicola (DD), Peter Jensen (PJ), Eric Toth (ET), Yehuda Katz (YK), Dave Herman (DH), Brendan Eich (BE), Simon Kaegi (SK), Boris Zbarsky (BZ), Andreas Rossberg (ARB), Caridy Patino (CP), Niko Matsakis (NM), Mark Miller (MM), Matt Miller (MMR), Jaswanth Sreeram (JS)</p>
-<h2>Object Instantiation Redo</h2>
-<p>(Allen Wirfs-Brock)</p>
+<body class="markdown-body">
+<a href="#september-24-2014-meeting-notes"><h1 id="september-24-2014-meeting-notes">September 24 2014 Meeting Notes</h1></a><p>Brian Terlson (BT), Allen Wirfs-Brock (AWB), John Neumann (JN), Rick Waldron (RW), Eric Ferraiuolo (EF), Jeff Morrison (JM), Jonathan Turner (JT), Sebastian Markbage (SM), Istvan Sebestyen (phone) (IS), Erik Arvidsson (EA), Brendan Eich (BE), Domenic Denicola (DD), Peter Jensen (PJ), Eric Toth (ET), Yehuda Katz (YK), Dave Herman (DH), Brendan Eich (BE), Simon Kaegi (SK), Boris Zbarsky (BZ), Andreas Rossberg (ARB), Caridy Patino (CP), Niko Matsakis (NM), Mark Miller (MM), Matt Miller (MMR), Jaswanth Sreeram (JS)</p>
+<a href="#object-instantiation-redo"><h2 id="object-instantiation-redo">Object Instantiation Redo</h2></a><p>(Allen Wirfs-Brock)</p>
 <p><a href="./instantiation-reform-sept2014.pdf">instantiation-reform-sept2014.pdf</a></p>
 <p>AWB: (introducing discussion from last meeting)</p>
 <p>AWB: how many people here have read these gists? (hands are raised) OK, about half the people... The others are going to have a hard time.</p>
@@ -24,13 +29,13 @@
 </ul>
 <p>Slide 4</p>
 <p>Original Idea From Claude Pache</p>
-<pre><code class="language-js">class C extends B {
-  constructor(...args) {
-    /* 1: preliminary code that doesn't contain calls to a super-method */ 
-    /* this in TDZ */     
-    /* 2: call to a super-constructor */ super(...whatever);
-    /* this defined */     
-    /* 3: the rest of the code */   
+<pre><code class="language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">C</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">B</span> </span>{
+  <span class="hljs-keyword">constructor</span>(...args) {
+    <span class="hljs-comment">/* 1: preliminary code that doesn't contain calls to a super-method */</span> 
+    <span class="hljs-comment">/* this in TDZ */</span>     
+    <span class="hljs-comment">/* 2: call to a super-constructor */</span> <span class="hljs-keyword">super</span>(...whatever);
+    <span class="hljs-comment">/* this defined */</span>     
+    <span class="hljs-comment">/* 3: the rest of the code */</span>   
   }  
 }  
 </code></pre>
@@ -87,18 +92,18 @@
 <li>RHS of <code>this</code> assignment in a constructor isn't limited to <code>new super();</code></li>
 <li>May be any object valued expression:</li>
 </ul>
-<pre><code class="language-js">this = new super();
-this = {x;1, y:2};
-this = Object.setPrototypeOf([ ], new^.prototype); 
-this = new Proxy(new super(), handler); 
+<pre><code class="language-js"><span class="hljs-keyword">this</span> = <span class="hljs-keyword">new</span> <span class="hljs-keyword">super</span>();
+<span class="hljs-keyword">this</span> = {x;<span class="hljs-number">1</span>, <span class="hljs-attr">y</span>:<span class="hljs-number">2</span>};
+<span class="hljs-keyword">this</span> = <span class="hljs-built_in">Object</span>.setPrototypeOf([ ], <span class="hljs-keyword">new</span>^.prototype); 
+<span class="hljs-keyword">this</span> = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Proxy</span>(<span class="hljs-keyword">new</span> <span class="hljs-keyword">super</span>(), handler); 
 </code></pre>
 <p>Slide 10</p>
 <p>Works in both class constructors and function constructors</p>
-<pre><code class="language-js">SubArray.__proto__=Array;
-SubArray.prototype=Object.create([].prototype);
+<pre><code class="language-js">SubArray.__proto__=<span class="hljs-built_in">Array</span>;
+SubArray.prototype=<span class="hljs-built_in">Object</span>.create([].prototype);
 func,on SubArray(...args) {
-    if (!this^) this = new SubArray(...args);
-    else this = new super(...args);
+    <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">this</span>^) <span class="hljs-keyword">this</span> = <span class="hljs-keyword">new</span> SubArray(...args);
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">this</span> = <span class="hljs-keyword">new</span> <span class="hljs-keyword">super</span>(...args);
 } 
 </code></pre>
 <p>MM: You can do assignment to <code>this</code> when called as a function?</p>
@@ -110,14 +115,14 @@ func,on SubArray(...args) {
 <li>...Assign a new oridinary object to <code>this</code> if body does not have an explicit <code>this =</code>.</li>
 <li>These continue to mean the same thing:</li>
 </ul>
-<pre><code class="language-js">class Base {
-  constructor(x) {
-    this.x = x;    
+<pre><code class="language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Base</span> </span>{
+  <span class="hljs-keyword">constructor</span>(x) {
+    <span class="hljs-keyword">this</span>.x = x;    
   }
 }
 
-function Base(x) {
-  this.x = x;    
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Base</span>(<span class="hljs-params">x</span>) </span>{
+  <span class="hljs-keyword">this</span>.x = x;    
 }
 </code></pre>
 <p>Slide 12</p>
@@ -136,10 +141,10 @@ function Base(x) {
 </ul>
 <p>Slide 13</p>
 <p>Eliminate unqualified <code>super</code> reference in non-constructor methods</p>
-<pre><code class="language-js">class Sub extends Base {
+<pre><code class="language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Sub</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Base</span> </span>{
   foo() {
-    super();     // now a syntax error
-    super.foo(); // must say this instead    
+    <span class="hljs-keyword">super</span>();     <span class="hljs-comment">// now a syntax error</span>
+    <span class="hljs-keyword">super</span>.foo(); <span class="hljs-comment">// must say this instead    </span>
   }
 }
 </code></pre>
@@ -175,9 +180,9 @@ function Base(x) {
 <li>Assignment to <code>this</code> in a function defintion is meaningless, only works in a class body</li>
 </ul>
 <p>MM: Any way to make derived constructor, base class and function rules?</p>
-<pre><code class="language-js">function f() {
-  this = new super()
-  this.x = 1;    
+<pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">this</span> = <span class="hljs-keyword">new</span> <span class="hljs-keyword">super</span>()
+  <span class="hljs-keyword">this</span>.x = <span class="hljs-number">1</span>;    
 }
 </code></pre>
 <p>MM: What happens is <code>f()</code> is called as a function?</p>
@@ -189,11 +194,11 @@ function Base(x) {
 <li>Additionally, seems there could esily be incidental refactoring hazards (large constructors getting refactored into smaller ones, moving code around, accidentally breaking contextual auto-allocation).</li>
 </ul>
 <p>AWB: Yes.</p>
-<pre><code class="language-js">// Throws because 
-class C {
-  constructor() {
-    this = undefined;
-    return 5;
+<pre><code class="language-js"><span class="hljs-comment">// Throws because </span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">C</span> </span>{
+  <span class="hljs-keyword">constructor</span>() {
+    <span class="hljs-keyword">this</span> = <span class="hljs-literal">undefined</span>;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">5</span>;
   }
 }
 </code></pre>
@@ -207,7 +212,7 @@ class C {
 <p>YK: No TDZ?</p>
 <p>BE: Invoke a function with new, the return is 5, not an error, just returns the original object</p>
 <p>MM: comments about refactoring subclass constructor function to class constructor</p>
-<pre><code class="language-js">B.call(this) =&gt; this = new super();
+<pre><code class="language-js">B.call(<span class="hljs-keyword">this</span>) =&gt; <span class="hljs-keyword">this</span> = <span class="hljs-keyword">new</span> <span class="hljs-keyword">super</span>();
 </code></pre>
 <p>(break)</p>
 <p>Dave Herman and Yehuda Katz present counter proposal</p>
@@ -227,12 +232,12 @@ class C {
 <p>Slide 7</p>
 <p>Solution: both allocator and constructor get arguments</p>
 <p>Slide 8</p>
-<pre><code class="language-js">new C(x,  y,  z) 
+<pre><code class="language-js"><span class="hljs-keyword">new</span> C(x,  y,  z) 
 
 ? 
 
-do {    
-  let obj = C[Symbol.create](x, y, z);    
+<span class="hljs-keyword">do</span> {    
+  <span class="hljs-keyword">let</span> obj = C[<span class="hljs-built_in">Symbol</span>.create](x, y, z);    
   obj[[Construc]](x, y, z);   
 }
 </code></pre>
@@ -245,41 +250,41 @@ do {
 <li>Abstractable by WebIDL implementations to avoid implementation boilerplate.</li>
 </ul>
 <p>Slide 10</p>
-<pre><code class="language-js">Object[Symbol.create] = function() { 
-  return Object.create(this.prototype); 
+<pre><code class="language-js"><span class="hljs-built_in">Object</span>[<span class="hljs-built_in">Symbol</span>.create] = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{ 
+  <span class="hljs-keyword">return</span> <span class="hljs-built_in">Object</span>.create(<span class="hljs-keyword">this</span>.prototype); 
 }; 
                                                 
-Array[Symbol.create] = function(...args) { 
-  let a = %CreateArray%(...args); 
-  Object.setPrototypeOf(a, this.prototype); return a; 
+<span class="hljs-built_in">Array</span>[<span class="hljs-built_in">Symbol</span>.create] = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">...args</span>) </span>{ 
+  <span class="hljs-keyword">let</span> a = %CreateArray%(...args); 
+  <span class="hljs-built_in">Object</span>.setPrototypeOf(a, <span class="hljs-keyword">this</span>.prototype); <span class="hljs-keyword">return</span> a; 
 }; 
 </code></pre>
 <p>Slide 11</p>
-<pre><code class="language-js">class Stack extends Array { 
+<pre><code class="language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Stack</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Array</span> </span>{ 
   top() { 
-    if (this.length === 0) {
-      throw new Error(&quot;empty stack&quot;); 
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.length === <span class="hljs-number">0</span>) {
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">"empty stack"</span>); 
     } 
-    return this[this.length - 1]; 
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>[<span class="hljs-keyword">this</span>.length - <span class="hljs-number">1</span>]; 
   } 
 } 
 
-class Substack extends Stack { 
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Substack</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Stack</span> </span>{ 
   meep() { 
-    return &quot;moop&quot;; 
+    <span class="hljs-keyword">return</span> <span class="hljs-string">"moop"</span>; 
   } 
 } 
 </code></pre>
 <p>Slide 12</p>
-<pre><code class="language-js">let PointType = new StructType({ 
-  x: uint32,
-  y: uint32 
+<pre><code class="language-js"><span class="hljs-keyword">let</span> PointType = <span class="hljs-keyword">new</span> StructType({ 
+  <span class="hljs-attr">x</span>: uint32,
+  <span class="hljs-attr">y</span>: uint32 
 }); 
                                                 
-let ColorPointType = new StructType({ 
-  x: uint32,
-  y: uint32,
-  color: string 
+<span class="hljs-keyword">let</span> ColorPointType = <span class="hljs-keyword">new</span> StructType({ 
+  <span class="hljs-attr">x</span>: uint32,
+  <span class="hljs-attr">y</span>: uint32,
+  <span class="hljs-attr">color</span>: string 
 }); 
 </code></pre>
 <p>Slide 13, 14</p>
@@ -402,32 +407,32 @@ AWB: Are you proposing that all initialization and allocation happen in @@create
 <p>AWB: No</p>
 <p>YK: I guess we have to discuss whether we agree that people should design for</p>
 <p>RW interjects: Here is the whiteboard example:</p>
-<pre><code>Function.prototype[@@create] = function() { return O.c(this.prototype); };
+<pre><code><span class="hljs-type">Function</span>.prototype[@<span class="hljs-meta">@create</span>] = function() { <span class="hljs-keyword">return</span> <span class="hljs-type">O</span>.c(<span class="hljs-keyword">this</span>.prototype); };
 
-class A { }
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span> </span>{ }
 
-class B extends A {
-    [@@create]() {
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">B</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">A</span> </span>{
+    [@<span class="hljs-meta">@create</span>]() {
     }
     constructor() {
     }
 }
 
-class G extends B {
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">G</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">B</span> </span>{
     constructor() {
         ...
     }
 }
 
-var g = new G();
-// because G has no @@create, we execute the @@create from B
-// it all works out ok
+<span class="hljs-keyword">var</span> g = <span class="hljs-keyword">new</span> <span class="hljs-type">G</span>();
+<span class="hljs-comment">// because G has no @@create, we execute the @@create from B</span>
+<span class="hljs-comment">// it all works out ok</span>
 </code></pre>
 <p>RW: Follow:</p>
-<pre><code class="language-js">g -&gt; new G() -&gt; (no G[@@create]) -&gt; B[@@create]() // done.
+<pre><code class="language-js">g -&gt; <span class="hljs-keyword">new</span> G() -&gt; (no G[@@create]) -&gt; B[@@create]() <span class="hljs-comment">// done.</span>
 </code></pre>
 <p>If B had no @@create</p>
-<pre><code class="language-js">g -&gt; new G() -&gt; (no G[@@create]) -&gt; (now B[@@create]) -&gt; (no A[@@create]) -&gt; default //  done
+<pre><code class="language-js">g -&gt; <span class="hljs-keyword">new</span> G() -&gt; (no G[@@create]) -&gt; (now B[@@create]) -&gt; (no A[@@create]) -&gt; <span class="hljs-keyword">default</span> <span class="hljs-comment">//  done</span>
 </code></pre>
 <p>DH: What Rick is trying to say is that for non-exotic objects, none of this matters</p>
 <p>DH: Another way of putting this is that exotic objects are a bifurcation inherent to the space we're in, it's part of JS, and it becomes important to know whether there may be exotic objects involved</p>
@@ -618,8 +623,8 @@ var g = new G();
 </ul>
 <p>ARB: Can mutate the the prototype after the fact, so NOT inherited</p>
 <p>DH: would implementers say that any time you subclass Array you get a deopt?</p>
-<pre><code class="language-js">Array[[Create]] = function (...args) {
-    return %ArrayCreate%(this.prototype, ...args);
+<pre><code class="language-js"><span class="hljs-built_in">Array</span>[[Create]] = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">...args</span>) </span>{
+    <span class="hljs-keyword">return</span> %ArrayCreate%(<span class="hljs-keyword">this</span>.prototype, ...args);
 };
 </code></pre>
 <p>MM: I'm finding this quite attractive. Let's go back to the risk issue. If this turns out to work, how can we at this meeting gain enough confidence in it?</p>
@@ -650,18 +655,22 @@ AWB: When you say <code>new SubArray()</code>, you'll get Array create</p>
 <p>BE: Yes, for ES6 that's true</p>
 <p>DH: This is an inherent part of JS. Distinction between exotic types/normal types. When subclassing exotic types, you must participate in the parent's protocol. You have to know more things in these case (constructor signatures, create sigs, etc)</p>
 <p>DD: Dislike that...</p>
-<p>BE: Can you get it later [post ES6]? Probably</p>
-<p>: Can you do super.apply?</p>
-<p>BE: Depends.</p>
-<p>: Do it in the TDZ</p>
+<dl>
+<dt>BE: Can you get it later [post ES6]? Probably</dt>
+<dd>Can you do super.apply?
+</dd>
+<dt>BE: Depends.</dt>
+<dd>Do it in the TDZ
+</dd>
+</dl>
 <p>DH: Any new syntax is too high risk for ES6. #8 while most conservative, it introduces the transform problem without a solution</p>
 <p>MM: Can someone clarify that we can get out of the scenario in the future</p>
 <p>DH: As long as we have a way in the future of doing something like:</p>
-<pre><code class="language-js">class Stack extends Array {   
-  new() { // overrides the create -- strawman syntax only!!     
-    return [];   
+<pre><code class="language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Stack</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Array</span> </span>{   
+  <span class="hljs-keyword">new</span>() { <span class="hljs-comment">// overrides the create -- strawman syntax only!!     </span>
+    <span class="hljs-keyword">return</span> [];   
   }      
-  constructor() { ... } 
+  <span class="hljs-keyword">constructor</span>() { ... } 
 } 
 </code></pre>
 <p>DH: Gives a way to transform the args</p>
@@ -703,23 +712,19 @@ BE: I don't know, I don't care.</p>
 <p>AWB: Construct trap gets the args, it transforms</p>
 <p>DH: Obviously sub-optimal, but at least expressable and we can work on it
 DH: [repeats] Would be nice to have good syntax eventually, but good for now.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-378"><h4 id="conclusionresolution-378">Conclusion/Resolution</h4></a><ul>
 <li>#8</li>
 <li><a href="https://gist.github.com/bterlson/1fe0b0dc0ef3e71ff6e3">https://gist.github.com/bterlson/1fe0b0dc0ef3e71ff6e3</a></li>
 </ul>
-<h2>5.1 Trailing Commas in Function Call Expressions and Declarations</h2>
-<p>(Jeff Morrison)</p>
+<a href="#51-trailing-commas-in-function-call-expressions-and-declarations"><h2 id="51-trailing-commas-in-function-call-expressions-and-declarations">5.1 Trailing Commas in Function Call Expressions and Declarations</h2></a><p>(Jeff Morrison)</p>
 <p><a href="./trailing_comma_proposal.pdf">trailing_comma_proposal.pdf</a></p>
 <p>JM: Review...</p>
 <p>ARB: Supported for consistency</p>
 <p>RW: If people dont want them: use JSHint. No objections otherwise</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-379"><h4 id="conclusionresolution-379">Conclusion/Resolution</h4></a><ul>
 <li>Stage 1 acceptance</li>
 </ul>
-<h2>RegExp Globals</h2>
-<p>DD: RegExp globals reform recap.</p>
+<a href="#regexp-globals"><h2 id="regexp-globals">RegExp Globals</h2></a><p>DD: RegExp globals reform recap.</p>
 <p>MM: Can we test on deleted properties?</p>
 <p>BE: What about a flag?</p>
 <ul>
@@ -727,7 +732,8 @@ DH: [repeats] Would be nice to have good syntax eventually, but good for now.</p
 <li>Flag to be determined</li>
 <li>Specified in Annex B</li>
 </ul>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-380"><h4 id="conclusionresolution-380">Conclusion/Resolution</h4></a><ul>
 <li>Stage 0 acceptance</li>
 </ul>
+
+</body>

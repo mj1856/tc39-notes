@@ -1,37 +1,42 @@
 <!doctype html>
 <meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.6.0/github-markdown.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+
 <title>January 30 2013 Meeting Notes</title>
-<h1>January 30 2013 Meeting Notes</h1>
-<p>John Neumann (JN), Norbert Lindenberg (NL), Allen Wirfs-Brock (AWB), Rick Waldron (RW), Waldemar Horwat (WH), Tim Disney (TD), Eric Ferraiuolo (EF), Sam Tobin-Hochstadt (STH), Erik Arvidsson (EA), Brian Terlson (BT), Luke Hoban (LH), Matt Sweeney (MS), Doug Crockford (DC), Yehuda Katz (YK), Nebojša Ćirić (NC), Brendan Eich (BE), Andreas Rossberg (ARB)</p>
-<h2>Function In Block Options</h2>
-<p>(Presented by Luke Hoban)</p>
+<body class="markdown-body">
+<a href="#january-30-2013-meeting-notes"><h1 id="january-30-2013-meeting-notes">January 30 2013 Meeting Notes</h1></a><p>John Neumann (JN), Norbert Lindenberg (NL), Allen Wirfs-Brock (AWB), Rick Waldron (RW), Waldemar Horwat (WH), Tim Disney (TD), Eric Ferraiuolo (EF), Sam Tobin-Hochstadt (STH), Erik Arvidsson (EA), Brian Terlson (BT), Luke Hoban (LH), Matt Sweeney (MS), Doug Crockford (DC), Yehuda Katz (YK), Nebojša Ćirić (NC), Brendan Eich (BE), Andreas Rossberg (ARB)</p>
+<a href="#function-in-block-options"><h2 id="function-in-block-options">Function In Block Options</h2></a><p>(Presented by Luke Hoban)</p>
 <p>Option #1: No let and const in non-strict mode
 Option #2: Taking the breaking change, w/ evangelism
 Option #3: Hybrid semantics for function-in-block, that still maintained semantic alignment with let and const
 Option #4: let/const anywhere in scope changes FIB semantics.</p>
 <p>LH: a combination of 1 &amp; 3 might be the best path forward.</p>
 <p>Option #3</p>
-<pre><code class="language-js">function foo() {
-  bar();/// throw, extended TDZ
-  for (var i = 0; i &lt; 10; i++ ) {
-    bar(); // throw, TDZ
-    let x = 10;
-    // semantics of function in block are as though...
-    // 1. let bar = function() {} were inserted
-    // at start of block
-    // 2. var bar = function() {} were inserted
-    // at start of function
-    // (1) accomplishes ES5 let/const semantics,
-    // (2) accomplishes compat
-    // These are combined with an extension of the TDZ rules
-    // to throw on accesses to let bound variables
-    // whose activation block has not et been created.
-    function bar() {
-      console.log(x);
+<pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>) </span>{
+  bar();<span class="hljs-comment">/// throw, extended TDZ</span>
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++ ) {
+    bar(); <span class="hljs-comment">// throw, TDZ</span>
+    <span class="hljs-keyword">let</span> x = <span class="hljs-number">10</span>;
+    <span class="hljs-comment">// semantics of function in block are as though...</span>
+    <span class="hljs-comment">// 1. let bar = function() {} were inserted</span>
+    <span class="hljs-comment">// at start of block</span>
+    <span class="hljs-comment">// 2. var bar = function() {} were inserted</span>
+    <span class="hljs-comment">// at start of function</span>
+    <span class="hljs-comment">// (1) accomplishes ES5 let/const semantics,</span>
+    <span class="hljs-comment">// (2) accomplishes compat</span>
+    <span class="hljs-comment">// These are combined with an extension of the TDZ rules</span>
+    <span class="hljs-comment">// to throw on accesses to let bound variables</span>
+    <span class="hljs-comment">// whose activation block has not et been created.</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bar</span>(<span class="hljs-params"></span>) </span>{
+      <span class="hljs-built_in">console</span>.log(x);
     }
-    bar(); // succeed
+    bar(); <span class="hljs-comment">// succeed</span>
   }
-  bar(); // throw, eTDZ
+  bar(); <span class="hljs-comment">// throw, eTDZ</span>
 }
 </code></pre>
 <p>WH/ARB: if there is a let or const anywhere in the program, don't do this in sloppy mode?</p>
@@ -125,10 +130,10 @@ LH: Here we're explicitly discussing what implementations should <em>do</em>.
 <p>WH:</p>
 <p>AWB: Willing to throw out function declarations created in eval.</p>
 <p>WH: (Whiteboard)</p>
-<pre><code class="language-js">var f = ...
+<pre><code class="language-js"><span class="hljs-keyword">var</span> f = ...
 function a() {
-  if ( false ) {
-    function f() {}
+  <span class="hljs-keyword">if</span> ( <span class="hljs-literal">false</span> ) {
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params"></span>) </span>{}
   }
 
   f();
@@ -139,10 +144,10 @@ function a() {
 <p>Option #3c: Absolute minimum intersection semantics supported in non-strict, else ES6 semantics.</p>
 <p>BE: I think we can do #3c and Allen can make it work, concerned that Waldemar will poke holes and be unhappy.</p>
 <p>WH: The above must call the outer f in strict mode. In non-strict mode we shouldn't specify what this does (it becomes a moot point if we continue to outlaw nested functions in non-strict mode). For compatibility we'd want to add an informative note stating that, if the implementation extends non-strict mode with nested functions, the similar program below calls the inner f:</p>
-<pre><code class="language-js">var f = ...
+<pre><code class="language-js"><span class="hljs-keyword">var</span> f = ...
 function a() {
-  if ( true ) {
-    function f() {}
+  <span class="hljs-keyword">if</span> ( <span class="hljs-literal">true</span> ) {
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params"></span>) </span>{}
   }
 
   f();
@@ -194,8 +199,8 @@ function a() {
 <p>BE: Appears to be stand between #0 and #3</p>
 <p>MM: Still opposed to the let issue, by creating a potential hazard.</p>
 <p>BE: At last meeting we agreed to break this... (whiteboard)</p>
-<pre><code class="language-js">var let;
-let[x] = y;
+<pre><code class="language-js"><span class="hljs-keyword">var</span> <span class="hljs-keyword">let</span>;
+<span class="hljs-keyword">let</span>[x] = y;
 </code></pre>
 <p>AWB: We discussed this last meeting and agreed.</p>
 <p>MM: I changed my mind.</p>
@@ -277,8 +282,7 @@ let[x] = y;
 <p>LH/MM: Closer to comfort if classes and modules have strict bodies.</p>
 <p>MM: Agreed not to hold up consensus</p>
 <p>YK/RW: No Arrows</p>
-<h4>Conclusion/Resolution</h4>
-<p>Consensus on...
+<a href="#conclusionresolution-604"><h4 id="conclusionresolution-604">Conclusion/Resolution</h4></a><p>Consensus on...
 Stay the course on spec development approach
 Class, Modules implicitly strict.
 Arrows not strict
@@ -286,48 +290,43 @@ Sustaining our position on the handling of let ambiguities
 (Note: this is a local consensus)</p>
 <p>MM: Declared as not holding up consensus, though not in agreement. I still think this is a terrible idea, but it looks like the best we can declare consensus on.</p>
 <p>BE: (Out of band) I think that's a good consensus, arrows can't have intrinsic names (contrast with NFEs) so arguments.callee may be wanted, so arrows should not be strict-only.</p>
-<h2>Static/Class Side Methods</h2>
-<p>(Presented by Yehuda Katz)</p>
-<pre><code>ClassElement:
+<a href="#staticclass-side-methods"><h2 id="staticclass-side-methods">Static/Class Side Methods</h2></a><p>(Presented by Yehuda Katz)</p>
+<pre><code><span class="hljs-symbol">ClassElement:</span>
   MethodDefinition
-  &quot;static&quot; MethodDefinition
+  <span class="hljs-string">"static"</span> MethodDefinition
 </code></pre>
 <p>Full strawman here: <a href="http://wiki.ecmascript.org/doku.php?id=strawman:class_method_syntax">http://wiki.ecmascript.org/doku.php?id=strawman:class_method_syntax</a></p>
 <p>Supported by TypeScript, Continuum, etc.</p>
-<h4>Conclusion/Resolution</h4>
-<p>Consensus in support of this proposal. (File spec update ticket)</p>
-<h2>Revising The Array Subclassing &quot;Kind&quot; Issue</h2>
-<p>(Presented by Allen Wirfs-Brock)</p>
+<a href="#conclusionresolution-605"><h4 id="conclusionresolution-605">Conclusion/Resolution</h4></a><p>Consensus in support of this proposal. (File spec update ticket)</p>
+<a href="#revising-the-array-subclassing-kind-issue"><h2 id="revising-the-array-subclassing-kind-issue">Revising The Array Subclassing &quot;Kind&quot; Issue</h2></a><p>(Presented by Allen Wirfs-Brock)</p>
 <p>Reiterates the issue at hand, illustrated here:</p>
-<pre><code class="language-js">class V extends Array {
-  constructor(...args) {
-  super(...args);
+<pre><code class="language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">V</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Array</span> </span>{
+  <span class="hljs-keyword">constructor</span>(...args) {
+  <span class="hljs-keyword">super</span>(...args);
   }
 }
 
-var v, m;
-v = new V(1,2,3, );
-m = v.map(val =&gt; val * 2);
-console.log( m instanceof V ); // false :(
+<span class="hljs-keyword">var</span> v, m;
+v = <span class="hljs-keyword">new</span> V(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>, );
+m = v.map(<span class="hljs-function"><span class="hljs-params">val</span> =&gt;</span> val * <span class="hljs-number">2</span>);
+<span class="hljs-built_in">console</span>.log( m <span class="hljs-keyword">instanceof</span> V ); <span class="hljs-comment">// false :(</span>
 </code></pre>
 <p>If we extend...</p>
 <p><code>Array.from( iterable ) =&gt; Array.from( iterable, mapFn )</code></p>
-<pre><code class="language-js">// Add a &quot;map&quot; function to the class-side from method:
+<pre><code class="language-js"><span class="hljs-comment">// Add a "map" function to the class-side from method:</span>
 NodeList.from( nodelist, thing =&gt; thing );
 
-// Turn an array into NodeList
+<span class="hljs-comment">// Turn an array into NodeList</span>
 NodeList.from( array, thing =&gt; thing );
 
-// Turn an array of nodeNames into NodeList of nodes
-NodeList.from( [&quot;div&quot;], node =&gt; document.createElement(node) );
+<span class="hljs-comment">// Turn an array of nodeNames into NodeList of nodes</span>
+NodeList.from( [<span class="hljs-string">"div"</span>], node =&gt; <span class="hljs-built_in">document</span>.createElement(node) );
 </code></pre>
 <p>MM: thisArg?</p>
 <p>EF: It's possible to lose the context if you alias the ClassMethod</p>
 <p>MM: For consistency purposes, add thisArg</p>
-<h4>Conclusion/Resolution</h4>
-<p>Consensus on this proposal, with the addition of thisArg per Mark's request.</p>
-<h2>4.7  Fail-fast destructuring with ?-syntax for irrefutable opt-in</h2>
-<p>(Presented by Brendan Eich, Andreas Rossberg)</p>
+<a href="#conclusionresolution-606"><h4 id="conclusionresolution-606">Conclusion/Resolution</h4></a><p>Consensus on this proposal, with the addition of thisArg per Mark's request.</p>
+<a href="#47--fail-fast-destructuring-with--syntax-for-irrefutable-opt-in"><h2 id="47--fail-fast-destructuring-with--syntax-for-irrefutable-opt-in">4.7  Fail-fast destructuring with ?-syntax for irrefutable opt-in</h2></a><p>(Presented by Brendan Eich, Andreas Rossberg)</p>
 <ol>
 <li>No ToObject(RHS).</li>
 <li>Exception on missing property selected without a ?-suffix.</li>
@@ -338,7 +337,7 @@ NodeList.from( [&quot;div&quot;], node =&gt; document.createElement(node) );
 <a href="https://mail.mozilla.org/pipermail/es-discuss/2013-January/027800.html">https://mail.mozilla.org/pipermail/es-discuss/2013-January/027800.html</a></p>
 <p>Allen argues cogently against (1) but endorses (2-4).</p>
 <p>BE: (Whiteboard)</p>
-<pre><code class="language-js">var { toLocaleString, split } = &quot;&quot;;
+<pre><code class="language-js"><span class="hljs-keyword">var</span> { toLocaleString, split } = <span class="hljs-string">""</span>;
 </code></pre>
 <p>The only ones that are affected: string, number, boolean.</p>
 <p>ARB: implicit conversion is future-hostile to pattern matching.</p>
@@ -357,15 +356,15 @@ match _: return 2;
 <p>AWB: The grammar is spec'ed and in the latest draft.</p>
 <p>...</p>
 <p>YK: Wants irrefutable destructuring, ie.</p>
-<pre><code class="language-js">function Foo(options) {
-  var { foo } = options;
-  // if foo is not a property of options,
-  // just give me &quot;foo&quot; that's undefined
+<pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Foo</span>(<span class="hljs-params">options</span>) </span>{
+  <span class="hljs-keyword">var</span> { foo } = options;
+  <span class="hljs-comment">// if foo is not a property of options,</span>
+  <span class="hljs-comment">// just give me "foo" that's undefined</span>
 }
 </code></pre>
 <p>BE: Use the ?</p>
-<pre><code class="language-js">function Foo(options) {
-  var { foo }? = options;
+<pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Foo</span>(<span class="hljs-params">options</span>) </span>{
+  <span class="hljs-keyword">var</span> { foo }? = options;
 }
 </code></pre>
 <p>WH: Is ? deep or shallow? i.e. what should the following do
@@ -394,26 +393,25 @@ let {p: {x: true}}? = {p: {}}</p>
 <p>ARB will work out new pattern matching strawman based on proposed ideas.</p>
 <p>BE: (to YK) have we assuaged your concerns about irrefutable destructuring?</p>
 <p>YK: yes, as long as &quot;?&quot;</p>
-<h4>Conclusion/Resolution</h4>
-<ol>
+<a href="#conclusionresolution-607"><h4 id="conclusionresolution-607">Conclusion/Resolution</h4></a><ol>
 <li>No implicit ToObject(RHS). <strong>consensus</strong></li>
 <li>Exception on missing property selected without a ?-suffix. <strong>consensus</strong></li>
 <li>?-suffix allowed on any pattern, imputing undefined deeply instead of refuting. <strong>consensus</strong></li>
 <li>The ? is a separate lexeme from the : in long-hand patterns. <strong>consensus</strong></li>
 </ol>
 <p>&quot;?&quot; in combination with default values, syntax error.</p>
-<pre><code class="language-js">{ a? = 42 } // throws.
+<pre><code class="language-js">{ a? = <span class="hljs-number">42</span> } <span class="hljs-comment">// throws.</span>
 </code></pre>
 <p>If you write a &quot;?&quot; on a larger structure, you can have default values anywhere inside.</p>
-<pre><code class="language-js">{ a: b = 42 }? = undefined
+<pre><code class="language-js">{ <span class="hljs-attr">a</span>: b = <span class="hljs-number">42</span> }? = <span class="hljs-literal">undefined</span>
 </code></pre>
 <p>WH: Where should the ? go syntactically? In particular, should we have
 {p: q?}, {p:? q}, or {p?: q}</p>
 <p>STH:</p>
-<pre><code class="language-js">let { p }? = null;  // p bound to undefined
-let { p? } = null;  // throws
-let { p: q }? = null; // q bound to undefined
-let { p?: q } = null; // throws
+<pre><code class="language-js"><span class="hljs-keyword">let</span> { p }? = <span class="hljs-literal">null</span>;  <span class="hljs-comment">// p bound to undefined</span>
+<span class="hljs-keyword">let</span> { p? } = <span class="hljs-literal">null</span>;  <span class="hljs-comment">// throws</span>
+<span class="hljs-keyword">let</span> { <span class="hljs-attr">p</span>: q }? = <span class="hljs-literal">null</span>; <span class="hljs-comment">// q bound to undefined</span>
+<span class="hljs-keyword">let</span> { p?: q } = <span class="hljs-literal">null</span>; <span class="hljs-comment">// throws</span>
 </code></pre>
 <p>WH: This is quite close to conflicting with the ternary operator but can't think of any obvious ambiguities as long as the ? in patterns is always followed by =, }, comma, or :.</p>
 <p>Dependent on patterns being fail-fast:
@@ -427,12 +425,11 @@ will work, but
 var undefined = 42;
 will fail.</p>
 <p><strong>General Agreement</strong></p>
-<h2>4.11 Name Property of Functions</h2>
-<p>(Presented by Brendan Eich, with additions by Brandon Benvie)
+<a href="#411-name-property-of-functions"><h2 id="411-name-property-of-functions">4.11 Name Property of Functions</h2></a><p>(Presented by Brendan Eich, with additions by Brandon Benvie)
 <a href="http://wiki.ecmascript.org/doku.php?id=strawman:name_property_of_functions">http://wiki.ecmascript.org/doku.php?id=strawman:name_property_of_functions</a></p>
 <p>BE: Early approaches...</p>
-<pre><code class="language-js">function f() {}
-f.name == &quot;f&quot;;
+<pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params"></span>) </span>{}
+f.name == <span class="hljs-string">"f"</span>;
 </code></pre>
 <p>BE: (from Brandon Benvie's proposal)</p>
 <p>Justification: the usefulness of the name of function is not just for debugging. It is useful in the same ways that property names as strings are such as dispatching by name or assigning by name.</p>
@@ -466,10 +463,8 @@ name is used instead.</p>
 <p>WH: There is a slight advantage to making it non-writable. Otherwise when writing it to change the function name, you'd expect it to change the result of &quot;toString&quot;.</p>
 <p>Discussion re: history of Function.prototype.toString result.</p>
 <p>MM: Explain the divergence, toString is a reflection of the source code itself and the name is how you'd like to identify the function within tools.</p>
-<h4>Conclusion/Resolution</h4>
-<p>Consensus on the proposal, with { writable: true }</p>
-<h2>4.12 Typed Arrays Update</h2>
-<p>(Presented by Allen Wirfs-Brock)</p>
+<a href="#conclusionresolution-608"><h4 id="conclusionresolution-608">Conclusion/Resolution</h4></a><p>Consensus on the proposal, with { writable: true }</p>
+<a href="#412-typed-arrays-update"><h2 id="412-typed-arrays-update">4.12 Typed Arrays Update</h2></a><p>(Presented by Allen Wirfs-Brock)</p>
 <p>Slides (pdf): <a href="http://wiki.ecmascript.org/lib/exe/fetch.php?id=meetings%3Ameeting_jan_29_2013&amp;cache=cache&amp;media=meetings:typedarray_status.pdf">http://wiki.ecmascript.org/lib/exe/fetch.php?id=meetings%3Ameeting_jan_29_2013&amp;cache=cache&amp;media=meetings:typedarray_status.pdf</a></p>
 <p>AWB: We're absorbing control of the TypedArray specification, previously authored by Khronos.</p>
 <p>W3C has dependencies on the Khronos spec.</p>
@@ -576,5 +571,6 @@ Uint8ClampedArray</p>
 <p>WH: This is not a lot of work for implementations, and implementations (as opposed to users) are clearly in the better place to implement these efficiently.</p>
 <p>[STH: After the end of the official meeting, there was some discussion as to why Typed Arrays wouldn't just become genuine Arrays.  This would mean
 that they'd have all the Array methods, some of which would throw on use (those that change length). This needs discussion at a future meeting.]</p>
-<h4>Conclusion/Resolution</h4>
-<p>Move forward with the plan presented.</p>
+<a href="#conclusionresolution-609"><h4 id="conclusionresolution-609">Conclusion/Resolution</h4></a><p>Move forward with the plan presented.</p>
+
+</body>

@@ -1,10 +1,15 @@
 <!doctype html>
 <meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.6.0/github-markdown.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+
 <title>Jan 29 Meeting Notes</title>
-<h1>Jan 29 Meeting Notes</h1>
-<p>John Neumann (JN), Allen Wirfs-Brock (AWB), Yehuda Katz (YK), Eric Ferraiuolo (EF), Erik Arvidsson (EA), Rick Hudson (RH), Matt Sweeney (MS), Dmitry Soshnikov (DS), Sebastian Markbage (SM), Ben Newman (BN), Jeff Morrison (JM), Reid Burke (RB), Waldemar Horwat (WH), Doug Crockford (DC), Mark Miller (MM), Brian Terlson (BT), Luke Hoban (LH), Andreas Rossberg (ARB), Istvan Sebestyen (IS), Niko Matsakis (NM), Brendan Eich (BE), Rick Waldron (RW), Sam Tobin-Hochstadt (STH), Rafael Weinstein (RWS), Dmitry Lomov (DL), Niko Matsakis (NM), Simon Kaegi (SK), Kevin Reid (KR), Dave Herman (DH)</p>
-<h2>Function in Blocks in non strict mode.</h2>
-<p>(Ask Brian for slides)</p>
+<body class="markdown-body">
+<a href="#jan-29-meeting-notes"><h1 id="jan-29-meeting-notes">Jan 29 Meeting Notes</h1></a><p>John Neumann (JN), Allen Wirfs-Brock (AWB), Yehuda Katz (YK), Eric Ferraiuolo (EF), Erik Arvidsson (EA), Rick Hudson (RH), Matt Sweeney (MS), Dmitry Soshnikov (DS), Sebastian Markbage (SM), Ben Newman (BN), Jeff Morrison (JM), Reid Burke (RB), Waldemar Horwat (WH), Doug Crockford (DC), Mark Miller (MM), Brian Terlson (BT), Luke Hoban (LH), Andreas Rossberg (ARB), Istvan Sebestyen (IS), Niko Matsakis (NM), Brendan Eich (BE), Rick Waldron (RW), Sam Tobin-Hochstadt (STH), Rafael Weinstein (RWS), Dmitry Lomov (DL), Niko Matsakis (NM), Simon Kaegi (SK), Kevin Reid (KR), Dave Herman (DH)</p>
+<a href="#function-in-blocks-in-non-strict-mode"><h2 id="function-in-blocks-in-non-strict-mode">Function in Blocks in non strict mode.</h2></a><p>(Ask Brian for slides)</p>
 <p>BT: In ES6 draft in appendix B (since functions in block are not in ES5 but implemented)</p>
 <p>BT: IE11 shipped with function in block in non strict mode.</p>
 <p>BT: Hoists across let blocks</p>
@@ -12,20 +17,20 @@
 <p>LH: If the code falls out of the known patterns you hit a rough edge and then it is better to get an error than undefined behavior.</p>
 <p>WH:  Concerned about expanding past the minimal crazy intersection semantics we agreed  to in the past. The proposal expands the set of cases that produce surprise captures.</p>
 <p>WH: [on whiteboard] This is not just about eliminating errors. It will silently change the meaning of working code:</p>
-<pre><code class="language-js">function foo() { ... 1 ... }
-function bar() {
-  if (...) {
-    function foo() { ... 2 ... }
+<pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>) </span>{ ... <span class="hljs-number">1</span> ... }
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bar</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">if</span> (...) {
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>) </span>{ ... <span class="hljs-number">2</span> ... }
   }
-  foo(); // Thought it would refer to the outer scope foo. Surprise!
+  foo(); <span class="hljs-comment">// Thought it would refer to the outer scope foo. Surprise!</span>
 }
 </code></pre>
-<pre><code class="language-js">function foo() { ... 1 ... }
-function bar() {
-  if (...) {
-    let foo =...;
+<pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>) </span>{ ... <span class="hljs-number">1</span> ... }
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bar</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">if</span> (...) {
+    <span class="hljs-keyword">let</span> foo =...;
     {
-      function foo() { ... 2 ... }
+      <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>) </span>{ ... <span class="hljs-number">2</span> ... }
     }
   }
   foo();
@@ -36,15 +41,15 @@ function bar() {
 <p>BT: Allow hoisting past a let.</p>
 <p>ARB: What was the motivation for this special case, i.e., why not drop all hoists that would normally be an error?</p>
 <p>LH: Creates 2 bindings. The FunctionDeclaration itself mutates both the var binding and the let binding.</p>
-<pre><code class="language-js">(function() {
+<pre><code class="language-js">(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
   {
-    let foo;
+    <span class="hljs-keyword">let</span> foo;
     {
-      function f() {}  // Why no error?
+      <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params"></span>) </span>{}  <span class="hljs-comment">// Why no error?</span>
     }
-    console.log(foo);  // undefined
+    <span class="hljs-built_in">console</span>.log(foo);  <span class="hljs-comment">// undefined</span>
   }
-  console.log(foo); // funtion foo() {}
+  <span class="hljs-built_in">console</span>.log(foo); <span class="hljs-comment">// funtion foo() {}</span>
 })();
 </code></pre>
 <p>DH: If you inject a let and it shadows a var it should be a static error.</p>
@@ -64,16 +69,14 @@ Various: Executing function definition updates both the let and the var bindings
 <p>WH: [points out (and likes) warning on cases &quot;for which the above steps are performed&quot; in Annex B of the current draft]
 [Long discussion about warnings, SHOULD, and their audience]</p>
 <p>LH:  A SHOULD warning seems a reasonable addition to the proposal here.</p>
-<h4>Conclusion/resolution</h4>
-<ul>
+<a href="#conclusionresolution-485"><h4 id="conclusionresolution-485">Conclusion/resolution</h4></a><ul>
 <li>2 bindings.</li>
 <li>Hoist a var binding for the FunctionDeclaration, unless it would introduce a static error (ie. hoisting past a let will not cause an error but also not create the var binding).</li>
 <li>Also create a let binding as per pure (strict mode) ES6 semantics. (Change from IE11 semantics). Within the scope of the let binding, assignment will only touch the let binding (ie. normal semantics).</li>
 <li>The var binding is only initialized at dynamic evaluation of function declaration.</li>
 <li>A SHOULD warning if there is a reference to any such var binding of a function</li>
 </ul>
-<h2>Object.observe Status Report</h2>
-<p>RWS: Suggest moving OO to the second stage.
+<a href="#objectobserve-status-report"><h2 id="objectobserve-status-report">Object.observe Status Report</h2></a><p>RWS: Suggest moving OO to the second stage.
 :: Approved</p>
 <p>RWS: Wants to move OO to the third stage, which requires a spec text review.</p>
 <p>YK: Has reviewed it already.</p>
@@ -82,10 +85,8 @@ Various: Executing function definition updates both the let and the var bindings
 <p>AWB: Should not be a problem to advance without scrutizing the proposal. Willing to rubber stamp at this point. Since we are in a state where we are. (?)</p>
 <p>YK: Once we are at stage 3 we are committed to not revisit.</p>
 <p>RWS/YK to talk about task scheduling.</p>
-<h4>Conclusion/resolution</h4>
-<p>???</p>
-<h2>Post ES6 process</h2>
-<p>AWB: First step is to post the process somewhere public</p>
+<a href="#conclusionresolution-486"><h4 id="conclusionresolution-486">Conclusion/resolution</h4></a><p>???</p>
+<a href="#post-es6-process"><h2 id="post-es6-process">Post ES6 process</h2></a><p>AWB: First step is to post the process somewhere public</p>
 <p>AWB: Second, need a place to track the progress</p>
 <p>AWB: Thinking we should do this on GitHub. Project TC39/meta. Master table. Or maybe 2 tables?</p>
 <p>WH: Are we abandoning the wiki?
@@ -98,15 +99,14 @@ Various: yes</p>
 2. At step 3 and 4 there is a requirement to get an approval from the spec editor.</p>
 <p>RWS: Also managing spec in flight</p>
 <p>YK: I'm going to work in that.</p>
-<h2>Do Expression</h2>
-<p>(Ask for slides from ARB)</p>
+<a href="#do-expression"><h2 id="do-expression">Do Expression</h2></a><p>(Ask for slides from ARB)</p>
 <p>MM: An engine can statically detect an IIFE and treat it as a do expression.</p>
 <p>DS: Important to scope var declarations to the enclosing function rather than the do block because that's what happens in a do-while loop, and it's hard to tell if you're looking at a do block or a do-while loop.</p>
-<pre><code class="language-js">do {
+<pre><code class="language-js"><span class="hljs-keyword">do</span> {
   ...
 }
 
-while(true);
+<span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>);
 </code></pre>
 <p>WH, DH: Expression statements cannot start with <code>do</code> to avoid syntactic conflicts.</p>
 <p>BE: Just like <code>function</code> for FunctionExression which cannot start ExpressionStatement.</p>
@@ -114,13 +114,11 @@ while(true);
 <p>AWB: What step is this in the new process? Step 0?</p>
 <p>ARB: Can write spec</p>
 <p>DH: Primary reviewer.</p>
-<h4>Conclusion/resolution</h4>
-<ul>
+<a href="#conclusionresolution-487"><h4 id="conclusionresolution-487">Conclusion/resolution</h4></a><ul>
 <li>do-expressions as generailsation of block statements</li>
 <li>Progresses do-expressions to the next state in the new process.</li>
 </ul>
-<h2>Security Review for Loaders/Realms</h2>
-<p>MM: We have considered a security review for Loaders &amp; Realms</p>
+<a href="#security-review-for-loadersrealms"><h2 id="security-review-for-loadersrealms">Security Review for Loaders/Realms</h2></a><p>MM: We have considered a security review for Loaders &amp; Realms</p>
 <p>YK: Talked about this earlier, seemed positive</p>
 <p>STH: Concerned about definition/scope
 KR Gave vague definition</p>
@@ -131,27 +129,26 @@ STH: this is an excellent goal</p>
 <p>MM: What's the implementation status of Loaders/Realms</p>
 <p>DH: Unpolyfillable, YK + DH tried some things w/ iframes, didn't work</p>
 <p>DH: That's part of why we think it's a fundamental new primitive</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-488"><h4 id="conclusionresolution-488">Conclusion/Resolution</h4></a><ul>
 <li>MM et al to port SES to ES6, contact module champions w/ results</li>
 </ul>
-<h2>Typed Objects</h2>
-<p>Dmitry Lomov + Niko Matsakis</p>
+<a href="#typed-objects"><h2 id="typed-objects">Typed Objects</h2></a><p>Dmitry Lomov + Niko Matsakis</p>
 <p>NM: Not objects</p>
 <p>WH: Likes that === compares identities, but would prefer that == compare values.</p>
 <p>NM: THat would be dangerous since structs are mutable.</p>
 <p>WH: In that case, how do you compare values? That's a really common thing that users will want to be able to do.</p>
 <p>ARB: Accessing a sub struct of a struct does not allocate any object.</p>
 <p>NM: You can stack allocate</p>
-<pre><code>Line = new StructType({from: Point, ...})
-line = Line(...)
-while ( ... ) {
-  foo(line.from)
+<pre><code><span class="hljs-keyword">Line</span> = <span class="hljs-keyword">new</span> StructType({from: Point, ...})
+<span class="hljs-keyword">line</span> = <span class="hljs-keyword">Line</span>(...)
+<span class="hljs-keyword">while</span> ( ... ) {
+  foo(<span class="hljs-keyword">line</span>.from)
 }
 </code></pre>
 <p>DH: If <code>line.from</code> heap allocates it would be suprising.</p>
 <p>WH: How does stack allocation work if the reference to the allocated object escapes the scope?</p>
 <p>WH: Important to be able to mark StructTypes to always generate opaque fat pointers even if they don't have any 'any' field.</p>
 <p>WH: This helps with optimization. Knowing that all instances of a StructType are opaque lets NaN-boxing implementations optimize out protection against NaN-injection on reads.</p>
-<h2>Value Objects</h2>
-<p><a href="http://www.slideshare.net/BrendanEich/value-objects2">http://www.slideshare.net/BrendanEich/value-objects2</a></p>
+<a href="#value-objects"><h2 id="value-objects">Value Objects</h2></a><p><a href="http://www.slideshare.net/BrendanEich/value-objects2">http://www.slideshare.net/BrendanEich/value-objects2</a></p>
+
+</body>

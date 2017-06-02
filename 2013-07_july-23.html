@@ -1,16 +1,20 @@
 <!doctype html>
 <meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.6.0/github-markdown.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+
 <title>July 23 Meeting Notes</title>
-<h1>July 23 Meeting Notes</h1>
-<p>John Neumann (JN), Luke Hoban (LH), Rick Hudson (RH), Allen Wirfs-Brock (AWB), Yehuda Katz (YK), Anne van Kesteren (AVK), Jeff Morrrison (JM), Sebastian Markage (SM), Paul Leathers (PL), Avik Chaudhuri (AC), Ian Halliday (IH), Alex Russell (AR), Dave Herman (DH), Istvan Sebestyen (IS), Mark Miller (MM), Norbert Lindenberg (NL), Erik Arvidsson (EA), Waldemar Horwat (WH), Eric Ferraiuolo (EF), Matt Sweeney (MS), Doug Crockford (DC), Rick Waldron (RW)</p>
+<body class="markdown-body">
+<a href="#july-23-meeting-notes"><h1 id="july-23-meeting-notes">July 23 Meeting Notes</h1></a><p>John Neumann (JN), Luke Hoban (LH), Rick Hudson (RH), Allen Wirfs-Brock (AWB), Yehuda Katz (YK), Anne van Kesteren (AVK), Jeff Morrrison (JM), Sebastian Markage (SM), Paul Leathers (PL), Avik Chaudhuri (AC), Ian Halliday (IH), Alex Russell (AR), Dave Herman (DH), Istvan Sebestyen (IS), Mark Miller (MM), Norbert Lindenberg (NL), Erik Arvidsson (EA), Waldemar Horwat (WH), Eric Ferraiuolo (EF), Matt Sweeney (MS), Doug Crockford (DC), Rick Waldron (RW)</p>
 <p>JN: Brendan will be here tomorrow</p>
 <p>Introductions.</p>
-<h2>Agenda</h2>
-<p>(<a href="https://github.com/tc39/agendas/blob/master/2013/07.md">https://github.com/tc39/agendas/blob/master/2013/07.md</a>)</p>
+<a href="#agenda"><h2 id="agenda">Agenda</h2></a><p>(<a href="https://github.com/tc39/agendas/blob/master/2013/07.md">https://github.com/tc39/agendas/blob/master/2013/07.md</a>)</p>
 <p>Discussion about getting agenda items in earlier, general agreement.</p>
 <p>AWB: Clarifying #5 Open Issues (previously presented as a slide deck, now easier to track)</p>
-<h4>Consensus/Resolution</h4>
-<p>Will continue to use Github as the agenda tool, with the constraints:</p>
+<a href="#consensusresolution-563"><h4 id="consensusresolution-563">Consensus/Resolution</h4></a><p>Will continue to use Github as the agenda tool, with the constraints:</p>
 <ul>
 <li>Agenda should be &quot;locked in&quot; 1 week prior to meeting</li>
 <li>Agenda URL will be posted to es-discuss immediately following the current meeting</li>
@@ -23,8 +27,7 @@
 </ul>
 <p>Agenda Approved.</p>
 <p>JN: Welcomes new Facebook participants</p>
-<h2>4.1 ES6 Status Report</h2>
-<p>(Allen Wirfs-Brock)</p>
+<a href="#41-es6-status-report"><h2 id="41-es6-status-report">4.1 ES6 Status Report</h2></a><p>(Allen Wirfs-Brock)</p>
 <p>AWB: Draft published, Revision 16</p>
 <ul>
 <li>Backed out the Symbols as non-wrapper types from Revision 15</li>
@@ -54,12 +57,12 @@ However, we have changed for-in to disallow left side initializers. Given that, 
 <p>LH: Re: initializer argument with an &quot;entries&quot; property will be used to create the entries in the Map (7.a)</p>
 <p>&quot;Let hasValues be the result of HasProperty(iterable, &quot;entries&quot;).&quot;</p>
 <p>AWB: Explains the rationale of creating a new map from an existing map</p>
-<pre><code class="language-js">var m1 = new Map();
-var m2 = new Map(m1);
+<pre><code class="language-js"><span class="hljs-keyword">var</span> m1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>();
+<span class="hljs-keyword">var</span> m2 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>(m1);
 </code></pre>
 <p>LH/DH/YK/RW: Should be:</p>
-<pre><code class="language-js">var m1 = new Map();
-var m2 = new Map(m1.entries());
+<pre><code class="language-js"><span class="hljs-keyword">var</span> m1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>();
+<span class="hljs-keyword">var</span> m2 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>(m1.entries());
 </code></pre>
 <p>EA: Should just use <code>@@iterator</code>, which is <code>entries</code>, but without explicitly checking for a property called <code>entries</code>.</p>
 <p>DH: Advocate for uniform API, test for existance, assumes it's iterable, 2 element array-likes and initialize.</p>
@@ -69,8 +72,8 @@ var m2 = new Map(m1.entries());
 <p>AWB: All the built in iterators are also iterables</p>
 <p>DH: Agree, though this has been debated</p>
 <p>WH: What happens...</p>
-<pre><code class="language-js">new Map([ &quot;abc&quot;, &quot;defg&quot;, &quot;hi&quot; ]);
-new Map([{ 1: 10, 0: 20 }]);
+<pre><code class="language-js"><span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>([ <span class="hljs-string">"abc"</span>, <span class="hljs-string">"defg"</span>, <span class="hljs-string">"hi"</span> ]);
+<span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>([{ <span class="hljs-number">1</span>: <span class="hljs-number">10</span>, <span class="hljs-number">0</span>: <span class="hljs-number">20</span> }]);
 </code></pre>
 <p>BE: The first one makes a map mapping &quot;a&quot; → &quot;b&quot;, &quot;d&quot; → &quot;e&quot;, &quot;h&quot; → &quot;i&quot;. The second one makes a map of 20 → 10.</p>
 <p>AWB: The algorithm for Map should check for entries to be Object</p>
@@ -86,7 +89,7 @@ new Map([{ 1: 10, 0: 20 }]);
 <p>MM: Question about value objects. If the value object responds to Get(0) or Get(1)</p>
 <p>WH: with Mark, don't want special tests for different types</p>
 <p>LH: If I do...</p>
-<pre><code class="language-js">new Map([ 1, 2, 3 ]);
+<pre><code class="language-js"><span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>([ <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span> ]);
 </code></pre>
 <p>I will get <code>undefined, undefined, undefined</code>, which is a stronger case for making the check</p>
 <p>DH: +1</p>
@@ -109,8 +112,7 @@ new Map([{ 1: 10, 0: 20 }]);
 <p>DH: Select cases where there is easy to argue that there few legitimate uses, ok to have occassion sanity tests. In general, JavaScript does not go out of it's way to provide you with defensive mechanisms. It's hard to predict where people are going to get hurt, better to allow them to decide.</p>
 <p>WH: Paying for consequences where <code>with</code> doesn't protect against collisions.</p>
 <p>AWB: Try to apply my model when writing these algorithms, please try to read the algorithms when they are published</p>
-<h4><del>Consensus/Resolution</del></h4>
-<ul>
+<a href="#consensusresolution-564"><h4 id="consensusresolution-564"><del>Consensus/Resolution</del></h4></a><ul>
 <li><p>Map contructor, accepts optional initializer</p></li>
 <li><p>If initializer undefined, creates an empty map</p></li>
 <li><p>If initializer defined, invoke the @@iterator to create the entries from.</p>
@@ -126,11 +128,10 @@ check for &quot;@@iterator&quot;</p></li>
 <p><strong>UNRESOLVED</strong></p>
 <p>AWB: Will put a note in the spec: &quot;Unresolved: how to handle duplicate keys&quot;</p>
 <p>WH: Don't yet have consensus on how to handle duplicates, would like to discuss computed properties</p>
-<h2>4.3 Array.prototype.values</h2>
-<p>(Allen Wirfs-Brock, Rick Waldron)</p>
+<a href="#43-arrayprototypevalues"><h2 id="43-arrayprototypevalues">4.3 Array.prototype.values</h2></a><p>(Allen Wirfs-Brock, Rick Waldron)</p>
 <p>AWB: Ext.js uses a <code>with(...) {}</code></p>
-<pre><code class="language-js">function f(values) {
-  with(values) {
+<pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params">values</span>) </span>{
+  <span class="hljs-keyword">with</span>(values) {
     ...
   }
 }
@@ -172,40 +173,36 @@ entries() -&gt; entries([]);
 <p>AWB: For objects you want to treat this way.</p>
 <p>DH: The middle ground...</p>
 <p>@@withinvisible, well known symbol</p>
-<pre><code class="language-js">Array.prototype[ @@withinvisible ] = [
-  &quot;values&quot;,
-  &quot;keys&quot;,
-  &quot;entries&quot;
+<pre><code class="language-js"><span class="hljs-built_in">Array</span>.prototype[ @@withinvisible ] = [
+  <span class="hljs-string">"values"</span>,
+  <span class="hljs-string">"keys"</span>,
+  <span class="hljs-string">"entries"</span>
 ];
 </code></pre>
 <p>AVK: Might have a more generic name, can be used with event handlers</p>
 <p>DH: <code>@@unscopable</code>?</p>
-<pre><code class="language-js">Array.prototype[ @@unscopeable ] = [
-  &quot;values&quot;,
-  &quot;keys&quot;,
-  &quot;entries&quot;
+<pre><code class="language-js"><span class="hljs-built_in">Array</span>.prototype[ @@unscopeable ] = [
+  <span class="hljs-string">"values"</span>,
+  <span class="hljs-string">"keys"</span>,
+  <span class="hljs-string">"entries"</span>
 ];
 </code></pre>
 <p>WH/MM/RW/YK: <strong>actual clapping</strong></p>
 <p>... Mixed discussion about performance. General agreement that penalties for using <code>with</code> is ok.</p>
 <p>AWB: Code may override this, but at their own risk. For example</p>
-<h4>Consensus/Resolution</h4>
-<ul>
+<a href="#consensusresolution-565"><h4 id="consensusresolution-565">Consensus/Resolution</h4></a><ul>
 <li>@@unscopeable</li>
 <li>A blacklist, array of strings names that will not resolve to that object
 within <code>with() {}</code></li>
 </ul>
 <p>DH: This is about the extensible web ;)</p>
-<h2>3 Approval of the minutes from May 2013 (2013/029)</h2>
-<p>JN: Need to approve the notes...</p>
+<a href="#3-approval-of-the-minutes-from-may-2013-2013029"><h2 id="3-approval-of-the-minutes-from-may-2013-2013029">3 Approval of the minutes from May 2013 (2013/029)</h2></a><p>JN: Need to approve the notes...</p>
 <p>Are there are any changes to approve?</p>
 <p>(none)</p>
-<h4>Consensus/Resolution</h4>
-<ul>
+<a href="#consensusresolution-566"><h4 id="consensusresolution-566">Consensus/Resolution</h4></a><ul>
 <li>Approved.</li>
 </ul>
-<h2>9 JSON</h2>
-<p>(Doug Crockford)</p>
+<a href="#9-json"><h2 id="9-json">9 JSON</h2></a><p>(Doug Crockford)</p>
 <p>DC: Gives background re: JSON WG and presents a proposed JSON standard to be submitted to Ecma.</p>
 <ul>
 <li>Please read tonight for review tomorrow</li>
@@ -216,17 +213,15 @@ within <code>with() {}</code></li>
 <p>DC: IETF claims abstract formats cannot work</p>
 <p>Mixed discussion about consequences.</p>
 <p>(Read and be prepared for meeting tomorrow)</p>
-<h2>4.2 Add fill and copySlice methods to Array.prototype and Typed Arrays</h2>
-<p>(Allen Wirfs-Brock)</p>
+<a href="#42-add-fill-and-copyslice-methods-to-arrayprototype-and-typed-arrays"><h2 id="42-add-fill-and-copyslice-methods-to-arrayprototype-and-typed-arrays">4.2 Add fill and copySlice methods to Array.prototype and Typed Arrays</h2></a><p>(Allen Wirfs-Brock)</p>
 <p><a href="http://wiki.ecmascript.org/doku.php?id=strawman:array_fill_and_move">http://wiki.ecmascript.org/doku.php?id=strawman:array_fill_and_move</a></p>
 <p>AWB: The Chronos group want to add methods</p>
 <ul>
 <li>fill a span of a typed array</li>
 <li>move copy, with care for the overlap</li>
 </ul>
-<h3>Array.prototype.fill (Informal Spec)</h3>
-<pre><code class="language-js">Array.prototype.fill = function fill(value, start=0, end=this.length) {
-  /*
+<a href="#arrayprototypefill-informal-spec"><h3 id="arrayprototypefill-informal-spec">Array.prototype.fill (Informal Spec)</h3></a><pre><code class="language-js"><span class="hljs-built_in">Array</span>.prototype.fill = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fill</span>(<span class="hljs-params">value, start=<span class="hljs-number">0</span>, end=this.length</span>) </span>{
+  <span class="hljs-comment">/*
     Every element of array from start up to but not including end is assigned value.
     start and end are coerced to Number and truncated to integer values.
     Negative start and end values are converted to positive indices relative to the length of the array:
@@ -243,21 +238,20 @@ within <code>with() {}</code></li>
     Element values are assigned using [[Set]]
 
     The array is returned as the value of this method
-  */
+  */</span>
 }
 </code></pre>
 <p>Examples</p>
-<pre><code class="language-js">aFloatArray.fill(Infinity);  // Fill all elements with Infinity
-aFloatArray.fill(-1, 6);     // Fill all elements starting at index 6 with -1
-aFloatArray(1.5, 0, 5);      // Fill the first five elements with 1.5
-aUint8Array(0xff, -2);       // Place 0xff in the last two elements
-[ ].fill(&quot;abc&quot;, 0, 12)
-    .fill(&quot;xyz&quot;, 12, 24);     // Create a regular array, fill its first dozen
-                              // elements with &quot;abc&quot;, and its 2nd dozen elements
+<pre><code class="language-js">aFloatArray.fill(<span class="hljs-literal">Infinity</span>);  <span class="hljs-comment">// Fill all elements with Infinity</span>
+aFloatArray.fill(<span class="hljs-number">-1</span>, <span class="hljs-number">6</span>);     <span class="hljs-comment">// Fill all elements starting at index 6 with -1</span>
+aFloatArray(<span class="hljs-number">1.5</span>, <span class="hljs-number">0</span>, <span class="hljs-number">5</span>);      <span class="hljs-comment">// Fill the first five elements with 1.5</span>
+aUint8Array(<span class="hljs-number">0xff</span>, <span class="hljs-number">-2</span>);       <span class="hljs-comment">// Place 0xff in the last two elements</span>
+[ ].fill(<span class="hljs-string">"abc"</span>, <span class="hljs-number">0</span>, <span class="hljs-number">12</span>)
+    .fill(<span class="hljs-string">"xyz"</span>, <span class="hljs-number">12</span>, <span class="hljs-number">24</span>);     <span class="hljs-comment">// Create a regular array, fill its first dozen</span>
+                              <span class="hljs-comment">// elements with "abc", and its 2nd dozen elements</span>
 </code></pre>
-<h3>Array.prototype.copySlice (Informal Spec)</h3>
-<pre><code class="language-js">Array.prototype.copySlice = function copySlice(target = 0,start = 0, end = this.length ) {
-/*
+<a href="#arrayprototypecopyslice-informal-spec"><h3 id="arrayprototypecopyslice-informal-spec">Array.prototype.copySlice (Informal Spec)</h3></a><pre><code class="language-js"><span class="hljs-built_in">Array</span>.prototype.copySlice = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">copySlice</span>(<span class="hljs-params">target = <span class="hljs-number">0</span>,start = <span class="hljs-number">0</span>, end = this.length </span>) </span>{
+<span class="hljs-comment">/*
   The sequence of array elements from start index up to but not including end index are copied within
   the array to the span of elements starting at the target index.
 
@@ -273,25 +267,25 @@ aUint8Array(0xff, -2);       // Place 0xff in the last two elements
    transfer is performed.  If target&gt;start a right to left transfer is performed.
 
    If a target element is encountered that cannot be assigned, a type error is thrown and no additional elements are modified.
-   Sparse array &quot;holes&quot; are transferred just like for other array functions.
+   Sparse array "holes" are transferred just like for other array functions.
 
    The array is returned as the value of this method
-*/
+*/</span>
 }
 </code></pre>
 <p>Examples</p>
-<pre><code class="language-js">[ 0, 1, 2, 3, 4 ].copySlice(0, 2);
-// [ 2, 3, 4, 3, 4 ]
+<pre><code class="language-js">[ <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span> ].copySlice(<span class="hljs-number">0</span>, <span class="hljs-number">2</span>);
+<span class="hljs-comment">// [ 2, 3, 4, 3, 4 ]</span>
 
-[ 0, 1, 2, 3, 4 ].copySlice(2, 0, 2);
-// [ 0, 1, 0, 1, 4 ]
+[ <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span> ].copySlice(<span class="hljs-number">2</span>, <span class="hljs-number">0</span>, <span class="hljs-number">2</span>);
+<span class="hljs-comment">// [ 0, 1, 0, 1, 4 ]</span>
 
-[ 0, 1, 2 ].copySlice(1);
-// [ 0, 0, 1, 2 ]
+[ <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span> ].copySlice(<span class="hljs-number">1</span>);
+<span class="hljs-comment">// [ 0, 0, 1, 2 ]</span>
 
-Int8Array.from([ 0, 1, 2 ]).copySlice(1);      // RangeError
-Int8Array.from([ 0, 1, 2 ]).copySlice(1, 0, 2);  // Int8Array 0,0,1
-Int8Array.from([ 0, 1, 2 ]).copySlice(0, 1, 2);  // Int8Array 1,2,2
+<span class="hljs-built_in">Int8Array</span>.from([ <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span> ]).copySlice(<span class="hljs-number">1</span>);      <span class="hljs-comment">// RangeError</span>
+<span class="hljs-built_in">Int8Array</span>.from([ <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span> ]).copySlice(<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">2</span>);  <span class="hljs-comment">// Int8Array 0,0,1</span>
+<span class="hljs-built_in">Int8Array</span>.from([ <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span> ]).copySlice(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>);  <span class="hljs-comment">// Int8Array 1,2,2</span>
 </code></pre>
 <p><strong>Moving data within an array, destructively on the calling array</strong></p>
 <p>AWB: Possibly rename <code>copySlice</code> =&gt; <code>copyWithin</code></p>
@@ -304,24 +298,22 @@ Int8Array.from([ 0, 1, 2 ]).copySlice(0, 1, 2);  // Int8Array 1,2,2
 <p>DH: Brendan had issue with <code>fill</code></p>
 <p>AWB: Brendan's issue was the similarity with <code>copySlice</code> and had suggested <code>fillSlice</code>.</p>
 <p>DH: Not sure I understand his objection...</p>
-<h4>Consensus/Resolution</h4>
-<ul>
+<a href="#consensusresolution-567"><h4 id="consensusresolution-567">Consensus/Resolution</h4></a><ul>
 <li>Agreement in room</li>
 <li>Would like Brendan's input</li>
 </ul>
-<h2>4.4 Consider deferring ES6 Refutable Matching.</h2>
-<p>(Allen Wirfs-Brock)</p>
+<a href="#44-consider-deferring-es6-refutable-matching"><h2 id="44-consider-deferring-es6-refutable-matching">4.4 Consider deferring ES6 Refutable Matching.</h2></a><p>(Allen Wirfs-Brock)</p>
 <p>AWB: In March, we agreed to add refutable pattern matching; began working on adding this to destructuring and realized the work involved would be too great, considering the time frame remaining for ES6.</p>
 <p>Propose to defer refutable pattern matching.</p>
 <p>(whiteboard)</p>
 <p>The current spec would attempt to do a ToObject(10); and would throw:</p>
-<pre><code class="language-js">let { a, b } = 10;
+<pre><code class="language-js"><span class="hljs-keyword">let</span> { a, b } = <span class="hljs-number">10</span>;
 </code></pre>
 <p>What happens when you reference a property that doesn't exist on the object, will throw:</p>
-<pre><code class="language-js">let { a, b } = { a: 10, c: 20 };
+<pre><code class="language-js"><span class="hljs-keyword">let</span> { a, b } = { <span class="hljs-attr">a</span>: <span class="hljs-number">10</span>, <span class="hljs-attr">c</span>: <span class="hljs-number">20</span> };
 </code></pre>
 <p>To avoid throwing:</p>
-<pre><code class="language-js">let { a, b = undefined } = { a: 10, c: 20 };
+<pre><code class="language-js"><span class="hljs-keyword">let</span> { a, b = <span class="hljs-literal">undefined</span> } = { <span class="hljs-attr">a</span>: <span class="hljs-number">10</span>, <span class="hljs-attr">c</span>: <span class="hljs-number">20</span> };
 </code></pre>
 <p>YK: Removing the question mark breaks the consensus.</p>
 <p>AVK: Is it hard to spec the &quot;?&quot; on the outside? Allowing only one level?</p>
@@ -333,7 +325,7 @@ Int8Array.from([ 0, 1, 2 ]).copySlice(0, 1, 2);  // Int8Array 1,2,2
 <p>DH: Agrees... as long as we have a fail-soft, we're ok (YK/LH/RW agree)</p>
 <p>YK: We could make the extra sigil mean refutable.</p>
 <p>WH:</p>
-<pre><code class="language-js">let [a, b] = &quot;xyz&quot;;
+<pre><code class="language-js"><span class="hljs-keyword">let</span> [a, b] = <span class="hljs-string">"xyz"</span>;
 </code></pre>
 <p>YK: Why Andreas would have argued strongly against a refutable sigil?</p>
 <p>DH: I think this will fail without inclusion of Brendan and Andreas</p>
@@ -353,47 +345,40 @@ Int8Array.from([ 0, 1, 2 ]).copySlice(0, 1, 2);  // Int8Array 1,2,2
 <p>LH: If we added the bang which is the strict mode for this and adds the bang in front, opts in.</p>
 <p>AWB: The next part...</p>
 <p>WH: The string example:</p>
-<pre><code class="language-js">let [a, b] = &quot;xyz&quot;;
+<pre><code class="language-js"><span class="hljs-keyword">let</span> [a, b] = <span class="hljs-string">"xyz"</span>;
 </code></pre>
 <p>Should there be implicit ToObject on the right side?</p>
 <p>YK: We agreed <code>new String()</code> solves the problem, if that's what you actually wanted to do.</p>
-<h4>Consensus/Resolution</h4>
-<ul>
+<a href="#consensusresolution-568"><h4 id="consensusresolution-568">Consensus/Resolution</h4></a><ul>
 <li>No implicit <code>ToObject()</code> on the right side (eg. the string will throw)</li>
 </ul>
-<h2>x.x Review of Proposed Features</h2>
-<p>(Luke Hoban)</p>
-<h3>Function toString</h3>
-<p><a href="http://wiki.ecmascript.org/doku.php?id=harmony:function_to_string">http://wiki.ecmascript.org/doku.php?id=harmony:function_to_string</a></p>
+<a href="#xx-review-of-proposed-features"><h2 id="xx-review-of-proposed-features">x.x Review of Proposed Features</h2></a><p>(Luke Hoban)</p>
+<a href="#function-tostring"><h3 id="function-tostring">Function toString</h3></a><p><a href="http://wiki.ecmascript.org/doku.php?id=harmony:function_to_string">http://wiki.ecmascript.org/doku.php?id=harmony:function_to_string</a></p>
 <p>MM: The one issue about Function toString, discovered since the strawman was written:</p>
 <p>Since eval()uating a function declaration or function expression defaults to non-strict, a strict function must present the source code of its body as beginning with a “use strict” directive, even if the original function inherited its strictness from its context. This is the one case where the original local source code of the function is inadequate to satisfy this spec.</p>
 <p>YK: Doesn't account for super, either</p>
 <p>Discussion about identifiers captured from lexical environments.</p>
 <p>Was the lexical environment strict?</p>
-<h4>Consensus/Resolution</h4>
-<p>Change wiki
+<a href="#consensusresolution-569"><h4 id="consensusresolution-569">Consensus/Resolution</h4></a><p>Change wiki
 strictness included in notion of lexical context. Thus</p>
 <ul>
 <li>always adequte for toString to preserve the original source</li>
 <li>result behaviour equivalence does not require injecting &quot;use strict&quot;</li>
 </ul>
-<h3>Function name property</h3>
-<p>(Allen Wirfs-Brock)
+<a href="#function-name-property"><h3 id="function-name-property">Function name property</h3></a><p>(Allen Wirfs-Brock)
 <a href="http://wiki.ecmascript.org/doku.php?id=harmony:function_name_property">http://wiki.ecmascript.org/doku.php?id=harmony:function_name_property</a></p>
 <p>AWB: The spec doesn't have mechanisms for capturing the name based on the syntactic context.</p>
 <p>LH:</p>
-<pre><code class="language-js">let f = function() {}
+<pre><code class="language-js"><span class="hljs-keyword">let</span> f = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{}
 </code></pre>
 <p>...Needs to know &quot;f&quot;.</p>
 <p>AWB: It's not an insignificant amount of work.</p>
 <p>...Conversation Moves towards prioritization.</p>
-<h3>Modules</h3>
-<p>LH: Need to know that modules are going to be spec'ed asap.</p>
+<a href="#modules"><h3 id="modules">Modules</h3></a><p>LH: Need to know that modules are going to be spec'ed asap.</p>
 <p>DH: This is my next item to work on</p>
 <p>AWB: Modules are the next most important and significant to address in the spec.</p>
 <p><strong>High priority</strong></p>
-<h3>Standard Modules</h3>
-<p>DH: Back off on standard modules for ES6, very few things.</p>
+<a href="#standard-modules"><h3 id="standard-modules">Standard Modules</h3></a><p>DH: Back off on standard modules for ES6, very few things.</p>
 <p>Standard Modules:</p>
 <ul>
 <li>Math</li>
@@ -407,11 +392,9 @@ strictness included in notion of lexical context. Thus</p>
 <p>EF/YK/RW can work on this</p>
 <p>Mixed discussion about feature dependency.</p>
 <p>DH: Luke and I can craft a dependency graph offline.</p>
-<h3>Binary Data</h3>
-<p>On track (wiki near complete)</p>
+<a href="#binary-data"><h3 id="binary-data">Binary Data</h3></a><p>On track (wiki near complete)</p>
 <p><strong>High priority</strong></p>
-<h3>Regexp Updates</h3>
-<ul>
+<a href="#regexp-updates"><h3 id="regexp-updates">Regexp Updates</h3></a><ul>
 <li><a href="http://wiki.ecmascript.org/doku.php?id=harmony:regexp_y_flag">http://wiki.ecmascript.org/doku.php?id=harmony:regexp_y_flag</a></li>
 <li><a href="http://wiki.ecmascript.org/doku.php?id=harmony:regexp_match_web_reality">http://wiki.ecmascript.org/doku.php?id=harmony:regexp_match_web_reality</a></li>
 <li><a href="http://wiki.ecmascript.org/doku.php?id=harmony:regexp_look-behind_support">http://wiki.ecmascript.org/doku.php?id=harmony:regexp_look-behind_support</a></li>
@@ -419,20 +402,17 @@ strictness included in notion of lexical context. Thus</p>
 </ul>
 <p><strong>Low priority</strong></p>
 <p>DH: Optimistic that we can get Modules and Binary Data to green (in the spreadsheet)</p>
-<h3>Proper Tail Calls</h3>
-<p>DH: Just need to identify the tail position and finish the spec.</p>
+<a href="#proper-tail-calls"><h3 id="proper-tail-calls">Proper Tail Calls</h3></a><p>DH: Just need to identify the tail position and finish the spec.</p>
 <p>AWB: It's just a time consuming project. Property access in tail position? Not tail call.</p>
 <p>DH: Safely:</p>
 <ul>
 <li>function call</li>
 <li>method call</li>
 </ul>
-<h4>Consensus/Resolution</h4>
-<ul>
+<a href="#consensusresolution-570"><h4 id="consensusresolution-570">Consensus/Resolution</h4></a><ul>
 <li>Plenty of work left.</li>
 </ul>
-<h2>4.7 Math</h2>
-<p>(Dave Herman)</p>
+<a href="#47-math"><h2 id="47-math">4.7 Math</h2></a><p>(Dave Herman)</p>
 <p>DH: Introduces need for 64bit float =&gt; 32bit float and projecting back into 64bit float. If we had a way to coerce into 32bit</p>
 <ul>
 <li>Can be simulated with TypedArray (put in a value, coerced, pull out)</li>
@@ -471,51 +451,44 @@ z = -1;</p>
 <p>RH: Also, toFloat16</p>
 <p>DH: Long term, the solution will be value objects, but in the near term, this will have benefit much more quickly</p>
 <p>WH: Found evidence that the optimizations are safe as long as the wider type is at least double the width of the narrower type plus two more bits: <a href="http://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html">http://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html</a> . This is the case for the float32/float64 pair (they're 24 and 53 bits wide respectively), but not in general.</p>
-<h4>Consensus/Resolution</h4>
-<ul>
+<a href="#consensusresolution-571"><h4 id="consensusresolution-571">Consensus/Resolution</h4></a><ul>
 <li>Math.toFloat32()</li>
 </ul>
 <p>More discussion about where (Math, Number.prototype)</p>
-<h2>4.8 Stable Array.prototype.sort</h2>
-<p>(Norbert Lindenberg)</p>
+<a href="#48-stable-arrayprototypesort"><h2 id="48-stable-arrayprototypesort">4.8 Stable Array.prototype.sort</h2></a><p>(Norbert Lindenberg)</p>
 <p><a href="https://mail.mozilla.org/pipermail/es-discuss/2013-June/thread.html#31276">https://mail.mozilla.org/pipermail/es-discuss/2013-June/thread.html#31276</a></p>
 <p>NL: Does anyone know of performance issues that prevent going to stable sort.</p>
 <p>DH: Tread lightly, no one wants regression</p>
 <p>EA: Libraries implement stable sort today because they need it.</p>
 <p>YK: D3</p>
 <p>MM: If the answer is that performance is negligible, then we should mandate stable sort. Otherwise, we don't. We need to answer the question first.</p>
-<h4>Consensus/Resolution</h4>
-<ul>
+<a href="#consensusresolution-572"><h4 id="consensusresolution-572">Consensus/Resolution</h4></a><ul>
 <li>Deferred</li>
 </ul>
-<h2>4.9 Time zones 1: Bugs or spec issues?</h2>
-<p>(Norbert Lindenberg)</p>
+<a href="#49-time-zones-1-bugs-or-spec-issues"><h2 id="49-time-zones-1-bugs-or-spec-issues">4.9 Time zones 1: Bugs or spec issues?</h2></a><p>(Norbert Lindenberg)</p>
 <p><a href="https://mail.mozilla.org/pipermail/es-discuss/2013-July/032087.html">https://mail.mozilla.org/pipermail/es-discuss/2013-July/032087.html</a></p>
 <p>Discussion around the semantics of Date</p>
 <p>AVK/MM: Be able to create a date instance with a timezone, other then the current timezone</p>
 <p>MM: ES5 implies a live communication channel into the Date instance</p>
 <p>AWB: It's part of the algorithms</p>
 <p>MM: We could say that we're going to stand on the ES5 spec.</p>
-<h4>Consensus/Resolution</h4>
-<ul>
+<a href="#consensusresolution-573"><h4 id="consensusresolution-573">Consensus/Resolution</h4></a><ul>
 <li>Deferred</li>
 </ul>
-<h2>4.10 Time zones 2: Time zone as property</h2>
-<p>(Norbert Lindenberg)</p>
+<a href="#410-time-zones-2-time-zone-as-property"><h2 id="410-time-zones-2-time-zone-as-property">4.10 Time zones 2: Time zone as property</h2></a><p>(Norbert Lindenberg)</p>
 <p><a href="https://mail.mozilla.org/pipermail/es-discuss/2013-July/032080.html">https://mail.mozilla.org/pipermail/es-discuss/2013-July/032080.html</a></p>
 <p>NL: Dean Landolt proposed a property on Date.prototype for the timezone, that all the functions look for, born with the default timezone, but can be changed.</p>
 <p>MM: Should be static, like Date.now()</p>
 <p>RW: Otherwise there would be Date objects with different timezones.</p>
-<h4>Consensus/Resolution</h4>
-<ul>
+<a href="#consensusresolution-574"><h4 id="consensusresolution-574">Consensus/Resolution</h4></a><ul>
 <li>Deferred</li>
 </ul>
-<h2>Date/Timezone</h2>
-<p>Proposal 1
+<a href="#datetimezone"><h2 id="datetimezone">Date/Timezone</h2></a><p>Proposal 1
 AVK: Having Date objects that have timezone as internal data instead of system data.</p>
 <p>Proposal 2
 NL: Pass time zone information separate from Date (as a parameter to methods)</p>
-<h4>Consensus/Resolution</h4>
-<ul>
+<a href="#consensusresolution-575"><h4 id="consensusresolution-575">Consensus/Resolution</h4></a><ul>
 <li>Write a strawman for ES7 (either)</li>
 </ul>
+
+</body>

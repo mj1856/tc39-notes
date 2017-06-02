@@ -1,24 +1,27 @@
 <!doctype html>
 <meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.6.0/github-markdown.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+
 <title>June 6 2014 Meeting Notes</title>
-<h1>June 6 2014 Meeting Notes</h1>
-<p>Brian Terleson (BT), Dmitry Lomov (DL), Waldemar Horwat (WH), Allen Wirfs-Brock (AWB), John Neumann (JN), Rick Waldron (RW), Eric Ferraiuolo (EF), Jafar Husain (JH), Jeff Morrison (JM), Mark Honenberg (MH), Caridy Patino (CP), Yehuda Katz (YK), Niko Matsakis (NM), Ben Newman (BN), Filip Pizlo (FP), Sebastian Markbage (SM), Rafael Weinstein (RWS), Jaswanth Sreeram (JS), Alex Russell (AR), Istvan Sebestyen (IS), Simon Kaegi (SK), Arnoud Le Hors (ALH), Reid Burke (RB), Erik Arvidsson (EA), Brendan Eich (BE), Mark Miller (MM)</p>
-<h2>Follow up on deferring comprehensions</h2>
-<p>DH: IMHO Andy Wingo's email made my case stronger since it added another dimension that we need to take into account.</p>
+<body class="markdown-body">
+<a href="#june-6-2014-meeting-notes"><h1 id="june-6-2014-meeting-notes">June 6 2014 Meeting Notes</h1></a><p>Brian Terleson (BT), Dmitry Lomov (DL), Waldemar Horwat (WH), Allen Wirfs-Brock (AWB), John Neumann (JN), Rick Waldron (RW), Eric Ferraiuolo (EF), Jafar Husain (JH), Jeff Morrison (JM), Mark Honenberg (MH), Caridy Patino (CP), Yehuda Katz (YK), Niko Matsakis (NM), Ben Newman (BN), Filip Pizlo (FP), Sebastian Markbage (SM), Rafael Weinstein (RWS), Jaswanth Sreeram (JS), Alex Russell (AR), Istvan Sebestyen (IS), Simon Kaegi (SK), Arnoud Le Hors (ALH), Reid Burke (RB), Erik Arvidsson (EA), Brendan Eich (BE), Mark Miller (MM)</p>
+<a href="#follow-up-on-deferring-comprehensions"><h2 id="follow-up-on-deferring-comprehensions">Follow up on deferring comprehensions</h2></a><p>DH: IMHO Andy Wingo's email made my case stronger since it added another dimension that we need to take into account.</p>
 <p>AWB: Let's leave it in until next meeting and try to resolve this before then.</p>
 <p>DH: This is basically a go/no go question.</p>
 <p>AWB: No spec changes will be done until after we have consensus.</p>
 <p>DH: There is no rush to get it out of the spec.</p>
-<h2>Conclusion/Resolution</h2>
-<ul>
+<a href="#conclusionresolution-418"><h2 id="conclusionresolution-418">Conclusion/Resolution</h2></a><ul>
 <li>Resolve this online</li>
 <li>Make a go/no go at the next face to face meeting.</li>
 </ul>
-<h2>Block scoping issues</h2>
-<p>BT: In sloppy mode</p>
-<pre><code class="language-js">foo();  // maybe?
-if (test) function foo() {};
-foo();  // yes
+<a href="#block-scoping-issues"><h2 id="block-scoping-issues">Block scoping issues</h2></a><p>BT: In sloppy mode</p>
+<pre><code class="language-js">foo();  <span class="hljs-comment">// maybe?</span>
+<span class="hljs-keyword">if</span> (test) <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>) </span>{};
+foo();  <span class="hljs-comment">// yes</span>
 </code></pre>
 <p>AWB: Wanted to hold the line and not cover this.</p>
 <p>BT: One option is to treat the FunctionDeclaration in if as if there was a Block around it.</p>
@@ -29,29 +32,25 @@ foo();  // yes
 <p>BT: Can we hand wave this in Annex B? Can we just use prose to say that it behavase as if there was a block around it?</p>
 <p>BE: Without grammar we cannot validate</p>
 <p>WH: I'm not going to validate the grammar in Annex B. I already know there's ugliness there.</p>
-<h2>Conclusion/Resolution</h2>
-<ul>
+<a href="#conclusionresolution-419"><h2 id="conclusionresolution-419">Conclusion/Resolution</h2></a><ul>
 <li>Substatement function declarations will be added to Annex B unless we can convince ourselves it's safe to remove.</li>
 <li>Allen will investigate how to specify in Annex B (including whethe we need to specify the grammar or hand-wave).</li>
 </ul>
-<h2>Initializer in for-in</h2>
-<p>AWB: Got feedback that there are 11 sites that use the code pattern.</p>
+<a href="#initializer-in-for-in"><h2 id="initializer-in-for-in">Initializer in for-in</h2></a><p>AWB: Got feedback that there are 11 sites that use the code pattern.</p>
 <p>WAB: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=748550">https://bugzilla.mozilla.org/show_bug.cgi?id=748550</a></p>
-<h2>Conclusion/Resolution</h2>
-<ul>
+<a href="#conclusionresolution-420"><h2 id="conclusionresolution-420">Conclusion/Resolution</h2></a><ul>
 <li>Have an engine try to remove support and report back. Otherwise it will have to be added back to the spec.</li>
 </ul>
-<h2>Rest properties and spread properties (Sebastian Markbåge)</h2>
-<p>Presentation notes: <a href="https://gist.github.com/sebmarkbage/aa849c7973cb4452c547">https://gist.github.com/sebmarkbage/aa849c7973cb4452c547</a></p>
+<a href="#rest-properties-and-spread-properties-sebastian-markbage"><h2 id="rest-properties-and-spread-properties-sebastian-markbage">Rest properties and spread properties (Sebastian Markbåge)</h2></a><p>Presentation notes: <a href="https://gist.github.com/sebmarkbage/aa849c7973cb4452c547">https://gist.github.com/sebmarkbage/aa849c7973cb4452c547</a></p>
 <p>SM: Rest properties</p>
-<pre><code class="language-js">let {x, y, ...z} = {x: 1, y: 2, a: 3, b: 4};
-x;  // 1
-y;  // 2
-z;  // {a: 2, b: 4}
+<pre><code class="language-js"><span class="hljs-keyword">let</span> {x, y, ...z} = {<span class="hljs-attr">x</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">y</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">a</span>: <span class="hljs-number">3</span>, <span class="hljs-attr">b</span>: <span class="hljs-number">4</span>};
+x;  <span class="hljs-comment">// 1</span>
+y;  <span class="hljs-comment">// 2</span>
+z;  <span class="hljs-comment">// {a: 2, b: 4}</span>
 </code></pre>
 <p>SM: Spread properties</p>
-<pre><code class="language-js">let n = {x, y, ...z};
-n;  // {x: 1, y: 2, a: 3, b: 4}
+<pre><code class="language-js"><span class="hljs-keyword">let</span> n = {x, y, ...z};
+n;  <span class="hljs-comment">// {x: 1, y: 2, a: 3, b: 4}</span>
 </code></pre>
 <p>SM: The [[Prototype]] will be %ObjectPrototype%</p>
 <p>MM: It should not use the original prototype since it does not have the same properties</p>
@@ -80,7 +79,7 @@ n;  // {x: 1, y: 2, a: 3, b: 4}
 <p>DH: We have to look at existing code and all existing code uses for-in+hasOwnProperty</p>
 <p>WH: I want substitutability, so that I can pick of properties one by one.</p>
 <p>BE:</p>
-<pre><code class="language-js">z = Object.create({w: 42});
+<pre><code class="language-js">z = <span class="hljs-built_in">Object</span>.create({<span class="hljs-attr">w</span>: <span class="hljs-number">42</span>});
 obj = {x, y, ...z};
 </code></pre>
 <p>WH: Wants w to show up in obj.</p>
@@ -88,10 +87,10 @@ obj = {x, y, ...z};
 <p>MM: Very confortable with Yehuda's rational that we use own properties to find the property names and then use Get to get the value.</p>
 <p>YK: Destructuring is sugar for Get.</p>
 <p>WH: Wants destructuring to be sugar for HasOwn+Get as in:</p>
-<pre><code class="language-js">var {x} = obj;
+<pre><code class="language-js"><span class="hljs-keyword">var</span> {x} = obj;
 =&gt;
-var x;
-x = obj.hasOwnProperty('x') ? (THROW?) : obj.x;
+<span class="hljs-keyword">var</span> x;
+x = obj.hasOwnProperty(<span class="hljs-string">'x'</span>) ? (THROW?) : obj.x;
 </code></pre>
 <p>WH: What is the compelling use case for having ... in patterns?</p>
 <p>DH: Consistency with ... in spread.</p>
@@ -103,13 +102,11 @@ x = obj.hasOwnProperty('x') ? (THROW?) : obj.x;
 <p>MM: (re: decorators proposal)</p>
 <p>YK: my decorators can make individual methods or all methods on a class non-enumerable</p>
 <p>MM: I am ok with removing the constraint that duplicate dynamic object properties throw (in strict mode) with the caveat that we also remove the same constraint for duplicate static properties.</p>
-<h2>Conclusion/Resolution</h2>
-<ul>
+<a href="#conclusionresolution-421"><h2 id="conclusionresolution-421">Conclusion/Resolution</h2></a><ul>
 <li>For both strict and sloppy object literals, both computed and static properties no longer have any duplicate name checking.</li>
 <li>Instead, the semantics are strictly left-to-right (i.e. rightmost instance of the duplicate name wins over previous properties of the same name).</li>
 </ul>
-<h2>Async Generator Functions (Jafar presenting)</h2>
-<p>(Jafar to send slides)</p>
+<a href="#async-generator-functions-jafar-presenting"><h2 id="async-generator-functions-jafar-presenting">Async Generator Functions (Jafar presenting)</h2></a><p>(Jafar to send slides)</p>
 <p>DH, YK: Consider the cost of having two semi-compatible but different APIs, Streams and Observables.</p>
 <p>DH Might be worth having a layered API in order to let people drop to low level for perf reasons.
 YK: We should get more clarity on this.
@@ -128,15 +125,16 @@ YK: We should get more clarity on this.
 Need to rationalize
 Need Domenic, Raf, and Jafar together to work it out.</p>
 <p>WH: What does this do inside an async function*?</p>
-<pre><code class="language-js">while (...) {
-  yield line1;
-  await yield line2;
+<pre><code class="language-js"><span class="hljs-keyword">while</span> (...) {
+  <span class="hljs-keyword">yield</span> line1;
+  <span class="hljs-keyword">await</span> <span class="hljs-keyword">yield</span> line2;
 }
 </code></pre>
 <p>Is it just a backpressure issue, or can the first yield (without the await) surprise the observer in some kind of an unexpected state?</p>
 <p>YK: I think it's important that the first value in an observable can be published synchronously. Importantly, there are well-motivated use-cases for Observables whose initial value is ALWAYS synchronously available (like Object.observe), but there are no well-motivated use-cases for APIs that consume promises whose values are ALWAYS synchronously available.</p>
-<h2>Conclusion/Resolution</h2>
-<ul>
+<a href="#conclusionresolution-422"><h2 id="conclusionresolution-422">Conclusion/Resolution</h2></a><ul>
 <li>Async generators proposal is now in stage 0, for consideration as part of ES7.</li>
 <li>Need to consider more deeply how average programmers are going to make sense of this syntax without understanding it completely.</li>
 </ul>
+
+</body>

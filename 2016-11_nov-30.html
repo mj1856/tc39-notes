@@ -1,10 +1,15 @@
 <!doctype html>
 <meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.6.0/github-markdown.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+
 <title>November 30 2016 Meeting Notes</title>
-<h1>November 30 2016 Meeting Notes</h1>
-<p>Allen Wirfs-Brock (AWB), Waldemar Horwat (WH), Jordan Harband (JHD), Thomas Wood (TW), Brian Terlson (BT), Michael Ficarra (MF), Adam Klein (AK), Jeff Morrison (JM), Chip Morningstar (CM), Dave Herman (DH), Yehuda Katz (YK), Leo Balter (LB), Sebastian Markbåge (SM), Kent C. Dodds (KCD), Kevin Gibbons (KG), Tim Disney (TD), Peter Jensen (PJ), Juan Dopazo (JDO), Domenic Denicola (DD), Daniel Ehrenberg (DE), Shu-yu Guo (SYG), JF Bastien (JFB), Keith Miller (KM), Michael Saboff (MS), Chris Hyle (CH), Alex Russell (AR), Brendan Eich (BE), Caridy Patino (CP), Diego Ferreiro Val (DFV), James Kyle (JK), Eric Ferraiuolo (EF), Mathias Bynens (MB), Istvan Sebestyen (IS), Mark Miller (MM), Cristian Mattarei (CMI), Brad Nelson (BNN), Jafar Husain (JH)</p>
-<h2>5 Report from the Ecma Secretariat</h2>
-<p>(Istvan Sebestyen)</p>
+<body class="markdown-body">
+<a href="#november-30-2016-meeting-notes"><h1 id="november-30-2016-meeting-notes">November 30 2016 Meeting Notes</h1></a><p>Allen Wirfs-Brock (AWB), Waldemar Horwat (WH), Jordan Harband (JHD), Thomas Wood (TW), Brian Terlson (BT), Michael Ficarra (MF), Adam Klein (AK), Jeff Morrison (JM), Chip Morningstar (CM), Dave Herman (DH), Yehuda Katz (YK), Leo Balter (LB), Sebastian Markbåge (SM), Kent C. Dodds (KCD), Kevin Gibbons (KG), Tim Disney (TD), Peter Jensen (PJ), Juan Dopazo (JDO), Domenic Denicola (DD), Daniel Ehrenberg (DE), Shu-yu Guo (SYG), JF Bastien (JFB), Keith Miller (KM), Michael Saboff (MS), Chris Hyle (CH), Alex Russell (AR), Brendan Eich (BE), Caridy Patino (CP), Diego Ferreiro Val (DFV), James Kyle (JK), Eric Ferraiuolo (EF), Mathias Bynens (MB), Istvan Sebestyen (IS), Mark Miller (MM), Cristian Mattarei (CMI), Brad Nelson (BNN), Jafar Husain (JH)</p>
+<a href="#5-report-from-the-ecma-secretariat"><h2 id="5-report-from-the-ecma-secretariat">5 Report from the Ecma Secretariat</h2></a><p>(Istvan Sebestyen)</p>
 <p>IS: ...</p>
 <p>(Istvan was speaking remotely, over a broken audio connection, so I have no idea what he was saying. Please fill in)
 (Link to slides please)</p>
@@ -23,8 +28,7 @@ AWB: Chairperson should probably not have major interest in the specification an
 <p>YK: Finding a good chair is not an emergency, in case we end up with a bad chair.</p>
 <p>AWB: We need a collective sense of urgency here.
 IS: What is also important that TC39 members think about what kind of chair / vice chair (that position is also open...) they would like to see for the next period. In the past 6 years we had a chair who was not an ECMAScript expert, so really neutral, but with the current new requirements maybe a chair with some strategic guidance would be good. This is really something TC39 should think about and decide.</p>
-<h2>6.i Meeting scheduling</h2>
-<p>DFV: Salesforce willing to host Jan, but NDA issue needs to be sorted.</p>
+<a href="#6i-meeting-scheduling"><h2 id="6i-meeting-scheduling">6.i Meeting scheduling</h2></a><p>DFV: Salesforce willing to host Jan, but NDA issue needs to be sorted.</p>
 <p>IS: This is the first time in my Ecma history that I am faced with an NDA issue. here Generally our meetings are Ecma meetings (hosted by somebody, but not somebody's meeting) that needs no NDA.
 Usually if such issues emerge, meeting participants can be requested e.g. not to walk around in the meeting bulding, but just to stay in the meeting room or the next lavatory.
 He offered to discuss the matter with Salesforce when he is back from the GA in December.</p>
@@ -60,15 +64,12 @@ Taking on an intellectual property obligation as a part of an open standards com
 <p><strong>March meeting changed to 21-23</strong></p>
 <p>DD: Jewish holidays surround Sep meeting.</p>
 <p>AWB: Resume discussion tomorrow. Ideally cities, at least hosts to be determined.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-84"><h4 id="conclusionresolution-84">Conclusion/Resolution</h4></a><ul>
 <li>March 21, 22, 23</li>
 </ul>
-<h2>4 Approval minutes from last meeting</h2>
-<p>IS has uploaded to Reflector.</p>
+<a href="#4-approval-minutes-from-last-meeting"><h2 id="4-approval-minutes-from-last-meeting">4 Approval minutes from last meeting</h2></a><p>IS has uploaded to Reflector.</p>
 <p>WH: Not ready to approve yet. Will read overnight.</p>
-<h2>13.ii.a SharedArrayBuffer</h2>
-<p>(Shu-Yu Guo)</p>
+<a href="#13iia-sharedarraybuffer"><h2 id="13iia-sharedarraybuffer">13.ii.a SharedArrayBuffer</h2></a><p>(Shu-Yu Guo)</p>
 <ul>
 <li><a href="https://tc39.github.io/ecmascript_sharedmem/shmem.html">Proposal</a></li>
 <li><a href="http://tc39.github.io/ecmascript_sharedmem/presentation-nov-2016.pdf">Slides</a></li>
@@ -76,23 +77,23 @@ Taking on an intellectual property obligation as a part of an open standards com
 <p>SYG: Goal: Advance SAB to Stage 3. We have already agreed on agents and the API, and are at Stage &quot;2.95&quot;. Since then, we revised the memory model to fix a bug from WH.</p>
 <p>SYG: The memory model should answer questions such as, is the following optimization valid? Probably not; it would be weird if this ever printed 0.</p>
 <p>Should we allow this optimisation?</p>
-<pre><code class="language-js">let x = U[0];
-if (x)
+<pre><code class="language-js"><span class="hljs-keyword">let</span> x = U[<span class="hljs-number">0</span>];
+<span class="hljs-keyword">if</span> (x)
   print(x);
 </code></pre>
 <p>To:</p>
-<pre><code class="language-js">if (U[0])
-  print(U[0]);
+<pre><code class="language-js"><span class="hljs-keyword">if</span> (U[<span class="hljs-number">0</span>])
+  print(U[<span class="hljs-number">0</span>]);
 </code></pre>
 <p>YK: How should this code be interpreted?</p>
 <p>(Committee: JS, or pseudocode, or imagine it's typed; whatever)</p>
 <p>SYG: What about</p>
-<pre><code class="language-js">while (U8[0] == 42);
+<pre><code class="language-js"><span class="hljs-keyword">while</span> (U8[<span class="hljs-number">0</span>] == <span class="hljs-number">42</span>);
 
 ===&gt;
 
-let c = U8[0] == 42;
-while (c);
+<span class="hljs-keyword">let</span> c = U8[<span class="hljs-number">0</span>] == <span class="hljs-number">42</span>;
+<span class="hljs-keyword">while</span> (c);
 </code></pre>
 <p>AWB: No</p>
 <p>WH: The answer is yes.</p>
@@ -152,17 +153,14 @@ SYG: Weak enough for hardware and compiler reality.</li>
 <p>BT: Do command-line runners have a way to open agents? Chakra does. This will be useful for me to make an eshost mechanism.</p>
 <p>AK: In d8, you can use new Worker()</p>
 <p>LH: Firefox has a shell function for creating agents, and a shell function for sharing memory between agents.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-85"><h4 id="conclusionresolution-85">Conclusion/Resolution</h4></a><ul>
 <li>Stage 3</li>
 <li>Intended to reach Stage 4 at the next meeting pending test262 tests; integration work can begin now.</li>
 </ul>
-<h2>10 Test262 update</h2>
-<p>(Leo Balter)</p>
+<a href="#10-test262-update"><h2 id="10-test262-update">10 Test262 update</h2></a><p>(Leo Balter)</p>
 <p>LB: Bocoup has a new contract with Google, so we will work on maintanence of test262, but this is a smaller contract, just a single day per week. We are looking for other partnerships to provide skilled work for the maintanence of test262 to fund its development.</p>
 <p>KG: I made a web-based test262 runner, which we hadn't had for a while. It loads from the repository, so it should only need updates for harness changes. <a href="https://bakkot.github.io/test262-web-runner/">https://bakkot.github.io/test262-web-runner/</a></p>
-<h2>12.ii.a. Proposal to reform the spec to solve Node.js ecosystem compatibility breaks w/ ES Modules</h2>
-<p>(Caridy Patino)</p>
+<a href="#12iia-proposal-to-reform-the-spec-to-solve-nodejs-ecosystem-compatibility-breaks-w-es-modules"><h2 id="12iia-proposal-to-reform-the-spec-to-solve-nodejs-ecosystem-compatibility-breaks-w-es-modules">12.ii.a. Proposal to reform the spec to solve Node.js ecosystem compatibility breaks w/ ES Modules</h2></a><p>(Caridy Patino)</p>
 <ul>
 <li><a href="https://docs.google.com/presentation/d/1EYOysPhgjXtgmuNoZ_wUCMElZ8GKLxJmCLeF0EvUXkc/edit#slide=id.p">Slides</a></li>
 <li><a href="https://github.com/caridy/proposal-dynamic-modules">Proposal</a></li>
@@ -234,12 +232,10 @@ SYG: Weak enough for hardware and compiler reality.</li>
 <p>DH: Node has already said that snapshotting is OK, so this is a big step forwards.</p>
 <p>DE: Are we still considering all three options?</p>
 <p>AK: Yes</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-86"><h4 id="conclusionresolution-86">Conclusion/Resolution</h4></a><ul>
 <li>Stage 1, champion Caridy Patino</li>
 </ul>
-<h2>12.iv.b LineTerminator normalization: implementation feedback for F.p.toString</h2>
-<p>(Michael Ficarra)
+<a href="#12ivb-lineterminator-normalization-implementation-feedback-for-fptostring"><h2 id="12ivb-lineterminator-normalization-implementation-feedback-for-fptostring">12.iv.b LineTerminator normalization: implementation feedback for F.p.toString</h2></a><p>(Michael Ficarra)
 <a href="https://github.com/tc39/Function-prototype-toString-revision/issues/19">https://github.com/tc39/Function-prototype-toString-revision/issues/19</a></p>
 <p>MF: Function.prototype.toString is supposed to maintain the source text, in the new version. Based on feedback from AWB, the current proposal normalizes all line terminators, consistent with template string literals. However, implementation feedback from Mozilla raised questions as to the cost of doing the normalization. Seems serious, should we reconsider normalization?  Normalization is on 2.b-c of <a href="https://tc39.github.io/Function-prototype-toString-revision/#sec-function.prototype.tostring">https://tc39.github.io/Function-prototype-toString-revision/#sec-function.prototype.tostring</a> .</p>
 <p>AWB: Template string literals normalize line endings so as to avoid changing the behavior of a program when run on different platforms.</p>
@@ -313,14 +309,12 @@ SYG: Weak enough for hardware and compiler reality.</li>
 <p>YK: Angular 1 calls Function.prototype.toString() functions which are dependency-injected in startup.</p>
 <p>KD: To clarify, if you care about performance, you should turn on build-time optimizations, though not everyone does.</p>
 <p>AK: I would recommend to the champion to discuss further with Waldemar about possible changes.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-87"><h4 id="conclusionresolution-87">Conclusion/Resolution</h4></a><ul>
 <li>There is no consensus to removing normalization, however four implementers have strong reservations about normalization.</li>
 <li>Champion will get usage data of CRLFs in scripts that require performant F.p.toString</li>
 <li>Champion will ask implementers for hard data about performance costs</li>
 </ul>
-<h2>13.v Progress report and request for comments on 64-bit int support</h2>
-<p>(Brendan Eich)</p>
+<a href="#13v-progress-report-and-request-for-comments-on-64-bit-int-support"><h2 id="13v-progress-report-and-request-for-comments-on-64-bit-int-support">13.v Progress report and request for comments on 64-bit int support</h2></a><p>(Brendan Eich)</p>
 <ul>
 <li><a href="https://github.com/BrendanEich/ecma262/tree/int64">Proposal</a></li>
 <li><a href="https://www.slideshare.net/BrendanEich/int64">Slides</a></li>
@@ -378,15 +372,13 @@ SYG: Weak enough for hardware and compiler reality.</li>
 <p>MS: I'd like to see Int32, and Float32, etc, it seems like a wart on the side. It would be great if we had proper types for all of these things, which would be a better way to do things for numbers that makes sense, e.g., for asm.js.</p>
 <p>BE: I'd like to keep it limited to just these for now. Scope creep is the enemy.</p>
 <p>WH: Historically, this is the right move; we have over the past 16 years created many int64 proposals that got expanded in scope and then collapsed under the increased weight. On the other hand, int32 is so similar to int64 that I'd like to just do it as well.</p>
-<h4>Conclusion / Resolution</h4>
-<ul>
+<a href="#conclusion--resolution-88"><h4 id="conclusion--resolution-88">Conclusion / Resolution</h4></a><ul>
 <li>specify overflow/underflow</li>
 <li>specify division by zero</li>
 <li>communicate with WebAssembly folks to make sure everyone's on the same page</li>
 <li>stage 1</li>
 </ul>
-<h2>12.iv.c RegExp lookbehind</h2>
-<p>(Daniel Ehrenberg)</p>
+<a href="#12ivc-regexp-lookbehind"><h2 id="12ivc-regexp-lookbehind">12.iv.c RegExp lookbehind</h2></a><p>(Daniel Ehrenberg)</p>
 <ul>
 <li><a href="https://github.com/littledan/es-regexp-lookbehind/blob/master/README.md">proposal</a></li>
 <li><a href="https://docs.google.com/presentation/d/1jOwKkqQGfRsPH6X9jWNqwMvRB9MbxWJ3NgD_s9jGyRk/edit#slide=id.g199589a01b_0_15">slides</a></li>
@@ -418,16 +410,14 @@ SYG: Weak enough for hardware and compiler reality.</li>
 <p>AWB: q about motivation</p>
 <p>DE: is this feature well motivated?</p>
 <p>Room: yes.</p>
-<h4>Conclusion / Resolution</h4>
-<ul>
+<a href="#conclusion--resolution-89"><h4 id="conclusion--resolution-89">Conclusion / Resolution</h4></a><ul>
 <li>Group capture numbering: not backwards</li>
 <li>Cross language comparison of regexp look behind syntax</li>
 <li>Include negated look ahead and look behind?</li>
 <li>Stage 1</li>
 <li>Stage 2</li>
 </ul>
-<h2>12.ii.f Intl.Segmenter</h2>
-<p>(Daniel Ehrenberg)</p>
+<a href="#12iif-intlsegmenter"><h2 id="12iif-intlsegmenter">12.ii.f Intl.Segmenter</h2></a><p>(Daniel Ehrenberg)</p>
 <ul>
 <li><a href="https://github.com/tc39/proposal-intl-segmenter">proposal</a></li>
 </ul>
@@ -467,12 +457,10 @@ A: Might need it, but very complicated and not analogous. Likely a different API
 <p>DE: not much to it, this proposal captures the need, makes more idiomatic.</p>
 <p>SM: Why was it added in V8 originally? That's a use case</p>
 <p>DE: Don't know the entire history?</p>
-<h4>Conclusion / Resolution</h4>
-<ul>
+<a href="#conclusion--resolution-90"><h4 id="conclusion--resolution-90">Conclusion / Resolution</h4></a><ul>
 <li>Stage 2</li>
 </ul>
-<h2>11.ii.a Revisit NaN Again!</h2>
-<ul>
+<a href="#11iia-revisit-nan-again"><h2 id="11iia-revisit-nan-again">11.ii.a Revisit NaN Again!</h2></a><ul>
 <li><a href="https://docs.google.com/presentation/d/1eqimbmVpMZET_5H9NacVkXGP2WNATg8bXWi3Ky2bsGo/edit#slide=id.p">slides</a></li>
 </ul>
 <p>Terminology:</p>
@@ -507,7 +495,8 @@ A: Might need it, but very complicated and not analogous. Likely a different API
 <p>(re-ask about risks, WH and MM?)</p>
 <p>DE: (explaining changes that eliminate information leak)</p>
 <p>MM: Add text to SetValueInBuffer to canonical</p>
-<h4>Conclusion / Resolution</h4>
-<ul>
+<a href="#conclusion--resolution-91"><h4 id="conclusion--resolution-91">Conclusion / Resolution</h4></a><ul>
 <li>Change SetValueInBuffer to allow set either a bit pattern or a particular canonical value. It can either canonicalize or <em>not</em> canonicalize.</li>
 </ul>
+
+</body>

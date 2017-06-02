@@ -1,17 +1,21 @@
 <!doctype html>
 <meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.6.0/github-markdown.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+
 <title>January 24, 2017 Meeting Notes</title>
-<h1>January 24, 2017 Meeting Notes</h1>
-<p>Allen Wirfs-Brock (AWB), Waldemar Horwat (WH), Jordan Harband (JHD), Brian Terlson (BT), Michael Ficarra (MF), Adam Klein (AK), Chip Morningstar (CM), Dave Herman (DH),  Kent C. Dodds (KCD), Kevin Gibbons (KG), Tim Disney (TD), Daniel Ehrenberg (DE), Shu-yu Guo (SYG), Michael Saboff (MS), James Kyle (JK), Franziska Hinkelmann (FH), Anna Henningsen (AH), John Lenz (JL), Sebastian Markbage (SM), Bradley Farias (BF), Jeff Morrison (JM), Tyler Kellen (TK), Gabriel Isenberg (GI), James Snell (JSL), Maggie Pint (MPT), Chris Hyle (CH), Gabriel Isenberg (GI), Bert Belder (BB), Zibi Braniecki (ZB), Jamund Ferguson (JXF), Mathias Bynens (MB), Leo Balter (LB), Istvan Sebestyen (IS)</p>
-<h2>Adopting the agenda</h2>
-<ul>
+<body class="markdown-body">
+<a href="#january-24-2017-meeting-notes"><h1 id="january-24-2017-meeting-notes">January 24, 2017 Meeting Notes</h1></a><p>Allen Wirfs-Brock (AWB), Waldemar Horwat (WH), Jordan Harband (JHD), Brian Terlson (BT), Michael Ficarra (MF), Adam Klein (AK), Chip Morningstar (CM), Dave Herman (DH),  Kent C. Dodds (KCD), Kevin Gibbons (KG), Tim Disney (TD), Daniel Ehrenberg (DE), Shu-yu Guo (SYG), Michael Saboff (MS), James Kyle (JK), Franziska Hinkelmann (FH), Anna Henningsen (AH), John Lenz (JL), Sebastian Markbage (SM), Bradley Farias (BF), Jeff Morrison (JM), Tyler Kellen (TK), Gabriel Isenberg (GI), James Snell (JSL), Maggie Pint (MPT), Chris Hyle (CH), Gabriel Isenberg (GI), Bert Belder (BB), Zibi Braniecki (ZB), Jamund Ferguson (JXF), Mathias Bynens (MB), Leo Balter (LB), Istvan Sebestyen (IS)</p>
+<a href="#adopting-the-agenda"><h2 id="adopting-the-agenda">Adopting the agenda</h2></a><ul>
 <li>Start with Istvan's items to get them out of the way</li>
 <li>Jeff Morrison more free on Tuesday, preferably</li>
 </ul>
 <p>AK: This may take less than three days.</p>
 <p>Adopted the agenda</p>
-<h2>Adopting the minutes</h2>
-<p>WH: Technical issues prevented us from approving the minutes: ECMA's web site is down. Their Pydio substitute has an invalid SSL certificate. If you ignore the errors and try to access it anyway, it runs scripts that time out.</p>
+<a href="#adopting-the-minutes"><h2 id="adopting-the-minutes">Adopting the minutes</h2></a><p>WH: Technical issues prevented us from approving the minutes: ECMA's web site is down. Their Pydio substitute has an invalid SSL certificate. If you ignore the errors and try to access it anyway, it runs scripts that time out.</p>
 <p>IS: No one has reported that back to us directly... We have also another substitute which is not yet announced. Allen has I think access codes. Maybe that one works better. Please try it, but not everybody at the same time ;-). It is only a substitute.</p>
 <p>JHD: Why not make the notes the official minutes?</p>
 <p>AWB: The notes are appended to the minutes, but there is more in the minutes.</p>
@@ -24,12 +28,10 @@
 <p>IS: We could upload the ECMA minutes on the GitHub to the TC39 Reflector part, would that help?</p>
 <p>WH: I was able to eventually somehow get the minutes.</p>
 <p>AWB: We'll send this around to get token votes; we can make a PDF of it</p>
-<h4>Side Discussion</h4>
-<p>WH: What's happening with es-discuss? I'm getting bounces.</p>
+<a href="#side-discussion"><h4 id="side-discussion">Side Discussion</h4></a><p>WH: What's happening with es-discuss? I'm getting bounces.</p>
 <p>AWB: The list administrators of this are Brendan Eich and myself. If someone else wants to be an administrator on that list, I am sure Brendan and I would be happy about that. There isn't a lot of work but occasionally something does come in.</p>
 <p>IS: I think this is an example for another TC39 tool, that was popular for a few years, and maybe now is slowly disappearing. It is a real challange for us, how to archive all this for long-term.</p>
-<h2>ECMA262 Status Updates--countdown to ES2017</h2>
-<p>(Brian Terlson)</p>
+<a href="#ecma262-status-updates--countdown-to-es2017"><h2 id="ecma262-status-updates--countdown-to-es2017">ECMA262 Status Updates--countdown to ES2017</h2></a><p>(Brian Terlson)</p>
 <p>BT: The key dates for our schedule are, at the end of this month, on the 31st, we will stop taking any normative updates besides bugfixes. we can fix bugs but we can't add features. Correct me if I'm wrong but the only proposal I'm aware of that is pushing for stage 4 is shared array buffers. Are there other proposals if I need to be tracking?</p>
 <p>DE: There may be some for 402</p>
 <p>AK: Do you mean big proposals, or do bugs count?</p>
@@ -83,9 +85,7 @@ From a practical standpoint this comes up at least once a month, I'm fighting ar
 <p>BT: That's everything for 262 tooling this year.</p>
 <p>AWB: Any decisions we need to make?</p>
 <p>BT: Yes, we have a decision to make about atomics and array buffer and some needs consensus PRs I'd like to discuss but not now. I'd like to do some socialization first. Minor stuff. Not on the critical path, to put it that way.</p>
-<h2><a href="https://github.com/tc39/ecma262/labels/needs%20consensus">Needs Consensus PRs</a></h2>
-<h3>Discussing <a href="https://github.com/tc39/ecma262/pull/767">tweak to module namespace objects</a></h3>
-<p>BT: I just want to talk to the people who know about this to see if it is still what they want. Basically, delete is lying. Basically, we just delegate to the ordinary delete when you're deleting symbols.</p>
+<a href="#needs-consensus-prs"><h2 id="needs-consensus-prs"><a href="https://github.com/tc39/ecma262/labels/needs%20consensus">Needs Consensus PRs</a></h2></a><a href="#discussing-tweak-to-module-namespace-objectshttpsgithubcomtc39ecma262pull767"><h3 id="discussing-tweak-to-module-namespace-objectshttpsgithubcomtc39ecma262pull767">Discussing <a href="https://github.com/tc39/ecma262/pull/767">tweak to module namespace objects</a></h3></a><p>BT: I just want to talk to the people who know about this to see if it is still what they want. Basically, delete is lying. Basically, we just delegate to the ordinary delete when you're deleting symbols.</p>
 <p>DH: Didn't we already talk about this?</p>
 <p>AK: Yes, this is a tweak and it turns out we didn't fix it entirely</p>
 <p>BT: This is the situation</p>
@@ -94,8 +94,7 @@ From a practical standpoint this comes up at least once a month, I'm fighting ar
 <p>AWS: This makes it align with an ordinary object. makes it look like a nonconfigurable property</p>
 <p>AK: Yeah, that's what I missed the last time</p>
 <p>BT: Anyone disagree with this change?</p>
-<h3>Discussing <a href="https://github.com/tc39/ecma262/pull/762">not calling super multiple times</a></h3>
-<p>BT: I can see how people would be nervous to make this change. The problem is that today, we actually print 'a' twice in this case.</p>
+<a href="#discussing-not-calling-super-multiple-timeshttpsgithubcomtc39ecma262pull762"><h3 id="discussing-not-calling-super-multiple-timeshttpsgithubcomtc39ecma262pull762">Discussing <a href="https://github.com/tc39/ecma262/pull/762">not calling super multiple times</a></h3></a><p>BT: I can see how people would be nervous to make this change. The problem is that today, we actually print 'a' twice in this case.</p>
 <p>??: This is nasty</p>
 <p>??: My concern about this is that it seems like a patch over a small... tries to reactivity something about initialization but there are all kinds of other cases that can come up.</p>
 <p>BT: Let me be clear here, the second super throws an error, always. But it does it AFTER calling the super constructor the second time</p>
@@ -223,13 +222,11 @@ After a second super call, an error will always be thrown, it'll be called, but 
 <p>BT: We still need to work on a few layering fixes #673 and #688, which we should leave for later</p>
 <p>DE: There's also some new timezone changes</p>
 <p>AWB: That's a fairly big semantic change; there are historical bug threads that we should look at for clarification.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-75"><h4 id="conclusionresolution-75">Conclusion/Resolution</h4></a><ul>
 <li>No change for ES2017</li>
 <li>Awaiting feedback from implementations about the difficulty of implementation of a static conservative check for possible multiple super calls</li>
 </ul>
-<h2>6.i Confirm logistics for March meeting</h2>
-<p>DH: We are confirmed for Portland for March 2017? We could put down a deposit for a venue in March 2018, if we can decide on that right now.</p>
+<a href="#6i-confirm-logistics-for-march-meeting"><h2 id="6i-confirm-logistics-for-march-meeting">6.i Confirm logistics for March meeting</h2></a><p>DH: We are confirmed for Portland for March 2017? We could put down a deposit for a venue in March 2018, if we can decide on that right now.</p>
 <p>BT: As far as I'm aware, i think it's just renaming it. Putting it in annex b. Maybe needs consensus is false on this (PR 673) actually. I'm not sure we actually got consensus on this one last time.</p>
 <p>DE: We also got a new pull request to clarify about timezones, but it's kind of new.</p>
 <p>BT: I don't want to mess with that right now.</p>
@@ -258,14 +255,12 @@ After a second super call, an error will always be thrown, it'll be called, but 
 <p>DH: I can't tell if you're joking!</p>
 <p>DE: How far in advance do you really need to do this?</p>
 <p>DH: Let me find out.</p>
-<h2>Scheduling aside</h2>
-<p>BT: Is Istvan calling in? I have urgent ISO plans to discuss</p>
+<a href="#scheduling-aside"><h2 id="scheduling-aside">Scheduling aside</h2></a><p>BT: Is Istvan calling in? I have urgent ISO plans to discuss</p>
 <p>AWB: The plan is a Thursday morning call. Someone suggested we do this tomorrow rather than Thursday because they think maybe we don't need to be here. We should decide that soon. We have the room for three days.</p>
 <p>BT: Should we say tomorrow for Istvan's update? I need to communicate that with Brendan.</p>
 <p>AWB: Is that so Brendan -won't- have to be here?</p>
 <p>BT: I won't claim to know! Dave, you have what you need?</p>
-<h2>13.i.f Seeking Stage 4 for SharedArrayBuffer</h2>
-<p>(Shu-Yu Guo)</p>
+<a href="#13if-seeking-stage-4-for-sharedarraybuffer"><h2 id="13if-seeking-stage-4-for-sharedarraybuffer">13.i.f Seeking Stage 4 for SharedArrayBuffer</h2></a><p>(Shu-Yu Guo)</p>
 <ul>
 <li><a href="https://github.com/tc39/ecma262/pull/769">spec PR</a></li>
 <li><a href="https://github.com/tc39/test262/pull/839">test262 PR</a></li>
@@ -281,13 +276,11 @@ After a second super call, an error will always be thrown, it'll be called, but 
 <p>DE: In this case, you're working with V8 to make sure the tests are compatible with the harness, so it should be especially not a problem.</p>
 <p>LB: I have been reviewing the tests. They seem to have reasonable coverage so far. About the harness support, this is not the first time that the harnesses are expected to provide functionality (also for TypedArray detach). As far as reviewed the PR, this has my +1.</p>
 <p>AWB: Any objections to Stage 4?</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-76"><h4 id="conclusionresolution-76">Conclusion/Resolution</h4></a><ul>
 <li>Stage 4 for SharedArrayBuffer! <em>applause</em></li>
 </ul>
 <p>AWB: And that's it for ES2017</p>
-<h2>Other time boxed items / Looking for stage 3 reviewers</h2>
-<p>DE: This is very short, I had a few proposals reach stage 2. I have not yet asked for stage 3 reviewers. Would anyone be willing to look?</p>
+<a href="#other-time-boxed-items--looking-for-stage-3-reviewers"><h2 id="other-time-boxed-items--looking-for-stage-3-reviewers">Other time boxed items / Looking for stage 3 reviewers</h2></a><p>DE: This is very short, I had a few proposals reach stage 2. I have not yet asked for stage 3 reviewers. Would anyone be willing to look?</p>
 <p>BT: I'll sign someone at MSFT to review.</p>
 <p>MF: I could be a reviewer</p>
 <p>WH: I have reviewed these already, would you like me to review again?</p>
@@ -295,8 +288,7 @@ After a second super call, an error will always be thrown, it'll be called, but 
 <p>JSL: Unicode properties or myself will take a look.</p>
 <p>DE: Great, the more the better!</p>
 <p>WH: I will look at any changes!</p>
-<h4>Conclusion/Resolution</h4>
-<p>Named reviewers for Stage 3</p>
+<a href="#conclusionresolution-77"><h4 id="conclusionresolution-77">Conclusion/Resolution</h4></a><p>Named reviewers for Stage 3</p>
 <ul>
 <li>RegExp lookbehind:
 <ul>
@@ -312,15 +304,13 @@ After a second super call, an error will always be thrown, it'll be called, but 
 <li>Waldemar Horwat</li>
 </ul></li>
 </ul>
-<h2>Scheduling aside</h2>
-<p>DH: Just a quick update, I did verify that this march is the week earlier, the 21st-23rd. I've corrected the date. I don't know if there is an incorrect date anywhere else, but if anyone sees this please fix it or let me know.</p>
+<a href="#scheduling-aside"><h2 id="scheduling-aside">Scheduling aside</h2></a><p>DH: Just a quick update, I did verify that this march is the week earlier, the 21st-23rd. I've corrected the date. I don't know if there is an incorrect date anywhere else, but if anyone sees this please fix it or let me know.</p>
 <p>AWB: Do you know yet where it is?</p>
 <p>DH: I can get more details. Obviously we'll fill out the agenda page.</p>
 <p>AWB: Just curious!</p>
 <p>MF: Did you say you've checked the previous agendas so ensure they don't conflict? I want to make sure nobody gets confused</p>
 <p>DH: Will check</p>
-<h2>13.i.b Discussion of some oddities around classes extending null</h2>
-<p>(Adam Klein)</p>
+<a href="#13ib-discussion-of-some-oddities-around-classes-extending-null"><h2 id="13ib-discussion-of-some-oddities-around-classes-extending-null">13.i.b Discussion of some oddities around classes extending null</h2></a><p>(Adam Klein)</p>
 <ul>
 <li><a href="https://docs.google.com/presentation/d/1makDPBGA3fo-jjOpjhD97_GqlKRQHvh9Mya-B2Spxng/edit#slide=id.p">slides</a></li>
 </ul>
@@ -399,13 +389,11 @@ After a second super call, an error will always be thrown, it'll be called, but 
 <p>AWB: This is all part of the January 2015 scramble and we missed a case there.</p>
 <p>DE: I'm happy with that whole change overall.</p>
 <p>AK: Okay, i'm 3x my timebox!</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-78"><h4 id="conclusionresolution-78">Conclusion/Resolution</h4></a><ul>
 <li>Revert the ES2017 change for now;</li>
 <li>AK to investigate a new solution for a follow-up spec change.</li>
 </ul>
-<h2>13.i.c Seeking stage-1 for Null Propagation Operator</h2>
-<p>(Gabriel Isenberg)</p>
+<a href="#13ic-seeking-stage-1-for-null-propagation-operator"><h2 id="13ic-seeking-stage-1-for-null-propagation-operator">13.i.c Seeking stage-1 for Null Propagation Operator</h2></a><p>(Gabriel Isenberg)</p>
 <ul>
 <li><a href="https://docs.google.com/presentation/d/11O_wIBBbZgE1bMVRJI8kGnmC6dWCBOwutbN9SWOK0fU/view#slide=id.p">slides</a></li>
 </ul>
@@ -466,8 +454,7 @@ After a second super call, an error will always be thrown, it'll be called, but 
 <p>GI: I will champion this in all forms</p>
 <p>AWB: Different threads went through different alternatives</p>
 <p>WH: I like it, but I don't want short-circuiting and free grouping.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-79"><h4 id="conclusionresolution-79">Conclusion/Resolution</h4></a><ul>
 <li>Stage 1, champion  for investigating the whole space, not tied down to the details of Claude's concrete proposal.</li>
 <li>Areas to investigate for next time:
 <ul>
@@ -478,8 +465,7 @@ After a second super call, an error will always be thrown, it'll be called, but 
 <li>Interaction with private state--included or not? See <a href="https://github.com/tc39/proposal-private-fields/issues/78">https://github.com/tc39/proposal-private-fields/issues/78</a></li>
 </ul></li>
 </ul>
-<h2>8. ECMA402 Status Updates</h2>
-<p>(Caridy Patino)</p>
+<a href="#8-ecma402-status-updates"><h2 id="8-ecma402-status-updates">8. ECMA402 Status Updates</h2></a><p>(Caridy Patino)</p>
 <p>CP, ZB:
 - Editorial changes
 - Legacy constructor compromise (ready to land in SpiderMonkey)
@@ -582,8 +568,7 @@ After a second super call, an error will always be thrown, it'll be called, but 
 <p>ZB: One other thing, we have an internal debate we haven't resolved yet. We have two option formats for datetimesformat. Does the community have an opinions on what looks more like JS?</p>
 <p>??: The single format style matches CSS, so that makes sense.</p>
 <p>ZB: Thanks for your time!</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-80"><h4 id="conclusionresolution-80">Conclusion/Resolution</h4></a><ul>
 <li>Stage 2 was proposed for these topics, but we didn't get an explcit &quot;yay&quot; or &quot;nay&quot; from the committee, and didn't appoint reviewers:
 <ul>
 <li>intl.ListFormat</li>
@@ -593,12 +578,11 @@ After a second super call, an error will always be thrown, it'll be called, but 
 <li>Stage 1 for the DateTimeFormat &quot;style&quot; option</li>
 <li>&quot;hourCycle&quot; can proceed as a needs-consensus pull request</li>
 </ul>
-<h2>13.i.e Discussion of Annex B.3.3.3 EvalDeclarationInstantiation overwriting bindings</h2>
-<p>(Shu-Yu Guo)</p>
+<a href="#13ie-discussion-of-annex-b333-evaldeclarationinstantiation-overwriting-bindings"><h2 id="13ie-discussion-of-annex-b333-evaldeclarationinstantiation-overwriting-bindings">13.i.e Discussion of Annex B.3.3.3 EvalDeclarationInstantiation overwriting bindings</h2></a><p>(Shu-Yu Guo)</p>
 <p><a href="https://github.com/tc39/ecma262/issues/753">https://github.com/tc39/ecma262/issues/753</a></p>
 <p>SYG: No browser is spec-compliant with this Andre Bargull test case. Reviewing the issue contents.</p>
-<pre><code>var f = &quot;x&quot;;
-eval(&quot;print(f); { function f(){} }&quot;)
+<pre><code><span class="hljs-keyword">var</span> f = <span class="hljs-string">"x"</span>;
+<span class="hljs-built_in">eval</span>(<span class="hljs-string">"print(f); { function f(){} }"</span>)
 </code></pre>
 <p>SYG: This should print undefined, based on calling CanDeclareglobalFunction followed by CreateGlobalFunctionBinding. This is a strange discontinuity</p>
 <p>AWB/BT: It's a bug.</p>
@@ -656,8 +640,7 @@ eval(&quot;print(f); { function f(){} }&quot;)
 <p>MF: The small mechanics around it can be resolved in a PR</p>
 <p>JL: Random question. There are no bugs around global properties here, right? So what, if you have window.f, what happens?</p>
 <p>SYG: I think the same thing happens. Properties of window are just like &quot;var f&quot; in the global scope</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-81"><h4 id="conclusionresolution-81">Conclusion/Resolution</h4></a><ul>
 <li>Consensus on new semantics to print &quot;x&quot;
 <ul>
 <li>This is a bug.</li>
@@ -666,8 +649,7 @@ eval(&quot;print(f); { function f(){} }&quot;)
 <li>To get in ES2017 (not too late, as this is a bug fix)</li>
 </ul></li>
 </ul>
-<h2>13.ii.b Function.prototype.toString updates</h2>
-<p>(Michael Ficarra)</p>
+<a href="#13iib-functionprototypetostring-updates"><h2 id="13iib-functionprototypetostring-updates">13.ii.b Function.prototype.toString updates</h2></a><p>(Michael Ficarra)</p>
 <p><a href="https://github.com/tc39/Function-prototype-toString-revision">proposal</a></p>
 <p>MF: I don't have materials or anything. I recently made changes to the stage 3 proposal. We discussed last time the line terminator normalization. This is a process that happens at the toString algo to replace all line terminators with a standard one. That was added as a part of this spec. No implementation actually does this. I remind you that the proposal's original intent was just to specify existing behavior. Sort of like an Annex B requirement. I've removed that normalization. I just want to make implementations aware of that. The reason I've done this is because I don't think it's valuable to try to specify something that all implementations have said they would not implement. We're just really trying to spec reality as closely as possible.</p>
 <p>AWB: Just to clarify. Not everything in this proposal toString is done by every implementation;</p>
@@ -687,18 +669,15 @@ eval(&quot;print(f); { function f(){} }&quot;)
 <p>WH: I raised the issue with the lack of normalization being user hostile, but if implementations are against normalization I'm not going to block the proposal.</p>
 <p>AWB: that's it!?</p>
 <p>MF: Yup :)</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-82"><h4 id="conclusionresolution-82">Conclusion/Resolution</h4></a><ul>
 <li>Proposal stays at Stage 3, going forward without line terminator normalization.</li>
 </ul>
-<h3>What to discuss next</h3>
-<p>DH: What's going oNNNN? The universe makes no sense anymore!</p>
+<a href="#what-to-discuss-next"><h3 id="what-to-discuss-next">What to discuss next</h3></a><p>DH: What's going oNNNN? The universe makes no sense anymore!</p>
 <p>AWB: If anyone has to wander off before 5, the intent is at the beginning of the meeting tomorrow is to handle all the non-technical issues we have remaining. In particular that includes the issues around diversity goals and code of conduct. If you're interested in those particular areas, the beginning of the meeting tomorrow, you'll want to be here.</p>
 <p>BT: Can we ask people to stick around for the CoC issue?</p>
 <p>AWB: I have done so!</p>
 <p>AWB: Capture groups?</p>
-<h2>13.ii.c Seeking Stage 2 for named capture groups</h2>
-<p>(Daniel Ehrenberg)</p>
+<a href="#13iic-seeking-stage-2-for-named-capture-groups"><h2 id="13iic-seeking-stage-2-for-named-capture-groups">13.ii.c Seeking Stage 2 for named capture groups</h2></a><p>(Daniel Ehrenberg)</p>
 <p><a href="https://docs.google.com/presentation/d/1fx5S4DpuD7z4K6ItFW7BjbvYPiuQNxU2769F5YhGP3o/edit#slide=id.p3">slides</a>
 <a href="https://github.com/tc39/proposal-regexp-named-groups">proposal</a></p>
 <p>DE: A quick overview of the feature: it allows you to access matched groups by a name in the match object.</p>
@@ -773,8 +752,7 @@ eval(&quot;print(f); { function f(){} }&quot;)
 <p>MS: It makes implementation very difficult. I have existing regexps, Unicode ones, named I'm going to go partially into, but if I'm not in Unicode mode, then this other behavior is invoked</p>
 <p>AWB: The biggest issue could be that you may be way at the end of a parse before you realize you need to change.</p>
 <p>DE: That's already going to be the case in some places. (NB: See related blog post <a href="https://hackernoon.com/the-madness-of-parsing-real-world-javascript-regexps-d9ee336df983#.kup9nqgd8">https://hackernoon.com/the-madness-of-parsing-real-world-javascript-regexps-d9ee336df983#.kup9nqgd8</a>)</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-83"><h4 id="conclusionresolution-83">Conclusion/Resolution</h4></a><ul>
 <li>Moves to stage two</li>
 <li>Groups are segregated into a separate object (to avoid conflicting with prototype changes)</li>
 <li>Reviewers: WH, someone from MSFT</li>
@@ -784,6 +762,7 @@ eval(&quot;print(f); { function f(){} }&quot;)
 <li>Tweaks to groups object (always present? include only properties for groups that are found?)</li>
 </ul></li>
 </ul>
-<h3></h3>
-<p>AWB: It sounds like we now have several regex related features to land in 2018. I think it would be beneficial for users to let them know about this theme.</p>
+<a href="#undefined"><h3 id="undefined"></h3></a><p>AWB: It sounds like we now have several regex related features to land in 2018. I think it would be beneficial for users to let them know about this theme.</p>
 <p>MB: <a href="https://mathiasbynens.be/notes/es-regexp-proposals">https://mathiasbynens.be/notes/es-regexp-proposals</a></p>
+
+</body>

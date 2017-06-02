@@ -1,20 +1,24 @@
 <!doctype html>
 <meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.6.0/github-markdown.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+
 <title>July 30 2014 Meeting Notes</title>
-<h1>July 30 2014 Meeting Notes</h1>
-<p>Brian Terlson (BT), Dmitry Lomov (DL), Waldemar Horwat (WH), Allen Wirfs-Brock (AWB), John Neumann (JN), Rick Waldron (RW), Eric Ferraiuolo (EF), Jafar Husain (JH), Jeff Morrison (JM), Mark Honenberg (MH), Caridy Patino (CP), Sebastian Markbage (SM), Istvan Sebestyen (IS), Erik Arvidsson (EA), Brendan Eich (BE), Mark Miller (MM), Sam Tobin-Hochstadt (STH), Domenic Denicola (DD), Peter Jensen (PJ), John McCutchan (JMC), Paul Leathers (PL), Eric Toth (ET), Abhijith Chatra (AC), Jaswanth Sreeram (JS), Yehuda Katz (YK), Dave Herman (DH), Brendan Eich (BE),</p>
-<h2>RFTG Admin: ES6 Opt-out period.</h2>
-<p>(Allen Wirfs-Brock)</p>
+<body class="markdown-body">
+<a href="#july-30-2014-meeting-notes"><h1 id="july-30-2014-meeting-notes">July 30 2014 Meeting Notes</h1></a><p>Brian Terlson (BT), Dmitry Lomov (DL), Waldemar Horwat (WH), Allen Wirfs-Brock (AWB), John Neumann (JN), Rick Waldron (RW), Eric Ferraiuolo (EF), Jafar Husain (JH), Jeff Morrison (JM), Mark Honenberg (MH), Caridy Patino (CP), Sebastian Markbage (SM), Istvan Sebestyen (IS), Erik Arvidsson (EA), Brendan Eich (BE), Mark Miller (MM), Sam Tobin-Hochstadt (STH), Domenic Denicola (DD), Peter Jensen (PJ), John McCutchan (JMC), Paul Leathers (PL), Eric Toth (ET), Abhijith Chatra (AC), Jaswanth Sreeram (JS), Yehuda Katz (YK), Dave Herman (DH), Brendan Eich (BE),</p>
+<a href="#rftg-admin-es6-opt-out-period"><h2 id="rftg-admin-es6-opt-out-period">RFTG Admin: ES6 Opt-out period.</h2></a><p>(Allen Wirfs-Brock)</p>
 <p><a href="https://github.com/rwaldron/tc39-notes/blob/master/es6/2014-07/ecma-262-6-optout1.pdf">https://github.com/rwaldron/tc39-notes/blob/master/es6/2014-07/ecma-262-6-optout1.pdf</a></p>
 <p>AWB: This is the opt-out period: Aug. 11, 2014 - Oct. 11, 2014</p>
 <p>Final opt-out window: March 16, 2015 - May 18, 2015</p>
 <p>Read the policy, speak with Istvan Sebestyen for further information.</p>
 <p>The opt-out version of the spec is: ECMA-262 6th Edition, revision 26, document: tc39/2014/031</p>
-<h2>4.4 Instantiation Reform (Review @@create design rationale and possible alternatives)</h2>
-<p>(Mark Miller, Allen Wirfs-Brock, Dmitry Lomov, Tom Van Cutsem. Based on Claude Pache proposal )</p>
+<a href="#44-instantiation-reform-review-create-design-rationale-and-possible-alternatives"><h2 id="44-instantiation-reform-review-create-design-rationale-and-possible-alternatives">4.4 Instantiation Reform (Review @@create design rationale and possible alternatives)</h2></a><p>(Mark Miller, Allen Wirfs-Brock, Dmitry Lomov, Tom Van Cutsem. Based on Claude Pache proposal )</p>
 <p><a href="https://github.com/rwaldron/tc39-notes/blob/master/es6/2014-07/instantiation-reform.pdf">https://github.com/rwaldron/tc39-notes/blob/master/es6/2014-07/instantiation-reform.pdf</a></p>
 <p>AWB: Currently:</p>
-<pre><code class="language-js">new Foo(arg)
+<pre><code class="language-js"><span class="hljs-keyword">new</span> Foo(arg)
 </code></pre>
 <ol>
 <li><code>Foo[[Construct]](arg)</code> ::=</li>
@@ -80,18 +84,18 @@ Avoid un (or partially) initialized exotics</p>
 ES6 class compat (aside from @@create)
 Reliable test for &quot;am i called as a constructor?&quot;
 Support base-creates-proxy scenario</p>
-<pre><code class="language-js">class Derived extends Base {
-  constructor() {
-    // TDZ this, on &quot;new Derived...&quot; etc.
-    super(...otherArgs); // this = what super returns
-    // this is initialized.
+<pre><code class="language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Derived</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Base</span> </span>{
+  <span class="hljs-keyword">constructor</span>() {
+    <span class="hljs-comment">// TDZ this, on "new Derived..." etc.</span>
+    <span class="hljs-keyword">super</span>(...otherArgs); <span class="hljs-comment">// this = what super returns</span>
+    <span class="hljs-comment">// this is initialized.</span>
   }    
 }
 
-// 
+<span class="hljs-comment">// </span>
 
-function Base(...otherArgs) {
-  // implicit this = Object.create(mostDerived.prototype, {});
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Base</span>(<span class="hljs-params">...otherArgs</span>) </span>{
+  <span class="hljs-comment">// implicit this = Object.create(mostDerived.prototype, {});</span>
 }
 </code></pre>
 <p>AWB: The <code>super()</code> call is calling the super class constructor as a <em>constructor</em> when <code>new Derived()</code>—that's important.</p>
@@ -146,9 +150,9 @@ function Base(...otherArgs) {
 <p>BE: Lose the static analysis of <code>super(</code> (right paren intentionall omitted)</p>
 <p>MM:</p>
 <p><strong>[[Call]] Traps</strong></p>
-<pre><code>F(...args) -&gt; F.[[Call]](undefined, args)
+<pre><code>F(...args) -&gt; F.[<span class="hljs-string">[Call</span>]](undefined, args)
 
-Derive.[[Call]](const this, args)
+Derive.[<span class="hljs-string">[Call</span>]](const this, args)
   super(...other) -&gt; super.special_name(...other)
 </code></pre>
 <p>WH: What is the special name?</p>
@@ -157,40 +161,40 @@ Derive.[[Call]](const this, args)
 <p>AWB: methods that ref super are bound to an object where the super ref takes place. that binding is the current inst. two bound values object where look up starts and the method name.</p>
 <p>MM:</p>
 <p><strong>[[Construct]] Traps</strong></p>
-<pre><code>new F(...args) -&gt; F.[[Construct]](args, F)
+<pre><code>new F(...args) -&gt; F.[<span class="hljs-string">[Construct</span>]](args, F)
 
-Base.[[Construct]](rcvr, args)
-  entry -&gt; const this = [[Create]](rcvr.prototype)
+Base.[<span class="hljs-string">[Construct</span>]](rcvr, args)
+  entry -&gt; const this = [<span class="hljs-string">[Create</span>]](rcvr.prototype)
 
-Derive.[[Construct]](args, rcvr)
+Derive.[<span class="hljs-string">[Construct</span>]](args, rcvr)
   entry -&gt; TDZ this
-  super(...other) -&gt; const this = super.[[Construct]](other, rcvr)
+  super(...other) -&gt; const this = super.[<span class="hljs-string">[Construct</span>]](other, rcvr)
 </code></pre>
 <p><strong>Remaining Requirements</strong></p>
 <p>Am I called as a constructor?</p>
 <p>What is the original's constructor's prototype?</p>
 <p>How do I provide alternate instance to the subclasses?</p>
 <p><strong>Am I called as a constructor?</strong></p>
-<pre><code class="language-js">function F(...other) {         
-  let constructing = false;
-  try { this; } catch(_) { constructing = true; }         
-  super(..);
+<pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">F</span>(<span class="hljs-params">...other</span>) </span>{         
+  <span class="hljs-keyword">let</span> constructing = <span class="hljs-literal">false</span>;
+  <span class="hljs-keyword">try</span> { <span class="hljs-keyword">this</span>; } <span class="hljs-keyword">catch</span>(_) { constructing = <span class="hljs-literal">true</span>; }         
+  <span class="hljs-keyword">super</span>(..);
 }
 </code></pre>
 <p><strong>Base instantiates proxy scenario</strong></p>
-<pre><code class="language-js">function Base(...other) {
-  return new Proxy(... this.prototype ...);
+<pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Base</span>(<span class="hljs-params">...other</span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Proxy</span>(... this.prototype ...);
 }  
 </code></pre>
 <p><strong>Kill two birds with &quot;new&quot;</strong></p>
-<pre><code class="language-js">function Date() {
-  let now = $$GetSystemTime();
-  if (new*) {
-    let obj = Object.create(new*.prototype);
-    // obj@now = now; // private “now” state
-    return obj;
-  } else {
-    return ToTimeString(now);
+<pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Date</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">let</span> now = $$GetSystemTime();
+  <span class="hljs-keyword">if</span> (<span class="hljs-keyword">new</span>*) {
+    <span class="hljs-keyword">let</span> obj = <span class="hljs-built_in">Object</span>.create(<span class="hljs-keyword">new</span>*.prototype);
+    <span class="hljs-comment">// obj@now = now; // private “now” state</span>
+    <span class="hljs-keyword">return</span> obj;
+  } <span class="hljs-keyword">else</span> {
+    <span class="hljs-keyword">return</span> ToTimeString(now);
   }
 }
 </code></pre>
@@ -223,8 +227,7 @@ Derive.[[Construct]](args, rcvr)
 <p>MM: The direction I've presented is what I prefer. What I'm <em>actually</em> proposing is that we allow Allen to be the champion and work out the details remaining. Objection?</p>
 <p>None.</p>
 <p>BE: No objection, but I want to make sure Allen works with YK, JM and Boris Zbarsky</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-402"><h4 id="conclusionresolution-402">Conclusion/Resolution</h4></a><ul>
 <li>Agreement to MM proposal: Allen to be the champion and work out the details remaining</li>
 </ul>
 <p>(This did not gain <em>final</em> consensus, as follow up was necessary)</p>
@@ -247,8 +250,7 @@ If it's state that does need to know about, what the channel? Seems very tenuous
 <p>AWB: The fallback is that we just keep what we have.</p>
 <p>DD: Worried about @@create, that it won't be possible to subclass because there is negative feedback</p>
 <p>MM: Break on this discussion until JM has adequate examples.</p>
-<h2>5.2 SIMD.JS</h2>
-<p>(Peter Jensen and John McCutchan)</p>
+<a href="#52-simdjs"><h2 id="52-simdjs">5.2 SIMD.JS</h2></a><p>(Peter Jensen and John McCutchan)</p>
 <p><a href="https://github.com/rwaldron/tc39-notes/blob/master/es6/2014-07/simd-128-tc39.pdf">https://github.com/rwaldron/tc39-notes/blob/master/es6/2014-07/simd-128-tc39.pdf</a></p>
 <p>Other slides: <a href="https://peterjensen.github.io/html5-simd/html5-simd.html#/">https://peterjensen.github.io/html5-simd/html5-simd.html#/</a></p>
 <p>JMC: (introducing SIMD, Single Instruction Multiple Data)</p>
@@ -301,9 +303,9 @@ Float64x2Array, array of float64x2</p>
 -&gt; add, sub, ...</p>
 <p>DH: Introduce new value types, but does not depend on user created value types</p>
 <p>JMC: Examples...</p>
-<pre><code class="language-js">var a = SIMD.float32x4(1.0, 2.0, 3.0, 4.0);
+<pre><code class="language-js"><span class="hljs-keyword">var</span> a = SIMD.float32x4(<span class="hljs-number">1.0</span>, <span class="hljs-number">2.0</span>, <span class="hljs-number">3.0</span>, <span class="hljs-number">4.0</span>);
 
-var b = SIMD.float32x4.zero();
+<span class="hljs-keyword">var</span> b = SIMD.float32x4.zero();
 </code></pre>
 <p>MM: Why is zero() a function instead of a constant?</p>
 <p>JMC: It could be a constant.</p>
@@ -439,26 +441,24 @@ DH &amp; JMC: overloading operators is ok, no lifitng or implict conversions</p>
 </ul>
 <p>AWB/DH: (clarification of coupling and timing issue)</p>
 <p>DH: Needs to be the same semantics as value types, if we ship this sooner and learn that we made a wrong call, then we have to deal with deciding whether or not we apply the mistake or break with SIMD.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-403"><h4 id="conclusionresolution-403">Conclusion/Resolution</h4></a><ul>
 <li>Moves to stage 1</li>
 </ul>
-<h2>4.3 Function parameter/let declaration name conflict rules</h2>
-<p>(Allen Wirfs-Brock)</p>
+<a href="#43-function-parameterlet-declaration-name-conflict-rules"><h2 id="43-function-parameterlet-declaration-name-conflict-rules">4.3 Function parameter/let declaration name conflict rules</h2></a><p>(Allen Wirfs-Brock)</p>
 <p><a href="https://github.com/rwaldron/tc39-notes/blob/master/es6/2014-07/parameter-scoping-7-14.pdf">https://github.com/rwaldron/tc39-notes/blob/master/es6/2014-07/parameter-scoping-7-14.pdf</a></p>
 <p>Current spec, Controversial:</p>
-<pre><code class="language-js">function(x) {
-  var x;
-  let x; // early error    
+<pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">x</span>) </span>{
+  <span class="hljs-keyword">var</span> x;
+  <span class="hljs-keyword">let</span> x; <span class="hljs-comment">// early error    </span>
 }
 
-function(x) {
-  let x; // early error    &lt;--------
+<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">x</span>) </span>{
+  <span class="hljs-keyword">let</span> x; <span class="hljs-comment">// early error    &lt;--------</span>
 }    
 
-try {
-} catch(x) {
-  let x; // early error    &lt;--------
+<span class="hljs-keyword">try</span> {
+} <span class="hljs-keyword">catch</span>(x) {
+  <span class="hljs-keyword">let</span> x; <span class="hljs-comment">// early error    &lt;--------</span>
 }
 </code></pre>
 <p>AWB: Andreas wants consistent handling</p>
@@ -475,7 +475,7 @@ try {
 <p>STH: This isn't a language issue, it's a non-semantics preserving change.</p>
 <p>DL: (on behalf of Andreas)</p>
 <p>For Do-Expressions:</p>
-<pre><code class="language-js">() =&gt; {} = () =&gt; do {}
+<pre><code class="language-js">() =&gt; {} = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-keyword">do</span> {}
 </code></pre>
 <p>DH: Doesn't hold b/c left is statement body, right is expression body, not equivalent.</p>
 <p>AWB: (revisting decisions about duplicate declarations in same contour)</p>
@@ -509,13 +509,11 @@ try {
 <ul>
 <li>We want the error.</li>
 </ul>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-404"><h4 id="conclusionresolution-404">Conclusion/Resolution</h4></a><ul>
 <li>Status Quo</li>
 <li>DDWIDM: &quot;Don't Do What I Didn't Mean&quot;</li>
 </ul>
-<h2>4.7 Revisit Comprehension decision from last meeting.</h2>
-<p>(Allen Wirfs-Brock)</p>
+<a href="#47-revisit-comprehension-decision-from-last-meeting"><h2 id="47-revisit-comprehension-decision-from-last-meeting">4.7 Revisit Comprehension decision from last meeting.</h2></a><p>(Allen Wirfs-Brock)</p>
 <p>AWB: There are a lot of TC members and non-members concerned that this was not a wise decision and that we should revisit. Included link to Andy Wingo</p>
 <p>RW: if I had been here at the last meeting I would've objected to the removal, but as I told Dave offline, I trust him and his plans for syntax unification. I just wanted to see progress in that regard.</p>
 <p>BE: I want to say: I was the champion for years, but letting go. I want to see the comprehensions laziness addressed.</p>
@@ -554,8 +552,7 @@ try {
 <p>BE: who will own explaining to Andy Wingo and es-discuss?</p>
 <p>DH: I will</p>
 <p>BE: &quot;You keep what you kill&quot; - Richard P. Riddick</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-405"><h4 id="conclusionresolution-405">Conclusion/Resolution</h4></a><ul>
 <li>Add a prototype for iterators, but do not expose a global Iterator constructor for ES6 (leave that for ES7)
 <ul>
 <li>Between Object prototype and Generator prototype</li>
@@ -563,16 +560,15 @@ try {
 </ul></li>
 <li>Comprehensions in general deferred to ES7</li>
 </ul>
-<h2>4.12 Revisit spread and destructuring of string</h2>
-<p>(Erik Arvidsson , Brendan Eich)</p>
+<a href="#412-revisit-spread-and-destructuring-of-string"><h2 id="412-revisit-spread-and-destructuring-of-string">4.12 Revisit spread and destructuring of string</h2></a><p>(Erik Arvidsson , Brendan Eich)</p>
 <p>EA: We're using ToObject in spread and all other iterable forms. Should we do the same for destructuring?</p>
 <ul>
 <li>This would allow destructuring strings and other non-objects.</li>
 </ul>
-<pre><code class="language-js">// Should allow: 
-let [first, ...rest] = &quot;foo&quot;;
-first; // &quot;f&quot;
-rest;  // [&quot;o&quot;, &quot;o&quot;]
+<pre><code class="language-js"><span class="hljs-comment">// Should allow: </span>
+<span class="hljs-keyword">let</span> [first, ...rest] = <span class="hljs-string">"foo"</span>;
+first; <span class="hljs-comment">// "f"</span>
+rest;  <span class="hljs-comment">// ["o", "o"]</span>
 </code></pre>
 <p>STH: ToObject breaks pattern matching because you couldn't match on a number.</p>
 <p>YK: But we agreed to a future irrefutible matching, which would be the basis of pattern matching.</p>
@@ -585,12 +581,10 @@ rest;  // [&quot;o&quot;, &quot;o&quot;]
 <p>YK: (to Sam) Do you think it will it should fail for strings to destructure?</p>
 <p>More discussion of pattern matching.</p>
 <p>DH, BE: match must mean a different pattern language, ships have sailed for destructuring and implicit ToObject</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-406"><h4 id="conclusionresolution-406">Conclusion/Resolution</h4></a><ul>
 <li>Destructuring does ToObject</li>
 </ul>
-<h2>4.5 Import-into-namespace syntax (Dave)</h2>
-<p>(Dave Herman)</p>
+<a href="#45-import-into-namespace-syntax-dave"><h2 id="45-import-into-namespace-syntax-dave">4.5 Import-into-namespace syntax (Dave)</h2></a><p>(Dave Herman)</p>
 <p>request slides</p>
 <p>DH: (recapping the last meeting and the findings of the breakout group; and the fall out)</p>
 <p>DH:</p>
@@ -609,7 +603,7 @@ rest;  // [&quot;o&quot;, &quot;o&quot;]
 </ul></li>
 <li><p>What is the dynamic analog of relative import?</p></li>
 </ul>
-<pre><code class="language-js">import helper from &quot;./helper&quot;;
+<pre><code class="language-js"><span class="hljs-keyword">import</span> helper <span class="hljs-keyword">from</span> <span class="hljs-string">"./helper"</span>;
 </code></pre>
 <p><strong>Module Context 2</strong></p>
 <ul>
@@ -626,12 +620,12 @@ rest;  // [&quot;o&quot;, &quot;o&quot;]
 <ul>
 <li>Relative import:</li>
 </ul>
-<pre><code class="language-js">this.import(&quot;./helper&quot;).then(...);
+<pre><code class="language-js"><span class="hljs-keyword">this</span>.import(<span class="hljs-string">"./helper"</span>).then(...);
 </code></pre>
 <ul>
 <li>Space for host-specific contextual metadata:</li>
 </ul>
-<pre><code class="language-js">this.filename
+<pre><code class="language-js"><span class="hljs-keyword">this</span>.filename
 </code></pre>
 <p>(This is where platforms can put its host properties and objects)</p>
 <ul>
@@ -646,17 +640,16 @@ rest;  // [&quot;o&quot;, &quot;o&quot;]
 <p>YK: if you says it's module context, you have to say how it got that value</p>
 <p>DH: No new scoping rules. This construct just implicitly binds something.</p>
 <p>AWB:</p>
-<pre><code class="language-js">import filename from this;
-// which basically: import filename from here;
+<pre><code class="language-js"><span class="hljs-keyword">import</span> filename <span class="hljs-keyword">from</span> <span class="hljs-keyword">this</span>;
+<span class="hljs-comment">// which basically: import filename from here;</span>
 </code></pre>
 <p>DD: Like this for relative</p>
 <p>DH: Completely amenable to this</p>
 <p>YK:</p>
-<pre><code class="language-js">import * as me from here;
-me.import; // `me` is the context object
+<pre><code class="language-js"><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> me <span class="hljs-keyword">from</span> here;
+me.import; <span class="hljs-comment">// `me` is the context object</span>
 </code></pre>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-407"><h4 id="conclusionresolution-407">Conclusion/Resolution</h4></a><ul>
 <li>the api is right direction</li>
 <li>each module gets its own version of that object</li>
 <li>need some sort of access to the module contextual object</li>
@@ -665,3 +658,5 @@ me.import; // `me` is the context object
 </ul>
 <p>&quot;Then, during the Third Reconciliation of the Last of the Meketrex Supplicants, they chose a new form for him, that of a giant Sloar! Many Shubs and Zulls knew what it was to be roasted in the depths of a Sloar that day, I can tell you!&quot;
 ―Vinz Clortho[src]</p>
+
+</body>

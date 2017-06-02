@@ -1,59 +1,64 @@
 <!doctype html>
 <meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.6.0/github-markdown.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+
 <title>Sept 23 2015 Meeting Notes</title>
-<h1>Sept 23 2015 Meeting Notes</h1>
-<p>Allen Wirfs-Brock (AWB), Sebastian Markbage (SM), Jafar Husain (JH), Eric Farriauolo (EF), Caridy Patino (CP), Mark Miller (MM), Adam Klein (AK), Michael Ficarra (MF), Peter Jensen (PJ), Domenic Denicola (DD), Jordan Harband (JHD), Chip Morningstar (CM), Brian Terlson (BT), John Neumann  (JN), Dave Herman (DH), Brendan Eich (BE), Rick Waldron (RW), Yehuda Katz (YK), Jeff Morrison (JM), Lee Byron (LB), Daniel Ehrenberg (DE), Ben Smith (BS), Lars Hansen (LHN), Nagy Hostafa (NH), Michael Saboff (MS), John Buchanan (JB), Gorkem Yakin (GY), Stefan Penner (SP)</p>
-<h2>5.5 Decorators Update</h2>
-<p>(Yehuda Katz)</p>
+<body class="markdown-body">
+<a href="#sept-23-2015-meeting-notes"><h1 id="sept-23-2015-meeting-notes">Sept 23 2015 Meeting Notes</h1></a><p>Allen Wirfs-Brock (AWB), Sebastian Markbage (SM), Jafar Husain (JH), Eric Farriauolo (EF), Caridy Patino (CP), Mark Miller (MM), Adam Klein (AK), Michael Ficarra (MF), Peter Jensen (PJ), Domenic Denicola (DD), Jordan Harband (JHD), Chip Morningstar (CM), Brian Terlson (BT), John Neumann  (JN), Dave Herman (DH), Brendan Eich (BE), Rick Waldron (RW), Yehuda Katz (YK), Jeff Morrison (JM), Lee Byron (LB), Daniel Ehrenberg (DE), Ben Smith (BS), Lars Hansen (LHN), Nagy Hostafa (NH), Michael Saboff (MS), John Buchanan (JB), Gorkem Yakin (GY), Stefan Penner (SP)</p>
+<a href="#55-decorators-update"><h2 id="55-decorators-update">5.5 Decorators Update</h2></a><p>(Yehuda Katz)</p>
 <p><a href="https://github.com/wycats/javascript-decorators/tree/big-picture">https://github.com/wycats/javascript-decorators/tree/big-picture</a></p>
 <p>YK: Consider this an exploration in several cross cutting features that are in development.</p>
 <p>Starting at <a href="https://github.com/wycats/javascript-decorators/blob/big-picture/interop/reusability.md#usage-with-property-declarations-in-javascript">https://github.com/wycats/javascript-decorators/blob/big-picture/interop/reusability.md#usage-with-property-declarations-in-javascript</a></p>
-<pre><code class="language-js">class Person {
-  @reader _first = &quot;Andreas&quot;;
-  @reader _last = &quot;Rossberg&quot;;
+<pre><code class="language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span> </span>{
+  @reader _first = <span class="hljs-string">"Andreas"</span>;
+  @reader _last = <span class="hljs-string">"Rossberg"</span>;
 }
 
-let andreas = new Person();
-andreas.first // &quot;Andreas&quot;
-andreas.last // &quot;Rossberg&quot;
+<span class="hljs-keyword">let</span> andreas = <span class="hljs-keyword">new</span> Person();
+andreas.first <span class="hljs-comment">// "Andreas"</span>
+andreas.last <span class="hljs-comment">// "Rossberg"</span>
 </code></pre>
 <p>The <code>@reader</code> decorator has created the getters for <code>first</code> and <code>last</code>. ie.</p>
-<pre><code class="language-js">class Person {
-  @reader _first = &quot;Andreas&quot;;
-  @reader _last = &quot;Rossberg&quot;;
+<pre><code class="language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span> </span>{
+  @reader _first = <span class="hljs-string">"Andreas"</span>;
+  @reader _last = <span class="hljs-string">"Rossberg"</span>;
 }
 
-// Actually produces...
+<span class="hljs-comment">// Actually produces...</span>
 
-class Person {
-  _first = &quot;Andreas&quot;;
-  _last = &quot;Rossberg&quot;;
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span> </span>{
+  _first = <span class="hljs-string">"Andreas"</span>;
+  _last = <span class="hljs-string">"Rossberg"</span>;
 
-  get first() { return this._first; }
-  get last() { return this._last; }
+  get first() { <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>._first; }
+  get last() { <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>._last; }
 }
 </code></pre>
 <p>Assume <code>@reader</code> is defined as:</p>
-<pre><code class="language-js">function reader(target, descriptor) {
-  let { enumerable, configurable, property: { name, get }, hint } = descriptor;
+<pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">reader</span>(<span class="hljs-params">target, descriptor</span>) </span>{
+  <span class="hljs-keyword">let</span> { enumerable, configurable, <span class="hljs-attr">property</span>: { name, get }, hint } = descriptor;
 
-  // extractPublicName('_first') === 'first'
-  let publicName = extractPublicName(name() /* extract computed property */);
+  <span class="hljs-comment">// extractPublicName('_first') === 'first'</span>
+  <span class="hljs-keyword">let</span> publicName = extractPublicName(name() <span class="hljs-comment">/* extract computed property */</span>);
 
-  // define a public accessor: get first() { return this._first; }
-  Object.defineProperty(target, publicName, {
-    // give the public reader the same enumerability and configurability
-    // as the property it's decorating
-    enumerable, configurable, get: function() { return get(this, name); }
+  <span class="hljs-comment">// define a public accessor: get first() { return this._first; }</span>
+  <span class="hljs-built_in">Object</span>.defineProperty(target, publicName, {
+    <span class="hljs-comment">// give the public reader the same enumerability and configurability</span>
+    <span class="hljs-comment">// as the property it's decorating</span>
+    enumerable, configurable, <span class="hljs-attr">get</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{ <span class="hljs-keyword">return</span> get(<span class="hljs-keyword">this</span>, name); }
   });
 }
 
-function extractPublicName(name) {
-  // Symbol(first) -&gt; first
-  if (typeof name === 'symbol') return String(name).slice(7, -1);
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">extractPublicName</span>(<span class="hljs-params">name</span>) </span>{
+  <span class="hljs-comment">// Symbol(first) -&gt; first</span>
+  <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> name === <span class="hljs-string">'symbol'</span>) <span class="hljs-keyword">return</span> <span class="hljs-built_in">String</span>(name).slice(<span class="hljs-number">7</span>, <span class="hljs-number">-1</span>);
 
-  // _first -&gt; first
-  return name.slice(1);
+  <span class="hljs-comment">// _first -&gt; first</span>
+  <span class="hljs-keyword">return</span> name.slice(<span class="hljs-number">1</span>);
 }
 </code></pre>
 <p>AWB: How is <code>super</code> treated, when encountered?</p>
@@ -89,7 +94,7 @@ function extractPublicName(name) {
 <p>YK: simplest solution is to say that you have to type @reader _first: undefined directly</p>
 <p>YK: but my suggestion is to allow decorator to decide</p>
 <p>(describing how the motivating example would look in MM's syntax)</p>
-<pre><code class="language-js">public @reader this._first = first;
+<pre><code class="language-js">public @reader <span class="hljs-keyword">this</span>._first = first;
 </code></pre>
 <p>YK: feel less strongly about how in-constructor declaration is bad. Moving @reader to the right of public</p>
 <p>DH: I don't think that's the issue. more important that properties are at the toplevel of class</p>
@@ -161,12 +166,12 @@ AWB recalls ARB's V8 self-hosted JS has private slots, want them to pack in inst
 <li>Where does decorator go? It's clear with class and object literal, not with function decl.</li>
 </ul>
 <p>AWB: TDZ?</p>
-<pre><code class="language-js">// TDZ on access vs invocation
+<pre><code class="language-js"><span class="hljs-comment">// TDZ on access vs invocation</span>
 
-addEventListener(&quot;error&quot;, onerror);
+addEventListener(<span class="hljs-string">"error"</span>, onerror);
 
-@metadata(&quot;foo&quot;);
-function onerror(...args) {
+@metadata(<span class="hljs-string">"foo"</span>);
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">onerror</span>(<span class="hljs-params">...args</span>) </span>{
     
 }
 </code></pre>
@@ -213,12 +218,10 @@ function onerror(...args) {
 <li>Decorators</li>
 <li>Decoratable object literal properties</li>
 </ul>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-278"><h4 id="conclusionresolution-278">Conclusion/Resolution</h4></a><ul>
 <li>Remains at Stage 1 with all changes presented</li>
 </ul>
-<h2>5.3 Async Functions</h2>
-<p>(Brian Terlson)</p>
+<a href="#53-async-functions"><h2 id="53-async-functions">5.3 Async Functions</h2></a><p>(Brian Terlson)</p>
 <p>BT: Stage 3 proposal?</p>
 <ul>
 <li>Waldemar has reviewed, changes in place.</li>
@@ -229,28 +232,28 @@ function onerror(...args) {
 <p>BT: Can write async that assumes some finalization, that might not happen.</p>
 <p>YK: In the absence of cancelation, if there are no upstream promises to reject...</p>
 <p>DD:</p>
-<pre><code class="language-js">async function foo() {
+<pre><code class="language-js"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>) </span>{
   setup();    
-  await delay(5000);
+  <span class="hljs-keyword">await</span> delay(<span class="hljs-number">5000</span>);
   cleanup();
 }
 
-const p = foo();
+<span class="hljs-keyword">const</span> p = foo();
 
 p.cancel();
 
-// Would need to be...
-async function foo() {
+<span class="hljs-comment">// Would need to be...</span>
+<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>) </span>{
   setup();    
   
-  try {
-    await delay(5000);
-  } finally {
+  <span class="hljs-keyword">try</span> {
+    <span class="hljs-keyword">await</span> delay(<span class="hljs-number">5000</span>);
+  } <span class="hljs-keyword">finally</span> {
     cleanup();
   }
 }
 
-const p = foo();
+<span class="hljs-keyword">const</span> p = foo();
 
 p.cancel();
 </code></pre>
@@ -283,10 +286,10 @@ p.cancel();
 <li>No obvious issue to add to async function</li>
 </ul>
 <p>Hazard:</p>
-<pre><code class="language-js">async function foo() {
+<pre><code class="language-js"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>) </span>{
   setup();    
-  await delay(5000);
-  cleanup(); // &lt;-- not called if canceled. 
+  <span class="hljs-keyword">await</span> delay(<span class="hljs-number">5000</span>);
+  cleanup(); <span class="hljs-comment">// &lt;-- not called if canceled. </span>
 }  
 </code></pre>
 <p>...</p>
@@ -299,14 +302,14 @@ p.cancel();
 <p>BT: Need more work there.</p>
 <p>YK: <code>finally</code> is a handler, doesn't correspond to a completion record change, but a cluster of completion records</p>
 <p>DD:</p>
-<pre><code class="language-js">async function foo() {
+<pre><code class="language-js"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>) </span>{
   setup();    
   
-  try {
-    await promise;
-  } catch cancel {
-    // recover and continue?
-  } finally {
+  <span class="hljs-keyword">try</span> {
+    <span class="hljs-keyword">await</span> promise;
+  } <span class="hljs-keyword">catch</span> cancel {
+    <span class="hljs-comment">// recover and continue?</span>
+  } <span class="hljs-keyword">finally</span> {
     cleanup();
   }
 }
@@ -324,23 +327,19 @@ promise.cancel();
 <p>JHD: (some q about try/finally)</p>
 <p>SP: assume code written indefensively might fail.</p>
 <p>More totally useful, important, completely clear and not repetitive discussion about how bad code might fuck up if promises are canceled.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-279"><h4 id="conclusionresolution-279">Conclusion/Resolution</h4></a><ul>
 <li>Stage 3 Approval</li>
 </ul>
-<h2>ECMA 402 Update</h2>
-<p>RW: blah blah blah</p>
+<a href="#ecma-402-update"><h2 id="ecma-402-update">ECMA 402 Update</h2></a><p>RW: blah blah blah</p>
 <p>AWB: A lot of proposals, what is the criteria for new additions</p>
 <p>EF: Paving cow paths, otherwise remain in library code. Working on proposals for plural and relative-time formatting.</p>
 <p>CP: For ES2016, we will focus on exposing low level apis for existing abstract methods. New features will probably arrive in ES2017.</p>
 <p>DD: FirefoxOS devs discovered real needs that are being reported.</p>
 <p>EF: Getting the locale data (e.g. CLDR data) into/accessible-by the runtimes is a focus because it avoids haivng to transfer larges amounts of data over the network. NumberFormat and DateTimeFormat have large amounts of locale data to back their APIs; looking to do something similar for plural and relative-time formatting proposals.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-280"><h4 id="conclusionresolution-280">Conclusion/Resolution</h4></a><ul>
 <li>Send new HTML to Ecma</li>
 </ul>
-<h2>5.10 Proposal: String#padLeft / String#padRight</h2>
-<p>(Jordan Harband, Rick Waldron)</p>
+<a href="#510-proposal-string#padleft--string#padright"><h2 id="510-proposal-string#padleft--string#padright">5.10 Proposal: String#padLeft / String#padRight</h2></a><p>(Jordan Harband, Rick Waldron)</p>
 <p><a href="https://github.com/ljharb/proposal-string-pad-left-right">https://github.com/ljharb/proposal-string-pad-left-right</a></p>
 <p>JHD: (run through history of proposal)</p>
 <ul>
@@ -370,23 +369,19 @@ promise.cancel();
 <p>Discussion re: stage 1 or 2?</p>
 <p>AWB: For stage 2, controversy resolved.</p>
 <p>JHD: Then stage 1.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-281"><h4 id="conclusionresolution-281">Conclusion/Resolution</h4></a><ul>
 <li>Stage 1</li>
 <li>Reviewers to be assigned.</li>
 </ul>
-<h2>5.11 Proposal: Object.values / Object.entries</h2>
-<p>(Jordan Harband)</p>
+<a href="#511-proposal-objectvalues--objectentries"><h2 id="511-proposal-objectvalues--objectentries">5.11 Proposal: Object.values / Object.entries</h2></a><p>(Jordan Harband)</p>
 <p><a href="https://github.com/ljharb/proposal-object-values-entries">https://github.com/ljharb/proposal-object-values-entries</a></p>
 <p>JHD: Need is obvious.</p>
 <p>Question about return: iterable or array? Spec wants to be an array.</p>
 <p>DH: Confirm, when array you get a snapshot. If an iterator, then updates would be shown, which breaks from <code>keys</code></p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-282"><h4 id="conclusionresolution-282">Conclusion/Resolution</h4></a><ul>
 <li>Stage 2 Approval</li>
 </ul>
-<h2>5.12 Proposal: String#matchAll</h2>
-<p>(Jordan Harband)</p>
+<a href="#512-proposal-string#matchall"><h2 id="512-proposal-string#matchall">5.12 Proposal: String#matchAll</h2></a><p>(Jordan Harband)</p>
 <p><a href="https://github.com/ljharb/String.prototype.matchAll">https://github.com/ljharb/String.prototype.matchAll</a></p>
 <p>JHD: pass a regex, returns an iterator, each yield returns what exec would.</p>
 <p>Notable:</p>
@@ -420,15 +415,13 @@ promise.cancel();
 <li><code>matchEach</code>? It produces an iterator... (some agreement)</li>
 </ul>
 <p>nah.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-283"><h4 id="conclusionresolution-283">Conclusion/Resolution</h4></a><ul>
 <li>Stage 1 approval</li>
 <li>Accept strings</li>
 <li>Allow RegExp subclass</li>
 <li>Default impl of <code>@@matchAll</code>, see default <code>@@match</code></li>
 </ul>
-<h2>5.9 Trailing commas in function parameter lists</h2>
-<p>(Jeff Morrison)</p>
+<a href="#59-trailing-commas-in-function-parameter-lists"><h2 id="59-trailing-commas-in-function-parameter-lists">5.9 Trailing commas in function parameter lists</h2></a><p>(Jeff Morrison)</p>
 <p>JM: Updates since previous...</p>
 <p>MF: Change arity? Object, array...</p>
 <p>RW: No, ignored.</p>
@@ -444,20 +437,17 @@ promise.cancel();
 <p>BT: Don't need to block on this, can be delivered later.</p>
 <p>Quick run through trailing comma in parenthetical expressions</p>
 <p>nah.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-284"><h4 id="conclusionresolution-284">Conclusion/Resolution</h4></a><ul>
 <li>Stage 2</li>
 <li>Reviewers?</li>
 <li>Michael Ficarra</li>
 <li>Brian Terlson</li>
 </ul>
-<h2>Process Discussion</h2>
-<ul>
+<a href="#process-discussion"><h2 id="process-discussion">Process Discussion</h2></a><ul>
 <li>A plenary day</li>
 <li>Two presentation and discussion days</li>
 </ul>
-<h3>Exponentiation Operator</h3>
-<p>RW: Precedence issues:</p>
+<a href="#exponentiation-operator"><h3 id="exponentiation-operator">Exponentiation Operator</h3></a><p>RW: Precedence issues:</p>
 <p>BE (On whiteboard): -x^y in math and every other language means -(x^y)</p>
 <p>Old spec is (-x)^y</p>
 <p>AWB: Does the potential confusion of this (whichever way it happens to be decided) suggest we should pull it out?</p>
@@ -489,3 +479,5 @@ JS is eating the world. This will cause friction if we break historical preceden
 <p>DD: I disagree.</p>
 <p>BE: New option: 4 - it is an error to combine ** with unary minus. Code you port doesn't have this almost for sure.</p>
 <p>No consensus... people are leaving.</p>
+
+</body>

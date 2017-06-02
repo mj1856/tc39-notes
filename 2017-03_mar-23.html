@@ -1,13 +1,17 @@
 <!doctype html>
 <meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.6.0/github-markdown.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+
 <title>March 23, 2017 Meeting Notes</title>
-<h1>March 23, 2017 Meeting Notes</h1>
-<p>Allen Wirfs-Brock (AWB), Waldemar Horwat (WH), Brian Terlson (BT), Michael Ficarra (MF), Adam Klein (AK), Dave Herman (DH),  Kent C. Dodds (KCD), Tim Disney (TD), Daniel Ehrenberg (DE), Shu-yu Guo (SYG), Michael Saboff (MS), Sebastian Markbage (SM), Bradley Farias (BF), Maggie Pint (MPT), Jamund Ferguson (JXF), Myles Borins (MBS), Logan Smyth (LS), Sarah D'Onofrio (SD), Alan Schmitt (AS), Dean Tribble (DT), Peter Jensen (PJ), Mark S. Miller (MM), Leo Balter (LBR), Zibi Braniecki (ZB), Rafael Xavier (RX), Yehuda Katz (YK), Caridy Patino (CP), Diego Ferreiro Val (DFV), Brendan Eich (BE), Lyza Gardner (LG), Istvan Sebestyen (IS), Matt Johnson (MJ)</p>
-<h2>General Discussion</h2>
-<p>AWB: RSVP now for the NodeJS CTC meeting on the evening before the May TC39 meeting.
+<body class="markdown-body">
+<a href="#march-23-2017-meeting-notes"><h1 id="march-23-2017-meeting-notes">March 23, 2017 Meeting Notes</h1></a><p>Allen Wirfs-Brock (AWB), Waldemar Horwat (WH), Brian Terlson (BT), Michael Ficarra (MF), Adam Klein (AK), Dave Herman (DH),  Kent C. Dodds (KCD), Tim Disney (TD), Daniel Ehrenberg (DE), Shu-yu Guo (SYG), Michael Saboff (MS), Sebastian Markbage (SM), Bradley Farias (BF), Maggie Pint (MPT), Jamund Ferguson (JXF), Myles Borins (MBS), Logan Smyth (LS), Sarah D'Onofrio (SD), Alan Schmitt (AS), Dean Tribble (DT), Peter Jensen (PJ), Mark S. Miller (MM), Leo Balter (LBR), Zibi Braniecki (ZB), Rafael Xavier (RX), Yehuda Katz (YK), Caridy Patino (CP), Diego Ferreiro Val (DFV), Brendan Eich (BE), Lyza Gardner (LG), Istvan Sebestyen (IS), Matt Johnson (MJ)</p>
+<a href="#general-discussion"><h2 id="general-discussion">General Discussion</h2></a><p>AWB: RSVP now for the NodeJS CTC meeting on the evening before the May TC39 meeting.
 Before the TC39 meeting, there will be a meetup with the NodeJS CTC.</p>
-<h2>10.ii.a Dynamic Module Reform for stage 2</h2>
-<p>(Caridy Patiño)</p>
+<a href="#10iia-dynamic-module-reform-for-stage-2"><h2 id="10iia-dynamic-module-reform-for-stage-2">10.ii.a Dynamic Module Reform for stage 2</h2></a><p>(Caridy Patiño)</p>
 <ul>
 <li><a href="https://github.com/tc39/proposal-dynamic-modules">https://github.com/tc39/proposal-dynamic-modules</a></li>
 <li><a href="https://docs.google.com/presentation/d/1EYOysPhgjXtgmuNoZ_wUCMElZ8GKLxJmCLeF0EvUXkc/edit#slide=id.g1f19d52d1f_0_0">https://docs.google.com/presentation/d/1EYOysPhgjXtgmuNoZ_wUCMElZ8GKLxJmCLeF0EvUXkc/edit#slide=id.g1f19d52d1f_0_0</a></li>
@@ -91,9 +95,9 @@ Before the TC39 meeting, there will be a meetup with the NodeJS CTC.</p>
 <p>AK: But that's not how the spec is written. It says we don't create the lexical binding until after that function has run.</p>
 <p>WH: Do we have any idea as to which lexical binding when it gets created.</p>
 <p>AK: It could be global.</p>
-<pre><code class="language-js">import {a} from 'a'
-export function f() {
-    console.log(a)
+<pre><code class="language-js"><span class="hljs-keyword">import</span> {a} <span class="hljs-keyword">from</span> <span class="hljs-string">'a'</span>
+<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(a)
 }
 </code></pre>
 <p>DH: Oh, the fact that the way the spec is written means it doesn't add it to the environment.  That's just a bug in the spec.</p>
@@ -173,13 +177,11 @@ We got close and &quot;I'll take close&quot;.</p>
 <p>CP: The <code>import x from 'x.js'</code> happens ....</p>
 <p>DH: Can we discuss this offline? It's not important because we're not going to do this anyway. Let's take a break.</p>
 <p>[Per discussion during the break it turned out that the example on the screen had other bugs.]</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-33"><h4 id="conclusionresolution-33">Conclusion/Resolution</h4></a><ul>
 <li>Remains on stage 1</li>
 </ul>
 <p><em>Awesome work, now simplified as a result of awesome feedback.  A new version will be presented at next meeting.</em></p>
-<h2>10.ii.c Realms update</h2>
-<p>(Dave Herman)</p>
+<a href="#10iic-realms-update"><h2 id="10iic-realms-update">10.ii.c Realms update</h2></a><p>(Dave Herman)</p>
 <ul>
 <li><a href="https://github.com/tc39/agendas/raw/master/2017/tc39-2017-003-realms-update.pdf">slides</a></li>
 </ul>
@@ -296,54 +298,48 @@ We got close and &quot;I'll take close&quot;.</p>
 <p>MM: They're largely orthogonal. If you wanted job queues and enqueue things on specific job queues. None of that is written down on the agent API, but if we wanted to address them reflexively they'd go in ??</p>
 <p>AWB: Mark, the wayback machine has a pretty good archive of wiki.ecmascript.org.</p>
 <p>DH: Ok, thanks everyone.</p>
-<h4>Conclusion</h4>
-<ul>
+<a href="#conclusion-34"><h4 id="conclusion-34">Conclusion</h4></a><ul>
 <li>Stage remains at stage 1. This was just an update.</li>
 </ul>
-<h2>10.iv.a Arbitrary precision integer type for stage 2</h2>
-<p><a href="https://docs.google.com/presentation/d/1lKscD8d_i1mz1w_puWJKW4LCyQLgrb0CySHVukohkLE/edit#slide=id.g1c4f05590f_0_115">slides</a></p>
-<h3>Slide: <em>Why Integer rather than Int64?</em></h3>
-<p>DE: Basically the strange wrap-around semantics in C is almost always a bug. Anyone who actually wants that can apply it straightforwardly.</p>
-<h3>Slide: <em>How?</em></h3>
-<p>DE: New primitive type <code>Integer</code>.</p>
+<a href="#10iva-arbitrary-precision-integer-type-for-stage-2"><h2 id="10iva-arbitrary-precision-integer-type-for-stage-2">10.iv.a Arbitrary precision integer type for stage 2</h2></a><p><a href="https://docs.google.com/presentation/d/1lKscD8d_i1mz1w_puWJKW4LCyQLgrb0CySHVukohkLE/edit#slide=id.g1c4f05590f_0_115">slides</a></p>
+<a href="#slide-_why-integer-rather-than-int64_"><h3 id="slide-_why-integer-rather-than-int64_">Slide: <em>Why Integer rather than Int64?</em></h3></a><p>DE: Basically the strange wrap-around semantics in C is almost always a bug. Anyone who actually wants that can apply it straightforwardly.</p>
+<a href="#slide-_how_"><h3 id="slide-_how_">Slide: <em>How?</em></h3></a><p>DE: New primitive type <code>Integer</code>.</p>
 <p>MF: I wanted to point out because I didn't originally realise it myself: the <code>n</code> suffix is chosen because it's orthogonal to the base representation. You could represent binary, octal, decimal, and hex notation integers.</p>
 <p>BE: The suffix &quot;n&quot; is a good choice because it is the second letter in &quot;Integer&quot; and &quot;I&quot; would not be a good choice.</p>
-<pre><code class="language-js">// Takes a Integer as an argument and returns a Integer
-function nthPrime(nth) {
-  function isPrime(p) {
-    for (let i = 2n; i &lt; p; i++) {
-      if (p % i === 0n) return false;
+<pre><code class="language-js"><span class="hljs-comment">// Takes a Integer as an argument and returns a Integer</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">nthPrime</span>(<span class="hljs-params">nth</span>) </span>{
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isPrime</span>(<span class="hljs-params">p</span>) </span>{
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">2</span>n; i &lt; p; i++) {
+      <span class="hljs-keyword">if</span> (p % i === <span class="hljs-number">0</span>n) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
     }
-    return true;
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
   }
-  for (let i = 2n; ; i++) {
-    if (isPrime(i)) {
-      if (--nth === 0n) return i;
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">2</span>n; ; i++) {
+    <span class="hljs-keyword">if</span> (isPrime(i)) {
+      <span class="hljs-keyword">if</span> (--nth === <span class="hljs-number">0</span>n) <span class="hljs-keyword">return</span> i;
     }
   }
 }
 </code></pre>
-<h3>Slide: <em>Code sample: asm.js (?)</em></h3>
-<pre><code class="language-js">function Add64Module(stdlib, foreign, buffer) {
-  &quot;use asm&quot;;
-  var cast = stdlib.Integer.asUintN;
-  var values = new stdlib.Uint64Array(buffer);
-  function add64(aIndex, bIndex) {
-    aIndex = aIndex|0;
-    bIndex = bIndex|0;
-    var aValue = values[aIndex&gt;&gt;3];
-    var bValue = values[bIndex&gt;&gt;3];
-    return cast(64, aValue + bValue);
+<a href="#slide-_code-sample-asmjs-_"><h3 id="slide-_code-sample-asmjs-_">Slide: <em>Code sample: asm.js (?)</em></h3></a><pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Add64Module</span>(<span class="hljs-params">stdlib, foreign, buffer</span>) </span>{
+<span class="hljs-meta">  "use asm"</span>;
+  <span class="hljs-keyword">var</span> cast = stdlib.Integer.asUintN;
+  <span class="hljs-keyword">var</span> values = <span class="hljs-keyword">new</span> stdlib.Uint64Array(buffer);
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add64</span>(<span class="hljs-params">aIndex, bIndex</span>) </span>{
+    aIndex = aIndex|<span class="hljs-number">0</span>;
+    bIndex = bIndex|<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">var</span> aValue = values[aIndex&gt;&gt;<span class="hljs-number">3</span>];
+    <span class="hljs-keyword">var</span> bValue = values[bIndex&gt;&gt;<span class="hljs-number">3</span>];
+    <span class="hljs-keyword">return</span> cast(<span class="hljs-number">64</span>, aValue + bValue);
   }
-  return { add64: add64 };
+  <span class="hljs-keyword">return</span> { <span class="hljs-attr">add64</span>: add64 };
 }
 </code></pre>
 <p>DE: It's not clear if we want to add support for asm.js.</p>
 <p>BE: It's hard to remove asm.js as it's just a subset. It's not like WebAssembly is the only way people will...</p>
 <p>DE: If we did want Integer to work with asm validation. It can work, but it's unclear if we want to make it work.</p>
 <p>BE: Let's talk about that later.</p>
-<h3>Slide: <em>Library Features</em></h3>
-<p>DE: For library features there's Int64Array and Uint64Array.  And functions to get these from array bufers.</p>
+<a href="#slide-_library-features_"><h3 id="slide-_library-features_">Slide: <em>Library Features</em></h3></a><p>DE: For library features there's Int64Array and Uint64Array.  And functions to get these from array bufers.</p>
 <ul>
 <li>Uint64Array, Int64Array</li>
 <li>Integer static methods
@@ -352,8 +348,7 @@ function nthPrime(nth) {
 <li>Integer.asUintN, Integer.asIntN</li>
 </ul></li>
 </ul>
-<h3>Slide: <em>No Implicit Coercion</em></h3>
-<p>MM: <em>questions about n...</em></p>
+<a href="#slide-_no-implicit-coercion_"><h3 id="slide-_no-implicit-coercion_">Slide: <em>No Implicit Coercion</em></h3></a><p>MM: <em>questions about n...</em></p>
 <p>DE: The current proposal is acually to use &quot;N&quot;. Bikeshedding.</p>
 <p>BE: I don't think it's the name so much as the variability of the &quot;n&quot;.</p>
 <p>MM: I was thinking you would say Integer.asInt64, rather than Integer.asIntN(64,...)</p>
@@ -372,16 +367,14 @@ function nthPrime(nth) {
 <p>DE: It's on the bug tracker (Shu filed it).</p>
 <p>MF: Dan do you mind going into some of the issues with comparison operators now?</p>
 <p>DE: The current semantics are that <code>Number === Integer</code> will return <code>false</code>.</p>
-<h3>Slide 14: Comparison semantics: current proposal</h3>
-<ul>
+<a href="#slide-14-comparison-semantics-current-proposal"><h3 id="slide-14-comparison-semantics-current-proposal">Slide 14: Comparison semantics: current proposal</h3></a><ul>
 <li><code>1 === 1n</code> <code>false</code></li>
 <li><code>1 == 1n</code> is TypeError</li>
 <li><code>1 &lt; 1n</code> is TypeError</li>
 </ul>
 <p>MM: I like this. With <code>==</code> I'm concerned:  what does <code>1n == null</code> do?</p>
 <p>DE: It coerces null into a Number, do the compare, and then get a TypeError.   We could discard future-proofing so we could make the comparison operators work for this case.</p>
-<h3>Slide 15: Comparison semantics: Allow semantic comparison</h3>
-<ul>
+<a href="#slide-15-comparison-semantics-allow-semantic-comparison"><h3 id="slide-15-comparison-semantics-allow-semantic-comparison">Slide 15: Comparison semantics: Allow semantic comparison</h3></a><ul>
 <li><code>1 === 1n</code> is <code>false</code></li>
 <li><code>1 == 1n</code> is <code>true</code></li>
 <li><code>1 &lt; 1n</code> is <code>true</code></li>
@@ -398,8 +391,7 @@ function nthPrime(nth) {
 <p>DE: Continuing the semantics explanation.  + would not lose precision.</p>
 <p>BE: Can you explain the plus issue again?</p>
 <p>DE: The plus issue is that IEEE754 arithmetic is well defined. When you try to combine them you will get outside of the domain of both. There are two reasons why mixed operations are bad. The first is you will confuse users. The second is that you will run into bugs.</p>
-<h3>Slide 10: Optimization potential</h3>
-<ul>
+<a href="#slide-10-optimization-potential"><h3 id="slide-10-optimization-potential">Slide 10: Optimization potential</h3></a><ul>
 <li>Use Smi (small integer) infrastructure to optimize as Int64 (sometimes)</li>
 <li>Could work with asm.js</li>
 <li>Multiple browsers expressed optimism about implementing with good performance</li>
@@ -464,8 +456,7 @@ function nthPrime(nth) {
 <p>DT: Does this help any users that were interested in decimal and things like financial users?</p>
 <p>BE: I did talk with FinTech people. Crypto people not use Uint because it's the best they have access to. FinTech people want BigInts. (?)</p>
 <p>DE: I've heard interest from FinTech client of Egalia, but don't know details.</p>
-<h3>Slide 11: Specification status</h3>
-<ul>
+<a href="#slide-11-specification-status"><h3 id="slide-11-specification-status">Slide 11: Specification status</h3></a><ul>
 <li>Detailed <a href="https://littledan.github.io/proposal-integer/">spec text</a> based on Brendan’s Int64 spec</li>
 <li><a href="https://github.com/littledan/proposal-integer/issues">Open issues</a>
 <ul>
@@ -515,8 +506,7 @@ function nthPrime(nth) {
 <p>DE: Is this ready for stage 2?</p>
 <p>WH: I am happy with it. I did a good review of it with DE. The remaining question for me is how this will work with Array buffers. There are some interesting questions there.</p>
 <p>DE: There is an issue on that: <a href="https://github.com/tc39/proposal-integer/issues/23">issue #23</a>.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-35"><h4 id="conclusionresolution-35">Conclusion/Resolution</h4></a><ul>
 <li>Stage 2 approved</li>
 <li>Reviewers:
 <ul>
@@ -526,8 +516,7 @@ function nthPrime(nth) {
 <li>Michael Saboff</li>
 </ul></li>
 </ul>
-<h2><a href="https://github.com/tc39/ecma262/pull/778">PR #778: Make LocalTZA take 't' and 'isUTC' and drop DSTA(t)</a></h2>
-<p>(Maggie Pint and Matt Johnson)</p>
+<a href="#pr-#778-make-localtza-take-t-and-isutc-and-drop-dstat"><h2 id="pr-#778-make-localtza-take-t-and-isutc-and-drop-dstat"><a href="https://github.com/tc39/ecma262/pull/778">PR #778: Make LocalTZA take 't' and 'isUTC' and drop DSTA(t)</a></h2></a><p>(Maggie Pint and Matt Johnson)</p>
 <p>Matt on the phone ?? (M)</p>
 <p>MPT: Describing a slide about issues with daylight savings time in JavaScript....</p>
 <p>MPT: What we've done is said, always pick the first one. The reason is because of a scheduling context. If you have something needing to happen at 1AM and you are told the second 1AM then you're going to be mad. You get a similar thing with the spring forward transition. You get a set of local times that do not exist. Spec says move the ambiguous time by the direction. That's not predictable for the user so we define the spec to always move it forward. Because time never randomly jumps backward in real life.</p>
@@ -655,41 +644,32 @@ function nthPrime(nth) {
 <p>BT: But &quot;may&quot; is you can if it's available.</p>
 <p>AWB: &quot;should&quot; if it's available and &quot;no&quot; if it's not.</p>
 <p>BT: We have consensus % this question of the specific wording...</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-36"><h4 id="conclusionresolution-36">Conclusion/Resolution</h4></a><ul>
 <li>Consensus modulo improving the language</li>
 </ul>
-<h2>12.ii.a Date Proposal - NodaTime as a built-in Module for stage 1</h2>
-<ul>
+<a href="#12iia-date-proposal---nodatime-as-a-built-in-module-for-stage-1"><h2 id="12iia-date-proposal---nodatime-as-a-built-in-module-for-stage-1">12.ii.a Date Proposal - NodaTime as a built-in Module for stage 1</h2></a><ul>
 <li><a href="https://github.com/maggiepint/proposal-temporal">https://github.com/maggiepint/proposal-temporal</a></li>
 <li><a href="https://docs.google.com/presentation/d/1b6gTBphc-QEYE6rqYZ6VkFDRLE8K-EDx464tGfZ-Q6Q/edit?usp=sharing">https://docs.google.com/presentation/d/1b6gTBphc-QEYE6rqYZ6VkFDRLE8K-EDx464tGfZ-Q6Q/edit?usp=sharing</a></li>
 </ul>
 <p>(Maggie Pint)</p>
 <p>MPT: I have this proposal seeking stage 1. Sometimes we like to take stage 1 proposals to stage 2 criticism. This is a replacement for date as it exists today and would be built on top of the date module system that I believe Brian is the champion of. In order to drill on this topic which is huge... I actually pulled one of my conference talk decks... The fundamental problem you have in datetime is perspective. In order to make it work, we assume that we have this global timeline that isn't ambiguous and it doesn't go backward and forward. {continues to give her talk... see the slides}</p>
-<h3>Slide: Coordinate UTC</h3>
-<p>MPT: - We assume we have this global timeline.</p>
+<a href="#slide-coordinate-utc"><h3 id="slide-coordinate-utc">Slide: Coordinate UTC</h3></a><p>MPT: - We assume we have this global timeline.</p>
 <p>MPT: Coordinate UTC (not the time in London), basically the same as GMT, but the scientific community prefers GMT.</p>
-<h3>Slide: Local Time</h3>
-<p>MPT: On the flipside of this you have local time. It does not exist on the global timeline. It usually not contiguous (with daylight savings, etc).</p>
-<h3>Slide: UTC Time</h3>
-<p>MPT: When you have a time in UTC, you know where you sit on the global timeline and you know if this point in time is before or AFTER some other UTC time.</p>
+<a href="#slide-local-time"><h3 id="slide-local-time">Slide: Local Time</h3></a><p>MPT: On the flipside of this you have local time. It does not exist on the global timeline. It usually not contiguous (with daylight savings, etc).</p>
+<a href="#slide-utc-time"><h3 id="slide-utc-time">Slide: UTC Time</h3></a><p>MPT: When you have a time in UTC, you know where you sit on the global timeline and you know if this point in time is before or AFTER some other UTC time.</p>
 <p>WH: How accurate of time-keeping is this proposal intended for?</p>
 <p>MPT: Like how accurate should the API be? I'm hoping for nano-second precision, but that depends on the timeframe.</p>
 <p>WH: Super accurate time keeping runs into issues with relativity, etc. It becomes very tricky to keep track of &quot;absolute&quot; time beyond millisecond precision.</p>
 <p>MJ: There are plenty of scientific applications that care about nanoseconds in the data itself.</p>
-<h3>Slide: Local Time: Saturday, April 9, 2016, 9:11 AM</h3>
-<p>MPT: When you have local time, you don't know where you are on the timeline. And you don't know whether it's before or after another time in a different locality. You limit comparison operations.</p>
-<h3>Slide: Timezone Basics</h3>
-<p>MPT: In short, time zones are a region that agrees on an offset from UTC. These change. Egypt, Russia, others recently changed this.</p>
-<h3>Slide: Time Zone: America/Chicago</h3>
-<p>MPT: <em>Referring to a graph of all time zones</em></p>
+<a href="#slide-local-time-saturday-april-9-2016-911-am"><h3 id="slide-local-time-saturday-april-9-2016-911-am">Slide: Local Time: Saturday, April 9, 2016, 9:11 AM</h3></a><p>MPT: When you have local time, you don't know where you are on the timeline. And you don't know whether it's before or after another time in a different locality. You limit comparison operations.</p>
+<a href="#slide-timezone-basics"><h3 id="slide-timezone-basics">Slide: Timezone Basics</h3></a><p>MPT: In short, time zones are a region that agrees on an offset from UTC. These change. Egypt, Russia, others recently changed this.</p>
+<a href="#slide-time-zone-americachicago"><h3 id="slide-time-zone-americachicago">Slide: Time Zone: America/Chicago</h3></a><p>MPT: <em>Referring to a graph of all time zones</em></p>
 <p>BE: I work with someone who thinks we should all just use UTC.</p>
 <p>MJ: No.</p>
 <p>MPT: When is the sun out? That's a timezone.</p>
 <p><em>laughter</em></p>
-<h3>Slide: code examples (timeline math vs. calendar math)</h3>
-<pre><code class="language-js">moment('2016-01-01').add(1.5, ' hours').format('LLL') // &quot; January 1, 2016 1:30AM&quot;
- moment('2016-01-01').add(1.5, ' days').format('LLL') // &quot; January 3, 2016 12:00AM&quot;
+<a href="#slide-code-examples-timeline-math-vs-calendar-math"><h3 id="slide-code-examples-timeline-math-vs-calendar-math">Slide: code examples (timeline math vs. calendar math)</h3></a><pre><code class="language-js">moment(<span class="hljs-string">'2016-01-01'</span>).add(<span class="hljs-number">1.5</span>, <span class="hljs-string">' hours'</span>).format(<span class="hljs-string">'LLL'</span>) <span class="hljs-comment">// " January 1, 2016 1:30AM"</span>
+ moment(<span class="hljs-string">'2016-01-01'</span>).add(<span class="hljs-number">1.5</span>, <span class="hljs-string">' days'</span>).format(<span class="hljs-string">'LLL'</span>) <span class="hljs-comment">// " January 3, 2016 12:00AM"</span>
 </code></pre>
 <p>MPT: More explanation of slides.</p>
 <p>WH: What's the difference between the two times?</p>
@@ -700,8 +680,7 @@ function nthPrime(nth) {
 <p>MPT: So, most datetime APIs ignore leap-seconds which is what I think you're getting at and they do that because from the business-domain of datetime, they don't matter. They do in scientific timelines and durations. For our purposes, we're going to ignore leap-seconds in the date API because they belong in a different domain.</p>
 <p>AWB/MPT: Are there any minor programming languages that have a leap-second API?</p>
 <p>MJ: The biggest problem you get into is internationalization. You have to consult a table to know whether that is valid. Usually if someone passes a leap-second timestamp, it just gets absorbed and rounded down to 59.</p>
-<h3>Slide: JodaTime/NodaTime Types</h3>
-<p>MPT: Steven Colburn created the JodaTime proposal. It models the problem domain really well. He's also involved in this proposal.</p>
+<a href="#slide-jodatimenodatime-types"><h3 id="slide-jodatimenodatime-types">Slide: JodaTime/NodaTime Types</h3></a><p>MPT: Steven Colburn created the JodaTime proposal. It models the problem domain really well. He's also involved in this proposal.</p>
 <p>MPT: If you think about time as an &quot;instant&quot; is a point on a timeline.</p>
 <p>MPT: The only thing you get from an instant type is a point, a point in life. From there, you have a typeflow for zoned date type. A composition of a point on the global timeline and a timezone. And a calendar system if you want to get fancy. So now what you have is a datetime in a timezone (that's sort of the god type). Once you have all of that, then you know everything you need to know about that time. In that case a <code>ZonedDatetime</code>.</p>
 <p>WH: Does the localtime include the current offset or not? I'm asking in the context of ambiguous local times on the fall back day which can be disambiguated by including the current UTC offset.</p>
@@ -810,7 +789,8 @@ We fight the fight on Stack Overflow about &quot;you can use a library that work
 <p>DH: This is obvious stage 1.</p>
 <p>WH: Yeah, let's do stage 1.</p>
 <p>MPT: Let's start with that. Thanks!</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-37"><h4 id="conclusionresolution-37">Conclusion/Resolution</h4></a><ul>
 <li>Stage 1</li>
 </ul>
+
+</body>

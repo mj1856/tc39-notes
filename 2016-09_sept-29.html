@@ -1,8 +1,14 @@
 <!doctype html>
 <meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.6.0/github-markdown.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+
 <title>Sept 29 2016 Meeting Notes</title>
-<h1>Sept 29 2016 Meeting Notes</h1>
-<p>Brian Terlson (BT), Michael Ficarra (MF), Jordan Harband (JHD), Waldemar Horwat (WH), Tim Disney (TD), Michael Saboff (MS), Eric Faust (FST), Chip Morningstar (CM), Daniel Ehrenberg (DE), Leo Balter (LB), Yehuda Katz (YK), Jafar Husain (JH), Domenic Denicola (DD), Rick Waldron (RW), John Buchanan (JB), Kevin Gibbons (KG), Peter Jensen (PJ), Tom Care (TC), Dave Herman (DH), Bradley Farias (BF), Dean Tribble (DT), Jeff Morrison (JM), Sebastian Markbåge (SM), Saam Barati (SB), Kris Gray (KGY), John-David Dalton (JDD), Daniel Rosenwasser (DRR), Jean-Francis Paradis (JFP), Sathya Gunasekasan (SGN), Juan Dopazo (JDO), Bert Belder (BBR), Shu-yu Guo (SYG), Eric Ferraiuolo (EF), Caridy Patiño (CP), Allen Wirfs-Brock (AWB), Jacob Groundwater (JGR), Adam Klein (AK), Istvan Sebestyen (IST), Tom Van Cutsem (TVC), Istvan Sebestyen (partly, via Hangouts), Claude Pache (CP), James Kyle</p>
+<body class="markdown-body">
+<a href="#sept-29-2016-meeting-notes"><h1 id="sept-29-2016-meeting-notes">Sept 29 2016 Meeting Notes</h1></a><p>Brian Terlson (BT), Michael Ficarra (MF), Jordan Harband (JHD), Waldemar Horwat (WH), Tim Disney (TD), Michael Saboff (MS), Eric Faust (FST), Chip Morningstar (CM), Daniel Ehrenberg (DE), Leo Balter (LB), Yehuda Katz (YK), Jafar Husain (JH), Domenic Denicola (DD), Rick Waldron (RW), John Buchanan (JB), Kevin Gibbons (KG), Peter Jensen (PJ), Tom Care (TC), Dave Herman (DH), Bradley Farias (BF), Dean Tribble (DT), Jeff Morrison (JM), Sebastian Markbåge (SM), Saam Barati (SB), Kris Gray (KGY), John-David Dalton (JDD), Daniel Rosenwasser (DRR), Jean-Francis Paradis (JFP), Sathya Gunasekasan (SGN), Juan Dopazo (JDO), Bert Belder (BBR), Shu-yu Guo (SYG), Eric Ferraiuolo (EF), Caridy Patiño (CP), Allen Wirfs-Brock (AWB), Jacob Groundwater (JGR), Adam Klein (AK), Istvan Sebestyen (IST), Tom Van Cutsem (TVC), Istvan Sebestyen (partly, via Hangouts), Claude Pache (CP), James Kyle</p>
 <p>Istvan Sebestyen: The audio is very bad, unfortunately. ... Maybe I better write....
 Regarding the 2017 European meeting tell me when should it be. In March it would probably be cheaper. Also still skiing would be possible after or before the meeting if someone cares for that.
 May will be more expensive. Meeting place suggestion: Montreux - Royal Plaza Hotel.</p>
@@ -12,8 +18,7 @@ May will be more expensive. Meeting place suggestion: Montreux - Royal Plaza Hot
 <p>Have a good continuation of the meeting.</p>
 <p>Need new Chairman. Please consider.
 This is so not true. We need to look how the Chair question develops. Currently not clear.</p>
-<h2>11.iv.c Consolidating Proxy integrity checks,</h2>
-<p>(Tom Van Cutsem, Claude Pache)</p>
+<a href="#11ivc-consolidating-proxy-integrity-checks"><h2 id="11ivc-consolidating-proxy-integrity-checks">11.iv.c Consolidating Proxy integrity checks,</h2></a><p>(Tom Van Cutsem, Claude Pache)</p>
 <p><a href="https://github.com/claudepache/es-invariants">https://github.com/claudepache/es-invariants</a></p>
 <p>AWB: Background: There was a missing Proxy check, and in response, Tom and Claude have come up with a fix and a nice formalism. This is of interest to a few people, so let's not all talk about this for an hour.</p>
 <ul>
@@ -40,31 +45,31 @@ This is so not true. We need to look how the Chair question develops. Currently 
 <p>Bug shown:
 <a href="https://github.com/tc39/ecma262/pull/666#issuecomment-239512646">https://github.com/tc39/ecma262/pull/666#issuecomment-239512646</a></p>
 <p>A client of the object can assume x always 2 (non-writable, non-configurable), call defineProp on value, set to 3. The proxy was allowed to change the meta property settings:</p>
-<pre><code class="language-js">var target = Object.seal({x: 2})
-var proxy = new Proxy(target, {
+<pre><code class="language-js"><span class="hljs-keyword">var</span> target = <span class="hljs-built_in">Object</span>.seal({<span class="hljs-attr">x</span>: <span class="hljs-number">2</span>})
+<span class="hljs-keyword">var</span> proxy = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Proxy</span>(target, {
   getOwnPropertyDescriptor(o, p) { 
-    var desc = Reflect.getOwnPropertyDescriptor(o, p)
-    if (desc &amp;&amp; 'writable' in desc)
-      desc.writable = false
-    return desc
+    <span class="hljs-keyword">var</span> desc = <span class="hljs-built_in">Reflect</span>.getOwnPropertyDescriptor(o, p)
+    <span class="hljs-keyword">if</span> (desc &amp;&amp; <span class="hljs-string">'writable'</span> <span class="hljs-keyword">in</span> desc)
+      desc.writable = <span class="hljs-literal">false</span>
+    <span class="hljs-keyword">return</span> desc
   }
 })
 
-Object.getOwnPropertyDescriptor(proxy, 'x') // !!! should throw
-// { value: 2, configurable: false, writable: false }
-Object.defineProperty(proxy, 'x', { value: 3 })
-Object.getOwnPropertyDescriptor(proxy, 'x') // { value: 3 }
+<span class="hljs-built_in">Object</span>.getOwnPropertyDescriptor(proxy, <span class="hljs-string">'x'</span>) <span class="hljs-comment">// !!! should throw</span>
+<span class="hljs-comment">// { value: 2, configurable: false, writable: false }</span>
+<span class="hljs-built_in">Object</span>.defineProperty(proxy, <span class="hljs-string">'x'</span>, { <span class="hljs-attr">value</span>: <span class="hljs-number">3</span> })
+<span class="hljs-built_in">Object</span>.getOwnPropertyDescriptor(proxy, <span class="hljs-string">'x'</span>) <span class="hljs-comment">// { value: 3 }</span>
 </code></pre>
 <p>MM: Are the other two bugs analogous?</p>
 <p>TVC: The second is the same (the DefineProperty case). The third is a little different--[[Delete]] for a Proxy of a non-extensible object, which will return true without deleting it from the target. You could then see some kind of adding properties on a non-extensible object, putting them back.</p>
-<pre><code class="language-js">var target = Object.preventExtensions({ x: 1 })
-var proxy = new Proxy(target, { 
-  deleteProperty() { return true } 
+<pre><code class="language-js"><span class="hljs-keyword">var</span> target = <span class="hljs-built_in">Object</span>.preventExtensions({ <span class="hljs-attr">x</span>: <span class="hljs-number">1</span> })
+<span class="hljs-keyword">var</span> proxy = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Proxy</span>(target, { 
+  deleteProperty() { <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span> } 
 })
 
-Object.isExtensible(proxy) // false
-delete proxy.x // true !!! should throw
-proxy.hasOwnProperty('x') // true
+<span class="hljs-built_in">Object</span>.isExtensible(proxy) <span class="hljs-comment">// false</span>
+<span class="hljs-keyword">delete</span> proxy.x <span class="hljs-comment">// true !!! should throw</span>
+proxy.hasOwnProperty(<span class="hljs-string">'x'</span>) <span class="hljs-comment">// true</span>
 </code></pre>
 <p>MM: If the object is non-extensible, a deletion of a property should succeed if the trap deletes the property from the target, right?</p>
 <p>TVC: Yes</p>
@@ -92,27 +97,25 @@ proxy.hasOwnProperty('x') // true
 <p>AWB: Claude's methodology for describing invariants is something we could incorporate into the spec, but this is more than the bug fix.</p>
 <p>MM: likely a separate effort, but completely agree.</p>
 <p>DD: Sounds like a good non-normative change that could be done in collaboration with the editor in a PR, appendix, etc.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-109"><h4 id="conclusionresolution-109">Conclusion/Resolution</h4></a><ul>
 <li>Two parts for TVC/CP as next steps:</li>
 <li>Treat PR 666 as spec bug fix, which needs test262 tests to land</li>
 <li>Treat Claude's new formalism as new content via PR to incorporate into spec</li>
 </ul>
-<h2>10.ii.b Rest/Spread Properties</h2>
-<p>(Sebastian Markbage)</p>
+<a href="#10iib-restspread-properties"><h2 id="10iib-restspread-properties">10.ii.b Rest/Spread Properties</h2></a><p>(Sebastian Markbage)</p>
 <p><a href="http://sebmarkbage.github.io/ecmascript-rest-spread/">http://sebmarkbage.github.io/ecmascript-rest-spread/</a></p>
 <p>SM: Related new proposal: getters and setters are expected to work more like fields than methods. However, they are defined on the prototype, as well as non-enumerable. Confusing when trying to deprecate a field, make it lazy, etc. However, own enumerable checks required for analogy to existing patterns.</p>
-<pre><code class="language-js">// getters are non-own
+<pre><code class="language-js"><span class="hljs-comment">// getters are non-own</span>
 
-class Foo {
-  bar = 123;    
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span> </span>{
+  bar = <span class="hljs-number">123</span>;    
 }    
 
-let data = {
+<span class="hljs-keyword">let</span> data = {
   ...new Foo()
 }
 
-data.bar // 123
+data.bar <span class="hljs-comment">// 123</span>
 </code></pre>
 <p>Options:
 - Leave things as is, and use Object.defineProperty to make own getters/setters
@@ -202,13 +205,11 @@ data.bar // 123
 <p>Implementers: There will be measurable overhead, but it might not be all that expensive</p>
 <p>DH: This proposal always creates Object instances; for record programming, we may want to, in the future, add a protocol for making instances of other superclasses. Not blocking, but good to look into in the future.</p>
 <p>SM: We could also do that for Arrays.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-110"><h4 id="conclusionresolution-110">Conclusion/Resolution</h4></a><ul>
 <li>Stage 3, currently with the &quot;no change&quot; option from the Plausible Solutions slide</li>
 <li>We could add a new feature in the future that overrides the default behavior, but that does not block this in any way</li>
 </ul>
-<h2>10.v.b Date.UTC when called with one argument</h2>
-<p>(Brian Terlson)</p>
+<a href="#10vb-dateutc-when-called-with-one-argument"><h2 id="10vb-dateutc-when-called-with-one-argument">10.v.b Date.UTC when called with one argument</h2></a><p>(Brian Terlson)</p>
 <p><a href="https://github.com/tc39/ecma262/pull/642">https://github.com/tc39/ecma262/pull/642</a></p>
 <p>BT: Date.UTC with one argument</p>
 <p>Last meeting:</p>
@@ -221,19 +222,15 @@ data.bar // 123
 <p>MM: What's the bug we'd be fixing here by returning an error?</p>
 <p>AWB: Trying to parallel Date constructor (historic)</p>
 <p>BT: Let's go for the functionality and make it work with just a year</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-111"><h4 id="conclusionresolution-111">Conclusion/Resolution</h4></a><ul>
 <li>Date.UTC(year) defaults all the other parameters to 1 or 0 (i.e. returns 00:00:00 on January 1st of that year)</li>
 </ul>
-<h2>12.i.a Remove arguments.caller</h2>
-<p><a href="https://github.com/tc39/ecma262/pull/689">https://github.com/tc39/ecma262/pull/689</a></p>
+<a href="#12ia-remove-argumentscaller"><h2 id="12ia-remove-argumentscaller">12.i.a Remove arguments.caller</h2></a><p><a href="https://github.com/tc39/ecma262/pull/689">https://github.com/tc39/ecma262/pull/689</a></p>
 <p>BT: The poisoning is pointless now, we won, let's remove it</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-112"><h4 id="conclusionresolution-112">Conclusion/Resolution</h4></a><ul>
 <li>Consensus!</li>
 </ul>
-<h2>Revisit ECMA414, 2nd Edition</h2>
-<p>AWB: (recapping ECMA414 2nd Edition)</p>
+<a href="#revisit-ecma414-2nd-edition"><h2 id="revisit-ecma414-2nd-edition">Revisit ECMA414, 2nd Edition</h2></a><p>AWB: (recapping ECMA414 2nd Edition)</p>
 <p>Motion to approve ECMA414, 2nd Edition</p>
 <p>(Requires formal vote)</p>
 <p>Bocoup: Yes
@@ -254,13 +251,11 @@ Tilde: Yes
 Airbnb: Yes</p>
 <p>Next: ok to delegate TR104 updating to AWB and LB?</p>
 <p>YES</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-113"><h4 id="conclusionresolution-113">Conclusion/Resolution</h4></a><ul>
 <li>ECMA414, 2nd Edition approved, send to Ecma/GA</li>
 <li>TR104 updates to be forwarded to Ecma/GA</li>
 </ul>
-<h2>11.iv.b Cancelable Promises</h2>
-<p>(Domenic Denicola)</p>
+<a href="#11ivb-cancelable-promises"><h2 id="11ivb-cancelable-promises">11.iv.b Cancelable Promises</h2></a><p>(Domenic Denicola)</p>
 <p><a href="https://github.com/tc39/proposal-cancelable-promises">https://github.com/tc39/proposal-cancelable-promises</a></p>
 <p>Status: issues.</p>
 <p>DD: I don't like mics</p>
@@ -275,9 +270,9 @@ Airbnb: Yes</p>
 </ul>
 <p>WH: explain issues with catch guard?</p>
 <p>DD:</p>
-<pre><code class="language-js">try {
+<pre><code class="language-js"><span class="hljs-keyword">try</span> {
   f();
-} except (e match SyntaxError) {
+} except (e match <span class="hljs-built_in">SyntaxError</span>) {
   b();
 }
 except(e);
@@ -341,21 +336,19 @@ except(e);
 <p>WH: The current proposal claims that <code>else</code> works better than <code>except</code> because supposedly <code>else</code> allows for future extensibility to multiple <code>else</code> clauses. This is incorrect.</p>
 <p>WH: The current proposal allows at most one else-type clause after a try. That works. It works regardless of whether the keyword is <code>else</code> or <code>except</code>.</p>
 <p>However, the proposal claims that <code>else</code> is better because it then allows for a future v2 proposal to introduce multiple else-type clauses after a try. That's not the case because v2 would incompatibly change the meaning of</p>
-<pre><code class="language-js">if (...)
-try
+<pre><code class="language-js"><span class="hljs-keyword">if</span> (...)
+<span class="hljs-keyword">try</span>
 {...}
-else (e)
+<span class="hljs-keyword">else</span> (e)
 {...}
-else (e)
+<span class="hljs-keyword">else</span> (e)
 {...}
 </code></pre>
 <p>DD: Let's follow up on GitHub with details</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-114"><h4 id="conclusionresolution-114">Conclusion/Resolution</h4></a><ul>
 <li>Not proposed for Stage 2 at this point; too many unsolved problems.</li>
 </ul>
-<h2>11.iii.c Observables</h2>
-<p>(Jafar Husain)</p>
+<a href="#11iiic-observables"><h2 id="11iiic-observables">11.iii.c Observables</h2></a><p>(Jafar Husain)</p>
 <p><a href="https://docs.google.com/presentation/d/18KkpDm0Z-lGnUFxcK_ZJwSKCSalnBqjhGN8W--PyT88/edit#slide=id.p">https://docs.google.com/presentation/d/18KkpDm0Z-lGnUFxcK_ZJwSKCSalnBqjhGN8W--PyT88/edit#slide=id.p</a></p>
 <p>JH: Previously, <code>.subscribe()</code> would get set up using a <code>.start()</code> method which starts delivering values with the Observable once it's already set up.</p>
 <p>Having the consumer pass in the CancelToken is better because the consumer doesn't need to wait for the producer to wait to deliver the subscription.</p>
@@ -367,17 +360,17 @@ else (e)
 <li>observable</li>
 </ul>
 <pre><code class="language-js">
-// Calling
-function zalgo(callback) {
-  if (someConditionIsSatifiedNow) {
+<span class="hljs-comment">// Calling</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">zalgo</span>(<span class="hljs-params">callback</span>) </span>{
+  <span class="hljs-keyword">if</span> (someConditionIsSatifiedNow) {
     callback();    
-  } else {
+  } <span class="hljs-keyword">else</span> {
     doTheTask();
-    process.nextTick(_ =&gt; callback());
+    process.nextTick(<span class="hljs-function"><span class="hljs-params">_</span> =&gt;</span> callback());
   }
 }
 
-zalgo(_ =&gt; console.log(&quot;not clear if this will be invoked asynchronously or synchronously&quot;));
+zalgo(<span class="hljs-function"><span class="hljs-params">_</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"not clear if this will be invoked asynchronously or synchronously"</span>));
 </code></pre>
 <p>DD: Observables, Promises and CancelTokens compose well--Observables can have APIs that return Promises, as I presented at TPAC in this example</p>
 <p>DE: Is there a code sample which takes advantage of the synchronicity of observables here?</p>
@@ -390,18 +383,15 @@ zalgo(_ =&gt; console.log(&quot;not clear if this will be invoked asynchronously
 <p>DD: Then I don't need unThen and could go to Stage 2 for CancelTokens!</p>
 <p>MM: Would this paint us into a corner, if we want to add unThen later?</p>
 <p>(Discussion about polyfills, staging, getting people to use it, etc)</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-115"><h4 id="conclusionresolution-115">Conclusion/Resolution</h4></a><ul>
 <li>Not advancing, pushing the pause button for now</li>
 </ul>
-<h2>11.ii.d Sigil swap: decorators &lt;-&gt; private fields</h2>
-<p>(Jordan Harband)</p>
+<a href="#11iid-sigil-swap-decorators--private-fields"><h2 id="11iid-sigil-swap-decorators--private-fields">11.ii.d Sigil swap: decorators &lt;-&gt; private fields</h2></a><p>(Jordan Harband)</p>
 <p>JHD: More sense to...</p>
 <p>Propose:</p>
 <ul>
 <li>@ for private</li>
-<li><h1>for decorator</h1>
-</li>
+<li><a href="#for-decorator"><h1 id="for-decorator">for decorator</h1></a></li>
 </ul>
 <p>BBR: Node.js looks for <code>#</code> on first line. A decorator could be at top level, but private could not</p>
 <p>(Should key on <code>#!</code> anyway)</p>
@@ -463,14 +453,12 @@ zalgo(_ =&gt; console.log(&quot;not clear if this will be invoked asynchronously
 <p>JHD: multiple networks have adopted the syntax, so i think it will mean &quot;hashtag&quot; for far longer than that</p>
 <p>RW: We're setting a bad precedent in allowing Babel and TypeScript code to determine the course of ES evolution</p>
 <p>DRR: This is not the intention of TypeScript,</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-116"><h4 id="conclusionresolution-116">Conclusion/Resolution</h4></a><ul>
 <li>No sigil swap at this time; seems difficult to achieve consensus on such a swap in the future.</li>
 <li>Could revisit later, but it would require a strong argument beyond this.</li>
 <li>Features that are not stabilized are subject to change in general and should not be expected to be stable at all, especially if they are at Stage 1.</li>
 </ul>
-<h2>11.iii.b Async Iteration</h2>
-<p>(Domenic Denicola)</p>
+<a href="#11iiib-async-iteration"><h2 id="11iiib-async-iteration">11.iii.b Async Iteration</h2></a><p>(Domenic Denicola)</p>
 <p><a href="https://github.com/tc39/proposal-async-iteration">https://github.com/tc39/proposal-async-iteration</a></p>
 <p>DD: I took this over from Kevin Smith and resolved a number of issues in PRs. Main issue: where does unwrapping happen?</p>
 <p>DD: Conclusion: The contract is for .next() to return a Promise of an IterationResult, not a Promise of an IterationResult of a Promise, by:</p>
@@ -480,9 +468,9 @@ zalgo(_ =&gt; console.log(&quot;not clear if this will be invoked asynchronously
 <li>Previously, yield Promise.resolve(1) from within an async iterator, creates the badly behaved iterator</li>
 <li>Now, the async generator object's .next() method does the unwrapping for you. Observable case:</li>
 </ul>
-<pre><code class="language-js">var asyncGen = async function* () {
-    yield delay(100);
-    console.log(1);
+<pre><code class="language-js"><span class="hljs-keyword">var</span> asyncGen = <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span>* (<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">yield</span> delay(<span class="hljs-number">100</span>);
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span>);
 }
 </code></pre>
 <p>Then the print would happen right after asyncGen.next(), rather than waiting for delay to end, but the Promise that next returns would only be fulfilled when the delay is done.</p>
@@ -501,12 +489,10 @@ zalgo(_ =&gt; console.log(&quot;not clear if this will be invoked asynchronously
 <p>MM: Good point.</p>
 <p>DE: small changes after my review, havent looked at them yet.</p>
 <p>BT: Nothing missing, no major concerns</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-117"><h4 id="conclusionresolution-117">Conclusion/Resolution</h4></a><ul>
 <li>Stage 3</li>
 </ul>
-<h2>11.ii.c Set, Map, WeakSet, and WeakMap: of and from methods</h2>
-<p>(Leo Balter)</p>
+<a href="#11iic-set-map-weakset-and-weakmap-of-and-from-methods"><h2 id="11iic-set-map-weakset-and-weakmap-of-and-from-methods">11.ii.c Set, Map, WeakSet, and WeakMap: of and from methods</h2></a><p>(Leo Balter)</p>
 <p><a href="https://github.com/leobalter/proposal-setmap-offrom">https://github.com/leobalter/proposal-setmap-offrom</a></p>
 <p>LB: Adding <code>of</code> and <code>from</code> to <code>Map</code>, <code>Set</code>, <code>WeakMap</code> &amp; <code>WeakSet</code></p>
 <ul>
@@ -538,14 +524,12 @@ zalgo(_ =&gt; console.log(&quot;not clear if this will be invoked asynchronously
 <p>JH: of and from can be used to create polymorphic apis</p>
 <p>[More raucous debate]</p>
 <p>MM: Don't want this in the language, but don't object to stage 1.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-118"><h4 id="conclusionresolution-118">Conclusion/Resolution</h4></a><ul>
 <li>Stage 1</li>
 </ul>
-<h2>Arrow Generator Revisit</h2>
-<p>(Domenic Denicola for Brendan Eich)</p>
+<a href="#arrow-generator-revisit"><h2 id="arrow-generator-revisit">Arrow Generator Revisit</h2></a><p>(Domenic Denicola for Brendan Eich)</p>
 <p>?</p>
-<pre><code class="language-js">let f = () =&gt; * {}
+<pre><code class="language-js"><span class="hljs-keyword">let</span> f = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> * {}
 </code></pre>
 <p>DH: Argument against: We're probably not going to make <code>class *</code>, so why do need to make arrow *?</p>
 <ul>
@@ -554,15 +538,13 @@ zalgo(_ =&gt; console.log(&quot;not clear if this will be invoked asynchronously
 <p>WH: What would <code>class *</code> even mean?</p>
 <p>widest class of strong idioms to support?</p>
 <p>DD: Need to go back and get more evidence.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-119"><h4 id="conclusionresolution-119">Conclusion/Resolution</h4></a><ul>
 <li>Stage 1</li>
 <li>Please look into use cases</li>
 <li>Discuss syntax details and analogies further.</li>
 </ul>
-<h2>11.iv.c Built-in Modules - Let's Pick a Syntax</h2>
-<p>(Brian Terlson)</p>
-<pre><code class="language-js">import DateTime from &quot;_?_DateTime&quot;;
+<a href="#11ivc-built-in-modules---lets-pick-a-syntax"><h2 id="11ivc-built-in-modules---lets-pick-a-syntax">11.iv.c Built-in Modules - Let's Pick a Syntax</h2></a><p>(Brian Terlson)</p>
+<pre><code class="language-js"><span class="hljs-keyword">import</span> DateTime <span class="hljs-keyword">from</span> <span class="hljs-string">"_?_DateTime"</span>;
 </code></pre>
 <p>BT: There has been desire for inclusion of built-in modules since dawn of modules. Safe place to introduce new things.</p>
 <ul>
@@ -627,11 +609,12 @@ zalgo(_ =&gt; console.log(&quot;not clear if this will be invoked asynchronously
 <p>BBR: That would already have a semantic</p>
 <p>BT: Another option: <code>import DateTime;</code></p>
 <p>DE: Seems a little confusing with the analog to <code>import &quot;DateTime&quot;</code> doing something completely differen</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-120"><h4 id="conclusionresolution-120">Conclusion/Resolution</h4></a><ul>
 <li>Stage 1</li>
 <li>Need to craft a plan in accordance with committee concerns</li>
 <li>Polyfillability, including Mark's concern about ensuring you can disallow access to the original</li>
 <li>Domenic's concerns about bifurcating the world between pre-2019 APIs and post-2019 APIs</li>
 <li>Eric Faust's concerns about polyfills leading to a tension with the possibility of namespace collision</li>
 </ul>
+
+</body>

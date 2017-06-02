@@ -1,10 +1,15 @@
 <!doctype html>
 <meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.6.0/github-markdown.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+
 <title>Sept 28 2016 Meeting Notes</title>
-<h1>Sept 28 2016 Meeting Notes</h1>
-<p>Brian Terlson (BT), Michael Ficarra (MF), Jordan Harband (JHD), Waldemar Horwat (WH), Tim Disney (TD), Michael Saboff (MS), Chip Morningstar (CM), Daniel Ehrenberg (DE), Leo Balter (LB), Yehuda Katz (YK), Jafar Husain (JH), Domenic Denicola (DD), Rick Waldron (RW), John Buchanan (JB), Kevin Gibbons (KG), Peter Jensen (PJ), Tom Care (TC), Dave Herman (DH), Bradley Farias (BF), Dean Tribble (DT), Eric Faust (FST), Jeff Morrison (JM), Sebastian Markbåge (SM), Saam Barati (SB), Kris Gray (KGY), John-David Dalton (JDD), Daniel Rosenwasser (DRR), Mikeal Rogers (MRS), Jean-Francis Paradis (JFP), Sathya Gunasekasan (SGN), Juan Dopazo (JDO), Bert Belder (BBR), James Snell (JSL), Shu-yu Guo (SYG), Eric Ferraiuolo (EF), Caridy Patiño (CP), Allen Wirfs-Brock (AWB), Brendan Eich (BE), Jacob Groundwater (JGR), Adam Klein (AK)</p>
-<h2>ES Modules Lifecycle</h2>
-<p>(Bradley Farias)</p>
+<body class="markdown-body">
+<a href="#sept-28-2016-meeting-notes"><h1 id="sept-28-2016-meeting-notes">Sept 28 2016 Meeting Notes</h1></a><p>Brian Terlson (BT), Michael Ficarra (MF), Jordan Harband (JHD), Waldemar Horwat (WH), Tim Disney (TD), Michael Saboff (MS), Chip Morningstar (CM), Daniel Ehrenberg (DE), Leo Balter (LB), Yehuda Katz (YK), Jafar Husain (JH), Domenic Denicola (DD), Rick Waldron (RW), John Buchanan (JB), Kevin Gibbons (KG), Peter Jensen (PJ), Tom Care (TC), Dave Herman (DH), Bradley Farias (BF), Dean Tribble (DT), Eric Faust (FST), Jeff Morrison (JM), Sebastian Markbåge (SM), Saam Barati (SB), Kris Gray (KGY), John-David Dalton (JDD), Daniel Rosenwasser (DRR), Mikeal Rogers (MRS), Jean-Francis Paradis (JFP), Sathya Gunasekasan (SGN), Juan Dopazo (JDO), Bert Belder (BBR), James Snell (JSL), Shu-yu Guo (SYG), Eric Ferraiuolo (EF), Caridy Patiño (CP), Allen Wirfs-Brock (AWB), Brendan Eich (BE), Jacob Groundwater (JGR), Adam Klein (AK)</p>
+<a href="#es-modules-lifecycle"><h2 id="es-modules-lifecycle">ES Modules Lifecycle</h2></a><p>(Bradley Farias)</p>
 <p>Slides: <a href="https://docs.google.com/presentation/d/1aq_QjBUQTovj9aQZQrVzS7l1aiOs3ZNlk7wgNTUEMy0/edit#slide=id.g16ab11d101_51_46">https://docs.google.com/presentation/d/1aq_QjBUQTovj9aQZQrVzS7l1aiOs3ZNlk7wgNTUEMy0/edit#slide=id.g16ab11d101_51_46</a></p>
 <p>BF: We will be talking about host-dependent behavior: The Node module loading hook is specified in a way that meets ES spec requirements. There is a global and local cache &lt;explain details&gt;</p>
 <p>(from slide)</p>
@@ -39,22 +44,22 @@
 </ul>
 <p>MR: We have caching; we need it</p>
 <p>BF: [~Lifecycle Errors slide]</p>
-<pre><code class="language-js">// a (entry)
-import {fromB} from 'b';
-import {fromC} from 'c';
+<pre><code class="language-js"><span class="hljs-comment">// a (entry)</span>
+<span class="hljs-keyword">import</span> {fromB} <span class="hljs-keyword">from</span> <span class="hljs-string">'b'</span>;
+<span class="hljs-keyword">import</span> {fromC} <span class="hljs-keyword">from</span> <span class="hljs-string">'c'</span>;
 </code></pre>
-<pre><code class="language-js">// b
-export let fromB = 'b';
+<pre><code class="language-js"><span class="hljs-comment">// b</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">let</span> fromB = <span class="hljs-string">'b'</span>;
 </code></pre>
-<pre><code class="language-js">// c
-import {fromB} from 'b';
+<pre><code class="language-js"><span class="hljs-comment">// c</span>
+<span class="hljs-keyword">import</span> {fromB} <span class="hljs-keyword">from</span> <span class="hljs-string">'b'</span>;
 
-// FIXME
-import {doesntExist} from 'b';
+<span class="hljs-comment">// FIXME</span>
+<span class="hljs-keyword">import</span> {doesntExist} <span class="hljs-keyword">from</span> <span class="hljs-string">'b'</span>;
 
-export let fromC = 'c';
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">let</span> fromC = <span class="hljs-string">'c'</span>;
 
-throw Error();
+<span class="hljs-keyword">throw</span> <span class="hljs-built_in">Error</span>();
 </code></pre>
 <p>BF: This causes a link error. no evaluation occurs. B exports to A, C exports to B, and we fail. To implement this in Node, we store things in the global cache, and remove when there are errors resulting.</p>
 <p><a href="https://docs.google.com/presentation/d/1aq_QjBUQTovj9aQZQrVzS7l1aiOs3ZNlk7wgNTUEMy0/edit#slide=id.g16ab11d101_51_0">https://docs.google.com/presentation/d/1aq_QjBUQTovj9aQZQrVzS7l1aiOs3ZNlk7wgNTUEMy0/edit#slide=id.g16ab11d101_51_0</a></p>
@@ -403,8 +408,7 @@ Evaluation of a immediately causes b to evaluate (before evaluating any of the s
 <p>AWB: Or we could relax the immutability of module namespace objects in a case where the imported-from module is dynamic. The immutability was mostly for optimizability.</p>
 <p>AK: Couldn't there also be security issues with allowing a namespace object to change after creation?</p>
 <p>AWB: With everything being ESMs, we can do static resolution all the way down to the base binding. We can't necessarily do that when we have dynamic CJS modules in the middle there. We have to stop at that point. Seems like that requires a spec change. Ultimately, I think TDZs take care of it, but at present, in the ES spec, we assume that we can go all the way to the end, as opposed to going through multiple steps.</p>
-<h2>11.3.a import()</h2>
-<p>(Domenic Denicola)</p>
+<a href="#113a-import"><h2 id="113a-import">11.3.a import()</h2></a><p>(Domenic Denicola)</p>
 <p><a href="https://github.com/domenic/proposal-import-function">https://github.com/domenic/proposal-import-function</a></p>
 <p>DD: Presently, all module loading is done statically, top level. There are cases where you absolutely need to have conditional imports. There are many common use cases. Need to dynamically load a module, with a string. Returns a Promise for a module namespace object. The proposal keeps with out general stance of keeping proposals small; this is mostly syntax plus calling out to embedder hooks.</p>
 <p>AWB: Does the occurrence of <code>import</code> turn the script into a module?</p>
@@ -422,7 +426,7 @@ Evaluation of a immediately causes b to evaluate (before evaluating any of the s
 <p>RW: Channeling DH from three years ago: <code>import(</code> creates confusion because it looks like a function but isn't a function.</p>
 <p>DD: This is a syntactic form that's function-like. super is a prominent one. Also, you can do (x =&gt; import(x))</p>
 <p>RW: That's a good precedent to cite for this (w/r to &quot;it looks like a function, but isn't actually a function object&quot;)</p>
-<pre><code class="language-js">Promise.all([&quot;a&quot;, &quot;b&quot;].map(name =&gt; import(name)).then(() =&gt; ...)
+<pre><code class="language-js"><span class="hljs-built_in">Promise</span>.all([<span class="hljs-string">"a"</span>, <span class="hljs-string">"b"</span>].map(<span class="hljs-function"><span class="hljs-params">name</span> =&gt;</span> <span class="hljs-keyword">import</span>(name)).then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> ...)
 </code></pre>
 <p>BF: To clarify, even in Node, it would return a Promise</p>
 <p>DD: Even if Node wants require to be synchronous, asynchronous background loading of modules is useful, e.g. lazily loading things from JSDOM.</p>
@@ -436,8 +440,7 @@ Evaluation of a immediately causes b to evaluate (before evaluating any of the s
 <p>BB: Maybe you'd import require from a built-in module.</p>
 <p>AK: Why is there a new hook for HostFetchImportedModule?</p>
 <p>DE: Isn't this like adding something to [[RequestedModules]] dynamically?</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-121"><h4 id="conclusionresolution-121">Conclusion/Resolution</h4></a><ul>
 <li>Stage 1</li>
 <li>Becomes Stage 2 at the end of the day tomorrow, noting that we are seeking feedback from DH and YK which may affect this.</li>
 <li>Reviewers</li>
@@ -445,47 +448,44 @@ Evaluation of a immediately causes b to evaluate (before evaluating any of the s
 <li>Allen Wirfs-Brock</li>
 <li>James Snell</li>
 </ul>
-<h2>Revisit System.global =&gt; global</h2>
-<p>JHD: Reviewers and editor have signed off on the spec text.</p>
+<a href="#revisit-systemglobal--global"><h2 id="revisit-systemglobal--global">Revisit System.global =&gt; global</h2></a><p>JHD: Reviewers and editor have signed off on the spec text.</p>
 <ul>
 <li>Willing to make it <code>enumerable: true</code> pending implementor feedback</li>
 </ul>
 <p>JHD: Hope to have as many browser implementations before Stage 4</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-122"><h4 id="conclusionresolution-122">Conclusion/Resolution</h4></a><ul>
 <li>Stage 3</li>
 </ul>
-<h2>11.2.b Intl.Segmenter</h2>
-<p>(Daniel Ehrenberg)</p>
+<a href="#112b-intlsegmenter"><h2 id="112b-intlsegmenter">11.2.b Intl.Segmenter</h2></a><p>(Daniel Ehrenberg)</p>
 <p>DE: Unicode defines breaking properties: grapheme, word, line, sentence breaks.</p>
 <p><img src="https://i.gyazo.com/57e77bf6676eba9de26ff52fcf6bde5f.png" alt=""></p>
 <ul>
 <li>Want to remove <code>Intl.v8BreakIterator</code> (sorry about that!)</li>
 </ul>
 <p><img src="https://i.gyazo.com/e210324180f4fd426fe9104e3f058608.png" alt=""></p>
-<pre><code class="language-js">// Create a segmenter in your locale
-let segmenter = Intl.Segmenter(&quot;fr&quot;, {type: &quot;word&quot;});
+<pre><code class="language-js"><span class="hljs-comment">// Create a segmenter in your locale</span>
+<span class="hljs-keyword">let</span> segmenter = <span class="hljs-built_in">Intl</span>.Segmenter(<span class="hljs-string">"fr"</span>, {<span class="hljs-attr">type</span>: <span class="hljs-string">"word"</span>});
 
-// Get an iterator over a string
-let segmentIterator = segmenter.segment(&quot;Ceci n'est pas une pipe&quot;);
+<span class="hljs-comment">// Get an iterator over a string</span>
+<span class="hljs-keyword">let</span> segmentIterator = segmenter.segment(<span class="hljs-string">"Ceci n'est pas une pipe"</span>);
 
-// Iterate over it!
-for (let {index, breakType} of segmentIterator) {
-  console.log(`index: ${index} breakType: ${breakType}`);
-  break;
+<span class="hljs-comment">// Iterate over it!</span>
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> {index, breakType} <span class="hljs-keyword">of</span> segmentIterator) {
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`index: <span class="hljs-subst">${index}</span> breakType: <span class="hljs-subst">${breakType}</span>`</span>);
+  <span class="hljs-keyword">break</span>;
 }
 </code></pre>
 <p>Short-cut accelerated API:</p>
-<pre><code class="language-js">let segmentIterator = segmenter.segment(
-&quot;Ceci n'est pas une pipe&quot;);
+<pre><code class="language-js"><span class="hljs-keyword">let</span> segmentIterator = segmenter.segment(
+<span class="hljs-string">"Ceci n'est pas une pipe"</span>);
 
-// next() returning undefined
+<span class="hljs-comment">// next() returning undefined</span>
 segmentIterator.advance();
 
-// index of current break result
+<span class="hljs-comment">// index of current break result</span>
 segmentIterator.index();
 
-// breakType of current break result
+<span class="hljs-comment">// breakType of current break result</span>
 segmentIterator.breakType();
 </code></pre>
 <p>WH: Is the iterator the only API you're proposing? If you just wanted to turn a string into an array of words in that string, is there a quick way of doing that?</p>
@@ -494,7 +494,7 @@ segmentIterator.breakType();
 <p>WH: What does this do for indices at which there are no breaks? Does it have a concept of &quot;no break&quot;, or does it just omit them from the iterator output?</p>
 <p>DE: It omits them.</p>
 <p>WH:</p>
-<pre><code>Hello, &quot;world&quot;! \n\n
+<pre><code><span class="hljs-built_in">Hello,</span> <span class="hljs-string">"world"</span>! \n\n
 </code></pre>
 <p>Where do the word breaks go here, and are the decisions configurable?</p>
 <p>DE: Explained in <a href="http://unicode.org/reports/tr29/">http://unicode.org/reports/tr29/</a> (UAX29)</p>
@@ -513,7 +513,8 @@ segmentIterator.breakType();
 <p>WH: UAX29 lists lots of configuration sub-options for different kinds of breaking choices. Is it your intent to support those?</p>
 <p>DE: Yes.</p>
 <p>JSL: ideal to get rid of prefixed.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-123"><h4 id="conclusionresolution-123">Conclusion/Resolution</h4></a><ul>
 <li>Stage 1</li>
 </ul>
+
+</body>

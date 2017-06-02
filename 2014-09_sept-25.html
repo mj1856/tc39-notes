@@ -1,24 +1,29 @@
 <!doctype html>
 <meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.6.0/github-markdown.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+
 <title>September 25 2014 Meeting Notes</title>
-<h1>September 25 2014 Meeting Notes</h1>
-<p>Brian Terlson (BT), Allen Wirfs-Brock (AWB), John Neumann (JN), Rick Waldron (RW), Eric Ferraiuolo (EF), Jeff Morrison (JM), Jonathan Turner (JT), Sebastian Markbage (SM), Istvan Sebestyen (phone) (IS), Erik Arvidsson (EA), Brendan Eich (BE), Domenic Denicola (DD), Peter Jensen (PJ), Eric Toth (ET), Yehuda Katz (YK), Dave Herman (DH), Brendan Eich (BE), Simon Kaegi (SK), Boris Zbarsky (BZ), Andreas Rossberg (ARB), Caridy Patino (CP), Niko Matsakis (NM), Mark Miller (MM), Matt Miller (MMR), Jaswanth Sreeram (JS)</p>
-<h2>5.8 Object Rest Destructuring and Spread Properties</h2>
-<p>(Sebastian Markbage)</p>
+<body class="markdown-body">
+<a href="#september-25-2014-meeting-notes"><h1 id="september-25-2014-meeting-notes">September 25 2014 Meeting Notes</h1></a><p>Brian Terlson (BT), Allen Wirfs-Brock (AWB), John Neumann (JN), Rick Waldron (RW), Eric Ferraiuolo (EF), Jeff Morrison (JM), Jonathan Turner (JT), Sebastian Markbage (SM), Istvan Sebestyen (phone) (IS), Erik Arvidsson (EA), Brendan Eich (BE), Domenic Denicola (DD), Peter Jensen (PJ), Eric Toth (ET), Yehuda Katz (YK), Dave Herman (DH), Brendan Eich (BE), Simon Kaegi (SK), Boris Zbarsky (BZ), Andreas Rossberg (ARB), Caridy Patino (CP), Niko Matsakis (NM), Mark Miller (MM), Matt Miller (MMR), Jaswanth Sreeram (JS)</p>
+<a href="#58-object-rest-destructuring-and-spread-properties"><h2 id="58-object-rest-destructuring-and-spread-properties">5.8 Object Rest Destructuring and Spread Properties</h2></a><p>(Sebastian Markbage)</p>
 <p>Spec <a href="https://github.com/sebmarkbage/ecmascript-rest-spread">https://github.com/sebmarkbage/ecmascript-rest-spread</a></p>
 <p>Request Slides</p>
 <p>SM: Update: own properties?</p>
 <ul>
 <li>Need to be own properties</li>
 </ul>
-<pre><code class="language-js">Object.prototype.hostile = 1;
+<pre><code class="language-js"><span class="hljs-built_in">Object</span>.prototype.hostile = <span class="hljs-number">1</span>;
 
-let { ...o } = {};
+<span class="hljs-keyword">let</span> { ...o } = {};
 
-let o = { ...{} };
+<span class="hljs-keyword">let</span> o = { ...{} };
 
-o.hostile; // 1
-o.hasOwnProperty(&quot;hostile&quot;); // true
+o.hostile; <span class="hljs-comment">// 1</span>
+o.hasOwnProperty(<span class="hljs-string">"hostile"</span>); <span class="hljs-comment">// true</span>
 </code></pre>
 <p>MM: clarifies hostile vs. accidental</p>
 <p>MM: When does Object.assign do toMethod?</p>
@@ -27,8 +32,8 @@ o.hasOwnProperty(&quot;hostile&quot;); // true
 <p>SM: Mental model:</p>
 <pre><code class="language-js">...o
 
-expands keys = Object.keys(o) to 
-o[keys[0]], o[keys[1]], o[keys[2]]
+expands keys = <span class="hljs-built_in">Object</span>.keys(o) to 
+o[keys[<span class="hljs-number">0</span>]], o[keys[<span class="hljs-number">1</span>]], o[keys[<span class="hljs-number">2</span>]]
 </code></pre>
 <p>Security Consideration?</p>
 <p>Syntax introduces a new way to determine &quot;ownness&quot; without going through (patchable) library functions:</p>
@@ -52,8 +57,8 @@ o[keys[0]], o[keys[1]], o[keys[2]]
 <p>AWB: Let's talk about own again. This is an extension of obj destructuring -- which, as it exists today, does not restrict prop accesses to own properties.</p>
 <p>AWB: However, it does restrict/ignores enumerability</p>
 <p>AWB: Implication of this being own: You couldn't use a tree structure to represent a set of values:</p>
-<pre><code class="language-js">BaseOpts = {__proto__: null, o1: 1, o2: 2, o3: 3, ... oN: n};
-ThisTime = {__proto__: BaseOpts, o7: 14};
+<pre><code class="language-js">BaseOpts = {<span class="hljs-attr">__proto__</span>: <span class="hljs-literal">null</span>, <span class="hljs-attr">o1</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">o2</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">o3</span>: <span class="hljs-number">3</span>, ... oN: n};
+ThisTime = {<span class="hljs-attr">__proto__</span>: BaseOpts, <span class="hljs-attr">o7</span>: <span class="hljs-number">14</span>};
 foo(ThisTime);
 </code></pre>
 <p>AWB: Now, inside of Foo...</p>
@@ -91,9 +96,9 @@ foo(ThisTime);
 <p>DH: Recognize that this feature is fitting in an existing syntactic space and is rounding out a syntax that already exists.</p>
 <p>ARB: It's subtly different...</p>
 <p>DH: You'll have to learn it</p>
-<pre><code>function ComponentChild({ isFoo, ...rest }) {
-    var type = isFoo ? 'foo' : 'bar';
-    return ComponentBase({ ... rest, type });
+<pre><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">ComponentChild</span><span class="hljs-params">({ isFoo, <span class="hljs-rest_arg">...rest</span> })</span> </span>{
+    <span class="hljs-keyword">var</span> type = isFoo ? <span class="hljs-string">'foo'</span> : <span class="hljs-string">'bar'</span>;
+    <span class="hljs-keyword">return</span> ComponentBase({ ... rest, type });
 }
 </code></pre>
 <p>AWB: What happens if rest is an array?</p>
@@ -101,8 +106,7 @@ foo(ThisTime);
 <p>AWB: But we use iterators.</p>
 <p>MM: It should be dependent on the syntactic thing containing the .... In an object literal, ... will enumerate properties.</p>
 <p>SM: Stage 1?</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-374"><h4 id="conclusionresolution-374">Conclusion/Resolution</h4></a><ul>
 <li>Stage 1 approval</li>
 </ul>
 <p>AWB: Be sure to mark agenda items that want to advance with some kind of notation, this will help to get pre-meeting attention.</p>
@@ -111,17 +115,16 @@ foo(ThisTime);
 <p>YK: I feel like the rocketship icon should be for proposals which are ready to launch</p>
 <p>DD: If you bikeshed on the rocketship icon I will change it to a bikeshed icon.</p>
 <p>RW: :D</p>
-<h2>Loader pipeline</h2>
-<p>AWB: Working on module spec. Questions: Loader pipeline.  Can we simplify modules for ES spec?</p>
+<a href="#loader-pipeline"><h2 id="loader-pipeline">Loader pipeline</h2></a><p>AWB: Working on module spec. Questions: Loader pipeline.  Can we simplify modules for ES spec?</p>
 <p>&quot;A.js&quot;</p>
-<pre><code class="language-js">export let g = 5;
-import f from &quot;B.js&quot;;
+<pre><code class="language-js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">let</span> g = <span class="hljs-number">5</span>;
+<span class="hljs-keyword">import</span> f <span class="hljs-keyword">from</span> <span class="hljs-string">"B.js"</span>;
 f(g);
 </code></pre>
 <p>&quot;B.js&quot;</p>
-<pre><code class="language-js">import g from &quot;A.js&quot;;
-export function f(z) {
-    return z * g;
+<pre><code class="language-js"><span class="hljs-keyword">import</span> g <span class="hljs-keyword">from</span> <span class="hljs-string">"A.js"</span>;
+<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params">z</span>) </span>{
+    <span class="hljs-keyword">return</span> z * g;
 };
 </code></pre>
 <p>AWB: Essential in ES6 that the semantics of above example code is well defined.</p>
@@ -144,14 +147,11 @@ export function f(z) {
 <p>(Discussion about Loader polyfill)</p>
 <p>(Discussion of how the loader spec would be a separate document)</p>
 <p>YK: The loader pipeline will be done in a &quot;living spec&quot; (a la HTML5) so that Node and the browser can collaborate on shared needs.</p>
-<h4>Conclusion/Resolution</h4>
-<p>Loader pipeline goes into a separate spec: living document that deals with integration</p>
+<a href="#conclusionresolution-375"><h4 id="conclusionresolution-375">Conclusion/Resolution</h4></a><p>Loader pipeline goes into a separate spec: living document that deals with integration</p>
 <p>AWB: Retitle? ECMAScript 2015 (6th edition), and so on</p>
-<h2>Train Schedule</h2>
-<p>DH: Let's define the schedule</p>
+<a href="#train-schedule"><h2 id="train-schedule">Train Schedule</h2></a><p>DH: Let's define the schedule</p>
 <p>YK: ES2015 is the first train.</p>
-<h2>Types</h2>
-<p>(Jonathan Turner)</p>
+<a href="#types"><h2 id="types">Types</h2></a><p>(Jonathan Turner)</p>
 <p><a href="./type_annotations.pdf">type_annotations.pdf</a></p>
 <p>JT: Goals</p>
 <ul>
@@ -274,14 +274,12 @@ export function f(z) {
 <p>What's the conclusion?</p>
 <p>ARB: make colon syntax reserved</p>
 <p>RW: there's more to it!</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-376"><h4 id="conclusionresolution-376">Conclusion/Resolution</h4></a><ul>
 <li>Create Future Reserved Syntax (extension restrictions)</li>
 <li>Syntax error</li>
 <li>Define <code>a: T&lt;U&gt;</code></li>
 </ul>
-<h2>5.10 global.asap for enqueuing a microtask</h2>
-<p>(Domenic Denicola and Brian Terlson)</p>
+<a href="#510-globalasap-for-enqueuing-a-microtask"><h2 id="510-globalasap-for-enqueuing-a-microtask">5.10 global.asap for enqueuing a microtask</h2></a><p>(Domenic Denicola and Brian Terlson)</p>
 <p>DD: Want enqueue microtask, which is capable of starving the eventloop</p>
 <p>AWB: As spec writer, I don't know what this is</p>
 <p>YK: In JS there is a frame, it loops</p>
@@ -320,11 +318,12 @@ export function f(z) {
 <ul>
 <li>We need a generic model for job scheduling.</li>
 </ul>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-377"><h4 id="conclusionresolution-377">Conclusion/Resolution</h4></a><ul>
 <li>Stage 0:
 <ul>
 <li>Some way to publish into a queue</li>
 <li>priority queueing</li>
 </ul></li>
 </ul>
+
+</body>

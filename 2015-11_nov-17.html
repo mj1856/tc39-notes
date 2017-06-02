@@ -1,10 +1,15 @@
 <!doctype html>
 <meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.6.0/github-markdown.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+
 <title>November 17th 2015 Meeting Notes</title>
-<h1>November 17th 2015 Meeting Notes</h1>
-<p>Jafar Husain (JH), Eric Farriauolo (EF), Caridy Patino (CP), Adam Klein (AK), Michael Ficarra (MF), Peter Jensen (PJ), Domenic Denicola (DD), Jordan Harband (JHD), Chip Morningstar (CM), Brian Terlson (BT), John Neumann  (JN), Dave Herman (DH), Brendan Eich (BE), Yehuda Katz (YK), Jeff Morrison (JM), Lee Byron (LB), Daniel Ehrenberg (DE), Lars Hansen (LHN), Nagy Hostafa (NH), Michael Saboff (MS), John Buchanan (JB), Stefan Penner (SP), Sebastian McKenzie (SMK), Waldemar Horwat (WH), Mark Miller (MM), Paul Leathers (PL)</p>
-<h2>Async functions (Stage 4 Process Discussion) (BT)</h2>
-<p>YK: can we order the agenda better? Lets make a template and follow it next time</p>
+<body class="markdown-body">
+<a href="#november-17th-2015-meeting-notes"><h1 id="november-17th-2015-meeting-notes">November 17th 2015 Meeting Notes</h1></a><p>Jafar Husain (JH), Eric Farriauolo (EF), Caridy Patino (CP), Adam Klein (AK), Michael Ficarra (MF), Peter Jensen (PJ), Domenic Denicola (DD), Jordan Harband (JHD), Chip Morningstar (CM), Brian Terlson (BT), John Neumann  (JN), Dave Herman (DH), Brendan Eich (BE), Yehuda Katz (YK), Jeff Morrison (JM), Lee Byron (LB), Daniel Ehrenberg (DE), Lars Hansen (LHN), Nagy Hostafa (NH), Michael Saboff (MS), John Buchanan (JB), Stefan Penner (SP), Sebastian McKenzie (SMK), Waldemar Horwat (WH), Mark Miller (MM), Paul Leathers (PL)</p>
+<a href="#async-functions-stage-4-process-discussion-bt"><h2 id="async-functions-stage-4-process-discussion-bt">Async functions (Stage 4 Process Discussion) (BT)</h2></a><p>YK: can we order the agenda better? Lets make a template and follow it next time</p>
 <p>BT: potential ES2016 items first</p>
 <p>BT: async function process discussion, they have been stage 3 for 2 months, implemented in edge (soon FF), implemented in babel</p>
 <p>YK: babel version i</p>
@@ -48,15 +53,11 @@
 <p>YK: DD you are right to be worried</p>
 <p>DD: thanks you, we can move on.</p>
 <p>BT: time for a regexp talk ?</p>
-<h4>Conclusion/Resolution</h4>
-<p>None yet.</p>
-<h2>Object.values/entries</h2>
-<p>JHD: OK for stage 3? It got signoff
+<a href="#conclusionresolution-263"><h4 id="conclusionresolution-263">Conclusion/Resolution</h4></a><p>None yet.</p>
+<a href="#objectvaluesentries"><h2 id="objectvaluesentries">Object.values/entries</h2></a><p>JHD: OK for stage 3? It got signoff
 … [general consensus]</p>
-<h4>Conclusion/Resolution</h4>
-<p>Object.values/entries approved for stage 3</p>
-<h2>String.pad{Left,Right}</h2>
-<p>JHD: Concerns raised on es-discuss: 1) No grapheme handling (response: then other existing things should be changed, and nothing cares about it. Every language follows native string support in its padding.)</p>
+<a href="#conclusionresolution-264"><h4 id="conclusionresolution-264">Conclusion/Resolution</h4></a><p>Object.values/entries approved for stage 3</p>
+<a href="#stringpadleftright"><h2 id="stringpadleftright">String.pad{Left,Right}</h2></a><p>JHD: Concerns raised on es-discuss: 1) No grapheme handling (response: then other existing things should be changed, and nothing cares about it. Every language follows native string support in its padding.)</p>
 <p>… [General consensus that that’s OK]</p>
 <p>WH: I see the choices as either doing this simple thing (measuring code units) or doing something really, really complicated that works correctly on graphemes. The simple thing is useful in practice, while implementing grapheme measurement would be too complicated and take us a long time. So I support this.</p>
 <p>JHD: 2) Naming: we sometimes use left/right, sometimes start/end, this one feels right. The language already equates left/start/index-0 and right/end/last index. In this context, RTL doesn’t apply…</p>
@@ -72,10 +73,8 @@ YK: saying padLeft, and meaning visual right is clearly bad.</p>
 <p>YK: any objections start/End ?</p>
 <p>CM: Remaining parallel with trimLeft/trimRight, established names?</p>
 <p>DD: Add trimStart, trimEnd and rename to padStart, padEnd as part of annex B.</p>
-<h4>Conclusion/Resolution</h4>
-<p>Rename to <code>padStart</code>/<code>padEnd</code>, update trimLeft/trimRight proposal to also include trimStart/trimEnd. padStart/padEnd approved for Stage 3.</p>
-<h2>Array.prototype.includes</h2>
-<p>DD: CC + FF in betas</p>
+<a href="#conclusionresolution-265"><h4 id="conclusionresolution-265">Conclusion/Resolution</h4></a><p>Rename to <code>padStart</code>/<code>padEnd</code>, update trimLeft/trimRight proposal to also include trimStart/trimEnd. padStart/padEnd approved for Stage 3.</p>
+<a href="#arrayprototypeincludes"><h2 id="arrayprototypeincludes">Array.prototype.includes</h2></a><p>DD: CC + FF in betas</p>
 <p>DD: test262 works</p>
 <p>DD: Safari doesn’t have TypeArray.prototype.includes</p>
 <p>DD: Stage 4?</p>
@@ -85,10 +84,8 @@ YK: saying padLeft, and meaning visual right is clearly bad.</p>
 <p>DD: lets make it unscopable</p>
 <p>DD: stage 4?</p>
 <p>YK: yup</p>
-<h4>Conclusion/Resolution</h4>
-<p>Move to stage 4 (tomorrow when it’s added to @@unscopables)</p>
-<h2>function.sent</h2>
-<p>BT: We have not gotten any feedback at all, not from implementors, no implementations, no Babel</p>
+<a href="#conclusionresolution-266"><h4 id="conclusionresolution-266">Conclusion/Resolution</h4></a><p>Move to stage 4 (tomorrow when it’s added to @@unscopables)</p>
+<a href="#functionsent"><h2 id="functionsent">function.sent</h2></a><p>BT: We have not gotten any feedback at all, not from implementors, no implementations, no Babel</p>
 <p>YK: That’s scary; we need some feedback</p>
 <p>DE: Do we have reviewers?</p>
 <p>BT: It’s so tiny! It should be OK to add it. It would be almost impossible to design it  wrong.</p>
@@ -99,21 +96,17 @@ YK: saying padLeft, and meaning visual right is clearly bad.</p>
 <p>YK: Is stage 2, only about completing the spec language? dave’s tweets say userland experiment</p>
 <p>AK: The thing we’re trying to avoid is adding something to the language that won’t be useful for anyone</p>
 <p>BT: Implementing something at Stage 2 carries quite a bit of risk</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-267"><h4 id="conclusionresolution-267">Conclusion/Resolution</h4></a><ul>
 <li>Designated reviewers: DE and DD</li>
 <li>Side process conversation: AK, YK, BT</li>
 </ul>
-<h2>Object.observe update</h2>
-<p>AK: Object.observe is going to be deprecated in Chrome. I’d like to formally withdraw it from the stage process.</p>
+<a href="#objectobserve-update"><h2 id="objectobserve-update">Object.observe update</h2></a><p>AK: Object.observe is going to be deprecated in Chrome. I’d like to formally withdraw it from the stage process.</p>
 <p>YK: I already submitted a PR to remove it from tc39/ecma262/README.md!</p>
 <p>AK: I haven’t gotten very much negative feedback</p>
 <p>YK: Maybe the framework wars will be settled and we can revisit this question</p>
-<h4>Conclusion/Resolution</h4>
-<p>Object.observe is withdrawn</p>
-<h2>Should destructuring declarations without bindings throw?</h2>
-<pre><code class="language-js">let { } = obj;
-let { foo: {} } = obj;
+<a href="#conclusionresolution-268"><h4 id="conclusionresolution-268">Conclusion/Resolution</h4></a><p>Object.observe is withdrawn</p>
+<a href="#should-destructuring-declarations-without-bindings-throw"><h2 id="should-destructuring-declarations-without-bindings-throw">Should destructuring declarations without bindings throw?</h2></a><pre><code class="language-js"><span class="hljs-keyword">let</span> { } = obj;
+<span class="hljs-keyword">let</span> { <span class="hljs-attr">foo</span>: {} } = obj;
 </code></pre>
 <p>BT: who is in favor if this being an error?</p>
 <p>BT: this may actually be programmer intent</p>
@@ -137,10 +130,8 @@ let { foo: {} } = obj;
 <p>?: There is a use case for users whose style guides do not allow holes in arrays</p>
 <p>BT: current semantic remains?</p>
 <p>everyone: agrees</p>
-<h4>Conclusion/Resolution</h4>
-<p>Current semantics stand</p>
-<h2>legacy function hoisting semantics in sloppy mode (DE)</h2>
-<p><a href="https://github.com/tc39/ecma262/pull/175">https://github.com/tc39/ecma262/pull/175</a></p>
+<a href="#conclusionresolution-269"><h4 id="conclusionresolution-269">Conclusion/Resolution</h4></a><p>Current semantics stand</p>
+<a href="#legacy-function-hoisting-semantics-in-sloppy-mode-de"><h2 id="legacy-function-hoisting-semantics-in-sloppy-mode-de">legacy function hoisting semantics in sloppy mode (DE)</h2></a><p><a href="https://github.com/tc39/ecma262/pull/175">https://github.com/tc39/ecma262/pull/175</a></p>
 <p>DE: self defining functions, GWT generates this whenever there is a static block</p>
 <p>BT: how many sites?</p>
 <p>DE: GWT is hundreds of thousands, FB uses etc. Quanitify the impact is hard to do.</p>
@@ -212,10 +203,8 @@ WH: If the outer block contains a binding with the same name as the function bei
 <p>DE: i don’t want sloppy mode to become overly complicated by adding a 3rd case.</p>
 <p>BE: once we made our call (assuming we did due deligence) we should risk chasing our tale by endlessly adjusting the spec…</p>
 <p>BT: we should be prescriptive. GWT should fix its emit. Inbox should fix its app. Chrome should attempt to ship standard semantics.</p>
-<h4>Conclusion/Resolution</h4>
-<p>No consensus on changing the existing Annex B semantics.</p>
-<h2>RegExp simplication semantics (DE)</h2>
-<p>A few extension points for RegExp subclassing.</p>
+<a href="#conclusionresolution-270"><h4 id="conclusionresolution-270">Conclusion/Resolution</h4></a><p>No consensus on changing the existing Annex B semantics.</p>
+<a href="#regexp-simplication-semantics-de"><h2 id="regexp-simplication-semantics-de">RegExp simplication semantics (DE)</h2></a><p>A few extension points for RegExp subclassing.</p>
 <ul>
 <li>Symbol.{search,replace,match,split}</li>
 <li>get RegExp#unicode/multiline/etc</li>
@@ -237,10 +226,8 @@ proposal: fewer extension points.</li>
 <p>BE: should we defer this [the override features of ES2015] or take it out.</p>
 <p>BE: we screwed up, it needed more implementor feedback and further iteration.</p>
 <p>MM: lets defer this conversation for tomorrow, when Alan can call it successfully.</p>
-<h4>Conclusion/Resolution</h4>
-<p>defer until we can talk to Allen tomorrow</p>
-<h2>Remove generator <code>.return</code>? (DE)</h2>
-<ul>
+<a href="#conclusionresolution-271"><h4 id="conclusionresolution-271">Conclusion/Resolution</h4></a><p>defer until we can talk to Allen tomorrow</p>
+<a href="#remove-generator-return-de"><h2 id="remove-generator-return-de">Remove generator <code>.return</code>? (DE)</h2></a><ul>
 <li>overview of <code>.return</code></li>
 <li>pros of <code>.return</code>
 <ul>
@@ -284,8 +271,7 @@ proposal: fewer extension points.</li>
 <p>BE: We didn’t add <code>.return()</code> without use cases. Don’t discount those. One initial usecase for implicit <code>return</code> is yielding from the try.</p>
 <p>DH: Don’t want to relitigate the use of try-finally in the language. Disagree with the claim that it’s ok that finally wouldn’t work in generators.</p>
 <p>MM: Allow redundant <code>.return()</code> calls, which are ignored. This way a user can manually iterate and wrap the iteration inside a try-finally that unconditionally calls <code>.return()</code> on the iterable from the finally.</p>
-<h2>RegExp Buffet</h2>
-<p>BT: if we have multiple proposals, I would propose we attempt to advance them together. I am hoping to get an idea from the group, what the initial RegExp proposal should include.</p>
+<a href="#regexp-buffet"><h2 id="regexp-buffet">RegExp Buffet</h2></a><p>BT: if we have multiple proposals, I would propose we attempt to advance them together. I am hoping to get an idea from the group, what the initial RegExp proposal should include.</p>
 <ul>
 <li>look behinds</li>
 <li>Named Capture groups</li>
@@ -371,3 +357,5 @@ proposal: fewer extension points.</li>
 - unicode categories
 - blocks &amp; scripts</p>
 <p>BT previews us some syntax for tomorrow.</p>
+
+</body>

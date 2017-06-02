@@ -1,12 +1,16 @@
 <!doctype html>
 <meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.6.0/github-markdown.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+
 <title>Sept 17 Meeting Notes</title>
-<h1>Sept 17 Meeting Notes</h1>
-<p>John Neumann (JN), Dave Herman (DH), Istvan Sebestyen (IS), Alex Russell (AR), Allen Wirfs-Brock (AWB), Erik Arvidsson (EA), Eric Ferraiuolo (EF), Doug Crockford (DC), Luke Hoban (LH), Anne van Kesteren (AVK), Brendan Eich (BE), Brian Terlson (BT), Rick Waldron (RW), Waldemar Horwat (WH), Rafael Weinstein (RWS), Boris Zbarsky (BZ), Domenic Denicola (DD), Tim Disney (TD), Niko Matsakis (NM), Jeff Morrrison (JM), Sebastian Markbage (SM), Oliver Hunt (OH), Sam Tobin-Hochstadt (STH), Dmitry Lomov (DL), Andreas Rossberg (ARB), Reid Burke (RB)</p>
-<h2>Welcome</h2>
-<p>RW: ...Logistics...</p>
-<h2>Agenda</h2>
-<p>Promises to be discussed Thurs. PLH from W3C will be here on Wed/Thurs.</p>
+<body class="markdown-body">
+<a href="#sept-17-meeting-notes"><h1 id="sept-17-meeting-notes">Sept 17 Meeting Notes</h1></a><p>John Neumann (JN), Dave Herman (DH), Istvan Sebestyen (IS), Alex Russell (AR), Allen Wirfs-Brock (AWB), Erik Arvidsson (EA), Eric Ferraiuolo (EF), Doug Crockford (DC), Luke Hoban (LH), Anne van Kesteren (AVK), Brendan Eich (BE), Brian Terlson (BT), Rick Waldron (RW), Waldemar Horwat (WH), Rafael Weinstein (RWS), Boris Zbarsky (BZ), Domenic Denicola (DD), Tim Disney (TD), Niko Matsakis (NM), Jeff Morrrison (JM), Sebastian Markbage (SM), Oliver Hunt (OH), Sam Tobin-Hochstadt (STH), Dmitry Lomov (DL), Andreas Rossberg (ARB), Reid Burke (RB)</p>
+<a href="#welcome"><h2 id="welcome">Welcome</h2></a><p>RW: ...Logistics...</p>
+<a href="#agenda"><h2 id="agenda">Agenda</h2></a><p>Promises to be discussed Thurs. PLH from W3C will be here on Wed/Thurs.</p>
 <p>BE: won't be here thurs, and that suits me.</p>
 <p>JN: objections to using this agenda?</p>
 <p>(crickets&gt;</p>
@@ -33,8 +37,7 @@
 <p>EA: Spec process</p>
 <p>DH: We can do this out of order.
 ...Let's discuss Data parallelism while Niko Matsakis is present.</p>
-<h2>11. Status Report 262</h2>
-<p>AWB: I'd like feedback and comments on the new re-orderings.</p>
+<a href="#11-status-report-262"><h2 id="11-status-report-262">11. Status Report 262</h2></a><p>AWB: I'd like feedback and comments on the new re-orderings.</p>
 <p>DH: I know that Jason Orendorff has some issues (es-discuss: <a href="https://mail.mozilla.org/pipermail/es-discuss/2013-September/033314.html">https://mail.mozilla.org/pipermail/es-discuss/2013-September/033314.html</a> (starting with Olliver Hunt))</p>
 <p>AWB: New sections...</p>
 <ul>
@@ -93,7 +96,7 @@
 <p>AWB: Yes</p>
 <p>WH: This will break</p>
 <p>(whiteboard)</p>
-<pre><code class="language-js">yield * 1;
+<pre><code class="language-js"><span class="hljs-keyword">yield</span> * <span class="hljs-number">1</span>;
 </code></pre>
 <p>is that a multiplication or <code>yield *</code>?</p>
 <p>AWB:
@@ -102,7 +105,7 @@
 <p>AWB: inside a generator function, &quot;yield&quot; is a keyword that introduces a generator expression.</p>
 <p>WH: inside a generator, this (&quot;/&quot;) will be a RE, outside it will be a division symbol?</p>
 <p>WH:</p>
-<pre><code class="language-js">yield /a/g;
+<pre><code class="language-js"><span class="hljs-keyword">yield</span> /a/g;
 </code></pre>
 <p>is this yield divided by a? or yield a regexp?</p>
 <p>BE: so this is like the regular expression delimiter, it's going to need to have feedback from the parser to the lexer.</p>
@@ -138,35 +141,34 @@
 <p>DH: Dmitry <em>is</em> working on this, it's not 2014 yet, we shouldn't definitively say it's not going in.</p>
 <p>AWB: well, I'm trying to manage expectations.</p>
 <p>BE: Let's revisit after we get a little further with the other items.</p>
-<h2>4.1 Arrow Functions</h2>
-<p>BE: When I proposed Arrow Functions, the empty parameter list was made optional. The omission</p>
+<a href="#41-arrow-functions"><h2 id="41-arrow-functions">4.1 Arrow Functions</h2></a><p>BE: When I proposed Arrow Functions, the empty parameter list was made optional. The omission</p>
 <p>LH: C# requires formal parameters?</p>
 <p>DC: Who is asking for this?</p>
 <p>BE: Community feedback, Domenic has mentioned it as well.</p>
 <p>DD: Possibly due to CoffeeScript, but is nice to omit the parens where they aren't necessary.</p>
 <p>BE: For this proposal, there is no issue in leaving the param list out</p>
 <pre><code class="language-js">
-let foo = =&gt; ...;
+<span class="hljs-keyword">let</span> foo = =&gt; ...;
 
-x = (y) // note missing semilicon
+x = (y) <span class="hljs-comment">// note missing semilicon</span>
 =&gt; z
 
 </code></pre>
 <p>BE: but nobody does this.</p>
 <p>DC: A concern, <code>x = y</code>, as written without the parens...</p>
-<pre><code class="language-js">x = y
-=&gt; z
+<pre><code class="language-js">x = <span class="hljs-function"><span class="hljs-params">y</span>
+=&gt;</span> z
 </code></pre>
 <p>(This is a valid Arrow Function: <a href="http://traceur-compiler.googlecode.com/git/demo/repl.html#let%20x%20%3D%20y%0A%20%20%20%20%3D%3E%20z">http://traceur-compiler.googlecode.com/git/demo/repl.html#let%20x%20%3D%20y%0A%20%20%20%20%3D%3E%20z</a> )</p>
 <p>AWB: No parameters: no LineTerminator here?</p>
 <p>BE: If someone began with an arrow,</p>
 <p>WH: I'm fine with this being an arrow function, but don't want this to depend on line breaking. I consider the following to be legitimate:</p>
-<pre><code class="language-js">    x = averylongid
-       =&gt; foo
+<pre><code class="language-js">    x = <span class="hljs-function"><span class="hljs-params">averylongid</span>
+       =&gt;</span> foo
 </code></pre>
 <p>DH: This would introduce a new sigil that you'd have to worry about</p>
 <p>BE: npm style is a thing. People actually put semicolons at the beginning of lines starting with + - / { [ (, this would introduce =&gt; to that list.</p>
-<pre><code class="language-js">var i = &quot;1&quot;
+<pre><code class="language-js"><span class="hljs-keyword">var</span> i = <span class="hljs-string">"1"</span>
 ;+i
 </code></pre>
 <p>WH: (laughter)</p>
@@ -177,24 +179,22 @@ x = (y) // note missing semilicon
 <p>EA: I think it's worth it</p>
 <p>BE: Writing &quot;()&quot; is too hard?</p>
 <p>DD: It's ugly.</p>
-<pre><code class="language-js">it(&quot;should do something&quot;, =&gt; {
-    // ...
+<pre><code class="language-js">it(<span class="hljs-string">"should do something"</span>, =&gt; {
+    <span class="hljs-comment">// ...</span>
 });
 
 vs.
 
-it(&quot;should do something&quot;, () =&gt; {
-    // ...
+it(<span class="hljs-string">"should do something"</span>, () =&gt; {
+    <span class="hljs-comment">// ...</span>
 });
 </code></pre>
 <p>DH: I'd prefer not to have the hazard.</p>
 <p>AR, DC: Agree with DH</p>
-<h4>Consensus/Resolution</h4>
-<ul>
+<a href="#consensusresolution-530"><h4 id="consensusresolution-530">Consensus/Resolution</h4></a><ul>
 <li>No consensus on removing the empty param list</li>
 </ul>
-<h2>4.3 Math.hypot</h2>
-<p>DH: The idea is that it returns the square root of the sum of its arguments, but we have 2 and 3 argument special casing.</p>
+<a href="#43-mathhypot"><h2 id="43-mathhypot">4.3 Math.hypot</h2></a><p>DH: The idea is that it returns the square root of the sum of its arguments, but we have 2 and 3 argument special casing.</p>
 <p><a href="http://wiki.ecmascript.org/doku.php?id=harmony:more_math_functions">http://wiki.ecmascript.org/doku.php?id=harmony:more_math_functions</a></p>
 <p>It's an offense to mathematics if it's not: &quot;The square root of the sum of the squares of all the arguments&quot;</p>
 <p>Defend the pristine purity of math. If it's only a 2-argument function, that's OK, but having it a 2- and 3-argument function is not good, just make it an n-argument function.</p>
@@ -203,14 +203,12 @@ it(&quot;should do something&quot;, () =&gt; {
 <p>LH: Should be variadic</p>
 <p>DC: Programming in general is an insult to mathematics. Because what we call functions are not what they call functions. One convention we have in JS is that calling a function with three parameters is the same as calling it with two plus undefined.</p>
 <p>DH: but not for variadic functions. Since we want it for arity 2 and arity 3, cleanest way is to make it variadic. If you have 2 cases, yo have n cases.</p>
-<h4>Consensus/Resolution</h4>
-<ul>
+<a href="#consensusresolution-531"><h4 id="consensusresolution-531">Consensus/Resolution</h4></a><ul>
 <li>variadic</li>
 <li>call ToNumber on all actual arguments</li>
 <li>if one is NaN, no special behaviour, allow to fall out.</li>
 </ul>
-<h2>4.7 JSON.stringify and unpaired surrogates</h2>
-<p><a href="https://mail.mozilla.org/pipermail/es-discuss/2013-September/033293.html">https://mail.mozilla.org/pipermail/es-discuss/2013-September/033293.html</a></p>
+<a href="#47-jsonstringify-and-unpaired-surrogates"><h2 id="47-jsonstringify-and-unpaired-surrogates">4.7 JSON.stringify and unpaired surrogates</h2></a><p><a href="https://mail.mozilla.org/pipermail/es-discuss/2013-September/033293.html">https://mail.mozilla.org/pipermail/es-discuss/2013-September/033293.html</a></p>
 <p>AWB: The concern is that JSON.stringify, as specified in ES5, if there is an unpaired surrugate</p>
 <p>AVK: There's a bug in V8 where lone surrogates passed to the utf-8 encoder turn into CESU-8 byte sequences.</p>
 <ul>
@@ -233,7 +231,7 @@ it(&quot;should do something&quot;, () =&gt; {
 <p>AVK: Right now, roundtripping unpaired surrogates does not work. We could fix this by escaping them.</p>
 <p>AWB: But this is an incompatible change from ES5, since the length of the string would change to include \uXXXX (or \uXXXX\uYYYY) instead of the surrogate itself.</p>
 <p>AVK: (whiteboard)</p>
-<pre><code class="language-js">JSON.stringiyf(&quot;\uD800&quot;)
+<pre><code class="language-js"><span class="hljs-built_in">JSON</span>.stringiyf(<span class="hljs-string">"\uD800"</span>)
 </code></pre>
 <p>AVK: \uD800 is a single sixteen-bit code unit that is also a surrogate.</p>
 <p>BE: this seems incompatible, so I say no</p>
@@ -254,26 +252,24 @@ it(&quot;should do something&quot;, () =&gt; {
 <p>BE: JSON is more then a network format</p>
 <p>?: If you want to pass binary data, just escape unpaired surrogates before serializing them as JSON.</p>
 <p>WH: Won't work. JSON will escape the backslashes in the escape sequences and you'll get double backslashes.</p>
-<h4>Consensus/Resolution</h4>
-<ul>
+<a href="#consensusresolution-532"><h4 id="consensusresolution-532">Consensus/Resolution</h4></a><ul>
 <li>No Change. If you want to use lone surrogates you'll have to escape them after JSON.stringify().</li>
 </ul>
-<h2>5.1 splice, cross-realm Arrays and subclassing</h2>
-<p><a href="http://esdiscuss.org/topic/array-prototype-slice-web-compat-issue">http://esdiscuss.org/topic/array-prototype-slice-web-compat-issue</a></p>
+<a href="#51-splice-cross-realm-arrays-and-subclassing"><h2 id="51-splice-cross-realm-arrays-and-subclassing">5.1 splice, cross-realm Arrays and subclassing</h2></a><p><a href="http://esdiscuss.org/topic/array-prototype-slice-web-compat-issue">http://esdiscuss.org/topic/array-prototype-slice-web-compat-issue</a></p>
 <p>AWB: (whiteboard)</p>
-<pre><code class="language-js">let newA = a.slice();
+<pre><code class="language-js"><span class="hljs-keyword">let</span> newA = a.slice();
 </code></pre>
 <p>AWB: it turns out people use this to make a copy of an array</p>
 <p>In the general case, assume you have:</p>
-<pre><code class="language-js">class SA extends Array {}
+<pre><code class="language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SA</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Array</span> </span>{}
 
-let sa = new SA(10);
+<span class="hljs-keyword">let</span> sa = <span class="hljs-keyword">new</span> SA(<span class="hljs-number">10</span>);
 
-sa.slice(1, 5);
+sa.slice(<span class="hljs-number">1</span>, <span class="hljs-number">5</span>);
 
-// What does this return?
-// - a new SA?
-// - a new Array?
+<span class="hljs-comment">// What does this return?</span>
+<span class="hljs-comment">// - a new SA?</span>
+<span class="hljs-comment">// - a new Array?</span>
 </code></pre>
 <p>It seems to make sense that when you slice a <code>SA</code>, you should get a new instance of <code>SA</code></p>
 <p>WH: (recalling Mark's points about Caja(?) use of slice) Array.prototype.slice.call(a)</p>
@@ -283,7 +279,7 @@ sa.slice(1, 5);
 <pre><code class="language-js">
 [].slice.call(a);
 
-// This result will be an array from the [].slice.call realm
+<span class="hljs-comment">// This result will be an array from the [].slice.call realm</span>
 </code></pre>
 <p>AWB: I've tweaked the spec to say:</p>
 <ul>
@@ -327,8 +323,7 @@ sa.slice(1, 5);
 <p>DD: But this is what user code would do, using this.constructor</p>
 <p>AWB: none of these are guaranteed, where you can wack the prototype...</p>
 <p><strike></p>
-<h4>Consensus/Resolution</h4>
-<ul>
+<a href="#consensusresolution-533"><h4 id="consensusresolution-533">Consensus/Resolution</h4></a><ul>
 <li>When slice is call, what is the realm of the slice method and the realm of the constructor of the thisObj (since objects don't have realms, only functions do, we have to look up constructor).</li>
 <li>If they do not match, create it in the realm of the method using the stardard Array constructor there.
 </strike></li>
@@ -381,14 +376,11 @@ Is the object going to create an Array?
 <p>WH: If you're looking at the prototype of things, Caja will break. If you're looking at the constructor property, ES5 code will break for anything that has a custom constructor</p>
 <p>AWB: Ignoring the Realm, unless we add some new operation on instances that reveal what Realm they are originally from.</p>
 <p>BE/DH: need to go back and work on this.</p>
-<h4>Consensus/Resolution</h4>
-<ul>
+<a href="#consensusresolution-534"><h4 id="consensusresolution-534">Consensus/Resolution</h4></a><ul>
 <li>Needs revision of proposal.</li>
 </ul>
-<h2>5.2 Evaluation Order and The [[Invoke]] Operation</h2>
-<p>DH: Yehuda was interested in this.</p>
-<h2>5.3 @@unscopeable</h2>
-<p>AWB: Inheritance?</p>
+<a href="#52-evaluation-order-and-the-invoke-operation"><h2 id="52-evaluation-order-and-the-invoke-operation">5.2 Evaluation Order and The [[Invoke]] Operation</h2></a><p>DH: Yehuda was interested in this.</p>
+<a href="#53-unscopeable"><h2 id="53-unscopeable">5.3 @@unscopeable</h2></a><p>AWB: Inheritance?</p>
 <p>ARB: Wrong to apply this across inheritance</p>
 <p>AWB: Changed in r18</p>
 <p>ARB: How was this changed?</p>
@@ -417,15 +409,15 @@ Is the object going to create an Array?
 <p>BZ: Possibly as a descriptor?</p>
 <p>RW: That was also considered</p>
 <p>ARB: But if you [[Set]] it won't go away</p>
-<pre><code class="language-js">var a = [];
-a.values = 1; &lt;--
-</code></pre>
+<pre><code class="language-js"><span class="hljs-keyword">var</span> a = [];
+a.values = <span class="hljs-number">1</span>; <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">--</span>
+</span></span></code></pre>
 <p>DH: (Recalling the issue that created this problem)</p>
-<pre><code class="language-js">function f(values) {
+<pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params">values</span>) </span>{
             ^-------------------------+
-  with(values) {                      |
-    values = 1;                       |
-      ^--&quot;values&quot; here is pointing to-+
+  <span class="hljs-keyword">with</span>(values) {                      |
+    values = <span class="hljs-number">1</span>;                       |
+      ^--<span class="hljs-string">"values"</span> here is pointing to-+
   }
 }
 </code></pre>
@@ -476,8 +468,7 @@ a.values = 1; &lt;--
 <p>AWB: Yeah.</p>
 <p>DH: I don't really care.</p>
 <p>AWB: You asked for a Set no, I think it should be a Set.</p>
-<h4>Consensus/Resolution</h4>
-<ul>
+<a href="#consensusresolution-535"><h4 id="consensusresolution-535">Consensus/Resolution</h4></a><ul>
 <li>Continueing with @@unscopeable, with changes w/r to lookup to be defined.</li>
 <li>Noted change:
 <ul>
@@ -488,8 +479,7 @@ a.values = 1; &lt;--
 <li>@@unscopeable</li>
 <li>a Set</li>
 </ul>
-<h2>5.5 Math.roundFloat32</h2>
-<p>AWB/DH: Offline discussion to rename to something more Math object familiar</p>
+<a href="#55-mathroundfloat32"><h2 id="55-mathroundfloat32">5.5 Math.roundFloat32</h2></a><p>AWB/DH: Offline discussion to rename to something more Math object familiar</p>
 <p>Suggestions:</p>
 <ol>
 <li>Math.fround()</li>
@@ -500,30 +490,24 @@ a.values = 1; &lt;--
 <p>DH: It is, according to IEE 754</p>
 <p>BE: fround. f means float, i means integer</p>
 <p>AWB: What this effectively does, is &quot;round&quot; (observably)</p>
-<h4>Consensus/Resolution</h4>
-<ul>
+<a href="#consensusresolution-536"><h4 id="consensusresolution-536">Consensus/Resolution</h4></a><ul>
 <li>Math.fround</li>
 </ul>
-<h2>5.6 Backwards compatability, Unicode UTR31, and ES identifiers (U2e2f)</h2>
-<p><a href="http://esdiscuss.org/topic/backwards-compatibility-and-u-2e2f-in-identifier-s">http://esdiscuss.org/topic/backwards-compatibility-and-u-2e2f-in-identifier-s</a></p>
+<a href="#56-backwards-compatability-unicode-utr31-and-es-identifiers-u2e2f"><h2 id="56-backwards-compatability-unicode-utr31-and-es-identifiers-u2e2f">5.6 Backwards compatability, Unicode UTR31, and ES identifiers (U2e2f)</h2></a><p><a href="http://esdiscuss.org/topic/backwards-compatibility-and-u-2e2f-in-identifier-s">http://esdiscuss.org/topic/backwards-compatibility-and-u-2e2f-in-identifier-s</a></p>
 <p>AWB: Traditionally, ES has said that Identifier are composed of unicode characters. There are changes to Unicode that rescind it's ability to be an Identifier.</p>
 <p>AVK: According to Norbert, the character in question was not part of Unicode 3.0 and therefore not a change</p>
 <p>(group testing identifier creation with U2e2f)</p>
-<h4>Consensus/Resolution</h4>
-<ul>
+<a href="#consensusresolution-537"><h4 id="consensusresolution-537">Consensus/Resolution</h4></a><ul>
 <li>No change</li>
 <li>SpiderMonkey: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=917436">https://bugzilla.mozilla.org/show_bug.cgi?id=917436</a></li>
 <li>V8: <a href="https://code.google.com/p/v8/issues/detail?id=2892">https://code.google.com/p/v8/issues/detail?id=2892</a></li>
 </ul>
-<h2>5.7 note in 11.6 WRT Unicode versions, update to Unicode 5.1</h2>
-<p><a href="http://people.mozilla.org/~jorendorff/es6-draft.html#sec-11.6">http://people.mozilla.org/~jorendorff/es6-draft.html#sec-11.6</a></p>
+<a href="#57-note-in-116-wrt-unicode-versions-update-to-unicode-51"><h2 id="57-note-in-116-wrt-unicode-versions-update-to-unicode-51">5.7 note in 11.6 WRT Unicode versions, update to Unicode 5.1</h2></a><p><a href="http://people.mozilla.org/~jorendorff/es6-draft.html#sec-11.6">http://people.mozilla.org/~jorendorff/es6-draft.html#sec-11.6</a></p>
 <p>AWB: (Norbert proposal)</p>
-<h4>Consensus/Resolution</h4>
-<ul>
+<a href="#consensusresolution-538"><h4 id="consensusresolution-538">Consensus/Resolution</h4></a><ul>
 <li>Remove: &quot;NOTE 2 If maximal portability is a concern, programmers should only employ the identifier characters that were defined in Unicode 3.0.&quot;</li>
 </ul>
-<h2>5.8 line terminators in template strings. Should they be normalized?</h2>
-<p>(discussion re line terminators)</p>
+<a href="#58-line-terminators-in-template-strings-should-they-be-normalized"><h2 id="58-line-terminators-in-template-strings-should-they-be-normalized">5.8 line terminators in template strings. Should they be normalized?</h2></a><p>(discussion re line terminators)</p>
 <p>AVK: HTML parser does normalization, but e.g. DOM setters do not</p>
 <p>BE: not normalizing would introduce more interop hazards than we want.</p>
 <p>AWB: just to be clear, this is both cooked and raw form.</p>
@@ -539,15 +523,13 @@ a.values = 1; &lt;--
 <p>DD: but a lot of the examples, e.g. on the wiki, use raw</p>
 <p>BE: ah right, like the regex one, because you need all those slashes. Hmm.</p>
 <p>BE: Python normalizes, Ruby normalizes</p>
-<h4>Consensus/Resolution</h4>
-<ul>
+<a href="#consensusresolution-539"><h4 id="consensusresolution-539">Consensus/Resolution</h4></a><ul>
 <li>Normalize CR, LF, and CRLF to LF</li>
 </ul>
 <p>[WH: Is this consensus recorded correctly? I understood the consensus to be normalizing all lexical grammar LineTerminatorSequences to LF.]</p>
 <p><strong>EDIT</strong>
 RW: Yes, and was re-stated for confirmation.</p>
-<h2>5.9 12.2.4 note says we decided (Jan 2012) tail calls only in strict mode. Is this still correct?</h2>
-<p><a href="http://wiki.ecmascript.org/doku.php?id=harmony:proper_tail_calls">http://wiki.ecmascript.org/doku.php?id=harmony:proper_tail_calls</a></p>
+<a href="#59-1224-note-says-we-decided-jan-2012-tail-calls-only-in-strict-mode-is-this-still-correct"><h2 id="59-1224-note-says-we-decided-jan-2012-tail-calls-only-in-strict-mode-is-this-still-correct">5.9 12.2.4 note says we decided (Jan 2012) tail calls only in strict mode. Is this still correct?</h2></a><p><a href="http://wiki.ecmascript.org/doku.php?id=harmony:proper_tail_calls">http://wiki.ecmascript.org/doku.php?id=harmony:proper_tail_calls</a></p>
 <p>DH: function.arguments is poisoned in strict mode. This opened up doing tail calls.</p>
 <p>LH: Are the tail call locations on the wiki still up to date?</p>
 <p>DH, AWB: yes, to the best of our knowledge; let us know ASAP if there's something wrong with them.</p>
@@ -556,7 +538,7 @@ RW: Yes, and was re-stated for confirmation.</p>
 </ul>
 <p>AWB: getting close to the point of getting tail call stuff into the spec (depending on how busy Dave keeps me); any comments appreciated sooner rather than later.</p>
 <p>AWB: Implicit calls to accessor properties in tail positions, e.g. <code>return x.y</code>, and <code>x.y</code> turns out to be a getter, do we want this to be a tail call.</p>
-<pre><code class="language-js">return x.y;
+<pre><code class="language-js"><span class="hljs-keyword">return</span> x.y;
 </code></pre>
 <p>If <code>x.y</code> turns out to be a getter, is that a tail call?</p>
 <p>AWB: also consider <code>return x.y()</code> where <code>x</code> turns out to be a proxy; then it's not just a simple call, it goes through the proxy handler.</p>
@@ -570,22 +552,18 @@ RW: Yes, and was re-stated for confirmation.</p>
 <p>AWB: OK, what about the proxy case.</p>
 <p>DH: I think it works fine; the semantics is just tail-calling the call trap.</p>
 <p>STH: I agree with Dave; we're just making a tail call to some arbitrary code. The code we're worried about is in the call-<em>ing</em> function, not in the MOP operation/trap handler.</p>
-<h4>Consensus/Resolution</h4>
-<ul>
+<a href="#consensusresolution-540"><h4 id="consensusresolution-540">Consensus/Resolution</h4></a><ul>
 <li>Yes, the list is still correct.</li>
 <li>function.arguments in non-strict makes tail call effectively impossible.</li>
 </ul>
 <p>(increasing insistence on break time)</p>
 <p>AWB: but let's do point 5.11.</p>
-<h2>5.11 Disallow? let undefined; const undefined; class undefined {}; module undefined from &quot;foo&quot;;</h2>
-<p>No one thinks that disallowing this is a good idea.</p>
-<h4>Consensus/Resolution</h4>
-<ul>
+<a href="#511-disallow-let-undefined-const-undefined-class-undefined--module-undefined-from-foo"><h2 id="511-disallow-let-undefined-const-undefined-class-undefined--module-undefined-from-foo">5.11 Disallow? let undefined; const undefined; class undefined {}; module undefined from &quot;foo&quot;;</h2></a><p>No one thinks that disallowing this is a good idea.</p>
+<a href="#consensusresolution-541"><h4 id="consensusresolution-541">Consensus/Resolution</h4></a><ul>
 <li>Allow</li>
 </ul>
 <p>BE: Let's make it a keyword inside generators! Just kidding.</p>
-<h2>4.2 Reconsider decision to make Typed Arrays non-extensible</h2>
-<p><a href="http://esdiscuss.org/topic/non-extensibility-of-typed-arrays">http://esdiscuss.org/topic/non-extensibility-of-typed-arrays</a></p>
+<a href="#42-reconsider-decision-to-make-typed-arrays-non-extensible"><h2 id="42-reconsider-decision-to-make-typed-arrays-non-extensible">4.2 Reconsider decision to make Typed Arrays non-extensible</h2></a><p><a href="http://esdiscuss.org/topic/non-extensibility-of-typed-arrays">http://esdiscuss.org/topic/non-extensibility-of-typed-arrays</a></p>
 <p>AWB: Last f2f we decided to make typed arrays non extensible.</p>
 <p>ARB: Chrome makes them extensible but I'm in favor of making them non extensible.</p>
 <p>AWB: the most significant thing I saw is that if you create a subclass of a typed array, the reason for doing so might include adding some additional state, and so the only direct way to do that is by adding own properties to the instance of the subclass, and if typed array instances are created non-extensible, then subclasses couldn't do this.</p>
@@ -597,17 +575,17 @@ RW: Yes, and was re-stated for confirmation.</p>
 <p>AWB: we could go back to having numeric expandos, if you want...</p>
 <p>BE: No no no no, there was a performance counterargument there, unlike for named expandos.</p>
 <p>DL: (clarifying</p>
-<pre><code class="language-js">A = new ArrayType(uint8, 10);
-s = new StructType({a: A, ...});
-a = new A();
-a.foo = 5;
-s.a = a; // ??
+<pre><code class="language-js">A = <span class="hljs-keyword">new</span> ArrayType(uint8, <span class="hljs-number">10</span>);
+s = <span class="hljs-keyword">new</span> StructType({<span class="hljs-attr">a</span>: A, ...});
+a = <span class="hljs-keyword">new</span> A();
+a.foo = <span class="hljs-number">5</span>;
+s.a = a; <span class="hljs-comment">// ??</span>
 b = s.a
 </code></pre>
 <p>DH: A &quot;Typed Object&quot; is effectively a pointer to a shared backing store. If those objects can carry addition state</p>
 <p>OH: If</p>
 <p>DL: With typed objects we can do</p>
-<pre><code class="language-js">Uint8Array = new ArrayType(uint8);
+<pre><code class="language-js"><span class="hljs-built_in">Uint8Array</span> = <span class="hljs-keyword">new</span> ArrayType(uint8);
 </code></pre>
 <p>AWB: There may differences between TypedArray types</p>
 <p>...</p>
@@ -665,10 +643,10 @@ b = s.a
 <p>OH: We don't see any reason to remove extensibility, you can always make them non-extensible</p>
 <p>OH: The view of the JavaScriptCore team is that making them non-extensible removes what developers can do, whereas making them extensible does not have to cost and provides more freedom.</p>
 <p>OH: examples of behaviour equivalent to TypeArrays with expandos:</p>
-<pre><code class="language-js">array = [1,2,3]
-Object.defineProperty(array, &quot;length&quot;, {writable:false})
-array[3] = 0;
-array[3] =&gt; undefined
+<pre><code class="language-js">array = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]
+<span class="hljs-built_in">Object</span>.defineProperty(array, <span class="hljs-string">"length"</span>, {<span class="hljs-attr">writable</span>:<span class="hljs-literal">false</span>})
+array[<span class="hljs-number">3</span>] = <span class="hljs-number">0</span>;
+array[<span class="hljs-number">3</span>] =&gt; <span class="hljs-literal">undefined</span>
 </code></pre>
 <p>Various DOM lists allow non integer expandos, but don't allow integer expandos</p>
 <p>BE: The conservative argument is that if we're unsure we should make it non-extensible so we can make it extensible later.</p>
@@ -681,7 +659,8 @@ array[3] =&gt; undefined
 Non-extensible: 6</p>
 <p>STH: (points about the mental model of operating on the backing store)</p>
 <p>DC: (points about the hazard of user code that abuses Array and creating a new hazard)</p>
-<h4>Consensus/Resolution</h4>
-<ul>
+<a href="#consensusresolution-542"><h4 id="consensusresolution-542">Consensus/Resolution</h4></a><ul>
 <li>Consensus deferred.</li>
 </ul>
+
+</body>

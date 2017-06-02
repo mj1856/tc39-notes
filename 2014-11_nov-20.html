@@ -1,10 +1,15 @@
 <!doctype html>
 <meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.6.0/github-markdown.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+
 <title>November 20 2014 Meeting Notes</title>
-<h1>November 20 2014 Meeting Notes</h1>
-<p>Brian Terlson (BT), Taylor Woll (TW), Jordan Harband (JHD), Allen Wirfs-Brock (AWB), John Neumann (JN), Rick Waldron (RW), Eric Ferraiuolo (EF), Jeff Morrison (JM), Sebastian Markbage (SM), Erik Arvidsson (EA), Peter Jensen (PJ), Eric Toth (ET), Yehuda Katz (YK), Dave Herman (DH), Brendan Eich (BE), Ben Newman (BN), Forrest Norvell (FN), Waldemar Horwat (WH), Alan Schmitt (AS), Michael Ficarra (MF), Jafar Husain (JH), Lee Byron (LB), Dmitry Lomov (DL), Arnaud Le Hors (ALH), Chip Morningstar (CM), Caridy Patino (CP), Domenic Denicola (DD), Mark Miller (MM), Yehuda Katz (YK), Dmitry Soshnikov (DS), Kevin Smith (KS), Rafael Weinstein (RWS)</p>
-<h2>5.5 Array.prototype.includes() proposal to move to Stage 2.</h2>
-<p>(Domenic Denicola)</p>
+<body class="markdown-body">
+<a href="#november-20-2014-meeting-notes"><h1 id="november-20-2014-meeting-notes">November 20 2014 Meeting Notes</h1></a><p>Brian Terlson (BT), Taylor Woll (TW), Jordan Harband (JHD), Allen Wirfs-Brock (AWB), John Neumann (JN), Rick Waldron (RW), Eric Ferraiuolo (EF), Jeff Morrison (JM), Sebastian Markbage (SM), Erik Arvidsson (EA), Peter Jensen (PJ), Eric Toth (ET), Yehuda Katz (YK), Dave Herman (DH), Brendan Eich (BE), Ben Newman (BN), Forrest Norvell (FN), Waldemar Horwat (WH), Alan Schmitt (AS), Michael Ficarra (MF), Jafar Husain (JH), Lee Byron (LB), Dmitry Lomov (DL), Arnaud Le Hors (ALH), Chip Morningstar (CM), Caridy Patino (CP), Domenic Denicola (DD), Mark Miller (MM), Yehuda Katz (YK), Dmitry Soshnikov (DS), Kevin Smith (KS), Rafael Weinstein (RWS)</p>
+<a href="#55-arrayprototypeincludes-proposal-to-move-to-stage-2"><h2 id="55-arrayprototypeincludes-proposal-to-move-to-stage-2">5.5 Array.prototype.includes() proposal to move to Stage 2.</h2></a><p>(Domenic Denicola)</p>
 <p>DD: Has all of the requisite items complete.</p>
 <ul>
 <li>Not ready for Step 3 because we need more patches landed.</li>
@@ -13,12 +18,10 @@
 <p>AWB: Move stuff to TC39 github?</p>
 <p>DD: Yes.</p>
 <p>AWB: For Ecma record, need PDF</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-351"><h4 id="conclusionresolution-351">Conclusion/Resolution</h4></a><ul>
 <li>Proceeds to Stage 2</li>
 </ul>
-<h2>5.6 Object.observe: proposal to move to Stage 3.</h2>
-<p>(Rafael Weinstein)</p>
+<a href="#56-objectobserve-proposal-to-move-to-stage-3"><h2 id="56-objectobserve-proposal-to-move-to-stage-3">5.6 Object.observe: proposal to move to Stage 3.</h2></a><p>(Rafael Weinstein)</p>
 <p>RWS: Move Object.observe to Stage 3?</p>
 <p>RW: Can you list out the updates?</p>
 <p>RWS: Conferred with Ember team, issues were theoretical</p>
@@ -99,14 +102,12 @@
 <p>DD: DOM updated with internal slots. Boris Zbarsky has identified issues with holding all the values as well.</p>
 <p>EA: Will add normative text for exotic objects. Will help update the DOM.</p>
 <p>(discussion about notification handler changes and special cases that still need to be addressed)</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-352"><h4 id="conclusionresolution-352">Conclusion/Resolution</h4></a><ul>
 <li>Draft revisions for filtering</li>
 <li>Spec terminology updates</li>
 <li>Normative section about exotic objects</li>
 </ul>
-<h2>402 Status Update</h2>
-<p>(Rick Waldron)</p>
+<a href="#402-status-update"><h2 id="402-status-update">402 Status Update</h2></a><p>(Rick Waldron)</p>
 <p>RW: Next version will coincide with ES6. Future versions will coincide with future versions of 262.</p>
 <p>RW: After ES6 the Yahoo team (Eric Ferraiuolo, Caridy Patino)  is taking over.</p>
 <p>RW: Intl 1 provides ...</p>
@@ -115,18 +116,15 @@
 <p>EA: There was previous talk about big action items for the next version of Intl.</p>
 <p>RW: This spec only includes minor fixes and bringing the spec up to date. Will leave the big feature items for future versions of the Intl spec.</p>
 <p>AWB: There will be an rf opt out for this at the same time as for the ES6 spec.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-353"><h4 id="conclusionresolution-353">Conclusion/Resolution</h4></a><ul>
 <li>See above.</li>
 </ul>
-<h2>Break out sesssions</h2>
-<ul>
+<a href="#break-out-sesssions"><h2 id="break-out-sesssions">Break out sesssions</h2></a><ul>
 <li>Object.observe</li>
 <li>Async generators/iterators. Get your yield on</li>
 <li>Value Objects</li>
 </ul>
-<h2>5.4 I/O Streams as part of the ES standard library</h2>
-<p>(Domenic Denicola)</p>
+<a href="#54-io-streams-as-part-of-the-es-standard-library"><h2 id="54-io-streams-as-part-of-the-es-standard-library">5.4 I/O Streams as part of the ES standard library</h2></a><p>(Domenic Denicola)</p>
 <p>DD: Presents: <a href="https://streams.spec.whatwg.org/">https://streams.spec.whatwg.org/</a></p>
 <ul>
 <li>Some suggestion to move into ES</li>
@@ -168,12 +166,10 @@
 <p>Heated discussion about specification ownership</p>
 <p>MM: If the proposal is to allow the editor unilateral control, vs. committee refinement, consensus, and agreement, then the proposal should be withdrawn.</p>
 <p>DD: Then withdrawn.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-354"><h4 id="conclusionresolution-354">Conclusion/Resolution</h4></a><ul>
 <li>Withdrawn</li>
 </ul>
-<h2>Async Generators</h2>
-<p>(Jafar Husain)</p>
+<a href="#async-generators"><h2 id="async-generators">Async Generators</h2></a><p>(Jafar Husain)</p>
 <p><a href="https://github.com/jhusain/asyncgenerator">https://github.com/jhusain/asyncgenerator</a></p>
 <p>JH: Propose to move to Stage 1</p>
 <p>Major digression re: process.</p>
@@ -191,59 +187,59 @@ interface Observable {
   Generator observer(Generator);
 }
  
-Array.prototype[@@observer] = function(generator) {
-  var decoratedGenerator = Object.create(generator),
-    done = false;
+<span class="hljs-built_in">Array</span>.prototype[@@observer] = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">generator</span>) </span>{
+  <span class="hljs-keyword">var</span> decoratedGenerator = <span class="hljs-built_in">Object</span>.create(generator),
+    done = <span class="hljs-literal">false</span>;
  
-  [&quot;throw&quot;,&quot;return&quot;].forEach(method =&gt; {
-    decoratedGenerator[method] = v =&gt; {
-      var superMethod = generator[method];
-      done = true;
-      if (superMethod) {
-        return superMethod.call(generator, v);
+  [<span class="hljs-string">"throw"</span>,<span class="hljs-string">"return"</span>].forEach(<span class="hljs-function"><span class="hljs-params">method</span> =&gt;</span> {
+    decoratedGenerator[method] = <span class="hljs-function"><span class="hljs-params">v</span> =&gt;</span> {
+      <span class="hljs-keyword">var</span> superMethod = generator[method];
+      done = <span class="hljs-literal">true</span>;
+      <span class="hljs-keyword">if</span> (superMethod) {
+        <span class="hljs-keyword">return</span> superMethod.call(generator, v);
       }
     }
   });
  
-  for (let x of this) {
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> x <span class="hljs-keyword">of</span> <span class="hljs-keyword">this</span>) {
     decoratedGenerator.next(x)
-    if (done) {
-      break;
+    <span class="hljs-keyword">if</span> (done) {
+      <span class="hljs-keyword">break</span>;
     }
   }
-  if (!done) {
+  <span class="hljs-keyword">if</span> (!done) {
     decoratedGenerator.return();
   }
  
-  return decoratedGenerator;
+  <span class="hljs-keyword">return</span> decoratedGenerator;
 }
  
-[1,2,3][@@observer]({
-  next: function(value) {
-    console.log(value);
-    if (value === 2) {
-      this.return();
+[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>][@@observer]({
+  <span class="hljs-attr">next</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">value</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(value);
+    <span class="hljs-keyword">if</span> (value === <span class="hljs-number">2</span>) {
+      <span class="hljs-keyword">this</span>.return();
     }
   }
 });
  
-for (let x of [1,2,3]) {
-  console.log(value);
-  if (x === 2) {
-    break;
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> x <span class="hljs-keyword">of</span> [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]) {
+  <span class="hljs-built_in">console</span>.log(value);
+  <span class="hljs-keyword">if</span> (x === <span class="hljs-number">2</span>) {
+    <span class="hljs-keyword">break</span>;
   }
 }
  
-async function test() {
-  for (let x on [1,2,3]) {
-    console.log(value);
-    if (x === 2) {
-      break;
+<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> x on [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]) {
+    <span class="hljs-built_in">console</span>.log(value);
+    <span class="hljs-keyword">if</span> (x === <span class="hljs-number">2</span>) {
+      <span class="hljs-keyword">break</span>;
     }
   }
 }
  
-document.addEventListener(&quot;mousemove&quot;, function next(e) {
+<span class="hljs-built_in">document</span>.addEventListener(<span class="hljs-string">"mousemove"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">next</span>(<span class="hljs-params">e</span>) </span>{
  
 });
 </code></pre>
@@ -260,13 +256,13 @@ document.addEventListener(&quot;mousemove&quot;, function next(e) {
 <p>MMj, WH: These help.</p>
 <p>DH: Need to look at this from a &quot;what is the problem space&quot;, then try to solve that. There are two competing solutions (<code>async function *</code>) and this</p>
 <p>KS: (explains his approach with async iterator)</p>
-<pre><code class="language-js">Interator&lt;Promise&gt; or Observable
+<pre><code class="language-js">Interator&lt;<span class="hljs-built_in">Promise</span>&gt; or Observable
 
-asyc function * v() {
-  let values = toAsycInterable(new Websocket(...));
-  for (let promise of values) {
-    let value = await promise;
-    yield value + 1;
+asyc <span class="hljs-function"><span class="hljs-keyword">function</span> * <span class="hljs-title">v</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">let</span> values = toAsycInterable(<span class="hljs-keyword">new</span> Websocket(...));
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> promise <span class="hljs-keyword">of</span> values) {
+    <span class="hljs-keyword">let</span> value = <span class="hljs-keyword">await</span> promise;
+    <span class="hljs-keyword">yield</span> value + <span class="hljs-number">1</span>;
   }    
 }
 </code></pre>
@@ -274,8 +270,9 @@ asyc function * v() {
 <p>WH: Does either approach do buffering by default? [Prefer to transfer/work on one item at a time unless buffering is explicitly requested to avoid blowing up if a turn takes a while.]</p>
 <p>JH: (shows an example of <code>for-on</code> to illustrate support for back pressure)</p>
 <p>More discussion about backpressure</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-355"><h4 id="conclusionresolution-355">Conclusion/Resolution</h4></a><ul>
 <li>Comparison documentation</li>
 </ul>
 <p>Thanks to Paypal for the meeting accommodations. Thanks to Ecma.</p>
+
+</body>

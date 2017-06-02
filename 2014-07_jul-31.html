@@ -1,10 +1,15 @@
 <!doctype html>
 <meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.6.0/github-markdown.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+
 <title>July 31 2014 Meeting Notes</title>
-<h1>July 31 2014 Meeting Notes</h1>
-<p>Brian Terlson (BT), Dmitry Lomov (DL), Waldemar Horwat (WH), Allen Wirfs-Brock (AWB), John Neumann (JN), Rick Waldron (RW), Eric Ferraiuolo (EF), Jafar Husain (JH), Jeff Morrison (JM), Mark Honenberg (MH), Caridy Patino (CP), Sebastian Markbage (SM), Istvan Sebestyen (IS), Erik Arvidsson (EA), Brendan Eich (BE), Mark Miller (MM), Sam Tobin-Hochstadt (STH), Domenic Denicola (DD), Peter Jensen (PJ), John McCutchan (JMC), Paul Leathers (PL), Eric Toth (ET), Abhijith Chatra (AC), Jaswanth Sreeram (JS), Yehuda Katz (YK), Dave Herman (DH), Brendan Eich (BE), Ben Newman (BN)</p>
-<h2>Notes from secretariat</h2>
-<p>IS: ES6 delay accepted, but please don't delay this again.</p>
+<body class="markdown-body">
+<a href="#july-31-2014-meeting-notes"><h1 id="july-31-2014-meeting-notes">July 31 2014 Meeting Notes</h1></a><p>Brian Terlson (BT), Dmitry Lomov (DL), Waldemar Horwat (WH), Allen Wirfs-Brock (AWB), John Neumann (JN), Rick Waldron (RW), Eric Ferraiuolo (EF), Jafar Husain (JH), Jeff Morrison (JM), Mark Honenberg (MH), Caridy Patino (CP), Sebastian Markbage (SM), Istvan Sebestyen (IS), Erik Arvidsson (EA), Brendan Eich (BE), Mark Miller (MM), Sam Tobin-Hochstadt (STH), Domenic Denicola (DD), Peter Jensen (PJ), John McCutchan (JMC), Paul Leathers (PL), Eric Toth (ET), Abhijith Chatra (AC), Jaswanth Sreeram (JS), Yehuda Katz (YK), Dave Herman (DH), Brendan Eich (BE), Ben Newman (BN)</p>
+<a href="#notes-from-secretariat"><h2 id="notes-from-secretariat">Notes from secretariat</h2></a><p>IS: ES6 delay accepted, but please don't delay this again.</p>
 <ul>
 <li>TC52 working in a similar way and process to TC39's ES7 approach: Frequent releases of incremental versions of standards. They also use the same kind of RF policy.</li>
 <li>TC52 is looking at how TC39 is proceeding</li>
@@ -22,23 +27,19 @@
 <p>JN: Recommend putting out a call for liaisons, including the information you have. List roles and expectations, we'll put it on the next meeting agenda to establish appointment.</p>
 <p>AWB: There has been a notification for these roles.</p>
 <p>JN: Is anyone here prepared to volunteer now? Or at the next meeting. Need someone to at least collect the communications out of those organizations.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-395"><h4 id="conclusionresolution-395">Conclusion/Resolution</h4></a><ul>
 <li>John Neumann to stand in as liaison</li>
 </ul>
-<h2>9.1-8 Date and place of the next meeting(s)</h2>
-<p>JN: Need to fill in the venues.</p>
+<a href="#91-8-date-and-place-of-the-next-meetings"><h2 id="91-8-date-and-place-of-the-next-meetings">9.1-8 Date and place of the next meeting(s)</h2></a><p>JN: Need to fill in the venues.</p>
 <p>DH: January 27-29, 2015 at Mozilla (Downtown SF, CA)</p>
 <p>EF: March 24-26 2015 at Yahoo (Sunnyvale, CA)</p>
 <p>JM: May 27-29 2015 at Facebook (Menlo Park, CA)</p>
 <p>ET: November 17-19 at PayPal (San Jose, CA)</p>
 <p>RW/YK: Will decide on Sept. 2015</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-396"><h4 id="conclusionresolution-396">Conclusion/Resolution</h4></a><ul>
 <li>John Neumann will update the agenda and schedule.</li>
 </ul>
-<h2>4.4 Follow up: Instantiation Reform (@@create)</h2>
-<p>JM: Found cases where we set up state before calling super. I'm convinced that there are sufficient workarounds (via calling &lt;<SuperClass>&gt;.call() in the legacy style).</p>
+<a href="#44-follow-up-instantiation-reform-create"><h2 id="44-follow-up-instantiation-reform-create">4.4 Follow up: Instantiation Reform (@@create)</h2></a><p>JM: Found cases where we set up state before calling super. I'm convinced that there are sufficient workarounds (via calling &lt;<SuperClass>&gt;.call() in the legacy style).</p>
 <p><a href="https://gist.github.com/jeffmo/bf30e7154ab3c894b740">https://gist.github.com/jeffmo/bf30e7154ab3c894b740</a> -- &quot;#_Before.js&quot; is an example of a pattern that exists now, &quot;#_After.js&quot; is an example of how one might fix this pattern</p>
 <p>JM: (gives examples that amount to two step initialization)</p>
 <p>WH: C++ doesn't allow this kind of bottom-up construction (can't initialize a subclass instance before the superclass instance is initialized), and use cases like this arise once in a while. The usual workaround is to pass through Options objects.</p>
@@ -84,16 +85,13 @@
 <p>WH: On the fence, suppose we do this, what if you call super in a method not marked? What does that do?</p>
 <p>DH: It's ok for class body to have more syntactic distinctions than outside functions acting as constructor</p>
 <p>AWB: You could imagine that I have a splat that indicates &quot;I do not want allocation for this class&quot;</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-397"><h4 id="conclusionresolution-397">Conclusion/Resolution</h4></a><ul>
 <li>Agreement to MM proposal: Allen to be the champion and work out the details remaining</li>
 </ul>
-<h2>ES7 Items?</h2>
-<p>DH: We should focus on ES6 items, we have limited time in face to face.</p>
+<a href="#es7-items"><h2 id="es7-items">ES7 Items?</h2></a><p>DH: We should focus on ES6 items, we have limited time in face to face.</p>
 <p>DD: I don't think we should de-prioritize ES7, given the train model.</p>
 <p>AWB: We have no choice but to prioritize ES6</p>
-<h2>5.7 Array.prototype.contains</h2>
-<p>(Domenic Denicola)</p>
+<a href="#57-arrayprototypecontains"><h2 id="57-arrayprototypecontains">5.7 Array.prototype.contains</h2></a><p>(Domenic Denicola)</p>
 <p>Follow up from RW's Stage 0 in</p>
 <p>DD: Presents: <a href="https://github.com/domenic/Array.prototype.contains/">https://github.com/domenic/Array.prototype.contains/</a></p>
 <p>DH/RW: Parity with String</p>
@@ -102,8 +100,7 @@
 <p>EA: Same thing with indexOf</p>
 <p>JM: Can you give an example where this is a problem?</p>
 <p>MM: Consistently inconsistent parity with indexOf</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-398"><h4 id="conclusionresolution-398">Conclusion/Resolution</h4></a><ul>
 <li>Advance to Stage 1</li>
 </ul>
 <p>DD: Would like to do Stage 2 and 3 asynchronously due to the simplicitly of this proposal.</p>
@@ -112,18 +109,15 @@
 <p>Discussion re: the ES7 process.</p>
 <p>AWB: Concerns about lack of review that results in more work later in the game.</p>
 <p>MM: We don't have a mechanism to come to consensus outside of these meetings. These meetings <em>are</em> the time that we're able to work on these issues. This is my allocated time</p>
-<h2>5.1 Math.TAU</h2>
-<p>(Brendan Eich, Rick Waldron)</p>
+<a href="#51-mathtau"><h2 id="51-mathtau">5.1 Math.TAU</h2></a><p>(Brendan Eich, Rick Waldron)</p>
 <p><a href="https://gist.github.com/rwaldron/233fd8f5aa440c94e6e9">https://gist.github.com/rwaldron/233fd8f5aa440c94e6e9</a></p>
 <p>BE: Math.TAU = 2PI</p>
 <p>WH: OK, but only if it's called Math.τ :-)</p>
 <p>MM: Opposed: one letter shorter, not well known, not well taught. PI is known, taught and ubiquitous.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-399"><h4 id="conclusionresolution-399">Conclusion/Resolution</h4></a><ul>
 <li>Rejected.</li>
 </ul>
-<h2>Exponentiations operator</h2>
-<p>(Rick Waldron)</p>
+<a href="#exponentiations-operator"><h2 id="exponentiations-operator">Exponentiations operator</h2></a><p>(Rick Waldron)</p>
 <p><a href="https://gist.github.com/rwaldron/ebe0f4d2d267370be882">https://gist.github.com/rwaldron/ebe0f4d2d267370be882</a></p>
 <p>RW: All other languages have it. Why can't we?</p>
 <p>RW: Needs hihger precedence than multiplication</p>
@@ -133,12 +127,10 @@
 <p>MM: Want to make sure that it does the same as the built in %MathPow% and not not any overload.</p>
 <p>RW: Confirm</p>
 <p>DH: Wants to point out that adding syntax does have a cost. But thinks it is fine and there is a lot of precedent.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-400"><h4 id="conclusionresolution-400">Conclusion/Resolution</h4></a><ul>
 <li>Approved for Stage 0, in 6 minutes.</li>
 </ul>
-<h2>Precision of Math trig functions</h2>
-<p>(Dave Herman)</p>
+<a href="#precision-of-math-trig-functions"><h2 id="precision-of-math-trig-functions">Precision of Math trig functions</h2></a><p>(Dave Herman)</p>
 <p>DH: V8 made the result less exact in the name of performance. Are we going to have a &quot;race to the bottom&quot;?</p>
 <p>DH: People are now starting to implement these algorithms in js since they cannot depend on the built ins.</p>
 <p>DL: Java lies. Implementations do not follow the Java rules.</p>
@@ -149,7 +141,8 @@
 <p>MM: When doing the sputnik tests we just looked at the results and based the precision on what browsers did when the tests were written.</p>
 <p>AWB: We need a champion.</p>
 <p>DL: V8 is planning to fix this and make the results more accurate.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-401"><h4 id="conclusionresolution-401">Conclusion/Resolution</h4></a><ul>
 <li>Need to bring in experts.</li>
 </ul>
+
+</body>

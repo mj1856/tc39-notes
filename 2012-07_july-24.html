@@ -1,8 +1,14 @@
 <!doctype html>
 <meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.6.0/github-markdown.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+
 <title>July 24 2012 Meeting Notes</title>
-<h1>July 24 2012 Meeting Notes</h1>
-<p>Present: Yehuda Katz (YK), Luke Hoban (LH), Rick Waldron (RW), Alex Russell
+<body class="markdown-body">
+<a href="#july-24-2012-meeting-notes"><h1 id="july-24-2012-meeting-notes">July 24 2012 Meeting Notes</h1></a><p>Present: Yehuda Katz (YK), Luke Hoban (LH), Rick Waldron (RW), Alex Russell
 (AR), Tom Van Cutsem (TVC), Bill Ticehurst (BT), Brendan Eich (BE), Sam
 Tobin-Hochstadt (STH), Norbert Lindenberg (NL), Allen Wirfs-Brock (AWB),
 Doug Crockford (DC), John Neumann (JN), Oliver Hunt (OH), Erik Arvidsson
@@ -12,8 +18,7 @@ Doug Crockford (DC), John Neumann (JN), Oliver Hunt (OH), Erik Arvidsson
 <p>Determine participants required for specific subjects.</p>
 <p>July agenda adopted</p>
 <p>May minutes approved</p>
-<h2>4.1 AWB Presents changes resulting in latest drafts</h2>
-<p>Draft related bug filing
+<a href="#41-awb-presents-changes-resulting-in-latest-drafts"><h2 id="41-awb-presents-changes-resulting-in-latest-drafts">4.1 AWB Presents changes resulting in latest drafts</h2></a><p>Draft related bug filing
 Increased community participation, a good thing
 Issue with numbers not matching duplicate filings, be aware</p>
 <p>Quasi Literal added to specification
@@ -34,8 +39,7 @@ and the call trap.</p>
 &quot;apply&quot; and &quot;construct&quot; traps)</p>
 <p>STH: call should be in tail position. Clarification of known call site
 syntax, per spec.</p>
-<h4>Consensus/Resolution</h4>
-<p>Anything that could invoke user written code in a tail position to
+<a href="#consensusresolution-663"><h4 id="consensusresolution-663">Consensus/Resolution</h4></a><p>Anything that could invoke user written code in a tail position to
 act as a tail call.</p>
 <p>call, apply, accessors, quasi (interpolation), proxy calls</p>
 <p>We still need to specify the tail positions in the syntax.  There's
@@ -43,8 +47,7 @@ a start by DH on
 <a href="http://wiki.ecmascript.org/doku.php?id=harmony:proper_tail_calls">http://wiki.ecmascript.org/doku.php?id=harmony:proper_tail_calls</a> which uses
 an attribute grammar, but the current spec draft leaves this blank.</p>
 <p>Filed: <a href="https://bugs.ecmascript.org/show_bug.cgi?id=590">https://bugs.ecmascript.org/show_bug.cgi?id=590</a></p>
-<h2>4.5 RegEx &quot;Web Reality&quot;</h2>
-<p>(<a href="http://wiki.ecmascript.org/doku.php?id=strawman:match_web_reality_spec">http://wiki.ecmascript.org/doku.php?id=strawman:match_web_reality_spec</a>)</p>
+<a href="#45-regex-web-reality"><h2 id="45-regex-web-reality">4.5 RegEx &quot;Web Reality&quot;</h2></a><p>(<a href="http://wiki.ecmascript.org/doku.php?id=strawman:match_web_reality_spec">http://wiki.ecmascript.org/doku.php?id=strawman:match_web_reality_spec</a>)</p>
 <p>Introduction to discussion by Luke Hoban</p>
 <p>LH: Attempted to write a guide to make regex specification match current
 implementation wherein order of production matters. See <em>15.10.1 Patterns</em>
@@ -78,11 +81,9 @@ e.g. \p for Unicode character properties</p>
 regex?</p>
 <p>BE, OH, AR: yes.</p>
 <p>Decision: LH and NL to collaborate on integrated proposal</p>
-<h2>4.7 Adding forEach to Map and Set</h2>
-<p><a href="http://wiki.ecmascript.org/doku.php?id=harmony:simple_maps_and_sets">http://wiki.ecmascript.org/doku.php?id=harmony:simple_maps_and_sets</a></p>
+<a href="#47-adding-foreach-to-map-and-set"><h2 id="47-adding-foreach-to-map-and-set">4.7 Adding forEach to Map and Set</h2></a><p><a href="http://wiki.ecmascript.org/doku.php?id=harmony:simple_maps_and_sets">http://wiki.ecmascript.org/doku.php?id=harmony:simple_maps_and_sets</a></p>
 <p>Deferred, got to it on third day</p>
-<h2>4.9 getClassNameOf</h2>
-<p>BE: Recap, last meeting there was discussion about getting a strawman from
+<a href="#49-getclassnameof"><h2 id="49-getclassnameof">4.9 getClassNameOf</h2></a><p>BE: Recap, last meeting there was discussion about getting a strawman from
 YK</p>
 <p>YK: I began specifying, but existing questions prevented</p>
 <p>BE: some want to solve not only the typeof null problem, but also &quot;array&quot;</p>
@@ -113,8 +114,7 @@ of brand</p>
 <li>Fixing is not easy</li>
 <li>How to correctly fix w/o making more surface area for the wrong thing</li>
 </ol>
-<h4>Consensus/Resolution</h4>
-<p>There is worry that changes to spec that affect the return of toString will
+<a href="#consensusresolution-664"><h4 id="consensusresolution-664">Consensus/Resolution</h4></a><p>There is worry that changes to spec that affect the return of toString will
 have adverse impact on existing libraries and users when they encounter new
 runtime behaviours where the existing behaviour is expected.</p>
 <p>Belief that we need a more flexible mechanism, whether it is AWB's
@@ -123,11 +123,9 @@ trait type test proposal.</p>
 <p>BE, AWB: nominal type tests considered an anti-pattern per Smalltalk, but
 they happen in JS not only &quot;because they can&quot; -- sometimes because of
 built-ins you need to know</p>
-<h2>6 Internationalization Standard</h2>
-<p>Norbert Lindenberg: (Introduction and opening discussion)</p>
+<a href="#6-internationalization-standard"><h2 id="6-internationalization-standard">6 Internationalization Standard</h2></a><p>Norbert Lindenberg: (Introduction and opening discussion)</p>
 <p>Discussion, re: contributors</p>
-<h2>6.1 Last call for feedback before final draft</h2>
-<p>Function length values? Using ES5 section 15 rules would cause respecified
+<a href="#61-last-call-for-feedback-before-final-draft"><h2 id="61-last-call-for-feedback-before-final-draft">6.1 Last call for feedback before final draft</h2></a><p>Function length values? Using ES5 section 15 rules would cause respecified
 functions like String.prototype.localeCompare to have larger length values;
 using ES6 rules would let them keep old values.</p>
 <p>Leads into larger discussion about Function length property.</p>
@@ -138,15 +136,12 @@ Technical Standard 35.</p>
 <p>If you have 4 different impls, 3 of them support a language that you want
 to support, how can you polyfill the 4th to support the language.</p>
 <p>The constructor can re-declared?</p>
-<h4>Conclusion/Resolution</h4>
-<p>There is no easy way currently, second version of Intl spec
+<a href="#conclusionresolution-665"><h4 id="conclusionresolution-665">Conclusion/Resolution</h4></a><p>There is no easy way currently, second version of Intl spec
 will address this.</p>
 <p>Conformance tests being written for test262.</p>
 <p>NL will have the final draft prepared for September meeting, but will
 produce drafts leading up to that meeting.</p>
-<h2>6.2 Microsoft and Google are implementing prototypes</h2>
-<h2>Unicode support</h2>
-<p>AWB:</p>
+<a href="#62-microsoft-and-google-are-implementing-prototypes"><h2 id="62-microsoft-and-google-are-implementing-prototypes">6.2 Microsoft and Google are implementing prototypes</h2></a><a href="#unicode-support"><h2 id="unicode-support">Unicode support</h2></a><p>AWB:</p>
 <p>within curlies: any unicode code point value \u{nnn}
 so essentially three ways within string literal:</p>
 <ul>
@@ -172,9 +167,9 @@ identifier?</li>
 </ul>
 <p>NL: and, for example, what if it goes in an eval?</p>
 <p>DH: careful! difference between:</p>
-<pre><code class="language-js">eval(&quot;var &lt;&lt;emoji&gt;&gt; = 6&quot;)
-eval(&quot;var \uD83D\uDE01 = 6&quot;)
-eval(&quot;var \\uD83D\\uDE01 = 6&quot;)
+<pre><code class="language-js"><span class="hljs-built_in">eval</span>(<span class="hljs-string">"var &lt;&lt;emoji&gt;&gt; = 6"</span>)
+<span class="hljs-built_in">eval</span>(<span class="hljs-string">"var \uD83D\uDE01 = 6"</span>)
+<span class="hljs-built_in">eval</span>(<span class="hljs-string">"var \\uD83D\\uDE01 = 6"</span>)
 </code></pre>
 <p>AWB: disallowed:</p>
 <p><code>var \uD83D\uDE01 = 6</code>
@@ -206,8 +201,7 @@ potential cost?</p>
 <p>DH: fair enough, just spitballing</p>
 <p>AWB: what about code point iteration from end to beginning? and also
 codePointIndexOf? don't have those yet</p>
-<h2>4.1 (cont) Processing full Unicode Source Code</h2>
-<p>String Value</p>
+<a href="#41-cont-processing-full-unicode-source-code"><h2 id="41-cont-processing-full-unicode-source-code">4.1 (cont) Processing full Unicode Source Code</h2></a><p>String Value</p>
 <p>Conversion of the input program to code point sequence outside of standard</p>
 <p>Trad. \uxxxx escapes represent a single char, creates a single BMP
 character, 16bit element</p>
@@ -217,9 +211,9 @@ character, 16bit element</p>
 developers.</p>
 <p>DC: This feature is more likely to be used by hackers than developers.</p>
 <p>AWB: Two APIs</p>
-<pre><code class="language-js">String.fromCodePoint (build string from integer values)
+<pre><code class="language-js"><span class="hljs-built_in">String</span>.fromCodePoint (build string <span class="hljs-keyword">from</span> integer values)
 
-String.prototype.codePointAt
+<span class="hljs-built_in">String</span>.prototype.codePointAt
 </code></pre>
 <p>What's here, valid surrogate pair?</p>
 <p>DH: Mixing the API levels is problematic, should it be scrapped?</p>
@@ -229,27 +223,26 @@ type.</p>
 <p>NL: ICU has iterators for grapheme clusters, words, sentences, lines – all
 based on UTF-16 indices. Abstractions don't require different indices.</p>
 <p>Need more here.</p>
-<h2>4.13 Destructuring Issues</h2>
-<p>A. Patterns discussion on es-discuss</p>
+<a href="#413-destructuring-issues"><h2 id="413-destructuring-issues">4.13 Destructuring Issues</h2></a><p>A. Patterns discussion on es-discuss</p>
 <p>Issue: ToObject() on the RHS?
 This is currenty specified and enables things like:
 <code>let {concat, slice} = &quot;&quot;;</code></p>
 <p>This equivalence is desirable and maintain by the current spec:</p>
-<pre><code class="language-js">let { foo } = { bar: 42 }
+<pre><code class="language-js"><span class="hljs-keyword">let</span> { foo } = { <span class="hljs-attr">bar</span>: <span class="hljs-number">42</span> }
 
 ===
 
-let foo = { bar: 42 }.foo;
+<span class="hljs-keyword">let</span> foo = { <span class="hljs-attr">bar</span>: <span class="hljs-number">42</span> }.foo;
 </code></pre>
 <p>A syntax for pattern matching against objects</p>
-<pre><code class="language-js">match({ bar: 42 }) {
-  case { foo } { console.log(&quot;foo&quot;) }
-  default  { console.log(&quot;no foo&quot;) }
+<pre><code class="language-js">match({ <span class="hljs-attr">bar</span>: <span class="hljs-number">42</span> }) {
+  <span class="hljs-keyword">case</span> { foo } { <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"foo"</span>) }
+  <span class="hljs-keyword">default</span>  { <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"no foo"</span>) }
 }
 </code></pre>
 <hr>
-<pre><code class="language-js">let { ?foo } = {}
-let ?foo = {}.foo  // _wtf_
+<pre><code class="language-js"><span class="hljs-keyword">let</span> { ?foo } = {}
+<span class="hljs-keyword">let</span> ?foo = {}.foo  <span class="hljs-comment">// _wtf_</span>
 </code></pre>
 <p>DH: Pure WAT. Let's pick the most common case and address that. You cannot
 presume to cover everyone's pet case</p>
@@ -257,9 +250,9 @@ presume to cover everyone's pet case</p>
 <p>DH: Future pattern matching</p>
 <p>LH: Reiteration of correct matching vs intention</p>
 <p>More discussion, defer until AR is present</p>
-<pre><code class="language-js">let { toString: num2str } = 42;
+<pre><code class="language-js"><span class="hljs-keyword">let</span> { <span class="hljs-attr">toString</span>: num2str } = <span class="hljs-number">42</span>;
 ===
-let num2str = (42).toString;
+<span class="hljs-keyword">let</span> num2str = (<span class="hljs-number">42</span>).toString;
 
 </code></pre>
 <p>Consensus without AR is to impute undefined for missing property when
@@ -269,29 +262,29 @@ patterns compared to their destructuring meaning.</p>
 agreed (to avoid breaking consensus). Need to confirm.</p>
 <p>B. Defaults</p>
 <p>Explicit undefined value triggerw use of default value initializer.</p>
-<pre><code class="language-js">let foo = (x = 5) =&gt; x;
+<pre><code class="language-js"><span class="hljs-keyword">let</span> foo = <span class="hljs-function">(<span class="hljs-params">x = <span class="hljs-number">5</span></span>) =&gt;</span> x;
 
-foo(undefined) //  returns undefined by current draft
-foo()    // returns 5 by current draft
+foo(<span class="hljs-literal">undefined</span>) <span class="hljs-comment">//  returns undefined by current draft</span>
+foo()    <span class="hljs-comment">// returns 5 by current draft</span>
 </code></pre>
 <p>Issue:  is this desirable?  dherman and others think an explicit undefined
 should trigger use of default value.   use case in support</p>
-<pre><code class="language-js">   function setLevel(newLevel=0) {light.intensity = newLevel}
-   function setOptions(options) {
-       setLevel(options.dimmerLevel);  //missing prop returns undefined,
-should use default
+<pre><code class="language-js">   <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setLevel</span>(<span class="hljs-params">newLevel=<span class="hljs-number">0</span></span>) </span>{light.intensity = newLevel}
+   <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setOptions</span>(<span class="hljs-params">options</span>) </span>{
+       setLevel(options.dimmerLevel);  <span class="hljs-comment">//missing prop returns undefined,</span>
+should use <span class="hljs-keyword">default</span>
        setMotorSpeed(options.speed);
        ...
     }
 
-    setOptions({speed:5});
+    setOptions({<span class="hljs-attr">speed</span>:<span class="hljs-number">5</span>});
 </code></pre>
 <p>Note same rules are used for both formal parameter default values and
 destructuring default values.</p>
-<pre><code class="language-js">let foo = (...x) =&gt; x.length;
+<pre><code class="language-js"><span class="hljs-keyword">let</span> foo = <span class="hljs-function">(<span class="hljs-params">...x</span>) =&gt;</span> x.length;
 
-foo(undefined) // 1
-foo()    // 0
+foo(<span class="hljs-literal">undefined</span>) <span class="hljs-comment">// 1</span>
+foo()    <span class="hljs-comment">// 0</span>
 </code></pre>
 <p>Need summary.
 decision:  change spec. to make undefine trigger use of default value.*</p>
@@ -303,26 +296,25 @@ decision:  change spec. to make undefine trigger use of default value.*</p>
 </ol>
 <p>spread works on array-like
 destructuring has rest pattern</p>
-<pre><code class="language-js">import iterator from &quot;@iter&quot;
+<pre><code class="language-js"><span class="hljs-keyword">import</span> iterator <span class="hljs-keyword">from</span> <span class="hljs-string">"@iter"</span>
 
-function list(x) {
-  return iterator in x ?
-    [ y for y of x ] :
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">list</span>(<span class="hljs-params">x</span>) </span>{
+  <span class="hljs-keyword">return</span> iterator <span class="hljs-keyword">in</span> x ?
+    [ y <span class="hljs-keyword">for</span> y <span class="hljs-keyword">of</span> x ] :
     x;
 }
 
 [a, ...] = list(jQuery(selector));
 [a, ...] = list([...]);
-[a, ...] = list(function *() { ... });
+[a, ...] = list(<span class="hljs-function"><span class="hljs-keyword">function</span> *(<span class="hljs-params"></span>) </span>{ ... });
 
 
 f.call(f, ...args)
-same as
+same <span class="hljs-keyword">as</span>
 f.apply(f, args);
 
 </code></pre>
-<h4>Consensus/Resolution</h4>
-<ul>
+<a href="#consensusresolution-666"><h4 id="consensusresolution-666">Consensus/Resolution</h4></a><ul>
 <li>change spec. to make undefine trigger use of default value.</li>
 </ul>
 <p>(DH)
@@ -338,3 +330,5 @@ and array-like])</p>
 <li>Always return a copy</li>
 </ol>
 <p>(Filed: <a href="https://bugs.ecmascript.org/show_bug.cgi?id=588">https://bugs.ecmascript.org/show_bug.cgi?id=588</a>)</p>
+
+</body>

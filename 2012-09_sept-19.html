@@ -1,17 +1,19 @@
 <!doctype html>
 <meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.6.0/github-markdown.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+
 <title>September 19 2012 Meeting Notes</title>
-<h1>September 19 2012 Meeting Notes</h1>
-<p>John Neumann (JN), Mark Miller (MM), Norbert Lindenberg (NL), Nebojsa Ciric (NC), Allen Wirfs-Brock (AWB), Istvan Sebastian (IS), Luke Hoban (LH), Paul Leathers (PB), Sam Tobin-Hochstadt (STH), Andreas Rossberg (ARB), Brendan Eich (BE), Erik Arvidsson (EA), Dave Herman (DH), Yehuda Katz (YK), Rick Waldron (RW), Eric Ferraiuolo (EF), Matt Sweeney (MS), Doug Crockford (DC), Alex Russell (AR), Rafael Weinstein (RWS), Waldemar Horwat (WH), Tom Van Cutsem (TVC, phone)</p>
+<body class="markdown-body">
+<a href="#september-19-2012-meeting-notes"><h1 id="september-19-2012-meeting-notes">September 19 2012 Meeting Notes</h1></a><p>John Neumann (JN), Mark Miller (MM), Norbert Lindenberg (NL), Nebojsa Ciric (NC), Allen Wirfs-Brock (AWB), Istvan Sebastian (IS), Luke Hoban (LH), Paul Leathers (PB), Sam Tobin-Hochstadt (STH), Andreas Rossberg (ARB), Brendan Eich (BE), Erik Arvidsson (EA), Dave Herman (DH), Yehuda Katz (YK), Rick Waldron (RW), Eric Ferraiuolo (EF), Matt Sweeney (MS), Doug Crockford (DC), Alex Russell (AR), Rafael Weinstein (RWS), Waldemar Horwat (WH), Tom Van Cutsem (TVC, phone)</p>
 <p>Recap of Sept 18th notes.</p>
-<h1>Proxy</h1>
-<p>(Presented by Tom Van Cutsem, Free University of Brussels)</p>
-<h2>Enumerate Traps Return Types</h2>
-<p>TVC: change return type of enumerate() trap from array-of-string to iterator. Requires waiving the check for duplicate property names</p>
-<h4>Conclusion/Resolution</h4>
-<p>Drop the duplicate property check. enumerate() trap returns iterator.</p>
-<h2>Revokable Proxies</h2>
-<p>TVC: The Problem</p>
+<a href="#proxy"><h1 id="proxy">Proxy</h1></a><p>(Presented by Tom Van Cutsem, Free University of Brussels)</p>
+<a href="#enumerate-traps-return-types"><h2 id="enumerate-traps-return-types">Enumerate Traps Return Types</h2></a><p>TVC: change return type of enumerate() trap from array-of-string to iterator. Requires waiving the check for duplicate property names</p>
+<a href="#conclusionresolution-642"><h4 id="conclusionresolution-642">Conclusion/Resolution</h4></a><p>Drop the duplicate property check. enumerate() trap returns iterator.</p>
+<a href="#revokable-proxies"><h2 id="revokable-proxies">Revokable Proxies</h2></a><p>TVC: The Problem</p>
 <p>In a nutshell: with direct proxies, one can no longer write a caretaker proxy that nulls out a pointer to its target once revoked. This means that the target can no longer be garbage-collected separately from its proxy.</p>
 <p>As pointed out by David Bruant, caretakers are often useful precisely for memory management, where one uses revocation of the caretaker to release the underlying resources, as described here.</p>
 <p>Such caretakers were easy to define in the old Proxy design, since the link between a proxy and its target was fully under the control of the handler (i.e. fully virtual). However, with direct proxies, the proxy has a built-in, immutable reference directly to its target. This reference can’t be modified or nulled out.</p>
@@ -96,13 +98,11 @@ once frozen, stop trapping. once non-configurable, non-writable data, the value 
 <p>AR: Why do we care about the stability of frozen object w/r to revocability?</p>
 <p>WH: (summary) Not clear what the security consequences of revoking a frozen object, either via a revocable proxy or via traps, are; this hasn't been thought about.</p>
 <p>MM: This has been thought about and discussed off-line.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-643"><h4 id="conclusionresolution-643">Conclusion/Resolution</h4></a><ul>
 <li>we want revocable proxies</li>
 <li>further discussion is needed on revoking frozen objects, either via revocable proxies or via traps</li>
 </ul>
-<h2>Proxy and Private Names</h2>
-<p>TVC: We don't want Proxy to inadvertently leak private name properties.</p>
+<a href="#proxy-and-private-names"><h2 id="proxy-and-private-names">Proxy and Private Names</h2></a><p>TVC: We don't want Proxy to inadvertently leak private name properties.</p>
 <p>In Redmond, we discussed that we would seperate string properties and private name properties into separate traps.</p>
 <p>Later determined that this would become cumbersome.</p>
 <p>Proposing to add a third argument to the Proxy constructor: a &quot;whitelist&quot; of private name properties that are allowed to be trapped.</p>
@@ -131,51 +131,44 @@ WH: that would be confusing: names later added to the array-like won't get added
 <p>AWB: Not clear how using a built-in WeakSet will protect, what if it's been redefined? Are WeakSet methods non-writable?
 TVC: we need to specify that the proxy calls the original/intrinsic WeakSet.prototype.get method.</p>
 <p>STH/LH/RW: Will need to spec WeakSet</p>
-<h4>Conclusion/Resolution</h4>
-<p>Yes to third arg for whitelist, pending details to be worked out by Proxy champions.</p>
+<a href="#conclusionresolution-644"><h4 id="conclusionresolution-644">Conclusion/Resolution</h4></a><p>Yes to third arg for whitelist, pending details to be worked out by Proxy champions.</p>
 <p>Expect to remove the &quot;public&quot; part of private names.</p>
-<h2>WeakSet</h2>
-<p>DH: Clear that we need WeakSet to match WeakMap (Set and Map)</p>
+<a href="#weakset"><h2 id="weakset">WeakSet</h2></a><p>DH: Clear that we need WeakSet to match WeakMap (Set and Map)</p>
 <p>AWB: Need to assure that WeakMap and WeakSet are not redefined?</p>
 <p>RW: Use cases in node programs where I'm using WeakMap made it apparent that it <em>is</em> possible to leak via redefinition.</p>
-<h4>Conclusion/Resolution</h4>
-<p>Needs to be designed, as part of the whitelist feature's needs.</p>
+<a href="#conclusionresolution-645"><h4 id="conclusionresolution-645">Conclusion/Resolution</h4></a><p>Needs to be designed, as part of the whitelist feature's needs.</p>
 <p>SpiderMonkey tracking bug: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=792439">https://bugzilla.mozilla.org/show_bug.cgi?id=792439</a></p>
-<h1>Syntactic Support for Private Names</h1>
-<p>(Presented by Allen Wirfs-Brock, Mozilla)</p>
+<a href="#syntactic-support-for-private-names"><h1 id="syntactic-support-for-private-names">Syntactic Support for Private Names</h1></a><p>(Presented by Allen Wirfs-Brock, Mozilla)</p>
 <p>Slides: <a href="https://members.ecma-international.org/get.php?group=TC39&amp;file=2012_sub_tc39-2012-066.pdf">https://members.ecma-international.org/get.php?group=TC39&amp;file=2012_sub_tc39-2012-066.pdf</a></p>
-<h2>Private Names &amp; @Names</h2>
-<h3>Unique/Private Names</h3>
-<ul>
+<a href="#private-names--names"><h2 id="private-names--names">Private Names &amp; @Names</h2></a><a href="#uniqueprivate-names"><h3 id="uniqueprivate-names">Unique/Private Names</h3></a><ul>
 <li><p>Unique and private names (aka symbols) are ES6's solution for objects that need to expose props that have limited or controlled acccessibility.</p></li>
 <li><p>Currently no syntactic support for definition of use</p></li>
 <li><p>Imperative code patterns for using names dont mesh well with declaratinve object/class definitional forms.</p></li>
 </ul>
 <p>eg.</p>
-<pre><code class="language-js">const secret = Name();
-let o = { secret: 42 }; // does not define a &quot;Name&quot; prop
+<pre><code class="language-js"><span class="hljs-keyword">const</span> secret = Name();
+<span class="hljs-keyword">let</span> o = { <span class="hljs-attr">secret</span>: <span class="hljs-number">42</span> }; <span class="hljs-comment">// does not define a "Name" prop</span>
 
-class MyClass extends Yours {
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyClass</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Yours</span> </span>{
   secret() {
-    this.mine();
-    super[secret]();
+    <span class="hljs-keyword">this</span>.mine();
+    <span class="hljs-keyword">super</span>[secret]();
   }
 }
 
-// Not allowed:
-MyClass.prototype[secret] = function() {
-  super[secret]();
+<span class="hljs-comment">// Not allowed:</span>
+MyClass.prototype[secret] = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">super</span>[secret]();
 };
-//... Because super is banned outside of class
+<span class="hljs-comment">//... Because super is banned outside of class</span>
 </code></pre>
-<h3>Computed Property Names for Object Literals Were Abandoned...</h3>
-<pre><code class="language-js">const secret = 42;
-let o = { [secret]: 42 };
+<a href="#computed-property-names-for-object-literals-were-abandoned"><h3 id="computed-property-names-for-object-literals-were-abandoned">Computed Property Names for Object Literals Were Abandoned...</h3></a><pre><code class="language-js"><span class="hljs-keyword">const</span> secret = <span class="hljs-number">42</span>;
+<span class="hljs-keyword">let</span> o = { [secret]: <span class="hljs-number">42</span> };
 
-class MyClass extends Yours {
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyClass</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Yours</span> </span>{
   [secret]() {
-    this.mine();
-    super[secret]();
+    <span class="hljs-keyword">this</span>.mine();
+    <span class="hljs-keyword">super</span>[secret]();
   }
 }
 </code></pre>
@@ -186,8 +179,7 @@ class MyClass extends Yours {
 <li>Permitted same key to duplicate</li>
 <li>Future hostile: ties prop def to indexing (See: object model reformation)</li>
 </ul>
-<h3>Proposal At-Names</h3>
-<p><a href="https://members.ecma-international.org/get.php?group=TC39&amp;file=2012_sub_tc39-2012-066.pdf">Slides</a></p>
+<a href="#proposal-at-names"><h3 id="proposal-at-names">Proposal At-Names</h3></a><p><a href="https://members.ecma-international.org/get.php?group=TC39&amp;file=2012_sub_tc39-2012-066.pdf">Slides</a></p>
 <ul>
 <li>An At-Names is an IdentifierName that is lexically prefixed with @</li>
 <li>At-Names are const bound to Name values by new declaration forms</li>
@@ -200,8 +192,7 @@ priv @secret;
 <li></li>
 </ul>
 <p>... Missed slides</p>
-<h3>At-Name References</h3>
-<ul>
+<a href="#at-name-references"><h3 id="at-name-references">At-Name References</h3></a><ul>
 <li>At-Name can appear in any context where an IdentifierName would be interpreted as a literal property name.
 <ul>
 <li>As a prop name in object literals/class defs</li>
@@ -210,24 +201,22 @@ priv @secret;
 <li>Lexical scoping rules resolve such At-Name references to a Name object value.</li>
 </ul>
 <pre><code class="language-js">private secret;
-let o = { @secret: 42 };
+<span class="hljs-keyword">let</span> o = { @secret: <span class="hljs-number">42</span> };
 
-class MyClass extends Yours {
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyClass</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Yours</span> </span>{
   @secret() {
-    this.mine();
+    <span class="hljs-keyword">this</span>.mine();
   }
 }
 </code></pre>
-<h3>At-Names in Primary Expressions</h3>
-<ul>
+<a href="#at-names-in-primary-expressions"><h3 id="at-names-in-primary-expressions">At-Names in Primary Expressions</h3></a><ul>
 <li>When used as Primary expression, an At-Name... (see slides)</li>
 </ul>
 <pre><code class="language-js">obj.@secret
 obj[@secret]
-// same thing
+<span class="hljs-comment">// same thing</span>
 </code></pre>
-<h3>Name Declarations with Initializers</h3>
-<ul>
+<a href="#name-declarations-with-initializers"><h3 id="name-declarations-with-initializers">Name Declarations with Initializers</h3></a><ul>
 <li>In a name/private declaration, each At-Name may have an initialization expression.</li>
 </ul>
 <pre><code class="language-js">private @secret = NameBroker.provideName(secretcode);
@@ -245,16 +234,16 @@ obj[@secret]
 <p>LH: Not sure this goes &quot;far enough&quot; to warrant the addition.</p>
 <p>MM/AWB/YK: (discussion about simplification)</p>
 <p>DH: (whiteboard)</p>
-<pre><code class="language-js">let o =  {
-  private @foo: 42,
+<pre><code class="language-js"><span class="hljs-keyword">let</span> o =  {
+  private @foo: <span class="hljs-number">42</span>,
   m() {
-    return this.@foo;
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.@foo;
   }
 }
 
-o.m(); // 42
+o.m(); <span class="hljs-comment">// 42</span>
 
-// As seen via inspection (REPL, console)
+<span class="hljs-comment">// As seen via inspection (REPL, console)</span>
 { m() {} }
 </code></pre>
 <p>...Discussion about varying semantics lacking in previous proposals.</p>
@@ -264,19 +253,18 @@ o.m(); // 42
 <p>DH: Not strictly, but a possibility.</p>
 <p>AWB: function vs. cost</p>
 <p>ARB: strongly recommend making runtime duplicate check and throwing. (LH seems to agree? Or just acknowledge?)</p>
-<h2>Optional Feature: Class-scoped name declarations</h2>
-<ul>
+<a href="#optional-feature-class-scoped-name-declarations"><h2 id="optional-feature-class-scoped-name-declarations">Optional Feature: Class-scoped name declarations</h2></a><ul>
 <li>Allow name/private declarations to occur as a class body element</li>
 <li>Any such declared At-Name are scoped to the class body.</li>
 </ul>
-<pre><code class="language-js">class Point {
-  private @x, @y; // &lt;=== scoped to class body
-  constructor(x, y) {
-    this.@x = x;
-    this.@y = y;
+<pre><code class="language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point</span> </span>{
+  private @x, @y; <span class="hljs-comment">// &lt;=== scoped to class body</span>
+  <span class="hljs-keyword">constructor</span>(x, y) {
+    <span class="hljs-keyword">this</span>.@x = x;
+    <span class="hljs-keyword">this</span>.@y = y;
   }
-  get x() { return this.@x; }
-  get y() { return this.@y; }
+  get x() { <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.@x; }
+  get y() { <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.@y; }
 }
 </code></pre>
 <p>DH/RW: Makes sense for declaration to see it at once.</p>
@@ -313,8 +301,7 @@ o.m(); // 42
 <p>LH/DH: The baseline is private declaration in statement, classes, object literals. Build from there. As well as whatever the &quot;public&quot; version. BOTH are part of the baseline. NO PROTECTED.</p>
 <p>AWB/WH/BE: Yes, I agree.</p>
 <p>DH/BE: Move protected to a new strawman.</p>
-<h4>Conclusion/Resolution</h4>
-<p>Consensus on:</p>
+<a href="#conclusionresolution-646"><h4 id="conclusionresolution-646">Conclusion/Resolution</h4></a><p>Consensus on:</p>
 <ul>
 <li>Need private binding, including: statement form, import and export.</li>
 <li>Need private prefix form on class methods on object literal props and methods</li>
@@ -325,19 +312,16 @@ o.m(); // 42
 <ul>
 <li>&quot;Protected&quot;</li>
 </ul>
-<h1>Renaming Name to Symbol</h1>
-<p>(Presented by Dave Herman, Mozilla)</p>
+<a href="#renaming-name-to-symbol"><h1 id="renaming-name-to-symbol">Renaming Name to Symbol</h1></a><p>(Presented by Dave Herman, Mozilla)</p>
 <p>YK: A little nervous that not identical to Lisp</p>
 <p>DH: Gave blessing ;)  the only diff is that you can't go from string -&gt; symbol, whereas in lisp you can</p>
 <p>YK: ok with that.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-647"><h4 id="conclusionresolution-647">Conclusion/Resolution</h4></a><ul>
 <li>we agree that names are now called symbols (Name =&gt; Symbol)</li>
 <li>new alternatives for syntax to bind a &quot;Unique Symbol&quot; will be a keyword, one of: public, unique, or symbol
 ie. <code>public @foo;</code> vs <code>symbol @foo;</code> vs <code>unique @foo;</code></li>
 </ul>
-<h1>Early Errors That Possibly Should Not Be</h1>
-<p>(Presented by Luke Hoban, Microsoft)</p>
+<a href="#early-errors-that-possibly-should-not-be"><h1 id="early-errors-that-possibly-should-not-be">Early Errors That Possibly Should Not Be</h1></a><p>(Presented by Luke Hoban, Microsoft)</p>
 <p>LH: Concerns about detecting assignment to constants. Want to just parse, not build name environments, parse trees, etc.</p>
 <p>WH: What about detecting a continue to a nonexistent label? That requires name environments.</p>
 <p>LH: It's rare enough that it doesn't matter.</p>
@@ -362,12 +346,10 @@ Consensus: No.</p>
 <p>...Will allay performance issues discovered through Chakra and v8 prototyping.</p>
 <p>Discussion of label analysis</p>
 <p>Strict mode implementation</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-648"><h4 id="conclusionresolution-648">Conclusion/Resolution</h4></a><ul>
 <li>es-discuss will get a list of all early errors that should not be</li>
 </ul>
-<h1>Performance Costs of Temporal Dead Zone</h1>
-<p>(Presented by Luke Hoban, Microsoft)</p>
+<a href="#performance-costs-of-temporal-dead-zone"><h1 id="performance-costs-of-temporal-dead-zone">Performance Costs of Temporal Dead Zone</h1></a><p>(Presented by Luke Hoban, Microsoft)</p>
 <p><a href="https://mail.mozilla.org/pipermail/es-discuss/2012-September/024993.html">https://mail.mozilla.org/pipermail/es-discuss/2012-September/024993.html</a></p>
 <p>LH: (introduces discussion)</p>
 <p>ARB: Have you tested with let and no temporal dead zone</p>
@@ -381,13 +363,11 @@ Consensus: No.</p>
 <p>WH: [as previously mentioned by Brendan], having a lot more scopes to close over (i.e. creating a new one for each loop iteration, etc.) is likely to be the main performance cost of let. What if let is slower merely due to having many more scopes?</p>
 <p>BE: (history of let in SpiderMonkey...) No outcry that performance is an issue</p>
 <p>MM: (countering the &quot;not common enough&quot; argument) Presented personal experiences where dead zones were essential in detecting problems.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-649"><h4 id="conclusionresolution-649">Conclusion/Resolution</h4></a><ul>
 <li>No change to temporal dead zone (yet)</li>
 <li>Get more data, report back</li>
 </ul>
-<h1>Global Scope Revisit</h1>
-<p>YK: Still not in agreement with discussion yesterday, but not blocking the</p>
+<a href="#global-scope-revisit"><h1 id="global-scope-revisit">Global Scope Revisit</h1></a><p>YK: Still not in agreement with discussion yesterday, but not blocking the</p>
 <p>BE: Recap the problem that revealed the issue.</p>
 <p>LH: Can we talk about let/var at the top level?</p>
 <p>Current proposal... let would shadow var</p>
@@ -416,9 +396,9 @@ var followed by let with same identifier name: error</p>
 <p>WH: Also don't want random HTML attributes elsewhere on the page to knock out global let/const/etc. bindings.</p>
 <p>AWB: No one has discussed... Any script tag, whose order can be determined... bring deferred scripts to the last script</p>
 <p>BE:</p>
-<pre><code>A &lt;script&gt;
-B &lt;script&gt; document.write(&quot;D &lt;script&gt;&quot;)
-C &lt;script&gt;
+<pre><code>A <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="handlebars"><span class="xml">
+B <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="handlebars"><span class="xml"> document.write("D <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="handlebars"><span class="xml">")
+C <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="undefined">
 
 ( G )  &lt;
   ^    ( D )
@@ -427,7 +407,7 @@ C &lt;script&gt;
 ( B ) &lt;-?
   ^
 ( C ) &lt;-?
-</code></pre>
+</span></span></span></span></span></span></span></code></pre>
 <p>Hell.</p>
 <p>DH: Note that multiple globals is not the problem. The problem is that the one global scope is the &quot;window&quot;</p>
 <p>ARB: Implemented global lexical scope, give the impression of one, but is a scope chain.</p>
@@ -437,18 +417,18 @@ C &lt;script&gt;
 <p>DH: Users make recursive dependencies that they don't realize.</p>
 <p>ARB: The way I understood <code>let</code>... we resolve every variable at compile time, (I missed the next part, ARB: Can you fill this in?)</p>
 <p>YK: (whiteboard)</p>
-<pre><code class="language-html">&lt;script&gt;
-  function animate() {
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="actionscript">
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">animate</span><span class="hljs-params">()</span> </span>{
     requestAnimationFrame();
   }
-&lt;/script&gt;
-&lt;script&gt;
-  let requestAnimationFrame;
-  if ( typeof requestAnimationFrame === &quot;undefined&quot; ) {
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+  <span class="hljs-keyword">let</span> requestAnimationFrame;
+  <span class="hljs-keyword">if</span> ( <span class="hljs-keyword">typeof</span> requestAnimationFrame === <span class="hljs-string">"undefined"</span> ) {
     requestAnimationFrame = ...polyfill.
   }
   animate();
-&lt;/script&gt;
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
 <p>BE: Recapping the Window.prototype issue</p>
 <p>RW: There is no reason to put <em>everything</em> on the Window.prototype. Object APIs should be own properties of the Global object (&quot;window&quot; in the browser case). This doesn't mean that the needs of EventTarget specification cannot be met by using the Window.prototype. The WebIDL change to move all APIs to a different semantic &quot;space&quot; without understanding the consequences is the worst negligence.</p>
@@ -483,8 +463,7 @@ I can't figure out what the semantics you're describing is</p>
 <p>There are two scopes:
 Global Object and Global Lexical Scope... when a <code>let</code> binding occurs, there are two things created, one on the Global Object and Global Lexical Scope.</p>
 <p>[people generally felt it was easier to comprehend the data living in the scope contour]</p>
-<h4>Conclusion/Resolution</h4>
-<p>Agreed on the AWB/MM/WH alternative model
+<a href="#conclusionresolution-650"><h4 id="conclusionresolution-650">Conclusion/Resolution</h4></a><p>Agreed on the AWB/MM/WH alternative model
 (new binding forms)</p>
 <ul>
 <li>Allen's 1 extra global scope contourc</li>
@@ -492,15 +471,13 @@ Global Object and Global Lexical Scope... when a <code>let</code> binding occurs
 <li>Shadows all properties on the Global object</li>
 <li>Does not create a Global property</li>
 </ul>
-<h1>Test 262</h1>
-<p>(Presented by Istvan Sebastian, ECMA)</p>
+<a href="#test-262"><h1 id="test-262">Test 262</h1></a><p>(Presented by Istvan Sebastian, ECMA)</p>
 <p>IS: Someone needs to update the site with the latest version of the test suite in zip file format.</p>
 <p>LH/RW/AWB: Needs to be an automated process, if that's possible within the scope of ECMA's policies.</p>
 <p>IS: Needs archival snapshots. The standards body is still a classic style standards organization that needs to abide its rules and policies.</p>
-<h4>Conclusion/Resolution</h4>
-<p>Bill Ticehurst to produce recommendation for the automated archival of test 262 at arbitrary states, as needed.
+<a href="#conclusionresolution-651"><h4 id="conclusionresolution-651">Conclusion/Resolution</h4></a><p>Bill Ticehurst to produce recommendation for the automated archival of test 262 at arbitrary states, as needed.
 Rick Waldron volunteers to assist as necessary.</p>
-<h1>Create Archival Utility for ECMA Wiki</h1>
-<p>2012-10-31: <code>wget -r -l 0 http://wiki.ecmascript.org/</code></p>
-<h4>Conclusion/Resolution</h4>
-<p>Rick Waldron will champion this</p>
+<a href="#create-archival-utility-for-ecma-wiki"><h1 id="create-archival-utility-for-ecma-wiki">Create Archival Utility for ECMA Wiki</h1></a><p>2012-10-31: <code>wget -r -l 0 http://wiki.ecmascript.org/</code></p>
+<a href="#conclusionresolution-652"><h4 id="conclusionresolution-652">Conclusion/Resolution</h4></a><p>Rick Waldron will champion this</p>
+
+</body>

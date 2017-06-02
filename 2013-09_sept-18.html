@@ -1,15 +1,19 @@
 <!doctype html>
 <meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.6.0/github-markdown.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+
 <title>Sept 18 Meeting Notes</title>
-<h1>Sept 18 Meeting Notes</h1>
-<p>John Neumann (JN), Dave Herman (DH), Istvan Sebestyen (IS), Alex Russell (AR), Allen Wirfs-Brock (AWB), Erik Arvidsson (EA), Eric Ferraiuolo (EF), Doug Crockford (DC), Luke Hoban (LH), Anne van Kesteren (AVK), Brendan Eich (BE), Brian Terlson (BT), Rick Waldron (RW), Waldemar Horwat (WH), Rafael Weinstein (RWS), Boris Zbarsky (BZ), Domenic Denicola (DD), Tim Disney (TD), Niko Matsakis (NM), Jeff Morrison (JM), Sebastian Markbage (SM), Oliver Hunt (OH), Sam Tobin-Hochstadt (STH), Dmitry Lomov (DL), Andreas Rossberg (ARB), Matt Sweeney (MS), Reid Burke (RB), Philippe Le Hégaret (PLH), Simon Kaegi (SK), Paul Leathers (PL), Corey Frang (CF)</p>
-<h2>4.2 Reconsider decision to make Typed Arrays non-extensible (Cont)</h2>
-<p>RW: (recapping yesterday's discussion)</p>
+<body class="markdown-body">
+<a href="#sept-18-meeting-notes"><h1 id="sept-18-meeting-notes">Sept 18 Meeting Notes</h1></a><p>John Neumann (JN), Dave Herman (DH), Istvan Sebestyen (IS), Alex Russell (AR), Allen Wirfs-Brock (AWB), Erik Arvidsson (EA), Eric Ferraiuolo (EF), Doug Crockford (DC), Luke Hoban (LH), Anne van Kesteren (AVK), Brendan Eich (BE), Brian Terlson (BT), Rick Waldron (RW), Waldemar Horwat (WH), Rafael Weinstein (RWS), Boris Zbarsky (BZ), Domenic Denicola (DD), Tim Disney (TD), Niko Matsakis (NM), Jeff Morrison (JM), Sebastian Markbage (SM), Oliver Hunt (OH), Sam Tobin-Hochstadt (STH), Dmitry Lomov (DL), Andreas Rossberg (ARB), Matt Sweeney (MS), Reid Burke (RB), Philippe Le Hégaret (PLH), Simon Kaegi (SK), Paul Leathers (PL), Corey Frang (CF)</p>
+<a href="#42-reconsider-decision-to-make-typed-arrays-non-extensible-cont"><h2 id="42-reconsider-decision-to-make-typed-arrays-non-extensible-cont">4.2 Reconsider decision to make Typed Arrays non-extensible (Cont)</h2></a><p>RW: (recapping yesterday's discussion)</p>
 <p>EA: Can we pick 3 people to champion a recommendation?</p>
 <p>RW: Ideal</p>
 <p>(support in the room)</p>
-<h4>Consensus/Resolution</h4>
-<ul>
+<a href="#consensusresolution-526"><h4 id="consensusresolution-526">Consensus/Resolution</h4></a><ul>
 <li>2 People to come back with a recommendation:</li>
 <li>Dmitry Lomov</li>
 <li>Allen Wirfs-Brock</li>
@@ -19,8 +23,7 @@ recommendation is that Typed Array instances should come into existance being ex
 -- Allen</p>
 <p>As part of that consensus, variable-length (but not fixed-length!) typed array instances that are part of a future Typed Object spec should also be extensible in the same way as current Typed Array objects. In that way, full compatibility and equivalence between say &quot;Uint8Array&quot; and &quot;new ArrayType(uint8)&quot; will be maintained. As part of typed objects proposal, we will also consider having a different &quot;type constructor&quot; names for variable- and fixed-length typed arrays (e.g. &quot;new ArrayType(uint8)&quot; vs. &quot;new FixedArrayType(uint8, 10)&quot;).
 -- Dmitry</p>
-<h2>4.4 Symbols</h2>
-<p>Dave Herman presenting (follow up slides)</p>
+<a href="#44-symbols"><h2 id="44-symbols">4.4 Symbols</h2></a><p>Dave Herman presenting (follow up slides)</p>
 <p>DH: Symbols: object or primitive?</p>
 <p>Open issues:
 - privacy
@@ -31,7 +34,7 @@ recommendation is that Typed Array instances should come into existance being ex
 <li>Encapsulates key and nothing else</li>
 </ul>
 <p>(2) Cross-Frame Compatibility</p>
-<pre><code class="language-js">obj[iterator] = function*() {};
+<pre><code class="language-js">obj[iterator] = <span class="hljs-function"><span class="hljs-keyword">function</span>*(<span class="hljs-params"></span>) </span>{};
 </code></pre>
 <p>Another frame must also know what this <code>iterator</code> symbol is</p>
 <p>EA: Workers?</p>
@@ -43,9 +46,9 @@ recommendation is that Typed Array instances should come into existance being ex
 <pre><code class="language-js">
 alert.call();
 
-Math.sin(0);
+<span class="hljs-built_in">Math</span>.sin(<span class="hljs-number">0</span>);
 
-document.getElementById(&quot;body&quot;);
+<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"body"</span>);
 
 </code></pre>
 <p>DH: if you only allow things to work via functions with arguments, you are turning off a powerful tool</p>
@@ -68,7 +71,7 @@ document.getElementById(&quot;body&quot;);
 <p>DH: It doesn't matter, if we design depending on the invariance that the prototype is immutable then we can't change</p>
 <p>(5) Non-Answers</p>
 <p>(6) Shallow-Frozen Objects</p>
-<pre><code class="language-js">O.getPrototypeOf(iterator).foo = 12;
+<pre><code class="language-js">O.getPrototypeOf(iterator).foo = <span class="hljs-number">12</span>;
 </code></pre>
 <ul>
 <li>Fails Desideratum #1: is stateful</li>
@@ -77,7 +80,7 @@ document.getElementById(&quot;body&quot;);
 <p>WH: What doesn't work?</p>
 <p>DH: The standard iterator symbol would be different in different frames because they exist in different heaps</p>
 <p>(6) Deep-Frozen Objects</p>
-<pre><code class="language-js">O.getPrototypeOf(iterator).foo = 12; // strict error
+<pre><code class="language-js">O.getPrototypeOf(iterator).foo = <span class="hljs-number">12</span>; <span class="hljs-comment">// strict error</span>
 </code></pre>
 <ul>
 <li>Fails Desideratum #4: no evolution</li>
@@ -274,8 +277,7 @@ WH: We said that array subclasses are new and safe because unmodified code won't
 <p>DD/AR/DH: (discussion of <code>Object.mixin</code> + proxies trick.)</p>
 <p>YK: It sounds like we're slipping down the path of doing privacy with symbols again, and we're going to appease people for the wrong</p>
 <p>LH: the concern for <code>getOwnPropertyKeys</code> is that people would just use it in place of <code>getOwnPropertyNames</code>. Maybe if we separate into <code>getOwnPropertySymbols</code> + <code>getOwnPropertyNames</code> that will make it sufficiently painful that people won't just use <code>getOwnPropertyKeys</code> together.</p>
-<h4>Consensus/Resolution</h4>
-<ul>
+<a href="#consensusresolution-527"><h4 id="consensusresolution-527">Consensus/Resolution</h4></a><ul>
 <li>Symbols are a new primitive type with regular wrapper objects</li>
 <li>typeof symbol === &quot;symbol&quot;</li>
 <li>implicit conversion to string throws</li>
@@ -289,8 +291,7 @@ WH: We said that array subclasses are new and safe because unmodified code won't
 <ul>
 <li>AWB commits to bringing a proposal for user defined well-known symbol registration</li>
 </ul>
-<h2>6. Post ES6 Spec Process</h2>
-<p>(Rafael Weinstein) - <a href="http://slid.es/rafaelweinstein/tc39-process">http://slid.es/rafaelweinstein/tc39-process</a></p>
+<a href="#6-post-es6-spec-process"><h2 id="6-post-es6-spec-process">6. Post ES6 Spec Process</h2></a><p>(Rafael Weinstein) - <a href="http://slid.es/rafaelweinstein/tc39-process">http://slid.es/rafaelweinstein/tc39-process</a></p>
 <p>RWS: put together some thoughts after the last meeting with DL, EA, AWB, etc.</p>
 <p>RWS: most of it is good except that it's date driven and the consensus requirements lead to a high-stakes game for getting features into the game.</p>
 <p>RWS: The second problem is that with large-quanta spec releases, there's a varrying maturity level for proposals. Stable stuff is &quot;held hostage&quot; to newer features.</p>
@@ -396,12 +397,10 @@ WH: We said that array subclasses are new and safe because unmodified code won't
 <p>AWB: I can handle it.</p>
 <p>WH: Yes, but can the reviewers of the spec handle it? We have enough trouble getting folks to re-read stuff as it is.</p>
 <p>WH: Once every two years would be more reasonable.</p>
-<h4>Consensus/Resolution</h4>
-<ul>
+<a href="#consensusresolution-528"><h4 id="consensusresolution-528">Consensus/Resolution</h4></a><ul>
 <li></li>
 </ul>
-<h2>5.10 Function parameter scoping and instantiation</h2>
-<p>Andreas Rossberg</p>
+<a href="#510-function-parameter-scoping-and-instantiation"><h2 id="510-function-parameter-scoping-and-instantiation">5.10 Function parameter scoping and instantiation</h2></a><p>Andreas Rossberg</p>
 <p>[Slides](need to commit for a link)</p>
 <p>Default Parameters/Arguments</p>
 <p>Goals: Convenience Feature</p>
@@ -425,11 +424,11 @@ WH: We said that array subclasses are new and safe because unmodified code won't
 - Cannot see bindings created in function body
 - Cannot see bindings created in function body LATER (via eval)</p>
 <p>Evaluation Order</p>
-<pre><code class="language-js">function f(x = y, y = 2) {}
+<pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params">x = y, y = <span class="hljs-number">2</span></span>) </span>{}
 
-function f(x = eval(&quot;y&quot;), y = 2) {}
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params">x = eval(<span class="hljs-string">"y"</span></span>), <span class="hljs-title">y</span> = 2) </span>{}
 
-function f(x = (y = 3, 1), y = 2) {}
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params">x = (y = <span class="hljs-number">3</span>, <span class="hljs-number">1</span></span>), <span class="hljs-title">y</span> = 2) </span>{}
 </code></pre>
 <p>ARB: Preferably should be const bindings <em>in that scope</em> (not the funciton body)</p>
 <p>AWB: (describes the TDZ)</p>
@@ -469,13 +468,13 @@ function f(x = (y = 3, 1), y = 2) {}
 <p>AWB: I can express this with one Environment Record</p>
 <p>ARB: Cannot, because of eval.  A delayed eval in the parameter list must not see bindings from the body</p>
 <pre><code class="language-js">
-function g() {
-  return 3 * 3;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">g</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-number">3</span> * <span class="hljs-number">3</span>;
 }
 
-function f(h = () =&gt; eval(&quot;g()&quot;)) {
-  function g() {
-    return 2 * 3;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params">h = (</span>) =&gt; <span class="hljs-title">eval</span>(<span class="hljs-params"><span class="hljs-string">"g()"</span></span>)) </span>{
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">g</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-number">2</span> * <span class="hljs-number">3</span>;
   }
   h();
 }
@@ -499,48 +498,48 @@ function f(h = () =&gt; eval(&quot;g()&quot;)) {
 <li>Rules about redeclaration</li>
 <li></li>
 </ul>
-<pre><code class="language-js">// If...
+<pre><code class="language-js"><span class="hljs-comment">// If...</span>
 
-function f(x) {
-  var x;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params">x</span>) </span>{
+  <span class="hljs-keyword">var</span> x;
 }
 
-// changes to...
+<span class="hljs-comment">// changes to...</span>
 
-function f(x = {}) {
-  var x;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params">x = {}</span>) </span>{
+  <span class="hljs-keyword">var</span> x;
 }
 
-// No difference.
+<span class="hljs-comment">// No difference.</span>
 
-// But changes to...
+<span class="hljs-comment">// But changes to...</span>
 
-function f(x = {}) {
-  let x;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params">x = {}</span>) </span>{
+  <span class="hljs-keyword">let</span> x;
 }
 
-// Error for redeclaration.
+<span class="hljs-comment">// Error for redeclaration.</span>
 </code></pre>
 <p>(clarification re: nothing changes var bindings to let bindings)</p>
 <p>WH: (whiteboard) What is the value of y in this example? 5 or 2?</p>
-<pre><code class="language-js">function f( x=(y=3, 2), y ) {
-  console.log( x, y );
+<pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params"> x=(y=<span class="hljs-number">3</span>, <span class="hljs-number">2</span></span>), <span class="hljs-title">y</span> ) </span>{
+  <span class="hljs-built_in">console</span>.log( x, y );
 }
-f(undefined, 5);
+f(<span class="hljs-literal">undefined</span>, <span class="hljs-number">5</span>);
 </code></pre>
 <p>(discussion without a clear resolution)</p>
 <p>CF: What about:</p>
-<pre><code class="language-js">var y = 2;
+<pre><code class="language-js"><span class="hljs-keyword">var</span> y = <span class="hljs-number">2</span>;
 
-function f( x=y, y=3 ) {
-  console.log( x, y );
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params"> x=y, y=<span class="hljs-number">3</span> </span>) </span>{
+  <span class="hljs-built_in">console</span>.log( x, y );
 }
 f();
 </code></pre>
 <p>BE &amp; Others: <code>y</code> is shadowed result is (undefined, 3)</p>
 <p>WH: What is the value of y in this example? 2, undefined, or 5?</p>
-<pre><code class="language-js">function f(x = (y = undefined, 7), y = 5) { ... }
-f(undefined, 2);
+<pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params">x = (y = undefined, <span class="hljs-number">7</span></span>), <span class="hljs-title">y</span> = 5) </span>{ ... }
+f(<span class="hljs-literal">undefined</span>, <span class="hljs-number">2</span>);
 </code></pre>
 <p>AWB: The original value of the parameter is used to decide whether to default it or not.</p>
 <p>BE: Surprised. Unhappy with having to store the original values of the parameters, thereby making for two copies of each one.</p>
@@ -552,8 +551,7 @@ f(undefined, 2);
 <ul>
 <li>If another parameter has a default?</li>
 </ul>
-<h4>Consensus/Resolution</h4>
-<ul>
+<a href="#consensusresolution-529"><h4 id="consensusresolution-529">Consensus/Resolution</h4></a><ul>
 <li>Two Scopes
 <ul>
 <li>Head/Parameter List</li>
@@ -562,29 +560,25 @@ f(undefined, 2);
 <li>Temporal dead zone?</li>
 <li>Details unresolved?</li>
 </ul>
-<h2>4.5 Modules Update</h2>
-<p>Dave Herman</p>
+<a href="#45-modules-update"><h2 id="45-modules-update">4.5 Modules Update</h2></a><p>Dave Herman</p>
 <p>[Slides](need to commit for a link)</p>
-<h3>Generic Bundling Slide</h3>
-<p>(Debate about hash as the delimiter. Agreement that this discussion can take place elsewhere.)</p>
+<a href="#generic-bundling-slide"><h3 id="generic-bundling-slide">Generic Bundling Slide</h3></a><p>(Debate about hash as the delimiter. Agreement that this discussion can take place elsewhere.)</p>
 <p>DH: the browser loader is not something that belongs in Ecma-262. It's a separate spec. We can do it concurrently. We definitely want to start now and get feedback early, but it doesn't need to block ES6.</p>
 <p>(Discussion of confusion on parsing vs. evaluation timing. Custom loaders can implement the desired esoteric use case; see caching slides.)</p>
 <p>DH/LH/JM: Use case under discussion is lazy module execution, like AMD bundles or previous named module declarations. If you have a <code>console.log</code> inside a module, is there a way for that not to get executed?</p>
 <p>DH: we may need to check to ensure that is possible, but it probably is. And the simplification of removing named module declarations still seems worth it.</p>
-<h2>4.6 Unbound variable checking</h2>
-<p>Dave Herman</p>
+<a href="#46-unbound-variable-checking"><h2 id="46-unbound-variable-checking">4.6 Unbound variable checking</h2></a><p>Dave Herman</p>
 <p>DH: Proposes that if m is an imported module, then m.bar should be a compile-time error if the module doesn't have a property named bar.</p>
 <p>WH on whiteboard: Should this be a static error in that case?</p>
-<pre><code class="language-js">module m from &quot;foo&quot;;
+<pre><code class="language-js"><span class="hljs-built_in">module</span> m <span class="hljs-keyword">from</span> <span class="hljs-string">"foo"</span>;
 
-with (a) {
+<span class="hljs-keyword">with</span> (a) {
     m.bar;
 }
 </code></pre>
 <p>?: Modules are in strict mode and don't allow 'with'.
 WH: But this isn't a module; it's just referencing one.</p>
-<h2>Module loading</h2>
-<p>DH: it used to be that <code>&lt;script async&gt;</code> would be able to do I/O, including <code>import</code> declarations; I've relaxed that. Now <code>&lt;script&gt;</code> can do that.</p>
+<a href="#module-loading"><h2 id="module-loading">Module loading</h2></a><p>DH: it used to be that <code>&lt;script async&gt;</code> would be able to do I/O, including <code>import</code> declarations; I've relaxed that. Now <code>&lt;script&gt;</code> can do that.</p>
 <p>DD/DH: (clarification that you can use module syntax in scripts, not just modules&gt;</p>
 <p>BE/DH: (discussion of allowing <code>&lt;script&gt;</code> without <code>async</code> to load modules.&gt;</p>
 <p>AR: note that inline scripts with <code>async</code> or <code>defer</code> attributes <em>currently</em> do not impact execution or parsing. This may change in the future.</p>
@@ -595,13 +589,13 @@ WH: But this isn't a module; it's just referencing one.</p>
 <p>BE: that would mean we're betting on getting something into HTML</p>
 <p>DH: yes, but you could just use the loader API.</p>
 <p>BE (whiteboard): four cases</p>
-<pre><code class="language-html">&lt;script&gt;(1)&lt;/script&gt;
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="undefined">(1)</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
-&lt;script src=&quot;...&quot;&gt;(2)&lt;/script&gt;
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"..."</span>&gt;</span><span class="undefined">(2)</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
-&lt;script async&gt;(3)&lt;/script&gt;
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">async</span>&gt;</span><span class="undefined">(3)</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
-&lt;script src=&quot;...&quot; async&gt;(4)&lt;/script&gt;
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"..."</span> <span class="hljs-attr">async</span>&gt;</span><span class="undefined">(4)</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
 <p>WH: how do you load a module without async scripts?</p>
 <p>YK/LH: <code>System.load(&quot;module&quot;)</code></p>
@@ -615,7 +609,7 @@ WH: But this isn't a module; it's just referencing one.</p>
 <p>JM: so how do you enter the module system from HTML?</p>
 <p>DH: two ways. The loader API, or the hypothetical <code>&lt;module&gt;</code>.</p>
 <p>BE (whiteboard); top level script looks like</p>
-<pre><code class="language-js">let { keys, values } = System.get(&quot;@iter&quot;);
+<pre><code class="language-js"><span class="hljs-keyword">let</span> { keys, values } = System.get(<span class="hljs-string">"@iter"</span>);
 </code></pre>
 <p>DH: BTW JS practictioners, I'd like to reiterate if you have concerns about the standard module system.</p>
 <p>LH: Implementers will ship iterators before modules, so we need a way to get at these things more easily.</p>
@@ -633,8 +627,7 @@ WH: But this isn't a module; it's just referencing one.</p>
 <p>JM: Facebook wants both, so we can do initial page load and async load.</p>
 <p>DH: that's fine, you can do that with <code>System.set</code> in the initial page load.</p>
 <p>DH/BE: (Agreement that this should go in other standards bodies.)</p>
-<h2>Back to Static Checking</h2>
-<p>LH: back to static checking?</p>
+<a href="#back-to-static-checking"><h2 id="back-to-static-checking">Back to Static Checking</h2></a><p>LH: back to static checking?</p>
 <p>BE: you have to do label checking. It's not that bad.</p>
 <p>ARB/BE/DH: we have to implement to find out.</p>
 <p>BE: how much parsing do you have to do?</p>
@@ -683,3 +676,5 @@ WH: But this isn't a module; it's just referencing one.</p>
 <p>DH: The static variable checking is both unsound and incomplete; the former is because of snapshot-in-time globals, and the latter is because of the halting problem.</p>
 <p>WH: I want a way to get static variable checking but also monkey patching. Perhaps declare which global bindings you might want to monkey-patch.</p>
 <p>checks on import/export</p>
+
+</body>

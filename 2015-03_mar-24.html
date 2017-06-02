@@ -1,10 +1,15 @@
 <!doctype html>
 <meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.6.0/github-markdown.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+
 <title>March 24 2015 Meeting Notes</title>
-<h1>March 24 2015 Meeting Notes</h1>
-<p>Brian Terlson (BT), Allen Wirfs-Brock (AWB), John Neumann (JN), Jeff Morrison (JM), Sebastian Markbage (SM), Yehuda Katz (YK), Dave Herman (DH), Alan Schmitt (AS), Lee Byron (LB), Domenic Denicola (DD), Kevin Smith (KS), Andreas Rossberg (ARB), Brendan Eich (BE), Erik Arvidsson (EA), Adam Klein (AK), Jordan Harband (JHD), Mark Miller (MM), Istvan Sebestyen (IS), Jafar Husain (JH), Rick Waldron (RW)</p>
-<h2>4 ECMA-262 6th Edition</h2>
-<p>(AWB)</p>
+<body class="markdown-body">
+<a href="#march-24-2015-meeting-notes"><h1 id="march-24-2015-meeting-notes">March 24 2015 Meeting Notes</h1></a><p>Brian Terlson (BT), Allen Wirfs-Brock (AWB), John Neumann (JN), Jeff Morrison (JM), Sebastian Markbage (SM), Yehuda Katz (YK), Dave Herman (DH), Alan Schmitt (AS), Lee Byron (LB), Domenic Denicola (DD), Kevin Smith (KS), Andreas Rossberg (ARB), Brendan Eich (BE), Erik Arvidsson (EA), Adam Klein (AK), Jordan Harband (JHD), Mark Miller (MM), Istvan Sebestyen (IS), Jafar Husain (JH), Rick Waldron (RW)</p>
+<a href="#4-ecma-262-6th-edition"><h2 id="4-ecma-262-6th-edition">4 ECMA-262 6th Edition</h2></a><p>(AWB)</p>
 <p>AWB: (presents slides)</p>
 <p>AWB: release candidates are intended to be complete subject to bugs so everyone could review them. RC1 was the review draft for the RF opt-out period.</p>
 <p>AWB: bug count fluctuates toward zero and back up; minor technical or editorial issues. Waldemar found some small issues in the grammar (unnecessary parametrization, Unicode regexp grammar, ...). Bugs that come up between now and June will be fixed as practical, or deferred to ES7 if not.</p>
@@ -19,8 +24,7 @@
 <p>BT: that's what IE has: RegExp.prototype is an ordinary object; the only prototypes that are not ordinary objects are Function.prototype and Array.prototype.</p>
 <p>BE: what about <code>Object.prototype.toString</code> on those prototypes? [Actually I was asking what RegExp.prototype.toString() returns. /be]</p>
 <p>BT: it gives <code>[object Object]</code>. We haven't come across any code yet that breaks because of these changes, and to put that in perspective we have 3 or 4 sites that break due to the function name thing.</p>
-<h2>Module Namespace Exotic Objects</h2>
-<p>DH: I think there was a minor issue with the module namespace objects...</p>
+<a href="#module-namespace-exotic-objects"><h2 id="module-namespace-exotic-objects">Module Namespace Exotic Objects</h2></a><p>DH: I think there was a minor issue with the module namespace objects...</p>
 <p>EA: my concern here is that we're introducing a new exotic object.</p>
 <p>DH: that has been my intention for fully six years. (For some value of six.)</p>
 <p>DD: I think the wiki said &quot;<code>Object.create(null)</code> with getters&quot;...</p>
@@ -41,13 +45,11 @@
 <p>DH: it throws</p>
 <p>YK: why is it not just a getter</p>
 <p>ARB/MM/AWB: then you have to reify the getter, and it's annoying to implement</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-328"><h4 id="conclusionresolution-328">Conclusion/Resolution</h4></a><ul>
 <li>Change module namespace exotic object [[GetOwnProperty]] to reflect as a writable data property.</li>
 <li>[[Set]] continues to throw in strict mode.</li>
 </ul>
-<h2>Function Name Issue</h2>
-<p>BT: we found several sites that are broken by the new function.name algorithm. One site we found is using function objects as maps, and so doing e.g. <code>if (func[key]) { ... }</code>. Since ES6 defines new semantics for <code>func.name</code>, this breaks the site. We have enough information such that we're not going to ship this. We could perhaps only infer for assignments to <code>let</code> and <code>const</code>, not <code>var</code>.</p>
+<a href="#function-name-issue"><h2 id="function-name-issue">Function Name Issue</h2></a><p>BT: we found several sites that are broken by the new function.name algorithm. One site we found is using function objects as maps, and so doing e.g. <code>if (func[key]) { ... }</code>. Since ES6 defines new semantics for <code>func.name</code>, this breaks the site. We have enough information such that we're not going to ship this. We could perhaps only infer for assignments to <code>let</code> and <code>const</code>, not <code>var</code>.</p>
 <p>AWB: we infer lots of places...</p>
 <p>BT: we've only seen problems for assignments to <code>var</code>.</p>
 <p>MM: so if we removed it from <code>var</code> everything would work?</p>
@@ -96,14 +98,12 @@
 <p>YK: in the global space, people want to replace things that are global.</p>
 <p>MM: I retreat...</p>
 <p>AWB: OK, so, I don't think we should keep fishing on &quot;is there anything else we should change&quot;?</p>
-<h4>Conclusion/Resolution (for function.name issue)</h4>
-<ul>
+<a href="#conclusionresolution-for-functionname-issue-329"><h4 id="conclusionresolution-for-functionname-issue-329">Conclusion/Resolution (for function.name issue)</h4></a><ul>
 <li>Leave the spec as-is</li>
 <li>Let Microsoft experiment with more web-compatible versions of the algorithm, e.g. not-for-<code>var</code></li>
 <li>Have a public place to track and post errata regarding this issue, until the Great Tooling Revolution of 2015 arrives</li>
 </ul>
-<h2>Let's Ship This Thing</h2>
-<p>JN: we need two votes; we vote to refer the spec to ourselves, then we vote to approve the spec.</p>
+<a href="#lets-ship-this-thing"><h2 id="lets-ship-this-thing">Let's Ship This Thing</h2></a><p>JN: we need two votes; we vote to refer the spec to ourselves, then we vote to approve the spec.</p>
 <p>(general confusion, slowly turning to incredulity and then acceptance)</p>
 <p>AWB: (presents slide titled &quot;A Motion&quot;)</p>
 <p>DH: (joking) I filed a patent for the Window object. It is a very unique design.</p>
@@ -154,12 +154,10 @@
 <p>AWB: Check with Rick. If people here take the time to look at the draft, by the end of the week we could vote to refer 402 to GA.</p>
 <p>IS: We can't reference 402 edition 1 from ES6?</p>
 <p>AWB: No.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-330"><h4 id="conclusionresolution-330">Conclusion/Resolution</h4></a><ul>
 <li>Everyone to review or do what is necessary to vote to pass along 402 on Thursday.</li>
 </ul>
-<h2>What to do with compact profile (ECMA-327) and E4X (ECMA-357)</h2>
-<p>AWB: These are still active standards. E4X still gets downloads. We can withdraw the standards.</p>
+<a href="#what-to-do-with-compact-profile-ecma-327-and-e4x-ecma-357"><h2 id="what-to-do-with-compact-profile-ecma-327-and-e4x-ecma-357">What to do with compact profile (ECMA-327) and E4X (ECMA-357)</h2></a><p>AWB: These are still active standards. E4X still gets downloads. We can withdraw the standards.</p>
 <p>BE: ActionScript 3 in Flash implements E4X.</p>
 <p>IS: We had this on the agenda when we did ES5. At that time the point was that even if it was out of date, if implementers wanted to implement the old one they could. Adobe may have wanted this. 357 is often downloaded. But I don't know how serious this is.</p>
 <p>AWB: E4X is not aligned with ES6 so it seems misleading for it to be out there.</p>
@@ -167,47 +165,39 @@
 <p>AWB: We had this conversation 5 years ago. Things have evolved. Maybe adobe still cares, or maybe they don't.</p>
 <p>BE: It can be withdrawn without breaking other standards.</p>
 <p>IS: We approved ECMA404 before we had the RF agreement. Should we start an opt-out period for ECMA404?</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-331"><h4 id="conclusionresolution-331">Conclusion/Resolution</h4></a><ul>
 <li>Istvan to follow up with Adobe and the CC to see if they would object to withdrawing E4X</li>
 </ul>
-<h2>ECMA404 RF?</h2>
-<p>IS: We approved ECMA404 before we had the RF agreement. Should we start an opt-out period for ECMA404?</p>
+<a href="#ecma404-rf"><h2 id="ecma404-rf">ECMA404 RF?</h2></a><p>IS: We approved ECMA404 before we had the RF agreement. Should we start an opt-out period for ECMA404?</p>
 <p>AWB: Can we retroactively make ECMA-404 Royalty Free?</p>
 <p>IS: Yes</p>
 <p>AWB: We should have an opt-out period then.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-332"><h4 id="conclusionresolution-332">Conclusion/Resolution</h4></a><ul>
 <li>Start an opt-out period.</li>
 </ul>
-<h3>Compact profile</h3>
-<p>DH: People who are interested in this can start doing work. Once there is actual demand work will happen. We shouldn't just make standards because someone might use it.</p>
+<a href="#compact-profile"><h3 id="compact-profile">Compact profile</h3></a><p>DH: People who are interested in this can start doing work. Once there is actual demand work will happen. We shouldn't just make standards because someone might use it.</p>
 <p>AWB: I think there is consensus to kill 327.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-333"><h4 id="conclusionresolution-333">Conclusion/Resolution</h4></a><ul>
 <li>Istvan to follow up with Adobe and the CC to see if they would object to withdrawing the compact profile.</li>
 </ul>
-<h2>Fast track ECMA-404</h2>
-<p>IS: The actual standard document is not ready, maybe ready for this afternooon. Then we can publish it for fast track.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#fast-track-ecma-404"><h2 id="fast-track-ecma-404">Fast track ECMA-404</h2></a><p>IS: The actual standard document is not ready, maybe ready for this afternooon. Then we can publish it for fast track.</p>
+<a href="#conclusionresolution-334"><h4 id="conclusionresolution-334">Conclusion/Resolution</h4></a><ul>
 <li>Revisit tomorrow.</li>
 </ul>
-<h2>6.1 ES6 Class Properties</h2>
-<p>(Jeff Morrison)</p>
+<a href="#61-es6-class-properties"><h2 id="61-es6-class-properties">6.1 ES6 Class Properties</h2></a><p>(Jeff Morrison)</p>
 <p><a href="https://gist.github.com/jeffmo/054df782c05639da2adb">https://gist.github.com/jeffmo/054df782c05639da2adb</a></p>
-<pre><code class="language-js">class Counter extends ReactComponent {
-  constructor(props) {
-    super(props);
-    state = {count: this.props.initialCount};
+<pre><code class="language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Counter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ReactComponent</span> </span>{
+  <span class="hljs-keyword">constructor</span>(props) {
+    <span class="hljs-keyword">super</span>(props);
+    state = {<span class="hljs-attr">count</span>: <span class="hljs-keyword">this</span>.props.initialCount};
   }
 }
-Counter.propTypes = {initialCount: React.PropTypes.numer};
+Counter.propTypes = {<span class="hljs-attr">initialCount</span>: React.PropTypes.numer};
 </code></pre>
 <p>JM: React ends up with some boiler plate code because it wants to add an own instance property.</p>
-<pre><code class="language-js">class Counter extends ReactComponent {
-  static propTypes = {initialCount: React.PropTypes.numer};
-  state = {count: this.props.initialCount};
+<pre><code class="language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Counter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ReactComponent</span> </span>{
+  <span class="hljs-keyword">static</span> propTypes = {<span class="hljs-attr">initialCount</span>: React.PropTypes.numer};
+  state = {<span class="hljs-attr">count</span>: <span class="hljs-keyword">this</span>.props.initialCount};
 </code></pre>
 <p>JM: Issues with storing instance values on the prototype. Reference types shared between instances.</p>
 <p>JM: Transpose initializer into the constructor has issues with the scope.</p>
@@ -247,35 +237,33 @@ Counter.propTypes = {initialCount: React.PropTypes.numer};
 <p>DD: The decorators already act differently. prototype or on the constructor.</p>
 <p>YK: Wants to operator on more than the value. Same way for methods as for inst props.</p>
 <p>DH: API like method decorators.</p>
-<pre><code class="language-js">sidetable.myinstprop = {value: func () {}, configurable: ..., ...};
+<pre><code class="language-js">sidetable.myinstprop = {<span class="hljs-attr">value</span>: func () {}, <span class="hljs-attr">configurable</span>: ..., ...};
 </code></pre>
 <p>YK: It is important to distinguish these from value properties. For example there migh be a use for creating own instance methods. Therefore using initializer instead of value is important.</p>
 <p>AWB: When I create lots of objects I don't want to have to pay for all these internal MOP.</p>
 <p>YK: The reified methods only come into play if you use reflection and decorators.</p>
 <p>AWB: What if someone modifies these descriptors.</p>
 <p>EA: It is important that the descriptor of these own instance properties is immutable, or at that you cannot change these afterwards because then the constructor function has to change its behavior after the fact.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-335"><h4 id="conclusionresolution-335">Conclusion/Resolution</h4></a><ul>
 <li>Stage 0</li>
 <li>Do not use descriptors for initializer state.</li>
 </ul>
-<h2>6.2 Decorators</h2>
-<pre><code class="language-js">class {
+<a href="#62-decorators"><h2 id="62-decorators">6.2 Decorators</h2></a><pre><code class="language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> </span>{
     @readonly name() { }
 }
 
-function readonly(prototype, name, desc) {    
-     desc.writable = false;     
-     return desc; 
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">readonly</span>(<span class="hljs-params">prototype, name, desc</span>) </span>{    
+     desc.writable = <span class="hljs-literal">false</span>;     
+     <span class="hljs-keyword">return</span> desc; 
 }  
-Object.defineProperty(Person.prototype, 'name', 
-  readonly(Person.prototype, 'name', {
-    enumerable: false,
-    configurable: true,    
-    writable: true,     
-    value: &lt;closure&gt;   
+<span class="hljs-built_in">Object</span>.defineProperty(Person.prototype, <span class="hljs-string">'name'</span>, 
+  readonly(Person.prototype, <span class="hljs-string">'name'</span>, {
+    <span class="hljs-attr">enumerable</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">configurable</span>: <span class="hljs-literal">true</span>,    
+    <span class="hljs-attr">writable</span>: <span class="hljs-literal">true</span>,     
+    <span class="hljs-attr">value</span>: <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">closure</span>&gt;</span>   
 })); 
-</code></pre>
+</span></code></pre>
 <p>MM: When defineProperty runs, does Person.prototype have an undecorated name property?</p>
 <p>YK: No.  The thing that you pass to the decorator looks like a descriptor, but is just an object.</p>
 <p>AWB: We need to think about what the built in ones should be.</p>
@@ -283,11 +271,11 @@ Object.defineProperty(Person.prototype, 'name',
 <p><a href="http://bit.ly/ember-js-classes">http://bit.ly/ember-js-classes</a></p>
 <p>Examples of things that Ember might do with decorators.</p>
 <p>YK:  Shows example of more complex decorator usage:</p>
-<pre><code class="language-js">class Person {   
+<pre><code class="language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span> </span>{   
     firstName = “…”;   
     lastName = “…”;   
-    @concat('firstName', 'lastName', ' ') fullName;   
-    @concat('lastName', 'firstName', ', ') formalName; } 
+    @concat(<span class="hljs-string">'firstName'</span>, <span class="hljs-string">'lastName'</span>, <span class="hljs-string">' '</span>) fullName;   
+    @concat(<span class="hljs-string">'lastName'</span>, <span class="hljs-string">'firstName'</span>, <span class="hljs-string">', '</span>) formalName; } 
 </code></pre>
 <p>MM:  Can create a read-only getter from a declared property</p>
 <p>AWB:  Do you have a more plausible use case for more complex decorators</p>
@@ -341,16 +329,15 @@ we'll fall off a complexity cliff.  Agree that we should look at the bigger pict
 <p>ARB:  readonly is an example that we might want to have a more direct way.</p>
 <p>YK:  If readonly were built-in and you imported it, then the engine could do smarter things.</p>
 <p>DH: Suggests stage 1, but audit the space which may lead to changes.</p>
-<h4>Conclusion</h4>
-<ul>
+<a href="#conclusion-336"><h4 id="conclusion-336">Conclusion</h4></a><ul>
 <li>Stage 1, YK will audit the space.</li>
 </ul>
-<h2>6.3 ReverseIterable interface</h2>
-<p>(Lee Byron)</p>
+<a href="#63-reverseiterable-interface"><h2 id="63-reverseiterable-interface">6.3 ReverseIterable interface</h2></a><p>(Lee Byron)</p>
 <p>Proposal: <a href="https://github.com/leebyron/ecmascript-reverse-iterator">https://github.com/leebyron/ecmascript-reverse-iterator</a></p>
 <p>LB: <a href="https://github.com/leebyron/ecmascript-reverse-iterable/blob/master/TC39-March2015.pdf">presents slides</a></p>
 <p>[lots of discussion about how to extend iterators/iterables]</p>
-<h4>Conclusion</h4>
-<ul>
+<a href="#conclusion-337"><h4 id="conclusion-337">Conclusion</h4></a><ul>
 <li>More work to be done in breakouts to figure out path forward for iteration.</li>
 </ul>
+
+</body>

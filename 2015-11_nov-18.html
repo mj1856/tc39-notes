@@ -1,10 +1,15 @@
 <!doctype html>
 <meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.6.0/github-markdown.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+
 <title>November 18th 2015 Meeting Notes</title>
-<h1>November 18th 2015 Meeting Notes</h1>
-<p>Jafar Husain (JH), Eric Farriauolo (EF), Caridy Patino (CP), Adam Klein (AK), Michael Ficarra (MF), Peter Jensen (PJ), Domenic Denicola (DD), Jordan Harband (JHD), Chip Morningstar (CM), Brian Terlson (BT), John Neumann  (JN), Dave Herman (DH), Brendan Eich (BE), Yehuda Katz (YK), Jeff Morrison (JM), Lee Byron (LB), Daniel Ehrenberg (DE), Lars Hansen (LHN), Nagy Hostafa (NH), Michael Saboff (MS), John Buchanan (JB), Stefan Penner (SP), Waldemar Horwat (WH), Mark Miller (MM), Paul Leathers (PL), Georg Neis (GN), Sebastian Markbage (SM)</p>
-<h2>RegExp Buffet (BT)</h2>
-<p>something about composed RegExp</p>
+<body class="markdown-body">
+<a href="#november-18th-2015-meeting-notes"><h1 id="november-18th-2015-meeting-notes">November 18th 2015 Meeting Notes</h1></a><p>Jafar Husain (JH), Eric Farriauolo (EF), Caridy Patino (CP), Adam Klein (AK), Michael Ficarra (MF), Peter Jensen (PJ), Domenic Denicola (DD), Jordan Harband (JHD), Chip Morningstar (CM), Brian Terlson (BT), John Neumann  (JN), Dave Herman (DH), Brendan Eich (BE), Yehuda Katz (YK), Jeff Morrison (JM), Lee Byron (LB), Daniel Ehrenberg (DE), Lars Hansen (LHN), Nagy Hostafa (NH), Michael Saboff (MS), John Buchanan (JB), Stefan Penner (SP), Waldemar Horwat (WH), Mark Miller (MM), Paul Leathers (PL), Georg Neis (GN), Sebastian Markbage (SM)</p>
+<a href="#regexp-buffet-bt"><h2 id="regexp-buffet-bt">RegExp Buffet (BT)</h2></a><p>something about composed RegExp</p>
 <p>YK: composing regexp does not have a algebraic decomposition</p>
 <p>DD: composing multiple interpolated strings for RegExp</p>
 <p>WH: What?</p>
@@ -98,8 +103,7 @@ would then turn on the i flag for the def in the outer pattern, which is bad.</p
 <p>WH: so only the M and I flags for now</p>
 <p>BT: yes</p>
 <p>YK: sounds like an open question if we work on X</p>
-<h2>Unicode++ - Syntax &amp; Semantics (BT)</h2>
-<p>BT: unicode spec defines, many things (block scripts…)</p>
+<a href="#unicode---syntax--semantics-bt"><h2 id="unicode---syntax--semantics-bt">Unicode++ - Syntax &amp; Semantics (BT)</h2></a><p>BT: unicode spec defines, many things (block scripts…)</p>
 <p>BT: an example of a block is latin/arabic etc.</p>
 <p>BT: \u allows for more ergonomic RegExp when dealing with unicode chars..</p>
 <p>YK: unicode adding stuff, will cause enumerated charsets in  RegExp to break</p>
@@ -190,8 +194,7 @@ would then turn on the i flag for the def in the outer pattern, which is bad.</p
 <p>BT: we should do the Other RegExp item, because Alan will call in. With slides</p>
 <p>… stepped out
 … ambient music from next door</p>
-<h2>AWB: Summarizes some OO Concepts</h2>
-<p>BT: we accept the shared vocabulary</p>
+<a href="#awb-summarizes-some-oo-concepts"><h2 id="awb-summarizes-some-oo-concepts">AWB: Summarizes some OO Concepts</h2></a><p>BT: we accept the shared vocabulary</p>
 <p>AWB: RegExp has an abstract base and a concerete base</p>
 <p>AWB: the public interface that it exposes, exec/split etc… essentially all the methods on the interface. No methods to provide a subclass interface, it is important \w match &amp; replace that any class that provides those methods be a subclass of a RegExp Object. The String object was restructed in es6, so it works with any object with that implement. RegExp has a subclass interface, and it is exec. This is very intentional, 1 kernel method is required and a subclass works. By implementing this one concrete method, the abstract algos will work.</p>
 <p>AWB: exec shows up in many places, public interface, key kernel method for subclass interface, and depends on the internal matcher algorithim.</p>
@@ -282,8 +285,7 @@ would then turn on the i flag for the def in the outer pattern, which is bad.</p
 <p>JHD: Symbol.exec, i would gladly work on it with you AWB</p>
 <p>BE: A functionally pure kernel would be great.</p>
 <p>AWB: one reason i didn’t go that way, is due to some hesitation do to adding additional @@ methods.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-254"><h4 id="conclusionresolution-254">Conclusion/Resolution</h4></a><ul>
 <li>no major change</li>
 <li>DE/AWB will make minor changes + tweaks</li>
 <li>AWB/JHD to investigate Symbol.exec + a pure functional exec kernel</li>
@@ -297,12 +299,10 @@ would then turn on the i flag for the def in the outer pattern, which is bad.</p
 <p>AK: Will file a separate issue for this concern</p>
 <p>BT: other issues for AWB while we have him?</p>
 <p>KS:</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-255"><h4 id="conclusionresolution-255">Conclusion/Resolution</h4></a><ul>
 <li>%TypedArray% constructor is directly called rather than having a super constructor and a proto chain walk</li>
 </ul>
-<h3>Improving consistency of @@species (Kevin Smith)</h3>
-<p>KS: on map and set, they are not used in the spec themselves, But subclasses should be able to override</p>
+<a href="#improving-consistency-of-species-kevin-smith"><h3 id="improving-consistency-of-species-kevin-smith">Improving consistency of @@species (Kevin Smith)</h3></a><p>KS: on map and set, they are not used in the spec themselves, But subclasses should be able to override</p>
 <p>KS: usage patterns, instance methods, that want to return related subclass.</p>
 <p>KS: Promise.all and Promise.race are the only ones that use this</p>
 <p>YK: race/all are combinators Array.from is a custom constructors:</p>
@@ -367,8 +367,7 @@ would then turn on the i flag for the def in the outer pattern, which is bad.</p
 <li>investigate <code>Function.prototype['@@species']</code></li>
 <li>Map and Set shouldn’t have it, we should add it on-demand, and do no carry it forward.</li>
 </ol>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-256"><h4 id="conclusionresolution-256">Conclusion/Resolution</h4></a><ul>
 <li>remove <code>@@species</code> handing from <code>Promise.all</code>/<code>Promise.race</code></li>
 <li>no decisions made on other <code>@@species</code> handling</li>
 <li>investigate <code>Function.prototype[Symbol.species]</code></li>
@@ -408,13 +407,11 @@ would then turn on the i flag for the def in the outer pattern, which is bad.</p
 <p>BT: should likely be an editor discretion. With github, changes are public and watchable.</p>
 <p>YK: a small process may solve, for example. The editor of a given group tags changes as potentially relevant.</p>
 <p>BT: bi-weekly changelog, with highlights called out. Grouped sections, to draw attention to various interested parties.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-257"><h4 id="conclusionresolution-257">Conclusion/Resolution</h4></a><ul>
 <li>promise rejection hooks are in</li>
 <li>editor may apply own discretion on further “implementation hook” proposals</li>
 </ul>
-<h2>Proposal Repos, and where they live + editor update</h2>
-<p>BT: for people not watching the spec, let me show you what we have.</p>
+<a href="#proposal-repos-and-where-they-live--editor-update"><h2 id="proposal-repos-and-where-they-live--editor-update">Proposal Repos, and where they live + editor update</h2></a><p>BT: for people not watching the spec, let me show you what we have.</p>
 <p>BT: we have a permanently bleeding edge spec at <a href="http://tc39.github.io/ecma262/">http://tc39.github.io/ecma262/</a></p>
 <p>BT: more people using it the more bugs we can fix</p>
 <p>BT: we have a nice fuzzy searching table of contents</p>
@@ -445,12 +442,10 @@ would then turn on the i flag for the def in the outer pattern, which is bad.</p
 <p>BT: stage 1+ email me, and we will work on the repo transfer.</p>
 <p>SP: editor doing this, acts as a good filter.</p>
 <p>DE: Proxy Implementation for in issues</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-258"><h4 id="conclusionresolution-258">Conclusion/Resolution</h4></a><ul>
 <li>any stage 1 or above proposal repos must be transferred to the TC39 org, as a stage 1 entry requirement</li>
 </ul>
-<h2>JEFMO: trailing commas</h2>
-<p>JM: stage 3?</p>
+<a href="#jefmo-trailing-commas"><h2 id="jefmo-trailing-commas">JEFMO: trailing commas</h2></a><p>JM: stage 3?</p>
 <p>AK: does this cause problems with arrow functions</p>
 <p>BT: it may increase the complexity of parsing</p>
 <p>BT: i believe the spider monkey folks had thoughts, but I don’t know why</p>
@@ -462,12 +457,10 @@ would then turn on the i flag for the def in the outer pattern, which is bad.</p
 <p>JM: ok I will add arrows (pending stage 3)</p>
 <p>DD: stage 3 tomorrow?</p>
 <p>JM: yes</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-259"><h4 id="conclusionresolution-259">Conclusion/Resolution</h4></a><ul>
 <li>hopefully stage 3 tomorrow after arrows are added</li>
 </ul>
-<h2>Proxy [[Enumerate]] ocerconstrains implementations (AK)</h2>
-<p><a href="https://github.com/tc39/ecma262/issues/161">https://github.com/tc39/ecma262/issues/161</a></p>
+<a href="#proxy-enumerate-ocerconstrains-implementations-ak"><h2 id="proxy-enumerate-ocerconstrains-implementations-ak">Proxy [[Enumerate]] ocerconstrains implementations (AK)</h2></a><p><a href="https://github.com/tc39/ecma262/issues/161">https://github.com/tc39/ecma262/issues/161</a></p>
 <p>AK: proxies have an enumerate trap, the worry is (from us implementors) must call next at specific times. Which causes some concerns, it seems like something is underspecified…</p>
 <p>DH:</p>
 <p>AK: we want to leave it up to the implementation to eagerly fetch the keys, regardless of proxy</p>
@@ -491,19 +484,15 @@ would then turn on the i flag for the def in the outer pattern, which is bad.</p
 <p>BT: If not, maybe we can leave it under specified?</p>
 <p>YK: I feel MM should care we shouldn’t under specify</p>
 <p>MM: we should have deterministic specs, remember our target audience is many web programmers for many websites. Reproducible behavior is important for this environment</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-260"><h4 id="conclusionresolution-260">Conclusion/Resolution</h4></a><ul>
 <li>specify that [[Enumerate]] spreads before entering the loop <a href="https://github.com/tc39/ecma262/issues/161#issuecomment-157910543">https://github.com/tc39/ecma262/issues/161#issuecomment-157910543</a></li>
 <li>the committee would not agree to underspecified behavior</li>
 <li>there is a compat risk for Chakra but the assumption is that it’s not a problem until there’s data saying so</li>
 </ul>
-<h2>Function.sent (BT)</h2>
-<p>BT: its in babel</p>
+<a href="#functionsent-bt"><h2 id="functionsent-bt">Function.sent (BT)</h2></a><p>BT: its in babel</p>
 <p>DE: did you add internal slots</p>
-<h4>Conclusion/Resolution</h4>
-<p>deferred till tomorrow…</p>
-<h3>Async Await</h3>
-<p>BT: I did not finish the tests, but noticed some troubling things. IE ships AsyncFunction, I believe we should actually not do this</p>
+<a href="#conclusionresolution-261"><h4 id="conclusionresolution-261">Conclusion/Resolution</h4></a><p>deferred till tomorrow…</p>
+<a href="#async-await"><h3 id="async-await">Async Await</h3></a><p>BT: I did not finish the tests, but noticed some troubling things. IE ships AsyncFunction, I believe we should actually not do this</p>
 <p>SP: im curious why</p>
 <p>BT: unsure, MM?</p>
 <p>MM: these is no reason to give it a global name</p>
@@ -541,7 +530,8 @@ would then turn on the i flag for the def in the outer pattern, which is bad.</p
 <p>SP: risk of shipping, with bugs vs risk of lacking feedback from shipping</p>
 <p>BT: its a risk forsure</p>
 <p>AK: That is a good reason why multiple implementations are good, as it they will hope to have overlapping bugs</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-262"><h4 id="conclusionresolution-262">Conclusion/Resolution</h4></a><ul>
 <li>do not add GeneratorFunction or AsyncFunction constructors to the global object</li>
 </ul>
+
+</body>

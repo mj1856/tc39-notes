@@ -1,16 +1,21 @@
 <!doctype html>
 <meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.6.0/github-markdown.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+
 <title>November 19th 2015 Meeting Notes</title>
-<h1>November 19th 2015 Meeting Notes</h1>
-<p>Jafar Husain (JH), Eric Farriauolo (EF), Caridy Patino (CP), Michael Ficarra (MF), Peter Jensen (PJ), Domenic Denicola (DD), Jordan Harband (JHD), Chip Morningstar (CM), Brian Terlson (BT), John Neumann  (JN), Dave Herman (DH), Brendan Eich (BE), Yehuda Katz (YK), Jeff Morrison (JM), Lee Byron (LB), Daniel Ehrenberg (DE), Lars Hansen (LHN), Nagy Hostafa (NH), Michael Saboff (MS), John Buchanan (JB), Stefan Penner (SP), Sebastian McKenzie (SMK), Waldemar Horwat (WH), Mark Miller (MM), Paul Leathers (PL), Georg Neis (GN), Sebastian Markbage (SM), Zibi Braniecki (ZB)</p>
+<body class="markdown-body">
+<a href="#november-19th-2015-meeting-notes"><h1 id="november-19th-2015-meeting-notes">November 19th 2015 Meeting Notes</h1></a><p>Jafar Husain (JH), Eric Farriauolo (EF), Caridy Patino (CP), Michael Ficarra (MF), Peter Jensen (PJ), Domenic Denicola (DD), Jordan Harband (JHD), Chip Morningstar (CM), Brian Terlson (BT), John Neumann  (JN), Dave Herman (DH), Brendan Eich (BE), Yehuda Katz (YK), Jeff Morrison (JM), Lee Byron (LB), Daniel Ehrenberg (DE), Lars Hansen (LHN), Nagy Hostafa (NH), Michael Saboff (MS), John Buchanan (JB), Stefan Penner (SP), Sebastian McKenzie (SMK), Waldemar Horwat (WH), Mark Miller (MM), Paul Leathers (PL), Georg Neis (GN), Sebastian Markbage (SM), Zibi Braniecki (ZB)</p>
 <p>YK: i wont be giving my full presentation this time, I will provide a short update.</p>
 <p>YK: i plan to work with somepeople like dan, and evolve it</p>
 <p>YK: There was some concerns with adding free floating APIs for decorators, what we are going with (right now) is a mirror that decorators have access to, during the time that they are run.</p>
 <p>YK: this based on input from several different parties, type checkers implementors etc.</p>
 <p>DE: KS on private state</p>
 <p>YK: KS has been working on, private methods/functions</p>
-<h2>Observables (JH)</h2>
-<p>JH: proposals are at a reasonable mature state now, lots of iteration and evolution.</p>
+<a href="#observables-jh"><h2 id="observables-jh">Observables (JH)</h2></a><p>JH: proposals are at a reasonable mature state now, lots of iteration and evolution.</p>
 <p>BT hand delivers coffee to JH</p>
 <p>JH: current state of the proposal, is largely unchained since last time</p>
 <p>JH: we have moved away from the generator interface, partly do to ergonomics</p>
@@ -62,9 +67,9 @@
 <p>YK: if the observable has no buffering, this will just happen</p>
 <p>YK goes to write out an example.</p>
 <p>YK: i’ll assume some async for of syntax.</p>
-<pre><code class="language-js">let { producer, consumer } = …;
+<pre><code class="language-js"><span class="hljs-keyword">let</span> { producer, consumer } = …;
 
-async for  (let item of consumer) {
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">for</span>  (<span class="hljs-keyword">let</span> item <span class="hljs-keyword">of</span> consumer) {
     producer.next(value)
 }
 </code></pre>
@@ -76,7 +81,7 @@ async for  (let item of consumer) {
 <p>YK: there is code that calls next, and code that receives next.</p>
 <p>MM: is the object</p>
 <p>YK: lets reframe</p>
-<pre><code class="language-js">async for  (let item of observable) {
+<pre><code class="language-js"><span class="hljs-keyword">async</span> <span class="hljs-keyword">for</span>  (<span class="hljs-keyword">let</span> item <span class="hljs-keyword">of</span> observable) {
     observable.next(value)
 }
 </code></pre>
@@ -122,9 +127,9 @@ async for  (let item of consumer) {
 <p>JH: previous iterations of the proposal had some support for this.</p>
 <p>JH: we adjusted, because Observable feels like a much better event Target then we have today.</p>
 <p>WH: what happes in this example?</p>
-<pre><code class="language-js">async for (let item of mousemoves) {
-    await somePromise;
-    mousemoves:next(new MouseMove());
+<pre><code class="language-js"><span class="hljs-keyword">async</span> <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> item <span class="hljs-keyword">of</span> mousemoves) {
+    <span class="hljs-keyword">await</span> somePromise;
+    mousemoves:next(<span class="hljs-keyword">new</span> MouseMove());
 }
 </code></pre>
 <p>JH: It’s bad.</p>
@@ -139,8 +144,8 @@ async for  (let item of consumer) {
 <p>DD: it is ok if this is the venue.</p>
 <p>WH: So Observable should not be usable in an async for loop?</p>
 <p>JH: Should use this instead:</p>
-<pre><code class="language-js">    async function() {
-        await observable.forEach(x =&gt; {console.log(x);});
+<pre><code class="language-js">    <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">await</span> observable.forEach(<span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> {<span class="hljs-built_in">console</span>.log(x);});
     }
 </code></pre>
 <p>SP: forEach has the same issue as syntax for of, it is re-entrant.</p>
@@ -150,9 +155,9 @@ async for  (let item of consumer) {
 <p>WH: What about it wouldn’t work? What would be different about the interfaces that would make them not fit?</p>
 <p>JH: example code:</p>
 <pre><code class="language-js">interface AsyncIterator {
-    next(): Promise&lt;IterationResult&gt;
-    throw(): Promise&lt;IterationResult&gt;
-    return(): Promise&lt;IterationResult&gt;
+    next(): <span class="hljs-built_in">Promise</span>&lt;IterationResult&gt;
+    <span class="hljs-keyword">throw</span>(): <span class="hljs-built_in">Promise</span>&lt;IterationResult&gt;
+    <span class="hljs-keyword">return</span>(): <span class="hljs-built_in">Promise</span>&lt;IterationResult&gt;
 }
 </code></pre>
 <p>The Promises prevent reentrancy.</p>
@@ -237,10 +242,8 @@ async for  (let item of consumer) {
 <p>YK: I lean in the direction that it is useful</p>
 <p>DD: i also lean in that direction, but have consumes</p>
 <p>JH: I agree with that conclusion</p>
-<h4>Resolution</h4>
-<p>No stage 2 for now; let’s see how async iterables turn out</p>
-<h3>JHD Error.isError</h3>
-<p>JHD: … brand checking, regardless of toStrings output. Error (and associated subclasses) lacks any internal way. Current done via Object.prototype.toString.</p>
+<a href="#resolution-248"><h4 id="resolution-248">Resolution</h4></a><p>No stage 2 for now; let’s see how async iterables turn out</p>
+<a href="#jhd-erroriserror"><h3 id="jhd-erroriserror">JHD Error.isError</h3></a><p>JHD: … brand checking, regardless of toStrings output. Error (and associated subclasses) lacks any internal way. Current done via Object.prototype.toString.</p>
 <p>JHD: Chrome/V8 may have shipped toStringTag</p>
 <p>JHD: Cross realm errors are not currently brand checkable</p>
 <p>DD: This is not useful. We shouldn’t be encouraging brand-check programming</p>
@@ -347,14 +350,12 @@ async for  (let item of consumer) {
 <p>YK: we should be sure the motivating cases are good</p>
 <p>JHD: the risk grows the longer we wait.</p>
 <p>DD: it sounds like more information is needed.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-249"><h4 id="conclusionresolution-249">Conclusion/Resolution</h4></a><ul>
 <li>More research</li>
 </ul>
 <p>DE: can i propose I18n?</p>
 <p>… [everyone yes]</p>
-<h2>INTL</h2>
-<p>CP: todays meeting update:
+<a href="#intl"><h2 id="intl">INTL</h2></a><p>CP: todays meeting update:
 1. html version of  ECMA 402
 2. just sent to istvan
 CP: same workflow for 262</p>
@@ -420,10 +421,7 @@ We have experience at libs, and all the new web stuff at Yahoo is using this und
 <p>(Discussion of IE not using CLDR vs. everyone else using it.)</p>
 <p>EF: we would like to advance to stage 1, we dont have spec test. But we have draft impl + gecko imp.</p>
 <p>BT: I have to get the windows guys to sign-off to on the new API, so something concrete (spec text) would be best.</p>
-<h3>Resolution: (for exposing abstract operations)</h3>
-<h2>Stage 1</h2>
-<h3>PluralRules</h3>
-<p>EF: apps must solves this, if they want to use I18n in the UI. This is heavily requested, we have implemented it.</p>
+<a href="#resolution-for-exposing-abstract-operations-250"><h3 id="resolution-for-exposing-abstract-operations-250">Resolution: (for exposing abstract operations)</h3></a><a href="#stage-1"><h2 id="stage-1">Stage 1</h2></a><a href="#pluralrules"><h3 id="pluralrules">PluralRules</h3></a><p>EF: apps must solves this, if they want to use I18n in the UI. This is heavily requested, we have implemented it.</p>
 <p>ZB: it is hard to implement correctly, CLDR gives the required information</p>
 <p>(some visual examples)</p>
 <p>ZB: Without this, the shear amount of complexity required blocks good localized sites.</p>
@@ -464,9 +462,7 @@ We have experience at libs, and all the new web stuff at Yahoo is using this und
 <p>EF: CP has written up spec text</p>
 <p>EF: we need to deal with decimals, the spec test needs to be updated</p>
 <p>CP: we need to figure it out yet</p>
-<h3>resolutions stage 1</h3>
-<h2>Abstract Locale Operations</h2>
-<p>EF: aspects of each of the components currently go through some abstract operations, we would like to expose them</p>
+<a href="#resolutions-stage-1-251"><h3 id="resolutions-stage-1-251">resolutions stage 1</h3></a><a href="#abstract-locale-operations"><h2 id="abstract-locale-operations">Abstract Locale Operations</h2></a><p>EF: aspects of each of the components currently go through some abstract operations, we would like to expose them</p>
 <p>ZB: Intl.getCanonicalLocales(locales)</p>
 <p>ZB: naming suggestions are open.</p>
 <p>ZB: This is useful any time we do language negotiation, this allows us to verify. Implementing this in userland is like 4000 loc, exposing it instead has a clear advantage.</p>
@@ -503,13 +499,10 @@ We have experience at libs, and all the new web stuff at Yahoo is using this und
 <p>DD: spec text for 2</p>
 <p>BT: i would love to give feedback before to much investment in spec test.</p>
 <p>CP: it shouldn’t be to bad, largely this is extract existing abstract algs</p>
-<h4>trailing , in functions arguments</h4>
-<p>JM: fixes from yesterday (cover grammar support), MF BT looked at them.</p>
+<a href="#trailing--in-functions-arguments"><h4 id="trailing--in-functions-arguments">trailing , in functions arguments</h4></a><p>JM: fixes from yesterday (cover grammar support), MF BT looked at them.</p>
 <p>shows spec text</p>
 <p>DH: looks good!</p>
-<h3>resolution: advance to stage 3</h3>
-<h4>Test 262 updated</h4>
-<p>BT: not many new tests recently, except for SIMD.</p>
+<a href="#resolution-advance-to-stage-3-252"><h3 id="resolution-advance-to-stage-3-252">resolution: advance to stage 3</h3></a><a href="#test-262-updated"><h4 id="test-262-updated">Test 262 updated</h4></a><p>BT: not many new tests recently, except for SIMD.</p>
 <p>BT: many open issues, but nothing worth mentioning.</p>
 <p>BT: we dont have tests for some things, like tail calls.</p>
 <p>YK: is it possible</p>
@@ -517,8 +510,7 @@ We have experience at libs, and all the new web stuff at Yahoo is using this und
 <p>BT: destructing needs to be done</p>
 <p>DD: some work to share tests between destructing binding and assignment</p>
 <p>BT: Async functions have some more tests, and we’ll discuss it more in two months. Async functions will remain stage 3 in January.</p>
-<h4>System.global (JHD)</h4>
-<p>JHD: no reliable way to get the global cross platform.</p>
+<a href="#systemglobal-jhd"><h4 id="systemglobal-jhd">System.global (JHD)</h4></a><p>JHD: no reliable way to get the global cross platform.</p>
 <p>JHD: shims need it, but required using many tricks.</p>
 <p>DD: rationale is good, more bikeshedding on the details.</p>
 <p>SP: node-webkit is gnarly here, it belives its both node and web… many existing feature detections failed.</p>
@@ -546,12 +538,12 @@ We have experience at libs, and all the new web stuff at Yahoo is using this und
 <p>MF: not really <a href="https://github.com/w3c/webappsec-csp/issues/2">https://github.com/w3c/webappsec-csp/issues/2</a></p>
 <p>JHD: in all reasonable platforms, the global is accessible. This merely provides a consistent solution.</p>
 <p>YK: SES is ok with this, even though they provide no global access.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-253"><h4 id="conclusionresolution-253">Conclusion/Resolution</h4></a><ul>
 <li>stage 1</li>
 </ul>
-<h1>Wrap-up</h1>
-<p>JN: thanks to paypal, for hosting the meeting lunches and breakfasts. Excellent thank you</p>
+<a href="#wrap-up"><h1 id="wrap-up">Wrap-up</h1></a><p>JN: thanks to paypal, for hosting the meeting lunches and breakfasts. Excellent thank you</p>
 <p>JN: Thank you to paypal and ecma for dinner</p>
 <p>JN: next meeting is January 25, 26, 27 in SF at salesforce</p>
 <p>JN: In january meeting, we must wrap up the june 2016 release.</p>
+
+</body>

@@ -1,12 +1,17 @@
 <!doctype html>
 <meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.6.0/github-markdown.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+
 <title>January 28th 2016 Meeting Notes</title>
+<body class="markdown-body">
 <p>January 28th 2016 Meeting Notes</p>
 <p>Eric Farriauolo (EF), Caridy Patino (CP), Michael Ficarra (MF), Peter Jensen (PJ), Domenic Denicola (DD), Jordan Harband (JHD), Chip Morningstar (CM), Brian Terlson (BT), John Neumann (JN), Dave Herman (DH), Yehuda Katz (YK), Jeff Morrison (JM), Lee Byron (LB), Daniel Ehrenberg (DE), Lars Hansen (LHN), Nagy Hostafa (NH), Michael Saboff (MS), John Buchanan (JB), Stefan Penner (SP), Sebastian McKenzie (SMK), Waldemar Horwat (WH), MarkS. Miller (MM), Sebastian Markbage (SM), Zibi Braniecki (ZB), Andreas Rossberg (ARB), Ian Halliday (IH), Keith Miller (KM), Tim Disney (TD), Misko Hevery (MH), Brad Green (BG), Kevin Smith (KS), Brad Nelson (BNN), JF Bastien (JFB), Shu-yu Guo (SYG), Rick Waldron (RW), Staś Małolepszy (STM), Dean Tribble (DT)</p>
-<h2>Agenda</h2>
-<p><a href="https://github.com/tc39/agendas/blob/master/2016/01.md">https://github.com/tc39/agendas/blob/master/2016/01.md</a></p>
-<h2>Function#toString &amp;&amp; Function#isPortable (MF)</h2>
-<p>Slides: <a href="https://docs.google.com/presentation/d/1o8jVhyVHljCFyXdxe-V4X1pUmCgx0FuFvEO0fFP4LJU/edit?usp=sharing">https://docs.google.com/presentation/d/1o8jVhyVHljCFyXdxe-V4X1pUmCgx0FuFvEO0fFP4LJU/edit?usp=sharing</a>
+<a href="#agenda"><h2 id="agenda">Agenda</h2></a><p><a href="https://github.com/tc39/agendas/blob/master/2016/01.md">https://github.com/tc39/agendas/blob/master/2016/01.md</a></p>
+<a href="#function#tostring--function#isportable-mf"><h2 id="function#tostring--function#isportable-mf">Function#toString &amp;&amp; Function#isPortable (MF)</h2></a><p>Slides: <a href="https://docs.google.com/presentation/d/1o8jVhyVHljCFyXdxe-V4X1pUmCgx0FuFvEO0fFP4LJU/edit?usp=sharing">https://docs.google.com/presentation/d/1o8jVhyVHljCFyXdxe-V4X1pUmCgx0FuFvEO0fFP4LJU/edit?usp=sharing</a>
 Spec text: <a href="https://raw.githubusercontent.com/michaelficarra/Function-prototype-toString-revision/fc69a0a31dc6d625736bfbb712ac782eb241ff3d/proposal.html">https://raw.githubusercontent.com/michaelficarra/Function-prototype-toString-revision/fc69a0a31dc6d625736bfbb712ac782eb241ff3d/proposal.html</a></p>
 <p>MF: No longer interested in &quot;portability&quot;</p>
 <p>YK: Do your changes cause a method with super to produce an evaluatable function with .toString()</p>
@@ -49,14 +54,12 @@ Spec text: <a href="https://raw.githubusercontent.com/michaelficarra/Function-pr
 <p>MM: Agree.</p>
 <p><em>later MM changed his mind again</em></p>
 <p>No consensus on whitespace treatment.</p>
-<h4>Conclusion/Resolution</h4>
-<p>Keep exactly the original source text starting from the position of the first token of the production and ending at the position of the last token. Within this text, keep comments and newlines. Still no conclusion about insignificant whitespace, i.e., whitespace other than newlines.</p>
+<a href="#conclusionresolution-214"><h4 id="conclusionresolution-214">Conclusion/Resolution</h4></a><p>Keep exactly the original source text starting from the position of the first token of the production and ending at the position of the last token. Within this text, keep comments and newlines. Still no conclusion about insignificant whitespace, i.e., whitespace other than newlines.</p>
 <ul>
 <li><p>MF will adapt what was discussed into the spec text, advance stage 2 that is complete</p></li>
 <li><p>Reviewers: MM, WH, YK</p></li>
 </ul>
-<h2>larse</h2>
-<p>LHN: slide (formal reviewers)</p>
+<a href="#larse"><h2 id="larse">larse</h2></a><p>LHN: slide (formal reviewers)</p>
 <p>LHN: looking for multiple reviewers</p>
 <p>WH: I have memory model expertise and will review that aspect. Also suggest having Hans Boehm look at it.</p>
 <p>BT: this specification requires continent etc.</p>
@@ -68,8 +71,7 @@ Spec text: <a href="https://raw.githubusercontent.com/michaelficarra/Function-pr
 <p>...</p>
 <p>LHN: some changes to the typed array spec, to accomodate SharedArrayBuffer, should be vetted</p>
 <p>AWB: I would be happy to discuss</p>
-<h4>Concluson/resolution</h4>
-<ul>
+<a href="#conclusonresolution-215"><h4 id="conclusonresolution-215">Concluson/resolution</h4></a><ul>
 <li>DD DE AWB will be reviewers</li>
 </ul>
 <p>Rundown of reviewers (from LH's notes):</p>
@@ -82,8 +84,7 @@ Spec text: <a href="https://raw.githubusercontent.com/michaelficarra/Function-pr
 <li>domenic for agents/vats/whatever</li>
 </ul>
 <p>LHN: Also desirable for everyone to read the spec and pitch in, the more eyeballs the better.</p>
-<h2>5.xix Proxy Enumerate - revisit decision to exhaust iterator</h2>
-<p>(Brian Terlson)
+<a href="#5xix-proxy-enumerate---revisit-decision-to-exhaust-iterator"><h2 id="5xix-proxy-enumerate---revisit-decision-to-exhaust-iterator">5.xix Proxy Enumerate - revisit decision to exhaust iterator</h2></a><p>(Brian Terlson)
 <a href="https://github.com/tc39/ecma262/issues/160">https://github.com/tc39/ecma262/issues/160</a></p>
 <p>BT: issue with proxy enumerate trap and for-in, where implementations are prevented from pre-populating the list of keys in the object, because the iterator causes observable affects. Which means the iterate must be pulled for every iteration. Last meeting we thought it would be ok if the enumerate trap exhausts the iterator, we thought that would solve the problem. The issue was, now their is an observable difference between an object and proxy of that object, mainly due to delete.</p>
 <p>AWB: thats wrong</p>
@@ -142,8 +143,7 @@ Spec text: <a href="https://raw.githubusercontent.com/michaelficarra/Function-pr
 <p>...: if we have serious performance implementations for internal, we will keep it, but wont expose it</p>
 <p>BT: it might not be possible to... we will have to give an explicit ordering for prototype properties.</p>
 <p>AWB: the only way to doit, is to set some requirements, vague or not</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-216"><h4 id="conclusionresolution-216">Conclusion/Resolution</h4></a><ul>
 <li>provisional consensus to kill enumerate trap, contingent on running it by tom</li>
 <li>for-in does [[HasProperty]]</li>
 </ul>
@@ -161,26 +161,21 @@ Spec text: <a href="https://raw.githubusercontent.com/michaelficarra/Function-pr
 <p>Unless there are really good reasons to get rid of enumerate(), I think it should remain in. For me, (1) and (3) are the killer arguments: consistency with has(),get(),set() and efficient enumeration via iteration.</p>
 <p>Feel free to forward this mail to TC39. I'm happy to engage in follow-up discussions, just ping me when needed.</p>
 <hr>
-<h2>5.xviii Exponentiation Operator (RW)</h2>
-<p>RW: i implemented the changes, tried to get brendan to review it (no luck). BT reviewed, and chakra implements</p>
+<a href="#5xviii-exponentiation-operator-rw"><h2 id="5xviii-exponentiation-operator-rw">5.xviii Exponentiation Operator (RW)</h2></a><p>RW: i implemented the changes, tried to get brendan to review it (no luck). BT reviewed, and chakra implements</p>
 <p>RW: BT and I went over it line/line, followed up with new tests, and in the last 20 minutes per domenics suggestion I duplicated the applying ** operater tests, so both map.pow and ** tests. the SM folks will be happy that they all passed (except for one, but that's expected).</p>
 <p>RW: chakra implements, applause for OSS chakra</p>
 <p>RW: motion to include to stage 4, inclusion for 2016</p>
 <p>BT: thanks rick</p>
 <p>RW: any objections</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-217"><h4 id="conclusionresolution-217">Conclusion/Resolution</h4></a><ul>
 <li>stage 4!</li>
 </ul>
 <p>(Lunch)</p>
-<h2>Afternoon Agenda</h2>
-<ol>
+<a href="#afternoon-agenda"><h2 id="afternoon-agenda">Afternoon Agenda</h2></a><ol>
 <li>Date and place for the next meetings</li>
 </ol>
-<h4>Conclusion/Resolution</h4>
-<p>Meet in Munich Monday May 23-Wednesday May 25</p>
-<h2>2. 402 needs reviewers (20min)</h2>
-<p>CP: HTML version of the second edition is now public (<a href="http://www.ecma-international.org/ecma-402/2.0/">www.ecma-international.org/ecma-402/2.0/</a>),  just like 262. We have done some re-orgs on the spec to make the new features easier to include. Many new features have been proposed, lots of new contributors, good momentum. At this point we need reviewers</p>
+<a href="#conclusionresolution-218"><h4 id="conclusionresolution-218">Conclusion/Resolution</h4></a><p>Meet in Munich Monday May 23-Wednesday May 25</p>
+<a href="#2-402-needs-reviewers-20min"><h2 id="2-402-needs-reviewers-20min">2. 402 needs reviewers (20min)</h2></a><p>CP: HTML version of the second edition is now public (<a href="http://www.ecma-international.org/ecma-402/2.0/">www.ecma-international.org/ecma-402/2.0/</a>),  just like 262. We have done some re-orgs on the spec to make the new features easier to include. Many new features have been proposed, lots of new contributors, good momentum. At this point we need reviewers</p>
 <p>DE: first we need to propose to stage 2.</p>
 <p>CP: we want to move 3 things up, and get reviewers, and one small detail</p>
 <p>AWB: before we get to stage 2 things, what is the status of 2016 402. COuld we have a summary of what is in 2016 402.</p>
@@ -224,14 +219,12 @@ Spec text: <a href="https://raw.githubusercontent.com/michaelficarra/Function-pr
 <p>YK: as long as its in the actual spec we are good</p>
 <p>EF: DE could google try Mark's suggestion of restricting .call's extra behavior to just this case, on the output of Object.create for a given Intl instance type this out?</p>
 <p>DE: yes, it seems reasonable</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-219"><h4 id="conclusionresolution-219">Conclusion/Resolution</h4></a><ul>
 <li>wont roll it back</li>
 <li>try MM suggestion in chrome to support web compat</li>
 <li>add note to 402 annex (third edition, references second and first)</li>
 </ul>
-<h2>5.xix (Revisit) Proxy Enumerate - revisit decision to exhaust iterator</h2>
-<p>BT: Proxy.enumerate is removed, should Reflect.enumerate be removed?</p>
+<a href="#5xix-revisit-proxy-enumerate---revisit-decision-to-exhaust-iterator"><h2 id="5xix-revisit-proxy-enumerate---revisit-decision-to-exhaust-iterator">5.xix (Revisit) Proxy Enumerate - revisit decision to exhaust iterator</h2></a><p>BT: Proxy.enumerate is removed, should Reflect.enumerate be removed?</p>
 <p>JDH: it would be unfortunate</p>
 <p>YK: I think its worth having a bucket that is 1:1 with the MOP operations, reflect happens to do that. If we remove Proxy traps, MOP should also see a similar removal.</p>
 <p>AWB: it seems alot harder for Reflect.enumerate then Proxy enumerate trap</p>
@@ -242,8 +235,7 @@ Spec text: <a href="https://raw.githubusercontent.com/michaelficarra/Function-pr
 <p>YK: they will continue to work</p>
 <p>BT: any objection to remove Reflect.enumerate</p>
 <p>MM: We need to check with Tom Van Cutsem first.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-220"><h4 id="conclusionresolution-220">Conclusion/Resolution</h4></a><ul>
 <li>Remove Reflect.enumerate, contingent on further information from Tom</li>
 </ul>
 <p>************** Response from Tom: **************</p>
@@ -260,11 +252,9 @@ Spec text: <a href="https://raw.githubusercontent.com/michaelficarra/Function-pr
 <p>Unless there are really good reasons to get rid of enumerate(), I think it should remain in. For me, (1) and (3) are the killer arguments: consistency with has(),get(),set() and efficient enumeration via iteration.</p>
 <p>Feel free to forward this mail to TC39. I'm happy to engage in follow-up discussions, just ping me when needed.</p>
 <hr>
-<h2>8 Ecma 402, Edition 3, Advance stage 2</h2>
-<p>(Zibi Braniecki)</p>
+<a href="#8-ecma-402-edition-3-advance-stage-2"><h2 id="8-ecma-402-edition-3-advance-stage-2">8 Ecma 402, Edition 3, Advance stage 2</h2></a><p>(Zibi Braniecki)</p>
 <p>402-related slides: <a href="https://drive.google.com/drive/u/1/folders/0B1rFz38aICo2YUpVd0VfTUdwRW8">https://drive.google.com/drive/u/1/folders/0B1rFz38aICo2YUpVd0VfTUdwRW8</a></p>
-<h2>formatToParts</h2>
-<p><a href="https://docs.google.com/presentation/d/1GuPC_pD84VFf4Yc8NKNDFBBmX6uY9DMA5CtKZoAdrzM/">https://docs.google.com/presentation/d/1GuPC_pD84VFf4Yc8NKNDFBBmX6uY9DMA5CtKZoAdrzM/</a></p>
+<a href="#formattoparts"><h2 id="formattoparts">formatToParts</h2></a><p><a href="https://docs.google.com/presentation/d/1GuPC_pD84VFf4Yc8NKNDFBBmX6uY9DMA5CtKZoAdrzM/">https://docs.google.com/presentation/d/1GuPC_pD84VFf4Yc8NKNDFBBmX6uY9DMA5CtKZoAdrzM/</a></p>
 <p>ZB: slide (format to parts)</p>
 <p>ZB: further customization, requires exposes of abstract operations such as format to parts.</p>
 <p>ZB: slide (current status)</p>
@@ -274,8 +264,7 @@ Spec text: <a href="https://raw.githubusercontent.com/michaelficarra/Function-pr
 <p>DE: its the output  not the input, so formatToParts</p>
 <p>DE: I will review</p>
 <p>RW: I will review</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-221"><h4 id="conclusionresolution-221">Conclusion/Resolution</h4></a><ul>
 <li>stage 2</li>
 <li>Reviewers:
 <ul>
@@ -283,8 +272,7 @@ Spec text: <a href="https://raw.githubusercontent.com/michaelficarra/Function-pr
 <li>Daniel Ehrenberg</li>
 </ul></li>
 </ul>
-<h2>Intl.PluralRules</h2>
-<p><a href="https://docs.google.com/presentation/d/1WflzD4YMOYYmJDAmjwmG0wi5GnLZd74EwvDRKSL9vA8/">https://docs.google.com/presentation/d/1WflzD4YMOYYmJDAmjwmG0wi5GnLZd74EwvDRKSL9vA8/</a></p>
+<a href="#intlpluralrules"><h2 id="intlpluralrules">Intl.PluralRules</h2></a><p><a href="https://docs.google.com/presentation/d/1WflzD4YMOYYmJDAmjwmG0wi5GnLZd74EwvDRKSL9vA8/">https://docs.google.com/presentation/d/1WflzD4YMOYYmJDAmjwmG0wi5GnLZd74EwvDRKSL9vA8/</a></p>
 <p>ZB: slide (usage)</p>
 <p>ZB: we are just following CLDR conventions here</p>
 <p>ZB: we are at stage 1, we have spec text. Current status we worked on decimal parts, which was a previous concern</p>
@@ -307,8 +295,7 @@ Spec text: <a href="https://raw.githubusercontent.com/michaelficarra/Function-pr
 <p>ZB: reviewers?</p>
 <p>SP: me</p>
 <p>DE: me</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-222"><h4 id="conclusionresolution-222">Conclusion/Resolution</h4></a><ul>
 <li>stage 2</li>
 <li>Reviewers:
 <ul>
@@ -317,8 +304,7 @@ Spec text: <a href="https://raw.githubusercontent.com/michaelficarra/Function-pr
 </ul></li>
 </ul>
 <p>...</p>
-<h2>Abstract Locale Operations</h2>
-<p><a href="https://docs.google.com/presentation/d/1JvUv_i7rb0UF6G-nl-Eu3pHvJsmhpfqV6qWwJ6yP2aA/">https://docs.google.com/presentation/d/1JvUv_i7rb0UF6G-nl-Eu3pHvJsmhpfqV6qWwJ6yP2aA/</a></p>
+<a href="#abstract-locale-operations"><h2 id="abstract-locale-operations">Abstract Locale Operations</h2></a><p><a href="https://docs.google.com/presentation/d/1JvUv_i7rb0UF6G-nl-Eu3pHvJsmhpfqV6qWwJ6yP2aA/">https://docs.google.com/presentation/d/1JvUv_i7rb0UF6G-nl-Eu3pHvJsmhpfqV6qWwJ6yP2aA/</a></p>
 <p>ZB: we wont provide all formatters, but we will all users to build their own.</p>
 <p>ZB: will allow users to build language negotiations</p>
 <p>ZB: slide (Intl.getCanoncialLocales(locales)</p>
@@ -341,8 +327,7 @@ Spec text: <a href="https://raw.githubusercontent.com/michaelficarra/Function-pr
 <p>DE: yes</p>
 <p>CP: whats in the content of the object returned, is it spec'd</p>
 <p>SP: needs further exploration</p>
-<h3>Conclusion</h3>
-<ul>
+<a href="#conclusion-223"><h3 id="conclusion-223">Conclusion</h3></a><ul>
 <li>stage 2
 reviewers
 <ul>
@@ -350,8 +335,7 @@ reviewers
 <li>Daniel Ehrenberg</li>
 </ul></li>
 </ul>
-<h3>Intl Formatter preview</h3>
-<p>ZB: this is still exploration</p>
+<a href="#intl-formatter-preview"><h3 id="intl-formatter-preview">Intl Formatter preview</h3></a><p>ZB: this is still exploration</p>
 <p>ZB: slide (Intl.UnitFormat)</p>
 <p>ZB: lots of un-answered questions</p>
 <p>ZB: slide (Intl.DurationFormat): Video player or timer in a watch. Distinct from UnitFormat</p>
@@ -364,12 +348,10 @@ reviewers
 <p>ZB: these 4 handle the most common problems we have seen.</p>
 <p>CP: considerable existing bikeshedding, but more are invited to join.</p>
 <p>ZB: stage 0?</p>
-<h3>Conclusion</h3>
-<ul>
+<a href="#conclusion-224"><h3 id="conclusion-224">Conclusion</h3></a><ul>
 <li>advanced to stage 0</li>
 </ul>
-<h3>Async generator functions</h3>
-<p>presenter: Kevin Smith
+<a href="#async-generator-functions"><h3 id="async-generator-functions">Async generator functions</h3></a><p>presenter: Kevin Smith
 link to presentation:  <a href="https://docs.google.com/presentation/d/1OwDb4WH9pkdEFVhsY5kjaJ6MF1KrxBNQWpWc9SymweQ/edit#slide=id.p">https://docs.google.com/presentation/d/1OwDb4WH9pkdEFVhsY5kjaJ6MF1KrxBNQWpWc9SymweQ/edit#slide=id.p</a></p>
 <p>KS: slide (overview)</p>
 <p>KS: Async generator functions return AsyncGenerator objects, with a for-await loop</p>
@@ -395,8 +377,8 @@ link to presentation:  <a href="https://docs.google.com/presentation/d/1OwDb4WH9
 <p>KS: Slide (Details: Promise Unwrapping)</p>
 <p>SP: so yield will unwrap any thenable (not promise)</p>
 <p>DH: i am having a danger will robinson moment, composing two concepts, and now we merged them.</p>
-<pre><code class="language-js">async function* agf() {
-    yield Promise.resolve(1);
+<pre><code class="language-js"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span>* <span class="hljs-title">agf</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">yield</span> <span class="hljs-built_in">Promise</span>.resolve(<span class="hljs-number">1</span>);
 }
 </code></pre>
 <p>WH: Are you proposing that the above do the same thing as replacing the yield line above by 'yield 1`?</p>
@@ -443,14 +425,14 @@ link to presentation:  <a href="https://docs.google.com/presentation/d/1OwDb4WH9
 <p>MM: a worse issue, consumer side. Does it see iterations. Are we trying to define an abstraction to see an iteration of non-promises, or are we trying to define and abstraction to asynchronously deliver values.</p>
 <p>WH: Collapsing is trying to remove the need to say <code>await</code> when calling a function in a <code>yield</code>. But how does this work in a regular async function?</p>
 <p>Compare</p>
-<pre><code>async function* f() {
-    yield g();
-    yield h();
-    yield i();
+<pre><code><span class="hljs-keyword">async</span> function* f() {
+    <span class="hljs-function"><span class="hljs-keyword">yield</span> <span class="hljs-title">g</span>(<span class="hljs-params"></span>)</span>;
+    <span class="hljs-function"><span class="hljs-keyword">yield</span> <span class="hljs-title">h</span>(<span class="hljs-params"></span>)</span>;
+    <span class="hljs-function"><span class="hljs-keyword">yield</span> <span class="hljs-title">i</span>(<span class="hljs-params"></span>)</span>;
 }
 </code></pre>
 <p>with</p>
-<pre><code>async function f() {
+<pre><code><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params"></span>) </span>{
     g();
     h();
     i();
@@ -539,13 +521,11 @@ link to presentation:  <a href="https://docs.google.com/presentation/d/1OwDb4WH9
 <li>yielding a rejected promise does not cause a generation-side exception. Rather it simply transmits the rejected promise. A simple for-await consumer is stopped by the rejection throwing the reason.</li>
 <li>(Pointed out by Dean): An implicit &quot;await&quot; at the &quot;yield&quot; violates the rule that we can find all interleaving points by looking for &quot;await&quot;.</li>
 </ul>
-<h3>Conclusion/resolution</h3>
-<ul>
+<a href="#conclusionresolution-225"><h3 id="conclusionresolution-225">Conclusion/resolution</h3></a><ul>
 <li>Stage 1</li>
 <li>needs more exploration as per above discussion.</li>
 </ul>
-<h3>Strong Mode Discussion</h3>
-<p>Presenter: Andreas Rossberg
+<a href="#strong-mode-discussion"><h3 id="strong-mode-discussion">Strong Mode Discussion</h3></a><p>Presenter: Andreas Rossberg
 link:</p>
 <p>ARB: slide (recap)</p>
 <p>ARB: slide (progress)</p>
@@ -564,20 +544,14 @@ link:</p>
 <p>... discussion above strong vs non-string inheritance mixtures ...</p>
 <p>ARB: slide (takeaway)</p>
 <p>ARB: slide (soundscript)</p>
-<h3>Teset262</h3>
-<p>presenter: Dan</p>
+<a href="#teset262"><h3 id="teset262">Teset262</h3></a><p>presenter: Dan</p>
 <p>DE: reptitive tests, lots of tests that repeat each other. Their exists a proposal to generate tests precedurally, we require implementors feedback. Ask me and I will provide more information</p>
-<h3>Conclusion / resolution</h3>
-<ul>
+<a href="#conclusion--resolution-226"><h3 id="conclusion--resolution-226">Conclusion / resolution</h3></a><ul>
 <li>implementors need to provide feedback</li>
 </ul>
-<h4>Conclusion/resolution</h4>
-<h1>Test262 Updates</h1>
-<p>Presenter: DE</p>
+<a href="#conclusionresolution-227"><h4 id="conclusionresolution-227">Conclusion/resolution</h4></a><a href="#test262-updates"><h1 id="test262-updates">Test262 Updates</h1></a><p>Presenter: DE</p>
 <p>DE: We have some changes coming into test262, e.g., <a href="https://github.com/tc39/test262/issues/470">https://github.com/tc39/test262/issues/470</a> <a href="https://github.com/tc39/test262/issues/467">https://github.com/tc39/test262/issues/467</a>. Users, please give feedback as to whether these are appropriate for you! Please reach out to me if you have any concerns.</p>
-<h4>Conclusion/resolution</h4>
-<h1>Progress review: Callable class constructors (Allen)</h1>
-<p>presenters: AWB / YK</p>
+<a href="#conclusionresolution-228"><h4 id="conclusionresolution-228">Conclusion/resolution</h4></a><a href="#progress-review-callable-class-constructors-allen"><h1 id="progress-review-callable-class-constructors-allen">Progress review: Callable class constructors (Allen)</h1></a><p>presenters: AWB / YK</p>
 <p>AWB: slide (callable Class Constructors)</p>
 <p>AWB: slide (refresher)</p>
 <p>AWB: slide (refresher pt.2)</p>
@@ -599,8 +573,8 @@ link:</p>
 <p>AWB: ya, 99.9% case. Two bodies is confusing, it clearly seperates it for the 0.1% case, like date function.</p>
 <p>YK: it is a middle ground</p>
 <p>AWB: todays proposal (slide An alternative approach)</p>
-<pre><code class="language-js">class RegExp {
-   factory constructor(pattern, flags) {
+<pre><code class="language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RegExp</span> </span>{
+   factory <span class="hljs-keyword">constructor</span>(pattern, flags) {
     
     } 
  }
@@ -620,8 +594,8 @@ link:</p>
 <p>YK: ES5 can still be used for the edge-cases</p>
 <p>..: it will be hard to implement</p>
 <p>AWB: slide (an alternative approach)</p>
-<pre><code class="language-js">class RegExp {
-   factory constructor(pattern, flags) {
+<pre><code class="language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RegExp</span> </span>{
+   factory <span class="hljs-keyword">constructor</span>(pattern, flags) {
        
    }
  }
@@ -644,9 +618,9 @@ link:</p>
 <p>MM: could we make something shorter than &quot;factory constructor&quot;</p>
 <p>AWB: maybe, but it is a factory call</p>
 <p>MM what about</p>
-<pre><code>class RegExp {
+<pre><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RegExp</span> </span>{
    () {
-      // ..
+      <span class="hljs-comment">// ..</span>
     }
 }
 </code></pre>
@@ -657,14 +631,11 @@ link:</p>
 <p>DD: we should likely not provide constructs that will allow those to shoot themselves in the foot, they can just use =&gt;...</p>
 <p>YK: decorators could enable this ergonomically</p>
 <p>MM: we should drop this completely, and solve it with decorators.</p>
-<h4>Conclusion/resolution</h4>
-<p>Proposal dropped.</p>
-<h1>Object.getOwnPropertyDescriptors to stage 3? (Jordan Harband, low priority, but super quick!)</h1>
-<p>presenter JDH:</p>
+<a href="#conclusionresolution-229"><h4 id="conclusionresolution-229">Conclusion/resolution</h4></a><p>Proposal dropped.</p>
+<a href="#objectgetownpropertydescriptors-to-stage-3-jordan-harband-low-priority-but-super-quick"><h1 id="objectgetownpropertydescriptors-to-stage-3-jordan-harband-low-priority-but-super-quick">Object.getOwnPropertyDescriptors to stage 3? (Jordan Harband, low priority, but super quick!)</h1></a><p>presenter JDH:</p>
 <p>JDH: reviewers and editors +1'd, can we move to stage 3</p>
 <p>all: yes</p>
-<h2>Conclusion/resolution</h2>
-<ul>
+<a href="#conclusionresolution-230"><h2 id="conclusionresolution-230">Conclusion/resolution</h2></a><ul>
 <li>advance stage 3</li>
 </ul>
 <ol start="6">
@@ -683,3 +654,5 @@ link:</p>
 <li>Introduce the continents concept to the spec? (Domenic Denicola; low priority)</li>
 <li>Object.getOwnPropertyDescriptors to stage 3? (Jordan Harband, low priority, but super quick!)</li>
 </ol>
+
+</body>

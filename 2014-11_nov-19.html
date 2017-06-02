@@ -1,10 +1,15 @@
 <!doctype html>
 <meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.6.0/github-markdown.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+
 <title>November 19 2014 Meeting Notes</title>
-<h1>November 19 2014 Meeting Notes</h1>
-<p>Brian Terlson (BT), Taylor Woll (TW), Jordan Harband (JHD), Allen Wirfs-Brock (AWB), John Neumann (JN), Rick Waldron (RW), Eric Ferraiuolo (EF), Jeff Morrison (JM), Sebastian Markbage (SM), Erik Arvidsson (EA), Peter Jensen (PJ), Eric Toth (ET), Yehuda Katz (YK), Dave Herman (DH), Brendan Eich (BE), Ben Newman (BN), Forrest Norvell (FN), Waldemar Horwat (WH), Alan Schmitt (AS), Michael Ficarra (MF), Jafar Husain (JH), Lee Byron (LB), Dmitry Lomov (DL), Arnaud Le Hors (ALH), Chip Morningstar (CM), Caridy Patino (CP), Domenic Denicola (DD), Mark Miller (MM), Yehuda Katz (YK), Dmitry Soshnikov (DS), Kevin Smith (KS)</p>
-<h2>6. Test 262 Status</h2>
-<p>(Brian Terlson)</p>
+<body class="markdown-body">
+<a href="#november-19-2014-meeting-notes"><h1 id="november-19-2014-meeting-notes">November 19 2014 Meeting Notes</h1></a><p>Brian Terlson (BT), Taylor Woll (TW), Jordan Harband (JHD), Allen Wirfs-Brock (AWB), John Neumann (JN), Rick Waldron (RW), Eric Ferraiuolo (EF), Jeff Morrison (JM), Sebastian Markbage (SM), Erik Arvidsson (EA), Peter Jensen (PJ), Eric Toth (ET), Yehuda Katz (YK), Dave Herman (DH), Brendan Eich (BE), Ben Newman (BN), Forrest Norvell (FN), Waldemar Horwat (WH), Alan Schmitt (AS), Michael Ficarra (MF), Jafar Husain (JH), Lee Byron (LB), Dmitry Lomov (DL), Arnaud Le Hors (ALH), Chip Morningstar (CM), Caridy Patino (CP), Domenic Denicola (DD), Mark Miller (MM), Yehuda Katz (YK), Dmitry Soshnikov (DS), Kevin Smith (KS)</p>
+<a href="#6-test-262-status"><h2 id="6-test-262-status">6. Test 262 Status</h2></a><p>(Brian Terlson)</p>
 <p>BT:</p>
 <ul>
 <li>Lots of activity happening on Github</li>
@@ -20,37 +25,30 @@
 <p>DD: When all implementors submit their suites</p>
 <p>AWB: Focus on edge cases?</p>
 <p>...</p>
-<h2>4.11 Performance issue: <code>Object.defineProperties</code>, <code>Object.create</code>, <code>Object.assign</code>.</h2>
-<p>(revisit)</p>
+<a href="#411-performance-issue-objectdefineproperties-objectcreate-objectassign"><h2 id="411-performance-issue-objectdefineproperties-objectcreate-objectassign">4.11 Performance issue: <code>Object.defineProperties</code>, <code>Object.create</code>, <code>Object.assign</code>.</h2></a><p>(revisit)</p>
 <p>AWB: (Recap)</p>
 <p>MM: After consideration of the issue at hand, and in keeping with principle of least surprise: there is no other place where the spec defines similar behaviour. All other speced action before propagating a throw, such as the &quot;return&quot; from for-of loops, is cleanup action rather than continuation of the original operation. Given that the order in which the properties are tried is deterministic and with the balance of the other arguments, I agree that the first error should throw at the point of exception.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-356"><h4 id="conclusionresolution-356">Conclusion/Resolution</h4></a><ul>
 <li>Remove pendingException semantics</li>
 <li>Error throws at point of exception</li>
 </ul>
-<h2>4.12 Should WeakMap/WeakSet have a .clear method? (MarkM)</h2>
-<p>(Mark Miller)</p>
+<a href="#412-should-weakmapweakset-have-a-clear-method-markm"><h2 id="412-should-weakmapweakset-have-a-clear-method-markm">4.12 Should WeakMap/WeakSet have a .clear method? (MarkM)</h2></a><p>(Mark Miller)</p>
 <p>MM: In the absense of clear, we have a security property: the mapping from weakmap/key pair value can only be observed or affected by someone who has both the weakmap and the key. With clear(), someone with <em>only</em> the WeakMap would've been able to affect the WeakMap-and-key-to-value mapping.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-357"><h4 id="conclusionresolution-357">Conclusion/Resolution</h4></a><ul>
 <li>Remove <code>clear</code> from WeakMap and WeakSet</li>
 </ul>
-<h2>4.7 Clarify the syntax reserved?</h2>
-<p>(Allen Wirfs-Brock)</p>
+<a href="#47-clarify-the-syntax-reserved"><h2 id="47-clarify-the-syntax-reserved">4.7 Clarify the syntax reserved?</h2></a><p>(Allen Wirfs-Brock)</p>
 <p>AWB: What did we reserve?</p>
 <p>WH: Like this but curious about how it's done.</p>
 <p>WH, BE: (discussion re: specifics of BindingIdentifier grammar)</p>
 <p>WH: Will validate the grammar by January</p>
 <p>AWB: The colon-less form of object literal</p>
 <p>Various: Discussion of the annoying ambiguities in using colons to add types to destructuring patterns.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-358"><h4 id="conclusionresolution-358">Conclusion/Resolution</h4></a><ul>
 <li>No colon after BindingIdentifier</li>
 <li>Jeff Morrison and Brian Terlson to chamption refinements</li>
 </ul>
-<h2>5.8 Map.prototype.map and Map.prototype.filter (spec) + Set</h2>
-<p>(Dmitry Soshnikov)</p>
+<a href="#58-mapprototypemap-and-mapprototypefilter-spec--set"><h2 id="58-mapprototypemap-and-mapprototypefilter-spec--set">5.8 Map.prototype.map and Map.prototype.filter (spec) + Set</h2></a><p>(Dmitry Soshnikov)</p>
 <p><a href="./Map.prototype-extensions.pdf">Map.prototype-extensions.pdf</a></p>
 <p>DS: Map.prototype extensions</p>
 <ul>
@@ -71,20 +69,20 @@
 <ol>
 <li>Simple value map:</li>
 </ol>
-<pre><code class="language-js">new Map([[&quot;x&quot;, 10], [&quot;y&quot;, 20]]).map((v, k, m) =&gt; {
-  return v * 2;
+<pre><code class="language-js"><span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>([[<span class="hljs-string">"x"</span>, <span class="hljs-number">10</span>], [<span class="hljs-string">"y"</span>, <span class="hljs-number">20</span>]]).map(<span class="hljs-function">(<span class="hljs-params">v, k, m</span>) =&gt;</span> {
+  <span class="hljs-keyword">return</span> v * <span class="hljs-number">2</span>;
 });
-=&gt; [[&quot;x&quot;, 20], [&quot;y&quot;, 40]]
+=&gt; [[<span class="hljs-string">"x"</span>, <span class="hljs-number">20</span>], [<span class="hljs-string">"y"</span>, <span class="hljs-number">40</span>]]
 </code></pre>
 <ol start="2">
 <li>Entries map:</li>
 </ol>
-<pre><code class="language-js">new Map([[&quot;x&quot;, 10], [&quot;y&quot;, 20]]).map((v, k, m) =&gt; {
-  if (k == &quot;x&quot;) return [&quot;z&quot;, v];
-  return [k, v * 2];
+<pre><code class="language-js"><span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>([[<span class="hljs-string">"x"</span>, <span class="hljs-number">10</span>], [<span class="hljs-string">"y"</span>, <span class="hljs-number">20</span>]]).map(<span class="hljs-function">(<span class="hljs-params">v, k, m</span>) =&gt;</span> {
+  <span class="hljs-keyword">if</span> (k == <span class="hljs-string">"x"</span>) <span class="hljs-keyword">return</span> [<span class="hljs-string">"z"</span>, v];
+  <span class="hljs-keyword">return</span> [k, v * <span class="hljs-number">2</span>];
 });
 
-=&gt; [[&quot;z&quot;, 10], [&quot;y&quot;, 10]]
+=&gt; [[<span class="hljs-string">"z"</span>, <span class="hljs-number">10</span>], [<span class="hljs-string">"y"</span>, <span class="hljs-number">10</span>]]
 </code></pre>
 <p>WH: Common Lisp has a menagerie of map-like functions. One of the most useful ones is one that allows the per-element function to decide to skip an element instead of always producing one.</p>
 <p>YK/DD: (discussion re: Ruby style map operations)</p>
@@ -103,9 +101,9 @@
 <p>Re: %CollectionProtocol% <a href="https://esdiscuss.org/topic/map-filter-map-and-more#content-33">https://esdiscuss.org/topic/map-filter-map-and-more#content-33</a></p>
 <p>AWB: Want to avoid intermediary collection creation</p>
 <p>Possibly?</p>
-<pre><code class="language-js">import { map } from &quot;itertools&quot;;
+<pre><code class="language-js"><span class="hljs-keyword">import</span> { map } <span class="hljs-keyword">from</span> <span class="hljs-string">"itertools"</span>;
 
-var nmap = omap::map((k, v) =&gt; [k + 1, v + 1]);
+<span class="hljs-keyword">var</span> nmap = omap::map(<span class="hljs-function">(<span class="hljs-params">k, v</span>) =&gt;</span> [k + <span class="hljs-number">1</span>, v + <span class="hljs-number">1</span>]);
 </code></pre>
 <p>DD: we have the IteratorPrototype</p>
 <ul>
@@ -150,29 +148,29 @@ BE: JS is a TIMTOWtDI language</p>
 <p>[several discussions at once]</p>
 <p>AWB: An iterator that wraps another that says &quot;iterate, but of a specific type&quot;.</p>
 <p>BE: Need slides, DD doing that.</p>
-<pre><code class="language-js">Map.prototype.entries = function () {
-  return new MapIterator({ collectAs: this.constructor[Symbol.species] });
+<pre><code class="language-js"><span class="hljs-built_in">Map</span>.prototype.entries = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> MapIterator({ <span class="hljs-attr">collectAs</span>: <span class="hljs-keyword">this</span>.constructor[<span class="hljs-built_in">Symbol</span>.species] });
 };
 
-class MapIterator extends Iterator {
-  constructor({ collectAs }) {
-    super();
-    this[Symbol.collectAs] = collectAs;
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MapIterator</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Iterator</span> </span>{
+  <span class="hljs-keyword">constructor</span>({ collectAs }) {
+    <span class="hljs-keyword">super</span>();
+    <span class="hljs-keyword">this</span>[<span class="hljs-built_in">Symbol</span>.collectAs] = collectAs;
   }
 }
 
-Iterator.prototype.collect = function () {
-  return this[Symbol.collectAs].from(...);
+Iterator.prototype.collect = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>[<span class="hljs-built_in">Symbol</span>.collectAs].from(...);
 };
 
-myMap.entries()                      // proposal: you can remove .entries()
-  .filter(([k, v]) =&gt; k % 2 === 0)
-  .map(([k, v]) =&gt; [k * 2, v])
+myMap.entries()                      <span class="hljs-comment">// proposal: you can remove .entries()</span>
+  .filter(<span class="hljs-function">(<span class="hljs-params">[k, v]</span>) =&gt;</span> k % <span class="hljs-number">2</span> === <span class="hljs-number">0</span>)
+  .map(<span class="hljs-function">(<span class="hljs-params">[k, v]</span>) =&gt;</span> [k * <span class="hljs-number">2</span>, v])
   .forEach(...);
-  // or .reduce(...) also forces
-  // or for-of
-  // or .collectAs(Array)
-  // or .collect(), which uses [Symbol.collectAs] as a default
+  <span class="hljs-comment">// or .reduce(...) also forces</span>
+  <span class="hljs-comment">// or for-of</span>
+  <span class="hljs-comment">// or .collectAs(Array)</span>
+  <span class="hljs-comment">// or .collect(), which uses [Symbol.collectAs] as a default</span>
 </code></pre>
 <p>(mixed discussion)</p>
 <p>MM/DH: classic lazyness, &quot;force&quot; means done building up the lazy stuff and want to actually force it to execute and get a result now</p>
@@ -185,10 +183,10 @@ myMap.entries()                      // proposal: you can remove .entries()
 <p>WH: Yes, but it's used <em>on the input</em> to specify the kind of the output instead of the kind of the input.</p>
 <p>Domenic adds to example: &quot;Proposal: you can remove <code>entries()</code>&quot;</p>
 <pre><code class="language-js">myMap.entries()
-  .filter(([k, v]) =&gt; k % 2 === 0)
-  .map(([k, v]) =&gt; [k * 2, v])
-  .map(([k, v]) =&gt; v)
-  .collectAs(Array)   
+  .filter(<span class="hljs-function">(<span class="hljs-params">[k, v]</span>) =&gt;</span> k % <span class="hljs-number">2</span> === <span class="hljs-number">0</span>)
+  .map(<span class="hljs-function">(<span class="hljs-params">[k, v]</span>) =&gt;</span> [k * <span class="hljs-number">2</span>, v])
+  .map(<span class="hljs-function">(<span class="hljs-params">[k, v]</span>) =&gt;</span> v)
+  .collectAs(<span class="hljs-built_in">Array</span>)   
 </code></pre>
 <p>To generate example that collects just the values (not the pairs) into an array.</p>
 <p>WH: To clarify, this doesn't collapse the intermediate results into any maps, so there would be no issues with .map(([k, v]) =&gt; v) duplicates getting undesirably coalesced?</p>
@@ -219,15 +217,13 @@ myMap.entries()                      // proposal: you can remove .entries()
 <li>Composing two functions and then mapping the resulting function over a functor should be the same as first mapping one function over the functor and then mapping the other one.</li>
 </ol>
 <p>(break)</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-359"><h4 id="conclusionresolution-359">Conclusion/Resolution</h4></a><ul>
 <li>Needs work.</li>
 <li>Sufficient issues</li>
 <li>Iterator prototype first</li>
 <li>How does that translate to the collection api proposal itself.</li>
 </ul>
-<h2>5.9 Revisit Set API (possible exclusion of entries and keys)</h2>
-<p>(Dmitry Soshnikov)</p>
+<a href="#59-revisit-set-api-possible-exclusion-of-entries-and-keys"><h2 id="59-revisit-set-api-possible-exclusion-of-entries-and-keys">5.9 Revisit Set API (possible exclusion of entries and keys)</h2></a><p>(Dmitry Soshnikov)</p>
 <p>DS: (proposes removal of second arg to set.forEach)</p>
 <p>RW: The matching arguments in map.forEach and set.forEach were designed to match array.forEach for consistency.</p>
 <p>JM: Is there any code that would rely on this?</p>
@@ -239,12 +235,10 @@ myMap.entries()                      // proposal: you can remove .entries()
 <p>AWB: Correct.</p>
 <p>RW: What is the actual value of removal?</p>
 <p>AWB/LB: There is value in consistency</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-360"><h4 id="conclusionresolution-360">Conclusion/Resolution</h4></a><ul>
 <li>No removal of argument to <code>set.forEach</code></li>
 </ul>
-<h2>Abstract references as a solution to LTR composition and private state</h2>
-<p>(Kevin Smith)</p>
+<a href="#abstract-references-as-a-solution-to-ltr-composition-and-private-state"><h2 id="abstract-references-as-a-solution-to-ltr-composition-and-private-state">Abstract references as a solution to LTR composition and private state</h2></a><p>(Kevin Smith)</p>
 <p>KS: Abstract referemces, gives a way to provide an abstraction for the records base component, for that record. Antoher way to think about it is virtual properties.</p>
 <p><em>Using the IteratorPrototype Problem to illustrate</em></p>
 <ul>
@@ -279,15 +273,15 @@ referenced name = R</p>
 <li><code>Symbol.referenceDelete</code></li>
 </ul>
 <p><em>Examples</em></p>
-<pre><code>/* gets evaluated approximately like */
+<pre><code>/<span class="hljs-bullet">* gets evaluated approximately like *</span>/
 L::R
-R[Symbol.referenceGet](L)
+R[<span class="hljs-string">Symbol.referenceGet</span>](<span class="hljs-link">L</span>)
 
 L::R = expr 
-  R[Symbol.referenceSet](L)
+  R[<span class="hljs-string">Symbol.referenceSet</span>](<span class="hljs-link">L</span>)
   
 L::R()
-R[Symbol.referenceGet](L).call(L)
+R[<span class="hljs-string">Symbol.referenceGet</span>](<span class="hljs-link">L</span>).call(L)
 </code></pre>
 <p>WH: Asks clarifying question about what goes into the base, name, and strict slots of the generated Reference object.</p>
 <p>[KS flips to the semantics slide]</p>
@@ -304,24 +298,24 @@ R[Symbol.referenceGet](L).call(L)
 <p>Maps have inherent virtual property semantics:
 (need to copy from slides)</p>
 <p><em>Private State</em></p>
-<pre><code class="language-js">// Because the Map has &quot;get&quot;, &quot;set&quot;, and &quot;delete&quot;
-const X = new PrivateMap();
-const Y = new PrivateMap();
+<pre><code class="language-js"><span class="hljs-comment">// Because the Map has "get", "set", and "delete"</span>
+<span class="hljs-keyword">const</span> X = <span class="hljs-keyword">new</span> PrivateMap();
+<span class="hljs-keyword">const</span> Y = <span class="hljs-keyword">new</span> PrivateMap();
 
-class Point {
-  constructor(x, y) {
-    this::X = x;
-    this::Y = y;          
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point</span> </span>{
+  <span class="hljs-keyword">constructor</span>(x, y) {
+    <span class="hljs-keyword">this</span>::X = x;
+    <span class="hljs-keyword">this</span>::Y = y;          
   }
 }
 
-// Private State + Sugar
+<span class="hljs-comment">// Private State + Sugar</span>
 private X, Y;
 
-class Point {
-  constructor(x, y) {
-    this::X = x;
-    this::Y = y;          
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point</span> </span>{
+  <span class="hljs-keyword">constructor</span>(x, y) {
+    <span class="hljs-keyword">this</span>::X = x;
+    <span class="hljs-keyword">this</span>::Y = y;          
   }
 }
 </code></pre>
@@ -372,18 +366,18 @@ class Point {
 <p>RW: Yes. We're using this pattern significantly in hardware abstractions, where the key is the instance respresnting some device and the &quot;private state&quot; contains the raw readings from the physical device. Keeps this data at hand, but away from user muddling.</p>
 <p>CM: In practice, there will be a profusion of extended objects and people won't realize that they're using this <code>::</code> vs. ?</p>
 <p>DD:</p>
-<pre><code class="language-js">class Point {
-  private X, Y; // desugars to 
-  // new PrivateMap(Point) ?
+<pre><code class="language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point</span> </span>{
+  private X, Y; <span class="hljs-comment">// desugars to </span>
+  <span class="hljs-comment">// new PrivateMap(Point) ?</span>
   
-  constructor(x, y) {
-    this::X = x;
-    this::Y = y;    
+  <span class="hljs-keyword">constructor</span>(x, y) {
+    <span class="hljs-keyword">this</span>::X = x;
+    <span class="hljs-keyword">this</span>::Y = y;    
     
   X.set(foo, bar);
   }
   method(o) {
-    o::X = &quot;foo&quot;; // X.set(o, &quot;foo&quot;);   
+    <span class="hljs-attr">o</span>::X = <span class="hljs-string">"foo"</span>; <span class="hljs-comment">// X.set(o, "foo");   </span>
   }        
 }
 
@@ -397,22 +391,22 @@ class Point {
 <p>YK: Or another language</p>
 <p>MM: ? re: non-reified private state</p>
 <p>DD: (updates)</p>
-<pre><code class="language-js">class Point {
-  private X, Y; // causes constructor to do
-  // X.set(this, undefined); Y.set(this, undefined);
+<pre><code class="language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point</span> </span>{
+  private X, Y; <span class="hljs-comment">// causes constructor to do</span>
+  <span class="hljs-comment">// X.set(this, undefined); Y.set(this, undefined);</span>
   
-  constructor(x, y) {
-    this::X = x;
-    this::Y = y;    
+  <span class="hljs-keyword">constructor</span>(x, y) {
+    <span class="hljs-keyword">this</span>::X = x;
+    <span class="hljs-keyword">this</span>::Y = y;    
     
   X.set(foo, bar);
   }
   method(o) {
-    o::X = &quot;foo&quot;;
-    // if (!X.has(o)) {
-    //   throw new TypeError();
-    // }
-    // X.set(o, &quot;foo&quot;);    
+    <span class="hljs-attr">o</span>::X = <span class="hljs-string">"foo"</span>;
+    <span class="hljs-comment">// if (!X.has(o)) {</span>
+    <span class="hljs-comment">//   throw new TypeError();</span>
+    <span class="hljs-comment">// }</span>
+    <span class="hljs-comment">// X.set(o, "foo");    </span>
   }        
 }
 </code></pre>
@@ -434,14 +428,12 @@ examples:</p>
 <p>It's basically impossible to follow (rapid topic-hopping, analogous to frequency-hopping radios :) )</p>
 <p>When members review the contents of this discussion, they will have to fill in their own summaries.</p>
 <p>BE: for this proposal, take the @ vs :: objection to heart, separate &quot;privacy&quot; from the L-to-R order.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-361"><h4 id="conclusionresolution-361">Conclusion/Resolution</h4></a><ul>
 <li>Resolve the existing issues</li>
 <li>Separate &quot;privacy&quot; from left to right</li>
 </ul>
 <p>Meta MM: Rick -- These conclusions do not reflect anything I remember being concluded from the discussion. As far as I remember, we all came to a much better joint understanding, but there was no attempt to articulate an agreed overall conclusion from the discussion.</p>
-<h2>5.7 Can security monitors reliably detect monkey-patching of primordials?</h2>
-<p>(Brendan, Michael Ficarra [invited expert])</p>
+<a href="#57-can-security-monitors-reliably-detect-monkey-patching-of-primordials"><h2 id="57-can-security-monitors-reliably-detect-monkey-patching-of-primordials">5.7 Can security monitors reliably detect monkey-patching of primordials?</h2></a><p>(Brendan, Michael Ficarra [invited expert])</p>
 <p>MF: The problem space: &quot;How can the developer be more confident in how their code will evaluate in any arbitrary environment&quot;</p>
 <ul>
 <li>&quot;First Class Realms&quot;</li>
@@ -493,14 +485,12 @@ Other: assume can operate under an &quot;pwned&quot; environment</p>
 <p>MM: Can say that the default is &quot;at least populated by the built-ins&quot; and anything the host wants to include</p>
 <p>DH: Unclear what things should not be included.</p>
 <p>DH: Need to provide the list of what should be there and what should not be there.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-362"><h4 id="conclusionresolution-362">Conclusion/Resolution</h4></a><ul>
 <li>Use the Realm API</li>
 <li>The idea that we can hang something on the Realm API to help protect against possibly-malicious extensions.</li>
 <li>The Realm initialization API probably should be enhanced to take a whitelist as argument, so it can include only the subset of the initial primordials enumerated by that whitelist.</li>
 </ul>
-<h2>5.2 Pure Functions</h2>
-<p>Casual discussion, not sure we've actually started this...</p>
+<a href="#52-pure-functions"><h2 id="52-pure-functions">5.2 Pure Functions</h2></a><p>Casual discussion, not sure we've actually started this...</p>
 <p>?: Why not define pure functions as passing function source code and then eval'ing it in an empty environment?</p>
 <p>MM: It's similar, but defining pure function abstractions allows for better implementation optimization opportunities.</p>
 <p>WH: What does structured cloning do with proxies?</p>
@@ -509,8 +499,10 @@ Other: assume can operate under an &quot;pwned&quot; environment</p>
 <p>WH: The implementations discussed so far sound heavy-weight: structured cloning of parameters, possibly eval'ing function body. My impression was that pure function would be used to customize parallel code by mapping a function over a data structure in parallel, etc. These functions are often tiny such as (x, y) -&gt; (x &gt; y) and we'd want a very lightweight pure function model.</p>
 <p>WH: In addition, a lot of the pure functions we'd want to map over data structures in parallel are actually pure closures. The closed-over state would be cloned.</p>
 <p>MM: [presents write barrier model of thinking about pure functions. Mark all state allocated before the fork; any attempt by a pure function to modify that state would throw.]</p>
-<p>WH: This brings up the library issue of what happens when a pure function calls a library method. C++11 faced the same issue when they added concurrency to the language. Multiple threads are allowed to read the same data unsynchronized, but if at least one thread does a write (and they aren't all synchronized) then the behavior is undefined. For simple accesses such as reading an int, that's clear. But what about calling methods on library functions? What do they do internally? Can readers keep and update caches? The C++ committee decided to stick with the prevailing practice and declare that any library functions that look like they're readers (in C++ indicated by declaring them const) shall not mutate any internals (at least not unless they use special language features to achieve proper synchronization). In ECMAScript we'd want to do something similar.</p>
+<p>WH: This brings up the library issue of what happens when a pure function calls a library method. C<ins>11 faced the same issue when they added concurrency to the language. Multiple threads are allowed to read the same data unsynchronized, but if at least one thread does a write (and they aren't all synchronized) then the behavior is undefined. For simple accesses such as reading an int, that's clear. But what about calling methods on library functions? What do they do internally? Can readers keep and update caches? The C</ins> committee decided to stick with the prevailing practice and declare that any library functions that look like they're readers (in C++ indicated by declaring them const) shall not mutate any internals (at least not unless they use special language features to achieve proper synchronization). In ECMAScript we'd want to do something similar.</p>
 <p>WH: However, the above makes proxies break pure functions and vice versa. Consider an otherwise transparent proxy of an object O that behaves the same as O but also counts the number of times each method is invoked. That proxy breaks all usage of O in a pure function.</p>
 <p>DH: [Skeptical about parallel ECMAScript.]</p>
 <p>MM: ES6 specifies that Function.prototype.toString(call) of a normal JS-written function results in an evaluable expression that, if evaled in an adequately similar environment, results in a function object with the same [[Call]] behavior as the original. Thus, given the original (SES-like) assumption that the primordials of the receiving environment are frozen, you can use the same trick as used by the old proposed &quot;there&quot; function <a href="http://wiki.ecmascript.org/doku.php?id=strawman:concurrency#there">http://wiki.ecmascript.org/doku.php?id=strawman:concurrency#there</a> -- stringify the function on the sending side, and then safely eval it on the receiving side. For this eval (or call to Function constructor) to be safe, the receiving environment must be so much like SES that it may as well be SES.</p>
 <p>MM: (In response to something by DH) If the primordials are naively frozen, you'll face the same usability issue we faced with SES -- the override mistake <a href="http://wiki.ecmascript.org/doku.php?id=strawman:fixing_override_mistake">http://wiki.ecmascript.org/doku.php?id=strawman:fixing_override_mistake</a> , resulting in innocent code like &quot;Point.prototype.toString = ...&quot; failing. To fix this, you'll need to tamper proof the primorials instead, replacing each data property with an accessor whose setter emulates how assignment would have worked in the absence of the override mistake.</p>
+
+</body>

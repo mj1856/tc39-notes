@@ -1,23 +1,27 @@
 <!doctype html>
 <meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.6.0/github-markdown.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+
 <title>May 23 Meeting Notes</title>
-<h1>May 23 Meeting Notes</h1>
-<p>(by Erik Arvidsson)</p>
+<body class="markdown-body">
+<a href="#may-23-meeting-notes"><h1 id="may-23-meeting-notes">May 23 Meeting Notes</h1></a><p>(by Erik Arvidsson)</p>
 <p>John Neumann (JN), Allen Wirfs-Brock (AWB), Eric Ferraiuolo (EF), Erik
 Arvidsson (EA), Luke Hoban (LH), Doug Crockford (DC), Yehuda Katz (YK), Sam
 Tobin-Hochstadt (STH), Alex Russell (AR), Dave Herman (DH) (calling in),
 Bernd Mathiske (BM), Andreas Rossberg (ARB), Mark Miller (MM), Tom Van
 Cutsem (TVC), Istvan Sebestyen (IS)</p>
-<h2>Promises vs Monads</h2>
-<p>MM: ...Continuing from yesterday</p>
+<a href="#promises-vs-monads"><h2 id="promises-vs-monads">Promises vs Monads</h2></a><p>MM: ...Continuing from yesterday</p>
 <p>AR: <a href="https://github.com/slightlyoff/Futures/blob/master/Promise.idl">https://github.com/slightlyoff/Futures/blob/master/Promise.idl</a></p>
 <p>STH: Don't like resolve but not willing to die on this hill.</p>
 <p>AR: DOM has a bunch of ad hoc APIs to do promise like things.</p>
 <p>YK: Mozilla is also actively working on APIs using promises.</p>
 <p>AR: A lot of methods today return void so we can change these to return a promise. This is forward compatible.</p>
 <p>AR: then does recursive unwrapping...</p>
-<h2>ES6, ES7, ES8... Mark's Strawman Roadmap</h2>
-<p>LH: The important part is not the features but the process.</p>
+<a href="#es6-es7-es8-marks-strawman-roadmap"><h2 id="es6-es7-es8-marks-strawman-roadmap">ES6, ES7, ES8... Mark's Strawman Roadmap</h2></a><p>LH: The important part is not the features but the process.</p>
 <p>AWB: Can things be decoupled?</p>
 <p>LH: These kind of structural questions are the important part</p>
 <p>MM: Suggests &quot;concurrency&quot; to be the main theme.</p>
@@ -78,3 +82,5 @@ Cutsem (TVC), Istvan Sebestyen (IS)</p>
 <p>DH: Strawman: Anything goes.</p>
 <p>YK: Proposals used to mean approved.</p>
 <p>DH: 3 sections: strawman, proposal, spec/candidate. Keep strawman. Work on improving as a proposal, and when mature enough promoted to next level.</p>
+
+</body>

@@ -1,9 +1,15 @@
 <!doctype html>
 <meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.6.0/github-markdown.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+
 <title>May 24th 2016 Meeting Notes</title>
+<body class="markdown-body">
 <p>May 24th 2016 Meeting Notes</p>
-<h2>Attendees</h2>
-<p>Brian Terlson (BT), Dave Herman (DH), Michael Ficarra (MF), Jordan Harband (JHD), Waldemar Horwat (WH), Tim Disney (TD), Shu-yu Guo (SG), Mark Miller (MM), Kevin Smith (KS), Michael Saboff (MS), Eric Faust (FST), Chip Morningstar (CM), Daniel Ehrenberg (DE), Leo Balter (LB), Yehuda Katz (YK), Jafar Husain (JH), Andreas Rossberg (ARB), Ben Smith (BS), Thomas Wood (TW), Alan Schmitt (AS), Brad Nelson (BNN), István Sebestyén (IS), John Neumann (JN), Domenic Denicola (DD), Jeff Morrison (JM), Louis Lafreniere (LL, via Hangouts, part-time), Dean Tribble (DT, via Hangouts, part-time)</p>
+<a href="#attendees"><h2 id="attendees">Attendees</h2></a><p>Brian Terlson (BT), Dave Herman (DH), Michael Ficarra (MF), Jordan Harband (JHD), Waldemar Horwat (WH), Tim Disney (TD), Shu-yu Guo (SG), Mark Miller (MM), Kevin Smith (KS), Michael Saboff (MS), Eric Faust (FST), Chip Morningstar (CM), Daniel Ehrenberg (DE), Leo Balter (LB), Yehuda Katz (YK), Jafar Husain (JH), Andreas Rossberg (ARB), Ben Smith (BS), Thomas Wood (TW), Alan Schmitt (AS), Brad Nelson (BNN), István Sebestyén (IS), John Neumann (JN), Domenic Denicola (DD), Jeff Morrison (JM), Louis Lafreniere (LL, via Hangouts, part-time), Dean Tribble (DT, via Hangouts, part-time)</p>
 <p>In the morning we've had 22 Face-to-face participants but Hangouts is not switched on yet.</p>
 <p>After 11:00 the Hangouts was on:</p>
 <ul>
@@ -11,8 +17,7 @@
 <li>Dean Tribble [<a href="mailto:tribble@e-dean.com">tribble@e-dean.com</a>] also joined part-time</li>
 </ul>
 <p>From Google local experts as observers: Hannes Payer, Jakob Kummerow, Ross McIlroy, Michael Hablich, Yang Guo, Taon Ver Naest, Daniel Clifford, Nikolaos Papaspyrou, Jaroslav Sevcik, Deepti Sharma (all part-time)</p>
-<h2><a href="https://github.com/tc39/ecma262/pull/353">Always update object properties if property descriptor is applicable (NaN issue)</a> (DE)</h2>
-<p>DH: Summarizing issue:</p>
+<a href="#always-update-object-properties-if-property-descriptor-is-applicable-nan-issue"><h2 id="always-update-object-properties-if-property-descriptor-is-applicable-nan-issue"><a href="https://github.com/tc39/ecma262/pull/353">Always update object properties if property descriptor is applicable (NaN issue)</a> (DE)</h2></a><p>DH: Summarizing issue:</p>
 <p>In order to be able to talk about a bit pattern of NaN in a reliable way we need to know where canonicalization. Canonicalization is a chaotic operation. In order to reliably predict the bit pattern of a NaN, we need to know all the places we can go from a known bit pattern to an unknown bit pattern.</p>
 <p>YK: If you would like to assert that if you write a NaN and want to read the same NaN back…?</p>
 <p>DH: Every place where data is transferred through the semantics you have a source and a sink, anywhere where data is flowing, if you have an input that is a bit pattern and there are one or more outputs or ways to read the outputs the output operations need to know you have the same bit pattern as input.</p>
@@ -75,8 +80,7 @@ But now if someone copies `v → w → f64`, the implementation might want to fa
 </code></pre>
 <p>MM: Yes, optimizations like that would be precluded.</p>
 <p>DE: Don't want to preclude optimizations</p>
-<h2>Syntactic Tail Calls (BT)</h2>
-<p>BT: Summary of existing PTC issues: elided of Error.stack frames, lack of obvious developer intent for tail calls, (see details in proposal).</p>
+<a href="#syntactic-tail-calls-bt"><h2 id="syntactic-tail-calls-bt">Syntactic Tail Calls (BT)</h2></a><p>BT: Summary of existing PTC issues: elided of Error.stack frames, lack of obvious developer intent for tail calls, (see details in proposal).</p>
 <p>[<em>discussion about syntax</em>]</p>
 <p>YK: let's discuss syntax after we've agreed to do STC</p>
 <p>BT: this is the gist of the proposal: continue in expression context; static semantics that leverage existing &quot;is in tail call&quot; spec semantics to precisely define the places where you can make a tail call. Thus, you get a syntax error if you try to make an invalid tail call. <code>return continue</code> is the easiest option/smallest modification to the grammar we've thought of. We also considered <code>return.tail</code> or similar.</p>
@@ -519,9 +523,10 @@ DE: This was only my misunderstanding.</p>
 <p>CM: I'm agnostic on STC, it's the underlying language semantics that I care about</p>
 <p>DE: which issues should we reconsider?</p>
 <p>YK: What the stack trace looks like in PTC, What happens in the dev experience? I agree apple has done good work on the second issue. Nothing done to nullify concerns about the first.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-181"><h4 id="conclusionresolution-181">Conclusion/Resolution</h4></a><ul>
 <li>No consensus on removing PTC</li>
 <li>No consensus and no rejection to advance STC to stage 1</li>
 </ul>
 <p>Meeting ended 17:30.</p>
+
+</body>

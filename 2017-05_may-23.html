@@ -1,21 +1,23 @@
 <!doctype html>
 <meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.6.0/github-markdown.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+
 <title>May 23, 2017 Meeting Notes</title>
-<h1>May 23, 2017 Meeting Notes</h1>
-<p>Allen Wirfs-Brock (AWB), Waldemar Horwat (WH), Brian Terlson (BT), Michael Ficarra (MF), Adam Klein (AK), Chip Morningstar (CM), Dave Herman (DH),  Kent C. Dodds (KCD), Kevin Gibbons (KG), Tim Disney (TD), Daniel Ehrenberg (DE), Shu-yu Guo (SYG), Jeff Morrison (JM), James Snell (JSL), Keith Miller (KM), Myles Borins (MBS), Rick Waldron (RW), Mariko Kosaka (MKA), Stephen Murphy (SMY), Robert Palmer (RPR), Andrew Paprocki (API), Philippa Gardner (PGR), Sam Goto (SGO), Mark Miller (MM), Nathan Hammond (NHD), Masud Rahman (MRN), Henry Zhu (HZU), Sebastian Markbage (SM), Joe Mordetsky (JMY), Franziska Hinkelmann (FH), Caridy Patino (CP), Myles Borins (MBS), Ron Buckton (RBN), Ashley Williams (AWS), Domenic Denicola (DD), Patrick Soquet (PST), Peter Hoddie (PHE), Leo Balter (LBR), Ben Newman (BN), Jafar Husain (JH), Yehuda Katz (YK), Sarah D'Onofrio (SDO), Kirill Cherkoshin (KCN), Andres Suarez (ASZ), Diego Ferreiro Val (DFV), Tzvetan Mikov (TMV)</p>
+<body class="markdown-body">
+<a href="#may-23-2017-meeting-notes"><h1 id="may-23-2017-meeting-notes">May 23, 2017 Meeting Notes</h1></a><p>Allen Wirfs-Brock (AWB), Waldemar Horwat (WH), Brian Terlson (BT), Michael Ficarra (MF), Adam Klein (AK), Chip Morningstar (CM), Dave Herman (DH),  Kent C. Dodds (KCD), Kevin Gibbons (KG), Tim Disney (TD), Daniel Ehrenberg (DE), Shu-yu Guo (SYG), Jeff Morrison (JM), James Snell (JSL), Keith Miller (KM), Myles Borins (MBS), Rick Waldron (RW), Mariko Kosaka (MKA), Stephen Murphy (SMY), Robert Palmer (RPR), Andrew Paprocki (API), Philippa Gardner (PGR), Sam Goto (SGO), Mark Miller (MM), Nathan Hammond (NHD), Masud Rahman (MRN), Henry Zhu (HZU), Sebastian Markbage (SM), Joe Mordetsky (JMY), Franziska Hinkelmann (FH), Caridy Patino (CP), Myles Borins (MBS), Ron Buckton (RBN), Ashley Williams (AWS), Domenic Denicola (DD), Patrick Soquet (PST), Peter Hoddie (PHE), Leo Balter (LBR), Ben Newman (BN), Jafar Husain (JH), Yehuda Katz (YK), Sarah D'Onofrio (SDO), Kirill Cherkoshin (KCN), Andres Suarez (ASZ), Diego Ferreiro Val (DFV), Tzvetan Mikov (TMV)</p>
 <p>via hangouts: Jamund Ferguson (JXF), Bradley Farias (BF)</p>
 <p>If your name is not in the list above, please add it here (as in, below this line):</p>
-<h2>Welcome</h2>
-<p>(request slides?)</p>
+<a href="#welcome"><h2 id="welcome">Welcome</h2></a><p>(request slides?)</p>
 <p>AWB: (introduction, explanation of TC39 and Ecma)</p>
-<h2>6. Agenda Adoption</h2>
-<p><a href="https://github.com/tc39/agendas/blob/master/2017/05.md">https://github.com/tc39/agendas/blob/master/2017/05.md</a></p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#6-agenda-adoption"><h2 id="6-agenda-adoption">6. Agenda Adoption</h2></a><p><a href="https://github.com/tc39/agendas/blob/master/2017/05.md">https://github.com/tc39/agendas/blob/master/2017/05.md</a></p>
+<a href="#conclusionresolution-17"><h4 id="conclusionresolution-17">Conclusion/Resolution</h4></a><ul>
 <li>Adopted</li>
 </ul>
-<h2>9. Ecma 262 Status Update</h2>
-<p>(Brian Terlson)</p>
+<a href="#9-ecma-262-status-update"><h2 id="9-ecma-262-status-update">9. Ecma 262 Status Update</h2></a><p>(Brian Terlson)</p>
 <p>BT: (Final draft of ES2017 coming soon)</p>
 <ul>
 <li>Ongoing effort in Ecma and ISO to accept non-paged formats</li>
@@ -25,20 +27,16 @@
 <li>Executive committee approved draft last month</li>
 <li>The draft is now &quot;ES2018&quot; (which means we are working on ES2018)</li>
 </ul>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-18"><h4 id="conclusionresolution-18">Conclusion/Resolution</h4></a><ul>
 <li>On track for publication</li>
 </ul>
-<h2>10. Ecma 402 Status Update</h2>
-<p>(Caridy Patino)</p>
+<a href="#10-ecma-402-status-update"><h2 id="10-ecma-402-status-update">10. Ecma 402 Status Update</h2></a><p>(Caridy Patino)</p>
 <p>CP: Draft is complete, producing a PDF with &quot;print to pdf&quot;.</p>
 <p>BT: If the new tool from Dean Tribble doesn't work out, we'll just do the same for Ecma 262</p>
 <p>CP: Minor editorial and version updates.</p>
-<h2>11. Ecma 404 Status Update</h2>
-<p>(Allen Wirfs-Brock)</p>
+<a href="#11-ecma-404-status-update"><h2 id="11-ecma-404-status-update">11. Ecma 404 Status Update</h2></a><p>(Allen Wirfs-Brock)</p>
 <p>AWB: We'll get to this on Thursday, please read the documents in reflector</p>
-<h2>12. Test262 Status Updates</h2>
-<p>(Leo Balter)</p>
+<a href="#12-test262-status-updates"><h2 id="12-test262-status-updates">12. Test262 Status Updates</h2></a><p>(Leo Balter)</p>
 <p>LBR:</p>
 <ul>
 <li>over 200k new lines of test code written thanks to test generator</li>
@@ -67,12 +65,10 @@
 <li>Object Rest/Spread has open agenda item for further discussion.</li>
 <li>Has a fairly complete test suite.</li>
 </ul>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-19"><h4 id="conclusionresolution-19">Conclusion/Resolution</h4></a><ul>
 <li>The work is never ending, want to discuss further contribution opportunities with other members</li>
 </ul>
-<h2>16.i.a RegExp Legacy Features for Stage 3</h2>
-<p>(Mark S. Miller, by Claude Pache)</p>
+<a href="#16ia-regexp-legacy-features-for-stage-3"><h2 id="16ia-regexp-legacy-features-for-stage-3">16.i.a RegExp Legacy Features for Stage 3</h2></a><p>(Mark S. Miller, by Claude Pache)</p>
 <p><a href="https://github.com/tc39/proposal-regexp-legacy-features">https://github.com/tc39/proposal-regexp-legacy-features</a></p>
 <p>MM: The meeting notes did not capture the reviewer names, so didn't reach out.</p>
 <p>DE: subclassing restriction is neither necessary or sufficient.</p>
@@ -89,12 +85,10 @@
 <p>MM: revisit on Thursday</p>
 <p>AWB: Don't need to rush</p>
 <p>MM: Goals: minimal semantic pollution, while matching web reality as closely</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-20"><h4 id="conclusionresolution-20">Conclusion/Resolution</h4></a><ul>
 <li>Revisit on Thursday</li>
 </ul>
-<h2>16.i.b. Math.signbit proposal</h2>
-<p>(JF Bastien, presented by Keith Miller)</p>
+<a href="#16ib-mathsignbit-proposal"><h2 id="16ib-mathsignbit-proposal">16.i.b. Math.signbit proposal</h2></a><p>(JF Bastien, presented by Keith Miller)</p>
 <p><a href="https://tc39.github.io/proposal-Math.signbit/Math.signbit.html">https://tc39.github.io/proposal-Math.signbit/Math.signbit.html</a></p>
 <p>KMR: propose a signbit function that will behave as a signbit function should</p>
 <ul>
@@ -123,8 +117,7 @@
 <p><a href="https://tc39.github.io/proposal-Math.signbit/Math.signbit.html#alts">https://tc39.github.io/proposal-Math.signbit/Math.signbit.html#alts</a></p>
 <p>WH: If we're going to do this, the way it's specified now is the right way to do it: result is a boolean, NaNs are always &quot;positive&quot; to avoid another Pandora's box. However, I haven't seen any good motivation so far as to why we should do it. The one thing this does is provide a way to distinguish between +0 and -0; the canonical way of doing that has been to take their reciprocals.</p>
 <p>?: Or use Object.is, which is the new hotness.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-21"><h4 id="conclusionresolution-21">Conclusion/Resolution</h4></a><ul>
 <li>Coercison ToNumber?</li>
 <li>Unless otherwise necessary, follow existing</li>
 <li>The return type is Boolean?</li>
@@ -132,8 +125,7 @@
 <li>NaN is equivalent to a positive number?</li>
 <li>JFB to address</li>
 </ul>
-<h2>16.i.c Status update on RegExp proposals: lookbehind, Unicode properties, dotall flag and named groups status update</h2>
-<p>(Daniel Ehrenberg)</p>
+<a href="#16ic-status-update-on-regexp-proposals-lookbehind-unicode-properties-dotall-flag-and-named-groups-status-update"><h2 id="16ic-status-update-on-regexp-proposals-lookbehind-unicode-properties-dotall-flag-and-named-groups-status-update">16.i.c Status update on RegExp proposals: lookbehind, Unicode properties, dotall flag and named groups status update</h2></a><p>(Daniel Ehrenberg)</p>
 <p>(request slides)</p>
 <p>DE: proposals…</p>
 <ul>
@@ -155,12 +147,10 @@
 <p>AWB: Looking for an additional implementor for Stage 4</p>
 <p>SYG: Does Firefox count?</p>
 <p>KMR: Michael Saboff is on board, as in: &quot;supports the idea&quot;</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-22"><h4 id="conclusionresolution-22">Conclusion/Resolution</h4></a><ul>
 <li>General support?</li>
 </ul>
-<h2>16.i.d Intl.Segmenter for Stage 3</h2>
-<p>(Daniel Ehrenberg)</p>
+<a href="#16id-intlsegmenter-for-stage-3"><h2 id="16id-intlsegmenter-for-stage-3">16.i.d Intl.Segmenter for Stage 3</h2></a><p>(Daniel Ehrenberg)</p>
 <p><a href="https://docs.google.com/presentation/d/1KC-qBVqsUdTiePWmSextuMGVIsUa3Tb9EOcVNIj8eOA/edit#slide=id.p">https://docs.google.com/presentation/d/1KC-qBVqsUdTiePWmSextuMGVIsUa3Tb9EOcVNIj8eOA/edit#slide=id.p</a></p>
 <p><a href="https://github.com/tc39/proposal-intl-segmenter">https://github.com/tc39/proposal-intl-segmenter</a></p>
 <p>DE: (from slides)</p>
@@ -224,25 +214,21 @@
 <p>AK: Not a stage 3 issue.</p>
 <p>(Further discussion re: unspecified or underspecified features)</p>
 <p>LBR: Would like to ensure that someone from Microsoft is formally reviewing.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-23"><h4 id="conclusionresolution-23">Conclusion/Resolution</h4></a><ul>
 <li>Stage 2</li>
 <li>Reviews still needed</li>
 <li>Caridy Patino</li>
 <li>Kent C. Dodds will find someone at PayPal</li>
 <li>Brian Terlson</li>
 </ul>
-<h2>Normative ICU Reference</h2>
-<p>BT: Should we advance a proposal for normative ICU reference?</p>
+<a href="#normative-icu-reference"><h2 id="normative-icu-reference">Normative ICU Reference</h2></a><p>BT: Should we advance a proposal for normative ICU reference?</p>
 <p>DE: want to include Steven Loomis and Anne van Kesteren in this discussion</p>
 <p>JSL: Volunteer to help</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-24"><h4 id="conclusionresolution-24">Conclusion/Resolution</h4></a><ul>
 <li>Stage 0</li>
 <li>Domenic Denicola to act as committee liaison</li>
 </ul>
-<h2>16.i.e Standardizing Date.prototype.toString</h2>
-<p>(Daniel Ehrenberg)</p>
+<a href="#16ie-standardizing-dateprototypetostring"><h2 id="16ie-standardizing-dateprototypetostring">16.i.e Standardizing Date.prototype.toString</h2></a><p>(Daniel Ehrenberg)</p>
 <p><a href="https://github.com/tc39/ecma262/pull/848">https://github.com/tc39/ecma262/pull/848</a></p>
 <p>DE: Long time unspecified, all browsers are consistent, simply want to get this defined</p>
 <p>AK: Can this be addressed when we discuss &quot;Needs Consensus PRs&quot;?</p>
@@ -254,12 +240,10 @@
 <p>AWB: Just toString? Or toLocaleString?</p>
 <p>DE: Just toString</p>
 <p>AWB: (explains how 262 defers to 402 in toLocaleString cases)</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-25"><h4 id="conclusionresolution-25">Conclusion/Resolution</h4></a><ul>
 <li>Consensus</li>
 </ul>
-<h2>16.i.g Float16 on TypedArrays, DataView, Math.hfround for stage 1</h2>
-<p>(Leo Balter, original request from esdiscuss)</p>
+<a href="#16ig-float16-on-typedarrays-dataview-mathhfround-for-stage-1"><h2 id="16ig-float16-on-typedarrays-dataview-mathhfround-for-stage-1">16.i.g Float16 on TypedArrays, DataView, Math.hfround for stage 1</h2></a><p>(Leo Balter, original request from esdiscuss)</p>
 <p><a href="https://docs.google.com/presentation/d/1Ta_IbravBUOvu7LUhlN49SvLU-8G8bIQnsS08P3Z4vY/edit?usp=sharing">https://docs.google.com/presentation/d/1Ta_IbravBUOvu7LUhlN49SvLU-8G8bIQnsS08P3Z4vY/edit?usp=sharing</a></p>
 <p>LBR: (presenting direct from slides above)</p>
 <p>AWB: Who's blocked by not having this feature? What's the use-case? Pain point or &quot;nice-to-have&quot;?</p>
@@ -285,23 +269,21 @@
 <p>DH: The dataview is a way to do marshalling/unmarshalling of opaque data</p>
 <p>DD: @ Dave... ASM/WebGL/Unity, etc?</p>
 <p>DH: Can pass along to them to find need.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-26"><h4 id="conclusionresolution-26">Conclusion/Resolution</h4></a><ul>
 <li>Stage 1</li>
 <li>need to explore and answer questions discussed above.</li>
 <li>Ask browser-based game developers if this is of broad value</li>
 </ul>
-<h2>16.i.h Why allow BindingPattern for BindingRestParameter for object rest. Maybe we should just allow identifiers.</h2>
-<p>(Keith Miller on behalf of Saam Barati)</p>
+<a href="#16ih-why-allow-bindingpattern-for-bindingrestparameter-for-object-rest-maybe-we-should-just-allow-identifiers"><h2 id="16ih-why-allow-bindingpattern-for-bindingrestparameter-for-object-rest-maybe-we-should-just-allow-identifiers">16.i.h Why allow BindingPattern for BindingRestParameter for object rest. Maybe we should just allow identifiers.</h2></a><p>(Keith Miller on behalf of Saam Barati)</p>
 <p><a href="https://github.com/tc39/ecma262/issues/915">https://github.com/tc39/ecma262/issues/915</a></p>
 <p>KMR: (walking through the issue linked above)</p>
 <p>The simplest example:</p>
-<pre><code class="language-js">let { ...[] } = {};
+<pre><code class="language-js"><span class="hljs-keyword">let</span> { ...[] } = {};
 </code></pre>
 <p>What does <code>...[]</code> mean?</p>
 <p>AK: (explains that <code>...[]</code> is nonsense)</p>
 <p>Doesn't exist:</p>
-<pre><code class="language-js">Object.prototype[Symbol.iterator]
+<pre><code class="language-js"><span class="hljs-built_in">Object</span>.prototype[<span class="hljs-built_in">Symbol</span>.iterator]
 </code></pre>
 <p>WH: So far the examples of nonfunctionality have all been about array destructuring after ... . Is the proposal to get rid of array destructuring or all destructuring after ...?</p>
 <p>?: We're just raising the issue.</p>
@@ -322,21 +304,19 @@
 <p>KG: Not currently useful?</p>
 <p>SM: No, there are use cases for <code>{ a, ...{ b, c }}</code>, because <code>b</code> and <code>c</code> must be own properties, whereas <code>{ a, b, c } = obj</code> allows <code>b</code> and <code>c</code> to be inherited.</p>
 <p>Important distinctions:</p>
-<pre><code class="language-js">// find A and B anywhere in the prototype chain of the result of evaluating expr, ie. [[Get]]
-let { A, B } = expr;
+<pre><code class="language-js"><span class="hljs-comment">// find A and B anywhere in the prototype chain of the result of evaluating expr, ie. [[Get]]</span>
+<span class="hljs-keyword">let</span> { A, B } = expr;
 
-// find B only when own, enumerable B exists on the result of evaluating expr
-let { A, ...{ B } } = expr;
+<span class="hljs-comment">// find B only when own, enumerable B exists on the result of evaluating expr</span>
+<span class="hljs-keyword">let</span> { A, ...{ B } } = expr;
 
-// What does this mean?
-let { A, ...[ B ] } = expr;
+<span class="hljs-comment">// What does this mean?</span>
+<span class="hljs-keyword">let</span> { A, ...[ B ] } = expr;
 </code></pre>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-27"><h4 id="conclusionresolution-27">Conclusion/Resolution</h4></a><ul>
 <li>Consensus to disallow <code>...[</code> &amp; <code>...{</code> inside object destructuring, as invalid syntax</li>
 </ul>
-<h2>16.ii.a Atomics.waitNonblocking for Stage 1</h2>
-<p>(Shu-yu Guo, Lars Hansen in absentia)</p>
+<a href="#16iia-atomicswaitnonblocking-for-stage-1"><h2 id="16iia-atomicswaitnonblocking-for-stage-1">16.ii.a Atomics.waitNonblocking for Stage 1</h2></a><p>(Shu-yu Guo, Lars Hansen in absentia)</p>
 <p><a href="https://github.com/lars-t-hansen/moz-sandbox/blob/master/sab/waitNonblocking.md">https://github.com/lars-t-hansen/moz-sandbox/blob/master/sab/waitNonblocking.md</a></p>
 <p>SYG: (reviewing: <a href="https://github.com/lars-t-hansen/moz-sandbox/blob/master/sab/waitNonblocking.md#overview-and-background">https://github.com/lars-t-hansen/moz-sandbox/blob/master/sab/waitNonblocking.md#overview-and-background</a> )</p>
 <p>MM: re: naming, &quot;waitNonBlocking&quot; is like &quot;jumbo shrimp&quot;</p>
@@ -354,13 +334,11 @@ let { A, ...[ B ] } = expr;
 <p>Discussion of naming...</p>
 <p>DH: is it too late to rename the original naming?</p>
 <p>SYG: The risk of breaking code is low, but we have shipped so sooner is better.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-28"><h4 id="conclusionresolution-28">Conclusion/Resolution</h4></a><ul>
 <li>Stage 1 for semantics, naming TBD.</li>
 <li>WH to review semantics.</li>
 </ul>
-<h2>16.ii.b Module import options discussion, potentially for stage 1</h2>
-<p>(Domenic Denicola)</p>
+<a href="#16iib-module-import-options-discussion-potentially-for-stage-1"><h2 id="16iib-module-import-options-discussion-potentially-for-stage-1">16.ii.b Module import options discussion, potentially for stage 1</h2></a><p>(Domenic Denicola)</p>
 <ul>
 <li>Discussion: <a href="https://discourse.wicg.io/t/specifying-nonce-or-integrity-when-importing-modules/1861/4">https://discourse.wicg.io/t/specifying-nonce-or-integrity-when-importing-modules/1861/4</a></li>
 <li>Slides: <a href="https://docs.google.com/presentation/d/1qfoLTniLUVJ5YNFrha7BaVumAnW0ZgcCfUU8UbyyuYY/edit?usp=sharing">https://docs.google.com/presentation/d/1qfoLTniLUVJ5YNFrha7BaVumAnW0ZgcCfUU8UbyyuYY/edit?usp=sharing</a></li>
@@ -396,16 +374,14 @@ let { A, ...[ B ] } = expr;
 <p>JMS: Need to work through this on the Node side.</p>
 <p>SM: Need any input from Webpack?</p>
 <p>DD: A lot of responders want &quot;In Band&quot;</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-29"><h4 id="conclusionresolution-29">Conclusion/Resolution</h4></a><ul>
 <li>Out of band is preferred</li>
 <li>No need to advance in TC39 at this time</li>
 <li>Recommending ServiceWorkers get a hook?</li>
 <li>Apparently they already have this</li>
 <li>Can experiment with &quot;In Band&quot; (using e.g. module identifer query params)</li>
 </ul>
-<h2>16.ii.c Importing modules which failed evaluation</h2>
-<p>(Domenic Denicola)</p>
+<a href="#16iic-importing-modules-which-failed-evaluation"><h2 id="16iic-importing-modules-which-failed-evaluation">16.ii.c Importing modules which failed evaluation</h2></a><p>(Domenic Denicola)</p>
 <p><a href="https://github.com/tc39/ecma262/issues/862">https://github.com/tc39/ecma262/issues/862</a></p>
 <p>DD: (walking through the issue)</p>
 <p>AWB: Should put the new state in AbstractModuleRecord (not just SourceTextModuleRecord), as something any kind of ModuleRecord must implement.
@@ -420,13 +396,11 @@ let { A, ...[ B ] } = expr;
 <p>DD: Not aiming to come to a conclusion in this meeting for split between AbstractModuleRecord and SourceTextModuleRecord, but maybe directional comments.</p>
 <p>AWB: AbstractModuleRecord contains what it contains for sometimes subtle reasons, so we should be careful about hoisting functionality up from SourceTextModuleRecord.</p>
 <p>DH: Feels like a natural modification by coming up with the state transitions. This seems like the next incremental improvement.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-30"><h4 id="conclusionresolution-30">Conclusion/Resolution</h4></a><ul>
 <li>Moving forward with top-down storing/re-throwing of state/exceptions, as proposed by DD.</li>
 <li>Still need to figure out the details of circular dependency situations (don't merge the spec PR just yet).</li>
 </ul>
-<h2>16.ii.e Advance Numeric separators proposal to Stage 1</h2>
-<p>(Sam Goto)</p>
+<a href="#16iie-advance-numeric-separators-proposal-to-stage-1"><h2 id="16iie-advance-numeric-separators-proposal-to-stage-1">16.ii.e Advance Numeric separators proposal to Stage 1</h2></a><p>(Sam Goto)</p>
 <p>Proposal: <a href="https://github.com/samuelgoto/proposal-numeric-separator">https://github.com/samuelgoto/proposal-numeric-separator</a>
 Slides: <a href="https://docs.google.com/presentation/d/1hcajTemZB2Ruo4EePOyFiva1xpyv5ukKk4aQ0B83dUA/edit#slide=id.p">https://docs.google.com/presentation/d/1hcajTemZB2Ruo4EePOyFiva1xpyv5ukKk4aQ0B83dUA/edit#slide=id.p</a></p>
 <p>SGO: (walking through slides)</p>
@@ -447,13 +421,11 @@ Slides: <a href="https://docs.google.com/presentation/d/1hcajTemZB2Ruo4EePOyFiva
 <p>WH: What about inside the exponent?</p>
 <p>SYG: _ would be allowed between digits there too.</p>
 <p>RW: Volunteer to write tests for this</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-31"><h4 id="conclusionresolution-31">Conclusion/Resolution</h4></a><ul>
 <li>Stage 1</li>
 <li>Needs grammar written, etc.</li>
 </ul>
-<h2>16.iii.a Accessing host-specific module metadata from inside a module</h2>
-<p>(Domenic Denicola)</p>
+<a href="#16iiia-accessing-host-specific-module-metadata-from-inside-a-module"><h2 id="16iiia-accessing-host-specific-module-metadata-from-inside-a-module">16.iii.a Accessing host-specific module metadata from inside a module</h2></a><p>(Domenic Denicola)</p>
 <p>Issue: <a href="https://github.com/whatwg/html/issues/1013">https://github.com/whatwg/html/issues/1013</a>
 Slides: <a href="https://docs.google.com/presentation/d/1p1BGFY05-iCiop8yV0hNyWU41_wlwwfv6HIDkRNNIBQ/edit?usp=sharing">https://docs.google.com/presentation/d/1p1BGFY05-iCiop8yV0hNyWU41_wlwwfv6HIDkRNNIBQ/edit?usp=sharing</a></p>
 <p>AWB: (objecting to <code>import { url } from &quot;js:context&quot;</code>): lose idempotence?</p>
@@ -507,7 +479,8 @@ Slides: <a href="https://docs.google.com/presentation/d/1p1BGFY05-iCiop8yV0hNyWU
 <p>MM: What about exposing dynamic <code>import()</code> as a method of <code>import.meta</code>?</p>
 <p>DH: <code>import.meta.import()</code> is just really verbose for a common idiom.</p>
 <p>BF: And import() should be available in script, where the import.meta meta-property is not available.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-32"><h4 id="conclusionresolution-32">Conclusion/Resolution</h4></a><ul>
 <li>Let's go with <code>import.meta</code>; Domenic to come back later this meeting with a proposal</li>
 </ul>
+
+</body>

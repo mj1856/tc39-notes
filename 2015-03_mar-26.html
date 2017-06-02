@@ -1,10 +1,15 @@
 <!doctype html>
 <meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.6.0/github-markdown.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+
 <title>March 26 2015 Meeting Notes</title>
-<h1>March 26 2015 Meeting Notes</h1>
-<p>Brian Terlson (BT), Allen Wirfs-Brock (AWB), John Neumann (JN), Jeff Morrison (JM), Sebastian Markbage (SM), Yehuda Katz (YK), Dave Herman (DH), Alan Schmitt (AS), Lee Byron (LB), Domenic Denicola (DD), Kevin Smith (KS), Andreas Rossberg (ARB), Brendan Eich (BE), Erik Arvidsson (EA), Adam Klein (AK), Jordan Harband (JHD), Mark Miller (MM), Istvan Sebestyen (IS), Jafar Husain (JH), Rick Waldron (RW)</p>
-<h2>Private state continued</h2>
-<p>KS: the &quot;nested stuff&quot; part of the private state implementation might be more controversial, but please note that it's separable.</p>
+<body class="markdown-body">
+<a href="#march-26-2015-meeting-notes"><h1 id="march-26-2015-meeting-notes">March 26 2015 Meeting Notes</h1></a><p>Brian Terlson (BT), Allen Wirfs-Brock (AWB), John Neumann (JN), Jeff Morrison (JM), Sebastian Markbage (SM), Yehuda Katz (YK), Dave Herman (DH), Alan Schmitt (AS), Lee Byron (LB), Domenic Denicola (DD), Kevin Smith (KS), Andreas Rossberg (ARB), Brendan Eich (BE), Erik Arvidsson (EA), Adam Klein (AK), Jordan Harband (JHD), Mark Miller (MM), Istvan Sebestyen (IS), Jafar Husain (JH), Rick Waldron (RW)</p>
+<a href="#private-state-continued"><h2 id="private-state-continued">Private state continued</h2></a><p>KS: the &quot;nested stuff&quot; part of the private state implementation might be more controversial, but please note that it's separable.</p>
 <p>KS: Modified the V8 self hosted Promise to see what it would look like with &quot;private state&quot;</p>
 <p>AWB: the most interesting use of private state is in the typed array hierarchy, especially in terms of subclassing</p>
 <p>KS: presents <a href="https://github.com/zenparsing/es-private-fields/blob/master/examples/promise-before.js">https://github.com/zenparsing/es-private-fields/blob/master/examples/promise-before.js</a></p>
@@ -20,11 +25,11 @@
 <p>ARB: Might be cleaner to introduce @name methods. Both static and prototype methods.</p>
 <p>JM: three alternatives here. What you have here, a lexically confined closure. Or, a static method that is &quot;private&quot;. A third way is a private instance method (on the prototype).</p>
 <p>KS: so you're talking about this kind of setup</p>
-<pre><code class="language-js">class C {
+<pre><code class="language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">C</span> </span>{
   @x() {
     C.@x(); 
   }
-  static @x() {
+  <span class="hljs-keyword">static</span> @x() {
 
   }
 }
@@ -61,18 +66,18 @@
 <p>ARB/MM: The --weak-- map explanation vs the private symbol is that the map case the function is associated with the object ....???</p>
 <p>AWB: Or the vtable explanation.</p>
 <p>EA: What if you had C.</p>
-<pre><code class="language-js">class C {
+<pre><code class="language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">C</span> </span>{
   @a;
 
   m() {
-    let somethingElse = C;  // &lt;--
+    <span class="hljs-keyword">let</span> somethingElse = C;  <span class="hljs-comment">// &lt;--</span>
     somethingElse.@x();
     
   }
   @x() {
     C.@x(); 
   }
-  static @x() {
+  <span class="hljs-keyword">static</span> @x() {
 
   }
 }
@@ -84,14 +89,14 @@
 <p>DD: now this is bizarre. They act too different from public methods/public static methods.</p>
 <p>EA: Kevin's original (nested declarations) idea is seeming more attractive after this exercise.</p>
 <p>KS: (presents original nested declarations idea)</p>
-<pre><code class="language-js">class C {
+<pre><code class="language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">C</span> </span>{
   @a;
-  function xHelper(obj) {
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">xHelper</span>(<span class="hljs-params">obj</span>) </span>{
     obj.@a;
   }
   
   m() {
-    xHelper(this);
+    xHelper(<span class="hljs-keyword">this</span>);
   }
 }
 </code></pre>
@@ -104,8 +109,7 @@
 <p>DD: Not intuitive to programmers coming from other languages. People already use external helper functions.</p>
 <p>KS: Feedback has not been too positive. The external helper function is used in Python for example.</p>
 <p>ARB: fear that most programmers will want to use method syntax and will make helpers public just to get that</p>
-<h2>Immutable Records, Tuples, Maps and Sets</h2>
-<p>(Sebastian Markbage and Lee Byron)</p>
+<a href="#immutable-records-tuples-maps-and-sets"><h2 id="immutable-records-tuples-maps-and-sets">Immutable Records, Tuples, Maps and Sets</h2></a><p>(Sebastian Markbage and Lee Byron)</p>
 <p><a href="https://github.com/sebmarkbage/ecmascript-immutable-data-structures">https://github.com/sebmarkbage/ecmascript-immutable-data-structures</a></p>
 <p>LB: ImmutableMap reutrns a new Map when you mutate them.</p>
 <p>LB: Wants value semantics. Especially for <code>==</code> and <code>===</code>.</p>
@@ -167,25 +171,22 @@ const xyz = #[...xy, z];
 <p>MM: Cryptographic pseudo random number generators.</p>
 <p>MM: The number has to be large because collision is fatal</p>
 <p>LB: Another issue is that we are creating a new value type for every record.</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-323"><h4 id="conclusionresolution-323">Conclusion/Resolution</h4></a><ul>
 <li>Identify the requirements.</li>
 <li>Progress report at a future meeting.</li>
 </ul>
-<h2>Composition Functions</h2>
-<p>(Jafar presents slides)</p>
+<a href="#composition-functions"><h2 id="composition-functions">Composition Functions</h2></a><p>(Jafar presents slides)</p>
 <p>(Lots of discussion. Notes lost to a grue.)</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-324"><h4 id="conclusionresolution-324">Conclusion/Resolution</h4></a><ul>
 <li>Wide agreemeent that async functions are worth generalizing</li>
 <li>Wide agreement that promises are the dominant use case and should be the default</li>
 <li>Tricky problems with hoisting semantics, need more time to woodshed that problem</li>
 <li>async/await is wanted/needed so we should urgently figure out if this can ever be made to work</li>
 </ul>
 <p>(discussion about wtf woodshed means - behind woodshed = to kill, to/inside woodshed = to spank)</p>
-<h2>Additional export __ from statements</h2>
-<p>(Lee Byron presents <a href="https://github.com/leebyron/ecmascript-more-export-from">https://github.com/leebyron/ecmascript-more-export-from</a> )</p>
+<a href="#additional-export-__-from-statements"><h2 id="additional-export-__-from-statements">Additional export __ from statements</h2></a><p>(Lee Byron presents <a href="https://github.com/leebyron/ecmascript-more-export-from">https://github.com/leebyron/ecmascript-more-export-from</a> )</p>
 <p>General agreement, suggestion to add Babel transpilation and fill out spec text, bring back at next committee meeting for a fast-track through stages.</p>
-<h2>64-bit math</h2>
-<p>(Brendan Eich presents <a href="https://gist.github.com/BrendanEich/4294d5c212a6d2254703">https://gist.github.com/BrendanEich/4294d5c212a6d2254703</a>)</p>
+<a href="#64-bit-math"><h2 id="64-bit-math">64-bit math</h2></a><p>(Brendan Eich presents <a href="https://gist.github.com/BrendanEich/4294d5c212a6d2254703">https://gist.github.com/BrendanEich/4294d5c212a6d2254703</a>)</p>
 <p>Moves to stage</p>
+
+</body>

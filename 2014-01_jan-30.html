@@ -1,10 +1,15 @@
 <!doctype html>
 <meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.6.0/github-markdown.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+
 <title>Jan 30 Meeting Notes</title>
-<h1>Jan 30 Meeting Notes</h1>
-<p>John Neumann (JN), Allen Wirfs-Brock (AWB), Yehuda Katz (YK), Eric Ferraiuolo (EF), Erik Arvidsson (EA), Rick Hudson (RH), Matt Sweeney (MS), Dmitry Soshnikov (DS), Sebastian Markbage (SM), Ben Newman (BN), Jeff Morrison (JM), Reid Burke (RB), Waldemar Horwat (WH), Doug Crockford (DC), Mark Miller (MM), Brian Terlson (BT), Luke Hoban (LH), Andreas Rossberg (ARB), Istvan Sebestyen (IS), Niko Matsakis (NM), Brendan Eich (BE), Rick Waldron (RW), Sam Tobin-Hochstadt (STH), Rafael Weinstein (RWS), Dmitry Lomov (DL), Niko Matsakis (NM), Simon Kaegi (SK), Dave Herman (DH)</p>
-<h2>Parallel JavaScript</h2>
-<p>RH: API is stable</p>
+<body class="markdown-body">
+<a href="#jan-30-meeting-notes"><h1 id="jan-30-meeting-notes">Jan 30 Meeting Notes</h1></a><p>John Neumann (JN), Allen Wirfs-Brock (AWB), Yehuda Katz (YK), Eric Ferraiuolo (EF), Erik Arvidsson (EA), Rick Hudson (RH), Matt Sweeney (MS), Dmitry Soshnikov (DS), Sebastian Markbage (SM), Ben Newman (BN), Jeff Morrison (JM), Reid Burke (RB), Waldemar Horwat (WH), Doug Crockford (DC), Mark Miller (MM), Brian Terlson (BT), Luke Hoban (LH), Andreas Rossberg (ARB), Istvan Sebestyen (IS), Niko Matsakis (NM), Brendan Eich (BE), Rick Waldron (RW), Sam Tobin-Hochstadt (STH), Rafael Weinstein (RWS), Dmitry Lomov (DL), Niko Matsakis (NM), Simon Kaegi (SK), Dave Herman (DH)</p>
+<a href="#parallel-javascript"><h2 id="parallel-javascript">Parallel JavaScript</h2></a><p>RH: API is stable</p>
 <p>RH: Parallel array data type is no longer there. Instead as methods on arrays and typed objects.</p>
 <p>NM: To be clear you can have an array with structs in it.</p>
 <p>RH: The sweet spot is games and image processing.</p>
@@ -23,8 +28,8 @@ The strategy going forward. Be complimentary to the typed object spec. Will trac
 </code></pre>
 <p>DH: The signature should just match the existing functions.</p>
 <p>RH: Not less surprising. Just as surprising.</p>
-<pre><code>parallelModule.map(arr, func, ...)
-// [T] -&gt; .... -&gt; [T]  // same return type
+<pre><code><span class="hljs-title">parallelModule</span>.map(arr, func, ...)
+// [<span class="hljs-type">T</span>] -&gt; .... -&gt; [<span class="hljs-type">T</span>]  // same return <span class="hljs-keyword">type</span>
 </code></pre>
 <p>NM: What would you call <code>from</code>?</p>
 <p>WH: It's too confusing to require completely different static function style for invoking parallel maps as compared to non-parallel maps. mapPar etc. method style is better than the proposed alternatives.</p>
@@ -33,13 +38,11 @@ The strategy going forward. Be complimentary to the typed object spec. Will trac
 <p>EA: File issues on GitHub on the drafts (that are also hosted on GitHub).</p>
 <p>MM: Worked well for Promises.</p>
 <p>YK/MN to talk through the concern about a &quot;ton of methods&quot;.</p>
-<h4>Conclusion/resolution</h4>
-<ul>
+<a href="#conclusionresolution-481"><h4 id="conclusionresolution-481">Conclusion/resolution</h4></a><ul>
 <li>Move Parallel JavaScript to phase 1</li>
 <li>Talk offline about design issues further</li>
 </ul>
-<h2>Structured Clone</h2>
-<p>DL: Is implemented in all browsers. Part of HTML spec. Hixie speced it. Hixie is happy with TC39 moving this to ES.</p>
+<a href="#structured-clone"><h2 id="structured-clone">Structured Clone</h2></a><p>DL: Is implemented in all browsers. Part of HTML spec. Hixie speced it. Hixie is happy with TC39 moving this to ES.</p>
 <p>YK: Like to object to this motion. It is currently a giant set of scenario hacks.</p>
 <p>DL: We want to add language objects that we want to transfer.</p>
 <p>AWB: Cloning framework in ES.</p>
@@ -66,30 +69,25 @@ The strategy going forward. Be complimentary to the typed object spec. Will trac
 Anne: Want to give them assurance that we will take over the effort.</p>
 <p>WH: What's the consensus?</p>
 <p>YK: We'll take it on. Move to stage 0.x</p>
-<h2>defineGetter, defineSetter etc in Annex B?</h2>
-<p>BT: IE ships this.</p>
+<a href="#definegetter-definesetter-etc-in-annex-b"><h2 id="definegetter-definesetter-etc-in-annex-b">defineGetter, defineSetter etc in Annex B?</h2></a><p>BT: IE ships this.</p>
 <p>MM: It would just be speced using defineProperty etc</p>
 <p>AWB: Firefox does some strange things.</p>
 <p>BE: please enumerate &quot;strange things&quot;, file bugs</p>
 <p>YK: It starts at level 1. Or 3? there are already implementations.</p>
 <p>RW: What sites?</p>
 <p>BT: Will attempt to furnish a list of sites...</p>
-<h4>Conclusion/resolution:</h4>
-<ul>
+<a href="#conclusionresolution-482"><h4 id="conclusionresolution-482">Conclusion/resolution:</h4></a><ul>
 <li>Makes sense to put in ES7 annex B</li>
 <li>Brian to write an initial speec draft</li>
 </ul>
-<h2>Process document</h2>
-<p>Process doc is now public
+<a href="#process-document"><h2 id="process-document">Process document</h2></a><p>Process doc is now public
 <a href="https://docs.google.com/a/chromium.org/document/d/1QbEE0BsO4lvl7NFTn5WXWeiEIBfaVUF7Dk0hpPpPDzU">https://docs.google.com/a/chromium.org/document/d/1QbEE0BsO4lvl7NFTn5WXWeiEIBfaVUF7Dk0hpPpPDzU</a></p>
-<h2>Scheduling for next meeting</h2>
-<p>April 8-10 at Mozilla, San Francisco
+<a href="#scheduling-for-next-meeting"><h2 id="scheduling-for-next-meeting">Scheduling for next meeting</h2></a><p>April 8-10 at Mozilla, San Francisco
 May 20-22 at Facebook, Menlo Park
 July 29-32 at Microsoft, Redmond
 Sept 23-25 at Bocoup, Boston
 Nov 18-20 at PayPal, San Jose</p>
-<h2>Async/await</h2>
-<p>LH: <a href="https://github.com/lukehoban/ecmascript-asyncawait">https://github.com/lukehoban/ecmascript-asyncawait</a></p>
+<a href="#asyncawait"><h2 id="asyncawait">Async/await</h2></a><p>LH: <a href="https://github.com/lukehoban/ecmascript-asyncawait">https://github.com/lukehoban/ecmascript-asyncawait</a></p>
 <p>LH, MM: await syntax is important because the precedence of await needs to be different than yield.</p>
 <p>LH: async functions could be combined with function*; in such a thing we'd need both yield and await</p>
 <p>MM, WH: What would the behavior of such a thing be?</p>
@@ -109,13 +107,11 @@ mean? We can make it be an async arrow if we want, but second line looks like 0-
 <p>LH: Can we move async/await to stage 1?
 General agreement</p>
 <p>AWB: This means that we agree that this is something in a future version of ES</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-483"><h4 id="conclusionresolution-483">Conclusion/Resolution</h4></a><ul>
 <li>Moved async/await to stage 1.</li>
 <li>Next step is to write real spec language</li>
 </ul>
-<h2>Promises discussion</h2>
-<p>MM: Advocacy for .then()/.cast()</p>
+<a href="#promises-discussion"><h2 id="promises-discussion">Promises discussion</h2></a><p>MM: Advocacy for .then()/.cast()</p>
 <p>STH: Advocacy for .chain()</p>
 <p>LH: Proposal of Promise.chain() compromise</p>
 <p>YK: I would probably be ok with this</p>
@@ -125,11 +121,12 @@ General agreement</p>
 <p>BE: .chain() requires over-wrapping/-unwrapping, without chain this is unobservable and therefore optimizable -- says to reject chain (surprised by own position changing)</p>
 <p>YK: This persuades me that we shouldn't have .chain()</p>
 <p>STH: I strongly disagree, but I'm not going to hold up ES6 over this</p>
-<h4>Conclusion/Resolution</h4>
-<ul>
+<a href="#conclusionresolution-484"><h4 id="conclusionresolution-484">Conclusion/Resolution</h4></a><ul>
 <li>Promise.cast is renamed to Promise.resolve (remove old Promise.resolve)</li>
 <li>Keep then, reject chain (NOT DEFER, reject!)</li>
 <li>Renaming .cast thus removes over-wrapping (always-wrap) deoptimization in old Promise.resolve</li>
 </ul>
 <p>Some further discussion on keeping the spec inheritance/AOP-friendly by not using .then internally some times, short-cutting through internal methods or internal helpers other times
 YK, MM, AWB have details</p>
+
+</body>
