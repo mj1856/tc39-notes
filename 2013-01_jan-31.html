@@ -254,7 +254,7 @@ Then you take that and put it in a file named &quot;jquery&quot; and try to impo
 <p>LH: Of course, there is a status quo: Creating global names that define built ins</p>
 <p>...Discussion re: Map, Set and WeakMap already in browsers.</p>
 <p>JN: Steering to break. The point of record...</p>
-<a href="#conclusionresolution-598"><h4 id="conclusionresolution-598">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-414-module-update"><h4 id="conclusionresolution-414-module-update">Conclusion/Resolution</h4></a><ul>
 <li>Cannot continue this discussion without Dave Herman</li>
 <li>Continue work, the understanding the next meeting is decision time.</li>
 <li>Work with committee members and community to develop concrete scenarios that must be met and addressed.</li>
@@ -263,7 +263,7 @@ Then you take that and put it in a file named &quot;jquery&quot; and try to impo
 <p>WH: Motion</p>
 <p>MM: Seconded</p>
 <p>DC: Seconded</p>
-<a href="#conclusionresolution-599"><h4 id="conclusionresolution-599">Conclusion/Resolution</h4></a><p>We approve the new scope for RFTG Unanimously.</p>
+<a href="#conclusionresolution-new-scope-of-the-royalty-free-task-group-tc39tg1"><h4 id="conclusionresolution-new-scope-of-the-royalty-free-task-group-tc39tg1">Conclusion/Resolution</h4></a><p>We approve the new scope for RFTG Unanimously.</p>
 <p><strong>There was no specific agenda item here</strong></p>
 <p>ATTENTION: Mark, Waldemar, Allen... Please review these notes. I tried to keep up, but I'm not confident in the record.</p>
 <p>MM: Want to maintain the option to defer Notification Proxies and Private Symbols—Defer to March?</p>
@@ -367,7 +367,7 @@ q.foo();
 <p>...The default, the getter should be invoked for &quot;q.foo&quot; case</p>
 <p>AWB: ...Recalls discussion with Tom, re: [[Put]] creating properties on wrong objects.</p>
 <p>STH: Resteer the discussion...</p>
-<a href="#conclusionresolution-600"><h4 id="conclusionresolution-600">Conclusion/Resolution</h4></a><p>Continue discussion offline.</p>
+<a href="#conclusionresolution-new-scope-of-the-royalty-free-task-group-tc39tg1"><h4 id="conclusionresolution-new-scope-of-the-royalty-free-task-group-tc39tg1">Conclusion/Resolution</h4></a><p>Continue discussion offline.</p>
 <p>MM: What we did with hasInstance, we should audit all of the traps and determine if we can replace with @@methods.</p>
 <p>AWB: Applied similar approach in the spec.</p>
 <a href="#class-extends-throw-on-non-constructor"><h2 id="class-extends-throw-on-non-constructor">Class extends: Throw on non-constructor?</h2></a><p>In July, we discussed what would happen when:</p>
@@ -382,7 +382,7 @@ q.foo();
 <p>LH: No, you'll still get class-side.</p>
 <p>...Discussion comes back around to throwing on non-constructor. It will also allow for future extension points by relaxing the RHS of extends.</p>
 <p>LH/EA/RW/WH: In agreement.</p>
-<a href="#conclusionresolution-601"><h4 id="conclusionresolution-601">Conclusion/Resolution</h4></a><p>Class extends throws on non-constructor (extends null is still valid)</p>
+<a href="#conclusionresolution-class-extends-throw-on-non-constructor"><h4 id="conclusionresolution-class-extends-throw-on-non-constructor">Conclusion/Resolution</h4></a><p>Class extends throws on non-constructor (extends null is still valid)</p>
 <a href="#mapset-comparator"><h2 id="mapset-comparator">Map/Set comparator</h2></a><p>(Presented by Allen Wirfs-Brock)</p>
 <p>Issue: Allow Map or Set to have a custom comparator for set, get, has, delete</p>
 <ul>
@@ -447,7 +447,7 @@ Consensus w/ comparators: &quot;===&quot; (currently default) and &quot;is&quot;
 <p>ARB: You might have circumstances where you do your comparison outside of the map.</p>
 <p>MM: General comparator argument, are we happy with this considering a hypothetical future that allows arbitrary equivalence class?</p>
 <p>WH: As long as it's an equivalence class, if you allow anything else, you run into trouble.</p>
-<a href="#conclusionresolution-602"><h4 id="conclusionresolution-602">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-mapset-comparator"><h4 id="conclusionresolution-mapset-comparator">Conclusion/Resolution</h4></a><ul>
 <li><p><code>Map( iterator = undefined, comparator = undefined )</code></p></li>
 <li><p><code>Set( iterator = undefined, comparator = undefined )</code></p></li>
 <li><p>If the second argument is &quot;is&quot;, use &quot;Object.is&quot;</p></li>
@@ -473,7 +473,7 @@ Consensus w/ comparators: &quot;===&quot; (currently default) and &quot;is&quot;
 [x] returns a one-element array, but
 (x) returns x, not a one-element iterator.</p>
 <p>STH: This is only a syntactic change. We're not altering previously agreed semantics in any way.</p>
-<a href="#conclusionresolution-603"><h4 id="conclusionresolution-603">Conclusion/Resolution</h4></a><p>All agree on RTL -&gt; LTR change.</p>
+<a href="#conclusionresolution-comprehensionsgenerator-syntax"><h4 id="conclusionresolution-comprehensionsgenerator-syntax">Conclusion/Resolution</h4></a><p>All agree on RTL -&gt; LTR change.</p>
 <p>[WH: Noted a moment after meeting adjourned that this is not merely a syntactic change. We had let clauses to create intermediate temporaries in the old syntax but not in the new syntax — you can't do <code>[for (x of y) let (z = ...) for (z of q) ...].]</code></p>
 
 </body>

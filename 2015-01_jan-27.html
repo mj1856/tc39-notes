@@ -13,7 +13,7 @@
 <p>JN: Any objections?</p>
 <p>JN: No objections</p>
 <p>JN: Previous meeting minutes?</p>
-<a href="#conclusionresolution-346"><h4 id="conclusionresolution-346">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-63-decorators"><h4 id="conclusionresolution-63-decorators">Conclusion/Resolution</h4></a><ul>
 <li>Approval of agenda</li>
 <li>Approval of minutes</li>
 </ul>
@@ -79,7 +79,7 @@ z
 <p>YK: You can use CSP to prevent eval.</p>
 <p>MM: I think the current spec is fine. It is no worse thatn the current situation.</p>
 <p>AWB: We need some eyes on this grammar.</p>
-<a href="#conclusionresoltuoin-347"><h4 id="conclusionresoltuoin-347">Conclusion/resoltuoin</h4></a><ul>
+<a href="#conclusionresoltuoin-43-es6-draft-status-report"><h4 id="conclusionresoltuoin-43-es6-draft-status-report">Conclusion/resoltuoin</h4></a><ul>
 <li>Use the new annex spec for html comments as in the latest draft</li>
 <li>Need to review the grammar</li>
 </ul>
@@ -196,7 +196,7 @@ YK: points out Object.prototype.toString.call(window) results differ (Chrome: 'g
 <p>MM: Is it a syntax error in concise methods? They do not have a construct.</p>
 <p>AWB: That would include more exceptions and reduce consistency.</p>
 <p>MM: <code>new.target</code> is also tcp through arrow functions.</p>
-<a href="#conclusionresolution-348"><h4 id="conclusionresolution-348">Conclusion/resolution</h4></a><ul>
+<a href="#conclusionresolution-44-subclass-instantiation-reformation-status-and-open-issues"><h4 id="conclusionresolution-44-subclass-instantiation-reformation-status-and-open-issues">Conclusion/resolution</h4></a><ul>
 <li>Remove <code>new super()</code></li>
 <li><code>new.target</code> is available in all functions. It is <code>undefined</code> in a non [[Construct]] call.</li>
 <li><code>new.target</code> in arrow functions gets the NewTarget of the outer context (not the arrow funciton context).</li>
@@ -262,7 +262,7 @@ C.prototype.__proto__ = <span class="hljs-literal">null</span>;
 <p>WH: Was under the impression that <code>super.property</code> was only going to be available inside class methods.</p>
 <p>AWB: There is no distinction between class methods and object methods.</p>
 <p>MM: When we talked about this before I was also under the assumption that this was about inside classes and outside classes.</p>
-<a href="#conclusionresolution-349"><h4 id="conclusionresolution-349">Conclusion/resolution</h4></a><ul>
+<a href="#conclusionresolution-super-outside-class-constructor-body"><h4 id="conclusionresolution-super-outside-class-constructor-body">Conclusion/resolution</h4></a><ul>
 <li>Dropping toMethod from ES6.</li>
 <li>No <code>super.property</code> in FunctionExpression/FunctionDeclaration (as well as generators).</li>
 <li>No <code>super()</code> outside class constructors.</li>
@@ -272,7 +272,7 @@ C.prototype.__proto__ = <span class="hljs-literal">null</span>;
 </ul>
 <a href="#methods-in-class-bodies-enumerability"><h2 id="methods-in-class-bodies-enumerability">Methods in class bodies enumerability?</h2></a><p>AWB: Is anyone objecting to making methods in class literals non enumerable?</p>
 <p>No objections.</p>
-<a href="#conclusionresolution-350"><h4 id="conclusionresolution-350">Conclusion/resolution</h4></a><ul>
+<a href="#conclusionresolution-methods-in-class-bodies-enumerability"><h4 id="conclusionresolution-methods-in-class-bodies-enumerability">Conclusion/resolution</h4></a><ul>
 <li>Methods in class bodies are non enumerable.</li>
 <li>Concise methods in object literals are still enumerable.</li>
 </ul>

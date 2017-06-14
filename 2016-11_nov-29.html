@@ -17,7 +17,7 @@
 <a href="#3-adoption-of-the-agenda"><h2 id="3-adoption-of-the-agenda">3 Adoption of the agenda</h2></a><ul>
 <li><a href="https://github.com/tc39/agendas/blob/master/2016/11.md">Agenda</a></li>
 </ul>
-<a href="#conclusionresolution-92"><h4 id="conclusionresolution-92">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-3-adoption-of-the-agenda"><h4 id="conclusionresolution-3-adoption-of-the-agenda">Conclusion/Resolution</h4></a><ul>
 <li>Adopted.</li>
 </ul>
 <a href="#4-approval-of-the-minutes-from-last-meeting"><h2 id="4-approval-of-the-minutes-from-last-meeting">4 Approval of the minutes from last meeting</h2></a><ul>
@@ -26,7 +26,7 @@
 <p>AWB: Can't get the minutes due to ECMA web site being down, so this item is deferred until January.</p>
 <p>IS: Correct, I will try to trace it and distribute it per Email. Maybe you can approve it at this meeting.
 Basically I did prepare the minutes as usual and published it about 3-4 weeks after the September 2016 meeting.</p>
-<a href="#conclusionresolution-93"><h4 id="conclusionresolution-93">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-4-approval-of-the-minutes-from-last-meeting"><h4 id="conclusionresolution-4-approval-of-the-minutes-from-last-meeting">Conclusion/Resolution</h4></a><ul>
 <li>Adopt at next meeting.</li>
 </ul>
 <a href="#5-report-from-ecma-secretariat"><h2 id="5-report-from-ecma-secretariat">5 Report from ECMA Secretariat</h2></a><p>Scheduled for tomorrow in conversation with Istvan</p>
@@ -119,7 +119,7 @@ DD: This is in progress, but it is also out of scope for this committee</p>
 <p>DE: V8 is fine with it.</p>
 <p>BT: other languages have it. It's easy for Chakra to implement. Spec changes are very minimal.</p>
 <p>(debate over whether &quot;s&quot; is the right name. It is, simply because every other language does it that way.)</p>
-<a href="#conclusionresolution-94"><h4 id="conclusionresolution-94">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-11ia-regexp-sdotall-flag-proposal"><h4 id="conclusionresolution-11ia-regexp-sdotall-flag-proposal">Conclusion/Resolution</h4></a><ul>
 <li>Stage 1</li>
 <li>Once Brian figures out why he put the thing about surrogate pairs in there and removes or clarifies it, it will come back for stage 2</li>
 </ul>
@@ -212,7 +212,7 @@ of not ensuring that the promise-returning function will never throw.</p>
 <p>JHD: Doesn't sound like we're at Stage 2 because of concerns about utility. What would it take for convincing?</p>
 <p>MM: Argument for: the proposal: Analogous to syntax, and would be expected for orthogonality, so does not increase cognitive burden but rather decreases it.</p>
 <p>BT: Let's look at the codebases of people who use try, the people who say they're not ready for standard Promises as a result.</p>
-<a href="#conclusionresolution-95"><h4 id="conclusionresolution-95">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-11iib-promisetry"><h4 id="conclusionresolution-11iib-promisetry">Conclusion/Resolution</h4></a><ul>
 <li>Stage 1</li>
 <li>Not ready for Stage 2, pending more evidence of motivation.</li>
 </ul>
@@ -239,7 +239,7 @@ of not ensuring that the promise-returning function will never throw.</p>
 <p>YK: I used to support Promise subclasses, and combinators don't work well with subclassing, so it's bad practice.</p>
 <p>DD: Promise subclassing does not work; splits the ecosystem.</p>
 <p>BT: We should either come to consensus that we don't want Promise subclassing, and not support it, or if we don't, then we have the responsibility to support it well.</p>
-<a href="#conclusionresolution-96"><h4 id="conclusionresolution-96">Conclusion//Resolution</h4></a><ul>
+<a href="#conclusionresolution-12ia-promiseresolve-constructor-check"><h4 id="conclusionresolution-12ia-promiseresolve-constructor-check">Conclusion//Resolution</h4></a><ul>
 <li>Continue discussion later (timeboxed item)</li>
 </ul>
 <a href="#12ib-arrayiterator-tweak-for-detached-typedarrays"><h2 id="12ib-arrayiterator-tweak-for-detached-typedarrays">12.i.b ArrayIterator tweak for detached TypedArrays</h2></a><p>(Daniel Ehrenberg)</p>
@@ -260,7 +260,7 @@ of not ensuring that the promise-returning function will never throw.</p>
 <p>AWB: I am. Current spec has a problem. And, solution is to use variant A of the proposal.</p>
 <p>BT: Can we just make [[TypedArrayLength]] 0?</p>
 <p>DE: Possible...</p>
-<a href="#conclusionresolution-97"><h4 id="conclusionresolution-97">Conclusion//Resolution</h4></a><ul>
+<a href="#conclusionresolution-12ib-arrayiterator-tweak-for-detached-typedarrays"><h4 id="conclusionresolution-12ib-arrayiterator-tweak-for-detached-typedarrays">Conclusion//Resolution</h4></a><ul>
 <li>Consensus on taking the PR (aka throwing on detached typed array during iteration via ValidateTypedArray)</li>
 <li>consensus example <a href="https://github.com/tc39/ecma262/issues/713#issuecomment-255878360">found here</a> (the first option, &quot;a&quot;)</li>
 </ul>
@@ -307,7 +307,7 @@ of not ensuring that the promise-returning function will never throw.</p>
 <a href="#slide-setprototypeof"><h3 id="slide-setprototypeof">Slide: SetPrototypeOf</h3></a><p>AK: SetPrototypeOf to null should return true</p>
 <p>BT: This is just following the precedent of defineProperty on non-writable, non-configurable, same-valued sets.</p>
 <p>(agreement)</p>
-<a href="#conclusionresolution-98"><h4 id="conclusionresolution-98">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-12iib-module-namespace-objects-various-oddities"><h4 id="conclusionresolution-12iib-module-namespace-objects-various-oddities">Conclusion/Resolution</h4></a><ul>
 <li>Consensus on removing @@iterator from module namespace exotic objects</li>
 <li>For local consistency, make @@toStringTag non-configurable</li>
 <li>SetPrototypeOf should return true for null</li>
@@ -359,7 +359,7 @@ of not ensuring that the promise-returning function will never throw.</p>
 <p>AK: What's the really bad thing that happens if someone exports default, and then imports default</p>
 <p>DH: The bad thing is when you don't want default at all.</p>
 <p>YK: If you export it by accident, people may depend on it, and you can't remove it later.</p>
-<a href="#conclusionresolution-99"><h4 id="conclusionresolution-99">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-12iid-proposal-to-reform-the-spec-to-include-default-export-in-export--from-module"><h4 id="conclusionresolution-12iid-proposal-to-reform-the-spec-to-include-default-export-in-export--from-module">Conclusion/Resolution</h4></a><ul>
 <li>No consensus on this change; the current state is as designed.</li>
 </ul>
 <a href="#12iva-import"><h2 id="12iva-import">12.iv.a import()</h2></a><p>(Domenic Denicola)</p>
@@ -455,7 +455,7 @@ Pros for function-like:</p>
 <p>DH: I am not OK with synchronous semantics without them being in the room to explore the options.</p>
 <p>AR: I don't understand the discomfort with getting implementation feedback. Can't we have the conversation with them?</p>
 <p>JHD: Bradley Farias can call in tomorrow.</p>
-<a href="#conclusionresolution-100"><h4 id="conclusionresolution-100">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-12iva-import"><h4 id="conclusionresolution-12iva-import">Conclusion/Resolution</h4></a><ul>
 <li>Stick with import()'s function-like form, with no spread, no commas, just an assignment expression; can't be extended with extra arguments (Chapter 16) <a href="https://github.com/tc39/proposal-dynamic-import/issues/23#issuecomment-263742551">https://github.com/tc39/proposal-dynamic-import/issues/23#issuecomment-263742551</a></li>
 <li>Open issues which block Stage 3:
 <ul>

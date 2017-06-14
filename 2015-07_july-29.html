@@ -178,7 +178,7 @@
 <p>Discussion about developer expectation.</p>
 <p>AWB: there is another alternative spec function that is more restrictive: ContainsExpression</p>
 <p>RW demures (&quot;You might say I am not willing to die on this hill.&quot;)</p>
-<a href="#conclusionresolution-295"><h4 id="conclusionresolution-295">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-611-the-scope-of-use-strict-with-respect-to-destructuring-in-parameter-lists"><h4 id="conclusionresolution-611-the-scope-of-use-strict-with-respect-to-destructuring-in-parameter-lists">Conclusion/Resolution</h4></a><ul>
 <li>Make it an error to have a &quot;use strict&quot; directive in a function with a non-simple parameter list.</li>
 <li>Early error</li>
 <li>No matter what mode you were already in</li>
@@ -196,7 +196,7 @@
 <p>BE: Number, String, Boolean should be</p>
 <p>MM: To be clear: Date.prototype will be an object, not Date; RegExp.protototype will be an object, not RegExp. Every built-in constructor introduced after ES5 will have a plain object prototype.</p>
 <p>MM: Prefer we do Number, Boolean, String together</p>
-<a href="#conclusionresolution-296"><h4 id="conclusionresolution-296">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-69-reconsidering-the-numberprototype-as-an-ordinary-object-change"><h4 id="conclusionresolution-69-reconsidering-the-numberprototype-as-an-ordinary-object-change">Conclusion/Resolution</h4></a><ul>
 <li>Boolean.prototype, Number.prototype, String.prototype rolled back</li>
 <li>File a spec bug?</li>
 </ul>
@@ -207,7 +207,7 @@
 <p>DH: These are extremely common in programming languages</p>
 <p>Discussing semantics of &quot;left&quot;, &quot;right&quot; and &quot;start&quot;, &quot;end&quot;</p>
 <p>DH: There is precedence for JavaScript interpreting the word &quot;right&quot; to mean &quot;the end of a sequence&quot;, from ES5: <code>Array.prototype.reduceRight</code></p>
-<a href="#conclusionresolution-297"><h4 id="conclusionresolution-297">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-612-spec-defacto-stringprototypetrimlefttrimright"><h4 id="conclusionresolution-612-spec-defacto-stringprototypetrimlefttrimright">Conclusion/Resolution</h4></a><ul>
 <li>Approved for Stage 1?</li>
 </ul>
 <a href="#revisit-611-the-scope-of-use-strict-with-respect-to-destructuring-in-parameter-lists"><h2 id="revisit-611-the-scope-of-use-strict-with-respect-to-destructuring-in-parameter-lists">REVISIT: 6.11 The scope of &quot;use strict&quot; with respect to destructuring in parameter lists</h2></a><p>DH: The only thing that &quot;use strict&quot; can cause (in ES5) is an error (to the left)</p>
@@ -268,7 +268,7 @@ f();
 </ul>
 <p>MM: We should be explicit w/r to &quot;top level strict mode&quot;, in that we actually mean &quot;top level iife with strict mode&quot;—to avoid the concatenation problem.</p>
 <p>Advice: &quot;Just use modules&quot;.</p>
-<a href="#conclusionresolution-298"><h4 id="conclusionresolution-298">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-revisit-611-the-scope-of-use-strict-with-respect-to-destructuring-in-parameter-lists"><h4 id="conclusionresolution-revisit-611-the-scope-of-use-strict-with-respect-to-destructuring-in-parameter-lists">Conclusion/Resolution</h4></a><ul>
 <li>The previous consensus remains</li>
 </ul>
 <a href="#revisit-67-new--generatorfunction"><h2 id="revisit-67-new--generatorfunction">REVISIT: 6.7 new &amp; GeneratorFunction</h2></a><p>AWB: (answers to questions from yesterday)</p>
@@ -307,7 +307,7 @@ x = {
 </ul>
 <p>Acceptable risk?</p>
 <p>BT: Implementors on both V8 and SpiderMonkey have shown interest in making generator not newable</p>
-<a href="#conclusionresolution-299"><h4 id="conclusionresolution-299">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-revisit-67-new--generatorfunction"><h4 id="conclusionresolution-revisit-67-new--generatorfunction">Conclusion/Resolution</h4></a><ul>
 <li>Spec change: generator functions and methods do not have a [[construct]] trap, so <code>new</code> throws</li>
 </ul>
 <a href="#process-document-discussion-to-settle-things-once-and-for-all"><h2 id="process-document-discussion-to-settle-things-once-and-for-all">Process Document discussion (to settle things once and for all)</h2></a><p>(Domenic Denicola)</p>
@@ -332,7 +332,7 @@ x = {
 <p>Discussion, re: experiences had with other new features.</p>
 <p>&quot;Significant in-the-field experience with shipping implementations, such as that provided by independent VMs&quot;</p>
 <p>Stage 3: &quot;Will require feedback from implementations and users&quot;</p>
-<a href="#conclusionresolution-300"><h4 id="conclusionresolution-300">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-what-is-an-implementation"><h4 id="conclusionresolution-what-is-an-implementation">Conclusion/Resolution</h4></a><ul>
 <li>need links to Domenic's commits</li>
 </ul>
 <a href="#68-simdjs-start-the-process-to-move-towards-stage-3"><h2 id="68-simdjs-start-the-process-to-move-towards-stage-3">6.8 SIMD.js: Start the process to move towards Stage 3</h2></a><p>(Dan Gohman, John Mccutchan, Peter Jensen, Daniel Ehrenberg)</p>
@@ -570,7 +570,7 @@ unsignedAbsoluteDifference.</p>
 </ul>
 <p>DH: Either accept Waldemar's argument, or state case based on historical precedence. If no consistency, then don't care.</p>
 <p>WH: Note that I'm not alone with that argument. I don't want this to become personal.</p>
-<a href="#conclusionresolution-301"><h4 id="conclusionresolution-301">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-68-simdjs-start-the-process-to-move-towards-stage-3"><h4 id="conclusionresolution-68-simdjs-start-the-process-to-move-towards-stage-3">Conclusion/Resolution</h4></a><ul>
 <li><code>new</code> throws</li>
 <li>not separate spec</li>
 <li>spec mechansisms: Allen, Brian, Rick and Dan to work through</li>

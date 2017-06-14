@@ -11,7 +11,7 @@
 <p>January 28th 2016 Meeting Notes</p>
 <p>Eric Farriauolo (EF), Caridy Patino (CP), Michael Ficarra (MF), Peter Jensen (PJ), Domenic Denicola (DD), Jordan Harband (JHD), Chip Morningstar (CM), Brian Terlson (BT), John Neumann (JN), Dave Herman (DH), Yehuda Katz (YK), Jeff Morrison (JM), Lee Byron (LB), Daniel Ehrenberg (DE), Lars Hansen (LHN), Nagy Hostafa (NH), Michael Saboff (MS), John Buchanan (JB), Stefan Penner (SP), Sebastian McKenzie (SMK), Waldemar Horwat (WH), MarkS. Miller (MM), Sebastian Markbage (SM), Zibi Braniecki (ZB), Andreas Rossberg (ARB), Ian Halliday (IH), Keith Miller (KM), Tim Disney (TD), Misko Hevery (MH), Brad Green (BG), Kevin Smith (KS), Brad Nelson (BNN), JF Bastien (JFB), Shu-yu Guo (SYG), Rick Waldron (RW), Staś Małolepszy (STM), Dean Tribble (DT)</p>
 <a href="#agenda"><h2 id="agenda">Agenda</h2></a><p><a href="https://github.com/tc39/agendas/blob/master/2016/01.md">https://github.com/tc39/agendas/blob/master/2016/01.md</a></p>
-<a href="#function#tostring--function#isportable-mf"><h2 id="function#tostring--function#isportable-mf">Function#toString &amp;&amp; Function#isPortable (MF)</h2></a><p>Slides: <a href="https://docs.google.com/presentation/d/1o8jVhyVHljCFyXdxe-V4X1pUmCgx0FuFvEO0fFP4LJU/edit?usp=sharing">https://docs.google.com/presentation/d/1o8jVhyVHljCFyXdxe-V4X1pUmCgx0FuFvEO0fFP4LJU/edit?usp=sharing</a>
+<a href="#functiontostring--functionisportable-mf"><h2 id="functiontostring--functionisportable-mf">Function#toString &amp;&amp; Function#isPortable (MF)</h2></a><p>Slides: <a href="https://docs.google.com/presentation/d/1o8jVhyVHljCFyXdxe-V4X1pUmCgx0FuFvEO0fFP4LJU/edit?usp=sharing">https://docs.google.com/presentation/d/1o8jVhyVHljCFyXdxe-V4X1pUmCgx0FuFvEO0fFP4LJU/edit?usp=sharing</a>
 Spec text: <a href="https://raw.githubusercontent.com/michaelficarra/Function-prototype-toString-revision/fc69a0a31dc6d625736bfbb712ac782eb241ff3d/proposal.html">https://raw.githubusercontent.com/michaelficarra/Function-prototype-toString-revision/fc69a0a31dc6d625736bfbb712ac782eb241ff3d/proposal.html</a></p>
 <p>MF: No longer interested in &quot;portability&quot;</p>
 <p>YK: Do your changes cause a method with super to produce an evaluatable function with .toString()</p>
@@ -54,7 +54,7 @@ Spec text: <a href="https://raw.githubusercontent.com/michaelficarra/Function-pr
 <p>MM: Agree.</p>
 <p><em>later MM changed his mind again</em></p>
 <p>No consensus on whitespace treatment.</p>
-<a href="#conclusionresolution-214"><h4 id="conclusionresolution-214">Conclusion/Resolution</h4></a><p>Keep exactly the original source text starting from the position of the first token of the production and ending at the position of the last token. Within this text, keep comments and newlines. Still no conclusion about insignificant whitespace, i.e., whitespace other than newlines.</p>
+<a href="#conclusionresolution-functiontostring--functionisportable-mf"><h4 id="conclusionresolution-functiontostring--functionisportable-mf">Conclusion/Resolution</h4></a><p>Keep exactly the original source text starting from the position of the first token of the production and ending at the position of the last token. Within this text, keep comments and newlines. Still no conclusion about insignificant whitespace, i.e., whitespace other than newlines.</p>
 <ul>
 <li><p>MF will adapt what was discussed into the spec text, advance stage 2 that is complete</p></li>
 <li><p>Reviewers: MM, WH, YK</p></li>
@@ -71,7 +71,7 @@ Spec text: <a href="https://raw.githubusercontent.com/michaelficarra/Function-pr
 <p>...</p>
 <p>LHN: some changes to the typed array spec, to accomodate SharedArrayBuffer, should be vetted</p>
 <p>AWB: I would be happy to discuss</p>
-<a href="#conclusonresolution-215"><h4 id="conclusonresolution-215">Concluson/resolution</h4></a><ul>
+<a href="#conclusonresolution-larse"><h4 id="conclusonresolution-larse">Concluson/resolution</h4></a><ul>
 <li>DD DE AWB will be reviewers</li>
 </ul>
 <p>Rundown of reviewers (from LH's notes):</p>
@@ -143,7 +143,7 @@ Spec text: <a href="https://raw.githubusercontent.com/michaelficarra/Function-pr
 <p>...: if we have serious performance implementations for internal, we will keep it, but wont expose it</p>
 <p>BT: it might not be possible to... we will have to give an explicit ordering for prototype properties.</p>
 <p>AWB: the only way to doit, is to set some requirements, vague or not</p>
-<a href="#conclusionresolution-216"><h4 id="conclusionresolution-216">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-5xix-proxy-enumerate---revisit-decision-to-exhaust-iterator"><h4 id="conclusionresolution-5xix-proxy-enumerate---revisit-decision-to-exhaust-iterator">Conclusion/Resolution</h4></a><ul>
 <li>provisional consensus to kill enumerate trap, contingent on running it by tom</li>
 <li>for-in does [[HasProperty]]</li>
 </ul>
@@ -167,14 +167,14 @@ Spec text: <a href="https://raw.githubusercontent.com/michaelficarra/Function-pr
 <p>RW: motion to include to stage 4, inclusion for 2016</p>
 <p>BT: thanks rick</p>
 <p>RW: any objections</p>
-<a href="#conclusionresolution-217"><h4 id="conclusionresolution-217">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-5xviii-exponentiation-operator-rw"><h4 id="conclusionresolution-5xviii-exponentiation-operator-rw">Conclusion/Resolution</h4></a><ul>
 <li>stage 4!</li>
 </ul>
 <p>(Lunch)</p>
 <a href="#afternoon-agenda"><h2 id="afternoon-agenda">Afternoon Agenda</h2></a><ol>
 <li>Date and place for the next meetings</li>
 </ol>
-<a href="#conclusionresolution-218"><h4 id="conclusionresolution-218">Conclusion/Resolution</h4></a><p>Meet in Munich Monday May 23-Wednesday May 25</p>
+<a href="#conclusionresolution-afternoon-agenda"><h4 id="conclusionresolution-afternoon-agenda">Conclusion/Resolution</h4></a><p>Meet in Munich Monday May 23-Wednesday May 25</p>
 <a href="#2-402-needs-reviewers-20min"><h2 id="2-402-needs-reviewers-20min">2. 402 needs reviewers (20min)</h2></a><p>CP: HTML version of the second edition is now public (<a href="http://www.ecma-international.org/ecma-402/2.0/">www.ecma-international.org/ecma-402/2.0/</a>),  just like 262. We have done some re-orgs on the spec to make the new features easier to include. Many new features have been proposed, lots of new contributors, good momentum. At this point we need reviewers</p>
 <p>DE: first we need to propose to stage 2.</p>
 <p>CP: we want to move 3 things up, and get reviewers, and one small detail</p>
@@ -219,7 +219,7 @@ Spec text: <a href="https://raw.githubusercontent.com/michaelficarra/Function-pr
 <p>YK: as long as its in the actual spec we are good</p>
 <p>EF: DE could google try Mark's suggestion of restricting .call's extra behavior to just this case, on the output of Object.create for a given Intl instance type this out?</p>
 <p>DE: yes, it seems reasonable</p>
-<a href="#conclusionresolution-219"><h4 id="conclusionresolution-219">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-2-402-needs-reviewers-20min"><h4 id="conclusionresolution-2-402-needs-reviewers-20min">Conclusion/Resolution</h4></a><ul>
 <li>wont roll it back</li>
 <li>try MM suggestion in chrome to support web compat</li>
 <li>add note to 402 annex (third edition, references second and first)</li>
@@ -235,7 +235,7 @@ Spec text: <a href="https://raw.githubusercontent.com/michaelficarra/Function-pr
 <p>YK: they will continue to work</p>
 <p>BT: any objection to remove Reflect.enumerate</p>
 <p>MM: We need to check with Tom Van Cutsem first.</p>
-<a href="#conclusionresolution-220"><h4 id="conclusionresolution-220">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-5xix-revisit-proxy-enumerate---revisit-decision-to-exhaust-iterator"><h4 id="conclusionresolution-5xix-revisit-proxy-enumerate---revisit-decision-to-exhaust-iterator">Conclusion/Resolution</h4></a><ul>
 <li>Remove Reflect.enumerate, contingent on further information from Tom</li>
 </ul>
 <p>************** Response from Tom: **************</p>
@@ -264,7 +264,7 @@ Spec text: <a href="https://raw.githubusercontent.com/michaelficarra/Function-pr
 <p>DE: its the output  not the input, so formatToParts</p>
 <p>DE: I will review</p>
 <p>RW: I will review</p>
-<a href="#conclusionresolution-221"><h4 id="conclusionresolution-221">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-formattoparts"><h4 id="conclusionresolution-formattoparts">Conclusion/Resolution</h4></a><ul>
 <li>stage 2</li>
 <li>Reviewers:
 <ul>
@@ -295,7 +295,7 @@ Spec text: <a href="https://raw.githubusercontent.com/michaelficarra/Function-pr
 <p>ZB: reviewers?</p>
 <p>SP: me</p>
 <p>DE: me</p>
-<a href="#conclusionresolution-222"><h4 id="conclusionresolution-222">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-intlpluralrules"><h4 id="conclusionresolution-intlpluralrules">Conclusion/Resolution</h4></a><ul>
 <li>stage 2</li>
 <li>Reviewers:
 <ul>
@@ -327,7 +327,7 @@ Spec text: <a href="https://raw.githubusercontent.com/michaelficarra/Function-pr
 <p>DE: yes</p>
 <p>CP: whats in the content of the object returned, is it spec'd</p>
 <p>SP: needs further exploration</p>
-<a href="#conclusion-223"><h3 id="conclusion-223">Conclusion</h3></a><ul>
+<a href="#conclusion-abstract-locale-operations"><h3 id="conclusion-abstract-locale-operations">Conclusion</h3></a><ul>
 <li>stage 2
 reviewers
 <ul>
@@ -348,7 +348,7 @@ reviewers
 <p>ZB: these 4 handle the most common problems we have seen.</p>
 <p>CP: considerable existing bikeshedding, but more are invited to join.</p>
 <p>ZB: stage 0?</p>
-<a href="#conclusion-224"><h3 id="conclusion-224">Conclusion</h3></a><ul>
+<a href="#conclusion-abstract-locale-operations"><h3 id="conclusion-abstract-locale-operations">Conclusion</h3></a><ul>
 <li>advanced to stage 0</li>
 </ul>
 <a href="#async-generator-functions"><h3 id="async-generator-functions">Async generator functions</h3></a><p>presenter: Kevin Smith
@@ -521,7 +521,7 @@ link to presentation:  <a href="https://docs.google.com/presentation/d/1OwDb4WH9
 <li>yielding a rejected promise does not cause a generation-side exception. Rather it simply transmits the rejected promise. A simple for-await consumer is stopped by the rejection throwing the reason.</li>
 <li>(Pointed out by Dean): An implicit &quot;await&quot; at the &quot;yield&quot; violates the rule that we can find all interleaving points by looking for &quot;await&quot;.</li>
 </ul>
-<a href="#conclusionresolution-225"><h3 id="conclusionresolution-225">Conclusion/resolution</h3></a><ul>
+<a href="#conclusionresolution-abstract-locale-operations"><h3 id="conclusionresolution-abstract-locale-operations">Conclusion/resolution</h3></a><ul>
 <li>Stage 1</li>
 <li>needs more exploration as per above discussion.</li>
 </ul>
@@ -546,12 +546,12 @@ link:</p>
 <p>ARB: slide (soundscript)</p>
 <a href="#teset262"><h3 id="teset262">Teset262</h3></a><p>presenter: Dan</p>
 <p>DE: reptitive tests, lots of tests that repeat each other. Their exists a proposal to generate tests precedurally, we require implementors feedback. Ask me and I will provide more information</p>
-<a href="#conclusion--resolution-226"><h3 id="conclusion--resolution-226">Conclusion / resolution</h3></a><ul>
+<a href="#conclusion--resolution-abstract-locale-operations"><h3 id="conclusion--resolution-abstract-locale-operations">Conclusion / resolution</h3></a><ul>
 <li>implementors need to provide feedback</li>
 </ul>
-<a href="#conclusionresolution-227"><h4 id="conclusionresolution-227">Conclusion/resolution</h4></a><a href="#test262-updates"><h1 id="test262-updates">Test262 Updates</h1></a><p>Presenter: DE</p>
+<a href="#conclusionresolution-abstract-locale-operations"><h4 id="conclusionresolution-abstract-locale-operations">Conclusion/resolution</h4></a><a href="#test262-updates"><h1 id="test262-updates">Test262 Updates</h1></a><p>Presenter: DE</p>
 <p>DE: We have some changes coming into test262, e.g., <a href="https://github.com/tc39/test262/issues/470">https://github.com/tc39/test262/issues/470</a> <a href="https://github.com/tc39/test262/issues/467">https://github.com/tc39/test262/issues/467</a>. Users, please give feedback as to whether these are appropriate for you! Please reach out to me if you have any concerns.</p>
-<a href="#conclusionresolution-228"><h4 id="conclusionresolution-228">Conclusion/resolution</h4></a><a href="#progress-review-callable-class-constructors-allen"><h1 id="progress-review-callable-class-constructors-allen">Progress review: Callable class constructors (Allen)</h1></a><p>presenters: AWB / YK</p>
+<a href="#conclusionresolution-abstract-locale-operations"><h4 id="conclusionresolution-abstract-locale-operations">Conclusion/resolution</h4></a><a href="#progress-review-callable-class-constructors-allen"><h1 id="progress-review-callable-class-constructors-allen">Progress review: Callable class constructors (Allen)</h1></a><p>presenters: AWB / YK</p>
 <p>AWB: slide (callable Class Constructors)</p>
 <p>AWB: slide (refresher)</p>
 <p>AWB: slide (refresher pt.2)</p>
@@ -631,11 +631,11 @@ link:</p>
 <p>DD: we should likely not provide constructs that will allow those to shoot themselves in the foot, they can just use =&gt;...</p>
 <p>YK: decorators could enable this ergonomically</p>
 <p>MM: we should drop this completely, and solve it with decorators.</p>
-<a href="#conclusionresolution-229"><h4 id="conclusionresolution-229">Conclusion/resolution</h4></a><p>Proposal dropped.</p>
+<a href="#conclusionresolution-abstract-locale-operations"><h4 id="conclusionresolution-abstract-locale-operations">Conclusion/resolution</h4></a><p>Proposal dropped.</p>
 <a href="#objectgetownpropertydescriptors-to-stage-3-jordan-harband-low-priority-but-super-quick"><h1 id="objectgetownpropertydescriptors-to-stage-3-jordan-harband-low-priority-but-super-quick">Object.getOwnPropertyDescriptors to stage 3? (Jordan Harband, low priority, but super quick!)</h1></a><p>presenter JDH:</p>
 <p>JDH: reviewers and editors +1'd, can we move to stage 3</p>
 <p>all: yes</p>
-<a href="#conclusionresolution-230"><h2 id="conclusionresolution-230">Conclusion/resolution</h2></a><ul>
+<a href="#conclusionresolution-abstract-locale-operations"><h2 id="conclusionresolution-abstract-locale-operations">Conclusion/resolution</h2></a><ul>
 <li>advance stage 3</li>
 </ul>
 <ol start="6">

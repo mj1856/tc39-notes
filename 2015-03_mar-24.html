@@ -45,7 +45,7 @@
 <p>DH: it throws</p>
 <p>YK: why is it not just a getter</p>
 <p>ARB/MM/AWB: then you have to reify the getter, and it's annoying to implement</p>
-<a href="#conclusionresolution-328"><h4 id="conclusionresolution-328">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-module-namespace-exotic-objects"><h4 id="conclusionresolution-module-namespace-exotic-objects">Conclusion/Resolution</h4></a><ul>
 <li>Change module namespace exotic object [[GetOwnProperty]] to reflect as a writable data property.</li>
 <li>[[Set]] continues to throw in strict mode.</li>
 </ul>
@@ -98,7 +98,7 @@
 <p>YK: in the global space, people want to replace things that are global.</p>
 <p>MM: I retreat...</p>
 <p>AWB: OK, so, I don't think we should keep fishing on &quot;is there anything else we should change&quot;?</p>
-<a href="#conclusionresolution-for-functionname-issue-329"><h4 id="conclusionresolution-for-functionname-issue-329">Conclusion/Resolution (for function.name issue)</h4></a><ul>
+<a href="#conclusionresolution-for-functionname-issue-function-name-issue"><h4 id="conclusionresolution-for-functionname-issue-function-name-issue">Conclusion/Resolution (for function.name issue)</h4></a><ul>
 <li>Leave the spec as-is</li>
 <li>Let Microsoft experiment with more web-compatible versions of the algorithm, e.g. not-for-<code>var</code></li>
 <li>Have a public place to track and post errata regarding this issue, until the Great Tooling Revolution of 2015 arrives</li>
@@ -154,7 +154,7 @@
 <p>AWB: Check with Rick. If people here take the time to look at the draft, by the end of the week we could vote to refer 402 to GA.</p>
 <p>IS: We can't reference 402 edition 1 from ES6?</p>
 <p>AWB: No.</p>
-<a href="#conclusionresolution-330"><h4 id="conclusionresolution-330">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-lets-ship-this-thing"><h4 id="conclusionresolution-lets-ship-this-thing">Conclusion/Resolution</h4></a><ul>
 <li>Everyone to review or do what is necessary to vote to pass along 402 on Thursday.</li>
 </ul>
 <a href="#what-to-do-with-compact-profile-ecma-327-and-e4x-ecma-357"><h2 id="what-to-do-with-compact-profile-ecma-327-and-e4x-ecma-357">What to do with compact profile (ECMA-327) and E4X (ECMA-357)</h2></a><p>AWB: These are still active standards. E4X still gets downloads. We can withdraw the standards.</p>
@@ -165,23 +165,23 @@
 <p>AWB: We had this conversation 5 years ago. Things have evolved. Maybe adobe still cares, or maybe they don't.</p>
 <p>BE: It can be withdrawn without breaking other standards.</p>
 <p>IS: We approved ECMA404 before we had the RF agreement. Should we start an opt-out period for ECMA404?</p>
-<a href="#conclusionresolution-331"><h4 id="conclusionresolution-331">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-what-to-do-with-compact-profile-ecma-327-and-e4x-ecma-357"><h4 id="conclusionresolution-what-to-do-with-compact-profile-ecma-327-and-e4x-ecma-357">Conclusion/Resolution</h4></a><ul>
 <li>Istvan to follow up with Adobe and the CC to see if they would object to withdrawing E4X</li>
 </ul>
 <a href="#ecma404-rf"><h2 id="ecma404-rf">ECMA404 RF?</h2></a><p>IS: We approved ECMA404 before we had the RF agreement. Should we start an opt-out period for ECMA404?</p>
 <p>AWB: Can we retroactively make ECMA-404 Royalty Free?</p>
 <p>IS: Yes</p>
 <p>AWB: We should have an opt-out period then.</p>
-<a href="#conclusionresolution-332"><h4 id="conclusionresolution-332">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-ecma404-rf"><h4 id="conclusionresolution-ecma404-rf">Conclusion/Resolution</h4></a><ul>
 <li>Start an opt-out period.</li>
 </ul>
 <a href="#compact-profile"><h3 id="compact-profile">Compact profile</h3></a><p>DH: People who are interested in this can start doing work. Once there is actual demand work will happen. We shouldn't just make standards because someone might use it.</p>
 <p>AWB: I think there is consensus to kill 327.</p>
-<a href="#conclusionresolution-333"><h4 id="conclusionresolution-333">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-ecma404-rf"><h4 id="conclusionresolution-ecma404-rf">Conclusion/Resolution</h4></a><ul>
 <li>Istvan to follow up with Adobe and the CC to see if they would object to withdrawing the compact profile.</li>
 </ul>
 <a href="#fast-track-ecma-404"><h2 id="fast-track-ecma-404">Fast track ECMA-404</h2></a><p>IS: The actual standard document is not ready, maybe ready for this afternooon. Then we can publish it for fast track.</p>
-<a href="#conclusionresolution-334"><h4 id="conclusionresolution-334">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-fast-track-ecma-404"><h4 id="conclusionresolution-fast-track-ecma-404">Conclusion/Resolution</h4></a><ul>
 <li>Revisit tomorrow.</li>
 </ul>
 <a href="#61-es6-class-properties"><h2 id="61-es6-class-properties">6.1 ES6 Class Properties</h2></a><p>(Jeff Morrison)</p>
@@ -244,7 +244,7 @@ Counter.propTypes = {<span class="hljs-attr">initialCount</span>: React.PropType
 <p>YK: The reified methods only come into play if you use reflection and decorators.</p>
 <p>AWB: What if someone modifies these descriptors.</p>
 <p>EA: It is important that the descriptor of these own instance properties is immutable, or at that you cannot change these afterwards because then the constructor function has to change its behavior after the fact.</p>
-<a href="#conclusionresolution-335"><h4 id="conclusionresolution-335">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-61-es6-class-properties"><h4 id="conclusionresolution-61-es6-class-properties">Conclusion/Resolution</h4></a><ul>
 <li>Stage 0</li>
 <li>Do not use descriptors for initializer state.</li>
 </ul>
@@ -329,14 +329,14 @@ we'll fall off a complexity cliff.  Agree that we should look at the bigger pict
 <p>ARB:  readonly is an example that we might want to have a more direct way.</p>
 <p>YK:  If readonly were built-in and you imported it, then the engine could do smarter things.</p>
 <p>DH: Suggests stage 1, but audit the space which may lead to changes.</p>
-<a href="#conclusion-336"><h4 id="conclusion-336">Conclusion</h4></a><ul>
+<a href="#conclusion-62-decorators"><h4 id="conclusion-62-decorators">Conclusion</h4></a><ul>
 <li>Stage 1, YK will audit the space.</li>
 </ul>
 <a href="#63-reverseiterable-interface"><h2 id="63-reverseiterable-interface">6.3 ReverseIterable interface</h2></a><p>(Lee Byron)</p>
 <p>Proposal: <a href="https://github.com/leebyron/ecmascript-reverse-iterator">https://github.com/leebyron/ecmascript-reverse-iterator</a></p>
 <p>LB: <a href="https://github.com/leebyron/ecmascript-reverse-iterable/blob/master/TC39-March2015.pdf">presents slides</a></p>
 <p>[lots of discussion about how to extend iterators/iterables]</p>
-<a href="#conclusion-337"><h4 id="conclusion-337">Conclusion</h4></a><ul>
+<a href="#conclusion-63-reverseiterable-interface"><h4 id="conclusion-63-reverseiterable-interface">Conclusion</h4></a><ul>
 <li>More work to be done in breakouts to figure out path forward for iteration.</li>
 </ul>
 

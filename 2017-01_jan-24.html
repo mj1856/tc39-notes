@@ -222,7 +222,7 @@ After a second super call, an error will always be thrown, it'll be called, but 
 <p>BT: We still need to work on a few layering fixes #673 and #688, which we should leave for later</p>
 <p>DE: There's also some new timezone changes</p>
 <p>AWB: That's a fairly big semantic change; there are historical bug threads that we should look at for clarification.</p>
-<a href="#conclusionresolution-75"><h4 id="conclusionresolution-75">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-needs-consensus-prs"><h4 id="conclusionresolution-needs-consensus-prs">Conclusion/Resolution</h4></a><ul>
 <li>No change for ES2017</li>
 <li>Awaiting feedback from implementations about the difficulty of implementation of a static conservative check for possible multiple super calls</li>
 </ul>
@@ -276,7 +276,7 @@ After a second super call, an error will always be thrown, it'll be called, but 
 <p>DE: In this case, you're working with V8 to make sure the tests are compatible with the harness, so it should be especially not a problem.</p>
 <p>LB: I have been reviewing the tests. They seem to have reasonable coverage so far. About the harness support, this is not the first time that the harnesses are expected to provide functionality (also for TypedArray detach). As far as reviewed the PR, this has my +1.</p>
 <p>AWB: Any objections to Stage 4?</p>
-<a href="#conclusionresolution-76"><h4 id="conclusionresolution-76">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-13if-seeking-stage-4-for-sharedarraybuffer"><h4 id="conclusionresolution-13if-seeking-stage-4-for-sharedarraybuffer">Conclusion/Resolution</h4></a><ul>
 <li>Stage 4 for SharedArrayBuffer! <em>applause</em></li>
 </ul>
 <p>AWB: And that's it for ES2017</p>
@@ -288,7 +288,7 @@ After a second super call, an error will always be thrown, it'll be called, but 
 <p>JSL: Unicode properties or myself will take a look.</p>
 <p>DE: Great, the more the better!</p>
 <p>WH: I will look at any changes!</p>
-<a href="#conclusionresolution-77"><h4 id="conclusionresolution-77">Conclusion/Resolution</h4></a><p>Named reviewers for Stage 3</p>
+<a href="#conclusionresolution-other-time-boxed-items--looking-for-stage-3-reviewers"><h4 id="conclusionresolution-other-time-boxed-items--looking-for-stage-3-reviewers">Conclusion/Resolution</h4></a><p>Named reviewers for Stage 3</p>
 <ul>
 <li>RegExp lookbehind:
 <ul>
@@ -389,7 +389,7 @@ After a second super call, an error will always be thrown, it'll be called, but 
 <p>AWB: This is all part of the January 2015 scramble and we missed a case there.</p>
 <p>DE: I'm happy with that whole change overall.</p>
 <p>AK: Okay, i'm 3x my timebox!</p>
-<a href="#conclusionresolution-78"><h4 id="conclusionresolution-78">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-13ib-discussion-of-some-oddities-around-classes-extending-null"><h4 id="conclusionresolution-13ib-discussion-of-some-oddities-around-classes-extending-null">Conclusion/Resolution</h4></a><ul>
 <li>Revert the ES2017 change for now;</li>
 <li>AK to investigate a new solution for a follow-up spec change.</li>
 </ul>
@@ -454,7 +454,7 @@ After a second super call, an error will always be thrown, it'll be called, but 
 <p>GI: I will champion this in all forms</p>
 <p>AWB: Different threads went through different alternatives</p>
 <p>WH: I like it, but I don't want short-circuiting and free grouping.</p>
-<a href="#conclusionresolution-79"><h4 id="conclusionresolution-79">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-13ic-seeking-stage-1-for-null-propagation-operator"><h4 id="conclusionresolution-13ic-seeking-stage-1-for-null-propagation-operator">Conclusion/Resolution</h4></a><ul>
 <li>Stage 1, champion  for investigating the whole space, not tied down to the details of Claude's concrete proposal.</li>
 <li>Areas to investigate for next time:
 <ul>
@@ -568,7 +568,7 @@ After a second super call, an error will always be thrown, it'll be called, but 
 <p>ZB: One other thing, we have an internal debate we haven't resolved yet. We have two option formats for datetimesformat. Does the community have an opinions on what looks more like JS?</p>
 <p>??: The single format style matches CSS, so that makes sense.</p>
 <p>ZB: Thanks for your time!</p>
-<a href="#conclusionresolution-80"><h4 id="conclusionresolution-80">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-8-ecma402-status-updates"><h4 id="conclusionresolution-8-ecma402-status-updates">Conclusion/Resolution</h4></a><ul>
 <li>Stage 2 was proposed for these topics, but we didn't get an explcit &quot;yay&quot; or &quot;nay&quot; from the committee, and didn't appoint reviewers:
 <ul>
 <li>intl.ListFormat</li>
@@ -640,7 +640,7 @@ After a second super call, an error will always be thrown, it'll be called, but 
 <p>MF: The small mechanics around it can be resolved in a PR</p>
 <p>JL: Random question. There are no bugs around global properties here, right? So what, if you have window.f, what happens?</p>
 <p>SYG: I think the same thing happens. Properties of window are just like &quot;var f&quot; in the global scope</p>
-<a href="#conclusionresolution-81"><h4 id="conclusionresolution-81">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-13ie-discussion-of-annex-b333-evaldeclarationinstantiation-overwriting-bindings"><h4 id="conclusionresolution-13ie-discussion-of-annex-b333-evaldeclarationinstantiation-overwriting-bindings">Conclusion/Resolution</h4></a><ul>
 <li>Consensus on new semantics to print &quot;x&quot;
 <ul>
 <li>This is a bug.</li>
@@ -669,7 +669,7 @@ After a second super call, an error will always be thrown, it'll be called, but 
 <p>WH: I raised the issue with the lack of normalization being user hostile, but if implementations are against normalization I'm not going to block the proposal.</p>
 <p>AWB: that's it!?</p>
 <p>MF: Yup :)</p>
-<a href="#conclusionresolution-82"><h4 id="conclusionresolution-82">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-13iib-functionprototypetostring-updates"><h4 id="conclusionresolution-13iib-functionprototypetostring-updates">Conclusion/Resolution</h4></a><ul>
 <li>Proposal stays at Stage 3, going forward without line terminator normalization.</li>
 </ul>
 <a href="#what-to-discuss-next"><h3 id="what-to-discuss-next">What to discuss next</h3></a><p>DH: What's going oNNNN? The universe makes no sense anymore!</p>
@@ -752,7 +752,7 @@ After a second super call, an error will always be thrown, it'll be called, but 
 <p>MS: It makes implementation very difficult. I have existing regexps, Unicode ones, named I'm going to go partially into, but if I'm not in Unicode mode, then this other behavior is invoked</p>
 <p>AWB: The biggest issue could be that you may be way at the end of a parse before you realize you need to change.</p>
 <p>DE: That's already going to be the case in some places. (NB: See related blog post <a href="https://hackernoon.com/the-madness-of-parsing-real-world-javascript-regexps-d9ee336df983#.kup9nqgd8">https://hackernoon.com/the-madness-of-parsing-real-world-javascript-regexps-d9ee336df983#.kup9nqgd8</a>)</p>
-<a href="#conclusionresolution-83"><h4 id="conclusionresolution-83">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-13iic-seeking-stage-2-for-named-capture-groups"><h4 id="conclusionresolution-13iic-seeking-stage-2-for-named-capture-groups">Conclusion/Resolution</h4></a><ul>
 <li>Moves to stage two</li>
 <li>Groups are segregated into a separate object (to avoid conflicting with prototype changes)</li>
 <li>Reviewers: WH, someone from MSFT</li>

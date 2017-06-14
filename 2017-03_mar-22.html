@@ -88,7 +88,7 @@
 <p>BT: So it seems like we do have consensus on this document as-is?</p>
 <p>JXF: No removing that paragraph [4]?</p>
 <p>BT: As-is, yes. OK, I move for lunch recess. Reconvene 2PM.</p>
-<a href="#conclusionresolution-38"><h4 id="conclusionresolution-38">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-review-of-code-of-conduct"><h4 id="conclusionresolution-review-of-code-of-conduct">Conclusion/Resolution</h4></a><ul>
 <li>TC39 will present the current Code of Conduct proposal to Ecma's executive committee.</li>
 </ul>
 <a href="#general"><h2 id="general">General</h2></a><p>AWB: When I said that someone should step up to being the chair, that was really addressed to the member companies.  Many member companies have people that are ideally suited to running and mediating the meetings. Please check whether your company might be willing to send such a person to these meetings.</p>
@@ -307,7 +307,7 @@
 <p>MM: I accept that we did not achieve consensus on stage 1.</p>
 <p>YK: I do have a strong desire to see if we can make this fit with what you had in mind.</p>
 <p>MM: We agreed that some discussions need to happen whether or not we achieved consensus on this.</p>
-<a href="#conclusionresolution-39"><h4 id="conclusionresolution-39">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-10iiia-orthogonal-classes"><h4 id="conclusionresolution-10iiia-orthogonal-classes">Conclusion/Resolution</h4></a><ul>
 <li>Did not achieve consensus for stage 1.</li>
 <li>Mark is going to reach out to the champions of the affected proposals for follow-up.</li>
 </ul>
@@ -318,10 +318,10 @@
 <p>LBR: There are a few facts. As of September 2016, test262 consisted of over 23k test files...</p>
 <p>AK: I skimmed it. I will give it affirmative: yes. I find it hard to imagine someone objecting.</p>
 <p>AWB: I do, too, but I want to be fair. This is one of those things that Ecma as an organization: they think it's good for them.</p>
-<a href="#conclusionresolution-40"><h4 id="conclusionresolution-40">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-8iv-approve-tr-104-draft-and-forward-it-to-ecma-ga"><h4 id="conclusionresolution-8iv-approve-tr-104-draft-and-forward-it-to-ecma-ga">Conclusion/Resolution</h4></a><ul>
 <li>Consensus reached to approve and forward to Ecma GA</li>
 </ul>
-<a href="#12-i-needs-consensus-prs"><h2 id="12-i-needs-consensus-prs">12. i. Needs-Consensus PRs</h2></a><a href="##856-avoid-duplicate-ta#fill-value-coercions"><h3 id="#856-avoid-duplicate-ta#fill-value-coercions"><a href="https://github.com/tc39/ecma262/pull/856">#856 Avoid Duplicate TA#fill value coercions</a></h3></a><p>BT: Issues with <code>.fill()</code> on typed arrays. Specifically the issue involves how to do coercion on the values passed into the <code>.fill()</code> argument. The fix involves calling <code>toNumber()</code> up front.</p>
+<a href="#12-i-needs-consensus-prs"><h2 id="12-i-needs-consensus-prs">12. i. Needs-Consensus PRs</h2></a><a href="#856-avoid-duplicate-tafill-value-coercions"><h3 id="856-avoid-duplicate-tafill-value-coercions"><a href="https://github.com/tc39/ecma262/pull/856">#856 Avoid Duplicate TA#fill value coercions</a></h3></a><p>BT: Issues with <code>.fill()</code> on typed arrays. Specifically the issue involves how to do coercion on the values passed into the <code>.fill()</code> argument. The fix involves calling <code>toNumber()</code> up front.</p>
 <p>AWB: Any other Array prototype methods not reimplemented have similar problems?</p>
 <p>BT: I looked briefly, did not see, but didn't dig deeply.</p>
 <p>DE: I looked. I did not find any other functions that would benefit from similar treatment.</p>
@@ -333,10 +333,10 @@
 <p>BT: It's only slightly different (than arrays) but it is different.</p>
 <p>AWB: No, but I do think you should duplicate the whole algorithm.</p>
 <p>BT: It is duplicated.</p>
-<a href="#conclusionresolution-41"><h4 id="conclusionresolution-41">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-12-i-needs-consensus-prs"><h4 id="conclusionresolution-12-i-needs-consensus-prs">Conclusion/Resolution</h4></a><ul>
 <li>consensus to accept this PR</li>
 </ul>
-<a href="##854-remove-implementation-defined-behavior-for-number-methods"><h3 id="#854-remove-implementation-defined-behavior-for-number-methods"><a href="https://github.com/tc39/ecma262/pull/854">#854 Remove Implementation-defined behavior for Number methods</a></h3></a><p><code>Number.toFixed()</code>/<code>toPrecision</code>/<code>toExponential</code></p>
+<a href="#854-remove-implementation-defined-behavior-for-number-methods"><h3 id="854-remove-implementation-defined-behavior-for-number-methods"><a href="https://github.com/tc39/ecma262/pull/854">#854 Remove Implementation-defined behavior for Number methods</a></h3></a><p><code>Number.toFixed()</code>/<code>toPrecision</code>/<code>toExponential</code></p>
 <p>AWB: When I looked at it, it looked like it was a superfluous paragraph with those three methods.  When I looked at the spec these all just looked superfluous.</p>
 <p>BT: But this...I agree with that notion, this PR amounts to deleting those extra paragraphs that you mentioned.</p>
 <p>AWB: It felt more like old boilerplate code, like maybe it was just some common practice to add this language.</p>
@@ -353,10 +353,10 @@
 <p>DE: Maybe -20 to 100 [precision]</p>
 <p>YK: I had an issue tht was similar to this last week. I had a language binding and I had to decide about what a float in langauge A would be in language B.</p>
 <p>AWB: I think we should take this input as input to a future proposal or PR.</p>
-<a href="#conclusionresolution-42"><h4 id="conclusionresolution-42">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-12-i-needs-consensus-prs"><h4 id="conclusionresolution-12-i-needs-consensus-prs">Conclusion/Resolution</h4></a><ul>
 <li>consensus to accept this PR</li>
 </ul>
-<a href="##785-arrayprototoypesort-checks-for-comparefn-being-valid"><h3 id="#785-arrayprototoypesort-checks-for-comparefn-being-valid"><a href="https://github.com/tc39/ecma262/pull/785">#785 Array.prototoype.sort checks for compareFn being valid</a></h3></a><p>Presently spec implies but does not say that the compareFn must be <code>undefined</code> or callable. PR enforces that expectation.</p>
+<a href="#785-arrayprototoypesort-checks-for-comparefn-being-valid"><h3 id="785-arrayprototoypesort-checks-for-comparefn-being-valid"><a href="https://github.com/tc39/ecma262/pull/785">#785 Array.prototoype.sort checks for compareFn being valid</a></h3></a><p>Presently spec implies but does not say that the compareFn must be <code>undefined</code> or callable. PR enforces that expectation.</p>
 <p>BT: <code>sort</code> takes a compareFn. Spec does not currently say that compareFn must be callable or undefined. Implementations disagree on handling non-callable/non-undefined. Update to throw a TypeError.</p>
 <p>AWB: Still need the language about proper behavior of a sort compareFn.</p>
 <p>BT: ...We should really be throwing TypeError early for things that are not callable. Table [in PR] shows various testcases and existing behavior.</p>
@@ -371,10 +371,10 @@
 <p>MS: The first row there [in table]: shouldn't that also throw an error...OK, so it's callable but you're not going to call it because only one element.</p>
 <p>BT: That change was fairly recent too, not calling the compareFn if only one element.</p>
 <p>BT: Any objections to taking this pull request?</p>
-<a href="#conclusionresolution-43"><h4 id="conclusionresolution-43">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-12-i-needs-consensus-prs"><h4 id="conclusionresolution-12-i-needs-consensus-prs">Conclusion/Resolution</h4></a><ul>
 <li>consensus to accept this PR</li>
 </ul>
-<a href="##833-remove-duplicate-keys-from-proxies"><h3 id="#833-remove-duplicate-keys-from-proxies"><a href="https://github.com/tc39/ecma262/pull/833">#833 Remove duplicate keys from proxies</a></h3></a><p>BT:  All of the possibilities of how....</p>
+<a href="#833-remove-duplicate-keys-from-proxies"><h3 id="833-remove-duplicate-keys-from-proxies"><a href="https://github.com/tc39/ecma262/pull/833">#833 Remove duplicate keys from proxies</a></h3></a><p>BT:  All of the possibilities of how....</p>
 <p>MM: Why did we change what we did originally to end up in this current place? Do you know whether...</p>
 <p>AWB: I'm pretty sure from the issue thread that (tom?) is aware of it. I'm largely responsible for not doing this check before (something) because I was opposed to (computationally large checks).</p>
 <p>BT: Yeah, and to be honest it isn't that bad and it's super confusing and anyone implementing it is asking why, why why. In the spec it's not too bad, but in engines it's a lot more (obviously unecessary)</p>
@@ -393,20 +393,20 @@
 <p>BT: But there's only one way to compare a string right?</p>
 <p>AWB: ... symbols?</p>
 <p>AK: As the editor, keep an eye on that. I fear that someone will use &quot;duplicate&quot; somewhere and not know what it means.</p>
-<a href="#conclusionresolution-44"><h4 id="conclusionresolution-44">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-12-i-needs-consensus-prs"><h4 id="conclusionresolution-12-i-needs-consensus-prs">Conclusion/Resolution</h4></a><ul>
 <li>consensus to accept this PR</li>
 </ul>
-<a href="##852-move-side-effecty-toindex-in-ta-constructor-to-before-detached-check"><h3 id="#852-move-side-effecty-toindex-in-ta-constructor-to-before-detached-check"><a href="https://github.com/tc39/ecma262/pull/852">#852 Move side-effecty toIndex in TA constructor to before detached check</a></h3></a><p>BT: Current spec won't throw when <code>toIndex</code> causes buffer to be detached.</p>
+<a href="#852-move-side-effecty-toindex-in-ta-constructor-to-before-detached-check"><h3 id="852-move-side-effecty-toindex-in-ta-constructor-to-before-detached-check"><a href="https://github.com/tc39/ecma262/pull/852">#852 Move side-effecty toIndex in TA constructor to before detached check</a></h3></a><p>BT: Current spec won't throw when <code>toIndex</code> causes buffer to be detached.</p>
 <ol>
 <li>Add another isDetached array buffer check.</li>
 <li>I think moving the toIndex further up is the correct way here.</li>
 </ol>
 <p>AWB: Does moving it up change the order in which arguments are examined?</p>
 <p>BT: It does not change the observable order of side effects. It should be fine to do and not cause compat problems.</p>
-<a href="#conclusionresolution-45"><h4 id="conclusionresolution-45">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-12-i-needs-consensus-prs"><h4 id="conclusionresolution-12-i-needs-consensus-prs">Conclusion/Resolution</h4></a><ul>
 <li>consensus to accept this PR</li>
 </ul>
-<a href="##853-stringprototypereplace-edge-case-alignment"><h3 id="#853-stringprototypereplace-edge-case-alignment"><a href="https://github.com/tc39/ecma262/pull/853">#853 String.prototype.replace edge case alignment</a></h3></a><p>BT: Currently spec says substitution strings ($1, $2) with indexes beyond the matches groups (i.e. $5, $6, $7) is implementation-defined.</p>
+<a href="#853-stringprototypereplace-edge-case-alignment"><h3 id="853-stringprototypereplace-edge-case-alignment"><a href="https://github.com/tc39/ecma262/pull/853">#853 String.prototype.replace edge case alignment</a></h3></a><p>BT: Currently spec says substitution strings ($1, $2) with indexes beyond the matches groups (i.e. $5, $6, $7) is implementation-defined.</p>
 <p>BT: All implementations agree that the replacement is not done for such substitution strings. PR aligns with implementations.</p>
 <p>AWB: In my work on this in ES5 and ES6, for things like this I tried to propagate what had been specified in...?</p>
 <p>WH: When we wrote this in Edition 3, the plan was to only allow these things when there was actually a capture of that number. Unfortunately on some implementations, if there were only 3 captures and you did <code>$4</code>, you'd get a literal <code>$4</code> in the result instead of a replacement. We wanted to deprecate that.</p>
@@ -418,7 +418,7 @@
 <p>BT: I will add notes with history that Waldemar provided.</p>
 <p>MPT: Did you want to do the needs consensus on ??</p>
 <p>BT: I'm open to continuing.</p>
-<a href="#conclusionresolution-46"><h4 id="conclusionresolution-46">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-12-i-needs-consensus-prs"><h4 id="conclusionresolution-12-i-needs-consensus-prs">Conclusion/Resolution</h4></a><ul>
 <li>consensus to accept this PR</li>
 </ul>
 

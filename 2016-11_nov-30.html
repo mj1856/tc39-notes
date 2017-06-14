@@ -64,7 +64,7 @@ Taking on an intellectual property obligation as a part of an open standards com
 <p><strong>March meeting changed to 21-23</strong></p>
 <p>DD: Jewish holidays surround Sep meeting.</p>
 <p>AWB: Resume discussion tomorrow. Ideally cities, at least hosts to be determined.</p>
-<a href="#conclusionresolution-84"><h4 id="conclusionresolution-84">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-6i-meeting-scheduling"><h4 id="conclusionresolution-6i-meeting-scheduling">Conclusion/Resolution</h4></a><ul>
 <li>March 21, 22, 23</li>
 </ul>
 <a href="#4-approval-minutes-from-last-meeting"><h2 id="4-approval-minutes-from-last-meeting">4 Approval minutes from last meeting</h2></a><p>IS has uploaded to Reflector.</p>
@@ -153,7 +153,7 @@ SYG: Weak enough for hardware and compiler reality.</li>
 <p>BT: Do command-line runners have a way to open agents? Chakra does. This will be useful for me to make an eshost mechanism.</p>
 <p>AK: In d8, you can use new Worker()</p>
 <p>LH: Firefox has a shell function for creating agents, and a shell function for sharing memory between agents.</p>
-<a href="#conclusionresolution-85"><h4 id="conclusionresolution-85">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-13iia-sharedarraybuffer"><h4 id="conclusionresolution-13iia-sharedarraybuffer">Conclusion/Resolution</h4></a><ul>
 <li>Stage 3</li>
 <li>Intended to reach Stage 4 at the next meeting pending test262 tests; integration work can begin now.</li>
 </ul>
@@ -232,7 +232,7 @@ SYG: Weak enough for hardware and compiler reality.</li>
 <p>DH: Node has already said that snapshotting is OK, so this is a big step forwards.</p>
 <p>DE: Are we still considering all three options?</p>
 <p>AK: Yes</p>
-<a href="#conclusionresolution-86"><h4 id="conclusionresolution-86">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-12iia-proposal-to-reform-the-spec-to-solve-nodejs-ecosystem-compatibility-breaks-w-es-modules"><h4 id="conclusionresolution-12iia-proposal-to-reform-the-spec-to-solve-nodejs-ecosystem-compatibility-breaks-w-es-modules">Conclusion/Resolution</h4></a><ul>
 <li>Stage 1, champion Caridy Patino</li>
 </ul>
 <a href="#12ivb-lineterminator-normalization-implementation-feedback-for-fptostring"><h2 id="12ivb-lineterminator-normalization-implementation-feedback-for-fptostring">12.iv.b LineTerminator normalization: implementation feedback for F.p.toString</h2></a><p>(Michael Ficarra)
@@ -309,7 +309,7 @@ SYG: Weak enough for hardware and compiler reality.</li>
 <p>YK: Angular 1 calls Function.prototype.toString() functions which are dependency-injected in startup.</p>
 <p>KD: To clarify, if you care about performance, you should turn on build-time optimizations, though not everyone does.</p>
 <p>AK: I would recommend to the champion to discuss further with Waldemar about possible changes.</p>
-<a href="#conclusionresolution-87"><h4 id="conclusionresolution-87">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-12ivb-lineterminator-normalization-implementation-feedback-for-fptostring"><h4 id="conclusionresolution-12ivb-lineterminator-normalization-implementation-feedback-for-fptostring">Conclusion/Resolution</h4></a><ul>
 <li>There is no consensus to removing normalization, however four implementers have strong reservations about normalization.</li>
 <li>Champion will get usage data of CRLFs in scripts that require performant F.p.toString</li>
 <li>Champion will ask implementers for hard data about performance costs</li>
@@ -372,7 +372,7 @@ SYG: Weak enough for hardware and compiler reality.</li>
 <p>MS: I'd like to see Int32, and Float32, etc, it seems like a wart on the side. It would be great if we had proper types for all of these things, which would be a better way to do things for numbers that makes sense, e.g., for asm.js.</p>
 <p>BE: I'd like to keep it limited to just these for now. Scope creep is the enemy.</p>
 <p>WH: Historically, this is the right move; we have over the past 16 years created many int64 proposals that got expanded in scope and then collapsed under the increased weight. On the other hand, int32 is so similar to int64 that I'd like to just do it as well.</p>
-<a href="#conclusion--resolution-88"><h4 id="conclusion--resolution-88">Conclusion / Resolution</h4></a><ul>
+<a href="#conclusion--resolution-13v-progress-report-and-request-for-comments-on-64-bit-int-support"><h4 id="conclusion--resolution-13v-progress-report-and-request-for-comments-on-64-bit-int-support">Conclusion / Resolution</h4></a><ul>
 <li>specify overflow/underflow</li>
 <li>specify division by zero</li>
 <li>communicate with WebAssembly folks to make sure everyone's on the same page</li>
@@ -410,7 +410,7 @@ SYG: Weak enough for hardware and compiler reality.</li>
 <p>AWB: q about motivation</p>
 <p>DE: is this feature well motivated?</p>
 <p>Room: yes.</p>
-<a href="#conclusion--resolution-89"><h4 id="conclusion--resolution-89">Conclusion / Resolution</h4></a><ul>
+<a href="#conclusion--resolution-12ivc-regexp-lookbehind"><h4 id="conclusion--resolution-12ivc-regexp-lookbehind">Conclusion / Resolution</h4></a><ul>
 <li>Group capture numbering: not backwards</li>
 <li>Cross language comparison of regexp look behind syntax</li>
 <li>Include negated look ahead and look behind?</li>
@@ -457,7 +457,7 @@ A: Might need it, but very complicated and not analogous. Likely a different API
 <p>DE: not much to it, this proposal captures the need, makes more idiomatic.</p>
 <p>SM: Why was it added in V8 originally? That's a use case</p>
 <p>DE: Don't know the entire history?</p>
-<a href="#conclusion--resolution-90"><h4 id="conclusion--resolution-90">Conclusion / Resolution</h4></a><ul>
+<a href="#conclusion--resolution-12iif-intlsegmenter"><h4 id="conclusion--resolution-12iif-intlsegmenter">Conclusion / Resolution</h4></a><ul>
 <li>Stage 2</li>
 </ul>
 <a href="#11iia-revisit-nan-again"><h2 id="11iia-revisit-nan-again">11.ii.a Revisit NaN Again!</h2></a><ul>
@@ -495,7 +495,7 @@ A: Might need it, but very complicated and not analogous. Likely a different API
 <p>(re-ask about risks, WH and MM?)</p>
 <p>DE: (explaining changes that eliminate information leak)</p>
 <p>MM: Add text to SetValueInBuffer to canonical</p>
-<a href="#conclusion--resolution-91"><h4 id="conclusion--resolution-91">Conclusion / Resolution</h4></a><ul>
+<a href="#conclusion--resolution-11iia-revisit-nan-again"><h4 id="conclusion--resolution-11iia-revisit-nan-again">Conclusion / Resolution</h4></a><ul>
 <li>Change SetValueInBuffer to allow set either a bit pattern or a particular canonical value. It can either canonicalize or <em>not</em> canonicalize.</li>
 </ul>
 

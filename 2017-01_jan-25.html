@@ -161,7 +161,7 @@ IS: This has been done immediately after the completion of the conference call.<
 <p>IS: We will discuss this at the next executive committee meeting in April. Generally, this is rather remote to them which is basically isolated to TC39.</p>
 <p>AWB: I think this is likely to come up in other groups too.</p>
 <p>IS: At the beginning, do not expect too much. There are a number of cases where we are flexible to account for TC39's further advances, e.g., the HTML specification as the authoritative copy.</p>
-<a href="#conclusionresolution-68"><h4 id="conclusionresolution-68">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-6ii-who-should-be-the-chair"><h4 id="conclusionresolution-6ii-who-should-be-the-chair">Conclusion/Resolution</h4></a><ul>
 <li>Everyone in the committee is charged with reviewing the code of conduct proposal at <a href="https://github.com/tkellen/tc39-code-of-conduct-proposal/blob/master/Conduct.md">https://github.com/tkellen/tc39-code-of-conduct-proposal/blob/master/Conduct.md</a> by the March meeting</li>
 </ul>
 <a href="#11-test262-status-updates"><h2 id="11-test262-status-updates">11. Test262 Status Updates</h2></a><p>DE: You should share what Bocoup is doing with Google</p>
@@ -273,7 +273,7 @@ IS: This has been done immediately after the completion of the conference call.<
 <p>DE: Seems like we've already heard that the answer is &quot;no&quot; from this discussion.</p>
 <p>JSL: If we can't come to an answer for in-band, we will need to put something out-of-band.</p>
 <p>MPT: Multiple extensions</p>
-<a href="#conclusionresolution-69"><h4 id="conclusionresolution-69">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-13iia-proposed-grammar-change-to-es-modules"><h4 id="conclusionresolution-13iia-proposed-grammar-change-to-es-modules">Conclusion/Resolution</h4></a><ul>
 <li>Some members of the committee are strongly opposed to this particular syntax change</li>
 <li>There is also some interest in various strategies for disambiguating</li>
 <li>We do not have consensus to move forward rapidly on this proposal</li>
@@ -451,7 +451,7 @@ IS: This has been done immediately after the completion of the conference call.<
 <p>DE: It's hard to communicate through twitter, explainer docs and threads on github are a better medium for the people who are really engaged.</p>
 <p>??: One question about this proposal. Whether it is bigint or int64</p>
 <p><em>etherpad went down for approx 5 minutes</em></p>
-<a href="#conclusionresolution-70"><h4 id="conclusionresolution-70">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-15iv-progress-report-and-request-for-comments-on-64-bit-int-support"><h4 id="conclusionresolution-15iv-progress-report-and-request-for-comments-on-64-bit-int-support">Conclusion/Resolution</h4></a><ul>
 <li>DE will champion BigInt</li>
 </ul>
 <a href="#13id-seeking-stage--00-for-ieee-754-sign-bit"><h2 id="13id-seeking-stage--00-for-ieee-754-sign-bit">13.i.d Seeking stage -0.0 for IEEE-754 sign bit</h2></a><p>(JF Bastien)</p>
@@ -515,7 +515,7 @@ IS: This has been done immediately after the completion of the conference call.<
 <p>AWD: Is this actually higher priority than anything in Rick's proposal?</p>
 <p>DE: The thing about Rick's proposal is that we introduced these operations for degrees.</p>
 <p>JHD: I'm suggesting that putting these both in stage one is the right place to determine if they should be considered.</p>
-<a href="#conclusionresolution-71"><h4 id="conclusionresolution-71">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-13id-seeking-stage--00-for-ieee-754-sign-bit"><h4 id="conclusionresolution-13id-seeking-stage--00-for-ieee-754-sign-bit">Conclusion/Resolution</h4></a><ul>
 <li>Stage one, but discuss with Rick to consider merging / relationship between math proposals</li>
 <li>Concern about the motivation for users (is this too trivial, and any interested users can implement it themselves?)</li>
 </ul>
@@ -548,7 +548,7 @@ IS: This has been done immediately after the completion of the conference call.<
 <p>JL: Do we do conditional Stage 3 approval?</p>
 <p>MM: Given the topic it felt poetically appropriate to share this ;)</p>
 <p>JDH: Last question, can I have some volunteers to be reviewers? Mark, Dan</p>
-<a href="#resolution--conclusion-72"><h4 id="resolution--conclusion-72">Resolution / Conclusion</h4></a><ul>
+<a href="#resolution--conclusion-13iif-promiseprototypefinally-to-stage-3"><h4 id="resolution--conclusion-13iif-promiseprototypefinally-to-stage-3">Resolution / Conclusion</h4></a><ul>
 <li>MM and DE will review, based on proposal in a PR that observably passes callback functions to the .then method</li>
 <li>Still at Stage 2</li>
 </ul>
@@ -755,7 +755,7 @@ source ::= STRING | frame;
 <p>AWB: I'd assume they'd be implemented primitively.</p>
 <p>WH: How does an implementation censor the result of GetStackString? It can call GetStack and possibly remove or alter some frames, but how does it render those back into something that GetStackString would have produced?</p>
 <p>MM: Good point. We need a way of rendering for virtualization. This suggests including another part of the SES shim api we omitted from this proposal: stackString, which is an unprivileged operation that takes the object structure returned by getStack and produces the rendered string returned by getStackString. Then, when virtualizing getStack you'd just reimplement getStackString as stackString(getStack(error)).</p>
-<a href="#conclusionresolution-73"><h4 id="conclusionresolution-73">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-15iiia-error-stacks-seeking-stage-1"><h4 id="conclusionresolution-15iiia-error-stacks-seeking-stage-1">Conclusion/Resolution</h4></a><ul>
 <li>Stage 1</li>
 <li>Open Questions:
 <ul>
@@ -830,7 +830,7 @@ source ::= STRING | frame;
 <p>BE: In the past, various people wanted to control the narrative.</p>
 <p>DE: Chapters.io has some resources</p>
 <p>BT: I'll put a reflector post for figuring out community outreach</p>
-<a href="#conclusionresolution-74"><h4 id="conclusionresolution-74">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-discuss-non-technical-long-term-vision-for-ecmascript"><h4 id="conclusionresolution-discuss-non-technical-long-term-vision-for-ecmascript">Conclusion/Resolution</h4></a><ul>
 <li>BT to make a post on the Reflector saying that we'll spend the May meeting</li>
 <li>BT to write and send out a CFP for internal vision presentations</li>
 <li>Another thread to discuss attempts at community outreach</li>

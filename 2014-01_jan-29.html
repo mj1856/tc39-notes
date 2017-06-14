@@ -69,7 +69,7 @@ Various: Executing function definition updates both the let and the var bindings
 <p>WH: [points out (and likes) warning on cases &quot;for which the above steps are performed&quot; in Annex B of the current draft]
 [Long discussion about warnings, SHOULD, and their audience]</p>
 <p>LH:  A SHOULD warning seems a reasonable addition to the proposal here.</p>
-<a href="#conclusionresolution-485"><h4 id="conclusionresolution-485">Conclusion/resolution</h4></a><ul>
+<a href="#conclusionresolution-function-in-blocks-in-non-strict-mode"><h4 id="conclusionresolution-function-in-blocks-in-non-strict-mode">Conclusion/resolution</h4></a><ul>
 <li>2 bindings.</li>
 <li>Hoist a var binding for the FunctionDeclaration, unless it would introduce a static error (ie. hoisting past a let will not cause an error but also not create the var binding).</li>
 <li>Also create a let binding as per pure (strict mode) ES6 semantics. (Change from IE11 semantics). Within the scope of the let binding, assignment will only touch the let binding (ie. normal semantics).</li>
@@ -85,7 +85,7 @@ Various: Executing function definition updates both the let and the var bindings
 <p>AWB: Should not be a problem to advance without scrutizing the proposal. Willing to rubber stamp at this point. Since we are in a state where we are. (?)</p>
 <p>YK: Once we are at stage 3 we are committed to not revisit.</p>
 <p>RWS/YK to talk about task scheduling.</p>
-<a href="#conclusionresolution-486"><h4 id="conclusionresolution-486">Conclusion/resolution</h4></a><p>???</p>
+<a href="#conclusionresolution-objectobserve-status-report"><h4 id="conclusionresolution-objectobserve-status-report">Conclusion/resolution</h4></a><p>???</p>
 <a href="#post-es6-process"><h2 id="post-es6-process">Post ES6 process</h2></a><p>AWB: First step is to post the process somewhere public</p>
 <p>AWB: Second, need a place to track the progress</p>
 <p>AWB: Thinking we should do this on GitHub. Project TC39/meta. Master table. Or maybe 2 tables?</p>
@@ -114,7 +114,7 @@ Various: yes</p>
 <p>AWB: What step is this in the new process? Step 0?</p>
 <p>ARB: Can write spec</p>
 <p>DH: Primary reviewer.</p>
-<a href="#conclusionresolution-487"><h4 id="conclusionresolution-487">Conclusion/resolution</h4></a><ul>
+<a href="#conclusionresolution-do-expression"><h4 id="conclusionresolution-do-expression">Conclusion/resolution</h4></a><ul>
 <li>do-expressions as generailsation of block statements</li>
 <li>Progresses do-expressions to the next state in the new process.</li>
 </ul>
@@ -129,7 +129,7 @@ STH: this is an excellent goal</p>
 <p>MM: What's the implementation status of Loaders/Realms</p>
 <p>DH: Unpolyfillable, YK + DH tried some things w/ iframes, didn't work</p>
 <p>DH: That's part of why we think it's a fundamental new primitive</p>
-<a href="#conclusionresolution-488"><h4 id="conclusionresolution-488">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-security-review-for-loadersrealms"><h4 id="conclusionresolution-security-review-for-loadersrealms">Conclusion/Resolution</h4></a><ul>
 <li>MM et al to port SES to ES6, contact module champions w/ results</li>
 </ul>
 <a href="#typed-objects"><h2 id="typed-objects">Typed Objects</h2></a><p>Dmitry Lomov + Niko Matsakis</p>

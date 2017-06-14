@@ -36,7 +36,7 @@ supports treating these as empty objects.</p>
 <p>MM: The only observable wrapper is the <code>this</code> wrapper in non strict mode.</p>
 <p>AWB: In the new spec, <code>Object.setPrototypeOf(7)</code> throws.</p>
 <p>MM: Agrees violently!</p>
-<a href="#conclusionresolution-578"><h4 id="conclusionresolution-578">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-41-objectfreeze"><h4 id="conclusionresolution-41-objectfreeze">Conclusion/Resolution</h4></a><ul>
 <li>DC+AWB to work out the details</li>
 </ul>
 <a href="#42-weakset"><h2 id="42-weakset">4.2 WeakSet</h2></a><p>Do we need them?</p>
@@ -45,7 +45,7 @@ supports treating these as empty objects.</p>
 <p>AWB: Adds no new capabilities.</p>
 <p>AR: We should not limit ourselves to what is a new primitive capabilities</p>
 <p>AI(AWB): add to spec</p>
-<a href="#consensusresolution-579"><h4 id="consensusresolution-579">Consensus/Resolution:</h4></a><ul>
+<a href="#consensusresolution-42-weakset"><h4 id="consensusresolution-42-weakset">Consensus/Resolution:</h4></a><ul>
 <li>Add WeakSet in ES6</li>
 </ul>
 <a href="#44-proxies"><h2 id="44-proxies">4.4 Proxies</h2></a><p>TVC's presentation on Notification Proxies:
@@ -55,7 +55,7 @@ supports treating these as empty objects.</p>
 <li>shifts the burden from spec writers/implementors to users (need to use shadow target even for non-frozen objects)</li>
 <li>implementors will deal with spec bugs related to invariant violations as they come up</li>
 </ul>
-<a href="#consensusresolution-580"><h4 id="consensusresolution-580">Consensus/Resolution:</h4></a><ul>
+<a href="#consensusresolution-44-proxies"><h4 id="consensusresolution-44-proxies">Consensus/Resolution:</h4></a><ul>
 <li>Notification proxies are not approved.</li>
 <li>MM &amp; TVC are still happy with direct proxies.</li>
 </ul>
@@ -74,7 +74,7 @@ supports treating these as empty objects.</p>
 <p>BM: The most common action is to invoke a method.</p>
 <p>? : we already gave up on the |this| invariant for accessors: in ES5, if obj.x is a getter, |this| will always be bound to obj in the getter. With proxies this is no longer true.</p>
 <p>AI(AWB, TVC): Add spec for invoke. Tom and Allen to work out details of a Handler API that accommodates both &quot;caretaker&quot; (aka forwarding) and &quot;virtual object&quot; use cases.</p>
-<a href="#consensusresolution-581"><h4 id="consensusresolution-581">Consensus/Resolution:</h4></a><ul>
+<a href="#consensusresolution-proxy-invoke-trap-and-wrong-this-binding-on-built-in-methods"><h4 id="consensusresolution-proxy-invoke-trap-and-wrong-this-binding-on-built-in-methods">Consensus/Resolution:</h4></a><ul>
 <li>Add invoke trap.</li>
 </ul>
 <a href="#411"><h2 id="411">4.11</h2></a><p>MM: Everybody in this room wants classes and want to post pone private state to after ES6</p>
@@ -91,7 +91,7 @@ supports treating these as empty objects.</p>
 <p>AWB/MM: If we first did relationships we might not need symbols.</p>
 <p>MM: Relationship published but not reflective.</p>
 <p>MM: Difference between relationships and symbols: where is the mutability? This forces us to have both relationships and unique symbols.</p>
-<a href="#consensusresolution-582"><h4 id="consensusresolution-582">Consensus/Resolution:</h4></a><ul>
+<a href="#consensusresolution-411"><h4 id="consensusresolution-411">Consensus/Resolution:</h4></a><ul>
 <li>?</li>
 </ul>
 <a href="#413-endianness-of-typed-array"><h2 id="413-endianness-of-typed-array">4.13 Endianness of Typed array</h2></a><p>ARB: Remember it as if we should specify this.</p>
@@ -100,7 +100,7 @@ supports treating these as empty objects.</p>
 <p>STH: We don't know what WiiU will do?</p>
 <p>AWB: Or they decide not to comply to the spec</p>
 <p>DH: WebGL is endian agnostic.</p>
-<a href="#consensusresolution-583"><h4 id="consensusresolution-583">Consensus/Resolution:</h4></a><ul>
+<a href="#consensusresolution-413-endianness-of-typed-array"><h4 id="consensusresolution-413-endianness-of-typed-array">Consensus/Resolution:</h4></a><ul>
 <li>Leaving it unspecified in ES6.</li>
 </ul>
 <a href="#418-__proto__"><h2 id="418-__proto__">4.18 <strong>proto</strong></h2></a><p>STH: Recollection, first as data property, then as an accessor. Then discussed the power of that setter. Set the [[Prototype]] in the [[Realm]]. Then Allen wrote the spec. Realized that there were some problems with that design. Roughly the same power as <code>Object.setPrototypeOf</code>.</p>
@@ -119,7 +119,7 @@ supports treating these as empty objects.</p>
 <p>EA: Where do we draw the line (<code>Object.x</code> or <code>Reflect.x</code>)?</p>
 <p>DH: People will need to be able to get this before we have a reflect module.</p>
 <p>TVC: We need both because they have different return value (<code>Reflect.setPrototypeOf</code> returns boolean success value).</p>
-<a href="#consensusresolution-584"><h4 id="consensusresolution-584">Consensus/Resolution:</h4></a><ul>
+<a href="#consensusresolution-418-__proto__"><h4 id="consensusresolution-418-__proto__">Consensus/Resolution:</h4></a><ul>
 <li><code>__proto__</code> is an accessor on <code>Object.prototype</code>.
 <ul>
 <li>The setter mutates [[Prototype]].</li>
@@ -135,13 +135,13 @@ supports treating these as empty objects.</p>
   }
 }
 </code></pre>
-<a href="#consensusresolution-585"><h4 id="consensusresolution-585">Consensus/Resolution:</h4></a><ul>
+<a href="#consensusresolution-naming-of-iterator"><h4 id="consensusresolution-naming-of-iterator">Consensus/Resolution:</h4></a><ul>
 <li>No special naming</li>
 </ul>
 <a href="#generators-and-iterators"><h2 id="generators-and-iterators">Generators and iterators</h2></a><p>AWB: <code>send</code> is gone in favor of <code>next(arg)</code> (only first arg is passed through in <code>yield*</code>)</p>
 <p>YK: Whether generators return a frozen object or not?</p>
 <p>BE: <code>close</code> is gone</p>
-<a href="#consensusresolution-586"><h4 id="consensusresolution-586">Consensus/Resolution:</h4></a><ul>
+<a href="#consensusresolution-generators-and-iterators"><h4 id="consensusresolution-generators-and-iterators">Consensus/Resolution:</h4></a><ul>
 <li>Removed: <code>send</code> and <code>close</code></li>
 </ul>
 

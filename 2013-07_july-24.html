@@ -255,7 +255,7 @@ The design constraints are very different. For I/O, you want a LOT of control. A
 </code></pre>
 <p>MM: Move to declare consensus?</p>
 <p>AWB/WH: Doug needs to finish an editorial pass</p>
-<a href="#consensusresolution-554"><h4 id="consensusresolution-554">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-9-json-continued"><h4 id="consensusresolution-9-json-continued">Consensus/Resolution</h4></a><ul>
 <li>Pending the remaining edits, to be discussed for approval tomorrow.</li>
 </ul>
 <a href="#test-262-update"><h2 id="test-262-update">Test 262 Update</h2></a><p>(Brian Terlson)
@@ -293,7 +293,7 @@ Test262-ES6.pdf</p>
 <p>MM: ??</p>
 <p>MM: We might only be testing the slow path of JavaScript engines. Testing things in a loop will help.</p>
 <p>[Insert poison attack.]</p>
-<a href="#consensusresolution-555"><h4 id="consensusresolution-555">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-test-262-update"><h4 id="consensusresolution-test-262-update">Consensus/Resolution</h4></a><ul>
 <li>move the repo and test262 web presence to github.com/tc39</li>
 </ul>
 <a href="#52-can-computed-properties-name-in-object-literals-produce-string-prop-names-duplicates"><h2 id="52-can-computed-properties-name-in-object-literals-produce-string-prop-names-duplicates">5.2 Can computed properties name in object literals produce string prop names? Duplicates?</h2></a><p>(Allen Wirfs-Brock)</p>
@@ -348,7 +348,7 @@ Test262-ES6.pdf</p>
 <p>Recapping Waldemar's position about consistency with duplicate string keys in Objects in strict mode.</p>
 <p>Break.</p>
 <p>Post break discussion, after the points made about @@iterator and @@create</p>
-<a href="#consensusresolution-556"><h4 id="consensusresolution-556">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-52-can-computed-properties-name-in-object-literals-produce-string-prop-names-duplicates"><h4 id="consensusresolution-52-can-computed-properties-name-in-object-literals-produce-string-prop-names-duplicates">Consensus/Resolution</h4></a><ul>
 <li>Strings allowed</li>
 <li>Strict Mode: Duplicates are an Error</li>
 <li>Non-Strict Mode: No error</li>
@@ -382,7 +382,7 @@ Test262-ES6.pdf</p>
 <li>too much overhead</li>
 <li>syntactically unclear re: outcome.</li>
 </ul>
-<a href="#consensusresolution-557"><h4 id="consensusresolution-557">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-53-special-syntax-for-__proto__-in-an-object-literal"><h4 id="consensusresolution-53-special-syntax-for-__proto__-in-an-object-literal">Consensus/Resolution</h4></a><ul>
 <li><strong>proto</strong>: magic</li>
 <li>&quot;<strong>proto</strong>&quot;: magic</li>
 <li>[&quot;<strong>proto</strong>&quot;]: no magic, just a string</li>
@@ -395,7 +395,7 @@ Test262-ES6.pdf</p>
 <p>AR: does anyone think they <em>should</em> be extensible?</p>
 <p><em>crickets</em></p>
 <p><em>tumble weed</em></p>
-<a href="#consensusresolution-558"><h4 id="consensusresolution-558">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-54-are-typedarray-insances-born-non-extensible"><h4 id="consensusresolution-54-are-typedarray-insances-born-non-extensible">Consensus/Resolution</h4></a><ul>
 <li>TypedArray instances are not extensible.</li>
 </ul>
 <a href="#55-concat-and-typed-arrays"><h2 id="55-concat-and-typed-arrays">5.5 concat and typed arrays</h2></a><p>(Allen Wirfs-Brock)</p>
@@ -423,7 +423,7 @@ Test262-ES6.pdf</p>
 <p>Mixed discussion about general purpose apis that are lacking in the language.</p>
 <p>BE: how should we settle those issues?</p>
 <p>AR: with science. Look around the world and see what's most common; then put those things in the std lib</p>
-<a href="#consensusresolution-559"><h4 id="consensusresolution-559">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-55-concat-and-typed-arrays"><h4 id="consensusresolution-55-concat-and-typed-arrays">Consensus/Resolution</h4></a><ul>
 <li>No concat on Typed Arrays</li>
 </ul>
 <a href="#511-touint32length-and-arrayprototype-methods"><h2 id="511-touint32length-and-arrayprototype-methods">5.11 ToUint32(length) and Array.prototype methods</h2></a><p>(Allen Wirfs-Brock)</p>
@@ -468,7 +468,7 @@ Test262-ES6.pdf</p>
 <p>AWB: Arv filed a bug re: Array iterators, the keys() iterator (as well as entries()). Currently it is speced to use strings for the indexes. It would be better to use numbers.</p>
 <p>RW: Agree, the string property would be unexpected.</p>
 <p>General agreement</p>
-<a href="#consensusresolution-560"><h4 id="consensusresolution-560">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-514-keys-entries-return-numbers-for-array-index-properties"><h4 id="consensusresolution-514-keys-entries-return-numbers-for-array-index-properties">Consensus/Resolution</h4></a><ul>
 <li>keys(), entries() use numbers for array index properties</li>
 </ul>
 <a href="#57-does-objectfreeze-need-an-extensibility-hook"><h2 id="57-does-objectfreeze-need-an-extensibility-hook">5.7 Does Object.freeze need an extensibility hook?</h2></a><p>(Allen Wirfs-Brock)</p>
@@ -494,7 +494,7 @@ Test262-ES6.pdf</p>
 <p>AWB: Method that creates frozen data?</p>
 <pre><code class="language-js"><span class="hljs-built_in">Object</span>.freeze(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>())
 </code></pre>
-<a href="#consensusresolution-561"><h4 id="consensusresolution-561">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-57-does-objectfreeze-need-an-extensibility-hook"><h4 id="consensusresolution-57-does-objectfreeze-need-an-extensibility-hook">Consensus/Resolution</h4></a><ul>
 <li>No @@freeze MOP hook.</li>
 </ul>
 <a href="#54-typed-array-mop-behaviours-continued"><h2 id="54-typed-array-mop-behaviours-continued">5.4 Typed Array MOP behaviours (Continued)</h2></a><p>AWB: Talking about the descriptors of the properties of TypedArrays</p>
@@ -509,7 +509,7 @@ Test262-ES6.pdf</p>
 <span class="hljs-comment">// Throws!</span>
 </code></pre>
 <p>BE: This makes sense.</p>
-<a href="#consensusresolution-562"><h4 id="consensusresolution-562">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-54-typed-array-mop-behaviours-continued"><h4 id="consensusresolution-54-typed-array-mop-behaviours-continued">Consensus/Resolution</h4></a><ul>
 <li>Object.defineProperty on Typed Array will throw</li>
 <li>Object.freeze on Typed Array will throw</li>
 </ul>

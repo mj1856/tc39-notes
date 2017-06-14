@@ -14,7 +14,7 @@
 AWB: Adding &quot;Report from ECMA secretariat&quot; to HTML integration section</p>
 <p>SK: Add an agenda item to discuss JSDoc and its use in editors</p>
 <p>AWB: add &quot;ArrayBuffer neutering&quot; to ES6 agenda items</p>
-<a href="#conclusionresolution-430"><h2 id="conclusionresolution-430">Conclusion/Resolution</h2></a><ul>
+<a href="#conclusionresolution-adoption-of-the-agenda"><h2 id="conclusionresolution-adoption-of-the-agenda">Conclusion/Resolution</h2></a><ul>
 <li>Agenda Approved</li>
 <li>Minutes from April 2014 approved</li>
 </ul>
@@ -54,7 +54,7 @@ Concern 3: Perception of committee failure?</p>
 <p>AWB: Let's not throw this in with messaging about the schedule postponement.</p>
 <p>YK: The fact that people are used to ES5/ES6/etc. will make the change important as a messaging technique.</p>
 <p>BE: Let's sleep on it.</p>
-<a href="#conclusionresolution-431"><h2 id="conclusionresolution-431">Conclusion/Resolution</h2></a><ul>
+<a href="#conclusionresolution-42-schedule-review"><h2 id="conclusionresolution-42-schedule-review">Conclusion/Resolution</h2></a><ul>
 <li>Postponement of presentation of final ES6 draft agreed upon</li>
 <li>Switch to yearly naming convention to be slept on</li>
 </ul>
@@ -80,7 +80,7 @@ AWB: Already considered/dropped isProxy, so using O.p.toString as a back-door wo
 </code></pre>
 <p>MM: In for(;;) {} loop, can say for(let x = expr;...) -- that expression iterates the zeroth item of x?</p>
 <p>DH: Yes</p>
-<a href="#conclusionresolution-432"><h2 id="conclusionresolution-432">Conclusion/Resolution</h2></a><ul>
+<a href="#conclusionresolution-update-on-changes-to-spec-since-last-meeting"><h2 id="conclusionresolution-update-on-changes-to-spec-since-last-meeting">Conclusion/Resolution</h2></a><ul>
 <li>Leave as is currently spec'd</li>
 </ul>
 <a href="#43-arguments-and-caller-poisoning--static-class-methods-of-same-name"><h2 id="43-arguments-and-caller-poisoning--static-class-methods-of-same-name">4.3 <code>arguments</code> and <code>caller</code> poisoning &amp; static class methods of same name</h2></a><p>BT: Should we keep doing the poisoning?</p>
@@ -89,10 +89,10 @@ AWB: Already considered/dropped isProxy, so using O.p.toString as a back-door wo
 <p>YK: Having strict mode code dynamically allow static methods named &quot;caller&quot; and &quot;arguments&quot; when non-strict mode code forbids them seems strange for strict mode (which usually only forbids things).</p>
 <p>BT: If we can't get rid of arguments and caller can we make the properties configurable?</p>
 <p>MM: I no longer object to making .caller and .arguments configurable, so that you can make static methods with those names.</p>
-<a href="#conclusionresolution-433"><h2 id="conclusionresolution-433">Conclusion/Resolution:</h2></a><ul>
+<a href="#conclusionresolution-43-arguments-and-caller-poisoning--static-class-methods-of-same-name"><h2 id="conclusionresolution-43-arguments-and-caller-poisoning--static-class-methods-of-same-name">Conclusion/Resolution:</h2></a><ul>
 <li>Make the .caller and .arguments configurable properties for all functions (except sloppy mode functions), so that they can be overwritten.</li>
 </ul>
-<a href="#44-return-on-generatoriterator-types"><h2 id="44-return-on-generatoriterator-types">4.4 <code>return</code> on generator/iterator types</h2></a><a href="#conclusionresolution-434"><h2 id="conclusionresolution-434">Conclusion/Resolution</h2></a><ul>
+<a href="#44-return-on-generatoriterator-types"><h2 id="44-return-on-generatoriterator-types">4.4 <code>return</code> on generator/iterator types</h2></a><a href="#conclusionresolution-44-return-on-generatoriterator-types"><h2 id="conclusionresolution-44-return-on-generatoriterator-types">Conclusion/Resolution</h2></a><ul>
 <li>Postpone until tomorrow morning at ~10:30, after Istvan's talk at 10:15.</li>
 </ul>
 <a href="#46-reserving-additional-words-yield-async-and-await-in-particular"><h2 id="46-reserving-additional-words-yield-async-and-await-in-particular">4.6 Reserving additional words (<code>yield</code>, <code>async</code>, and <code>await</code> in particular)</h2></a><p>YK: Want to support async functions in top-level scripts.</p>
@@ -104,7 +104,7 @@ AWB: Already considered/dropped isProxy, so using O.p.toString as a back-door wo
 <p>DH: think about async modules as an argument in favor of reserving <code>await</code> at the top level of modules</p>
 <p>BE: strict mode already reserves <code>yield</code> and <code>async</code></p>
 <p>MM: And modules are strict!</p>
-<a href="#conclusionresolution-435"><h2 id="conclusionresolution-435">Conclusion/Resolution</h2></a><ul>
+<a href="#conclusionresolution-46-reserving-additional-words-yield-async-and-await-in-particular"><h2 id="conclusionresolution-46-reserving-additional-words-yield-async-and-await-in-particular">Conclusion/Resolution</h2></a><ul>
 <li>Reserve only <code>await</code> as a keyword in modules.</li>
 <li><code>async</code> and <code>module</code> work as contextual keywords because of their position (which can't conflict with variable names).</li>
 <li><code>yield</code> is reserved in strict mode, so doesn't need additional reservation.</li>
@@ -123,7 +123,7 @@ AWB: Already considered/dropped isProxy, so using O.p.toString as a back-door wo
 <p>YK: Not as much interest in Realms in the Node.js community.</p>
 <p>DH: Polyfill hard to do for the parts of the API that are the most interesting.</p>
 <p>AR: Hixie and/or Anne VK (or Boris Z) specify these kinds of things for the HTML spec, so maybe we should have a small meeting with them.</p>
-<a href="#conclusionresolution-436"><h2 id="conclusionresolution-436">Conclusion/Resolution</h2></a><ul>
+<a href="#conclusionresolution-47-removal-of-realms-api-from-es6-postponement-to-es7"><h2 id="conclusionresolution-47-removal-of-realms-api-from-es6-postponement-to-es7">Conclusion/Resolution</h2></a><ul>
 <li>Postpone decision to defer Realms to ES7 until next meeting.</li>
 <li>This does NOT amount to postponing to ES7!</li>
 <li>Bear in mind that it is separable from module loading, so we can still go either way (ES6 or ES7).</li>
@@ -140,7 +140,7 @@ AWB: Already considered/dropped isProxy, so using O.p.toString as a back-door wo
 <p>BE: Should isNeutered be a static method on Reflect or an instance method on ArrayBuffer?</p>
 <p>DH: ArrayBuffer instance method</p>
 <p>AWB: Is this feature-creep, though?</p>
-<a href="#conclusionresolution-437"><h2 id="conclusionresolution-437">Conclusion/Resolution</h2></a><ul>
+<a href="#conclusionresolution-48-arraybuffer-neutering"><h2 id="conclusionresolution-48-arraybuffer-neutering">Conclusion/Resolution</h2></a><ul>
 <li>Don't add isNeutered yet, and expect clients use try-catch when accessing properties to determine status.</li>
 <li>Also remember to change the name. &quot;Released&quot;? &quot;Vacated&quot;?</li>
 </ul>
@@ -171,13 +171,13 @@ AWB: Already considered/dropped isProxy, so using O.p.toString as a back-door wo
 <p>JM: People love progress bars, gamification?</p>
 <p>BN: What language features can be used in tests?</p>
 <p>BT: Philosophy is to use only ES5 outside the specific ES6 features under test.</p>
-<a href="#conclusionresolution-438"><h2 id="conclusionresolution-438">Conclusion/Resolution</h2></a><ul>
+<a href="#conclusionresolution-6-test-262-status"><h2 id="conclusionresolution-6-test-262-status">Conclusion/Resolution</h2></a><ul>
 <li>No spec decisions to be made here, just a status report.</li>
 </ul>
 <a href="#objectobserve-status"><h2 id="objectobserve-status">Object.observe status</h2></a><p>Want a way to express narrower interest via the listening API (for performance) rather than filtering in the callback, e.g. listening for changes to just one property, rather than all changes to the object.</p>
 <p>DH: Is the <code>Object.observe</code> protocol extensible enough to support Map and Set modifications?</p>
 <p>YK: <code>Object.observe</code> is meant to work out of the box for data property mutations, but you can also emit a synthetic change record for object types like Map and Set</p>
-<a href="#conclusionresolution-439"><h2 id="conclusionresolution-439">Conclusion/Resolution</h2></a><ul>
+<a href="#conclusionresolution-objectobserve-status"><h2 id="conclusionresolution-objectobserve-status">Conclusion/Resolution</h2></a><ul>
 <li>YK to draft proposal for changes to the spec and present it to champions.</li>
 </ul>
 <a href="#io-streams"><h2 id="io-streams">IO Streams</h2></a><p><a href="https://gist.github.com/annevk/3db3fbda2b95e5ae9427">https://gist.github.com/annevk/3db3fbda2b95e5ae9427</a></p>
@@ -213,7 +213,7 @@ BE: Termination-style exception handling won out over resumption-style a long ti
 <p>SK: Can we improve whatever was lacking about TypeScript?</p>
 <p>AR, YK: TypeScript types don't mean quite what you think they mean (Number, String).</p>
 <p>AR: Union types not supportable in TS today, so you can't express some important overloadings.</p>
-<a href="#conclusionresolution-440"><h2 id="conclusionresolution-440">Conclusion/Resolution</h2></a><ul>
+<a href="#conclusionresolution-io-streams"><h2 id="conclusionresolution-io-streams">Conclusion/Resolution</h2></a><ul>
 <li>As JN points out, we really have to get in contact with the W3C folks and make sure they're sympathetic, and we also really have to commit meaningfully to working on a new IDL, neither of which seems like something this committee can decide unilaterally.</li>
 <li>Worth exploring, but no commitment at this date.</li>
 </ul>
@@ -226,11 +226,11 @@ BE: Termination-style exception handling won out over resumption-style a long ti
 <p><em>agreement</em></p>
 <p>BE: If self-hosted, how much does it need to be anything more than code on GitHub</p>
 <p>YK: Engines can do opts that can't be done in userland</p>
-<a href="#conclusionresolution-441"><h2 id="conclusionresolution-441">Conclusion/Resolution</h2></a><ul>
+<a href="#conclusionresolution-web-apis-that-could-move-to-es7"><h2 id="conclusionresolution-web-apis-that-could-move-to-es7">Conclusion/Resolution</h2></a><ul>
 <li>General openness to moving these APIs into ES7+, but no firm commitment yet on any single item.</li>
 </ul>
 <p>Expanded Conclusion/Resolution for the ArrayBuffer neutering discussion:</p>
-<a href="#conclusionresolution-442"><h2 id="conclusionresolution-442">Conclusion/Resolution</h2></a><ul>
+<a href="#conclusionresolution-web-apis-that-could-move-to-es7"><h2 id="conclusionresolution-web-apis-that-could-move-to-es7">Conclusion/Resolution</h2></a><ul>
 <li>Don't add isNeutered yet, and expect clients use try-catch when accessing properties to determine status.</li>
 <li>Also remember to change the name. &quot;Released&quot;? &quot;Vacated&quot;?</li>
 <li>Any attempt to access (read or write) binary data elements of an ArrayBuffer that has been &quot;neutered&quot; will throw a TypeError exception.</li>

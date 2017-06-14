@@ -14,7 +14,7 @@
 <p>JN: Adoption of agenda?</p>
 <p>Approved: <a href="https://github.com/tc39/agendas/blob/master/2014/09.md">https://github.com/tc39/agendas/blob/master/2014/09.md</a></p>
 <p>JN: Approval of minutes (July 2014)</p>
-<a href="#conclusionresolution-381"><h4 id="conclusionresolution-381">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-regexp-globals"><h4 id="conclusionresolution-regexp-globals">Conclusion/Resolution</h4></a><ul>
 <li>Agenda approved</li>
 <li>Previous Minutes approved.`</li>
 </ul>
@@ -83,7 +83,7 @@ DH: but that was to iterator as self-iterable in whole, not this Iterator.protot
 <p>AWB: Outline of final spec review process from January through June.</p>
 <p>JN: Confirm RFTG opt-out</p>
 <p>RW: <a href="https://github.com/rwaldron/tc39-notes/blob/master/es6/2014-07/jul-30.md#rftg-admin-es6-opt-out-period">https://github.com/rwaldron/tc39-notes/blob/master/es6/2014-07/jul-30.md#rftg-admin-es6-opt-out-period</a></p>
-<a href="#conclusionresolution-382"><h4 id="conclusionresolution-382">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-41-spec-status-report"><h4 id="conclusionresolution-41-spec-status-report">Conclusion/Resolution</h4></a><ul>
 <li>Add <code>Symbol.iterator</code> on the %IteratorPrototype% that returns <code>this</code>.</li>
 <li>Due for November meeting</li>
 <li>Language Overview draft (RW)</li>
@@ -120,7 +120,7 @@ DH: but that was to iterator as self-iterable in whole, not this Iterator.protot
 <p>Discussion re: <em>EscapeCharacter</em></p>
 <p><a href="https://bugs.ecmascript.org/show_bug.cgi?id=3212">https://bugs.ecmascript.org/show_bug.cgi?id=3212</a></p>
 <p>BE: It was changed in ES3 to use DecimalDigit (from ES1's OctalDigit), would need to ask Waldemar</p>
-<a href="#conclusionresolution-383"><h4 id="conclusionresolution-383">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-43-legacy-decimal-integer-literals-starting-with-0-and-containing-8-or-9"><h4 id="conclusionresolution-43-legacy-decimal-integer-literals-starting-with-0-and-containing-8-or-9">Conclusion/Resolution</h4></a><ul>
 <li>Leave strict mode as-is</li>
 <li>Disallow leading zeroes, except for the constant 0 (and 0.1234 etc)</li>
 <li>Annex B non-strict: explicitly define the current interoperable behavior</li>
@@ -132,7 +132,7 @@ DH: but that was to iterator as self-iterable in whole, not this Iterator.protot
 <p>Should <code>Number</code> be able to parse the string &quot;0b0&quot; or &quot;0o1&quot;</p>
 <p>(Discussion of people (ab)using Number for converting user input and whether this should affect things.)</p>
 <p>Yes.</p>
-<a href="#conclusionresolution-384"><h4 id="conclusionresolution-384">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-44-number0b0101-nan-or-not"><h4 id="conclusionresolution-44-number0b0101-nan-or-not">Conclusion/Resolution</h4></a><ul>
 <li>Use spec-internal <code>ToNumber</code> via userland <code>Number</code> called as a function will convert (ie <code>Number('0b101') === 5)</code>.</li>
 <li>Upholding previous consensus on <code>parseInt</code></li>
 <li>Note in Annex C that this extension is a potentially breaking change</li>
@@ -157,7 +157,7 @@ G();
 <p>In today's semantics, when <code>G();</code> is called, it calls the second <code>F();</code>. In the new design, it would be the first, which is a breaking change. This code actually exists in some ad code somewhere.</p>
 <p>BT: No one else has implemented this yet, need to know if IE will be out there alone, or will other browsers stand with IE and break that unusual ad code?</p>
 <p>DH: If v8 and spidermonkey post bugs that indicate the intention to implement, then it shows support among implementors and is valuable.</p>
-<a href="#conclusionresolution-385"><h4 id="conclusionresolution-385">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-45-more-function-in-block"><h4 id="conclusionresolution-45-more-function-in-block">Conclusion/Resolution</h4></a><ul>
 <li>No spec change</li>
 <li>Implementors will file intention commitment bugs
 <a href="https://code.google.com/p/v8/issues/detail?id=3594">V8 bug</a>
@@ -167,7 +167,7 @@ G();
 <p>AWB: IETF Documents, eg. JavaScript mimetype references to ES3. Far behind considering ES5 and soon ES6</p>
 <p>MMR: The RFCs are stable documents. When a document receives a number, it's set. If it needs to be updated, it can be replaced.</p>
 <p>Discussion about interoperability and incompatibility breaks.</p>
-<a href="#conclusionresolution-386"><h4 id="conclusionresolution-386">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-intro-to-matt-miller-from-ietf-liaison-manager"><h4 id="conclusionresolution-intro-to-matt-miller-from-ietf-liaison-manager">Conclusion/Resolution</h4></a><ul>
 <li>Improved communication</li>
 </ul>
 <a href="#revisiting-161-forbidden-extensions"><h2 id="revisiting-161-forbidden-extensions">Revisiting 16.1, Forbidden Extensions</h2></a><p>MM: SpiderMonkey removed own caller and own arguments from all function forms
@@ -197,7 +197,7 @@ G();
 <ul>
 <li>Test262 attempts to walk a balance, if there are known examples that break runtime, there will be tests, but we don't go looking for them.</li>
 </ul>
-<a href="#conclusionresolution-387"><h4 id="conclusionresolution-387">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-somehow-we-started-talking-about-test262"><h4 id="conclusionresolution-somehow-we-started-talking-about-test262">Conclusion/Resolution</h4></a><ul>
 <li>It's impossible to test ECMAScript</li>
 <li>Testing is hard</li>
 </ul>
@@ -246,7 +246,7 @@ G();
 <p>BT: The file system isn't ideal.</p>
 <p>(Discussion of whether to accept stage 1 onward into test262.)</p>
 <p>DD: Want to make test262 writing easy, so will be adding helpers.</p>
-<a href="#conclusionresolution-388"><h4 id="conclusionresolution-388">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-test-262-update"><h4 id="conclusionresolution-test-262-update">Conclusion/Resolution</h4></a><ul>
 <li>Create a subdomain to host test262's ES6 tests</li>
 <li>Deprecation plan for Python harness: contact</li>
 <li>Domenic or Andreas for V8</li>
@@ -277,7 +277,7 @@ b,
 <p>JM: if people use this, old engines won't be able to run that code.</p>
 <p>AWB: it's the &quot;no new syntax&quot; argument.</p>
 <p>BE: the funny thing is in C you can't have enums with trailing commas but you can have them in array and struct initializers. That was a botch.</p>
-<a href="#conclusionresolution-389"><h4 id="conclusionresolution-389">Conclusion/Resolution</h4></a><p>BE: let's sleep on it</p>
+<a href="#conclusionresolution-51-trailing-commas-in-function-call-expressions-and-declarations"><h4 id="conclusionresolution-51-trailing-commas-in-function-call-expressions-and-declarations">Conclusion/Resolution</h4></a><p>BE: let's sleep on it</p>
 <ul>
 <li>No decision yet, revisit tomorrow.</li>
 </ul>
@@ -308,7 +308,7 @@ normal                normal
 <ul>
 <li>Stage 1?</li>
 </ul>
-<a href="#conclusionresolution-390"><h4 id="conclusionresolution-390">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-52-flush-denorm-to-zero"><h4 id="conclusionresolution-52-flush-denorm-to-zero">Conclusion/Resolution</h4></a><ul>
 <li>Stage 1</li>
 </ul>
 <a href="#53-arraybuffertransfer"><h2 id="53-arraybuffertransfer">5.3 ArrayBuffer.transfer</h2></a><p>(Brendan Eich, Allen Wirfs-Brock for Luke Wagner)</p>
@@ -319,7 +319,7 @@ normal                normal
 <p>Discussion of whether it should be static on ArrayBuffer or a method on the prototype - it's an alternative constructor</p>
 <p>Suggestion that ArrayBuffer.transfer(b1, 0) return a zero-length b2, not null. Consensus favors.</p>
 <p>AWB: Subclass of <code>ArrayBuffer</code>? What is the class of the object returned by <code>transfer(...)</code>?</p>
-<a href="#conclusionresolution-391"><h4 id="conclusionresolution-391">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-53-arraybuffertransfer"><h4 id="conclusionresolution-53-arraybuffertransfer">Conclusion/Resolution</h4></a><ul>
 <li>Stage 1</li>
 </ul>
 <a href="#56-nosuchproperty-built-in-proxy"><h2 id="56-nosuchproperty-built-in-proxy">5.6 NoSuchProperty built-in proxy</h2></a><p>(Brendan Eich for Nicholas C. Zakas)</p>
@@ -342,7 +342,7 @@ normal                normal
 <p>DH: (comments on likelihood of actual use)</p>
 <p>BE: This will be slow</p>
 <p>BZ: It will be fine until you hit the Proxy, based on real engine DOM (nodelist etc.) experience.</p>
-<a href="#conclusionresolution-392"><h4 id="conclusionresolution-392">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-56-nosuchproperty-built-in-proxy"><h4 id="conclusionresolution-56-nosuchproperty-built-in-proxy">Conclusion/Resolution</h4></a><ul>
 <li>Keep in library code which others should develop and user-test at scale</li>
 </ul>
 <a href="#58-exponentiation-operator-update"><h2 id="58-exponentiation-operator-update">5.8 Exponentiation Operator Update</h2></a><p>(Rick Waldron)</p>
@@ -353,7 +353,7 @@ normal                normal
 </ul>
 <p>Progress to Stage 2?</p>
 <p>Confirm.</p>
-<a href="#conclusionresolution-393"><h4 id="conclusionresolution-393">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-58-exponentiation-operator-update"><h4 id="conclusionresolution-58-exponentiation-operator-update">Conclusion/Resolution</h4></a><ul>
 <li>Stage 2</li>
 </ul>
 <a href="#55-mathiaddh-etc-polyfillable-64-bit-int-helpers"><h2 id="55-mathiaddh-etc-polyfillable-64-bit-int-helpers">5.5 Math.iaddh, etc. polyfillable 64-bit int helpers</h2></a><p>(Brendan Eich for Fabrice Bellard)</p>
@@ -367,7 +367,7 @@ normal                normal
 <span class="hljs-built_in">Math</span>.iaddh();
 <span class="hljs-built_in">Math</span>.isubh();
 </code></pre>
-<a href="#conclusionresolution-394"><h4 id="conclusionresolution-394">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-55-mathiaddh-etc-polyfillable-64-bit-int-helpers"><h4 id="conclusionresolution-55-mathiaddh-etc-polyfillable-64-bit-int-helpers">Conclusion/Resolution</h4></a><ul>
 <li>Rename imuluh to umulh</li>
 <li>Stage 0</li>
 </ul>

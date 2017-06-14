@@ -35,7 +35,7 @@
 <p>JHD: Only negative feedback was performance related. Otherwise, just sadness it didn't make it in.</p>
 <p>JHD: the only negative feedback was disappointment that it didn't make it in and...</p>
 <p>BT/JHD/etc consensus agreed that it proceeds to stage 4.</p>
-<a href="#conclusionresolution-205"><h4 id="conclusionresolution-205">Conclusion/resolution</h4></a><ul>
+<a href="#conclusionresolution-objectvalues--objectentries"><h4 id="conclusionresolution-objectvalues--objectentries">Conclusion/resolution</h4></a><ul>
 <li>Stage 4!</li>
 </ul>
 <a href="#systemglobal"><h2 id="systemglobal">System.global</h2></a><p>(JHD)</p>
@@ -52,7 +52,7 @@
 <p>DH: Are you sure about the incompat?</p>
 <p>JHD: self might be OK, but there were a few examples; didn't find a particular compelling one</p>
 <p>MM: is opposed to having bare &quot;global&quot;. They should be gathered; having that be System is fine, but it shoudl be someplace.</p>
-<a href="#conclusionresolution-206"><h4 id="conclusionresolution-206">Conclusion/resolution</h4></a><ul>
+<a href="#conclusionresolution-systemglobal"><h4 id="conclusionresolution-systemglobal">Conclusion/resolution</h4></a><ul>
 <li>Stage 2, reviewers for Stage 3 are Caridy Patino, Mark Miller, Michael Ficarra</li>
 </ul>
 <a href="#stringprototypepadstartpadend"><h2 id="stringprototypepadstartpadend">String.prototype.padStart/padEnd</h2></a><p>(JHD)</p>
@@ -80,7 +80,7 @@
 <p>BT: I'd really like to see a built-in module with good Unicode-aware string things</p>
 <p>JHD: Like graphemes!</p>
 <p>DE: Intl could be a good place for this; Intl.v8BreakIterator does it today but is not standardized</p>
-<a href="#conclusionresolution-207"><h4 id="conclusionresolution-207">Conclusion/resolution</h4></a><ol>
+<a href="#conclusionresolution-stringprototypepadstartpadend"><h4 id="conclusionresolution-stringprototypepadstartpadend">Conclusion/resolution</h4></a><ol>
 <li>Absent or undefined, default to single space string.</li>
 <li>ToString the thing.</li>
 <li>If empty string, return the original string. Otherwise, pad using the pad string.</li>
@@ -112,7 +112,7 @@
 <p>Dh: I don't understand the harm?</p>
 <p>JHD: This is not a people's websites will break thing. If more cross-realm things happen, there will be a lot of code that relies on this. Concern about things that make symbol toStringTag make objects look like an error.</p>
 <p>MM: to minimize the window, JHD should collaborate with MM on the getStack API. Hopes to have a proposal in Munich.</p>
-<a href="#conclusion-208"><h5 id="conclusion-208">Conclusion</h5></a><p>•JHD will work with MM on the stack proposal, and move this proposal into the &quot;withdrawn proposals&quot; section</p>
+<a href="#conclusion-erroriserror"><h5 id="conclusion-erroriserror">Conclusion</h5></a><p>•JHD will work with MM on the stack proposal, and move this proposal into the &quot;withdrawn proposals&quot; section</p>
 <a href="#ecma402"><h3 id="ecma402">ECMA402</h3></a><p>DE: Compatibility fix for v1 -&gt; v2 (call with a receiver that is created via Object.create, it would initialize the object). For V2, spec was changed to be normal JS semantics. Tried to fix V2 semantics, but couldn't ship in V8 due to breaking websites. Now have implemented a compromise semantics: if you call the NumberFormat and DateTimeFormat constructor with a receiver that is an instance of the respective constructor and it's not initialized.... (continues to describe) details here: <a href="https://github.com/tc39/ecma402/pull/84">https://github.com/tc39/ecma402/pull/84</a>. There is a symbol that it indirects to and the fix seems to work.</p>
 <p>MM: there is a self-hosted piece of code that illustrates the algorithm.</p>
 <p>DE: has a pull request for the change.</p>
@@ -149,7 +149,7 @@
 <p>BT: my bar is &quot;can I imagine it being contentious, then it needs consensus&quot; Ye sit can be used fo htis spec as well.</p>
 <p>DE: Ok let's confirm that when Mark gets back.</p>
 <p>CP: Targeting edition 4.</p>
-<a href="#conclusion-209"><h5 id="conclusion-209">Conclusion</h5></a><p>PR: is ok once the editorial issues are worked out (including a non-normative note describing the back-compat requirement and other relevant information). Said note should not link to GitHub issues.</p>
+<a href="#conclusion-erroriserror"><h5 id="conclusion-erroriserror">Conclusion</h5></a><p>PR: is ok once the editorial issues are worked out (including a non-normative note describing the back-compat requirement and other relevant information). Said note should not link to GitHub issues.</p>
 <a href="#zones-update"><h2 id="zones-update">Zones update</h2></a><p>(DD: Presenting slides)</p>
 <p>DD: Not going for stage 1 yet, but proposal has gotten more concrete</p>
 <p>MM: where is the polyfill?</p>
@@ -197,7 +197,7 @@
 <p>DD: you can replace the name column with &quot;initial name&quot; value</p>
 <p>AK: how does the &quot;get&quot; name spec text work with computed properties?</p>
 <p>MF: the expression is included in the name.</p>
-<a href="#conclusion-210"><h5 id="conclusion-210">Conclusion</h5></a><p>MF: will make changes to use the initial value of the &quot;name&quot; property as the global name of intrinsics</p>
+<a href="#conclusion-functionprototypetostring"><h5 id="conclusion-functionprototypetostring">Conclusion</h5></a><p>MF: will make changes to use the initial value of the &quot;name&quot; property as the global name of intrinsics</p>
 <p>MF: will make fix to clearly exclude surrounding whitespace: &quot;the source text matched by&quot; to mean &quot;the text form the beginning of hte first token and the end of the last token&quot;. He will attempt to get it in section 5.2</p>
 <p>MF: will bring those tomorrow to get final approval for stage 3</p>
 <a href="#reference-type-and-the-implementation-reality"><h2 id="reference-type-and-the-implementation-reality">Reference type and the implementation reality</h2></a><p><a href="https://github.com/tc39/ecma262/issues/467">https://github.com/tc39/ecma262/issues/467</a></p>
@@ -220,7 +220,7 @@
 <p>MM: he reluctantly agrees with BTs conclusion</p>
 <p>WH: I view this as an old bug. We should fix the bug in the implementations instead of copying the bug to the spec.</p>
 <p>BT: it would be nice to update test262 to test the semantics eventually</p>
-<a href="#conclusionresolution-211"><h4 id="conclusionresolution-211">Conclusion/resolution</h4></a><p>We will revisit the proposed resolution with Allen Wed.</p>
+<a href="#conclusionresolution-reference-type-and-the-implementation-reality"><h4 id="conclusionresolution-reference-type-and-the-implementation-reality">Conclusion/resolution</h4></a><p>We will revisit the proposed resolution with Allen Wed.</p>
 <a href="#async-iteration"><h2 id="async-iteration">Async Iteration</h2></a><p>KS: presenting slide with the changes</p>
 <p>KS: Keys changes:  promises are not unwrapped during iteration</p>
 <p>MM: present the invariant that &quot;interleaving points are marked with await&quot;</p>
@@ -257,7 +257,7 @@
 <p>WH: Another option already mentioned was to have for await only look for Symbol.asynciterator and not default to Symbol.iterator. This would require explicit user conversions to convert sequences to async sequences, but those aren't necessarily a bad thing.</p>
 <p>DH: &quot;meh&quot;.</p>
 <p>BT: Matt the author of ReactiveX wants to work with Matt Podwysocki</p>
-<a href="#conclusion-212"><h5 id="conclusion-212">Conclusion</h5></a><p>Approved for Stage 2</p>
+<a href="#conclusion-async-iteration"><h5 id="conclusion-async-iteration">Conclusion</h5></a><p>Approved for Stage 2</p>
 <p>DD: and DH volunteered as reviewers.</p>
 <a href="#shared-memory-and-atomics"><h2 id="shared-memory-and-atomics">Shared Memory and atomics</h2></a><p>LHN: presenting</p>
 <p>DH: did we convince ourselves that using strings instead of integers for futex codes is not too onerous for asm.js?</p>
@@ -294,7 +294,7 @@
 <p>(General consensus on at least allowing non-tail-call behavior)</p>
 <p>MM: What shows up in a stack trace? This becomes observable.</p>
 <p>EF: Let's delay this larger discussion until Thursday.</p>
-<a href="#conclusionresolution-213"><h4 id="conclusionresolution-213">Conclusion/resolution</h4></a><p>SM: will write spec language for tail calls (likely involving an update to PRepareForTailCAll) that will allow implementations to do a PTC across realm boundary or not (implementation defined).</p>
+<a href="#conclusionresolution-tco"><h4 id="conclusionresolution-tco">Conclusion/resolution</h4></a><p>SM: will write spec language for tail calls (likely involving an update to PRepareForTailCAll) that will allow implementations to do a PTC across realm boundary or not (implementation defined).</p>
 <p>*** Scheduling ensued ****</p>
 <p>Wednesday</p>
 <p>weak refs</p>

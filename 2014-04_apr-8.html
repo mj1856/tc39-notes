@@ -46,7 +46,7 @@ AWB: Yes, that's invisible. Went back and forth about whether to express such op
 <li>Differing recolltions on January discussion</li>
 <li>Most compelling reason: creates unnecessary difference between generator and manual implementaion of equivalent iterators.</li>
 </ul>
-<a href="#42-conclusionresolution-461"><h4 id="42-conclusionresolution-461">4.2 Conclusion/Resolution</h4></a><ul>
+<a href="#42-conclusionresolution-41-review-latest-spec-draft"><h4 id="42-conclusionresolution-41-review-latest-spec-draft">4.2 Conclusion/Resolution</h4></a><ul>
 <li>removal of the thrown exception when a value is passed to next() for a newborn generator</li>
 <li>further discussion to be had by Ben Newman and Dave Herman re: what to do with that value.</li>
 </ul>
@@ -135,7 +135,7 @@ AWB: Yes, that's invisible. Went back and forth about whether to express such op
 <p>AWB: We need a consistent approach
 ... Already have this extra scope</p>
 <p>AWB: Need to go back, we may initialize that outer binding and maybe we shouldn't</p>
-<a href="#conclusionresolution-462"><h4 id="conclusionresolution-462">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-41-review-latest-spec-draft"><h4 id="conclusionresolution-41-review-latest-spec-draft">Conclusion/Resolution</h4></a><ul>
 <li>Be consistent</li>
 <li>Look at the initialization scope and be sure to intentionally <em>never</em> initialize the for bindings in that scope</li>
 <li>Solution to open issue: extra scope with uninitialized x. Throws TDZ error</li>
@@ -170,7 +170,7 @@ AWB: Yes, that's invisible. Went back and forth about whether to express such op
 <p>WH: Any reason for us to believe this exists in the wild?</p>
 <p>BT: Looked for this pattern, with no findings, but absence in top 1k doesn't mean non-existence.</p>
 <p>WH: Disallow this and see if there is any pushback.</p>
-<a href="#conclusionresolution-463"><h4 id="conclusionresolution-463">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-41-review-latest-spec-draft"><h4 id="conclusionresolution-41-review-latest-spec-draft">Conclusion/Resolution</h4></a><ul>
 <li>Keep the catch as a <code>let</code> binding, but make it not an error in Annex B, just for <code>catch</code> (no other)</li>
 <li>If redeclaration with <code>let</code> or <code>const</code> is still a redeclaration error (this is no change)</li>
 <li>Continue to disallow function declaration in catch</li>
@@ -241,7 +241,7 @@ AWB: Yes, that's invisible. Went back and forth about whether to express such op
 <p>NM: The more user code we can get out of the prototype look up, the better.</p>
 <p>AWB: Ask Tom about intervening when user sets prototype</p>
 <p>YK/MM: Agree.</p>
-<a href="#conclusionresolution-464"><h4 id="conclusionresolution-464">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-setprototypeof-circularity-invariant"><h4 id="conclusionresolution-setprototypeof-circularity-invariant">Conclusion/Resolution</h4></a><ul>
 <li>Prevent proxy cycles. If the target is a proxy, the proxy target prototype records what it thinks the proxy prototype is, and returns the targets protototype and setPrototype is never called</li>
 <li>Whenever you change a prototype, you run a circulartity check immediately.</li>
 </ul>
@@ -387,7 +387,7 @@ preserved this safety property.</p>
 ... p.then(42)? Doesn't matter. It's a minor corner case (we should go with what programmers expect)</p>
 <p>The decision for how to handle this non-callable case could inform all cases that expect functions</p>
 <p>MM/WH: Don't really like the silently tolerant behaviour in general. Want the general precedent to be to throw errors when calling something that can't be called, but willing to make an exception in this case due to the established library usage.</p>
-<a href="#conclusionresolution-465"><h4 id="conclusionresolution-465">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-promise-then-issue"><h4 id="conclusionresolution-promise-then-issue">Conclusion/Resolution</h4></a><ul>
 <li>w/r to .then, respect libraries: no error.</li>
 <li>do not adopt this as a principle for non-callables passed where callables are expected, the general principal: if something is neither a callable or undefined, indicate an error.</li>
 </ul>
@@ -419,7 +419,7 @@ preserved this safety property.</p>
 <p>RW: Same.</p>
 <p>JH: Ideally the @@iterator is on a prototype to avoid the allocation costs.</p>
 <p>YK: Implementations can optimize.</p>
-<a href="#conclusionresolution-466"><h4 id="conclusionresolution-466">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-iterator-for-arguments-object"><h4 id="conclusionresolution-iterator-for-arguments-object">Conclusion/Resolution</h4></a><ul>
 <li>@@iterator on arguments object</li>
 <li>specified as an own property (no creation of exposed Arguments.prototype)</li>
 <li>Updated: <a href="https://bugs.ecmascript.org/show_bug.cgi?id=1114">https://bugs.ecmascript.org/show_bug.cgi?id=1114</a></li>
@@ -438,7 +438,7 @@ f(<span class="hljs-literal">undefined</span>);
 <p>BT: Always based on what is <em>passed</em></p>
 <p>RW: There is a rule that was created, which is relevant to this discussion: <a href="https://github.com/rwaldron/tc39-notes/blob/6d88efa7c4eba2d7a8b6fd5801f2415c2f29c94c/es6/2013-07/july-25.md#consensusresolution">https://github.com/rwaldron/tc39-notes/blob/6d88efa7c4eba2d7a8b6fd5801f2415c2f29c94c/es6/2013-07/july-25.md#consensusresolution</a></p>
 <p>MM: Avoidance of micromodes if possible. (Mark, can you fill this in? It was re: craziness)</p>
-<a href="#conclusionresolution-467"><h4 id="conclusionresolution-467">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-default-parameters"><h4 id="conclusionresolution-default-parameters">Conclusion/Resolution</h4></a><ul>
 <li>An argument list that only has identifiers in sloppy mode has mapped arguments object. ALL other arguments objects (ie. any that contain default, destructuring, or rest, or those in strict mode)  don't map.</li>
 </ul>
 <a href="#initializer-in-for-in"><h2 id="initializer-in-for-in">Initializer in for-in</h2></a><p>AWB:</p>
@@ -452,7 +452,7 @@ f(<span class="hljs-literal">undefined</span>);
 <p>MM: Except for the side effects of the expression</p>
 <p>AWB: So basically it was a matter of seeing if we can</p>
 <p>YK: As a rule, we should err on the side of caution when faced with these minor changes that create incompatibilities once we find real-world problems.</p>
-<a href="#conclusionresolution-468"><h4 id="conclusionresolution-468">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-initializer-in-for-in"><h4 id="conclusionresolution-initializer-in-for-in">Conclusion/Resolution</h4></a><ul>
 <li>Punt on a decision until May</li>
 </ul>
 <a href="#function-as-block"><h2 id="function-as-block">Function &quot;as&quot; Block</h2></a><p>BT:</p>
@@ -471,7 +471,7 @@ f(<span class="hljs-literal">undefined</span>);
 <p>MM: Not seeing in the wild? Back off</p>
 <p>YK: If we can get implementors to agree to make this an error, then we'll specify it as such</p>
 <p>AWB: note: file bug to have this tested in Firefox</p>
-<a href="#conclusionresolution-469"><h4 id="conclusionresolution-469">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-function-as-block"><h4 id="conclusionresolution-function-as-block">Conclusion/Resolution</h4></a><ul>
 <li>Allen will file bug to have this tested in Firefox</li>
 </ul>
 <a href="#name-property-of-bound-functions-and-tomethod-functions"><h2 id="name-property-of-bound-functions-and-tomethod-functions">Name property of bound functions and toMethod functions</h2></a><p>AWB:</p>
@@ -491,7 +491,7 @@ f(<span class="hljs-literal">undefined</span>);
 <p>Reviewing toMethod</p>
 <p>MM: What about function properties named &quot;get foo&quot;?
 MM: I guess this is ok. These names are not high-integrity -- mostly intended for debugging info.</p>
-<a href="#conclusionresolution-470"><h4 id="conclusionresolution-470">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-name-property-of-bound-functions-and-tomethod-functions"><h4 id="conclusionresolution-name-property-of-bound-functions-and-tomethod-functions">Conclusion/Resolution</h4></a><ul>
 <li>toMethod: no prefix qualifier</li>
 <li>Bound functions: &quot;bound foo&quot;</li>
 <li>Adopt uniformly:
@@ -511,11 +511,11 @@ MM: I guess this is ok. These names are not high-integrity -- mostly intended fo
 <li>%TypedArray%.from(iterable)</li>
 <li>Should constructor work like %TypedArray%.from?</li>
 </ul>
-<a href="#conclusionresolution-471"><h4 id="conclusionresolution-471">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-new-%typedarray%iterable"><h4 id="conclusionresolution-new-%typedarray%iterable">Conclusion/Resolution</h4></a><ul>
 <li>Make all %TypedArray% constructors accept iterable</li>
 </ul>
 <a href="#new-%typedarray%2"><h2 id="new-%typedarray%2">new %TypedArray%(&quot;2&quot;)</h2></a><p>DL: %TypedArray% actually coerces this to a number first to create a typed array with length 2. The previous consensus would have to occur <em>after</em> the coercion step to preserve the expected behaviour.</p>
-<a href="#conclusionresolution-472"><h4 id="conclusionresolution-472">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-new-%typedarray%2"><h4 id="conclusionresolution-new-%typedarray%2">Conclusion/Resolution</h4></a><ul>
 <li>Do string coercion to number before handling iterable to avoid mishandling a string argument.</li>
 </ul>
 <a href="#map-constructor-and-duplicate-keys"><h2 id="map-constructor-and-duplicate-keys">Map Constructor and Duplicate Keys</h2></a><pre><code class="language-js"><span class="hljs-keyword">let</span> map = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>([[<span class="hljs-string">"x"</span>, <span class="hljs-number">1</span>], [<span class="hljs-string">"x"</span>, <span class="hljs-number">2</span>]]);
@@ -525,7 +525,7 @@ MM: I guess this is ok. These names are not high-integrity -- mostly intended fo
 <li><a href="https://github.com/rwaldron/tc39-notes/blob/master/es6/2013-07/july-23.md#consensusresolution-1">https://github.com/rwaldron/tc39-notes/blob/master/es6/2013-07/july-23.md#consensusresolution-1</a></li>
 <li><a href="https://github.com/rwaldron/tc39-notes/blob/master/es6/2013-07/july-24.md#consensusresolution-2">https://github.com/rwaldron/tc39-notes/blob/master/es6/2013-07/july-24.md#consensusresolution-2</a></li>
 </ul>
-<a href="#conclusionresolution-473"><h4 id="conclusionresolution-473">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-map-constructor-and-duplicate-keys"><h4 id="conclusionresolution-map-constructor-and-duplicate-keys">Conclusion/Resolution</h4></a><ul>
 <li>No error, last property wins, eg. map.get(&quot;x&quot;) === 2</li>
 </ul>
 

@@ -116,7 +116,7 @@ f.x = <span class="hljs-string">"Hola"</span>;
 <p>BE: Worried about sheer weight of work involved in Allen's spec writing.</p>
 <p>RH: Moving from strawman to proposal/spec is meaningful to implementor teams.</p>
 <p>[some discussion about whether the above construction pattern has efficiency problems; needs implementation experience]</p>
-<a href="#conclusionresolution-634"><h4 id="conclusionresolution-634">Conclusion/Resolution</h4></a><p>Push for prototype implementations (Chrome already in progress). Encourage others to do the same</p>
+<a href="#conclusionresolution-tuning-spec-implementation-complexity"><h4 id="conclusionresolution-tuning-spec-implementation-complexity">Conclusion/Resolution</h4></a><p>Push for prototype implementations (Chrome already in progress). Encourage others to do the same</p>
 <p>Officially Promoted to proposal for ES7.</p>
 <a href="#grammar-validation"><h1 id="grammar-validation">Grammar Validation</h1></a><p>(Presented by Brendan Eich, Mozilla, Waldemar Horwat, Google, Rick Waldron, jQuery/Bocoup)</p>
 <p>Overdue for grammar validation, would be ideal to re-validate.</p>
@@ -125,10 +125,10 @@ boom = yield/area/
 height;
 Note that the current semantic restrictions on where yield expressions can go don't help because they apply after the program has been parsed; with this example you can't even get to the lexing and parsing stages.</p>
 <p>Resolution on the yield issue?</p>
-<a href="#conclusionresolution-635"><h4 id="conclusionresolution-635">Conclusion/Resolution</h4></a><p>AWB will refactor grammar so that yield can only be used within the context of a generator function and yield will not be usable as an identifier there. This will require essentially doubling the number of grammar rules in an analogous way to how the no-in rules are handled today, but on a much larger scale.</p>
+<a href="#conclusionresolution-tuning-spec-implementation-complexity"><h4 id="conclusionresolution-tuning-spec-implementation-complexity">Conclusion/Resolution</h4></a><p>AWB will refactor grammar so that yield can only be used within the context of a generator function and yield will not be usable as an identifier there. This will require essentially doubling the number of grammar rules in an analogous way to how the no-in rules are handled today, but on a much larger scale.</p>
 <p>BE: Need wider, complete validation that takes into account ASI and noIn.</p>
 <p>BE/AWB: Who is going to own this?</p>
-<a href="#conclusionresolution-636"><h4 id="conclusionresolution-636">Conclusion/Resolution</h4></a><p>Waldemar is going to try to work on this</p>
+<a href="#conclusionresolution-tuning-spec-implementation-complexity"><h4 id="conclusionresolution-tuning-spec-implementation-complexity">Conclusion/Resolution</h4></a><p>Waldemar is going to try to work on this</p>
 <a href="#formal-parameter-scope"><h1 id="formal-parameter-scope">Formal Parameter Scope</h1></a><p>(Presented by Brendan Eich, Mozilla)</p>
 <p>With regard to default formal parameters...</p>
 <p>Previously, all to the LEFT are in scope,
@@ -208,14 +208,14 @@ Conclusion/Resolution</p>
 <li>defaults can refer to any top level binding
 ]]]]]]]]]]]]]]]]]]]]]]]</li>
 </ul>
-<a href="#conclusionresolution-637"><h4 id="conclusionresolution-637">Conclusion/Resolution</h4></a><p>Revisit when data is gathered, re: perf or unexpected behaviours</p>
+<a href="#conclusionresolution-tuning-spec-implementation-complexity"><h4 id="conclusionresolution-tuning-spec-implementation-complexity">Conclusion/Resolution</h4></a><p>Revisit when data is gathered, re: perf or unexpected behaviours</p>
 <a href="#arrayof-rename"><h1 id="arrayof-rename">Array.of Rename?</h1></a><p>Recent post on es-discuss from user that doesn't like Array.of</p>
 <p>Array.of has been implemented in all of the es6 shim libs (Paul Miller, Axel Rauschmayer, Andrea Giammarchi and others...)</p>
 <a href="#arrayof"><h2 id="arrayof">Array.of()</h2></a><p>Makes sense, nice to say and explain.
 When I reason about a program:</p>
 <p>&quot;Here we have an array of elements&quot;
 (elements, items, numbers, strings)</p>
-<a href="#conclusionresolution-638"><h4 id="conclusionresolution-638">Conclusion/Resolution</h4></a><p>No change, no revisit.</p>
+<a href="#conclusionresolution-arrayof"><h4 id="conclusionresolution-arrayof">Conclusion/Resolution</h4></a><p>No change, no revisit.</p>
 <p>If we do <code>Foo.new()</code>, it must be <em>identical</em> to <code>new Foo()</code>.</p>
 <a href="#thin-arrow"><h1 id="thin-arrow">Thin Arrow?</h1></a><p>(Presented by Brendan Eich, Mozilla)</p>
 <p>We have the fat-arrow, supported by Kevin Smith's research, it's a win. Some voices in the community don't want the unexpected behaviour of the bound lexical <code>this</code></p>
@@ -223,7 +223,7 @@ When I reason about a program:</p>
 <p>WH: Don't want two slightly different concepts with a confusingly similar syntax. It would be too difficult for casual users to remember which arrow is which [in the same way as I can never remember in C++ which variant of the ++ operator overload takes an extra dummy argument].</p>
 <p>?: Then let's use fat-arrow with an extra 'this' parameter to stand for thin arrow.</p>
 <p>WH: That would address the confusion, but is still unnecessary featuritis and doesn't even save much in terms of text, which was its original reason for existence. Saving a couple characters here is not worth complicating the language.</p>
-<a href="#conclusionresolution-639"><h4 id="conclusionresolution-639">Conclusion/Resolution</h4></a><p>Consensus holds on fat-arrow</p>
+<a href="#conclusionresolution-arrayof"><h4 id="conclusionresolution-arrayof">Conclusion/Resolution</h4></a><p>Consensus holds on fat-arrow</p>
 <a href="#existential-operator-strawman-discussion"><h1 id="existential-operator-strawman-discussion">Existential Operator (strawman discussion)</h1></a><p>(Presented by Brendan Eich, Mozilla)</p>
 <p>Significant desire include a null and undefined check in syntax/operator form (a la coffeescipt)</p>
 <pre><code class="language-js">o = {}
@@ -253,7 +253,7 @@ r = o?.p?.q.r
 <p>YK: In the common cases, where it works, it works well. Where it doesn't, it falls apart unexpectedly.</p>
 <p>WH: What about other contexts such as p?[x], p?.q[x], and p?(x) ? [Note that grammar problems arise for some of those.]</p>
 <p>General agreement.</p>
-<a href="#conclusionresolution-640"><h4 id="conclusionresolution-640">Conclusion/Resolution</h4></a><p>Seems useful, but not now. Semantics are unclear</p>
+<a href="#conclusionresolution-arrayof"><h4 id="conclusionresolution-arrayof">Conclusion/Resolution</h4></a><p>Seems useful, but not now. Semantics are unclear</p>
 <a href="#generators"><h1 id="generators">Generators</h1></a><a href="#thisbinding"><h2 id="thisbinding">thisBinding</h2></a><p>Generator thisBinding is the thisBinding of the original generator call.</p>
 <pre><code class="language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyArray</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Array</span> </span>{
   *iterator() {
@@ -286,7 +286,7 @@ r = o?.p?.q.r
 <p>AWB: Need something for spec</p>
 <p>YK: If everyone implemented iterators with generators</p>
 <p>DH: Not super worried about this...</p>
-<a href="#conclusionresolution-641"><h4 id="conclusionresolution-641">Conclusion/Resolution</h4></a><p>The spec should not specify built in iterators to have 3 extra generator methods (ie send, throw, close)
+<a href="#conclusionresolution-generator-object-api"><h4 id="conclusionresolution-generator-object-api">Conclusion/Resolution</h4></a><p>The spec should not specify built in iterators to have 3 extra generator methods (ie send, throw, close)
 (Currently in draft, needs to be refactored)</p>
 <p>Notably: Significant dissent on throwing exceptions for control flow.</p>
 <p>Continued discussion of note...</p>

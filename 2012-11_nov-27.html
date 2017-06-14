@@ -118,7 +118,7 @@ Vocabulary
 <p>AWB: The work is already done.</p>
 <p>... Discussion.</p>
 <a href="#break"><h1 id="break">Break.</h1></a><a href="#meeting-notes---publish-to-wiki"><h1 id="meeting-notes---publish-to-wiki">Meeting Notes - Publish to wiki</h1></a><p>(side discussion, but valid to document)</p>
-<a href="#conclusionresolution-rw-to-publish-meeting-notes-to-ecma-wiki-in-addition-to-publishing-on-es-discuss-and-submission-to-ecma-628"><h4 id="conclusionresolution-rw-to-publish-meeting-notes-to-ecma-wiki-in-addition-to-publishing-on-es-discuss-and-submission-to-ecma-628">Conclusion/Resolution RW to publish meeting notes to ecma wiki (in addition to publishing on es-discuss and submission to ECMA)</h4></a><a href="#internationalization-update"><h1 id="internationalization-update">Internationalization Update</h1></a><p>NL: (Summary of changes based on feedback) Spec document submitted to general assembly for approval. HTML version of the spec has been prepared, will be posted to ECMA site after GA approval. Demonstration of test402 (INTL spec testing) running on Firefox (special build, not in Mozilla repository yet).</p>
+<a href="#conclusionresolution-rw-to-publish-meeting-notes-to-ecma-wiki-in-addition-to-publishing-on-es-discuss-and-submission-to-ecma-meta-object-protocol-aka-mop"><h4 id="conclusionresolution-rw-to-publish-meeting-notes-to-ecma-wiki-in-addition-to-publishing-on-es-discuss-and-submission-to-ecma-meta-object-protocol-aka-mop">Conclusion/Resolution RW to publish meeting notes to ecma wiki (in addition to publishing on es-discuss and submission to ECMA)</h4></a><a href="#internationalization-update"><h1 id="internationalization-update">Internationalization Update</h1></a><p>NL: (Summary of changes based on feedback) Spec document submitted to general assembly for approval. HTML version of the spec has been prepared, will be posted to ECMA site after GA approval. Demonstration of test402 (INTL spec testing) running on Firefox (special build, not in Mozilla repository yet).</p>
 <p>NC: v8 Implementation has regressed, due to clean up of defineProperty use.</p>
 <p>LH: Has an IE plugin impl., next phase is to implement directly</p>
 <p>LH: Should have discussion re: spec intention that all checks whether this is an instance Object, is this cross-realm? or this realm?</p>
@@ -220,7 +220,7 @@ Approval?</p>
 <p>JN: Will provide minutes of meetings to ECMA?</p>
 <p>NC: Yes.</p>
 <p>JN: Despite potential operational changes from ECMA, let's move forward with this project. Continue to report as adhoc group via this group.</p>
-<a href="#conclusionresolution-629"><h4 id="conclusionresolution-629">Conclusion/Resolution</h4></a><p>TC39 Approves to move forward with 2.0. NL will submit slides to ECMA for minutes record.</p>
+<a href="#conclusionresolution-international-20"><h4 id="conclusionresolution-international-20">Conclusion/Resolution</h4></a><p>TC39 Approves to move forward with 2.0. NL will submit slides to ECMA for minutes record.</p>
 <a href="#string-normalization"><h1 id="string-normalization">String Normalization</h1></a><p><a href="http://wiki.ecmascript.org/doku.php?id=strawman:unicode_normalization#add_normalize_method">http://wiki.ecmascript.org/doku.php?id=strawman:unicode_normalization#add_normalize_method</a></p>
 <p>NL: AWB has removed a number of references to normalization from the current spec that did not reflect reality</p>
 <p><strong>String.prototype.normalize(form)</strong></p>
@@ -230,7 +230,7 @@ Approval?</p>
 <p>NL/LH: (agree w/ always return a string)</p>
 <p>NL: Are we in agreement to spec this?</p>
 <p>MM: Requirements: (moved to resolution)</p>
-<a href="#conclusionresolution-630"><h4 id="conclusionresolution-630">Conclusion/Resolution</h4></a><p>Yes, requirements:</p>
+<a href="#conclusionresolution-international-20"><h4 id="conclusionresolution-international-20">Conclusion/Resolution</h4></a><p>Yes, requirements:</p>
 <ul>
 <li>total,</li>
 <li>deterministic</li>
@@ -246,7 +246,7 @@ Approval?</p>
 <p>AWB: Don't think that we should start moving Intl into ES, or at least not until ES7</p>
 <p>NL/LH: Not being in ES6 doesn't prevent implementation or spec authoring.</p>
 <p>LH: Doesn't need to be in the wrong spec just to move forward.</p>
-<a href="#conclusionresolution-631"><h4 id="conclusionresolution-631">Conclusion/Resolution</h4></a><p>Goes in Internationalization but doesn't prevent specification or implementation.</p>
+<a href="#conclusionresolution-international-20"><h4 id="conclusionresolution-international-20">Conclusion/Resolution</h4></a><p>Goes in Internationalization but doesn't prevent specification or implementation.</p>
 <a href="#eliminate-touint32-warping-on-array-access"><h1 id="eliminate-touint32-warping-on-array-access">Eliminate ToUInt32() warping on array access</h1></a><p>AWB: Sparse parameter on Array iterator constructors (eg. Array.prototype.keys/values/items that determines whether or not &quot;holes&quot; are included in the iteration.?
 Can we eliminate functions returning Reference values from the specification</p>
 <p>AWB: Arrays use ToUint32, which does modulo arithmetic.</p>
@@ -267,7 +267,7 @@ Can we eliminate functions returning Reference values from the specification</p>
 <pre><code class="language-js"><span class="hljs-keyword">var</span> a = [];
 a[<span class="hljs-built_in">Math</span>.pow(<span class="hljs-number">2</span>, <span class="hljs-number">32</span>) - <span class="hljs-number">1</span>] = <span class="hljs-literal">true</span>;
 </code></pre>
-<a href="#conclusionresolution-632"><h4 id="conclusionresolution-632">Conclusion/Resolution</h4></a><p>Tabled until AWB has further impact research.</p>
+<a href="#conclusionresolution-international-20"><h4 id="conclusionresolution-international-20">Conclusion/Resolution</h4></a><p>Tabled until AWB has further impact research.</p>
 <a href="#the-prototypeconstructor-object-model-supporting-generatorsuse-of-instanceof-with-generators-and-generator-instances"><h1 id="the-prototypeconstructor-object-model-supporting-generatorsuse-of-instanceof-with-generators-and-generator-instances">The prototype/constructor object model supporting Generators/use of instanceof with generators and generator instances</h1></a><p>AWB, presents UML diagram to illustrate...</p>
 <p>The Generator Constructor doesn't need a global name. Assume it's accessible at System.Global.</p>
 <p>Each generator function has a unique prototype object with own properties for next, send, throw, close, etc. These prototype types may share references to the built-in mplementations of those methods.</p>
@@ -333,7 +333,7 @@ g2 <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Func
 f.__proto__ === GeneratorFunction.prototype;
 f.__proto__ === (<span class="hljs-function"><span class="hljs-keyword">function</span> *(<span class="hljs-params"></span>) </span>{}).__proto__;
 </code></pre>
-<a href="#conclusionresolution-633"><h4 id="conclusionresolution-633">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-international-20"><h4 id="conclusionresolution-international-20">Conclusion/Resolution</h4></a><ul>
 <li>Per diagram (<a href="https://dl.dropbox.com/u/3531958/tc39/generator-diagram-1.jpg">https://dl.dropbox.com/u/3531958/tc39/generator-diagram-1.jpg</a>), but without exposing &quot;Generator&quot;</li>
 <li>&quot;GeneratorFunction&quot; exposed via a module</li>
 </ul>

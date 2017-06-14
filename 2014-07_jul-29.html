@@ -179,7 +179,7 @@ WH: I wrote this wording in ES3 and I'm fine with this change. It will fix the b
 <p>MM: Unless you do: <code>with(global object) {...}</code></p>
 <p>Confirm.</p>
 <p>AWB: Is this a function of <code>with</code> or the environment?</p>
-<a href="#conclusionresolution-408"><h4 id="conclusionresolution-408">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-46-unscopables"><h4 id="conclusionresolution-46-unscopables">Conclusion/Resolution</h4></a><ul>
 <li>@@unscopables only works inside of <code>with</code> object environment records, not global object environment records.</li>
 <li>Revert to the previous algorithm:
 <ol>
@@ -207,13 +207,13 @@ WH: I wrote this wording in ES3 and I'm fine with this change. It will fix the b
 <p>JM: Did you distinguish null and undefined?</p>
 <p>SM: No</p>
 <p>YK: We should distinguish or we have two nulls</p>
-<a href="#conclusionresolution-409"><h4 id="conclusionresolution-409">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-48-consider-if-objectassign-should-silently-ignore-nullundefined-sources"><h4 id="conclusionresolution-48-consider-if-objectassign-should-silently-ignore-nullundefined-sources">Conclusion/Resolution</h4></a><ul>
 <li>do not throw on undefined</li>
 <li>will throw on null</li>
 </ul>
 <a href="#short-discussion-about-making-generatorreturn-throw-a-special-exception"><h2 id="short-discussion-about-making-generatorreturn-throw-a-special-exception">Short discussion about making generator.return() throw a special exception.</h2></a><p>DH: Want to bring up Andy Wingo's preference (discussed on es-discuss) for modeling return() as an exception rather than a return.</p>
 <p>General opposition.</p>
-<a href="#conclusionresolution-410"><h4 id="conclusionresolution-410">Conclusion/resolution</h4></a><ul>
+<a href="#conclusionresolution-short-discussion-about-making-generatorreturn-throw-a-special-exception"><h4 id="conclusionresolution-short-discussion-about-making-generatorreturn-throw-a-special-exception">Conclusion/resolution</h4></a><ul>
 <li>keep as is: return() method produces a return control flow, not an exception</li>
 </ul>
 <a href="#undefined"><h2 id="undefined"></h2></a><p>AWB: In the process of for-of, if a throw occurred, does that turn into a throw to the iterator?</p>
@@ -279,7 +279,7 @@ it.throw(); <span class="hljs-comment">// </span>
 <p>DH: check out <a href="http://legacy.python.org/dev/peps/pep-0380/#formal-semantics">PEP-380</a>. The desugaring is mind-bogglingly complex, but the refactoring principle is very straightforward. Refactoring should not introduce corner cases where it behaves differently.</p>
 <p>MM: consensus that yield* delegates throw?</p>
 <p>JS: no objection</p>
-<a href="#conclusionresolution-411"><h4 id="conclusionresolution-411">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-yield-"><h4 id="conclusionresolution-yield-">Conclusion/Resolution</h4></a><ul>
 <li><code>yield*</code> delegates <code>next()</code>, <code>return()</code> and <code>throw()</code></li>
 <li>for-of propagates abrupt completion outward, calls the iterator's <code>return()</code></li>
 </ul>
@@ -305,7 +305,7 @@ it.throw(); <span class="hljs-comment">// </span>
 <p>No support for ES6</p>
 <p>DD: I don't think we should push for ES6</p>
 <p>RW: Last meeting pushed back 6 months, this isn't that valuable.</p>
-<a href="#conclusionresolution-412"><h4 id="conclusionresolution-412">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-411-consider-adding-attribute-event-handlers-to-annex-b"><h4 id="conclusionresolution-411-consider-adding-attribute-event-handlers-to-annex-b">Conclusion/Resolution</h4></a><ul>
 <li>Scheduled for ES7 Annex B</li>
 </ul>
 <a href="#49-argumentscaller-poisoning-on-new-syntactic-forms---arrows-generators"><h2 id="49-argumentscaller-poisoning-on-new-syntactic-forms---arrows-generators">4.9 Arguments/caller poisoning on new syntactic forms - Arrows, Generators</h2></a><p>(Brian Terlson)</p>
@@ -321,7 +321,7 @@ it.throw(); <span class="hljs-comment">// </span>
 <p>MM: New forms, the properties are absent.</p>
 <p>AWB: Are these properties implemented as own properties or inherited?</p>
 <p>MM: And we agreed that <code>Function.prototype</code> remains a function</p>
-<a href="#conclusionresolution-413"><h4 id="conclusionresolution-413">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-49-argumentscaller-poisoning-on-new-syntactic-forms---arrows-generators"><h4 id="conclusionresolution-49-argumentscaller-poisoning-on-new-syntactic-forms---arrows-generators">Conclusion/Resolution</h4></a><ul>
 <li>Get rid of all poisoned caller and arguments, except for the poisoned caller and arguments on Function.prototype</li>
 <li>All functions born of non-legacy function syntactic forms do not have caller and arguments properties</li>
 </ul>
@@ -370,7 +370,7 @@ it.throw(); <span class="hljs-comment">// </span>
 <p>MM: How we should be messaging as individuals. TC39 should not be spending time</p>
 <p>PL: This is all too hard to quantify and assess because change <em>will</em> happen.</p>
 <p>DH: Stability chart is</p>
-<a href="#conclusionresolution-414"><h4 id="conclusionresolution-414">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-410-signaling-stability-of-existing-features"><h4 id="conclusionresolution-410-signaling-stability-of-existing-features">Conclusion/Resolution</h4></a><ul>
 <li>Individual evangelism, feedback and outreach</li>
 </ul>
 <a href="#postpone-realm-api-to-es7"><h2 id="postpone-realm-api-to-es7">Postpone Realm API to ES7</h2></a><p>MM: Can we?</p>
@@ -388,7 +388,7 @@ it.throw(); <span class="hljs-comment">// </span>
 <p>Discussion re: security issues created by implementations in browsers.</p>
 <p>MM: The security implications and risks are greater for Realm because this <em>is</em> the sandbox api.</p>
 <p>DH: Agree.</p>
-<a href="#conclusionresolution-415"><h4 id="conclusionresolution-415">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-postpone-realm-api-to-es7"><h4 id="conclusionresolution-postpone-realm-api-to-es7">Conclusion/Resolution</h4></a><ul>
 <li>Realm postponed to ES7</li>
 </ul>
 <a href="#revisit-objectassign"><h2 id="revisit-objectassign">Revisit Object.assign()</h2></a><p>JDD: The issue currently: if we allow <code>undefined</code> then <code>null</code> is the only value not allowed. I don't see anything distinguishing.
@@ -415,7 +415,7 @@ It's strange that <code>null</code> is singled out like this. When <code>null</c
 <li><code>null</code> represents the no-object object, just like NaN represents the no-number number</li>
 <li><code>undefined</code> represents the no-value value</li>
 </ul>
-<a href="#conclusionresolution-416"><h4 id="conclusionresolution-416">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-revisit-objectassign"><h4 id="conclusionresolution-revisit-objectassign">Conclusion/Resolution</h4></a><ul>
 <li>Overriding previous resolution:
 <ul>
 <li><code>Object.assign</code> does not throw on <code>null</code> or <code>undefined</code></li>
@@ -436,7 +436,7 @@ It's strange that <code>null</code> is singled out like this. When <code>null</c
 <p>BT: Yes.</p>
 <p>DD: Node runner?</p>
 <p>BT: MS has been using a node runner internally, I've pulled out the useful pieces and pushed to github: <a href="https://github.com/bterlson/test262-harness">https://github.com/bterlson/test262-harness</a></p>
-<a href="#conclusionresolution-417"><h4 id="conclusionresolution-417">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-test-262-update"><h4 id="conclusionresolution-test-262-update">Conclusion/Resolution</h4></a><ul>
 <li>announcement effort</li>
 </ul>
 

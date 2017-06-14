@@ -242,7 +242,7 @@
 <p>YK: I lean in the direction that it is useful</p>
 <p>DD: i also lean in that direction, but have consumes</p>
 <p>JH: I agree with that conclusion</p>
-<a href="#resolution-248"><h4 id="resolution-248">Resolution</h4></a><p>No stage 2 for now; let’s see how async iterables turn out</p>
+<a href="#resolution-observables-jh"><h4 id="resolution-observables-jh">Resolution</h4></a><p>No stage 2 for now; let’s see how async iterables turn out</p>
 <a href="#jhd-erroriserror"><h3 id="jhd-erroriserror">JHD Error.isError</h3></a><p>JHD: … brand checking, regardless of toStrings output. Error (and associated subclasses) lacks any internal way. Current done via Object.prototype.toString.</p>
 <p>JHD: Chrome/V8 may have shipped toStringTag</p>
 <p>JHD: Cross realm errors are not currently brand checkable</p>
@@ -350,7 +350,7 @@
 <p>YK: we should be sure the motivating cases are good</p>
 <p>JHD: the risk grows the longer we wait.</p>
 <p>DD: it sounds like more information is needed.</p>
-<a href="#conclusionresolution-249"><h4 id="conclusionresolution-249">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-observables-jh"><h4 id="conclusionresolution-observables-jh">Conclusion/Resolution</h4></a><ul>
 <li>More research</li>
 </ul>
 <p>DE: can i propose I18n?</p>
@@ -421,7 +421,7 @@ We have experience at libs, and all the new web stuff at Yahoo is using this und
 <p>(Discussion of IE not using CLDR vs. everyone else using it.)</p>
 <p>EF: we would like to advance to stage 1, we dont have spec test. But we have draft impl + gecko imp.</p>
 <p>BT: I have to get the windows guys to sign-off to on the new API, so something concrete (spec text) would be best.</p>
-<a href="#resolution-for-exposing-abstract-operations-250"><h3 id="resolution-for-exposing-abstract-operations-250">Resolution: (for exposing abstract operations)</h3></a><a href="#stage-1"><h2 id="stage-1">Stage 1</h2></a><a href="#pluralrules"><h3 id="pluralrules">PluralRules</h3></a><p>EF: apps must solves this, if they want to use I18n in the UI. This is heavily requested, we have implemented it.</p>
+<a href="#resolution-for-exposing-abstract-operations-intl"><h3 id="resolution-for-exposing-abstract-operations-intl">Resolution: (for exposing abstract operations)</h3></a><a href="#stage-1"><h2 id="stage-1">Stage 1</h2></a><a href="#pluralrules"><h3 id="pluralrules">PluralRules</h3></a><p>EF: apps must solves this, if they want to use I18n in the UI. This is heavily requested, we have implemented it.</p>
 <p>ZB: it is hard to implement correctly, CLDR gives the required information</p>
 <p>(some visual examples)</p>
 <p>ZB: Without this, the shear amount of complexity required blocks good localized sites.</p>
@@ -462,7 +462,7 @@ We have experience at libs, and all the new web stuff at Yahoo is using this und
 <p>EF: CP has written up spec text</p>
 <p>EF: we need to deal with decimals, the spec test needs to be updated</p>
 <p>CP: we need to figure it out yet</p>
-<a href="#resolutions-stage-1-251"><h3 id="resolutions-stage-1-251">resolutions stage 1</h3></a><a href="#abstract-locale-operations"><h2 id="abstract-locale-operations">Abstract Locale Operations</h2></a><p>EF: aspects of each of the components currently go through some abstract operations, we would like to expose them</p>
+<a href="#resolutions-stage-1-stage-1"><h3 id="resolutions-stage-1-stage-1">resolutions stage 1</h3></a><a href="#abstract-locale-operations"><h2 id="abstract-locale-operations">Abstract Locale Operations</h2></a><p>EF: aspects of each of the components currently go through some abstract operations, we would like to expose them</p>
 <p>ZB: Intl.getCanonicalLocales(locales)</p>
 <p>ZB: naming suggestions are open.</p>
 <p>ZB: This is useful any time we do language negotiation, this allows us to verify. Implementing this in userland is like 4000 loc, exposing it instead has a clear advantage.</p>
@@ -502,7 +502,7 @@ We have experience at libs, and all the new web stuff at Yahoo is using this und
 <a href="#trailing--in-functions-arguments"><h4 id="trailing--in-functions-arguments">trailing , in functions arguments</h4></a><p>JM: fixes from yesterday (cover grammar support), MF BT looked at them.</p>
 <p>shows spec text</p>
 <p>DH: looks good!</p>
-<a href="#resolution-advance-to-stage-3-252"><h3 id="resolution-advance-to-stage-3-252">resolution: advance to stage 3</h3></a><a href="#test-262-updated"><h4 id="test-262-updated">Test 262 updated</h4></a><p>BT: not many new tests recently, except for SIMD.</p>
+<a href="#resolution-advance-to-stage-3-abstract-locale-operations"><h3 id="resolution-advance-to-stage-3-abstract-locale-operations">resolution: advance to stage 3</h3></a><a href="#test-262-updated"><h4 id="test-262-updated">Test 262 updated</h4></a><p>BT: not many new tests recently, except for SIMD.</p>
 <p>BT: many open issues, but nothing worth mentioning.</p>
 <p>BT: we dont have tests for some things, like tail calls.</p>
 <p>YK: is it possible</p>
@@ -538,7 +538,7 @@ We have experience at libs, and all the new web stuff at Yahoo is using this und
 <p>MF: not really <a href="https://github.com/w3c/webappsec-csp/issues/2">https://github.com/w3c/webappsec-csp/issues/2</a></p>
 <p>JHD: in all reasonable platforms, the global is accessible. This merely provides a consistent solution.</p>
 <p>YK: SES is ok with this, even though they provide no global access.</p>
-<a href="#conclusionresolution-253"><h4 id="conclusionresolution-253">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-abstract-locale-operations"><h4 id="conclusionresolution-abstract-locale-operations">Conclusion/Resolution</h4></a><ul>
 <li>stage 1</li>
 </ul>
 <a href="#wrap-up"><h1 id="wrap-up">Wrap-up</h1></a><p>JN: thanks to paypal, for hosting the meeting lunches and breakfasts. Excellent thank you</p>

@@ -18,7 +18,7 @@
 <p>AWB: No</p>
 <p>NL: Bug mixes ES5/ES6 spec language: DefaultValue/DateValue?</p>
 <p>AWB: Not an issue</p>
-<a href="#conclusionresolution-591"><h4 id="conclusionresolution-591">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-414-make-new-datedateobj"><h4 id="conclusionresolution-414-make-new-datedateobj">Conclusion/Resolution</h4></a><ul>
 <li>When date object is passed to the Date constructor, it makes an accurate copy of the date object.</li>
 </ul>
 <a href="#44-spec-update"><h2 id="44-spec-update">4.4 Spec Update</h2></a><p>(Presented by Allen Wirfs-Brock)</p>
@@ -333,7 +333,7 @@ If the right operand is a proxy,</p>
 <p>BE: We need to synthesize what's going into ES6. Waldemar claims this must include some way of adding class private state.</p>
 <p>STH: I would like to stop this conversation and allow myself time to think about this.</p>
 <p>BE: Done.</p>
-<a href="#conclusionresolution-592"><h4 id="conclusionresolution-592">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-45-private-symbols-weakmaps-and-relationships"><h4 id="conclusionresolution-45-private-symbols-weakmaps-and-relationships">Conclusion/Resolution</h4></a><ul>
 <li>Sam, Mark and Allen to work on &quot;relationships&quot; and varied representation in ES6.</li>
 </ul>
 <a href="#43-proxy"><h2 id="43-proxy">4.3 Proxy</h2></a><p>BE: We've had prototype implementations for some time, we made it through the change of API. We use them extensively.</p>
@@ -344,7 +344,7 @@ If the right operand is a proxy,</p>
 <p>Discussion of time tables for completed spec reviews</p>
 <p>NL: Also need to look at progress on implementations.</p>
 <p>NL: Concerned about impact on Internationalization API 2.0 – need to evaluate whether to base on ES5 or slip to December 2014.</p>
-<a href="#conclusionresolution-593"><h4 id="conclusionresolution-593">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-416-current-status-of-es6"><h4 id="conclusionresolution-416-current-status-of-es6">Conclusion/Resolution</h4></a><ul>
 <li>November 2013, Final review draft</li>
 <li>June 2014, Editorially complete
 (STH: we said June in the meeting, but July makes more sense, since we don't have to submit to the GA until September, IIUC)</li>
@@ -358,7 +358,7 @@ If the right operand is a proxy,</p>
 <p>WH: I'd like to see comparisons of non-frozen vs. frozen to see whether the two order of magnitude Chrome slowdown is caused by freezing or inherent slowness of push and pop.</p>
 <p>Varying, lengthy discussions around SES techniques and the implications of the override mistake.</p>
 <p>Non-issue for code that doesn't freeze.</p>
-<a href="#conclusionresolution-594"><h4 id="conclusionresolution-594">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-47-runtime-costs-of-the-override-mistake"><h4 id="conclusionresolution-47-runtime-costs-of-the-override-mistake">Conclusion/Resolution</h4></a><ul>
 <li>Investigate instrumentation when silently fails non-writable prototype properties.</li>
 </ul>
 

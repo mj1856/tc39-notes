@@ -14,7 +14,7 @@
 <a href="#agenda"><h2 id="agenda">Agenda</h2></a><p>(<a href="https://github.com/tc39/agendas/blob/master/2013/07.md">https://github.com/tc39/agendas/blob/master/2013/07.md</a>)</p>
 <p>Discussion about getting agenda items in earlier, general agreement.</p>
 <p>AWB: Clarifying #5 Open Issues (previously presented as a slide deck, now easier to track)</p>
-<a href="#consensusresolution-563"><h4 id="consensusresolution-563">Consensus/Resolution</h4></a><p>Will continue to use Github as the agenda tool, with the constraints:</p>
+<a href="#consensusresolution-agenda"><h4 id="consensusresolution-agenda">Consensus/Resolution</h4></a><p>Will continue to use Github as the agenda tool, with the constraints:</p>
 <ul>
 <li>Agenda should be &quot;locked in&quot; 1 week prior to meeting</li>
 <li>Agenda URL will be posted to es-discuss immediately following the current meeting</li>
@@ -112,7 +112,7 @@ However, we have changed for-in to disallow left side initializers. Given that, 
 <p>DH: Select cases where there is easy to argue that there few legitimate uses, ok to have occassion sanity tests. In general, JavaScript does not go out of it's way to provide you with defensive mechanisms. It's hard to predict where people are going to get hurt, better to allow them to decide.</p>
 <p>WH: Paying for consequences where <code>with</code> doesn't protect against collisions.</p>
 <p>AWB: Try to apply my model when writing these algorithms, please try to read the algorithms when they are published</p>
-<a href="#consensusresolution-564"><h4 id="consensusresolution-564"><del>Consensus/Resolution</del></h4></a><ul>
+<a href="#consensusresolution-41-es6-status-report"><h4 id="consensusresolution-41-es6-status-report"><del>Consensus/Resolution</del></h4></a><ul>
 <li><p>Map contructor, accepts optional initializer</p></li>
 <li><p>If initializer undefined, creates an empty map</p></li>
 <li><p>If initializer defined, invoke the @@iterator to create the entries from.</p>
@@ -190,7 +190,7 @@ entries() -&gt; entries([]);
 <p>WH/MM/RW/YK: <strong>actual clapping</strong></p>
 <p>... Mixed discussion about performance. General agreement that penalties for using <code>with</code> is ok.</p>
 <p>AWB: Code may override this, but at their own risk. For example</p>
-<a href="#consensusresolution-565"><h4 id="consensusresolution-565">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-43-arrayprototypevalues"><h4 id="consensusresolution-43-arrayprototypevalues">Consensus/Resolution</h4></a><ul>
 <li>@@unscopeable</li>
 <li>A blacklist, array of strings names that will not resolve to that object
 within <code>with() {}</code></li>
@@ -199,7 +199,7 @@ within <code>with() {}</code></li>
 <a href="#3-approval-of-the-minutes-from-may-2013-2013029"><h2 id="3-approval-of-the-minutes-from-may-2013-2013029">3 Approval of the minutes from May 2013 (2013/029)</h2></a><p>JN: Need to approve the notes...</p>
 <p>Are there are any changes to approve?</p>
 <p>(none)</p>
-<a href="#consensusresolution-566"><h4 id="consensusresolution-566">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-3-approval-of-the-minutes-from-may-2013-2013029"><h4 id="consensusresolution-3-approval-of-the-minutes-from-may-2013-2013029">Consensus/Resolution</h4></a><ul>
 <li>Approved.</li>
 </ul>
 <a href="#9-json"><h2 id="9-json">9 JSON</h2></a><p>(Doug Crockford)</p>
@@ -298,7 +298,7 @@ aUint8Array(<span class="hljs-number">0xff</span>, <span class="hljs-number">-2<
 <p>DH: Brendan had issue with <code>fill</code></p>
 <p>AWB: Brendan's issue was the similarity with <code>copySlice</code> and had suggested <code>fillSlice</code>.</p>
 <p>DH: Not sure I understand his objection...</p>
-<a href="#consensusresolution-567"><h4 id="consensusresolution-567">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-42-add-fill-and-copyslice-methods-to-arrayprototype-and-typed-arrays"><h4 id="consensusresolution-42-add-fill-and-copyslice-methods-to-arrayprototype-and-typed-arrays">Consensus/Resolution</h4></a><ul>
 <li>Agreement in room</li>
 <li>Would like Brendan's input</li>
 </ul>
@@ -349,7 +349,7 @@ aUint8Array(<span class="hljs-number">0xff</span>, <span class="hljs-number">-2<
 </code></pre>
 <p>Should there be implicit ToObject on the right side?</p>
 <p>YK: We agreed <code>new String()</code> solves the problem, if that's what you actually wanted to do.</p>
-<a href="#consensusresolution-568"><h4 id="consensusresolution-568">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-44-consider-deferring-es6-refutable-matching"><h4 id="consensusresolution-44-consider-deferring-es6-refutable-matching">Consensus/Resolution</h4></a><ul>
 <li>No implicit <code>ToObject()</code> on the right side (eg. the string will throw)</li>
 </ul>
 <a href="#xx-review-of-proposed-features"><h2 id="xx-review-of-proposed-features">x.x Review of Proposed Features</h2></a><p>(Luke Hoban)</p>
@@ -359,7 +359,7 @@ aUint8Array(<span class="hljs-number">0xff</span>, <span class="hljs-number">-2<
 <p>YK: Doesn't account for super, either</p>
 <p>Discussion about identifiers captured from lexical environments.</p>
 <p>Was the lexical environment strict?</p>
-<a href="#consensusresolution-569"><h4 id="consensusresolution-569">Consensus/Resolution</h4></a><p>Change wiki
+<a href="#consensusresolution-xx-review-of-proposed-features"><h4 id="consensusresolution-xx-review-of-proposed-features">Consensus/Resolution</h4></a><p>Change wiki
 strictness included in notion of lexical context. Thus</p>
 <ul>
 <li>always adequte for toString to preserve the original source</li>
@@ -409,7 +409,7 @@ strictness included in notion of lexical context. Thus</p>
 <li>function call</li>
 <li>method call</li>
 </ul>
-<a href="#consensusresolution-570"><h4 id="consensusresolution-570">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-xx-review-of-proposed-features"><h4 id="consensusresolution-xx-review-of-proposed-features">Consensus/Resolution</h4></a><ul>
 <li>Plenty of work left.</li>
 </ul>
 <a href="#47-math"><h2 id="47-math">4.7 Math</h2></a><p>(Dave Herman)</p>
@@ -451,7 +451,7 @@ z = -1;</p>
 <p>RH: Also, toFloat16</p>
 <p>DH: Long term, the solution will be value objects, but in the near term, this will have benefit much more quickly</p>
 <p>WH: Found evidence that the optimizations are safe as long as the wider type is at least double the width of the narrower type plus two more bits: <a href="http://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html">http://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html</a> . This is the case for the float32/float64 pair (they're 24 and 53 bits wide respectively), but not in general.</p>
-<a href="#consensusresolution-571"><h4 id="consensusresolution-571">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-47-math"><h4 id="consensusresolution-47-math">Consensus/Resolution</h4></a><ul>
 <li>Math.toFloat32()</li>
 </ul>
 <p>More discussion about where (Math, Number.prototype)</p>
@@ -462,7 +462,7 @@ z = -1;</p>
 <p>EA: Libraries implement stable sort today because they need it.</p>
 <p>YK: D3</p>
 <p>MM: If the answer is that performance is negligible, then we should mandate stable sort. Otherwise, we don't. We need to answer the question first.</p>
-<a href="#consensusresolution-572"><h4 id="consensusresolution-572">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-48-stable-arrayprototypesort"><h4 id="consensusresolution-48-stable-arrayprototypesort">Consensus/Resolution</h4></a><ul>
 <li>Deferred</li>
 </ul>
 <a href="#49-time-zones-1-bugs-or-spec-issues"><h2 id="49-time-zones-1-bugs-or-spec-issues">4.9 Time zones 1: Bugs or spec issues?</h2></a><p>(Norbert Lindenberg)</p>
@@ -472,7 +472,7 @@ z = -1;</p>
 <p>MM: ES5 implies a live communication channel into the Date instance</p>
 <p>AWB: It's part of the algorithms</p>
 <p>MM: We could say that we're going to stand on the ES5 spec.</p>
-<a href="#consensusresolution-573"><h4 id="consensusresolution-573">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-49-time-zones-1-bugs-or-spec-issues"><h4 id="consensusresolution-49-time-zones-1-bugs-or-spec-issues">Consensus/Resolution</h4></a><ul>
 <li>Deferred</li>
 </ul>
 <a href="#410-time-zones-2-time-zone-as-property"><h2 id="410-time-zones-2-time-zone-as-property">4.10 Time zones 2: Time zone as property</h2></a><p>(Norbert Lindenberg)</p>
@@ -480,14 +480,14 @@ z = -1;</p>
 <p>NL: Dean Landolt proposed a property on Date.prototype for the timezone, that all the functions look for, born with the default timezone, but can be changed.</p>
 <p>MM: Should be static, like Date.now()</p>
 <p>RW: Otherwise there would be Date objects with different timezones.</p>
-<a href="#consensusresolution-574"><h4 id="consensusresolution-574">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-410-time-zones-2-time-zone-as-property"><h4 id="consensusresolution-410-time-zones-2-time-zone-as-property">Consensus/Resolution</h4></a><ul>
 <li>Deferred</li>
 </ul>
 <a href="#datetimezone"><h2 id="datetimezone">Date/Timezone</h2></a><p>Proposal 1
 AVK: Having Date objects that have timezone as internal data instead of system data.</p>
 <p>Proposal 2
 NL: Pass time zone information separate from Date (as a parameter to methods)</p>
-<a href="#consensusresolution-575"><h4 id="consensusresolution-575">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-datetimezone"><h4 id="consensusresolution-datetimezone">Consensus/Resolution</h4></a><ul>
 <li>Write a strawman for ES7 (either)</li>
 </ul>
 

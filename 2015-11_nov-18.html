@@ -285,7 +285,7 @@ would then turn on the i flag for the def in the outer pattern, which is bad.</p
 <p>JHD: Symbol.exec, i would gladly work on it with you AWB</p>
 <p>BE: A functionally pure kernel would be great.</p>
 <p>AWB: one reason i didn’t go that way, is due to some hesitation do to adding additional @@ methods.</p>
-<a href="#conclusionresolution-254"><h4 id="conclusionresolution-254">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-awb-summarizes-some-oo-concepts"><h4 id="conclusionresolution-awb-summarizes-some-oo-concepts">Conclusion/Resolution</h4></a><ul>
 <li>no major change</li>
 <li>DE/AWB will make minor changes + tweaks</li>
 <li>AWB/JHD to investigate Symbol.exec + a pure functional exec kernel</li>
@@ -299,7 +299,7 @@ would then turn on the i flag for the def in the outer pattern, which is bad.</p
 <p>AK: Will file a separate issue for this concern</p>
 <p>BT: other issues for AWB while we have him?</p>
 <p>KS:</p>
-<a href="#conclusionresolution-255"><h4 id="conclusionresolution-255">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-awb-summarizes-some-oo-concepts"><h4 id="conclusionresolution-awb-summarizes-some-oo-concepts">Conclusion/Resolution</h4></a><ul>
 <li>%TypedArray% constructor is directly called rather than having a super constructor and a proto chain walk</li>
 </ul>
 <a href="#improving-consistency-of-species-kevin-smith"><h3 id="improving-consistency-of-species-kevin-smith">Improving consistency of @@species (Kevin Smith)</h3></a><p>KS: on map and set, they are not used in the spec themselves, But subclasses should be able to override</p>
@@ -367,7 +367,7 @@ would then turn on the i flag for the def in the outer pattern, which is bad.</p
 <li>investigate <code>Function.prototype['@@species']</code></li>
 <li>Map and Set shouldn’t have it, we should add it on-demand, and do no carry it forward.</li>
 </ol>
-<a href="#conclusionresolution-256"><h4 id="conclusionresolution-256">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-awb-summarizes-some-oo-concepts"><h4 id="conclusionresolution-awb-summarizes-some-oo-concepts">Conclusion/Resolution</h4></a><ul>
 <li>remove <code>@@species</code> handing from <code>Promise.all</code>/<code>Promise.race</code></li>
 <li>no decisions made on other <code>@@species</code> handling</li>
 <li>investigate <code>Function.prototype[Symbol.species]</code></li>
@@ -407,7 +407,7 @@ would then turn on the i flag for the def in the outer pattern, which is bad.</p
 <p>BT: should likely be an editor discretion. With github, changes are public and watchable.</p>
 <p>YK: a small process may solve, for example. The editor of a given group tags changes as potentially relevant.</p>
 <p>BT: bi-weekly changelog, with highlights called out. Grouped sections, to draw attention to various interested parties.</p>
-<a href="#conclusionresolution-257"><h4 id="conclusionresolution-257">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-awb-summarizes-some-oo-concepts"><h4 id="conclusionresolution-awb-summarizes-some-oo-concepts">Conclusion/Resolution</h4></a><ul>
 <li>promise rejection hooks are in</li>
 <li>editor may apply own discretion on further “implementation hook” proposals</li>
 </ul>
@@ -442,7 +442,7 @@ would then turn on the i flag for the def in the outer pattern, which is bad.</p
 <p>BT: stage 1+ email me, and we will work on the repo transfer.</p>
 <p>SP: editor doing this, acts as a good filter.</p>
 <p>DE: Proxy Implementation for in issues</p>
-<a href="#conclusionresolution-258"><h4 id="conclusionresolution-258">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-proposal-repos-and-where-they-live--editor-update"><h4 id="conclusionresolution-proposal-repos-and-where-they-live--editor-update">Conclusion/Resolution</h4></a><ul>
 <li>any stage 1 or above proposal repos must be transferred to the TC39 org, as a stage 1 entry requirement</li>
 </ul>
 <a href="#jefmo-trailing-commas"><h2 id="jefmo-trailing-commas">JEFMO: trailing commas</h2></a><p>JM: stage 3?</p>
@@ -457,7 +457,7 @@ would then turn on the i flag for the def in the outer pattern, which is bad.</p
 <p>JM: ok I will add arrows (pending stage 3)</p>
 <p>DD: stage 3 tomorrow?</p>
 <p>JM: yes</p>
-<a href="#conclusionresolution-259"><h4 id="conclusionresolution-259">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-jefmo-trailing-commas"><h4 id="conclusionresolution-jefmo-trailing-commas">Conclusion/Resolution</h4></a><ul>
 <li>hopefully stage 3 tomorrow after arrows are added</li>
 </ul>
 <a href="#proxy-enumerate-ocerconstrains-implementations-ak"><h2 id="proxy-enumerate-ocerconstrains-implementations-ak">Proxy [[Enumerate]] ocerconstrains implementations (AK)</h2></a><p><a href="https://github.com/tc39/ecma262/issues/161">https://github.com/tc39/ecma262/issues/161</a></p>
@@ -484,14 +484,14 @@ would then turn on the i flag for the def in the outer pattern, which is bad.</p
 <p>BT: If not, maybe we can leave it under specified?</p>
 <p>YK: I feel MM should care we shouldn’t under specify</p>
 <p>MM: we should have deterministic specs, remember our target audience is many web programmers for many websites. Reproducible behavior is important for this environment</p>
-<a href="#conclusionresolution-260"><h4 id="conclusionresolution-260">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-proxy-enumerate-ocerconstrains-implementations-ak"><h4 id="conclusionresolution-proxy-enumerate-ocerconstrains-implementations-ak">Conclusion/Resolution</h4></a><ul>
 <li>specify that [[Enumerate]] spreads before entering the loop <a href="https://github.com/tc39/ecma262/issues/161#issuecomment-157910543">https://github.com/tc39/ecma262/issues/161#issuecomment-157910543</a></li>
 <li>the committee would not agree to underspecified behavior</li>
 <li>there is a compat risk for Chakra but the assumption is that it’s not a problem until there’s data saying so</li>
 </ul>
 <a href="#functionsent-bt"><h2 id="functionsent-bt">Function.sent (BT)</h2></a><p>BT: its in babel</p>
 <p>DE: did you add internal slots</p>
-<a href="#conclusionresolution-261"><h4 id="conclusionresolution-261">Conclusion/Resolution</h4></a><p>deferred till tomorrow…</p>
+<a href="#conclusionresolution-functionsent-bt"><h4 id="conclusionresolution-functionsent-bt">Conclusion/Resolution</h4></a><p>deferred till tomorrow…</p>
 <a href="#async-await"><h3 id="async-await">Async Await</h3></a><p>BT: I did not finish the tests, but noticed some troubling things. IE ships AsyncFunction, I believe we should actually not do this</p>
 <p>SP: im curious why</p>
 <p>BT: unsure, MM?</p>
@@ -530,7 +530,7 @@ would then turn on the i flag for the def in the outer pattern, which is bad.</p
 <p>SP: risk of shipping, with bugs vs risk of lacking feedback from shipping</p>
 <p>BT: its a risk forsure</p>
 <p>AK: That is a good reason why multiple implementations are good, as it they will hope to have overlapping bugs</p>
-<a href="#conclusionresolution-262"><h4 id="conclusionresolution-262">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-functionsent-bt"><h4 id="conclusionresolution-functionsent-bt">Conclusion/Resolution</h4></a><ul>
 <li>do not add GeneratorFunction or AsyncFunction constructors to the global object</li>
 </ul>
 

@@ -39,7 +39,7 @@
 <pre><code class="language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Promise</span> </span>{}
 Foo.resolve(<span class="hljs-built_in">Promise</span>.resolve()).constructor !== Foo;
 </code></pre>
-<a href="#resolution-314"><h3 id="resolution-314">Resolution</h3></a><p>Change Promise.resolve in ES6 specification to use &quot;constructor&quot; property.</p>
+<a href="#resolution-relaxed-semantics-for-promiseresolve-nominal-check-mm"><h3 id="resolution-relaxed-semantics-for-promiseresolve-nominal-check-mm">Resolution</h3></a><p>Change Promise.resolve in ES6 specification to use &quot;constructor&quot; property.</p>
 <a href="#operator-overloading-breakout"><h3 id="operator-overloading-breakout">Operator overloading breakout</h3></a><p>Slides: <a href="http://www.slideshare.net/BrendanEich/extensible-operators-and-literals-for-javascript">http://www.slideshare.net/BrendanEich/extensible-operators-and-literals-for-javascript</a></p>
 <p>DE: Why not use an implicitly named, lexically scoped object for literals (literalSuffixTable)? No staging, just runtime lookup.</p>
 <p>BE: Don't overload ===, instanceof, in</p>

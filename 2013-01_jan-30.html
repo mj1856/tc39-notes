@@ -282,7 +282,7 @@ function a() {
 <p>LH/MM: Closer to comfort if classes and modules have strict bodies.</p>
 <p>MM: Agreed not to hold up consensus</p>
 <p>YK/RW: No Arrows</p>
-<a href="#conclusionresolution-604"><h4 id="conclusionresolution-604">Conclusion/Resolution</h4></a><p>Consensus on...
+<a href="#conclusionresolution-function-in-block-options"><h4 id="conclusionresolution-function-in-block-options">Conclusion/Resolution</h4></a><p>Consensus on...
 Stay the course on spec development approach
 Class, Modules implicitly strict.
 Arrows not strict
@@ -297,7 +297,7 @@ Sustaining our position on the handling of let ambiguities
 </code></pre>
 <p>Full strawman here: <a href="http://wiki.ecmascript.org/doku.php?id=strawman:class_method_syntax">http://wiki.ecmascript.org/doku.php?id=strawman:class_method_syntax</a></p>
 <p>Supported by TypeScript, Continuum, etc.</p>
-<a href="#conclusionresolution-605"><h4 id="conclusionresolution-605">Conclusion/Resolution</h4></a><p>Consensus in support of this proposal. (File spec update ticket)</p>
+<a href="#conclusionresolution-staticclass-side-methods"><h4 id="conclusionresolution-staticclass-side-methods">Conclusion/Resolution</h4></a><p>Consensus in support of this proposal. (File spec update ticket)</p>
 <a href="#revising-the-array-subclassing-kind-issue"><h2 id="revising-the-array-subclassing-kind-issue">Revising The Array Subclassing &quot;Kind&quot; Issue</h2></a><p>(Presented by Allen Wirfs-Brock)</p>
 <p>Reiterates the issue at hand, illustrated here:</p>
 <pre><code class="language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">V</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Array</span> </span>{
@@ -325,7 +325,7 @@ NodeList.from( [<span class="hljs-string">"div"</span>], node =&gt; <span class=
 <p>MM: thisArg?</p>
 <p>EF: It's possible to lose the context if you alias the ClassMethod</p>
 <p>MM: For consistency purposes, add thisArg</p>
-<a href="#conclusionresolution-606"><h4 id="conclusionresolution-606">Conclusion/Resolution</h4></a><p>Consensus on this proposal, with the addition of thisArg per Mark's request.</p>
+<a href="#conclusionresolution-revising-the-array-subclassing-kind-issue"><h4 id="conclusionresolution-revising-the-array-subclassing-kind-issue">Conclusion/Resolution</h4></a><p>Consensus on this proposal, with the addition of thisArg per Mark's request.</p>
 <a href="#47--fail-fast-destructuring-with--syntax-for-irrefutable-opt-in"><h2 id="47--fail-fast-destructuring-with--syntax-for-irrefutable-opt-in">4.7  Fail-fast destructuring with ?-syntax for irrefutable opt-in</h2></a><p>(Presented by Brendan Eich, Andreas Rossberg)</p>
 <ol>
 <li>No ToObject(RHS).</li>
@@ -393,7 +393,7 @@ let {p: {x: true}}? = {p: {}}</p>
 <p>ARB will work out new pattern matching strawman based on proposed ideas.</p>
 <p>BE: (to YK) have we assuaged your concerns about irrefutable destructuring?</p>
 <p>YK: yes, as long as &quot;?&quot;</p>
-<a href="#conclusionresolution-607"><h4 id="conclusionresolution-607">Conclusion/Resolution</h4></a><ol>
+<a href="#conclusionresolution-47--fail-fast-destructuring-with--syntax-for-irrefutable-opt-in"><h4 id="conclusionresolution-47--fail-fast-destructuring-with--syntax-for-irrefutable-opt-in">Conclusion/Resolution</h4></a><ol>
 <li>No implicit ToObject(RHS). <strong>consensus</strong></li>
 <li>Exception on missing property selected without a ?-suffix. <strong>consensus</strong></li>
 <li>?-suffix allowed on any pattern, imputing undefined deeply instead of refuting. <strong>consensus</strong></li>
@@ -463,7 +463,7 @@ name is used instead.</p>
 <p>WH: There is a slight advantage to making it non-writable. Otherwise when writing it to change the function name, you'd expect it to change the result of &quot;toString&quot;.</p>
 <p>Discussion re: history of Function.prototype.toString result.</p>
 <p>MM: Explain the divergence, toString is a reflection of the source code itself and the name is how you'd like to identify the function within tools.</p>
-<a href="#conclusionresolution-608"><h4 id="conclusionresolution-608">Conclusion/Resolution</h4></a><p>Consensus on the proposal, with { writable: true }</p>
+<a href="#conclusionresolution-411-name-property-of-functions"><h4 id="conclusionresolution-411-name-property-of-functions">Conclusion/Resolution</h4></a><p>Consensus on the proposal, with { writable: true }</p>
 <a href="#412-typed-arrays-update"><h2 id="412-typed-arrays-update">4.12 Typed Arrays Update</h2></a><p>(Presented by Allen Wirfs-Brock)</p>
 <p>Slides (pdf): <a href="http://wiki.ecmascript.org/lib/exe/fetch.php?id=meetings%3Ameeting_jan_29_2013&amp;cache=cache&amp;media=meetings:typedarray_status.pdf">http://wiki.ecmascript.org/lib/exe/fetch.php?id=meetings%3Ameeting_jan_29_2013&amp;cache=cache&amp;media=meetings:typedarray_status.pdf</a></p>
 <p>AWB: We're absorbing control of the TypedArray specification, previously authored by Khronos.</p>
@@ -571,6 +571,6 @@ Uint8ClampedArray</p>
 <p>WH: This is not a lot of work for implementations, and implementations (as opposed to users) are clearly in the better place to implement these efficiently.</p>
 <p>[STH: After the end of the official meeting, there was some discussion as to why Typed Arrays wouldn't just become genuine Arrays.  This would mean
 that they'd have all the Array methods, some of which would throw on use (those that change length). This needs discussion at a future meeting.]</p>
-<a href="#conclusionresolution-609"><h4 id="conclusionresolution-609">Conclusion/Resolution</h4></a><p>Move forward with the plan presented.</p>
+<a href="#conclusionresolution-412-typed-arrays-update"><h4 id="conclusionresolution-412-typed-arrays-update">Conclusion/Resolution</h4></a><p>Move forward with the plan presented.</p>
 
 </body>

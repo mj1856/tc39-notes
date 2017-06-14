@@ -17,7 +17,7 @@
 <p>AR: Can you take it back to the assembly(?) as a request from this TC that we'd like to simplify the process for signing the CLA to a click-through form for everyone [members and non-members]</p>
 <p>IS: Yes, I can do that</p>
 <p><strong>discussion</strong></p>
-<a href="#conclusionresolution-423"><h2 id="conclusionresolution-423">Conclusion/Resolution</h2></a><ul>
+<a href="#conclusionresolution-async-generator-functions-jafar-presenting"><h2 id="conclusionresolution-async-generator-functions-jafar-presenting">Conclusion/Resolution</h2></a><ul>
 <li>Allen will continue to work with Istvan on this</li>
 <li>Not clear how to proceed concretely other than having members continue to push for this</li>
 <li>Current process includes printing pdf, signing it, scanning it</li>
@@ -55,7 +55,7 @@ AR: I want this for ES7</p>
 <p>SK: Back to slides... Not proposing a type system. Implementors are interested in standardizing JSDoc..</p>
 <p>SK: JS IDL?</p>
 <p>SK: Type definition...</p>
-<a href="#conclusionresolution-424"><h2 id="conclusionresolution-424">Conclusion/Resolution</h2></a><ul>
+<a href="#conclusionresolution-jsdoc-jsidl-code-editors"><h2 id="conclusionresolution-jsdoc-jsidl-code-editors">Conclusion/Resolution</h2></a><ul>
 <li>Stage 0 to work on JSDoc</li>
 </ul>
 <a href="#closing-iterators"><h2 id="closing-iterators">Closing Iterators</h2></a><p>(Dave presenting, send slides!)
@@ -133,7 +133,7 @@ g.next(); <span class="hljs-comment">// { value: undefined, done: true }</span>
 <p>AWB: I worry about the precedent of adding changes like this now</p>
 <p>BN: I will be happy to review the changes to chapter 25 (Generators and Promises) that are necessary to capture these changes.</p>
 <p>AWB: Still worried because of the precedent this sets.</p>
-<a href="#conclusionresolution-425"><h2 id="conclusionresolution-425">Conclusion/Resolution</h2></a><ul>
+<a href="#conclusionresolution-closing-iterators"><h2 id="conclusionresolution-closing-iterators">Conclusion/Resolution</h2></a><ul>
 <li>Ratifying DH's proposal (&quot;proposal&quot; to be clarified), with the fallback (in case we run out of time, or decide to prioritize other work) of forbidding yield in try-finally blocks and making abrupt exits from for-of loops put the iterated-over generator into the GeneratorComplete state (which is a semantic change from leaving it in the GeneratorSuspendedYield state).</li>
 </ul>
 <a href="#generator-comprehensions-slides-plz"><h2 id="generator-comprehensions-slides-plz">Generator comprehensions (slides plz)</h2></a><p>Slides: <a href="https://speakerdeck.com/dherman/a-better-future-for-comprehensions">https://speakerdeck.com/dherman/a-better-future-for-comprehensions</a></p>
@@ -149,7 +149,7 @@ AWB: Hardest thing about this change is LAYING OUT THE DIAGRAM ALL OVER AGAIN: <
 <p>BE: Inserting a new object without populating it with any methods invites breaking changes when we do populate it with methods like .flatMap.</p>
 <p>JH: Really need to go with type-directed comprehensions (letting the iterable object determine the type of the comprehension) rather than the current syntax-directed syntax: (...) and [...].</p>
 <p>WH: Worried that we'll rat-hole on the new proposal, which is pie-in-the-sky with a number of identified deficiencies. The current proposal is solid. The perfect is the enemy of the good here.</p>
-<a href="#conclusionresolution-426"><h2 id="conclusionresolution-426">Conclusion/Resolution</h2></a><ul>
+<a href="#conclusionresolution-generator-comprehensions-slides-plz"><h2 id="conclusionresolution-generator-comprehensions-slides-plz">Conclusion/Resolution</h2></a><ul>
 <li>Defer comprehensions from ES6 to ES7 to work on the more general type-directed, method-based approach to supporting comprehensions for arbitrary iterable types (arrays, generators, streams, parallel arrays, etc.).</li>
 </ul>
 <a href="#71--status-update-from-dh"><h2 id="71--status-update-from-dh">7.1 <code>&lt;script type=module&gt;</code> status update (from DH)</h2></a><p>DH: Would really rather have <code>&lt;module&gt;import { foo } from &quot;bar&quot;; ...&lt;/module&gt;</code>, which is like `<script>`` but async, strict mode, has its own top-level scope, and can import declaratively (using ES6 module import syntax) from other (named) modules.</p>
@@ -165,17 +165,17 @@ TODO: Get DH to clarify this point when we edit the notes.</p>
 <p>YK: The success of <code>&lt;template&gt;</code> proves that we can introduce a new <code>&lt;script&gt;</code>-like <code>&lt;module&gt;</code> tag.</p>
 <p>DH: Need to create ways of doing this with pure JS, like <code>&lt;script&gt;System.import(&quot;main.js&quot;)&lt;/script&gt;</code> and then add new HTML sugar later, like <code>&lt;script type=&quot;module&quot;&gt;</code>.</p>
 <p>AR: [note taker (BN) may be misinterpreting] The JS API remains important even when we have HTML sugar.</p>
-<a href="#conclusionresolution-427"><h2 id="conclusionresolution-427">Conclusion/Resolution</h2></a><ul>
+<a href="#conclusionresolution-71--status-update-from-dh"><h2 id="conclusionresolution-71--status-update-from-dh">Conclusion/Resolution</h2></a><ul>
 <li>Adopt <code>&lt;script type=&quot;module&quot;&gt;</code> and expect transitional code to do <code>&lt;script&gt;System.import(&quot;main.js&quot;)&lt;/script&gt;</code>.</li>
 </ul>
 <a href="#73-html-imports"><h2 id="73-html-imports">7.3 HTML Imports</h2></a><p>BE: Recast as <code>&lt;script type=&quot;import&quot;&gt;</code> rather than <code>&lt;link rel=&quot;import&quot;&gt;</code>?</p>
-<a href="#conclusionresolution-428"><h2 id="conclusionresolution-428">Conclusion/Resolution</h2></a><ul>
+<a href="#conclusionresolution-73-html-imports"><h2 id="conclusionresolution-73-html-imports">Conclusion/Resolution</h2></a><ul>
 <li>Consensus not reached.</li>
 </ul>
 <a href="#72-event-loop"><h2 id="72-event-loop">7.2 Event loop</h2></a><p>The issue is interleaving Promise response tasks with other tasks.</p>
 <p>MM: Let's just not use the term &quot;task&quot; because it's confusing with other tasks (microtasks, etc).</p>
 <p>Brainstorming names: job, tick (seems too close to <code>process.nextTick</code>), <code>slice</code>, <code>turn</code>, <code>chore</code> (lots of enthusiasm for chore!), <code>quest</code> (fits with realms!), schlep</p>
-<a href="#conclusionresolution-429"><h2 id="conclusionresolution-429">Conclusion/Resolution:</h2></a><ul>
+<a href="#conclusionresolution-72-event-loop"><h2 id="conclusionresolution-72-event-loop">Conclusion/Resolution:</h2></a><ul>
 <li>Consensus not reached.</li>
 </ul>
 <a href="#two-or-three-day-tc39-meetings-in-the-future"><h2 id="two-or-three-day-tc39-meetings-in-the-future">Two or Three-day TC39 meetings in the future?</h2></a><p>AR: Breakout sessions the third day?</p>

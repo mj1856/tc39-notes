@@ -11,7 +11,7 @@
 <a href="#november-29-2012-meeting-notes"><h1 id="november-29-2012-meeting-notes">November 29, 2012 Meeting Notes</h1></a><p>John Neumann (JN), Allen Wirfs-Brock (AWB), Waldemar Horwat (WH), Brian Terlson (BT), Luke Hoban (LH), Rick Waldron (RW), Eric Ferraiuolo (EF), Doug Crockford (DC), Yehuda Katz (YK), Erik Arvidsson (EA), Mark Miller (MM), Dave Herman (DH), Sam Tobin-Hochstadt (STH), Istvan Sebastian (IS), Andreas Rossberg (ARB), Brendan Eich (BE), Alex Russel (AR), Matt Sweeney (MS)</p>
 <a href="#approval-of-ecmatc39-scope-declaration"><h1 id="approval-of-ecmatc39-scope-declaration">Approval of ECMA/TC39 Scope Declaration</h1></a><p>(Presented by John Neumann)</p>
 <p>JN: (presents scope document for approval)</p>
-<a href="#conclusionresolution-615"><h4 id="conclusionresolution-615">Conclusion/Resolution</h4></a><p>Approved.</p>
+<a href="#conclusionresolution-410-data-collectionanalysis-function-in-block-duplicate-parameter-names-const-strict-mode-var-letletx1-and-maybe-more"><h4 id="conclusionresolution-410-data-collectionanalysis-function-in-block-duplicate-parameter-names-const-strict-mode-var-letletx1-and-maybe-more">Conclusion/Resolution</h4></a><p>Approved.</p>
 <a href="#scoping-for-default-arguments-revisited"><h1 id="scoping-for-default-arguments-revisited">Scoping for default arguments revisited</h1></a><p>(Presented by Allen Wirfs-Brock)
 See Slides</p>
 <p>AWB: (Review legacy requirements)</p>
@@ -208,13 +208,13 @@ f(<span class="hljs-number">6</span>); ?
 <p>AWB/STH: This is absolutely the agenda.</p>
 <p>Devolved.</p>
 <p><strong>Break</strong></p>
-<a href="#conclusionresolution-616"><h4 id="conclusionresolution-616">Conclusion/Resolution</h4></a><p>Agree that Andreas will draft a proposal for next meeting.</p>
+<a href="#conclusionresolution-proposal-part-2"><h4 id="conclusionresolution-proposal-part-2">Conclusion/Resolution</h4></a><p>Agree that Andreas will draft a proposal for next meeting.</p>
 <a href="#cascading-this-returns"><h1 id="cascading-this-returns">Cascading this returns</h1></a><p>(presented by Rick Waldron)</p>
 <p>RW: returning &quot;this&quot; from
 Map.prototype.set, Set.prototype.add, WeakMap.prototype.set</p>
 <p>DC/AR/YK/EF/EA: Supporting agreement</p>
 <p>MM/AWB/RW/BE/EF: (Discussion to determine a criteria for making this API specification distinction)</p>
-<a href="#conclusionresolution-617"><h4 id="conclusionresolution-617">Conclusion/Resolution</h4></a><p>Consensus... with the criteria that these methods are not simply a set of uncoordinated side effects that happen to have a receiver in common, but a set of coordinated side effects on a specific receiver and providing access to the target object post-mutation.</p>
+<a href="#conclusionresolution-proposal-part-2"><h4 id="conclusionresolution-proposal-part-2">Conclusion/Resolution</h4></a><p>Consensus... with the criteria that these methods are not simply a set of uncoordinated side effects that happen to have a receiver in common, but a set of coordinated side effects on a specific receiver and providing access to the target object post-mutation.</p>
 <a href="#issues-with-eval"><h1 id="issues-with-eval">Issues With Eval</h1></a><p>(presented by Allen Wirfs-Brock)</p>
 <p>AWB: Existing issues with eval w/r to new declarative forms, strict mode, etc In particular, what grammar is allowed in eval.</p>
 <p>ARB: E.g. allowing module declarations in direct eval would introduce local modules. (Agreement that we don't want that)</p>
@@ -240,8 +240,8 @@ New declaration forms, even from non-strict mode eval cannot be deleted.</p>
 <a href="#eliminate-functions-returning-reference-values-from-the-specification"><h1 id="eliminate-functions-returning-reference-values-from-the-specification">Eliminate functions returning Reference values from the specification.</h1></a><p>AWB: Only want to remove the language from the spec, not reason to be a feature of the spec.</p>
 <p>BE: Exists from the ES1 days, for VBScript-style DOM APIs in IE</p>
 <p>LH: No objection.</p>
-<a href="#conclusionresolution-618"><h4 id="conclusionresolution-618">Conclusion/Resolution</h4></a><p>Consensus.</p>
-<a href="#revisit-nov-27-resolution-on-iterables-in-spread-619"><h1 id="revisit-nov-27-resolution-on-iterables-in-spread-619">Revisit Nov. 27 Resolution on iterables in spread.</h1></a><p>BE/RW: Recounting history, re: Array.from &amp; spread delegation</p>
+<a href="#conclusionresolution-proposal-part-2"><h4 id="conclusionresolution-proposal-part-2">Conclusion/Resolution</h4></a><p>Consensus.</p>
+<a href="#revisit-nov-27-resolution-on-iterables-in-spread-proposal-part-2"><h1 id="revisit-nov-27-resolution-on-iterables-in-spread-proposal-part-2">Revisit Nov. 27 Resolution on iterables in spread.</h1></a><p>BE/RW: Recounting history, re: Array.from &amp; spread delegation</p>
 <p>BE: Changed mind about the forEach inconsistency</p>
 <p>AWB/YK: Have to maintain consistency to enumerable methods</p>
 <p>BE: Let's not remain slaves to legacy, Array.from, for-of and spread use only iterable.</p>
@@ -259,7 +259,7 @@ New declaration forms, even from non-strict mode eval cannot be deleted.</p>
 </code></pre>
 <p>RW: No.</p>
 <p>Return to two step on Array.from and iterator protocol on for-of, spread.</p>
-<a href="#conclusionresolution-620"><h4 id="conclusionresolution-620">Conclusion/Resolution</h4></a><p>Add iterator protocol to arguments object (should exist on all things.</p>
+<a href="#conclusionresolution-proposal-part-2"><h4 id="conclusionresolution-proposal-part-2">Conclusion/Resolution</h4></a><p>Add iterator protocol to arguments object (should exist on all things.</p>
 <p>Array.from:</p>
 <ol>
 <li>Iterator protocol</li>
@@ -323,7 +323,7 @@ items(o)
 <p>BE: Ensure that I don't have to copy into a new Dict just to get keys, values, items</p>
 <p>DH: Won't have to.</p>
 <p>ARB: better name: 'entries', not 'items'. (agreed)</p>
-<a href="#conclusionresolution-621"><h4 id="conclusionresolution-621">Conclusion/Resolution</h4></a><p>Dave Herman to craft an addition to module standard library for Dict with api shown above that creates proto-less objects as Dicts and has api that can be used on all collections.</p>
+<a href="#conclusionresolution-proposal-part-2"><h4 id="conclusionresolution-proposal-part-2">Conclusion/Resolution</h4></a><p>Dave Herman to craft an addition to module standard library for Dict with api shown above that creates proto-less objects as Dicts and has api that can be used on all collections.</p>
 <p>Allen Wirfs-Brock to update existing spec language to reflect:</p>
 <pre><code class="language-js">.keys()
 .values()
@@ -379,7 +379,7 @@ items(o)
 <p>LH: A search of indexed web reveals 3 uses of var let.</p>
 <p>?: Proposal to try parsing as a let statement first and fail over to an expression statement that just happens to use let as an identifier if that fails.</p>
 <p>WH: No, negative parsing rules like that are known to cause byzantine problems. Better to disambiguate on the first two tokens alone just like we disambiguate on the first { token alone to distinguish a block from an expression statement that happens to start with an object literal. The first two tokens would be let followed by either an identifier, [, or {.</p>
-<a href="#conclusionresolution-622"><h4 id="conclusionresolution-622">Conclusion/Resolution</h4></a><p>In non-strict code: let, with single token lookahead (where the single token is either an Identifier, &quot;[&quot;, or &quot;{&quot; ), at the start of a statement is a let declaration. (Accepted breaking change)</p>
+<a href="#conclusionresolution-proposal-part-2"><h4 id="conclusionresolution-proposal-part-2">Conclusion/Resolution</h4></a><p>In non-strict code: let, with single token lookahead (where the single token is either an Identifier, &quot;[&quot;, or &quot;{&quot; ), at the start of a statement is a let declaration. (Accepted breaking change)</p>
 <a href="#extend-new-let-grammar-restriction"><h1 id="extend-new-let-grammar-restriction">Extend new let grammar restriction?</h1></a><pre><code class="language-js"><span class="hljs-keyword">let</span> (x) = ...
 let ?maybe = ...
 let !must = ...
@@ -396,7 +396,7 @@ let !must = ...
 <p>DH: Why are you opposed to parentheses? Not useful now, but would like to use those in the future.</p>
 <p>WH: I'm not opposed to parentheses in the pattern language in general, but there is no point in putting them in until we have some good use for them. Prefer to omit now simply to future-proof our design options.</p>
 <p>DH: OK</p>
-<a href="#conclusionresolution-623"><h4 id="conclusionresolution-623">Conclusion/Resolution</h4></a><p>Agreed to the semantics presented by the allowed/disallowed example above.</p>
+<a href="#conclusionresolution-proposal-part-2"><h4 id="conclusionresolution-proposal-part-2">Conclusion/Resolution</h4></a><p>Agreed to the semantics presented by the allowed/disallowed example above.</p>
 <a href="#extending-array-comprehension"><h1 id="extending-array-comprehension">Extending Array Comprehension</h1></a><p>(Presented by Brendan Eich on behalf of Jason Orendorff)
 Begins here: <a href="https://mail.mozilla.org/pipermail/es-discuss/2012-September/025044.html">https://mail.mozilla.org/pipermail/es-discuss/2012-September/025044.html</a></p>
 <p>BE: Originally seen in ES4 but never made it to ES6 (brief history of comprehension and rationale)</p>
@@ -417,7 +417,7 @@ Begins here: <a href="https://mail.mozilla.org/pipermail/es-discuss/2012-Septemb
 <p>BE: Correct.</p>
 <p>MM: All agreed, whatever is allowed here is also allowed between parens for generator comprehensions.</p>
 <p>BE: No cost, no loss, use case gains.</p>
-<a href="#conclusionresolution-624"><h4 id="conclusionresolution-624">Conclusion/Resolution</h4></a><p>Consensus on Jason's proposal: for, if, let, const can be interleaved. Applies to both Array Comprehensions and Generator Comprehensions</p>
+<a href="#conclusionresolution-proposal-part-2"><h4 id="conclusionresolution-proposal-part-2">Conclusion/Resolution</h4></a><p>Consensus on Jason's proposal: for, if, let, const can be interleaved. Applies to both Array Comprehensions and Generator Comprehensions</p>
 <a href="#yield-the-identifier"><h1 id="yield-the-identifier">yield, the identifier?</h1></a><p>AWB: yield * 5?</p>
 <p>BE: yield is reserved inside of generators</p>
 <a href="#function-poison-pill-methods-and-new-function-syntactic-forms"><h1 id="function-poison-pill-methods-and-new-function-syntactic-forms">Function Poison Pill Methods and new Function Syntactic Forms</h1></a><p>Reference: <a href="https://mail.mozilla.org/pipermail/es-discuss/2012-October/026030.html">https://mail.mozilla.org/pipermail/es-discuss/2012-October/026030.html</a></p>
@@ -425,7 +425,7 @@ Begins here: <a href="https://mail.mozilla.org/pipermail/es-discuss/2012-Septemb
 <p>WH: These are new forms, unlikely to have the bizarre engine semantics that poisoning was designed to eradicate. Why are we bothering with poisoning them at all?</p>
 <p>BE: notes that es-discuss preference was to uniformly poison</p>
 <p>MM: No security problem to have the function behave the same with respect to either strict or non-strict</p>
-<a href="#conclusionresolution-625"><h4 id="conclusionresolution-625">Conclusion/Resolution</h4></a><p>New forms are like old forms per non-strict and strict (reduce surprise factor)</p>
+<a href="#conclusionresolution-proposal-part-2"><h4 id="conclusionresolution-proposal-part-2">Conclusion/Resolution</h4></a><p>New forms are like old forms per non-strict and strict (reduce surprise factor)</p>
 <a href="#conventions-make-non-standard-properties-configurable"><h1 id="conventions-make-non-standard-properties-configurable">Conventions make non-standard properties configurable</h1></a><p><a href="http://wiki.ecmascript.org/doku.php?id=conventions:make_non-standard_properties_configurable">http://wiki.ecmascript.org/doku.php?id=conventions:make_non-standard_properties_configurable</a></p>
 <p>MM: The other non-standard bits that implementations add, should be configurable so SES can repair or remove it.</p>
 <p>Proposal: All non-standard properties that are put on standard built-in objects by implementations must be configurable: true and actually deletable.</p>
@@ -434,6 +434,6 @@ Begins here: <a href="https://mail.mozilla.org/pipermail/es-discuss/2012-Septemb
 <p>WH: Note that this object tree scanning approach doesn't protect against language extensions. For example, consider an ES5 sanitizer applied to an ES6 script. The sanitizer wants to restrict the script to only the built-ins it whitelists. The sanitizer walks through the built-in objects, deleting ones it hasn't whitelisted but then is blissfully unaware that the script can get access to non-whitelisted generator classes by defining and running a generator function via language syntax instead of following object links.</p>
 <p>MM: Yes, that is a hole. In fact, we've been blocking implementations that accept E4X syntax for that very reason. However, we don't currently try to parse a script to see if it uses future syntactic constructs we don't know about.</p>
 <p>BE: Backs Mark's rationale</p>
-<a href="#conclusionresolution-626"><h4 id="conclusionresolution-626">Conclusion/Resolution</h4></a><p>Luke and Mark will chat offline.</p>
+<a href="#conclusionresolution-proposal-part-2"><h4 id="conclusionresolution-proposal-part-2">Conclusion/Resolution</h4></a><p>Luke and Mark will chat offline.</p>
 
 </body>

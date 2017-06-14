@@ -12,7 +12,7 @@
 <p>Recap of Sept 18th notes.</p>
 <a href="#proxy"><h1 id="proxy">Proxy</h1></a><p>(Presented by Tom Van Cutsem, Free University of Brussels)</p>
 <a href="#enumerate-traps-return-types"><h2 id="enumerate-traps-return-types">Enumerate Traps Return Types</h2></a><p>TVC: change return type of enumerate() trap from array-of-string to iterator. Requires waiving the check for duplicate property names</p>
-<a href="#conclusionresolution-642"><h4 id="conclusionresolution-642">Conclusion/Resolution</h4></a><p>Drop the duplicate property check. enumerate() trap returns iterator.</p>
+<a href="#conclusionresolution-enumerate-traps-return-types"><h4 id="conclusionresolution-enumerate-traps-return-types">Conclusion/Resolution</h4></a><p>Drop the duplicate property check. enumerate() trap returns iterator.</p>
 <a href="#revokable-proxies"><h2 id="revokable-proxies">Revokable Proxies</h2></a><p>TVC: The Problem</p>
 <p>In a nutshell: with direct proxies, one can no longer write a caretaker proxy that nulls out a pointer to its target once revoked. This means that the target can no longer be garbage-collected separately from its proxy.</p>
 <p>As pointed out by David Bruant, caretakers are often useful precisely for memory management, where one uses revocation of the caretaker to release the underlying resources, as described here.</p>
@@ -98,7 +98,7 @@ once frozen, stop trapping. once non-configurable, non-writable data, the value 
 <p>AR: Why do we care about the stability of frozen object w/r to revocability?</p>
 <p>WH: (summary) Not clear what the security consequences of revoking a frozen object, either via a revocable proxy or via traps, are; this hasn't been thought about.</p>
 <p>MM: This has been thought about and discussed off-line.</p>
-<a href="#conclusionresolution-643"><h4 id="conclusionresolution-643">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-revokable-proxies"><h4 id="conclusionresolution-revokable-proxies">Conclusion/Resolution</h4></a><ul>
 <li>we want revocable proxies</li>
 <li>further discussion is needed on revoking frozen objects, either via revocable proxies or via traps</li>
 </ul>
@@ -131,12 +131,12 @@ WH: that would be confusing: names later added to the array-like won't get added
 <p>AWB: Not clear how using a built-in WeakSet will protect, what if it's been redefined? Are WeakSet methods non-writable?
 TVC: we need to specify that the proxy calls the original/intrinsic WeakSet.prototype.get method.</p>
 <p>STH/LH/RW: Will need to spec WeakSet</p>
-<a href="#conclusionresolution-644"><h4 id="conclusionresolution-644">Conclusion/Resolution</h4></a><p>Yes to third arg for whitelist, pending details to be worked out by Proxy champions.</p>
+<a href="#conclusionresolution-proxy-and-private-names"><h4 id="conclusionresolution-proxy-and-private-names">Conclusion/Resolution</h4></a><p>Yes to third arg for whitelist, pending details to be worked out by Proxy champions.</p>
 <p>Expect to remove the &quot;public&quot; part of private names.</p>
 <a href="#weakset"><h2 id="weakset">WeakSet</h2></a><p>DH: Clear that we need WeakSet to match WeakMap (Set and Map)</p>
 <p>AWB: Need to assure that WeakMap and WeakSet are not redefined?</p>
 <p>RW: Use cases in node programs where I'm using WeakMap made it apparent that it <em>is</em> possible to leak via redefinition.</p>
-<a href="#conclusionresolution-645"><h4 id="conclusionresolution-645">Conclusion/Resolution</h4></a><p>Needs to be designed, as part of the whitelist feature's needs.</p>
+<a href="#conclusionresolution-weakset"><h4 id="conclusionresolution-weakset">Conclusion/Resolution</h4></a><p>Needs to be designed, as part of the whitelist feature's needs.</p>
 <p>SpiderMonkey tracking bug: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=792439">https://bugzilla.mozilla.org/show_bug.cgi?id=792439</a></p>
 <a href="#syntactic-support-for-private-names"><h1 id="syntactic-support-for-private-names">Syntactic Support for Private Names</h1></a><p>(Presented by Allen Wirfs-Brock, Mozilla)</p>
 <p>Slides: <a href="https://members.ecma-international.org/get.php?group=TC39&amp;file=2012_sub_tc39-2012-066.pdf">https://members.ecma-international.org/get.php?group=TC39&amp;file=2012_sub_tc39-2012-066.pdf</a></p>
@@ -301,7 +301,7 @@ o.m(); <span class="hljs-comment">// 42</span>
 <p>LH/DH: The baseline is private declaration in statement, classes, object literals. Build from there. As well as whatever the &quot;public&quot; version. BOTH are part of the baseline. NO PROTECTED.</p>
 <p>AWB/WH/BE: Yes, I agree.</p>
 <p>DH/BE: Move protected to a new strawman.</p>
-<a href="#conclusionresolution-646"><h4 id="conclusionresolution-646">Conclusion/Resolution</h4></a><p>Consensus on:</p>
+<a href="#conclusionresolution-optional-feature-class-scoped-name-declarations"><h4 id="conclusionresolution-optional-feature-class-scoped-name-declarations">Conclusion/Resolution</h4></a><p>Consensus on:</p>
 <ul>
 <li>Need private binding, including: statement form, import and export.</li>
 <li>Need private prefix form on class methods on object literal props and methods</li>
@@ -316,7 +316,7 @@ o.m(); <span class="hljs-comment">// 42</span>
 <p>YK: A little nervous that not identical to Lisp</p>
 <p>DH: Gave blessing ;)  the only diff is that you can't go from string -&gt; symbol, whereas in lisp you can</p>
 <p>YK: ok with that.</p>
-<a href="#conclusionresolution-647"><h4 id="conclusionresolution-647">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-optional-feature-class-scoped-name-declarations"><h4 id="conclusionresolution-optional-feature-class-scoped-name-declarations">Conclusion/Resolution</h4></a><ul>
 <li>we agree that names are now called symbols (Name =&gt; Symbol)</li>
 <li>new alternatives for syntax to bind a &quot;Unique Symbol&quot; will be a keyword, one of: public, unique, or symbol
 ie. <code>public @foo;</code> vs <code>symbol @foo;</code> vs <code>unique @foo;</code></li>
@@ -346,7 +346,7 @@ Consensus: No.</p>
 <p>...Will allay performance issues discovered through Chakra and v8 prototyping.</p>
 <p>Discussion of label analysis</p>
 <p>Strict mode implementation</p>
-<a href="#conclusionresolution-648"><h4 id="conclusionresolution-648">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-optional-feature-class-scoped-name-declarations"><h4 id="conclusionresolution-optional-feature-class-scoped-name-declarations">Conclusion/Resolution</h4></a><ul>
 <li>es-discuss will get a list of all early errors that should not be</li>
 </ul>
 <a href="#performance-costs-of-temporal-dead-zone"><h1 id="performance-costs-of-temporal-dead-zone">Performance Costs of Temporal Dead Zone</h1></a><p>(Presented by Luke Hoban, Microsoft)</p>
@@ -363,7 +363,7 @@ Consensus: No.</p>
 <p>WH: [as previously mentioned by Brendan], having a lot more scopes to close over (i.e. creating a new one for each loop iteration, etc.) is likely to be the main performance cost of let. What if let is slower merely due to having many more scopes?</p>
 <p>BE: (history of let in SpiderMonkey...) No outcry that performance is an issue</p>
 <p>MM: (countering the &quot;not common enough&quot; argument) Presented personal experiences where dead zones were essential in detecting problems.</p>
-<a href="#conclusionresolution-649"><h4 id="conclusionresolution-649">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-optional-feature-class-scoped-name-declarations"><h4 id="conclusionresolution-optional-feature-class-scoped-name-declarations">Conclusion/Resolution</h4></a><ul>
 <li>No change to temporal dead zone (yet)</li>
 <li>Get more data, report back</li>
 </ul>
@@ -463,7 +463,7 @@ I can't figure out what the semantics you're describing is</p>
 <p>There are two scopes:
 Global Object and Global Lexical Scope... when a <code>let</code> binding occurs, there are two things created, one on the Global Object and Global Lexical Scope.</p>
 <p>[people generally felt it was easier to comprehend the data living in the scope contour]</p>
-<a href="#conclusionresolution-650"><h4 id="conclusionresolution-650">Conclusion/Resolution</h4></a><p>Agreed on the AWB/MM/WH alternative model
+<a href="#conclusionresolution-optional-feature-class-scoped-name-declarations"><h4 id="conclusionresolution-optional-feature-class-scoped-name-declarations">Conclusion/Resolution</h4></a><p>Agreed on the AWB/MM/WH alternative model
 (new binding forms)</p>
 <ul>
 <li>Allen's 1 extra global scope contourc</li>
@@ -475,9 +475,9 @@ Global Object and Global Lexical Scope... when a <code>let</code> binding occurs
 <p>IS: Someone needs to update the site with the latest version of the test suite in zip file format.</p>
 <p>LH/RW/AWB: Needs to be an automated process, if that's possible within the scope of ECMA's policies.</p>
 <p>IS: Needs archival snapshots. The standards body is still a classic style standards organization that needs to abide its rules and policies.</p>
-<a href="#conclusionresolution-651"><h4 id="conclusionresolution-651">Conclusion/Resolution</h4></a><p>Bill Ticehurst to produce recommendation for the automated archival of test 262 at arbitrary states, as needed.
+<a href="#conclusionresolution-optional-feature-class-scoped-name-declarations"><h4 id="conclusionresolution-optional-feature-class-scoped-name-declarations">Conclusion/Resolution</h4></a><p>Bill Ticehurst to produce recommendation for the automated archival of test 262 at arbitrary states, as needed.
 Rick Waldron volunteers to assist as necessary.</p>
 <a href="#create-archival-utility-for-ecma-wiki"><h1 id="create-archival-utility-for-ecma-wiki">Create Archival Utility for ECMA Wiki</h1></a><p>2012-10-31: <code>wget -r -l 0 http://wiki.ecmascript.org/</code></p>
-<a href="#conclusionresolution-652"><h4 id="conclusionresolution-652">Conclusion/Resolution</h4></a><p>Rick Waldron will champion this</p>
+<a href="#conclusionresolution-optional-feature-class-scoped-name-declarations"><h4 id="conclusionresolution-optional-feature-class-scoped-name-declarations">Conclusion/Resolution</h4></a><p>Rick Waldron will champion this</p>
 
 </body>

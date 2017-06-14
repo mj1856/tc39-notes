@@ -14,7 +14,7 @@
 <p>DH: This is basically a go/no go question.</p>
 <p>AWB: No spec changes will be done until after we have consensus.</p>
 <p>DH: There is no rush to get it out of the spec.</p>
-<a href="#conclusionresolution-418"><h2 id="conclusionresolution-418">Conclusion/Resolution</h2></a><ul>
+<a href="#conclusionresolution-follow-up-on-deferring-comprehensions"><h2 id="conclusionresolution-follow-up-on-deferring-comprehensions">Conclusion/Resolution</h2></a><ul>
 <li>Resolve this online</li>
 <li>Make a go/no go at the next face to face meeting.</li>
 </ul>
@@ -32,13 +32,13 @@ foo();  <span class="hljs-comment">// yes</span>
 <p>BT: Can we hand wave this in Annex B? Can we just use prose to say that it behavase as if there was a block around it?</p>
 <p>BE: Without grammar we cannot validate</p>
 <p>WH: I'm not going to validate the grammar in Annex B. I already know there's ugliness there.</p>
-<a href="#conclusionresolution-419"><h2 id="conclusionresolution-419">Conclusion/Resolution</h2></a><ul>
+<a href="#conclusionresolution-block-scoping-issues"><h2 id="conclusionresolution-block-scoping-issues">Conclusion/Resolution</h2></a><ul>
 <li>Substatement function declarations will be added to Annex B unless we can convince ourselves it's safe to remove.</li>
 <li>Allen will investigate how to specify in Annex B (including whethe we need to specify the grammar or hand-wave).</li>
 </ul>
 <a href="#initializer-in-for-in"><h2 id="initializer-in-for-in">Initializer in for-in</h2></a><p>AWB: Got feedback that there are 11 sites that use the code pattern.</p>
 <p>WAB: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=748550">https://bugzilla.mozilla.org/show_bug.cgi?id=748550</a></p>
-<a href="#conclusionresolution-420"><h2 id="conclusionresolution-420">Conclusion/Resolution</h2></a><ul>
+<a href="#conclusionresolution-initializer-in-for-in"><h2 id="conclusionresolution-initializer-in-for-in">Conclusion/Resolution</h2></a><ul>
 <li>Have an engine try to remove support and report back. Otherwise it will have to be added back to the spec.</li>
 </ul>
 <a href="#rest-properties-and-spread-properties-sebastian-markbage"><h2 id="rest-properties-and-spread-properties-sebastian-markbage">Rest properties and spread properties (Sebastian Markbåge)</h2></a><p>Presentation notes: <a href="https://gist.github.com/sebmarkbage/aa849c7973cb4452c547">https://gist.github.com/sebmarkbage/aa849c7973cb4452c547</a></p>
@@ -102,7 +102,7 @@ x = obj.hasOwnProperty(<span class="hljs-string">'x'</span>) ? (THROW?) : obj.x;
 <p>MM: (re: decorators proposal)</p>
 <p>YK: my decorators can make individual methods or all methods on a class non-enumerable</p>
 <p>MM: I am ok with removing the constraint that duplicate dynamic object properties throw (in strict mode) with the caveat that we also remove the same constraint for duplicate static properties.</p>
-<a href="#conclusionresolution-421"><h2 id="conclusionresolution-421">Conclusion/Resolution</h2></a><ul>
+<a href="#conclusionresolution-rest-properties-and-spread-properties-sebastian-markbage"><h2 id="conclusionresolution-rest-properties-and-spread-properties-sebastian-markbage">Conclusion/Resolution</h2></a><ul>
 <li>For both strict and sloppy object literals, both computed and static properties no longer have any duplicate name checking.</li>
 <li>Instead, the semantics are strictly left-to-right (i.e. rightmost instance of the duplicate name wins over previous properties of the same name).</li>
 </ul>
@@ -132,7 +132,7 @@ Need Domenic, Raf, and Jafar together to work it out.</p>
 </code></pre>
 <p>Is it just a backpressure issue, or can the first yield (without the await) surprise the observer in some kind of an unexpected state?</p>
 <p>YK: I think it's important that the first value in an observable can be published synchronously. Importantly, there are well-motivated use-cases for Observables whose initial value is ALWAYS synchronously available (like Object.observe), but there are no well-motivated use-cases for APIs that consume promises whose values are ALWAYS synchronously available.</p>
-<a href="#conclusionresolution-422"><h2 id="conclusionresolution-422">Conclusion/Resolution</h2></a><ul>
+<a href="#conclusionresolution-async-generator-functions-jafar-presenting"><h2 id="conclusionresolution-async-generator-functions-jafar-presenting">Conclusion/Resolution</h2></a><ul>
 <li>Async generators proposal is now in stage 0, for consideration as part of ES7.</li>
 <li>Need to consider more deeply how average programmers are going to make sense of this syntax without understanding it completely.</li>
 </ul>

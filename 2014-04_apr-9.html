@@ -14,7 +14,7 @@
 <p>See:
 <a href="http://www.ecma-international.org/memento/TC39%20policy/Ecma%20Experimental%20TC39%20Royalty-Free%20Patent%20Policy.pdf">http://www.ecma-international.org/memento/TC39%20policy/Ecma%20Experimental%20TC39%20Royalty-Free%20Patent%20Policy.pdf</a> (E.4-E.6)
 <a href="http://www.ecma-international.org/memento/TC39%20policy/Opt%20Out%20Form%20for%20a%20TC39%20Royalty%20Free%20%28RF%29%20Task%20Group%20%28TG%29.pdf">http://www.ecma-international.org/memento/TC39%20policy/Opt%20Out%20Form%20for%20a%20TC39%20Royalty%20Free%20%28RF%29%20Task%20Group%20%28TG%29.pdf</a></p>
-<a href="#conclusionresolution-443"><h4 id="conclusionresolution-443">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-rf-status"><h4 id="conclusionresolution-rf-status">Conclusion/Resolution</h4></a><ul>
 <li>May document will be opt-out</li>
 </ul>
 <a href="#rftg-item"><h2 id="rftg-item">RF/TG Item</h2></a><p>(John Neumann)</p>
@@ -22,7 +22,7 @@
 <p>Motion to approve? [WH raises motion]
 Yes, seconded</p>
 <p>No discussion, No objection</p>
-<a href="#conclusionresolution-444"><h4 id="conclusionresolution-444">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-rftg-item"><h4 id="conclusionresolution-rftg-item">Conclusion/Resolution</h4></a><ul>
 <li>unanimously in favor</li>
 </ul>
 <a href="#objectobserve-update"><h2 id="objectobserve-update">Object.observe Update</h2></a><p>(Rafael Weinstein)</p>
@@ -56,7 +56,7 @@ Yes, seconded</p>
 <p>AWB: Still need to be more active reviewing in the committee.</p>
 <p>Relevant: <a href="https://github.com/rwaldron/tc39-notes/blob/master/es6/2013-09/sept-19.md#7-objectobserve-status-report">https://github.com/rwaldron/tc39-notes/blob/master/es6/2013-09/sept-19.md#7-objectobserve-status-report</a> (incomplete notes about the
 discussion about filtering in general)</p>
-<a href="#conclusionresolution-445"><h4 id="conclusionresolution-445">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-objectobserve-update"><h4 id="conclusionresolution-objectobserve-update">Conclusion/Resolution</h4></a><ul>
 <li>RWS withdrawing request for stage 3</li>
 <li>YK commits to prioritize working through remaining issues prior to next meeting.</li>
 <li>RW commits to reviewing for spec mechanics</li>
@@ -94,7 +94,7 @@ discussion about filtering in general)</p>
 <p>RW: Needs to provide access to committee members to confirm contributor agreement.</p>
 <p>EF: Is the vote for just the forms/agreements?</p>
 <p>AWB: The vote is to approve the policy, the forms already exist.</p>
-<a href="#conclusionresolution-446"><h4 id="conclusionresolution-446">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-rf-status"><h4 id="conclusionresolution-rf-status">Conclusion/Resolution</h4></a><ul>
 <li>RW/BT/AWB to send CLA requirements (noted above) as need to be successful</li>
 </ul>
 <a href="#parallel-js-spec-report"><h2 id="parallel-js-spec-report">Parallel JS Spec Report</h2></a><p>(Rick Hudson)</p>
@@ -268,7 +268,7 @@ Summary</p>
 <p>RW: Would be weird that the Array mappers don't leave out the 3rd argument</p>
 <p>RH: We find the index very valuable for picking up stuff from free vars</p>
 <p>RW: Let's provide index/key for both paths, but not the 3rd param. If you need that you can use a closed over free-var</p>
-<a href="#conclusionresolution-447"><h4 id="conclusionresolution-447">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-signature-of-arrayfrom-map-callback"><h4 id="conclusionresolution-signature-of-arrayfrom-map-callback">Conclusion/Resolution</h4></a><ul>
 <li>Change usingIterator path callback signature to: value, index</li>
 <li>Change array like path callback signature to: value, index</li>
 <li>Removes &quot;items&quot; from 17.d.3.1 (array like path)</li>
@@ -293,7 +293,7 @@ Summary</p>
 <p>LH: Must not have, because no major browser is failing.</p>
 <p>WH: How much does test262 test detection of syntax errors?</p>
 <p>BT: A lot but probably not enough</p>
-<a href="#conclusionresolution-448"><h4 id="conclusionresolution-448">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-bug-1571-regexp-syntax"><h4 id="conclusionresolution-bug-1571-regexp-syntax">Conclusion/Resolution</h4></a><ul>
 <li>Roll back the ES5 change</li>
 </ul>
 <a href="#change-escapesequence-0-lookahead-∉-decimaldigit-to-match-reality"><h2 id="change-escapesequence-0-lookahead-∉-decimaldigit-to-match-reality">Change “EscapeSequence 0 [lookahead ∉ DecimalDigit]” to match reality</h2></a><p><a href="https://bugs.ecmascript.org/show_bug.cgi?id=1553">https://bugs.ecmascript.org/show_bug.cgi?id=1553</a></p>
@@ -303,13 +303,13 @@ Summary</p>
 <p>WH: Not a DecimalIntegerLiteral, which can only have one digit if it starts with a zero.</p>
 <p>?: So '\08' is a null followed by '8'.</p>
 <p>WH: No, it's not that either. The grammar has a lookahead restriction that states that a decimal integer escape cannot be followed by a digit. It's a syntax error.</p>
-<a href="#conclusionresolution-449"><h4 id="conclusionresolution-449">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-change-escapesequence-0-lookahead-∉-decimaldigit-to-match-reality"><h4 id="conclusionresolution-change-escapesequence-0-lookahead-∉-decimaldigit-to-match-reality">Conclusion/Resolution</h4></a><ul>
 <li>Follow up on the bug report
 (AWB: who/how?  Action items without names don't get done...)</li>
 </ul>
 <a href="#implementation-dependencies-in-stringprototypereplace"><h2 id="implementation-dependencies-in-stringprototypereplace">Implementation Dependencies in String.prototype.replace</h2></a><p>AWB: 21.1.3.14 &quot;Table 40 — Replacement Text Symbol Substitutions&quot;: someone should research what implementations do here (any differences or “web reality” to match?)</p>
 <p>This issue dates back to ES3</p>
-<a href="#conclusionresolution-450"><h4 id="conclusionresolution-450">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-implementation-dependencies-in-stringprototypereplace"><h4 id="conclusionresolution-implementation-dependencies-in-stringprototypereplace">Conclusion/Resolution</h4></a><ul>
 <li>LH to follow up</li>
 </ul>
 <a href="#regexp-tostring-escaping-not-fully-specified"><h2 id="regexp-tostring-escaping-not-fully-specified">RegExp toString escaping not fully specified</h2></a><p>AWB: 21.2.5.13 may need a more explicit spec.</p>
@@ -329,7 +329,7 @@ Summary</p>
 <p>WH: That would be a browser bug.</p>
 <p>AWB: Some browsers haven't been paying close attention to this.</p>
 <p>WH: Best fixable by putting a few test cases in test262.</p>
-<a href="#conclusionresolution-451"><h4 id="conclusionresolution-451">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-regexp-tostring-escaping-not-fully-specified"><h4 id="conclusionresolution-regexp-tostring-escaping-not-fully-specified">Conclusion/Resolution</h4></a><ul>
 <li>Leave <code>RegExp.prototype.toString</code> definition as-is, but consider adding requirement <a href="https://bugs.ecmascript.org/show_bug.cgi?id=2609">https://bugs.ecmascript.org/show_bug.cgi?id=2609</a></li>
 </ul>
 <a href="#allens-todo-summary"><h2 id="allens-todo-summary">Allen's TODO Summary</h2></a><ul>
@@ -346,7 +346,7 @@ Summary</p>
 <li>Need somebody to update language overview</li>
 <li>In rev23 added some material about classes and how they related to the prototype discussion</li>
 </ul>
-<a href="#conclusionresolution-452"><h4 id="conclusionresolution-452">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-introduction-and-language-overview"><h4 id="conclusionresolution-introduction-and-language-overview">Conclusion/Resolution</h4></a><ul>
 <li>RW volunteers to write first draft of language overview</li>
 </ul>
 <p>LH: Is the recent work you've done on scope complete?</p>
@@ -360,7 +360,7 @@ Summary</p>
 <p>AWB: HTML comments syntax should be specified for Annex B <a href="https://bugs.ecmascript.org/show_bug.cgi?id=2610">https://bugs.ecmascript.org/show_bug.cgi?id=2610</a></p>
 <a href="#es7-process-new-proposal-home"><h2 id="es7-process-new-proposal-home">ES7 Process, New Proposal Home</h2></a><p><a href="https://github.com/tc39/ecma262">https://github.com/tc39/ecma262</a></p>
 <p>AWB/BT/LH/RW: mixed discussion and agreement to replace the wiki.</p>
-<a href="#conclusionresolution-453"><h4 id="conclusionresolution-453">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-es7-process-new-proposal-home"><h4 id="conclusionresolution-es7-process-new-proposal-home">Conclusion/Resolution</h4></a><ul>
 <li>All in favor!</li>
 </ul>
 <p>RW: Should this github repo contain actual proposal info?</p>
@@ -405,7 +405,7 @@ No reason to rush, this is an ES7 thing.</p>
 <p>BN: Descriptors is so verbose... why?</p>
 <p>RW: You get back a descriptor. There is already a getOwnPropertyDescriptor.</p>
 <p>ACHIEVEMENT UNLOCKED: Longer API name than getOwnPropertyDescriptor!</p>
-<a href="#conclusionresolution-454"><h4 id="conclusionresolution-454">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-44-objectgetownpropertydescriptors"><h4 id="conclusionresolution-44-objectgetownpropertydescriptors">Conclusion/Resolution</h4></a><ul>
 <li>Pursue for ES7. RW has spec text. Approved for Stage 0.</li>
 <li>RW to send a PR to add to github.com/tc39/ecma262 tracker</li>
 </ul>
@@ -421,7 +421,7 @@ No reason to rush, this is an ES7 thing.</p>
 <p>MB: Because <code>classList</code> already uses <code>contains</code>.</p>
 <p>BT: Is this different than <code>indexOf</code>?</p>
 <p>RW: Open question.</p>
-<a href="#conclusionresolution-455"><h4 id="conclusionresolution-455">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-45-arrayprototypecontains"><h4 id="conclusionresolution-45-arrayprototypecontains">Conclusion/Resolution</h4></a><ul>
 <li>Sounds good, need strawman to approve stage 0.</li>
 </ul>
 <a href="#46-updates-to-parseint"><h2 id="46-updates-to-parseint">4.6 Updates to parseInt</h2></a><p>(Rick Waldron)</p>
@@ -439,7 +439,7 @@ No reason to rush, this is an ES7 thing.</p>
 <p>MB: You can use <code>Number(&quot;0b11&quot;)</code> or <code>Number(&quot;0o42&quot;)</code> instead, at least in V8. (<code>ToNumber</code> in the spec should be updated to make this official: <a href="https://bugs.ecmascript.org/show_bug.cgi?id=1584">https://bugs.ecmascript.org/show_bug.cgi?id=1584</a>)</p>
 <p>LH: Was that a breaking change? Looks like, but we went from <code>NaN</code> to actually returning a number.</p>
 <p>WH: It's a breaking change. parseInt looks for a valid prefix and ignores the rest. parseInt('0o123') currently returns 0 because it sees the starting 0.</p>
-<a href="#conclusionresolution-456"><h4 id="conclusionresolution-456">Conclusion/Resolution</h4></a><p>It's dead. RW to close the bug wontfix.</p>
+<a href="#conclusionresolution-46-updates-to-parseint"><h4 id="conclusionresolution-46-updates-to-parseint">Conclusion/Resolution</h4></a><p>It's dead. RW to close the bug wontfix.</p>
 <a href="#43-update-objectassign-to-accept-multiple-sources"><h2 id="43-update-objectassign-to-accept-multiple-sources">4.3, Update Object.assign to accept multiple sources</h2></a><p>(Rick Waldron)</p>
 <p>RW: <code>Object.assign</code> is useful. Multiple real-world APIs do this, but most allow multiple sources.</p>
 <p>AWB: Some have additional options (enumerable vs. non-enumerable, shallow vs. deep copy).</p>
@@ -471,7 +471,7 @@ No reason to rush, this is an ES7 thing.</p>
 <p>BE: Who's against?</p>
 <p>AWB: I'm not enthusiastic. Won't stand in the way.</p>
 <p>BE: Seems strictly winning to have multiple arguments.</p>
-<a href="#conclusionresolution-457"><h4 id="conclusionresolution-457">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-43-update-objectassign-to-accept-multiple-sources"><h4 id="conclusionresolution-43-update-objectassign-to-accept-multiple-sources">Conclusion/Resolution</h4></a><ul>
 <li>Object.assign gets multiple source objects.</li>
 </ul>
 <a href="#51-objectentries-objectvalues"><h2 id="51-objectentries-objectvalues">5.1 Object.entries, Object.values</h2></a><p>(Rick Waldron)</p>
@@ -484,7 +484,7 @@ No reason to rush, this is an ES7 thing.</p>
 <p>AWB: Alternatively we could add this to a standard <code>Dict</code> module.</p>
 <p>BT: Assuming we get standard modules?</p>
 <p>AWB: We'll get them.</p>
-<a href="#conclusionresolution-458"><h4 id="conclusionresolution-458">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-51-objectentries-objectvalues"><h4 id="conclusionresolution-51-objectentries-objectvalues">Conclusion/Resolution</h4></a><ul>
 <li>Need strawman for stage 0</li>
 </ul>
 <a href="#test-262-update"><h2 id="test-262-update">Test 262 Update</h2></a><p>BT: A lot of pull requests piling up
@@ -505,7 +505,7 @@ No reason to rush, this is an ES7 thing.</p>
 <p>MB: What about Annex B tests? They’d have to run in a browser; test runner needs to support that somehow.</p>
 <p>MM: Detect Annex B features, then if they’re present, test if they behave as per the spec, if not, fail silently.</p>
 <p>BT: Continue to report test coverage gaps.</p>
-<a href="#conclusionresolution-459"><h4 id="conclusionresolution-459">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-test-262-update"><h4 id="conclusionresolution-test-262-update">Conclusion/Resolution</h4></a><ul>
 <li>BT to publish test criteria/guidelines</li>
 <li>Inform current contributors of guidelines to prepare</li>
 <li>Establish rules for testing Annex B</li>
@@ -553,7 +553,7 @@ No reason to rush, this is an ES7 thing.</p>
 <p>BN: may want <code>return()</code> to exit without triggering catch, vs. <code>throw()</code></p>
 <p>MM: Please present use cases that illustrate</p>
 <p>JH: Confirmed.</p>
-<a href="#conclusionresolution-460"><h4 id="conclusionresolution-460"><del>Conclusion/Resolution</del></h4></a><ul>
+<a href="#conclusionresolution-async-functions-question"><h4 id="conclusionresolution-async-functions-question"><del>Conclusion/Resolution</del></h4></a><ul>
 <li><del>Generator.prototype.return()</del></li>
 </ul>
 <p>(continued to April 10, 2014)</p>

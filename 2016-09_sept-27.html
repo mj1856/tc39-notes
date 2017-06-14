@@ -41,7 +41,7 @@ Istvan SEBESTYEN: Waldemar, it is more than a bibliography. It is a compilation 
 <ul>
 <li>Approval</li>
 </ul>
-<a href="#conclusionresolution-124"><h4 id="conclusionresolution-124">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-introduction"><h4 id="conclusionresolution-introduction">Conclusion/Resolution</h4></a><ul>
 <li>Agenda Approved</li>
 <li>July Notes Approved</li>
 <li>Snapshot of bugs.ecmascript.org approved</li>
@@ -99,12 +99,12 @@ Istvan SEBESTYEN: Waldemar, it is more than a bibliography. It is a compilation 
 <p>YK: implementors hesitant when issues are left open, concerns that these maybe long term issues.</p>
 <p>SYG: [For SharedArrayBuffer] Implementations will do what will work out for real chips; we have to capture a memory model that other people can reason about, but the implementation won't change since the hardware does something. I don't want to speak for everyone, but I think SpiderMonkey and V8 agree on this.</p>
 <p>WH: The bug we ran into was that the memory model formalism was allowing synchronization without atomics; that's not something we want to allow but is hard to fix.</p>
-<a href="#conclusionresolution-125"><h4 id="conclusionresolution-125">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-7-ecma262-status"><h4 id="conclusionresolution-7-ecma262-status">Conclusion/Resolution</h4></a><ul>
 <li>Please review async functions PR</li>
 </ul>
 <a href="#stage-4-process-update"><h2 id="stage-4-process-update">Stage 4 Process Update</h2></a><p>BT: Include PR for Stage 4 approval?</p>
 <p>&quot;Editor has signed off on your PR&quot;</p>
-<a href="#conclusionresolution-126"><h4 id="conclusionresolution-126">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-stage-4-process-update"><h4 id="conclusionresolution-stage-4-process-update">Conclusion/Resolution</h4></a><ul>
 <li>Editor Sign Off on PR</li>
 <li>Done: <a href="https://github.com/tc39/process-document/commit/e0009705959360f35cf44468c5568e9d5bdbae0d">https://github.com/tc39/process-document/commit/e0009705959360f35cf44468c5568e9d5bdbae0d</a></li>
 </ul>
@@ -113,7 +113,7 @@ Istvan SEBESTYEN: Waldemar, it is more than a bibliography. It is a compilation 
 <li>Would like to roll back to Stage 3</li>
 <li>Spec can easily accommodate reintroduction</li>
 </ul>
-<a href="#conclusionresolution-127"><h4 id="conclusionresolution-127">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-8-ecma402-status"><h4 id="conclusionresolution-8-ecma402-status">Conclusion/Resolution</h4></a><ul>
 <li>Set back to Stage 3</li>
 </ul>
 <a href="#9-test262-status"><h2 id="9-test262-status">9 Test262 Status</h2></a><p>(Leo Balter)</p>
@@ -234,7 +234,7 @@ Remove the comment in section 6 of the possibility of prototype loops.</p>
 <p>AWB/BT: agree to find some language to resolve? For example, some prose indicating whether a [[GetPrototypeOf]] internal method is suitable for these circularity checks</p>
 <p>BT: Or, add an additional slot to all objects that's called [[GetPrototypeOfForCircularityCheck]], which has sane defaults, opts in or out. Allows host objects to set as necessary</p>
 <p>BT: Or, Domenic's proposal, give a host callback which you pass the object to to do this sort of check (like the loader hook)</p>
-<a href="#conclusionresolution-128"><h4 id="conclusionresolution-128">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-112f-ordinarysetprototypeof-fix--prototype-loops-and-proxy-objects"><h4 id="conclusionresolution-112f-ordinarysetprototypeof-fix--prototype-loops-and-proxy-objects">Conclusion/Resolution</h4></a><ul>
 <li>Allow host objects to participate in circuluarity checks</li>
 <li>Need a way to allow opt in/opt out. Editor discretion and review required</li>
 <li>Mark Miller is a reviewer</li>
@@ -248,7 +248,7 @@ Remove the comment in section 6 of the possibility of prototype loops.</p>
 <p>DD: Some more context, transferring ArrayBuffers is something we do all the time, e.g., in Streams, which also does resizing</p>
 <p>AWB: original motivation was resizing without copying</p>
 <p>(This is an updated link to the original gist: <a href="https://gist.github.com/lukewagner/2735af7eea411e18cf20">https://gist.github.com/lukewagner/2735af7eea411e18cf20</a> )</p>
-<a href="#conclusionresolution-129"><h4 id="conclusionresolution-129">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-11ia-arraybuffertransfer-retraction"><h4 id="conclusionresolution-11ia-arraybuffertransfer-retraction">Conclusion/Resolution</h4></a><ul>
 <li>Retracted</li>
 </ul>
 <a href="#102a-legacy-regexp-features"><h2 id="102a-legacy-regexp-features">10.2.a Legacy RegExp Features</h2></a><p>(Claude Pache, Mark Miller)</p>
@@ -283,7 +283,7 @@ Remove the comment in section 6 of the possibility of prototype loops.</p>
 <p>MS: is this list the intersection or the union of what browsers already ship?</p>
 <p>JHD: based on my previous testing, the intersection</p>
 <p>AWB/MM/MS all agree that with verification, intersection is best</p>
-<a href="#conclusionresolution-130"><h4 id="conclusionresolution-130">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-102a-legacy-regexp-features"><h4 id="conclusionresolution-102a-legacy-regexp-features">Conclusion/Resolution</h4></a><ul>
 <li><p>Stage 1 Approval</p></li>
 <li><p>Stage 2 Approval</p></li>
 <li><p>More work needed to come to clarity on the realm issue, namely when realms are saved and checked against what</p></li>
@@ -369,7 +369,7 @@ Remove the comment in section 6 of the possibility of prototype loops.</p>
 <p>BT: So, we are in grudging agreement that we do want to make such allowances, with appropriate scoping. Some changes are needed for the uplink to scope it.
 (recaps changes, will offer for review)</p>
 <p>AWB: Let's call it something referring to HTML, rather than ULEO.</p>
-<a href="#conclusionresolution-131"><h4 id="conclusionresolution-131">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-11id-uleo-undefined-like-exotic-object"><h4 id="conclusionresolution-11id-uleo-undefined-like-exotic-object">Conclusion/Resolution</h4></a><ul>
 <li>Review feedback</li>
 <li>HTMLDocumentDotAllObject</li>
 <li>Annex B
@@ -413,7 +413,7 @@ Remove the comment in section 6 of the possibility of prototype loops.</p>
 <p>AWB: Impl. do this now?</p>
 <p>DD: No, they just violate the spec</p>
 <p>BT: agrees overly complex. will have to do it as you've asked, but with very specific case rules.</p>
-<a href="#conclusionresolution-132"><h4 id="conclusionresolution-132">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-hostobjectdefinepropertyreturnfalse"><h4 id="conclusionresolution-hostobjectdefinepropertyreturnfalse">Conclusion/Resolution</h4></a><ul>
 <li>Add the new definition of Object.defineProperty in Annex B, scoped with an upreference to what HTML needs</li>
 </ul>
 <a href="#global-jordan-harband"><h2 id="global-jordan-harband">global (Jordan Harband)</h2></a><p>(Jordan Harband)</p>
@@ -445,7 +445,7 @@ Remove the comment in section 6 of the possibility of prototype loops.</p>
 <p>RW: w/r to enumerability: <a href="https://github.com/search?p=2&amp;q=Object.keys%28global%29&amp;type=Code&amp;utf8=%E2%9C%93">https://github.com/search?p=2&amp;q=Object.keys%28global%29&amp;type=Code&amp;utf8=%E2%9C%93</a>
 (Note: this was a misapplication of enumerable, configurable, writable. Specifically: was not thinking about <code>global</code> the property <em>itself</em>, but the contents of that object. - Rick)</p>
 <p>DE: This should have browser web compatibility evidence before reaching Stage 4.</p>
-<a href="#conclusionresolution-133"><h4 id="conclusionresolution-133">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-global-jordan-harband"><h4 id="conclusionresolution-global-jordan-harband">Conclusion/Resolution</h4></a><ul>
 <li>Change to writable, non-enumerable, configurable</li>
 <li>Will revisit after changes; seems on track for Stage 3</li>
 </ul>
@@ -475,7 +475,7 @@ Remove the comment in section 6 of the possibility of prototype loops.</p>
 <p>WH: I'm pretty convinced by Yehuda's example that this feature is not needed.</p>
 <p>DD: However, we are generally interested in mixins</p>
 <p>SM: You might want to have static methods on your mixins. You may also want to have super calls in mixins. React has to interact with whole ecosystems, like Scala.js, which doesn't have the ability to inherit from super. I would not want to encourage these patterns proliferating.</p>
-<a href="#conclusionresolution-134"><h4 id="conclusionresolution-134">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-11ib-mixins-or-class-extends-plain-object"><h4 id="conclusionresolution-11ib-mixins-or-class-extends-plain-object">Conclusion/Resolution</h4></a><ul>
 <li>Committee is interested in mixins, but this particular proposal is not a direction we want to go in</li>
 </ul>
 <a href="#11ic-generator-arrow-functions"><h2 id="11ic-generator-arrow-functions">11.i.c Generator arrow functions</h2></a><p>(Brendan Eich)</p>
@@ -526,7 +526,7 @@ Remove the comment in section 6 of the possibility of prototype loops.</p>
 <p>DD: Path foward: Write out this case, with all the justifications, and explaining why the alternatives are not true; find existing user libraries where it'd be helpful to have a generator arrow function, etc.</p>
 <p>JM: This case comes up not just for Redux Saga but rather whenever you have a callback which is a generator</p>
 <p>DR: You need to create some kind of closure for these sort of situation</p>
-<a href="#conclusionresolution-135"><h4 id="conclusionresolution-135">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-11ic-generator-arrow-functions"><h4 id="conclusionresolution-11ic-generator-arrow-functions">Conclusion/Resolution</h4></a><ul>
 <li>There is some interest from the committee, but concern that the feature does not pull its weight for adding a new piece of syntax</li>
 <li>Plan to revisit on Day 3 to see if we can get =&gt;* to stage 0 at least, as part of DD's async iteration proposal</li>
 </ul>
@@ -567,7 +567,7 @@ Remove the comment in section 6 of the possibility of prototype loops.</p>
 <li>index</li>
 </ul>
 <p><a href="https://github.com/littledan/es-regexp-named-groups#overlapping-group-names">https://github.com/littledan/es-regexp-named-groups#overlapping-group-names</a></p>
-<a href="#conclusionresolution-136"><h4 id="conclusionresolution-136">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-112a-named-capture-groups"><h4 id="conclusionresolution-112a-named-capture-groups">Conclusion/Resolution</h4></a><ul>
 <li>Stage 1</li>
 <li>Property Smashing</li>
 </ul>
@@ -583,7 +583,7 @@ Remove the comment in section 6 of the possibility of prototype loops.</p>
 <ul>
 <li>Disallow extending Unicode property support for optimal interoperability <a href="https://github.com/mathiasbynens/es-regexp-unicode-property-escapes/commit/4a5f49d19eb5651467e04d84c660a6230dad8334">https://github.com/mathiasbynens/es-regexp-unicode-property-escapes/commit/4a5f49d19eb5651467e04d84c660a6230dad8334</a></li>
 </ul>
-<a href="#conclusionresolution-137"><h4 id="conclusionresolution-137">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-11iie-unicode-property-escapes-in-regular-expressions"><h4 id="conclusionresolution-11iie-unicode-property-escapes-in-regular-expressions">Conclusion/Resolution</h4></a><ul>
 <li>Stage 2</li>
 <li>Reviewers:
 <ul>

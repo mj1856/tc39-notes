@@ -44,7 +44,7 @@
 <p>DE: Unfortunately, browsers don't have the luxury of doing what AWB suggests, and the demands of web compatibility mean that we have to support what other browsers support.</p>
 <p>MP: noting reports that a company identified some large number of bugs being date-based.</p>
 <p>DE: We have found that at least 4 out of 10k page loads use the &quot;legacy date parser&quot; in Chrome</p>
-<a href="#conclusionresolution-146"><h4 id="conclusionresolution-146">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-9ig-dateparse-fallback-semantics"><h4 id="conclusionresolution-9ig-dateparse-fallback-semantics">Conclusion/Resolution</h4></a><ul>
 <li>Stage 1</li>
 </ul>
 <a href="#9iiia-systemglobal"><h2 id="9iiia-systemglobal">9.iii.a System.global</h2></a><p>Jordan Harband</p>
@@ -111,7 +111,7 @@
 <p>AK: 'global' seems fine.  Most people don't seem to want 'self', Domenic.</p>
 <p>YK, AK: This doesn't give any new capability</p>
 <p>JHD: Sounds like the next steps are for Mark to think through Yehuda's objection and see if he can support bare 'global', and for me to follow up with Mark, Dean and &lt;who?&gt;</p>
-<a href="#conclusionresolution-147"><h4 id="conclusionresolution-147">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-9iiia-systemglobal"><h4 id="conclusionresolution-9iiia-systemglobal">Conclusion/Resolution</h4></a><ul>
 <li>Remain at Stage 2</li>
 </ul>
 <a href="#10iib-template-literal-revision-to-stage-3"><h2 id="10iib-template-literal-revision-to-stage-3">10.ii.b Template literal revision to stage 3</h2></a><p>Tim Disney</p>
@@ -122,7 +122,7 @@
 <li>Only change: <a href="https://tc39.github.io/proposal-template-literal-revision/#sec-static-semantics-template-early-errors">https://tc39.github.io/proposal-template-literal-revision/#sec-static-semantics-template-early-errors</a> removed the parameterization of the lexical grammar productions and instead enforces early errors via static semantics attached to the syntactic grammar. This change was a result of Mark and Waldemar's review.</li>
 </ul>
 <p>TD: Approval Stage 3?</p>
-<a href="#conclusionresolution-148"><h4 id="conclusionresolution-148">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-10iib-template-literal-revision-to-stage-3"><h4 id="conclusionresolution-10iib-template-literal-revision-to-stage-3">Conclusion/Resolution</h4></a><ul>
 <li>Stage 3 approved</li>
 </ul>
 <a href="#9ii-ecma-402-formattoparts"><h2 id="9ii-ecma-402-formattoparts">9.i.i ECMA-402 formatToParts</h2></a><p>Zibi Braniecki</p>
@@ -159,7 +159,7 @@
 <p>WH: I personally think you have enough implementation experience to advance to stage 4 now.</p>
 <p>ZB: Can we advance to stage 4?</p>
 <p>AK/DE: Some cases need 2 or more browsers, but this is not one.</p>
-<a href="#conclusionresolution-149"><h4 id="conclusionresolution-149">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-9ii-ecma-402-formattoparts"><h4 id="conclusionresolution-9ii-ecma-402-formattoparts">Conclusion/Resolution</h4></a><ul>
 <li>Stage 4 Approved</li>
 <li><a href="https://github.com/tc39/test262/pull/734/files">https://github.com/tc39/test262/pull/734/files</a></li>
 </ul>
@@ -169,7 +169,7 @@
 <p>CP: Thumbs up!</p>
 <p>DE: The spec text is complete. No worries in terms of performance and memory allocation.</p>
 <p>ZB: All data needed for PluralRules to function are already in place, and used by Number and Date, no extra data is needed.</p>
-<a href="#conclusionresolution-150"><h4 id="conclusionresolution-150">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-9ij-ecma-402-intlpluralrules"><h4 id="conclusionresolution-9ij-ecma-402-intlpluralrules">Conclusion/Resolution</h4></a><ul>
 <li>Stage 3 Approved</li>
 </ul>
 <a href="#10ia-require-unicode-900"><h2 id="10ia-require-unicode-900">10.i.a Require Unicode 9.0.0</h2></a><p>Brian Terlson</p>
@@ -190,7 +190,7 @@
 </ul>
 <p>DE: But these tend to be bug fixes?</p>
 <p>BT: Still a risk of a breaking change</p>
-<a href="#conclusionresolution-151"><h4 id="conclusionresolution-151">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-10ia-require-unicode-900"><h4 id="conclusionresolution-10ia-require-unicode-900">Conclusion/Resolution</h4></a><ul>
 <li>Do not merge the PR</li>
 <li>Use language for &quot;the latest&quot;, i.e. unbounded reference</li>
 <li>This should be applied to 402 as well</li>
@@ -209,7 +209,7 @@
 <p>JHD: Exactly the same, only a name change</p>
 <p>MM: That's the breaking change?</p>
 <p>JHD: Yes, otherwise there is no issue</p>
-<a href="#conclusionresolution-152"><h4 id="conclusionresolution-152">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-10iic-trimstarttrimend"><h4 id="conclusionresolution-10iic-trimstarttrimend">Conclusion/Resolution</h4></a><ul>
 <li>Stage 2 Approved</li>
 </ul>
 <a href="#arrayprototypevalues"><h2 id="arrayprototypevalues">Array.prototype.values</h2></a><p>Adam Klein</p>
@@ -227,7 +227,7 @@
 <p>RW: what software?</p>
 <p>AK: CRM Dynamics 2013</p>
 <p>BT: It is fixed, but people don't update their on-premises software. They hire a contractor to install it, and then the contractor walks away. We tell them just use IE11 rather than Edge.  You can configure a group policy to open certain pages in IE11</p>
-<a href="#conclusionresolution-153"><h4 id="conclusionresolution-153">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-arrayprototypevalues"><h4 id="conclusionresolution-arrayprototypevalues">Conclusion/Resolution</h4></a><ul>
 <li>No change; Firefox will proceed with caution in shipping values.</li>
 </ul>
 <a href="#10iva-class-field-initializers-this-semantics"><h2 id="10iva-class-field-initializers-this-semantics">10.iv.a Class Field Initializers: this semantics</h2></a><p>Jeff Morrison</p>
@@ -391,7 +391,7 @@
 <p>EFT/AK: Implementors can't infer more about shape than before</p>
 <p>JM: Objections to Stage 2?</p>
 <p>AWB: I want to see this and private fields merged. I don't think we should advance either on their own to stage 3.</p>
-<a href="#conclusionresolution-154"><h4 id="conclusionresolution-154">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-10iva-class-field-initializers-this-semantics"><h4 id="conclusionresolution-10iva-class-field-initializers-this-semantics">Conclusion/Resolution</h4></a><ul>
 <li>Initializers run with the semantics of individual anonymous methods with no arguments being run on the class. That explains the scope of this and super property access; new.target would be undefined, and each would get a new empty arguments object.</li>
 <li>No consensus on Set() vs. DefinePropertyOrThrow()</li>
 <li>A field with no initializer should create the property with the value undefined</li>
@@ -489,7 +489,7 @@
 <p>AK: I'm surprised you're not upset about it being a promise.</p>
 <p>DH: But the Promise is not reified</p>
 <p>BN: I would prefer synchronous semantics, if possible, but we could live with this. For one, it would be nice to run successive import lines in parallel.</p>
-<a href="#conclusionresolution-155"><h4 id="conclusionresolution-155">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-10iiic-nested-import-declarationhttpsgithubcombenjamnreifyblobmasterproposalmd"><h4 id="conclusionresolution-10iiic-nested-import-declarationhttpsgithubcombenjamnreifyblobmasterproposalmd">Conclusion/Resolution</h4></a><ul>
 <li>Does not reach Stage 1; a synthesis proposal will be pursued at a future meeting. Remains at Stage 0.</li>
 </ul>
 

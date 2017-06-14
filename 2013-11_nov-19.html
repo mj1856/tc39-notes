@@ -122,7 +122,7 @@ TVC: It's already on github, as part of my shim. I will publish it as a separate
 <p>AWB: agree</p>
 <p>JM: Removing the throw might change control flows?</p>
 <p>BE: non-issue, rare.</p>
-<a href="#consensusresolution-510"><h4 id="consensusresolution-510">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-44-finalizing-the-proxy-api-for-es6"><h4 id="consensusresolution-44-finalizing-the-proxy-api-for-es6">Consensus/Resolution</h4></a><ul>
 <li>Drop <code>hasOwn()</code></li>
 <li>Drop <code>invoke()</code></li>
 <li>Postpone proxy handlers API</li>
@@ -175,7 +175,7 @@ TVC: It's already on github, as part of my shim. I will publish it as a separate
 <p>AWB: Back to scheduling</p>
 <p>BE: If there is destructuring, no deep aliasing.</p>
 <p>WH: Easier to explain if the rules are compositional.</p>
-<a href="#consensusresolution-511"><h4 id="consensusresolution-511">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-41-review-latest-specification-draft"><h4 id="consensusresolution-41-review-latest-specification-draft">Consensus/Resolution</h4></a><ul>
 <li>Parameter issues</li>
 <li>default params, alias is independent</li>
 <li>destructuring has no name for top level object, no aliasing</li>
@@ -198,7 +198,7 @@ TVC: It's already on github, as part of my shim. I will publish it as a separate
 </code></pre>
 <p>YK: <code>this</code>, <code>super</code>, <code>arguments</code> should refer to its outer.</p>
 <p>WH: 11.6.2.2 and 13.2.1.1 are inconsistent. The former omits keywords such as &quot;arguments&quot;, while claiming to be based on the latter.</p>
-<a href="#consensusresolution-512"><h4 id="consensusresolution-512">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-41-review-latest-specification-draft"><h4 id="consensusresolution-41-review-latest-specification-draft">Consensus/Resolution</h4></a><ul>
 <li><code>arguments</code> is lexically captured by arrow functions</li>
 <li>11.6.2.2 and 13.2.1.1 are inconsistent (file a bug)</li>
 <li>yield cannot mean &quot;yield to the outer&quot;</li>
@@ -248,7 +248,7 @@ TVC: It's already on github, as part of my shim. I will publish it as a separate
 <p>AWB: so you don't want the check in sloppy mode?</p>
 <p>BE: I don't think there is only one consistent position, and I'm ok with no dynamic check in non-strict mode</p>
 <p>... discussion of the current static checks in non-strict mode ...</p>
-<a href="#consensusresolution-513"><h4 id="consensusresolution-513">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-41-review-latest-specification-draft"><h4 id="consensusresolution-41-review-latest-specification-draft">Consensus/Resolution</h4></a><ul>
 <li>No change, this is the semantics:</li>
 </ul>
 <pre><code><span class="hljs-keyword">var</span> name = <span class="hljs-string">"x"</span>;
@@ -285,7 +285,7 @@ function foo() {
   }
 }
 </code></pre>
-<a href="#consensusresolution-514"><h4 id="consensusresolution-514">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-41-review-latest-specification-draft"><h4 id="consensusresolution-41-review-latest-specification-draft">Consensus/Resolution</h4></a><ul>
 <li>Update <code>yield * [Lexical goal InputElementRegexp]</code> =&gt; <code>yield [no LineTerminator here] * [Lexical goal InputElementRegexp]</code></li>
 </ul>
 <a href="#classoptional-yield-arg-ambiguity"><h2 id="classoptional-yield-arg-ambiguity">Class/optional yield arg ambiguity</h2></a><pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> *<span class="hljs-title">g</span>(<span class="hljs-params"></span>) </span>{
@@ -312,7 +312,7 @@ function foo() {
 <pre><code class="language-js">a = b * (<span class="hljs-keyword">yield</span> c)
 </code></pre>
 <p>WH: Think of &quot;extends&quot;  as having the same precedence as assignment operators. That's why class C extends (A + B) would require parentheses.</p>
-<a href="#consensusresolution-515"><h4 id="consensusresolution-515">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-classoptional-yield-arg-ambiguity"><h4 id="consensusresolution-classoptional-yield-arg-ambiguity">Consensus/Resolution</h4></a><ul>
 <li>extends LeftHandSideExpression</li>
 <li>would be only place an expression isnt explicitly Expression or AssignmentExpression</li>
 </ul>
@@ -335,7 +335,7 @@ function foo() {
 <p>AWB: is this good?</p>
 <p>DH: What does <code>Symbol.keyFor</code> return if the symbol is unregistered?</p>
 <p>undefined</p>
-<a href="#consensusresolution-516"><h4 id="consensusresolution-516">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-cross-realm-symbol-registration"><h4 id="consensusresolution-cross-realm-symbol-registration">Consensus/Resolution</h4></a><ul>
 <li>Agree on proposed API.</li>
 <li>If the symbol is unregistered: <code>Symbol.keyFor(unregistered symbol)</code> returns <code>undefined</code></li>
 <li><code>Symbol.keyFor(not a symbol)</code> throws</li>
@@ -361,14 +361,14 @@ function foo() {
 <p>AWB: (describing a spec that used class inheritance for all new inherited objects, eg. <code>Array.Iterator</code>)</p>
 <p>BE: Return to the question... should <code>arguments</code> be iterable, and how?</p>
 <p>AWB/MM: (discussion re:</p>
-<a href="#consensusresolution-517"><h4 id="consensusresolution-517">Consensus/Resolution</h4></a><p>...?</p>
+<a href="#consensusresolution-introduce-a-prototype-object-that-contains-sloppy-arguments-object-iterator-function"><h4 id="consensusresolution-introduce-a-prototype-object-that-contains-sloppy-arguments-object-iterator-function">Consensus/Resolution</h4></a><p>...?</p>
 <a href="#conventions-for-ignore-over-ride-of-iterator"><h2 id="conventions-for-ignore-over-ride-of-iterator">Conventions for ignore over-ride of @@iterator</h2></a><p>MM: Why is this a spec issue?</p>
 <p>AWB: @@iterator is bad example, @@toStringTag is better</p>
 <p>BE: Use <code>undefined</code>, not &quot;falsey&quot;</p>
 <p>AWB: re: <code>new Map(?, &quot;is&quot;)</code></p>
 <p>BE/RW: <code>new Map(undefined, &quot;is&quot;)</code> defaults to empty list</p>
 <p>AWB: Happy with undefined.</p>
-<a href="#consensusresolution-518"><h4 id="consensusresolution-518">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-conventions-for-ignore-over-ride-of-iterator"><h4 id="consensusresolution-conventions-for-ignore-over-ride-of-iterator">Consensus/Resolution</h4></a><ul>
 <li>Just use <code>undefined</code></li>
 </ul>
 <a href="#function-foo-bindxname"><h2 id="function-foo-bindxname">(function Foo() {}).bind(x).name?</h2></a><p>See: <a href="http://wiki.ecmascript.org/doku.php?id=harmony:function_name_property">http://wiki.ecmascript.org/doku.php?id=harmony:function_name_property</a></p>
@@ -378,7 +378,7 @@ function foo() {
 <p>RW: Same, no name.</p>
 <p>DS: Could bound functions delegate their name? Do we want to do that?</p>
 <p>BE: Might be interesting to find out, can chat with Brandon about this.</p>
-<a href="#consensusresolution-519"><h4 id="consensusresolution-519">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-function-foo-bindxname"><h4 id="consensusresolution-function-foo-bindxname">Consensus/Resolution</h4></a><ul>
 <li>&quot;bind&quot; wins over &quot;bound&quot;</li>
 <li>Brandon needs to review the spec.</li>
 </ul>
@@ -397,7 +397,7 @@ function foo() {
 <li>Sequence of unicode code points that make up a valid JSON sequence. This is covered by ECMA 404.</li>
 <li>Semantics of this structure. For example, reject numbers with a thousand digits.</li>
 </ol>
-<a href="#consensusresolution-520"><h4 id="consensusresolution-520">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-9-ecma-404-w3c-tag--tpac-report"><h4 id="consensusresolution-9-ecma-404-w3c-tag--tpac-report">Consensus/Resolution</h4></a><ul>
 <li>Alex will draft statement to send to IETF last call, due Thursday</li>
 </ul>
 <a href="#49-reconsidering-objectis"><h2 id="49-reconsidering-objectis">4.9 Reconsidering Object.is</h2></a><p>(Dave Herman)</p>
@@ -417,7 +417,7 @@ function foo() {
 <p>Discussion about equating NaN values (<a href="https://github.com/rwaldron/tc39-notes/blob/master/es6/2013-01/jan-29.md#conclusionresolution">https://github.com/rwaldron/tc39-notes/blob/master/es6/2013-01/jan-29.md#conclusionresolution</a>)</p>
 <p>MM: The spec allows 0/0 to be written to a TypedArray twice with different actual bit pattern.</p>
 <p>More discussion re: IEEE NaN</p>
-<a href="#consensusresolution-521"><h4 id="consensusresolution-521">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-49-reconsidering-objectis"><h4 id="consensusresolution-49-reconsidering-objectis">Consensus/Resolution</h4></a><ul>
 <li>Status Quo</li>
 </ul>
 

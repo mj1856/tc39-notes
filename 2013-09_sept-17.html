@@ -191,7 +191,7 @@ it(<span class="hljs-string">"should do something"</span>, () =&gt; {
 </code></pre>
 <p>DH: I'd prefer not to have the hazard.</p>
 <p>AR, DC: Agree with DH</p>
-<a href="#consensusresolution-530"><h4 id="consensusresolution-530">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-41-arrow-functions"><h4 id="consensusresolution-41-arrow-functions">Consensus/Resolution</h4></a><ul>
 <li>No consensus on removing the empty param list</li>
 </ul>
 <a href="#43-mathhypot"><h2 id="43-mathhypot">4.3 Math.hypot</h2></a><p>DH: The idea is that it returns the square root of the sum of its arguments, but we have 2 and 3 argument special casing.</p>
@@ -203,7 +203,7 @@ it(<span class="hljs-string">"should do something"</span>, () =&gt; {
 <p>LH: Should be variadic</p>
 <p>DC: Programming in general is an insult to mathematics. Because what we call functions are not what they call functions. One convention we have in JS is that calling a function with three parameters is the same as calling it with two plus undefined.</p>
 <p>DH: but not for variadic functions. Since we want it for arity 2 and arity 3, cleanest way is to make it variadic. If you have 2 cases, yo have n cases.</p>
-<a href="#consensusresolution-531"><h4 id="consensusresolution-531">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-43-mathhypot"><h4 id="consensusresolution-43-mathhypot">Consensus/Resolution</h4></a><ul>
 <li>variadic</li>
 <li>call ToNumber on all actual arguments</li>
 <li>if one is NaN, no special behaviour, allow to fall out.</li>
@@ -252,7 +252,7 @@ it(<span class="hljs-string">"should do something"</span>, () =&gt; {
 <p>BE: JSON is more then a network format</p>
 <p>?: If you want to pass binary data, just escape unpaired surrogates before serializing them as JSON.</p>
 <p>WH: Won't work. JSON will escape the backslashes in the escape sequences and you'll get double backslashes.</p>
-<a href="#consensusresolution-532"><h4 id="consensusresolution-532">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-47-jsonstringify-and-unpaired-surrogates"><h4 id="consensusresolution-47-jsonstringify-and-unpaired-surrogates">Consensus/Resolution</h4></a><ul>
 <li>No Change. If you want to use lone surrogates you'll have to escape them after JSON.stringify().</li>
 </ul>
 <a href="#51-splice-cross-realm-arrays-and-subclassing"><h2 id="51-splice-cross-realm-arrays-and-subclassing">5.1 splice, cross-realm Arrays and subclassing</h2></a><p><a href="http://esdiscuss.org/topic/array-prototype-slice-web-compat-issue">http://esdiscuss.org/topic/array-prototype-slice-web-compat-issue</a></p>
@@ -323,7 +323,7 @@ sa.slice(<span class="hljs-number">1</span>, <span class="hljs-number">5</span>)
 <p>DD: But this is what user code would do, using this.constructor</p>
 <p>AWB: none of these are guaranteed, where you can wack the prototype...</p>
 <p><strike></p>
-<a href="#consensusresolution-533"><h4 id="consensusresolution-533">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-51-splice-cross-realm-arrays-and-subclassing"><h4 id="consensusresolution-51-splice-cross-realm-arrays-and-subclassing">Consensus/Resolution</h4></a><ul>
 <li>When slice is call, what is the realm of the slice method and the realm of the constructor of the thisObj (since objects don't have realms, only functions do, we have to look up constructor).</li>
 <li>If they do not match, create it in the realm of the method using the stardard Array constructor there.
 </strike></li>
@@ -376,7 +376,7 @@ Is the object going to create an Array?
 <p>WH: If you're looking at the prototype of things, Caja will break. If you're looking at the constructor property, ES5 code will break for anything that has a custom constructor</p>
 <p>AWB: Ignoring the Realm, unless we add some new operation on instances that reveal what Realm they are originally from.</p>
 <p>BE/DH: need to go back and work on this.</p>
-<a href="#consensusresolution-534"><h4 id="consensusresolution-534">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-51-splice-cross-realm-arrays-and-subclassing"><h4 id="consensusresolution-51-splice-cross-realm-arrays-and-subclassing">Consensus/Resolution</h4></a><ul>
 <li>Needs revision of proposal.</li>
 </ul>
 <a href="#52-evaluation-order-and-the-invoke-operation"><h2 id="52-evaluation-order-and-the-invoke-operation">5.2 Evaluation Order and The [[Invoke]] Operation</h2></a><p>DH: Yehuda was interested in this.</p>
@@ -468,7 +468,7 @@ a.values = <span class="hljs-number">1</span>; <span class="xml"><span class="hl
 <p>AWB: Yeah.</p>
 <p>DH: I don't really care.</p>
 <p>AWB: You asked for a Set no, I think it should be a Set.</p>
-<a href="#consensusresolution-535"><h4 id="consensusresolution-535">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-53-unscopeable"><h4 id="consensusresolution-53-unscopeable">Consensus/Resolution</h4></a><ul>
 <li>Continueing with @@unscopeable, with changes w/r to lookup to be defined.</li>
 <li>Noted change:
 <ul>
@@ -490,21 +490,21 @@ a.values = <span class="hljs-number">1</span>; <span class="xml"><span class="hl
 <p>DH: It is, according to IEE 754</p>
 <p>BE: fround. f means float, i means integer</p>
 <p>AWB: What this effectively does, is &quot;round&quot; (observably)</p>
-<a href="#consensusresolution-536"><h4 id="consensusresolution-536">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-55-mathroundfloat32"><h4 id="consensusresolution-55-mathroundfloat32">Consensus/Resolution</h4></a><ul>
 <li>Math.fround</li>
 </ul>
 <a href="#56-backwards-compatability-unicode-utr31-and-es-identifiers-u2e2f"><h2 id="56-backwards-compatability-unicode-utr31-and-es-identifiers-u2e2f">5.6 Backwards compatability, Unicode UTR31, and ES identifiers (U2e2f)</h2></a><p><a href="http://esdiscuss.org/topic/backwards-compatibility-and-u-2e2f-in-identifier-s">http://esdiscuss.org/topic/backwards-compatibility-and-u-2e2f-in-identifier-s</a></p>
 <p>AWB: Traditionally, ES has said that Identifier are composed of unicode characters. There are changes to Unicode that rescind it's ability to be an Identifier.</p>
 <p>AVK: According to Norbert, the character in question was not part of Unicode 3.0 and therefore not a change</p>
 <p>(group testing identifier creation with U2e2f)</p>
-<a href="#consensusresolution-537"><h4 id="consensusresolution-537">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-56-backwards-compatability-unicode-utr31-and-es-identifiers-u2e2f"><h4 id="consensusresolution-56-backwards-compatability-unicode-utr31-and-es-identifiers-u2e2f">Consensus/Resolution</h4></a><ul>
 <li>No change</li>
 <li>SpiderMonkey: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=917436">https://bugzilla.mozilla.org/show_bug.cgi?id=917436</a></li>
 <li>V8: <a href="https://code.google.com/p/v8/issues/detail?id=2892">https://code.google.com/p/v8/issues/detail?id=2892</a></li>
 </ul>
 <a href="#57-note-in-116-wrt-unicode-versions-update-to-unicode-51"><h2 id="57-note-in-116-wrt-unicode-versions-update-to-unicode-51">5.7 note in 11.6 WRT Unicode versions, update to Unicode 5.1</h2></a><p><a href="http://people.mozilla.org/~jorendorff/es6-draft.html#sec-11.6">http://people.mozilla.org/~jorendorff/es6-draft.html#sec-11.6</a></p>
 <p>AWB: (Norbert proposal)</p>
-<a href="#consensusresolution-538"><h4 id="consensusresolution-538">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-57-note-in-116-wrt-unicode-versions-update-to-unicode-51"><h4 id="consensusresolution-57-note-in-116-wrt-unicode-versions-update-to-unicode-51">Consensus/Resolution</h4></a><ul>
 <li>Remove: &quot;NOTE 2 If maximal portability is a concern, programmers should only employ the identifier characters that were defined in Unicode 3.0.&quot;</li>
 </ul>
 <a href="#58-line-terminators-in-template-strings-should-they-be-normalized"><h2 id="58-line-terminators-in-template-strings-should-they-be-normalized">5.8 line terminators in template strings. Should they be normalized?</h2></a><p>(discussion re line terminators)</p>
@@ -523,7 +523,7 @@ a.values = <span class="hljs-number">1</span>; <span class="xml"><span class="hl
 <p>DD: but a lot of the examples, e.g. on the wiki, use raw</p>
 <p>BE: ah right, like the regex one, because you need all those slashes. Hmm.</p>
 <p>BE: Python normalizes, Ruby normalizes</p>
-<a href="#consensusresolution-539"><h4 id="consensusresolution-539">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-58-line-terminators-in-template-strings-should-they-be-normalized"><h4 id="consensusresolution-58-line-terminators-in-template-strings-should-they-be-normalized">Consensus/Resolution</h4></a><ul>
 <li>Normalize CR, LF, and CRLF to LF</li>
 </ul>
 <p>[WH: Is this consensus recorded correctly? I understood the consensus to be normalizing all lexical grammar LineTerminatorSequences to LF.]</p>
@@ -552,14 +552,14 @@ RW: Yes, and was re-stated for confirmation.</p>
 <p>AWB: OK, what about the proxy case.</p>
 <p>DH: I think it works fine; the semantics is just tail-calling the call trap.</p>
 <p>STH: I agree with Dave; we're just making a tail call to some arbitrary code. The code we're worried about is in the call-<em>ing</em> function, not in the MOP operation/trap handler.</p>
-<a href="#consensusresolution-540"><h4 id="consensusresolution-540">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-59-1224-note-says-we-decided-jan-2012-tail-calls-only-in-strict-mode-is-this-still-correct"><h4 id="consensusresolution-59-1224-note-says-we-decided-jan-2012-tail-calls-only-in-strict-mode-is-this-still-correct">Consensus/Resolution</h4></a><ul>
 <li>Yes, the list is still correct.</li>
 <li>function.arguments in non-strict makes tail call effectively impossible.</li>
 </ul>
 <p>(increasing insistence on break time)</p>
 <p>AWB: but let's do point 5.11.</p>
 <a href="#511-disallow-let-undefined-const-undefined-class-undefined--module-undefined-from-foo"><h2 id="511-disallow-let-undefined-const-undefined-class-undefined--module-undefined-from-foo">5.11 Disallow? let undefined; const undefined; class undefined {}; module undefined from &quot;foo&quot;;</h2></a><p>No one thinks that disallowing this is a good idea.</p>
-<a href="#consensusresolution-541"><h4 id="consensusresolution-541">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-511-disallow-let-undefined-const-undefined-class-undefined--module-undefined-from-foo"><h4 id="consensusresolution-511-disallow-let-undefined-const-undefined-class-undefined--module-undefined-from-foo">Consensus/Resolution</h4></a><ul>
 <li>Allow</li>
 </ul>
 <p>BE: Let's make it a keyword inside generators! Just kidding.</p>
@@ -659,7 +659,7 @@ array[<span class="hljs-number">3</span>] =&gt; <span class="hljs-literal">undef
 Non-extensible: 6</p>
 <p>STH: (points about the mental model of operating on the backing store)</p>
 <p>DC: (points about the hazard of user code that abuses Array and creating a new hazard)</p>
-<a href="#consensusresolution-542"><h4 id="consensusresolution-542">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-42-reconsider-decision-to-make-typed-arrays-non-extensible"><h4 id="consensusresolution-42-reconsider-decision-to-make-typed-arrays-non-extensible">Consensus/Resolution</h4></a><ul>
 <li>Consensus deferred.</li>
 </ul>
 

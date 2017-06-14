@@ -94,7 +94,7 @@
 <p>SYG:</p>
 <p>STH: Write the memory model, rep. all the legal executions. Run X times, ensure that all</p>
 <p>SYG: How to test the actual implementation</p>
-<a href="#conclusionresolution-138"><h4 id="conclusionresolution-138">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-10iia-shared-memory-and-atomics"><h4 id="conclusionresolution-10iia-shared-memory-and-atomics">Conclusion/Resolution</h4></a><ul>
 <li>API freeze granted?</li>
 <li>Stage 3 after Waldemar is satisfied with rewrite of memory model</li>
 </ul>
@@ -131,7 +131,7 @@
 </code></pre>
 <p>LB: After this patch, a <code>test(/a/)</code> should return false.</p>
 <p>MM: That does not only address the web compatibility issue, but does a clean-up on the lastIndex.</p>
-<a href="#conclusionresolution-139"><h4 id="conclusionresolution-139">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-10ib-disregard-lastindex-for-non-global-non-sticky-regexps"><h4 id="conclusionresolution-10ib-disregard-lastindex-for-non-global-non-sticky-regexps">Conclusion/Resolution</h4></a><ul>
 <li>Merge it</li>
 <li>Implement in canary and report what happens</li>
 </ul>
@@ -219,7 +219,7 @@
 <p>MM: How much slower would be an accurate implementation of shallow comparison be?</p>
 <p>SM: Would it be possible to expose the ability to compare shapes [or use the shape as a key in a map]?</p>
 <p>MM: The nondeterminism arguments apply to anything that assumes same shape.</p>
-<a href="#conclusionresolution-140"><h4 id="conclusionresolution-140">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-10iiid-objectshallowequal"><h4 id="conclusionresolution-10iiid-objectshallowequal">Conclusion/Resolution</h4></a><ul>
 <li>Explore STH/AWB recommendations</li>
 </ul>
 <a href="#10iiib-promiseprototypefinally"><h2 id="10iiib-promiseprototypefinally">10.iii.b Promise.prototype.finally</h2></a><p>Jordan Harband</p>
@@ -277,7 +277,7 @@
 <p>JHD: So, AWB objects to Stage 2 on the grounds that it's two stages in one meeting.</p>
 <p>AWB: Won't block if the rest of the room wants to advance</p>
 <p>WH: Have no objection to this, but in the future I'd love a prior notice on the agenda for any item that wants to jump more than one stage so I can look at it much more carefully before the meeting.</p>
-<a href="#conclusionresolution-141"><h4 id="conclusionresolution-141">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-10iiib-promiseprototypefinally"><h4 id="conclusionresolution-10iiib-promiseprototypefinally">Conclusion/Resolution</h4></a><ul>
 <li>Stage 1 approved</li>
 <li>Stage 2 approved</li>
 </ul>
@@ -611,7 +611,7 @@ Still unsure what the exact use cases are, but it seems plausible.</p>
 <p>BT: Another question about Domenic's proposal: Is the rationale for why third state is bad documented?</p>
 <p>DD: I'll write it up.</p>
 <p>BT: I think it needs to be reflected, so we know years from now why we didn't go with third state.</p>
-<a href="#conclusionresolution-142"><h4 id="conclusionresolution-142">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-10ivb-cancelable-promises-update"><h4 id="conclusionresolution-10ivb-cancelable-promises-update">Conclusion/Resolution</h4></a><ul>
 <li>Continued development based on today's discussion</li>
 <li>await.cancelToken</li>
 <li>Promise.cancelable(...)</li>
@@ -639,7 +639,7 @@ Still unsure what the exact use cases are, but it seems plausible.</p>
 <p>WH: Ambiguities on code sequences that start with await/ and then get interpreted in diverging ways (due to the await-as-identifier vs await-as-operator distinction that flips the / between division and starting a regexp) by cover grammars vs. real grammars. It's a potential bug farm.</p>
 <p>WH: I am not opposed to Stage 4, just noting the potential danger.</p>
 <p>BE: is there a way to look at the grammar of &quot;yield&quot; to have it work?</p>
-<a href="#conclusionresolution-143"><h4 id="conclusionresolution-143">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-10iv-async-functions"><h4 id="conclusionresolution-10iv-async-functions">Conclusion/Resolution</h4></a><ul>
 <li>Stage 4</li>
 </ul>
 <a href="#9iiic-decorators"><h2 id="9iiic-decorators">9.iii.c Decorators</h2></a><p>Yehuda Katz and Brian Terlson</p>
@@ -703,7 +703,7 @@ Still unsure what the exact use cases are, but it seems plausible.</p>
 <p>YK: Yes, I will do that before stage 3.</p>
 <p>BT: Fair to make that separate?</p>
 <p>NO.</p>
-<a href="#conclusionresolution-144"><h4 id="conclusionresolution-144">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-9iiic-decorators"><h4 id="conclusionresolution-9iiic-decorators">Conclusion/Resolution</h4></a><ul>
 <li>Stage 2 Approval</li>
 </ul>
 <a href="#9iiib-private-state"><h2 id="9iiib-private-state">9.iii.b Private State</h2></a><p>Daniel Ehrenberg</p>
@@ -737,7 +737,7 @@ Still unsure what the exact use cases are, but it seems plausible.</p>
 <p>MM: We're rehashing arguments we had years ago like &quot;should private be soft or hard&quot;. There are notes.</p>
 <p>YK: I object to the precedent &quot;we had a binding conversation 5 years ago&quot;</p>
 <p>Call for Stage 2?</p>
-<a href="#conclusionresolution-145"><h4 id="conclusionresolution-145">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-9iiib-private-state"><h4 id="conclusionresolution-9iiib-private-state">Conclusion/Resolution</h4></a><ul>
 <li>We don't have enough time?</li>
 </ul>
 

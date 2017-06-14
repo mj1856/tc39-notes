@@ -28,13 +28,13 @@
 <a href="#411-performance-issue-objectdefineproperties-objectcreate-objectassign"><h2 id="411-performance-issue-objectdefineproperties-objectcreate-objectassign">4.11 Performance issue: <code>Object.defineProperties</code>, <code>Object.create</code>, <code>Object.assign</code>.</h2></a><p>(revisit)</p>
 <p>AWB: (Recap)</p>
 <p>MM: After consideration of the issue at hand, and in keeping with principle of least surprise: there is no other place where the spec defines similar behaviour. All other speced action before propagating a throw, such as the &quot;return&quot; from for-of loops, is cleanup action rather than continuation of the original operation. Given that the order in which the properties are tried is deterministic and with the balance of the other arguments, I agree that the first error should throw at the point of exception.</p>
-<a href="#conclusionresolution-356"><h4 id="conclusionresolution-356">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-411-performance-issue-objectdefineproperties-objectcreate-objectassign"><h4 id="conclusionresolution-411-performance-issue-objectdefineproperties-objectcreate-objectassign">Conclusion/Resolution</h4></a><ul>
 <li>Remove pendingException semantics</li>
 <li>Error throws at point of exception</li>
 </ul>
 <a href="#412-should-weakmapweakset-have-a-clear-method-markm"><h2 id="412-should-weakmapweakset-have-a-clear-method-markm">4.12 Should WeakMap/WeakSet have a .clear method? (MarkM)</h2></a><p>(Mark Miller)</p>
 <p>MM: In the absense of clear, we have a security property: the mapping from weakmap/key pair value can only be observed or affected by someone who has both the weakmap and the key. With clear(), someone with <em>only</em> the WeakMap would've been able to affect the WeakMap-and-key-to-value mapping.</p>
-<a href="#conclusionresolution-357"><h4 id="conclusionresolution-357">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-412-should-weakmapweakset-have-a-clear-method-markm"><h4 id="conclusionresolution-412-should-weakmapweakset-have-a-clear-method-markm">Conclusion/Resolution</h4></a><ul>
 <li>Remove <code>clear</code> from WeakMap and WeakSet</li>
 </ul>
 <a href="#47-clarify-the-syntax-reserved"><h2 id="47-clarify-the-syntax-reserved">4.7 Clarify the syntax reserved?</h2></a><p>(Allen Wirfs-Brock)</p>
@@ -44,7 +44,7 @@
 <p>WH: Will validate the grammar by January</p>
 <p>AWB: The colon-less form of object literal</p>
 <p>Various: Discussion of the annoying ambiguities in using colons to add types to destructuring patterns.</p>
-<a href="#conclusionresolution-358"><h4 id="conclusionresolution-358">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-47-clarify-the-syntax-reserved"><h4 id="conclusionresolution-47-clarify-the-syntax-reserved">Conclusion/Resolution</h4></a><ul>
 <li>No colon after BindingIdentifier</li>
 <li>Jeff Morrison and Brian Terlson to chamption refinements</li>
 </ul>
@@ -217,7 +217,7 @@ myMap.entries()                      <span class="hljs-comment">// proposal: you
 <li>Composing two functions and then mapping the resulting function over a functor should be the same as first mapping one function over the functor and then mapping the other one.</li>
 </ol>
 <p>(break)</p>
-<a href="#conclusionresolution-359"><h4 id="conclusionresolution-359">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-58-mapprototypemap-and-mapprototypefilter-spec--set"><h4 id="conclusionresolution-58-mapprototypemap-and-mapprototypefilter-spec--set">Conclusion/Resolution</h4></a><ul>
 <li>Needs work.</li>
 <li>Sufficient issues</li>
 <li>Iterator prototype first</li>
@@ -235,7 +235,7 @@ myMap.entries()                      <span class="hljs-comment">// proposal: you
 <p>AWB: Correct.</p>
 <p>RW: What is the actual value of removal?</p>
 <p>AWB/LB: There is value in consistency</p>
-<a href="#conclusionresolution-360"><h4 id="conclusionresolution-360">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-59-revisit-set-api-possible-exclusion-of-entries-and-keys"><h4 id="conclusionresolution-59-revisit-set-api-possible-exclusion-of-entries-and-keys">Conclusion/Resolution</h4></a><ul>
 <li>No removal of argument to <code>set.forEach</code></li>
 </ul>
 <a href="#abstract-references-as-a-solution-to-ltr-composition-and-private-state"><h2 id="abstract-references-as-a-solution-to-ltr-composition-and-private-state">Abstract references as a solution to LTR composition and private state</h2></a><p>(Kevin Smith)</p>
@@ -428,7 +428,7 @@ examples:</p>
 <p>It's basically impossible to follow (rapid topic-hopping, analogous to frequency-hopping radios :) )</p>
 <p>When members review the contents of this discussion, they will have to fill in their own summaries.</p>
 <p>BE: for this proposal, take the @ vs :: objection to heart, separate &quot;privacy&quot; from the L-to-R order.</p>
-<a href="#conclusionresolution-361"><h4 id="conclusionresolution-361">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-abstract-references-as-a-solution-to-ltr-composition-and-private-state"><h4 id="conclusionresolution-abstract-references-as-a-solution-to-ltr-composition-and-private-state">Conclusion/Resolution</h4></a><ul>
 <li>Resolve the existing issues</li>
 <li>Separate &quot;privacy&quot; from left to right</li>
 </ul>
@@ -485,7 +485,7 @@ Other: assume can operate under an &quot;pwned&quot; environment</p>
 <p>MM: Can say that the default is &quot;at least populated by the built-ins&quot; and anything the host wants to include</p>
 <p>DH: Unclear what things should not be included.</p>
 <p>DH: Need to provide the list of what should be there and what should not be there.</p>
-<a href="#conclusionresolution-362"><h4 id="conclusionresolution-362">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-57-can-security-monitors-reliably-detect-monkey-patching-of-primordials"><h4 id="conclusionresolution-57-can-security-monitors-reliably-detect-monkey-patching-of-primordials">Conclusion/Resolution</h4></a><ul>
 <li>Use the Realm API</li>
 <li>The idea that we can hang something on the Realm API to help protect against possibly-malicious extensions.</li>
 <li>The Realm initialization API probably should be enhanced to take a whitelist as argument, so it can include only the subset of the initial primordials enumerated by that whitelist.</li>

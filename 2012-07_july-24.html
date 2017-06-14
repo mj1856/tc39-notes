@@ -39,7 +39,7 @@ and the call trap.</p>
 &quot;apply&quot; and &quot;construct&quot; traps)</p>
 <p>STH: call should be in tail position. Clarification of known call site
 syntax, per spec.</p>
-<a href="#consensusresolution-663"><h4 id="consensusresolution-663">Consensus/Resolution</h4></a><p>Anything that could invoke user written code in a tail position to
+<a href="#consensusresolution-41-awb-presents-changes-resulting-in-latest-drafts"><h4 id="consensusresolution-41-awb-presents-changes-resulting-in-latest-drafts">Consensus/Resolution</h4></a><p>Anything that could invoke user written code in a tail position to
 act as a tail call.</p>
 <p>call, apply, accessors, quasi (interpolation), proxy calls</p>
 <p>We still need to specify the tail positions in the syntax.  There's
@@ -114,7 +114,7 @@ of brand</p>
 <li>Fixing is not easy</li>
 <li>How to correctly fix w/o making more surface area for the wrong thing</li>
 </ol>
-<a href="#consensusresolution-664"><h4 id="consensusresolution-664">Consensus/Resolution</h4></a><p>There is worry that changes to spec that affect the return of toString will
+<a href="#consensusresolution-49-getclassnameof"><h4 id="consensusresolution-49-getclassnameof">Consensus/Resolution</h4></a><p>There is worry that changes to spec that affect the return of toString will
 have adverse impact on existing libraries and users when they encounter new
 runtime behaviours where the existing behaviour is expected.</p>
 <p>Belief that we need a more flexible mechanism, whether it is AWB's
@@ -136,7 +136,7 @@ Technical Standard 35.</p>
 <p>If you have 4 different impls, 3 of them support a language that you want
 to support, how can you polyfill the 4th to support the language.</p>
 <p>The constructor can re-declared?</p>
-<a href="#conclusionresolution-665"><h4 id="conclusionresolution-665">Conclusion/Resolution</h4></a><p>There is no easy way currently, second version of Intl spec
+<a href="#conclusionresolution-61-last-call-for-feedback-before-final-draft"><h4 id="conclusionresolution-61-last-call-for-feedback-before-final-draft">Conclusion/Resolution</h4></a><p>There is no easy way currently, second version of Intl spec
 will address this.</p>
 <p>Conformance tests being written for test262.</p>
 <p>NL will have the final draft prepared for September meeting, but will
@@ -314,7 +314,7 @@ same <span class="hljs-keyword">as</span>
 f.apply(f, args);
 
 </code></pre>
-<a href="#consensusresolution-666"><h4 id="consensusresolution-666">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-413-destructuring-issues"><h4 id="consensusresolution-413-destructuring-issues">Consensus/Resolution</h4></a><ul>
 <li>change spec. to make undefine trigger use of default value.</li>
 </ul>
 <p>(DH)

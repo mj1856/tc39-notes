@@ -227,7 +227,7 @@ Derive.[<span class="hljs-string">[Construct</span>]](args, rcvr)
 <p>MM: The direction I've presented is what I prefer. What I'm <em>actually</em> proposing is that we allow Allen to be the champion and work out the details remaining. Objection?</p>
 <p>None.</p>
 <p>BE: No objection, but I want to make sure Allen works with YK, JM and Boris Zbarsky</p>
-<a href="#conclusionresolution-402"><h4 id="conclusionresolution-402">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-44-instantiation-reform-review-create-design-rationale-and-possible-alternatives"><h4 id="conclusionresolution-44-instantiation-reform-review-create-design-rationale-and-possible-alternatives">Conclusion/Resolution</h4></a><ul>
 <li>Agreement to MM proposal: Allen to be the champion and work out the details remaining</li>
 </ul>
 <p>(This did not gain <em>final</em> consensus, as follow up was necessary)</p>
@@ -441,7 +441,7 @@ DH &amp; JMC: overloading operators is ok, no lifitng or implict conversions</p>
 </ul>
 <p>AWB/DH: (clarification of coupling and timing issue)</p>
 <p>DH: Needs to be the same semantics as value types, if we ship this sooner and learn that we made a wrong call, then we have to deal with deciding whether or not we apply the mistake or break with SIMD.</p>
-<a href="#conclusionresolution-403"><h4 id="conclusionresolution-403">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-52-simdjs"><h4 id="conclusionresolution-52-simdjs">Conclusion/Resolution</h4></a><ul>
 <li>Moves to stage 1</li>
 </ul>
 <a href="#43-function-parameterlet-declaration-name-conflict-rules"><h2 id="43-function-parameterlet-declaration-name-conflict-rules">4.3 Function parameter/let declaration name conflict rules</h2></a><p>(Allen Wirfs-Brock)</p>
@@ -509,7 +509,7 @@ DH &amp; JMC: overloading operators is ok, no lifitng or implict conversions</p>
 <ul>
 <li>We want the error.</li>
 </ul>
-<a href="#conclusionresolution-404"><h4 id="conclusionresolution-404">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-43-function-parameterlet-declaration-name-conflict-rules"><h4 id="conclusionresolution-43-function-parameterlet-declaration-name-conflict-rules">Conclusion/Resolution</h4></a><ul>
 <li>Status Quo</li>
 <li>DDWIDM: &quot;Don't Do What I Didn't Mean&quot;</li>
 </ul>
@@ -552,7 +552,7 @@ DH &amp; JMC: overloading operators is ok, no lifitng or implict conversions</p>
 <p>BE: who will own explaining to Andy Wingo and es-discuss?</p>
 <p>DH: I will</p>
 <p>BE: &quot;You keep what you kill&quot; - Richard P. Riddick</p>
-<a href="#conclusionresolution-405"><h4 id="conclusionresolution-405">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-47-revisit-comprehension-decision-from-last-meeting"><h4 id="conclusionresolution-47-revisit-comprehension-decision-from-last-meeting">Conclusion/Resolution</h4></a><ul>
 <li>Add a prototype for iterators, but do not expose a global Iterator constructor for ES6 (leave that for ES7)
 <ul>
 <li>Between Object prototype and Generator prototype</li>
@@ -581,7 +581,7 @@ rest;  <span class="hljs-comment">// ["o", "o"]</span>
 <p>YK: (to Sam) Do you think it will it should fail for strings to destructure?</p>
 <p>More discussion of pattern matching.</p>
 <p>DH, BE: match must mean a different pattern language, ships have sailed for destructuring and implicit ToObject</p>
-<a href="#conclusionresolution-406"><h4 id="conclusionresolution-406">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-412-revisit-spread-and-destructuring-of-string"><h4 id="conclusionresolution-412-revisit-spread-and-destructuring-of-string">Conclusion/Resolution</h4></a><ul>
 <li>Destructuring does ToObject</li>
 </ul>
 <a href="#45-import-into-namespace-syntax-dave"><h2 id="45-import-into-namespace-syntax-dave">4.5 Import-into-namespace syntax (Dave)</h2></a><p>(Dave Herman)</p>
@@ -649,7 +649,7 @@ rest;  <span class="hljs-comment">// ["o", "o"]</span>
 <pre><code class="language-js"><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> me <span class="hljs-keyword">from</span> here;
 me.import; <span class="hljs-comment">// `me` is the context object</span>
 </code></pre>
-<a href="#conclusionresolution-407"><h4 id="conclusionresolution-407">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-45-import-into-namespace-syntax-dave"><h4 id="conclusionresolution-45-import-into-namespace-syntax-dave">Conclusion/Resolution</h4></a><ul>
 <li>the api is right direction</li>
 <li>each module gets its own version of that object</li>
 <li>need some sort of access to the module contextual object</li>

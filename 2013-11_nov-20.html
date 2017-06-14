@@ -61,7 +61,7 @@ Records the vulnerability that has now been fixed in Caja at the price of additi
 <p>WH: (agreeing)</p>
 <p>AWB: We can specify in the grammar that where we write &quot;if&quot; it means that exact character sequence</p>
 <p>...Anywhere we express literal keywords, we mean those character sequences.</p>
-<a href="#consensusresolution-501"><h4 id="consensusresolution-501">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-42-clarification-of-the-interaction-of-unicode-escapes-and-identification-syntax"><h4 id="consensusresolution-42-clarification-of-the-interaction-of-unicode-escapes-and-identification-syntax">Consensus/Resolution</h4></a><ul>
 <li>ReservedWords, including contextual, can only be spelled with ascii characters, ie. the literal character sequence.</li>
 <li>No escapes allowed in such ReservedWords</li>
 </ul>
@@ -77,7 +77,7 @@ Records the vulnerability that has now been fixed in Caja at the price of additi
 <p>BE: Will have someone work on this for SpiderMonkey</p>
 <p>RW: Agree that implementors will feel the pressure once practioners experience the benefits that Doug describes.</p>
 <p>DH: Allows for real cps transformations that won't blow the stack and don't require awful setTimeout hacks. FP idioms being available to JS.</p>
-<a href="#consensusresolution-502"><h4 id="consensusresolution-502">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-performance-impact-of-tail-calls"><h4 id="consensusresolution-performance-impact-of-tail-calls">Consensus/Resolution</h4></a><ul>
 <li>Share implementation experience</li>
 </ul>
 <a href="#super-and-object-literals"><h2 id="super-and-object-literals">super and object literals</h2></a><p>(Allen Wirfs-Brock)</p>
@@ -241,7 +241,7 @@ resuper, bindSuper, supersede, withSuper, super?</p>
 </ul></li>
 </ul>
 <p>Discussion re: naming. The shed is pink? It's more of a mauve, I think. You would.</p>
-<a href="#consensusresolution-503"><h4 id="consensusresolution-503">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-super-and-object-literals"><h4 id="consensusresolution-super-and-object-literals">Consensus/Resolution</h4></a><ul>
 <li>Remove Object.mixin</li>
 <li>&quot;toMethod()&quot; wins -- debate about argument order</li>
 <li>debate about what [[MName]] is and what it's derived from
@@ -268,7 +268,7 @@ resuper, bindSuper, supersede, withSuper, super?</p>
 <p>DH: This can be addressed in ES7</p>
 <p>Discussion re: -0/+0 difference.</p>
 <p>It was pointed out the only difference between the default comparator and the is comparation is the handling of -0/+0 and that a subclass of Map that ditingishes between +0 and -1 using Object.is can easily be written in ES code.</p>
-<a href="#consensusresolution-504"><h4 id="consensusresolution-504">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-reconsidering-the-map-custom-comparator-api"><h4 id="consensusresolution-reconsidering-the-map-custom-comparator-api">Consensus/Resolution</h4></a><ul>
 <li>Remove second param to Map and Set constructor</li>
 <li>Defer to ES7</li>
 </ul>
@@ -288,7 +288,7 @@ WH: Good. We do want to avoid the intermediate overflow that would turn this int
 <p>?: This isn't just about hypot. How should we specify precision in general for things such as transcendental function.</p>
 <p>WH: It's a moving target. Do not want to encode precision requirements in the standard on anything other than basic arithmetic or number?string conversion in the spec because those are complicated and how to specify them varies depending on the function. Best thing to do is link to some existing writeup describing best practices.</p>
 <p>BE: I'll beat the drum to get a spec. Dave's right that it's bad language.</p>
-<a href="#consensusresolution-505"><h4 id="consensusresolution-505">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-mathhypot-and-precision"><h4 id="consensusresolution-mathhypot-and-precision">Consensus/Resolution</h4></a><ul>
 <li>Brendan to propose replacement for last two steps.</li>
 </ul>
 <a href="#410-generator-arrow-function-syntax"><h2 id="410-generator-arrow-function-syntax">4.10 Generator arrow function syntax</h2></a><p>(Brendan Eich)</p>
@@ -326,7 +326,7 @@ x *=&gt; x * x;
 <p>BE/WH: No</p>
 <p>DH: Recalls implied generator (yield presense) footgun</p>
 <p>DH: There is not a 1-to-1 correspondance to where you'd use function or function *. Arrow is not a replacement for all functions that want lexical this.</p>
-<a href="#consensusresolution-506"><h4 id="consensusresolution-506">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-410-generator-arrow-function-syntax"><h4 id="consensusresolution-410-generator-arrow-function-syntax">Consensus/Resolution</h4></a><ul>
 <li>No addition, revisit for ES7</li>
 </ul>
 <a href="#for-let"><h2 id="for-let">for-let</h2></a><p>(Brian Terlson)</p>
@@ -385,13 +385,13 @@ x *=&gt; x * x;
 <span class="hljs-number">3</span>
 <span class="hljs-number">4</span>
 </code></pre>
-<a href="#consensusresolution-507"><h4 id="consensusresolution-507">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-for-let"><h4 id="consensusresolution-for-let">Consensus/Resolution</h4></a><ul>
 <li>Brand new outer scope created around the entire loop that has variables that are declared in the loop head, and it gets the initial values</li>
 <li>There is a new scope for each iteration that receives values from the previous iteration</li>
 </ul>
 <a href="#5-post-es6-spec-process"><h2 id="5-post-es6-spec-process">5 Post ES6 Spec Process.</h2></a><p>(Rafael Weinstein)</p>
 <p>Train model.</p>
-<a href="#consensusresolution-508"><h4 id="consensusresolution-508">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-5-post-es6-spec-process"><h4 id="consensusresolution-5-post-es6-spec-process">Consensus/Resolution</h4></a><ul>
 <li>Sounds reasonable, we're going to try it.</li>
 </ul>
 <a href="#ordering-of-scheduling-of-microtasks"><h2 id="ordering-of-scheduling-of-microtasks">Ordering of scheduling of microtasks</h2></a><p>BE: FIFO</p>
@@ -405,7 +405,7 @@ x *=&gt; x * x;
 <p>WH: Can you reorder the operations so that the DOM operation happens next to each other.</p>
 <p>YK: I think a priority queue is isomorphic to buckets.</p>
 <p>AWB: In ES6 we only have one class of priority which is the priority of Promises. We do not need to spec that there might be different priorities.</p>
-<a href="#consensusresolution-509"><h4 id="consensusresolution-509">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-ordering-of-scheduling-of-microtasks"><h4 id="consensusresolution-ordering-of-scheduling-of-microtasks">Consensus/Resolution</h4></a><ul>
 <li>ES6 spec needs to spec that Promises are serviced in a FIFO queue</li>
 <li>Other non ES6 tasks might be interleaved arbitrarily</li>
 <li>Interleaving of the Promise queue by other non ES6 operations</li>

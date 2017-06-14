@@ -98,7 +98,7 @@ nats.return = <span class="hljs-function"><span class="hljs-params">()</span> =&
 <p>AWB/BN: The user would have to wrap the iterator and/or use try/catch</p>
 <p>BN: Do we need to consider generators and try/finally and make sure we are not missing an opportunity to prevent bugs?</p>
 <p>BN: no compelling argument to throw for iterators that do not have a return method, since they can just implement .return() to throw if they really want that behavior.</p>
-<a href="#conclusionresolution-342"><h4 id="conclusionresolution-342">Conclusion/resolution</h4></a><ul>
+<a href="#conclusionresolution-es6-generator-issues"><h4 id="conclusionresolution-es6-generator-issues">Conclusion/resolution</h4></a><ul>
 <li>Remove the truthy check for Get(result, &quot;done&quot;) that follows the call of &quot;return&quot;. (The value continues to have to be an Object.)</li>
 <li>Relevant bug closed with the following comment: <a href="https://bugs.ecmascript.org/show_bug.cgi?id=3395#c2">https://bugs.ecmascript.org/show_bug.cgi?id=3395#c2</a></li>
 </ul>
@@ -123,12 +123,12 @@ nats.return = <span class="hljs-function"><span class="hljs-params">()</span> =&
 <p>YK: Then they get an error which is what you would expect.</p>
 <p>MM: Requests that browser makers wait for at least 2 months before releasing a browser that drops step 17. The integrity of Caja is at stake.</p>
 <p>[agreed to MM's request]</p>
-<a href="#resolutionconclusion-343"><h4 id="resolutionconclusion-343">Resolution/conclusion</h4></a><ul>
+<a href="#resolutionconclusion-45-tostringtag"><h4 id="resolutionconclusion-45-tostringtag">Resolution/conclusion</h4></a><ul>
 <li>Remove step 17b in the alg (the tilde prefix requirement). 19.1.3.6 Object.prototype.toString ( )</li>
 <li>Agreed to wait 2 months before releasing a browser that does this</li>
 </ul>
 <a href="#super-revisited"><h2 id="super-revisited">Super revisited</h2></a><p>YK: Happy with the outcome.</p>
-<a href="#conclusionresolution-344"><h4 id="conclusionresolution-344">Conclusion/resolution</h4></a><ul>
+<a href="#conclusionresolution-super-revisited"><h4 id="conclusionresolution-super-revisited">Conclusion/resolution</h4></a><ul>
 <li><code>super.property</code> is available in all concise methods (including accessors) in object literals.</li>
 </ul>
 <a href="#experimental-new-directions-for-javascript-at-google"><h2 id="experimental-new-directions-for-javascript-at-google">Experimental new directions for JavaScript at Google</h2></a><p>(Andreas Rossberg)</p>
@@ -273,7 +273,7 @@ Decorators vs. Annotations: <a href="https://docs.google.com/document/d/1QchMCOh
 <p>MM: Having one mechanism that satisifes both needs is preferable to having two different mechanism.</p>
 <p>MM: Maybe you can have a statically verified subset of decorators and if that restriction is fulfilled your tooling can treat it as an annotation. If not it falls back to a dynamic decorator.</p>
 <p>IM: Sounds promising.</p>
-<a href="#conclusionresolution-345"><h4 id="conclusionresolution-345">Conclusion/resolution</h4></a><ul>
+<a href="#conclusionresolution-63-decorators"><h4 id="conclusionresolution-63-decorators">Conclusion/resolution</h4></a><ul>
 <li>None?</li>
 </ul>
 

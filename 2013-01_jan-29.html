@@ -90,7 +90,7 @@ AWB: Not yet.</p>
 <p>WH: (question about new type NaNs)</p>
 <p>AWB: No spec provisions, currently...</p>
 <p>WH: Hypothetical discussion about new &quot;decimal&quot; type with a &quot;decimal  NaN&quot; and the implications of NaN equality. The issue that would arise would be that a decimal NaN would be unequal to itself but would be distinguishable from the regular Number NaN. Therefore the example code for how <em>users</em> could implement <code>is</code> wouldn't work. However, if <code>is</code> is a language feature, then an implentation can fix it up to behave correctly when it adds additional primitive types such as Decimal, just as it would fix up the behavior of ==, etc.</p>
-<a href="#conclusionresolution-610"><h4 id="conclusionresolution-610">Conclusion/Resolution</h4></a><p>Consensus on <strong>No operator</strong></p>
+<a href="#conclusionresolution-41-isisnt-operators"><h4 id="conclusionresolution-41-isisnt-operators">Conclusion/Resolution</h4></a><p>Consensus on <strong>No operator</strong></p>
 <p>Do we want API? <strong>Yes.</strong></p>
 <p>What is the name? <strong>Object.is(x, y)</strong>
 (NOT Object.isnt, ! is sufficient for negation)</p>
@@ -105,7 +105,7 @@ AWB: Not yet.</p>
 <p>WH: Number.isNaN is analogous to other Number functions such as Number.isFinite and Number.isInteger. It should stay.</p>
 <p>(toInteger was mistakenly changed to toInt, discussion leads to revisiting March 29th 2012 notes where no rationale was recorded. <a href="https://mail.mozilla.org/pipermail/es-discuss/2012-March/021919.html">https://mail.mozilla.org/pipermail/es-discuss/2012-March/021919.html</a>)</p>
 <p>Given the existence of the other Number.is* functions, several people flip their views.</p>
-<a href="#conclusionresolution-611"><h4 id="conclusionresolution-611">Conclusion/Resolution</h4></a><p>Overturn the Number.toInteger=&gt;toInt change. Restore as toInteger. (Brendan, can you fill in the rationale for this?)</p>
+<a href="#conclusionresolution-44-is-there-are-need-for-numberisnan-if-we-have-objectis-available"><h4 id="conclusionresolution-44-is-there-are-need-for-numberisnan-if-we-have-objectis-available">Conclusion/Resolution</h4></a><p>Overturn the Number.toInteger=&gt;toInt change. Restore as toInteger. (Brendan, can you fill in the rationale for this?)</p>
 <p>Number.isNaN remains in ES6</p>
 <a href="#42-samevalue-for-mapset-equivalence"><h2 id="42-samevalue-for-mapset-equivalence">4.2 SameValue for Map/Set equivalence?</h2></a><a href="#43-parameterize-the-equivalence-operator-for-mapset"><h2 id="43-parameterize-the-equivalence-operator-for-mapset">4.3 Parameterize the equivalence operator for Map/Set?</h2></a><p>AWB: For ES6, only specify a limited set of comparison operators?</p>
 <p>Discussion re: arbitrary comparisons?</p>
@@ -121,7 +121,7 @@ AWB: Not yet.</p>
 <p>Ideally, we'd want to set this in the constructor, but there is already a single optional initializer argument.</p>
 <p>BE: Let's find a champion to work this out over the next two days.</p>
 <p>AWB: I can do this.</p>
-<a href="#conclusionresolution-612"><h4 id="conclusionresolution-612">Conclusion/Resolution</h4></a><p>To revisit, pending proposal from AWB. (See Jan 31 notes)</p>
+<a href="#conclusionresolution-43-parameterize-the-equivalence-operator-for-mapset"><h4 id="conclusionresolution-43-parameterize-the-equivalence-operator-for-mapset">Conclusion/Resolution</h4></a><p>To revisit, pending proposal from AWB. (See Jan 31 notes)</p>
 <p>Must address the minimal requirements on the wiki</p>
 <a href="#6-second-edition-of-ecma-402-internationalization"><h2 id="6-second-edition-of-ecma-402-internationalization">6 Second Edition of ECMA-402 (Internationalization)</h2></a><p>Last Update: <a href="https://github.com/rwldrn/tc39-notes/blob/master/es6/2012-11/nov-27.md#internationalization-update">https://github.com/rwldrn/tc39-notes/blob/master/es6/2012-11/nov-27.md#internationalization-update</a></p>
 <p>NC: Approved to continue work. APIs covered, people assigned to write strawman. Have API changes to be written into the spec, based on use cases that have emerged.</p>
@@ -181,7 +181,7 @@ followed by Canonical Composition, combined with case folding</li>
 <p>Therefore <code>__proto__</code> gets standardized, <code>__d/l</code> do not.</p>
 <p>Rationale for not adding Object.setPrototypeOf
 <a href="https://mail.mozilla.org/pipermail/es-discuss/2012-May/022904.html">https://mail.mozilla.org/pipermail/es-discuss/2012-May/022904.html</a></p>
-<a href="#conclusionresolution-613"><h4 id="conclusionresolution-613">Conclusion/Resolution</h4></a><p>Consensus that <code>__define(G|S)etter__</code>, <code>__lookup(G|S)etter__</code> will not be standardized, nor added to an Appendix.</p>
+<a href="#conclusionresolution-45-why-standardizing-on-__proto__-and-not-__definegsetter__-__lookupgsetter__"><h4 id="conclusionresolution-45-why-standardizing-on-__proto__-and-not-__definegsetter__-__lookupgsetter__">Conclusion/Resolution</h4></a><p>Consensus that <code>__define(G|S)etter__</code>, <code>__lookup(G|S)etter__</code> will not be standardized, nor added to an Appendix.</p>
 <a href="#48-refactored-new-operator-and-the-create-method"><h2 id="48-refactored-new-operator-and-the-create-method">4.8 Refactored new operator and the @@create method</h2></a><p>(Presented by Allen Wirfs-Brock)</p>
 <p>Slides (pdf): <a href="http://wiki.ecmascript.org/lib/exe/fetch.php?id=meetings%3Ameeting_jan_29_2013&amp;cache=cache&amp;media=meetings:subclassing_builtins.pdf">http://wiki.ecmascript.org/lib/exe/fetch.php?id=meetings%3Ameeting_jan_29_2013&amp;cache=cache&amp;media=meetings:subclassing_builtins.pdf</a></p>
 <p>The Basic Issue:</p>
@@ -343,7 +343,7 @@ t.toString(); <span class="hljs-comment">// [object Array]</span>
 [[Match]] =&gt; [[RegExpMatch]]</p>
 <p><strong>Testing the |this| value almost works</strong></p>
 <p>(See slides for code example)</p>
-<a href="#conclusionresolution-614"><h4 id="conclusionresolution-614">Conclusion/Resolution</h4></a><p>Consensus on @@create, allocation and initialization decoupling.</p>
+<a href="#conclusionresolution-48-refactored-new-operator-and-the-create-method"><h4 id="conclusionresolution-48-refactored-new-operator-and-the-create-method">Conclusion/Resolution</h4></a><p>Consensus on @@create, allocation and initialization decoupling.</p>
 <p><strong>Constructors need to be able to recognize initialized instances</strong></p>
 <ul>
 <li>Built-ins can do this via existing internal properties</li>

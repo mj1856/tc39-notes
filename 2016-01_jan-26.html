@@ -13,7 +13,7 @@
 <a href="#agenda"><h2 id="agenda">Agenda</h2></a><p><a href="https://github.com/tc39/agendas/blob/master/2016/01.md">https://github.com/tc39/agendas/blob/master/2016/01.md</a></p>
 <a href="#approval-of-the-minutes-from-november-2015"><h2 id="approval-of-the-minutes-from-november-2015">Approval of the minutes from November 2015</h2></a><p>WH: what sort of changes?</p>
 <p>JHD: some editorial cleanup</p>
-<a href="#conclusionresolution-239"><h4 id="conclusionresolution-239">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-approval-of-the-minutes-from-november-2015"><h4 id="conclusionresolution-approval-of-the-minutes-from-november-2015">Conclusion/Resolution</h4></a><ul>
 <li>Minutes approved.</li>
 </ul>
 <a href="#5-proposals-for-future-editions"><h2 id="5-proposals-for-future-editions">5. Proposals for Future Editions</h2></a><a href="#5i-zones"><h2 id="5i-zones">5.i Zones</h2></a><p>DD: Misko is presenting, zones.</p>
@@ -188,7 +188,7 @@ See <a href="http://www.hpl.hp.com/techreports/2009/HPL-2009-78.html">http://www
 <p>MM: if I endorse some of the goals but not the mechanisms, can I approve stage 0?</p>
 <p>DD: Yes, and we encourage collaboration with the champions.  Just want to move to stage zero if we can.</p>
 <p>YK: Stage zero seems fine.</p>
-<a href="#conclusionresolution-240"><h4 id="conclusionresolution-240">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-5i-zones"><h4 id="conclusionresolution-5i-zones">Conclusion/Resolution</h4></a><ul>
 <li>stage 0 approved</li>
 </ul>
 <a href="#announcement"><h3 id="announcement">Announcement</h3></a><p>MM: Does ECMA have rules for NDA's signed at these meetings? Participants should not be required to sign an NDA, the company should protect its own secrets it should not be the burden of the participants.</p>
@@ -454,7 +454,7 @@ could <span class="hljs-builtin-name">print</span> 0.
 <p>BT: It is important to advance proposals.</p>
 <p>BE: it will go into it wasm regardless we may aswell own it.</p>
 <p>WH: I go on the record as objecting to advancing to stage 2 on the basis of failure to satisfy the stage 2 prerequisites. The prerequisite &quot;spec quality: all major semantics, syntax and API are covered&quot; is not met at the moment with the race memory model and quantum garbage issues being both major and unaddressed in the current draft. However, I will not block the process.</p>
-<a href="#conclusionresolution-241"><h4 id="conclusionresolution-241">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-5iii-shared-memory-and-atomics-proposal"><h4 id="conclusionresolution-5iii-shared-memory-and-atomics-proposal">Conclusion/Resolution</h4></a><ul>
 <li>advance to stage 2</li>
 </ul>
 <a href="#weak-references"><h2 id="weak-references">Weak References</h2></a><p>(Brendan Eich)</p>
@@ -513,10 +513,10 @@ could <span class="hljs-builtin-name">print</span> 0.
 <p>DE: ya, afew weeks.</p>
 <p>AR: we should  land it in M50</p>
 <p>YK: People maybe confused with async/await, entries/values introduces potential web compatibility issues, which we haven't vetted yet. Async await, had technical implementation details.</p>
-<a href="#conclusionresolution-242"><h4 id="conclusionresolution-242">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-5xiv-objectvalues-objectentries"><h4 id="conclusionresolution-5xiv-objectvalues-objectentries">Conclusion/Resolution</h4></a><ul>
 <li>Stay stage 3, wait for 2 shipping browsers to confirm web compat.</li>
 </ul>
-<a href="#string#padstartpadend-jhd"><h2 id="string#padstartpadend-jhd"><code>String#padStart</code>/<code>padEnd</code> (JHD)</h2></a><a href="#conclusionresolution-243"><h4 id="conclusionresolution-243">Conclusion/Resolution</h4></a><ul>
+<a href="#stringpadstartpadend-jhd"><h2 id="stringpadstartpadend-jhd"><code>String#padStart</code>/<code>padEnd</code> (JHD)</h2></a><a href="#conclusionresolution-stringpadstartpadend-jhd"><h4 id="conclusionresolution-stringpadstartpadend-jhd">Conclusion/Resolution</h4></a><ul>
 <li>stay stage 3, no further concerns about unicode/graphemes/RTL, Intl will handle that.</li>
 <li>will pursue stage 4 when enough browsers have shipped it to allay web compat concerns</li>
 </ul>
@@ -532,13 +532,13 @@ could <span class="hljs-builtin-name">print</span> 0.
 <p>BT: they way i see us implementing these tests, is to have a single file for this test, having a single test fail is fine, and implementors already have machinery to manage test failures.</p>
 <p>MF: are we doing 8 or 8 or greater?</p>
 <p>BT/DE: 8 or greater</p>
-<a href="#conclusionresolution-244"><h4 id="conclusionresolution-244">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-unicode-fix-httpsgithubcomtc39ecma262pull300-de"><h4 id="conclusionresolution-unicode-fix-httpsgithubcomtc39ecma262pull300-de">Conclusion/Resolution</h4></a><ul>
 <li>switch to 8 or greater and merge  <a href="https://github.com/tc39/ecma262/pull/300">https://github.com/tc39/ecma262/pull/300</a></li>
 </ul>
 <a href="#objectgetownpropertydescriptors-proposal-email-jhd"><h2 id="objectgetownpropertydescriptors-proposal-email-jhd">Object.getOwnPropertyDescriptors proposal email (JHD)</h2></a><p>JHD: this method instead of producing a single descriptor, this would return multiple. Ultimately being what would be passed to Object.create's second arguments</p>
 <p>JHD: can we advance it to stage 2, and we will firm it all up</p>
 <p>MM: i am happy with stage 2</p>
-<a href="#conclusionresolution-245"><h4 id="conclusionresolution-245">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-objectgetownpropertydescriptors-proposal-email-jhd"><h4 id="conclusionresolution-objectgetownpropertydescriptors-proposal-email-jhd">Conclusion/Resolution</h4></a><ul>
 <li>advance to stage 2</li>
 </ul>
 <a href="#objectgetownpropertydescriptors-object-null-or-objectprototype-as-prototype"><h2 id="objectgetownpropertydescriptors-object-null-or-objectprototype-as-prototype">Object.getOwnPropertyDescriptors object: null or Object.prototype as [[Prototype]]?</h2></a><p>DD: what is the prototype of the object it returns, null or object?</p>
@@ -547,7 +547,7 @@ could <span class="hljs-builtin-name">print</span> 0.
 <p>JHD: yes</p>
 <p>MM: getOwnPropertyDescritpor returns an object with prototype of object.</p>
 <p>DD: I am fine with the prototype being object.prototype</p>
-<a href="#conclusionresolution-246"><h4 id="conclusionresolution-246">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-objectgetownpropertydescriptors-object-null-or-objectprototype-as-prototype"><h4 id="conclusionresolution-objectgetownpropertydescriptors-object-null-or-objectprototype-as-prototype">Conclusion/Resolution</h4></a><ul>
 <li>prototype stays as object, DD + SP will be reviewers.</li>
 </ul>
 <a href="#5xi-daniel-presenting-simd-changes-since-december"><h2 id="5xi-daniel-presenting-simd-changes-since-december">5.xi Daniel, presenting SIMD changes since December</h2></a><p>link: <a href="https://docs.google.com/presentation/d/1tREM-eLjadnXZogdKXlTWY8XzicXgylI_GlIxxsMNzc/edit">https://docs.google.com/presentation/d/1tREM-eLjadnXZogdKXlTWY8XzicXgylI_GlIxxsMNzc/edit</a></p>
@@ -582,7 +582,7 @@ could <span class="hljs-builtin-name">print</span> 0.
 <p>BE: why would we look for devices to cripple the spec</p>
 <p>MM: has someone reached out to the samsung folks</p>
 <p>DH: I believe they implemented something that may support it all: <a href="https://github.com/Samsung/jerryscript">https://github.com/Samsung/jerryscript</a></p>
-<a href="#conclusion-247"><h4 id="conclusion-247">Conclusion</h4></a><ul>
+<a href="#conclusion-5xi-daniel-presenting-simd-changes-since-december"><h4 id="conclusion-5xi-daniel-presenting-simd-changes-since-december">Conclusion</h4></a><ul>
 <li>successfully delivered the update to the committee</li>
 </ul>
 

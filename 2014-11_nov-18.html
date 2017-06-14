@@ -132,7 +132,7 @@ func(); <span class="hljs-comment">// no exception thrown</span>
 </ul>
 <p>WH: Leery about introducing new kinds of state that then make their way into various reflection APIs. This extra bit of state to distinguish const bindings from merely immutable ones will not be reflected to user code in any way, right?</p>
 <p>AWB: Right.</p>
-<a href="#conclusionresolution-363"><h4 id="conclusionresolution-363">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-43-assignment-to-a-const-static-error"><h4 id="conclusionresolution-43-assignment-to-a-const-static-error">Conclusion/Resolution</h4></a><ul>
 <li>Runtime assignment to const bindings (ie. bindings introduced by the const keyword) throw in all modes (strict and non-strict).</li>
 <li>Legacy const bindings (function name binding in function expressions) in sloppy mode continue to be no ops</li>
 </ul>
@@ -151,7 +151,7 @@ func(); <span class="hljs-comment">// no exception thrown</span>
 <p>BT: IE team has pushed forward on <code>Array.prototype.values</code> in the technical preview (small applause).</p>
 <p>EA: We can roll it out again as well.</p>
 <p>Discussion of alternative paths for <code>String|Array.prototype.contains</code>. Come back to it.</p>
-<a href="#conclusionresolution-364"><h4 id="conclusionresolution-364">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-44-arrayprototypecontains-breaks-mootools"><h4 id="conclusionresolution-44-arrayprototypecontains-breaks-mootools">Conclusion/Resolution</h4></a><ul>
 <li>Revisit with Domenic present</li>
 </ul>
 <a href="#45-global-let-shadowing-of-global-object-properties"><h2 id="45-global-let-shadowing-of-global-object-properties">4.5 Global let shadowing of global object properties</h2></a><p>(Allen Wirfs-Brock)</p>
@@ -215,7 +215,7 @@ Runtime error when instantiating a script if a lexical declaration shadows a non
 <p>BE: Not backwards compatible</p>
 <p>WH: Can't create new non-configurable properties</p>
 <p>AWB: Anytime there are local scripts with top level var and let bindings, you have possible conflicts with other bindings. It just <em>is</em>. A good a reason to use modules.</p>
-<a href="#conclusionresolution-365"><h4 id="conclusionresolution-365">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-45-global-let-shadowing-of-global-object-properties"><h4 id="conclusionresolution-45-global-let-shadowing-of-global-object-properties">Conclusion/Resolution</h4></a><ul>
 <li>Error when instantiating a script if a lexical declaration shadows an own, non-configurable property of global object.</li>
 </ul>
 <a href="#46-zepto-broken-by-new-thisconstruct-usage-in-some-arrayprototype-methods"><h2 id="46-zepto-broken-by-new-thisconstruct-usage-in-some-arrayprototype-methods">4.6 Zepto broken by new this.construct usage in some Array.prototype methods</h2></a><p>(Allen Wirfs-Brock, Brian Terlson)</p>
@@ -270,7 +270,7 @@ a. <span class="hljs-keyword">Let</span> A be ArrayCreate(<span class="hljs-numb
 <li>Promise and Array are only built-ins that have methods that make instances of themselves.</li>
 <li>eg. <code>new this.constructor()</code></li>
 </ul>
-<a href="#conclusionresolution-366"><h4 id="conclusionresolution-366">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-46-zepto-broken-by-new-thisconstruct-usage-in-some-arrayprototype-methods"><h4 id="conclusionresolution-46-zepto-broken-by-new-thisconstruct-usage-in-some-arrayprototype-methods">Conclusion/Resolution</h4></a><ul>
 <li>Allen's proposed fix accepted.</li>
 <li>It's called &quot;species&quot;</li>
 </ul>
@@ -285,7 +285,7 @@ a. <span class="hljs-keyword">Let</span> A be ArrayCreate(<span class="hljs-numb
 <p>BE: (agrees)</p>
 <p>MM: (explanation of analogous operations on Array to String.prototype.contains)</p>
 <p>There is precedent for papering over the difference between substring and array elements</p>
-<a href="#conclusionresolution-367"><h4 id="conclusionresolution-367">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-51--44-arrayprototypecontains-and-stringprototypecontains"><h4 id="conclusionresolution-51--44-arrayprototypecontains-and-stringprototypecontains">Conclusion/Resolution</h4></a><ul>
 <li><code>String.prototype.contains</code> =&gt; <code>String.prototype.includes</code></li>
 <li><code>Array.prototype.contains</code> =&gt; <code>Array.prototype.includes</code></li>
 </ul>
@@ -365,7 +365,7 @@ tag<span class="hljs-string">`hello, <span class="hljs-subst">${world}</span>`</
 </code></pre>
 <p>Would those two be the same template or two different templates?</p>
 <p>BE: Same.</p>
-<a href="#conclusionresolution-368"><h4 id="conclusionresolution-368">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-48-template-literal-call-site-object-caching"><h4 id="conclusionresolution-48-template-literal-call-site-object-caching">Conclusion/Resolution</h4></a><ul>
 <li>The result would be 1</li>
 </ul>
 <a href="#what-is-the-this-binding-at-the-top-of-a-module"><h2 id="what-is-the-this-binding-at-the-top-of-a-module">What is the <code>this</code> binding at the top of a module?</h2></a><p>DH: Makes sense going forward to access the global via the Reflect library. <code>this</code> should be undefined at the top level of a module.</p>
@@ -374,7 +374,7 @@ tag<span class="hljs-string">`hello, <span class="hljs-subst">${world}</span>`</
 <p>DD: Won't indirect eval give you a script context global?</p>
 <p>MM: Don't need to add something to ES6 for this issue.</p>
 <p>DH: Agree</p>
-<a href="#conclusionresolution-369"><h4 id="conclusionresolution-369">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-what-is-the-this-binding-at-the-top-of-a-module"><h4 id="conclusionresolution-what-is-the-this-binding-at-the-top-of-a-module">Conclusion/Resolution</h4></a><ul>
 <li><code>this</code> is undefined</li>
 </ul>
 <a href="#49-arrayisarraynew-proxy-"><h2 id="49-arrayisarraynew-proxy-">4.9 Array.isArray(new Proxy([], {}))</h2></a><p>(TomVC, Brendan Eich, Rick Waldron, Allen Wirfs-Brock)</p>
@@ -440,7 +440,7 @@ Any exotic object that inherits from Array | ?!@#</p>
 AWB: post meeting note -- &quot;created using Array's construction mechanism&quot; is equivlant to says &quot;is an exotic array object&quot; because that mechanism is the only way to create exotic array objects..</p>
 <p>DH: For proxies, remember whether the target object was an array when the proxy was created, and return the same answer. Revoked array proxies would still be arrays.</p>
 <p>DH: No other objects would be arrays.</p>
-<a href="#conclusionresolution-370"><h4 id="conclusionresolution-370">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-49-arrayisarraynew-proxy-"><h4 id="conclusionresolution-49-arrayisarraynew-proxy-">Conclusion/Resolution</h4></a><ul>
 <li><code>Array.isArray</code> checks to see if its argument is a Proxy of an Array and returns true when it is</li>
 <li>b/c of revocable proxy: at creation time, discover it's an Array</li>
 <li>Any data structure in which Array.isArray is true, JSON.stringify should take the Array path.</li>
@@ -488,7 +488,7 @@ re.??? === <span class="hljs-string">'mi'</span>
 <p>AWB: We might still need it for the <code>new this.constructor</code>.</p>
 <p>DD: We use <code>@@species</code> for Promises.</p>
 <p>MM: If Arrays use @@species, TypedArrays use @@species, Promises use @@species, then RegExp should use it too.</p>
-<a href="#conclusionresolution-371"><h4 id="conclusionresolution-371">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-410-regexp-subclassing-fixes"><h4 id="conclusionresolution-410-regexp-subclassing-fixes">Conclusion/Resolution</h4></a><ul>
 <li>Add RegExp.prototype.flags getter</li>
 <li>Per discussion with JHD/AWB/BE: RegExp#flags should return a string of flags, but sorted alphabetically, to match #toString - eg /a/gim.flags === /a/igm.flags === 'gim'</li>
 <li>Erratum from JHD:
@@ -522,7 +522,7 @@ re.??? === <span class="hljs-string">'mi'</span>
 <p>FN: Not insurmountable, if async (the module) is re-written for ES6 modules, nothing saying that it can't be renamed.</p>
 <p>DH: Too much of an adoption tax</p>
 <p>Conflict with existing Identifier use is not worth creating a <em>reserved</em> <em>word</em>.</p>
-<a href="#conclusionresolution-372"><h4 id="conclusionresolution-372">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-413-add-async-as-futurereservedword"><h4 id="conclusionresolution-413-add-async-as-futurereservedword">Conclusion/Resolution</h4></a><ul>
 <li>Will not reserve <code>async</code> as FutureReserveWord</li>
 </ul>
 <a href="#411-performance-issue-objectdefineproperties-objectcreate-objectassign"><h2 id="411-performance-issue-objectdefineproperties-objectcreate-objectassign">4.11 Performance issue: <code>Object.defineProperties</code>, <code>Object.create</code>, <code>Object.assign</code>.</h2></a><p>(Brian Terlson, John David Dalton)</p>
@@ -561,6 +561,6 @@ re.??? === <span class="hljs-string">'mi'</span>
 <p>RW: But my original proposal said nothing of doing this. Developer expectation would be: this behaves like jQuery, YUI, Dojo, etc.</p>
 <p>MM: Do not object to <code>Object.assign</code> being specified without the try/catch because the operation is just a put and when the target is a non-Proxy it may still have setters invoked on put.</p>
 <p>BE: if we made a mistake in not specifying order for Object.defineProperties or Object.assign, that's on us -- not a reason to inflict held-first-exception workaround for our mistake on devs of engines and polyfills</p>
-<a href="#conclusionresolution-373"><h4 id="conclusionresolution-373">Conclusion/Resolution</h4></a><p>Continue tomorrow.</p>
+<a href="#conclusionresolution-411-performance-issue-objectdefineproperties-objectcreate-objectassign"><h4 id="conclusionresolution-411-performance-issue-objectdefineproperties-objectcreate-objectassign">Conclusion/Resolution</h4></a><p>Continue tomorrow.</p>
 
 </body>

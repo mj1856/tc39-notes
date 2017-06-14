@@ -67,7 +67,7 @@
 <li>Duplicate param names not allowed, except for function definitions (things declared with function) with simple parameter lists</li>
 </ul>
 <p>MM: That's more complex</p>
-<a href="#consensusresolution-543"><h4 id="consensusresolution-543">Consensus/Resolution</h4></a><p>General Rule</p>
+<a href="#consensusresolution-56-can-letconstclassfunction-in-non-strict-code-bind-eval-and-arguments"><h4 id="consensusresolution-56-can-letconstclassfunction-in-non-strict-code-bind-eval-and-arguments">Consensus/Resolution</h4></a><p>General Rule</p>
 <ul>
 <li>Non-strict code operates in consistently non-strict manner (This covers the let/const/function* cases)</li>
 <li>Exception:</li>
@@ -146,7 +146,7 @@ isSafeInteger</p>
 <p>WH:  In particular, this specifies that the value is 32 bits wide, which  makes it inappropriate as something in Math. Consider what happens if we add a uint64 type. Then we'd want Uint64.clz to count starting from the  64th bit instead of from the 32nd bit. We can do that if it's  Uint64.clz. We can't (without creating weirdness) if we use Math.clz for  both.</p>
 <p>AWB: Then it belongs on the instance side.</p>
 <p>Any objections?</p>
-<a href="#consensusresolution-544"><h4 id="consensusresolution-544">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-58-numberprototypeclz-or-mathclz"><h4 id="consensusresolution-58-numberprototypeclz-or-mathclz">Consensus/Resolution</h4></a><ul>
 <li>Number.prototype.clz</li>
 </ul>
 <p>AWB: What about the following:</p>
@@ -156,7 +156,7 @@ Number.isFinite
 Number.isNaN
 Number.toInteger
 </code></pre>
-<a href="#consensusresolution-545"><h4 id="consensusresolution-545">Consensus/Resolution</h4></a><p>Remove Number.toInteger (already exists as Math.trunc)</p>
+<a href="#consensusresolution-58-numberprototypeclz-or-mathclz"><h4 id="consensusresolution-58-numberprototypeclz-or-mathclz">Consensus/Resolution</h4></a><p>Remove Number.toInteger (already exists as Math.trunc)</p>
 <p>(Reference: <a href="https://github.com/rwldrn/tc39-notes/blob/42cf4dd15b0760d87b35714fa2e417b589d76bdc/es6/2013-01/jan-29.md#conclusionresolution-1">https://github.com/rwldrn/tc39-notes/blob/42cf4dd15b0760d87b35714fa2e417b589d76bdc/es6/2013-01/jan-29.md#conclusionresolution-1</a>)</p>
 <a href="#513-which-existing-built-in-properties-that-are-read-onlynon-configurable-do-we-want-to-make-read-onlyconfigurable"><h2 id="513-which-existing-built-in-properties-that-are-read-onlynon-configurable-do-we-want-to-make-read-onlyconfigurable">5.13 Which existing built-in properties that are read-only/non-configurable do we want to make read-only/configurable?</h2></a><p>(Allen Wirfs-Brock)</p>
 <p>AWB: Previously, we've discussed setting data properties as {writable: false, configurable: true}</p>
@@ -194,7 +194,7 @@ Bar.prototype.constructor = Bar;
 <p>This change allows the actual Array.prototype to be changed.</p>
 <p>WH: When does @@create get called?</p>
 <p>AWB: when <code>new</code> is used.</p>
-<a href="#consensusresolution-546"><h4 id="consensusresolution-546">Consensus/Resolution</h4></a><p>{writable: false, configurable: true}?</p>
+<a href="#consensusresolution-513-which-existing-built-in-properties-that-are-read-onlynon-configurable-do-we-want-to-make-read-onlyconfigurable"><h4 id="consensusresolution-513-which-existing-built-in-properties-that-are-read-onlynon-configurable-do-we-want-to-make-read-onlyconfigurable">Consensus/Resolution</h4></a><p>{writable: false, configurable: true}?</p>
 <ul>
 <li>length property of functions: yes</li>
 <li>prototype property of functions: no</li>
@@ -230,7 +230,7 @@ Postpone Symbols to ES7</p>
 <li><p>Unique objects, unforgeable, can't set or access properties. Are actually objects.</p></li>
 </ol>
 <p>BE: ARB says that v8 internal architecture makes it hard to add new</p>
-<a href="#consensusresolution-547"><h4 id="consensusresolution-547">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-51-symbol-primitive-value-or-object-one-more-time"><h4 id="consensusresolution-51-symbol-primitive-value-or-object-one-more-time">Consensus/Resolution</h4></a><ul>
 <li>Leave the spec as it is now</li>
 <li>Postpone until next f2f</li>
 </ul>
@@ -263,7 +263,7 @@ Postpone Symbols to ES7</p>
 <p>YK: Objects to removal [[Construct]]</p>
 <p>AWB: A Proxy trap?</p>
 <p>BE/YK: Keep</p>
-<a href="#consensusresolution-548"><h4 id="consensusresolution-548">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-512-should-we-remove-construct-from-the-mop-and-proxy-handler-api"><h4 id="consensusresolution-512-should-we-remove-construct-from-the-mop-and-proxy-handler-api">Consensus/Resolution</h4></a><ul>
 <li>[[Construct]] remains.</li>
 </ul>
 <a href="#anti-pattern-to-call-a-constructor-without-new"><h2 id="anti-pattern-to-call-a-constructor-without-new">Anti-Pattern to call a constructor without new</h2></a><p>(Allen Wirfs-Brock)</p>
@@ -277,7 +277,7 @@ Postpone Symbols to ES7</p>
 <p>MM: If it implies runtime overhead that is not easily optimized, that would be a perfectly valid argument against. Does it?</p>
 <p>In general, wherever we can replace a [[Foo]] internal property with an @@foo unique symbol named property, without penalty, we should. Especially if proxies would otherwise need a special trap for [[Foo]].</p>
 <p>YK: Need to be careful when we change the MOP since other specs refers to the mop methods.</p>
-<a href="#consensusresolution-549"><h4 id="consensusresolution-549">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-anti-pattern-to-call-a-constructor-without-new"><h4 id="consensusresolution-anti-pattern-to-call-a-constructor-without-new">Consensus/Resolution</h4></a><ul>
 <li>Giving up on the convenience of calling constructors without new, with any expectation</li>
 <li>Throw when Map, Set, WeakMap, WeakSet are called without <code>new</code></li>
 </ul>
@@ -305,7 +305,7 @@ Postpone Symbols to ES7</p>
 <p>MM: Promise scheduling, fifo</p>
 <p>Discussion re: the host vs.</p>
 <p>w3c bug...</p>
-<a href="#consensusresolution-550"><h4 id="consensusresolution-550">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-62-interfacing-ecmascript--htmldom-event-loops"><h4 id="consensusresolution-62-interfacing-ecmascript--htmldom-event-loops">Consensus/Resolution</h4></a><ul>
 <li>Needs more offline discussion</li>
 </ul>
 <a href="#value-objects-update"><h2 id="value-objects-update">Value Objects Update</h2></a><p>(Brendan Eich)
@@ -365,7 +365,7 @@ x === y
 </code></pre>
 <p>BE: typeof become advisory</p>
 <p>AWB: You can register typeof result once during registration. That way we can enforce that it does not changes.</p>
-<a href="#consensusresolution-551"><h4 id="consensusresolution-551">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-value-objects-update"><h4 id="consensusresolution-value-objects-update">Consensus/Resolution</h4></a><ul>
 <li>NaN requires separately overloadable &lt;= and &lt; [Slide 5]</li>
 <li>Intersection means function identity matters, so multimethods can break cross-realm [Slide 9]</li>
 <li>Mark objects that I or i as bignum suffix conflicts with complex [Slide 11].</li>
@@ -383,12 +383,12 @@ x === y
 <p>WH: If it's any of them, then this is not like sequential code.</p>
 <p>WH: What exactly is a side effect? How would a programmer know that some ECMAScript construct has an internal side effect?</p>
 <p>WH: In particular, suppose that I want to use a parallel loop to fill a big matrix with random numbers. Is calling a random number generator considered to be a side effect or not? If the answer is yes (it is a side effect), then how would one fill a big matrix with random numbers in parallel, as that is something that one would reasonably want to be able to do?</p>
-<a href="#consensusresolution-552"><h4 id="consensusresolution-552">Consensus/Resolution</h4></a><ul>
+<a href="#consensusresolution-65-parallel-javascript-river-trail"><h4 id="consensusresolution-65-parallel-javascript-river-trail">Consensus/Resolution</h4></a><ul>
 <li>Throw instead of falling back to sequential.</li>
 <li>Focus on concurrency/scheduling in ES7. Make sure it fits with other concurrency constructs (promises/event queues)</li>
 <li>Discussion/Acceptance in ES7 process.</li>
 </ul>
-<a href="#rws-proposal-for-specification-process-for-es7-process"><h2 id="rws-proposal-for-specification-process-for-es7-process">RWS Proposal For Specification Process (for ES7 process)</h2></a><a href="#consensusresolution-553"><h4 id="consensusresolution-553">Consensus/Resolution</h4></a><ul>
+<a href="#rws-proposal-for-specification-process-for-es7-process"><h2 id="rws-proposal-for-specification-process-for-es7-process">RWS Proposal For Specification Process (for ES7 process)</h2></a><a href="#consensusresolution-rws-proposal-for-specification-process-for-es7-process"><h4 id="consensusresolution-rws-proposal-for-specification-process-for-es7-process">Consensus/Resolution</h4></a><ul>
 <li>Go forth</li>
 </ul>
 <a href="#7-internationalization"><h2 id="7-internationalization">7 Internationalization</h2></a><p>NL: Implementations of ECMAScript Internationalization API:
