@@ -321,7 +321,7 @@
 <a href="#conclusionresolution-8iv-approve-tr-104-draft-and-forward-it-to-ecma-ga"><h4 id="conclusionresolution-8iv-approve-tr-104-draft-and-forward-it-to-ecma-ga">Conclusion/Resolution</h4></a><ul>
 <li>Consensus reached to approve and forward to Ecma GA</li>
 </ul>
-<a href="#12-i-needs-consensus-prs"><h2 id="12-i-needs-consensus-prs">12. i. Needs-Consensus PRs</h2></a><a href="#856-avoid-duplicate-tafill-value-coercions"><h3 id="856-avoid-duplicate-tafill-value-coercions"><a href="https://github.com/tc39/ecma262/pull/856">#856 Avoid Duplicate TA#fill value coercions</a></h3></a><p>BT: Issues with <code>.fill()</code> on typed arrays. Specifically the issue involves how to do coercion on the values passed into the <code>.fill()</code> argument. The fix involves calling <code>toNumber()</code> up front.</p>
+<a href="#12i-needs-consensus-prs"><h2 id="12i-needs-consensus-prs">12.i. Needs-Consensus PRs</h2></a><a href="#856-avoid-duplicate-tafill-value-coercions"><h3 id="856-avoid-duplicate-tafill-value-coercions"><a href="https://github.com/tc39/ecma262/pull/856">#856 Avoid Duplicate TA#fill value coercions</a></h3></a><p>BT: Issues with <code>.fill()</code> on typed arrays. Specifically the issue involves how to do coercion on the values passed into the <code>.fill()</code> argument. The fix involves calling <code>toNumber()</code> up front.</p>
 <p>AWB: Any other Array prototype methods not reimplemented have similar problems?</p>
 <p>BT: I looked briefly, did not see, but didn't dig deeply.</p>
 <p>DE: I looked. I did not find any other functions that would benefit from similar treatment.</p>
@@ -333,7 +333,7 @@
 <p>BT: It's only slightly different (than arrays) but it is different.</p>
 <p>AWB: No, but I do think you should duplicate the whole algorithm.</p>
 <p>BT: It is duplicated.</p>
-<a href="#conclusionresolution-12-i-needs-consensus-prs"><h4 id="conclusionresolution-12-i-needs-consensus-prs">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-12i-needs-consensus-prs"><h4 id="conclusionresolution-12i-needs-consensus-prs">Conclusion/Resolution</h4></a><ul>
 <li>consensus to accept this PR</li>
 </ul>
 <a href="#854-remove-implementation-defined-behavior-for-number-methods"><h3 id="854-remove-implementation-defined-behavior-for-number-methods"><a href="https://github.com/tc39/ecma262/pull/854">#854 Remove Implementation-defined behavior for Number methods</a></h3></a><p><code>Number.toFixed()</code>/<code>toPrecision</code>/<code>toExponential</code></p>
@@ -353,7 +353,7 @@
 <p>DE: Maybe -20 to 100 [precision]</p>
 <p>YK: I had an issue tht was similar to this last week. I had a language binding and I had to decide about what a float in langauge A would be in language B.</p>
 <p>AWB: I think we should take this input as input to a future proposal or PR.</p>
-<a href="#conclusionresolution-12-i-needs-consensus-prs"><h4 id="conclusionresolution-12-i-needs-consensus-prs">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-12i-needs-consensus-prs"><h4 id="conclusionresolution-12i-needs-consensus-prs">Conclusion/Resolution</h4></a><ul>
 <li>consensus to accept this PR</li>
 </ul>
 <a href="#785-arrayprototoypesort-checks-for-comparefn-being-valid"><h3 id="785-arrayprototoypesort-checks-for-comparefn-being-valid"><a href="https://github.com/tc39/ecma262/pull/785">#785 Array.prototoype.sort checks for compareFn being valid</a></h3></a><p>Presently spec implies but does not say that the compareFn must be <code>undefined</code> or callable. PR enforces that expectation.</p>
@@ -371,7 +371,7 @@
 <p>MS: The first row there [in table]: shouldn't that also throw an error...OK, so it's callable but you're not going to call it because only one element.</p>
 <p>BT: That change was fairly recent too, not calling the compareFn if only one element.</p>
 <p>BT: Any objections to taking this pull request?</p>
-<a href="#conclusionresolution-12-i-needs-consensus-prs"><h4 id="conclusionresolution-12-i-needs-consensus-prs">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-12i-needs-consensus-prs"><h4 id="conclusionresolution-12i-needs-consensus-prs">Conclusion/Resolution</h4></a><ul>
 <li>consensus to accept this PR</li>
 </ul>
 <a href="#833-remove-duplicate-keys-from-proxies"><h3 id="833-remove-duplicate-keys-from-proxies"><a href="https://github.com/tc39/ecma262/pull/833">#833 Remove duplicate keys from proxies</a></h3></a><p>BT:  All of the possibilities of how....</p>
@@ -393,7 +393,7 @@
 <p>BT: But there's only one way to compare a string right?</p>
 <p>AWB: ... symbols?</p>
 <p>AK: As the editor, keep an eye on that. I fear that someone will use &quot;duplicate&quot; somewhere and not know what it means.</p>
-<a href="#conclusionresolution-12-i-needs-consensus-prs"><h4 id="conclusionresolution-12-i-needs-consensus-prs">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-12i-needs-consensus-prs"><h4 id="conclusionresolution-12i-needs-consensus-prs">Conclusion/Resolution</h4></a><ul>
 <li>consensus to accept this PR</li>
 </ul>
 <a href="#852-move-side-effecty-toindex-in-ta-constructor-to-before-detached-check"><h3 id="852-move-side-effecty-toindex-in-ta-constructor-to-before-detached-check"><a href="https://github.com/tc39/ecma262/pull/852">#852 Move side-effecty toIndex in TA constructor to before detached check</a></h3></a><p>BT: Current spec won't throw when <code>toIndex</code> causes buffer to be detached.</p>
@@ -403,7 +403,7 @@
 </ol>
 <p>AWB: Does moving it up change the order in which arguments are examined?</p>
 <p>BT: It does not change the observable order of side effects. It should be fine to do and not cause compat problems.</p>
-<a href="#conclusionresolution-12-i-needs-consensus-prs"><h4 id="conclusionresolution-12-i-needs-consensus-prs">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-12i-needs-consensus-prs"><h4 id="conclusionresolution-12i-needs-consensus-prs">Conclusion/Resolution</h4></a><ul>
 <li>consensus to accept this PR</li>
 </ul>
 <a href="#853-stringprototypereplace-edge-case-alignment"><h3 id="853-stringprototypereplace-edge-case-alignment"><a href="https://github.com/tc39/ecma262/pull/853">#853 String.prototype.replace edge case alignment</a></h3></a><p>BT: Currently spec says substitution strings ($1, $2) with indexes beyond the matches groups (i.e. $5, $6, $7) is implementation-defined.</p>
@@ -418,7 +418,7 @@
 <p>BT: I will add notes with history that Waldemar provided.</p>
 <p>MPT: Did you want to do the needs consensus on ??</p>
 <p>BT: I'm open to continuing.</p>
-<a href="#conclusionresolution-12-i-needs-consensus-prs"><h4 id="conclusionresolution-12-i-needs-consensus-prs">Conclusion/Resolution</h4></a><ul>
+<a href="#conclusionresolution-12i-needs-consensus-prs"><h4 id="conclusionresolution-12i-needs-consensus-prs">Conclusion/Resolution</h4></a><ul>
 <li>consensus to accept this PR</li>
 </ul>
 

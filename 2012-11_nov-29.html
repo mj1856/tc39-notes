@@ -235,12 +235,15 @@ Map.prototype.set, Set.prototype.add, WeakMap.prototype.set</p>
 <pre><code class="language-js"><span class="hljs-built_in">eval</span>(<span class="hljs-string">"let x; delete x;"</span>);
 </code></pre>
 <p>ARB/MM: Illegal.</p>
-<p><strong>Consensus/Resolution</strong>
-New declaration forms, even from non-strict mode eval cannot be deleted.</p>
+<a href="#conclusionresolution-proposal-part-2"><h2 id="conclusionresolution-proposal-part-2">Conclusion/Resolution</h2></a><ul>
+<li>New declaration forms, even from non-strict mode eval cannot be deleted.</li>
+</ul>
 <a href="#eliminate-functions-returning-reference-values-from-the-specification"><h1 id="eliminate-functions-returning-reference-values-from-the-specification">Eliminate functions returning Reference values from the specification.</h1></a><p>AWB: Only want to remove the language from the spec, not reason to be a feature of the spec.</p>
 <p>BE: Exists from the ES1 days, for VBScript-style DOM APIs in IE</p>
 <p>LH: No objection.</p>
-<a href="#conclusionresolution-proposal-part-2"><h4 id="conclusionresolution-proposal-part-2">Conclusion/Resolution</h4></a><p>Consensus.</p>
+<a href="#conclusionresolution-proposal-part-2"><h4 id="conclusionresolution-proposal-part-2">Conclusion/Resolution</h4></a><ul>
+<li>Consensus.</li>
+</ul>
 <a href="#revisit-nov-27-resolution-on-iterables-in-spread-proposal-part-2"><h1 id="revisit-nov-27-resolution-on-iterables-in-spread-proposal-part-2">Revisit Nov. 27 Resolution on iterables in spread.</h1></a><p>BE/RW: Recounting history, re: Array.from &amp; spread delegation</p>
 <p>BE: Changed mind about the forEach inconsistency</p>
 <p>AWB/YK: Have to maintain consistency to enumerable methods</p>
@@ -417,7 +420,9 @@ Begins here: <a href="https://mail.mozilla.org/pipermail/es-discuss/2012-Septemb
 <p>BE: Correct.</p>
 <p>MM: All agreed, whatever is allowed here is also allowed between parens for generator comprehensions.</p>
 <p>BE: No cost, no loss, use case gains.</p>
-<a href="#conclusionresolution-proposal-part-2"><h4 id="conclusionresolution-proposal-part-2">Conclusion/Resolution</h4></a><p>Consensus on Jason's proposal: for, if, let, const can be interleaved. Applies to both Array Comprehensions and Generator Comprehensions</p>
+<a href="#conclusionresolution-proposal-part-2"><h4 id="conclusionresolution-proposal-part-2">Conclusion/Resolution</h4></a><ul>
+<li>Consensus on Jason's proposal: for, if, let, const can be interleaved. Applies to both Array Comprehensions and Generator Comprehensions</li>
+</ul>
 <a href="#yield-the-identifier"><h1 id="yield-the-identifier">yield, the identifier?</h1></a><p>AWB: yield * 5?</p>
 <p>BE: yield is reserved inside of generators</p>
 <a href="#function-poison-pill-methods-and-new-function-syntactic-forms"><h1 id="function-poison-pill-methods-and-new-function-syntactic-forms">Function Poison Pill Methods and new Function Syntactic Forms</h1></a><p>Reference: <a href="https://mail.mozilla.org/pipermail/es-discuss/2012-October/026030.html">https://mail.mozilla.org/pipermail/es-discuss/2012-October/026030.html</a></p>
